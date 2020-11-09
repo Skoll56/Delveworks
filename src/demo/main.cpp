@@ -1,10 +1,25 @@
 #include <iostream>
-#include <Engine/Core.h>
+#include <Engine/Engine.h>
 
-int main()
+struct Player : public Component
 {
-	Core core;
-	core.dummy();
-	std::cout << "Hi" << std::endl;
+	int dummy;
+};
+
+#undef main
+int main()
+{	
+	std::cout << "We started!" << std::endl;
+	std::shared_ptr<Core> core = Core::initialise();
+	core->start();
+
+	std::shared_ptr<Entity> player = core->createEntity();
+	std::shared_ptr<Component> pc = player->addComponent<Player>();	
 	return 0;
 }
+
+//int OldMain()
+//{
+//	
+//	
+//}

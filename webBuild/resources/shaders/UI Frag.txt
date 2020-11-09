@@ -1,0 +1,16 @@
+precision mediump float;
+
+uniform sampler2D in_Texture;
+uniform float in_HP;
+varying vec2 ex_TexCoord;
+
+void main()
+{
+
+  vec4 tex = texture2D(in_Texture, ex_TexCoord);
+  vec4 col = tex;
+  float HP = 100.0 - in_HP;
+  HP /= 50.0;
+  col.a *= HP; //Transparency
+  gl_FragColor = (col);
+}
