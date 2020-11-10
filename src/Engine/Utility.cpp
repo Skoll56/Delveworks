@@ -221,7 +221,7 @@ namespace Engine
 			_obj->setPosition(_obj->getPosition() + _dir * _obj->m_charSheet->getSpeed() * _dTs);
 		}
 
-		void update(GameObject* _obj, Shader* _shader, std::vector<GameObject*> _allObj, float _dT)
+		void update(GameObject* _obj, std::shared_ptr<Shader> _shader, std::vector<GameObject*> _allObj, float _dT)
 		{
 			glm::mat4 modelMat(1.0f); // Model Matrix
 			modelMat = glm::translate(modelMat, _obj->getPosition()); // Translate by game object's position
@@ -255,12 +255,10 @@ namespace Engine
 			{
 				Physics::update(_obj, _allObj, _dT); // Also update the shape's rigidbody if it has one. Checks for collisions and adjusts position
 			}
-
 		}
 
-		void updateLighting(std::vector<SpotLight*> _sLight, std::vector<DirLight*> _dLight, std::vector<PointLight*> _pLight, Shader *_lSh, Shader *_mSh, Shader *_iSh)
+		void updateLighting(std::vector<SpotLight*> _sLight, std::vector<DirLight*> _dLight, std::vector<PointLight*> _pLight, std::shared_ptr<Shader> _lSh, std::shared_ptr<Shader> _iSh)
 		{
-
 			SpotLight* torch = nullptr;
 			for (int i = 0; i < _sLight.size(); i++)
 			{
@@ -343,56 +341,56 @@ namespace Engine
 				_lSh->setUniform(uniform, _sLight[i]->isAnti());
 			}
 
-			//Monster shader
-			uniform = "in_sLight.m_specIntens";
-			_mSh->setUniform(uniform, torch->getSpec());
+			////Monster shader
+			//uniform = "in_sLight.m_specIntens";
+			//_mSh->setUniform(uniform, torch->getSpec());
 
-			uniform = "in_sLight.m_pos";
-			_mSh->setUniform(uniform, torch->getPos());
+			//uniform = "in_sLight.m_pos";
+			//_mSh->setUniform(uniform, torch->getPos());
 
-			uniform = "in_sLight.m_radius";
-			_mSh->setUniform(uniform, torch->getRadius());
+			//uniform = "in_sLight.m_radius";
+			//_mSh->setUniform(uniform, torch->getRadius());
 
-			uniform = "in_sLight.m_quadratic";
-			_mSh->setUniform(uniform, torch->getQuad());
+			//uniform = "in_sLight.m_quadratic";
+			//_mSh->setUniform(uniform, torch->getQuad());
 
-			uniform = "in_sLight.m_angle";
-			_mSh->setUniform(uniform, glm::cos(glm::radians(torch->getAngle())));
+			//uniform = "in_sLight.m_angle";
+			//_mSh->setUniform(uniform, glm::cos(glm::radians(torch->getAngle())));
 
-			uniform = "in_sLight.m_fadeAngle";
-			_mSh->setUniform(uniform, glm::cos(glm::radians(torch->getFangle())));
+			//uniform = "in_sLight.m_fadeAngle";
+			//_mSh->setUniform(uniform, glm::cos(glm::radians(torch->getFangle())));
 
-			uniform = "in_sLight.m_direction";
-			_mSh->setUniform(uniform, torch->getDirection());
+			//uniform = "in_sLight.m_direction";
+			//_mSh->setUniform(uniform, torch->getDirection());
 
-			uniform = "in_sLight.m_time";
+			//uniform = "in_sLight.m_time";
 
-			float t = SDL_GetTicks();
-			_mSh->setUniform(uniform, t);
+			//float t = SDL_GetTicks();
+			//_mSh->setUniform(uniform, t);
 
-			//Hornet shader
-			uniform = "in_sLight.m_specIntens";
-			_iSh->setUniform(uniform, torch->getSpec());
+			////Hornet shader
+			//uniform = "in_sLight.m_specIntens";
+			//_iSh->setUniform(uniform, torch->getSpec());
 
-			uniform = "in_sLight.m_pos";
-			_iSh->setUniform(uniform, torch->getPos());
+			//uniform = "in_sLight.m_pos";
+			//_iSh->setUniform(uniform, torch->getPos());
 
-			uniform = "in_sLight.m_radius";
-			_iSh->setUniform(uniform, torch->getRadius());
+			//uniform = "in_sLight.m_radius";
+			//_iSh->setUniform(uniform, torch->getRadius());
 
-			uniform = "in_sLight.m_quadratic";
-			_iSh->setUniform(uniform, torch->getQuad());
+			//uniform = "in_sLight.m_quadratic";
+			//_iSh->setUniform(uniform, torch->getQuad());
 
-			uniform = "in_sLight.m_angle";
-			_iSh->setUniform(uniform, glm::cos(glm::radians(torch->getAngle())));
+			//uniform = "in_sLight.m_angle";
+			//_iSh->setUniform(uniform, glm::cos(glm::radians(torch->getAngle())));
 
-			uniform = "in_sLight.m_fadeAngle";
-			_iSh->setUniform(uniform, glm::cos(glm::radians(torch->getFangle())));
+			//uniform = "in_sLight.m_fadeAngle";
+			//_iSh->setUniform(uniform, glm::cos(glm::radians(torch->getFangle())));
 
-			uniform = "in_sLight.m_direction";
-			_iSh->setUniform(uniform, torch->getDirection());
-			uniform = "in_sLight.m_diffuse";
-			_iSh->setUniform(uniform, torch->getDif());
+			//uniform = "in_sLight.m_direction";
+			//_iSh->setUniform(uniform, torch->getDirection());
+			//uniform = "in_sLight.m_diffuse";
+			//_iSh->setUniform(uniform, torch->getDif());
 		}
 
 		void onRayHit(RayCollision* _col, GameObject* _shooter, Scene* _scene)

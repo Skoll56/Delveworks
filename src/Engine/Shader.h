@@ -2,6 +2,7 @@
 #define _SHADER_H_
 #include <vector>
 #include <GL/glew.h>
+#include "Texture.h"
 
 namespace Engine
 {
@@ -18,14 +19,16 @@ namespace Engine
 		Texture *m_tex;
 	};
 
-	class Shader
+	class Shader : public Resource
 	{
 	private:
 		GLuint m_id;
 		std::vector<Sampler> m_sampler;
+		
 	public:
-		//Shader();
-		Shader(std::string _vert, std::string _frag);
+		Shader();
+		Shader(std::string _name);
+		void load(std::string _name);
 		void draw(VertexArray *vertexArray);
 		void printShaderInfoLog(GLuint obj); //Reference Karsten
 		void setUniform(std::string _uniform, glm::vec4 _value);

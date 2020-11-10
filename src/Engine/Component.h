@@ -10,6 +10,8 @@ namespace Engine
 	class Entity;
 	class Component
 	{
+		friend class Entity;
+
 	public:
 		void destroy();
 	protected:
@@ -34,8 +36,10 @@ namespace Engine
 	{
 		void onInitialise(std::shared_ptr<Sound> _sound);
 		void OnTick();
-		ALuint m_id = 0;
+		void Play();
 
+		ALuint m_id = 0;
+		bool m_played = false;
 		bool m_loop = false;
 		bool m_destroyOnPlay = false;
 	};

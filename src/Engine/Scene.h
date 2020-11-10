@@ -43,11 +43,12 @@ namespace Engine
 		GameObject* getZter() { return m_templateZter; }
 		GameObject* getHornet() { return m_templateHornet; }
 		Core* m_core;
-		Shader* m_simpleSh;
-		Shader* m_lightingSh;
-		Shader* m_uiSh;
-		Shader* m_monsterSh;
-		Shader* m_invSh;
+		std::shared_ptr<Shader> m_simpleSh;
+		std::shared_ptr<Shader> m_lightingSh;
+		std::shared_ptr<Shader> m_uiSh;
+		std::shared_ptr<Shader> m_invSh;
+
+		//Shader* m_monsterSh;
 
 
 	private:

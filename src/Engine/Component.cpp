@@ -28,23 +28,31 @@ namespace Engine
 		alGenSources(1, &m_id);		
 		//alListener3f(AL_POSITION, 0.0f, 0.0f, 0.0f);
 		//alSource3f(m_id, AL_POSITION, 0.0f, 0.0f, 0.0f);
-		alSourcei(m_id, AL_BUFFER, _sound->m_id);
+		alSourcei(m_id, AL_BUFFER, _sound->m_id);		
+	}
+
+	void SoundSource::Play()
+	{
 		alSourcePlay(m_id);
+		m_played = true;
 	}
 
 	void SoundSource::OnTick()
 	{
-		ALint state = 0;
-		alGetSourcei(m_id, AL_SOURCE_STATE, &state);
-		if (state == AL_STOPPED)
+		if (m_played)
 		{
-			if (m_loop)
+			ALint state = 0;
+			alGetSourcei(m_id, AL_SOURCE_STATE, &state);
+			if (state == AL_STOPPED)
 			{
-				alSourcePlay(m_id);
-			}
-			else if (m_destroyOnPlay)
-			{
-				destroy();
+				if (m_loop)
+				{
+					alSourcePlay(m_id);
+				}
+				else if (m_destroyOnPlay)
+				{
+					destroy();
+				}
 			}
 		}
 

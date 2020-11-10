@@ -6,23 +6,33 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "Texture.h"
 #include "VertexArray.h"
 #include "Shader.h"
 #include "Light.h"
 
 namespace Engine
 {
-	Shader::Shader(std::string _vert, std::string _frag)
+	Shader::Shader()
+	{
+	}
+	Shader::Shader(std::string _name)
 	{		
+		load(_name);
+	}
+
+	void Shader::load(std::string  _name)
+	{
+		std::string _vert, _frag;
+		_vert = "../resources/shaders/" + _name + ".vert";
+		_frag = "../resources/shaders/" + _name + ".frag";
 		std::cout << "Started Shader load" << std::endl; //
 		std::string vertShader;
 		std::string fragShader;
 
 		std::ifstream file(_vert);
-		if (!file.is_open()) 
-		{			
-			throw std::exception(); 
+		if (!file.is_open())
+		{
+			throw std::exception();
 		}
 		else
 		{
@@ -36,10 +46,10 @@ namespace Engine
 		}
 		file.close();
 		file.open(_frag);
-		if (!file.is_open()) 
-		{ 
+		if (!file.is_open())
+		{
 			std::cout << "Broke mate2" << std::endl;
-			throw std::exception(); 
+			throw std::exception();
 		}
 		else
 		{
@@ -51,19 +61,19 @@ namespace Engine
 
 			}
 		}
-		file.close();	
+		file.close();
 
 		const char *vertex = vertShader.c_str();
 		const char *fragment = fragShader.c_str();
-		
+
 
 		GLuint vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
 		glShaderSource(vertexShaderId, 1, &vertex, NULL);
 		glCompileShader(vertexShaderId);
 		GLint success = 0;
 		glGetShaderiv(vertexShaderId, GL_COMPILE_STATUS, &success);
-		if (!success) 
-		{ 
+		if (!success)
+		{
 			std::cout << "Broke mate3" << std::endl;
 			GLint maxLength = 0;
 			glGetShaderiv(vertexShaderId, GL_INFO_LOG_LENGTH, &maxLength);
@@ -72,7 +82,7 @@ namespace Engine
 			std::vector<GLchar> errorLog(maxLength);
 			glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);
 			std::cout << &errorLog.at(0) << std::endl;
-			throw std::exception(); 
+			throw std::exception();
 		}
 
 		GLuint fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
@@ -92,7 +102,7 @@ namespace Engine
 			glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);
 			std::cout << &errorLog.at(0) << std::endl;
 			throw std::exception();//
-		}	
+		}
 		m_id = glCreateProgram();
 		glAttachShader(m_id, vertexShaderId);
 		glAttachShader(m_id, fragmentShaderId);
@@ -106,16 +116,16 @@ namespace Engine
 		glLinkProgram(m_id);
 		success = 0;
 		glGetProgramiv(m_id, GL_LINK_STATUS, &success);
-		if (!success) 
-		{ 
+		if (!success)
+		{
 			std::cout << "Broke mate5" << std::endl;
-			throw std::exception(); 
+			throw std::exception();
 		}
 
 		glDetachShader(m_id, vertexShaderId);
 		glDeleteShader(vertexShaderId);
 		glDetachShader(m_id, fragmentShaderId);
-		glDeleteShader(fragmentShaderId);		
+		glDeleteShader(fragmentShaderId);
 	}
 
 	void Shader::printShaderInfoLog(GLuint obj)
@@ -313,9 +323,7 @@ namespace Engine
 		glUniform1f(uniformId, m_sampler.size() - 1);
 		glUseProgram(0);
 	}
-
-
-
+	
 	GLuint Shader::getId()
 	{
 		return m_id;

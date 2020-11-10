@@ -19,6 +19,8 @@ namespace Engine
 		rtn->m_input = new Input();
 		rtn->m_scene = rtn->createScene();
 		rtn->m_scene->createStartScene();
+		rtn->LoadResources();
+
 		std::cout << "Initialised successfully" << std::endl;
 		return rtn;
 	}
@@ -171,5 +173,11 @@ namespace Engine
 			alcCloseDevice(m_device);
 			throw std::exception();
 		}
+	}
+
+	void Core::LoadResources()
+	{
+			
+		std::cout << "Successfully loaded shaders" << std::endl;
 	}
 }

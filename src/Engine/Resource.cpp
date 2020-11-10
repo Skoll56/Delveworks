@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-	void Sound::onLoad(const std::string& path)
+	void Sound::load(const std::string& path)
 	{
 		alGenBuffers(1, &m_id);
 		ALenum format = 0;

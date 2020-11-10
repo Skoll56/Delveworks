@@ -1,6 +1,7 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include <iostream>
+#include <string>
 #include "Scene.h"
 #include "Input.h"
 #include "Shader.h"
@@ -8,6 +9,7 @@
 #include "Light.h"
 #include "Utility.h"
 #include "Physics.h"
+#include "Resource.h"
 
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
@@ -15,44 +17,6 @@ namespace Engine
 {
 	Scene::Scene()
 	{
-		m_simpleSh = new Shader("resources/shaders/simpleVert.txt", "resources/shaders/simpleFrag.txt");
-		m_lightingSh = new Shader("resources/shaders/lightVert.txt", "resources/shaders/lightFrag.txt");
-		m_uiSh = new Shader("resources/shaders/simpleVert.txt", "resources/shaders/UI Frag.txt");
-		m_monsterSh = new Shader("resources/shaders/lightVert.txt", "resources/shaders/monsterFrag.txt"); //
-		m_invSh = new Shader("resources/shaders/lightVert.txt", "resources/shaders/invFrag.txt");
-		std::cout << "Successfully loaded shaders" << std::endl;
-		m_mainCam = new Camera(glm::vec3(-0, 5, -30));
-		//m_input = new Input();
-		
-		
-		m_templateWall = new GameObject(glm::vec3(5000.0f, 0.0f, 0.0f));
-		m_templateWall->addBoxShape("diffuse.bmp", glm::vec3(1.0f));
-		m_templateWall->setTag("wall");
-		m_templateWall->setShader(m_lightingSh); 
-		m_templateWall->m_shapeComp->setShine(4); //
-		//m_templateWall->setDelete(false);		
-
-		m_templateZter = new GameObject(glm::vec3(0.0f, -10.0f, 0.0f));
-		m_templateZter->addMeshShape("Zter_diffuse.png", "Zter.obj", glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(10.0f, 10.0f, 10.0f), "zter");
-		std::cout << "3.11" << std::endl;
-		m_templateZter->addStats(100.0f, 5.0f, 3.0f);
-		m_templateZter->setShader(m_monsterSh);
-		std::cout << "3.12" << std::endl;
-		m_templateZter->m_shapeComp->setShine(-2);
-		std::cout << "3.13" << std::endl;
-		m_templateZter->m_charSheet->setZter();
-		std::cout << "3.2" << std::endl;
-
-		m_templateHornet = new GameObject(glm::vec3(10.0f, -10.0f, 0.0f));
-		m_templateHornet->addMeshShape("wyrmdiffuse.png", "Wyrm.OBJ", glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(5.0f, 4.5f, 5.5f), "hornet");
-		m_templateHornet->m_shapeComp->setSolid(true);
-		m_templateHornet->m_mesh->setEasy(true);
-		m_templateHornet->setShader(m_invSh);
-		m_templateHornet->m_shapeComp->setShine(2);
-		m_templateHornet->addStats(40.0f, 1.0f, 3.5f);
-		m_templateHornet->m_charSheet->setHornet();
-		m_roomNum = 0;
-		std::cout << "3.3" << std::endl;
 	}
 
 	//Creates a room around a given point using 6 walls
@@ -131,14 +95,25 @@ namespace Engine
 	//Initialise the starting scene with various objects
 	void Scene::createStartScene()
 	{
+		m_lightingSh = m_core->m_rManager->load<Shader>("light");
+		m_uiSh = m_core->m_rManager->load<Shader>("UI");
 
 		//Spheres are size 1/1/1
 		//Boxes are size 1/1/1
 		//Planes are size 1/0/1 
 		//Meshes may vary. Mesh sizes are used to determine their hitbox (box collisions are always tested before the mesh collision for efficiency)
+		m_templateWall = new GameObject(glm::vec3(5000.0f, 0.0f, 0.0f));
+		m_templateWall->addBoxShape("diffuse.bmp", glm::vec3(1.0f));
+		m_templateWall->setTag("wall");
+		m_templateWall->setShader(m_lightingSh);
+		m_templateWall->m_shapeComp->setShine(4);
 
+		createRoom(100.0f, 50.0f, 100.0f, glm::vec3(0, 25.0f, 100.0f));		
+		
+		
+		std::cout << "Successfully loaded shaders" << std::endl;
 
-		createRoom(100.0f, 50.0f, 100.0f, glm::vec3(0, 25.0f, 100.0f));
+		m_mainCam = new Camera(glm::vec3(-0, 5, -30));
 
 		GameObject *player = new GameObject(glm::vec3(20.0f, 3.5f, 0.0f));
 		player->addBoxShape("default.bmp", glm::vec3(2.0f, 6.0f, 2.0f));
@@ -181,31 +156,31 @@ namespace Engine
 	{
 		///Camera		
 		m_mainCam->update(_dT, m_core->m_input); // Update camera based on the input
-		m_simpleSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
+		//m_simpleSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
 		m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
-		m_monsterSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
+		//m_monsterSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
 		m_uiSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
-		m_invSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
+		//m_invSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
 		glm::mat4 model(1.0f);
 		model = glm::lookAt(m_mainCam->getPos(), m_mainCam->getPos() + m_mainCam->getFwd(), m_mainCam->getUp());
 
-		m_simpleSh->setUniform("in_View", model); // Establish the view matrix		
+		//m_simpleSh->setUniform("in_View", model); // Establish the view matrix		
 		m_uiSh->setUniform("in_View", model); // Establish the view matrix	
 		m_lightingSh->setUniform("in_View", model); // Establish the view matrix
-		m_monsterSh->setUniform("in_View", model); // Establish the view matrix
-		m_invSh->setUniform("in_View", model); // Establish the view matrix
+		//m_monsterSh->setUniform("in_View", model); // Establish the view matrix
+		//m_invSh->setUniform("in_View", model); // Establish the view matrix
 
 		//Make various per-frame changes
 		utility::onEveryFrame(this, _dT);
 
 		//Lighting Shaders
 		m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
-		m_invSh->setUniform("in_Emissive", glm::vec3(0.8f, 0.0f, 0.0f));
+		//m_invSh->setUniform("in_Emissive", glm::vec3(0.8f, 0.0f, 0.0f));
 		m_lightingSh->setUniform("in_CamPos", m_mainCam->getPos());
-		m_monsterSh->setUniform("in_CamPos", m_mainCam->getPos());
-		m_invSh->setUniform("in_CamPos", m_mainCam->getPos());
+		//m_monsterSh->setUniform("in_CamPos", m_mainCam->getPos());
+		//m_invSh->setUniform("in_CamPos", m_mainCam->getPos());
 
-		utility::updateLighting(m_sLight, m_dLight, m_pLight, m_lightingSh, m_monsterSh, m_invSh);
+		utility::updateLighting(m_sLight, m_dLight, m_pLight, m_lightingSh, m_invSh);
 
 		for (int o = 0; o < m_object.size(); o++)
 		{

@@ -18,8 +18,8 @@ namespace Engine
 	namespace utility
 	{
 		void onEveryFrame(Scene* _scene, float _dT);
-		void update(GameObject* _obj, Shader* _shader, std::vector<GameObject*> _allObj, float _dT);
-		void updateLighting(std::vector<SpotLight*> _sLight, std::vector<DirLight*> _dLight, std::vector<PointLight*> _pLight, Shader *_lSh, Shader *_mSh, Shader* _iSh);
+		void update(GameObject* _obj, std::shared_ptr<Shader> _shader, std::vector<GameObject*> _allObj, float _dT);
+		void updateLighting(std::vector<SpotLight*> _sLight, std::vector<DirLight*> _dLight, std::vector<PointLight*> _pLight, std::shared_ptr<Shader> _lSh, std::shared_ptr<Shader> _iSh);
 		void moveEntity(GameObject* _obj, glm::vec3 _dir, std::vector<GameObject*> _other, float _dTs);
 		GameObject* copy(GameObject* _obj);
 		float lerp(float _a, float _b, float _f);

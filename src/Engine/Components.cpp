@@ -123,7 +123,7 @@ namespace Engine
 		m_size = glm::vec3(1.0f, 1.0f, 1.0f);
 		m_scale = _scale;
 		m_solid = true;
-		m_tex->addTexture(_texName);
+		m_tex->load(_texName);
 		m_vAO->loadObj("1b1cube.obj");
 		m_friction = 1.0f;
 		m_shininess = 1;
@@ -150,7 +150,7 @@ namespace Engine
 		{
 			m_vAO->loadObj("1b1plane.obj");
 		}
-		m_tex->addTexture(_texName);
+		m_tex->load(_texName);
 		m_friction = 5.0f;
 		m_shininess = 1;
 	}
@@ -169,7 +169,7 @@ namespace Engine
 		m_solid = true;
 		m_radius = _radius;
 		m_vAO->loadObj("1b1sphere.obj");
-		m_tex->addTexture(_texName);
+		m_tex->load(_texName);
 		m_friction = 1.0f;
 		m_shininess = 1;
 	}
@@ -189,7 +189,7 @@ namespace Engine
 		std::cout << "Got this far" << std::endl;
 		m_vAO->loadObj(_obj);
 		std::cout << "And here" << std::endl;
-		m_tex->addTexture(_texName);
+		m_tex->load(_texName);
 		std::cout << "And also here" << std::endl;
 		m_friction = 1.0f;
 		m_shininess = 1;
@@ -223,7 +223,7 @@ namespace Engine
 		m_mass = INFINITY;
 		m_solid = true;
 
-		m_tex->addTexture(_texName);
+		m_tex->load(_texName);
 		m_friction = 1.0f;
 		m_shininess = 1;
 		m_semiMesh = false;

@@ -164,7 +164,7 @@ namespace Engine
 
 	void VertexArray::loadObj(std::string path)
 	{
-		path = "resources/Models/" + path;
+		path = "../resources/Models/" + path;
 		std::ifstream file(path.c_str());
 
 		if (!file.is_open())

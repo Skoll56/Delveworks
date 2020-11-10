@@ -27,8 +27,8 @@ namespace Engine
 		bool isActive() { return m_active; };
 		void setActive(bool _status) { m_active = _status; }
 
-		void setShader(Shader * _shader) { m_shader = _shader; }
-		Shader* getShader() { return m_shader; }
+		void setShader(std::shared_ptr<Shader> _shader) { m_shader = _shader; }
+		std::shared_ptr<Shader> getShader() { return m_shader; }
 
 
 		//Component functions
@@ -67,7 +67,7 @@ namespace Engine
 		Stats *m_charSheet;
 
 	protected:
-		Shader *m_shader;
+		std::shared_ptr<Shader> m_shader;
 		glm::vec3 m_position;
 		std::string m_tag;
 		bool m_active;
