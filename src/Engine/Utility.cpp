@@ -83,25 +83,24 @@ namespace Engine
 						if (cat->m_charSheet->getHP() <= 0.0f)
 						{
 							obj[i]->setActive(false);
-							obj[i]->setDelete(true);
-							input->m_restart = true;
+							obj[i]->setDelete(true);							
 						}
 
 						glm::vec3 direction = glm::vec3(0, 0, 0);
 
-						if (input->m_left)
+						if (input->GetKeyIsDown(SDLK_a))
 						{
 							direction.x -= 1;
 						}
-						if (input->m_right)
+						if (input->GetKeyIsDown(SDLK_d))
 						{
 							direction.x += 1;
 						}
-						if (input->m_up)
+						if (input->GetKeyIsDown(SDLK_w))
 						{
 							direction.z += 1;
 						}
-						if (input->m_down)
+						if (input->GetKeyIsDown(SDLK_s))
 						{
 							direction.z -= 1;
 						}
@@ -177,12 +176,6 @@ namespace Engine
 
 				}
 			}
-			if (!input->m_r1) { _scene->setDeny(false); }
-			if (input->m_r1 && !_scene->isDenied())
-			{
-				_scene->setDeny(true); //Boolean to stop rapid-fire
-				utility::shootgun(camera->getFwd(), obj, camera->getPos(), cat, _scene);
-			}
 			
 			for (int i = 0; i < sLight.size(); i++)
 			{
@@ -197,8 +190,6 @@ namespace Engine
 					sLight[i]->setDirection(camera->getFwd() + camera->getRight() * glm::vec3(0.1, 0.1, 0.1));
 				}
 			}
-
-
 		}
 
 		void moveEntity(GameObject* _obj, glm::vec3 _dir, std::vector<GameObject*> _other, float _dTs)

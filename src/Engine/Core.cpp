@@ -1,6 +1,7 @@
 #include "Core.h"
 #include "Entity.h"
 #include <iostream>
+#include "Component.h"
 
 #ifdef EMSCRIPTEN
 #include <emscripten.h>
@@ -18,8 +19,7 @@ namespace Engine
 		rtn->initialiseAL();
 		rtn->m_input = new Input();
 		rtn->m_scene = rtn->createScene();
-		rtn->m_scene->createStartScene();
-		rtn->LoadResources();
+		rtn->m_scene->createStartScene();		
 
 		std::cout << "Initialised successfully" << std::endl;
 		return rtn;
@@ -28,6 +28,7 @@ namespace Engine
 	std::shared_ptr<Entity> Core::createEntity()
 	{
 		std::shared_ptr<Entity> rtn = std::make_shared<Entity>();
+		rtn->addComponent<Transform>();
 		m_entities.push_back(rtn);
 		std::cout << "I made an entity" << std::endl;
 		return rtn;
@@ -67,10 +68,6 @@ namespace Engine
 		m_scene->update(dTime);
 		SDL_GL_SwapWindow(m_window);
 
-		if (m_input->m_restart)
-		{
-			restart = true;
-		}
 		quit = m_input->takeInput(event); //Handles the input, and returns a 'quit' value to see if the program should end
 
 		float targetTime = 1.0f / 60.f;
@@ -173,11 +170,5 @@ namespace Engine
 			alcCloseDevice(m_device);
 			throw std::exception();
 		}
-	}
-
-	void Core::LoadResources()
-	{
-			
-		std::cout << "Successfully loaded shaders" << std::endl;
 	}
 }

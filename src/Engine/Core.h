@@ -23,15 +23,11 @@ namespace Engine
 		void start();
 		void loop();		
 		Scene* createScene();	
-		void LoadResources();
-
 
 		//Not functions
 		Scene* m_scene;
 		Input* m_input;
 		std::shared_ptr<ResourceManager> m_rManager = std::make_shared<ResourceManager>();
-		
-
 
 		//SDL OPENGL and OPENAL STUFF		
 		SDL_Window* m_window;
