@@ -38,6 +38,7 @@ src/Engine/Resource.cpp
 src/Engine/PhysicsNew.cpp
 src/Engine/MeshRenderer.cpp
 src/Engine/Collider.cpp
+src/Engine/Light.cpp
 
 src/Engine/Core.h
 src/Engine/Engine.h

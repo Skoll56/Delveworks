@@ -130,7 +130,7 @@ namespace Engine
 
 		GameObject* cube = new GameObject(glm::vec3(14.0f, 1.0f, 0.0f));
 		cube->addBoxShape("diffuse.bmp", glm::vec3(2.0f, 2.0f, 2.0f));
-		cube->setShader(m_lightingSh);		
+		cube->setShader(m_lightingSh);
 		cube->addPhysics("testbox", 1.0f, 0.0f);
 		cube->addAdvancedPhysics("box", glm::vec3(1.0f, 1.0f, 1.0f), 1.0f);
 		addToRoom(cube, 0);

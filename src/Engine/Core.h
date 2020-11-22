@@ -10,12 +10,15 @@
 #include "Input.h"
 #include <AL/al.h>
 #include <AL/alc.h> 
-#include "Resource.h"
+
 
 
 namespace Engine
 {
 	struct Entity;		
+	struct ResourceManager;
+	class Camera;
+	class Shader;
 
 	struct Core
 	{
@@ -28,7 +31,7 @@ namespace Engine
 
 		//Not functions		
 		Input* m_input;
-		std::shared_ptr<ResourceManager> m_rManager = std::make_shared<ResourceManager>();
+		std::shared_ptr<ResourceManager> m_rManager;
 
 		//SDL OPENGL and OPENAL STUFF		
 		SDL_Window* m_window;
@@ -38,9 +41,11 @@ namespace Engine
 		void initialiseSDL();
 		float getDeltaTime() { return dTime; }
 		std::vector<std::shared_ptr<Entity>> getAllEntities() { return m_entities; }
+		std::shared_ptr<Shader> m_lightingSh;
+		void updateShader();
 
 	private:
-		std::vector<std::shared_ptr<Entity>> m_entities;
+		std::vector<std::shared_ptr<Entity>> m_entities;		
 		int permX, permY;
 		bool quit;
 		bool restart;
@@ -52,6 +57,8 @@ namespace Engine
 		int mouseX, mouseY;
 		float dTime;
 		long t1;
+		std::weak_ptr<Core> m_self;
+		std::shared_ptr<Camera> m_camera;
 	};
 }
 

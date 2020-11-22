@@ -14,6 +14,9 @@
 #include <glm/ext.hpp>
 #include "PhysicsNew.h"
 #include <vector>
+#include "MeshRenderer.h"
+#include "Collider.h"
+#include "Light.h"
 
 using namespace Engine;
 

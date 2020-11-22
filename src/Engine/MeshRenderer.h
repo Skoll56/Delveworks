@@ -1,3 +1,6 @@
+#ifndef _MESHRENDERER_H_
+#define _MESHRENDERER_H_
+
 #include <vector>
 #include <string>
 #include <glm/glm.hpp>
@@ -9,6 +12,7 @@ namespace Engine
 	class VertexArray;
 	class VertexBuffer;
 	class Texture;
+	class Shader;
 
 	class MeshRenderer : public Component
 	{
@@ -18,12 +22,12 @@ namespace Engine
 		VertexBuffer *m_vBOt; // The vertex buffer for texture co-ordinates
 		VertexBuffer *m_vBOp; // The vertex buffer for object co-ordinates
 		Texture *m_tex;
-
-		
+		std::shared_ptr<Shader> m_shader;
+		void onInitialise();
 		void setShine(int _shininess) { m_shininess = _shininess; }
 		int getShine() { return m_shininess; }
 		glm::vec3 getSize() { return m_size; }
-		
+		void Initialise(std::string _texName, std::string _obj, glm::vec3 _size);
 
 	private:
 		glm::vec3 m_size; // The size of the obj in generic units (ie: box objs are 1/1/1 units)
@@ -32,3 +36,4 @@ namespace Engine
 		
 	};
 }
+#endif

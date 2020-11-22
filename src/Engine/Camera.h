@@ -7,7 +7,7 @@ namespace Engine
 
 	class Camera
 	{		
-	private:
+		private:
 		glm::vec3 m_pos;
 		glm::vec3 m_rot;
 		float m_pitch;
@@ -19,7 +19,7 @@ namespace Engine
 		glm::vec3 m_upVec;
 		glm::vec3 m_right;
 
-	public:
+		public:
 		Camera(glm::vec3 _startPos);
 		~Camera();
 

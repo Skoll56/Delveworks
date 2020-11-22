@@ -1,12 +1,14 @@
+#ifndef _LIGHT_H_
+#define _LIGHT_H_
+
 #include <glm/glm.hpp>
+#include "Component.h"
 
 namespace Engine
 {
-	class Light
+	class Light : public Component
 	{
-	public:
-		glm::vec3 getPos() { return m_pos; }
-		void setPos(glm::vec3 _pos) { m_pos = _pos; }
+	public:		
 		glm::vec3 getDif() { return m_diffuse; }
 		float getSpec() { return m_specIntens; }
 		bool isAnti() { return m_antiLight; }
@@ -14,8 +16,7 @@ namespace Engine
 		std::string getTag() { return m_tag; }
 		void setTag(std::string _tag) { m_tag = _tag; }
 
-	protected:
-		glm::vec3 m_pos;
+	protected:		
 		glm::vec3 m_diffuse;
 		float m_specIntens;
 		int m_antiLight;
@@ -27,15 +28,8 @@ namespace Engine
 	{
 	public:
 		PointLight() {};
-		PointLight(glm::vec3 _pos, glm::vec3 _diffuse, float _specular, float _radius, float _quadratic)
-		{
-			m_pos = _pos;
-			m_diffuse = _diffuse;
-			m_specIntens = _specular;
-			m_radius = _radius;
-			m_quadratic = _quadratic;
-			m_antiLight = 0;
-		}
+		void setValues(glm::vec3 _pos, glm::vec3 _diffuse, float _specular, float _radius, float _quadratic);
+		
 		float getRadius() { return m_radius; }
 		float getQuad() { return m_quadratic; }
 
@@ -48,14 +42,7 @@ namespace Engine
 	class DirLight : public Light
 	{
 	public:
-		DirLight(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient, glm::vec3 _direction)
-		{
-			m_diffuse = _diffuse;
-			m_specIntens = _specular;
-			m_ambient = _ambient;
-			m_direction = _direction;
-			m_antiLight = 0;
-		}
+		void setValues(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient, glm::vec3 _direction);
 
 		glm::vec3 getDif() { return m_diffuse; }
 		float getSpec() { return m_specIntens; }
@@ -64,6 +51,7 @@ namespace Engine
 		float m_specIntens;
 		glm::vec3 getDirection() { return m_direction; }
 		glm::vec3 getAmb() { return m_ambient; }
+		void onTick();
 
 	private:
 		glm::vec3 m_direction;
@@ -74,18 +62,7 @@ namespace Engine
 	class SpotLight : public PointLight
 	{
 	public:
-		SpotLight(glm::vec3 _pos, glm::vec3 _diffuse, float _specular, float _angle, float _fadeAngle, float _radius, float _quadratic, glm::vec3 _direction)
-		{
-			m_pos = _pos;
-			m_diffuse = _diffuse;
-			m_specIntens = _specular;
-			m_angle = _angle;
-			m_direction = _direction;
-			m_fadeAngle = _fadeAngle;
-			m_radius = _radius;
-			m_quadratic = _quadratic;
-			m_antiLight = 0;
-		}
+		void setValues(glm::vec3 _pos, glm::vec3 _diffuse, float _specular, float _angle, float _fadeAngle, float _radius, float _quadratic, glm::vec3 _direction);
 		float getAngle() { return m_angle; }
 		float getFangle() { return m_fadeAngle; }
 		glm::vec3 getDirection() { return m_direction; }
@@ -98,3 +75,4 @@ namespace Engine
 		glm::vec3 m_direction;
 	};
 }
+#endif

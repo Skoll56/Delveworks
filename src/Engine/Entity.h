@@ -17,14 +17,21 @@ namespace Engine
 
 	struct Entity
 	{
+		friend struct Core;
+
 		template <typename T>
 		std::shared_ptr<T> addComponent()
 		{
 			std::shared_ptr<T> rtn = std::make_shared<T>();
 			std::shared_ptr<Transform> t = std::dynamic_pointer_cast<Transform>(rtn);
-			if (t) { m_transform = t; }
-			components.push_back(rtn);			
+			if (t) 
+			{ 
+				m_transform = t; 
+			}
+			rtn->m_transform = m_transform;
 			rtn->m_entity = self;
+			rtn->onInitialise();
+			components.push_back(rtn);
 			return rtn;
 		}
 		void tick();
@@ -40,7 +47,7 @@ namespace Engine
 					return rtn;
 				}
 			}
-			std::cout << "Component not found" << std::endl;
+			//std::cout << "Component not found" << std::endl;
 			return nullptr;
 		}
 

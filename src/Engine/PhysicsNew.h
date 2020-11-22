@@ -150,6 +150,7 @@ namespace Engine
 		void setAmom(glm::vec3 _mom) { m_aMom = _mom; }
 		void addTorque(glm::vec3 _torque) { m_torque += _torque; }
 		void clearTorque() { m_torque = glm::vec3(0.0f, 0.0f, 0.0f); }
+		glm::quat getRotQuat() { return m_rotQuat; }
 
 	private:
 		//Angular Motion

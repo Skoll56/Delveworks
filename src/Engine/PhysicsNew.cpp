@@ -34,7 +34,6 @@ namespace Engine
 		float _dT = getEntity()->getCore()->getDeltaTime();
 		setCollided(false); //We do this here instead of in the 'Reset collision function' because the rotational update needs to know
 		glm::vec3 nextPos = trans->getPosition();
-
 		bool collided = checkForCollisions(_dT, getEntity()->getCore()->getAllEntities(), nextPos); // Check Collisions
 	}
 

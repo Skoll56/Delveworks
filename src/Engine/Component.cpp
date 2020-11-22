@@ -1,5 +1,9 @@
 #include "Component.h"
-
+#include <glm/glm.hpp>
+#include <glm/ext.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/quaternion.hpp>
+#include "Entity.h"
 
 namespace Engine
 {
@@ -10,6 +14,7 @@ namespace Engine
 
 	void Component::onInitialise()
 	{
+
 	}
 
 	void Component::onTick()
@@ -56,6 +61,46 @@ namespace Engine
 			}
 		}
 
+	}
+
+	void Transform::onTick()
+	{
+		glm::mat4 modelMat(1.0f); // Model Matrix
+		modelMat = glm::translate(modelMat, getPosition()); // Translate by game object's position
+
+		std::shared_ptr<AdvPhysicsObject> aRB = getEntity()->getComponent<AdvPhysicsObject>();
+		if (aRB)
+		{
+			/*if (_obj->getTag() != "testbox")
+			{
+				glm::mat4 rotationMat = glm::mat4(_obj->m_Phy->getRotMat());
+				glm::quat rotate = glm::normalize(glm::quat_cast(rotationMat));
+				_obj->m_Phy->setRotMat(glm::mat3_cast(rotate));
+
+				modelMat *= glm::mat4_cast(rotate);
+			}
+			else*/
+			{
+				glm::mat4 rotMatNew = glm::mat4_cast(aRB->getRotQuat());
+				modelMat *= rotMatNew;
+			}
+		}
+		else
+		{
+			glm::vec3 rotation = glm::radians(getEulerAngles());
+			{
+				modelMat = glm::rotate(modelMat, rotation.x, glm::vec3(1, 0, 0)); //Rotate by the shape component's rotation
+				modelMat = glm::rotate(modelMat, rotation.y, glm::vec3(0, 1, 0));
+				modelMat = glm::rotate(modelMat, rotation.z, glm::vec3(0, 0, 1));
+			}
+		}
+		modelMat = glm::scale(modelMat, getScale()); // Scale by shape object's scale
+		setModel(modelMat);
+	}
+
+	void Transform::onInitialise()
+	{
+		
 	}
 
 }

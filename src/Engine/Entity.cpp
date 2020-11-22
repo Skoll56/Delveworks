@@ -8,7 +8,14 @@ namespace Engine
 	{
 		for (size_t ci = 0; ci < components.size(); ci++)
 		{
-			components[ci]->onTick();
+			if (components[ci]->m_delete)
+			{
+				components[ci]->onDestroy(); //TODO: Destroy the object properly
+			}
+			else
+			{
+				components[ci]->onTick();
+			}
 		}
 	}
 
@@ -37,7 +44,7 @@ namespace Engine
 				return rtn4;
 			}
 		}
-		std::cout << "Component not found" << std::endl;
+		//std::cout << "Component not found" << std::endl;
 		return nullptr;
 	}
 }

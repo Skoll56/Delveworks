@@ -122,9 +122,9 @@ namespace Engine
 			throw std::exception();
 		}
 
-		glDetachShader(m_id, vertexShaderId);
+		//glDetachShader(m_id, vertexShaderId);
 		glDeleteShader(vertexShaderId);
-		glDetachShader(m_id, fragmentShaderId);
+		//glDetachShader(m_id, fragmentShaderId);
 		glDeleteShader(fragmentShaderId);
 	}
 
