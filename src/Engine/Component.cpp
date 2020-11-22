@@ -37,7 +37,7 @@ namespace Engine
 		m_played = true;
 	}
 
-	void SoundSource::OnTick()
+	void SoundSource::onTick()
 	{
 		if (m_played)
 		{

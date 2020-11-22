@@ -1,0 +1,167 @@
+\hypertarget{class_engine_1_1_game_object}{}\doxysection{Engine\+::Game\+Object Class Reference}
+\label{class_engine_1_1_game_object}\index{Engine::GameObject@{Engine::GameObject}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_ada05009af84e259f33762638a83f0e72}\label{class_engine_1_1_game_object_ada05009af84e259f33762638a83f0e72}} 
+\mbox{\hyperlink{class_engine_1_1_game_object_ada05009af84e259f33762638a83f0e72}{Game\+Object}} (glm\+::vec3 \+\_\+start\+Pos)
+\begin{DoxyCompactList}\small\item\em Brief description. \mbox{\hyperlink{class_engine_1_1_game_object}{Game\+Object}} class contains a list of possible components. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_ac0e6500de2b6176229cbb372fd7bfaba}\label{class_engine_1_1_game_object_ac0e6500de2b6176229cbb372fd7bfaba}} 
+std\+::string {\bfseries get\+Tag} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a77b62a6294de12e8e131152b00edd727}\label{class_engine_1_1_game_object_a77b62a6294de12e8e131152b00edd727}} 
+void {\bfseries set\+Tag} (std\+::string \+\_\+tag)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a934b8c99847ea8012cde4d9cb4269f70}\label{class_engine_1_1_game_object_a934b8c99847ea8012cde4d9cb4269f70}} 
+void {\bfseries set\+Position} (float \+\_\+posX, float \+\_\+posY, float \+\_\+posZ)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a1e72733dd6c663d46de46d9a16155ee8}\label{class_engine_1_1_game_object_a1e72733dd6c663d46de46d9a16155ee8}} 
+void {\bfseries set\+Position} (glm\+::vec3 \+\_\+value)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_ac2f91b40fcaf6af7e4e8212e284b9b4a}\label{class_engine_1_1_game_object_ac2f91b40fcaf6af7e4e8212e284b9b4a}} 
+glm\+::vec3 {\bfseries get\+Position} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a45c96f8e218cda056d3ab8412a93b9c5}\label{class_engine_1_1_game_object_a45c96f8e218cda056d3ab8412a93b9c5}} 
+bool {\bfseries is\+Active} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a9914af074374bcaf72eb0f117da1792c}\label{class_engine_1_1_game_object_a9914af074374bcaf72eb0f117da1792c}} 
+void {\bfseries set\+Active} (bool \+\_\+status)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a9bdca58f87a24397f55d1a2dfa5b6893}\label{class_engine_1_1_game_object_a9bdca58f87a24397f55d1a2dfa5b6893}} 
+void {\bfseries set\+Shader} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ \+\_\+shader)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_afe3ef0fc8b92eaa3e9ac6885f261e599}\label{class_engine_1_1_game_object_afe3ef0fc8b92eaa3e9ac6885f261e599}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ {\bfseries get\+Shader} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a3c2db6ba926c32d9adea68190ee60c6a}\label{class_engine_1_1_game_object_a3c2db6ba926c32d9adea68190ee60c6a}} 
+void {\bfseries add\+Plane\+Shape} (std\+::string \+\_\+tex\+Name, glm\+::vec3 \+\_\+scale, glm\+::vec3 \+\_\+normal)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a1fe884f50b53fa51e83f985a36d2b3ad}\label{class_engine_1_1_game_object_a1fe884f50b53fa51e83f985a36d2b3ad}} 
+void {\bfseries add\+Box\+Shape} (std\+::string \+\_\+tex\+Name, glm\+::vec3 \+\_\+scale)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a7540a52b531f5469fcc637934fbaea33}\label{class_engine_1_1_game_object_a7540a52b531f5469fcc637934fbaea33}} 
+void {\bfseries add\+Sphere\+Shape} (std\+::string \+\_\+tex\+Name, float \+\_\+radius)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a7200ea81bb5d2d50fc9bd6f710f20bde}\label{class_engine_1_1_game_object_a7200ea81bb5d2d50fc9bd6f710f20bde}} 
+void {\bfseries add\+Mesh\+Shape} (std\+::string \+\_\+tex\+Name, std\+::string \+\_\+obj, glm\+::vec3 \+\_\+scale, glm\+::vec3 \+\_\+size, std\+::string \+\_\+tag)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_ae8b34199e3d66a397d150d79517df863}\label{class_engine_1_1_game_object_ae8b34199e3d66a397d150d79517df863}} 
+void {\bfseries add\+Mesh\+Shape} (std\+::string \+\_\+tex\+Name, glm\+::vec3 \+\_\+scale, std\+::string \+\_\+tag)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_aa08261197df7867b72ae0bee17fd392c}\label{class_engine_1_1_game_object_aa08261197df7867b72ae0bee17fd392c}} 
+void {\bfseries delete\+Shape} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a1374a0213c9475220778ccca86d7914b}\label{class_engine_1_1_game_object_a1374a0213c9475220778ccca86d7914b}} 
+void {\bfseries add\+Stats} (float \+\_\+hp, float \+\_\+dmg, float \+\_\+speed)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a2d0619a35e1b549edd4b9f8d41e73256}\label{class_engine_1_1_game_object_a2d0619a35e1b549edd4b9f8d41e73256}} 
+bool {\bfseries has\+Stats} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_ad8ec27acab9ff31bbd275d141afbd28c}\label{class_engine_1_1_game_object_ad8ec27acab9ff31bbd275d141afbd28c}} 
+void {\bfseries add\+Physics} (std\+::string \+\_\+tag, float \+\_\+mass, float \+\_\+bounciness)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a6fc3ce5d7502ee4f2baecdfe26090736}\label{class_engine_1_1_game_object_a6fc3ce5d7502ee4f2baecdfe26090736}} 
+void {\bfseries add\+Advanced\+Physics} (std\+::string \+\_\+shape, glm\+::vec3 \+\_\+scale, float \+\_\+mass)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a5fbfa994a8bd35772c467f7dcf5f1dd0}\label{class_engine_1_1_game_object_a5fbfa994a8bd35772c467f7dcf5f1dd0}} 
+void {\bfseries remove\+Physics} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a8fc3b79a1252b0d69332f647b601ab58}\label{class_engine_1_1_game_object_a8fc3b79a1252b0d69332f647b601ab58}} 
+bool {\bfseries is\+Physics} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a37c60da596d4613dacef66f30614d67c}\label{class_engine_1_1_game_object_a37c60da596d4613dacef66f30614d67c}} 
+bool {\bfseries is\+Advanced\+Physics} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_ac0c3c6341ae4ede7d169fc3b08723be5}\label{class_engine_1_1_game_object_ac0c3c6341ae4ede7d169fc3b08723be5}} 
+std\+::string {\bfseries get\+Shape} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_ab9885806f28d7a287f484631a2ef65ba}\label{class_engine_1_1_game_object_ab9885806f28d7a287f484631a2ef65ba}} 
+void {\bfseries set\+Shape\+String} (std\+::string \+\_\+val)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a392ca5570d9b3b14b0d5efc3e171beb7}\label{class_engine_1_1_game_object_a392ca5570d9b3b14b0d5efc3e171beb7}} 
+void {\bfseries set\+Phys\+Bool} (bool \+\_\+val)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a7a296fd7258fbb3b8e50557eaf55b24a}\label{class_engine_1_1_game_object_a7a296fd7258fbb3b8e50557eaf55b24a}} 
+void {\bfseries set\+Ad\+Phys\+Bool} (bool \+\_\+val)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_ab99654fc04ce4ae65439e1407cae7a55}\label{class_engine_1_1_game_object_ab99654fc04ce4ae65439e1407cae7a55}} 
+void {\bfseries set\+Room} (int \+\_\+num)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_aa7853ed050d41a10c9c180c0c4673ba3}\label{class_engine_1_1_game_object_aa7853ed050d41a10c9c180c0c4673ba3}} 
+int {\bfseries get\+Room\+Num} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a8e11a7e318f01ab83c4fdfdf284d8b43}\label{class_engine_1_1_game_object_a8e11a7e318f01ab83c4fdfdf284d8b43}} 
+void {\bfseries set\+Delete} (bool \+\_\+val)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_accba7682d34b836b352dfde1b429da4d}\label{class_engine_1_1_game_object_accba7682d34b836b352dfde1b429da4d}} 
+bool {\bfseries get\+Delete} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a252c008baf87f99b4e8c00e6854c8e39}\label{class_engine_1_1_game_object_a252c008baf87f99b4e8c00e6854c8e39}} 
+void {\bfseries set\+Stats} (bool \+\_\+val)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a3d295e31eebf9fa3c738fe5d40944037}\label{class_engine_1_1_game_object_a3d295e31eebf9fa3c738fe5d40944037}} 
+\mbox{\hyperlink{class_engine_1_1_physics_obj}{Physics\+Obj}} $\ast$ {\bfseries m\+\_\+rb}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a0671227dd3a73168c416fc0995835b9a}\label{class_engine_1_1_game_object_a0671227dd3a73168c416fc0995835b9a}} 
+\mbox{\hyperlink{class_engine_1_1_plane}{Plane}} $\ast$ {\bfseries m\+\_\+plane}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a462ad50ff448d90445deee46c1399c9e}\label{class_engine_1_1_game_object_a462ad50ff448d90445deee46c1399c9e}} 
+\mbox{\hyperlink{class_engine_1_1_sphere}{Sphere}} $\ast$ {\bfseries m\+\_\+sphere}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_afb212913903d07e02b1a11ca3c01bcdc}\label{class_engine_1_1_game_object_afb212913903d07e02b1a11ca3c01bcdc}} 
+\mbox{\hyperlink{class_engine_1_1_box}{Box}} $\ast$ {\bfseries m\+\_\+box}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a71e7f6d37bc9ff749fc118806a3d6065}\label{class_engine_1_1_game_object_a71e7f6d37bc9ff749fc118806a3d6065}} 
+\mbox{\hyperlink{class_engine_1_1_mesh}{Mesh}} $\ast$ {\bfseries m\+\_\+mesh}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a3d543ecf58ae9562a44c56e04619749a}\label{class_engine_1_1_game_object_a3d543ecf58ae9562a44c56e04619749a}} 
+\mbox{\hyperlink{class_engine_1_1_shape}{Shape}} $\ast$ {\bfseries m\+\_\+shape\+Comp}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a4d4d912fc7f6b287f4985e5ce2b0ba99}\label{class_engine_1_1_game_object_a4d4d912fc7f6b287f4985e5ce2b0ba99}} 
+\mbox{\hyperlink{class_engine_1_1_advanced_physics}{Advanced\+Physics}} $\ast$ {\bfseries m\+\_\+\+Phy}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_aa064458e4458d3a6d5412a991dbcd1ff}\label{class_engine_1_1_game_object_aa064458e4458d3a6d5412a991dbcd1ff}} 
+\mbox{\hyperlink{class_engine_1_1_stats}{Stats}} $\ast$ {\bfseries m\+\_\+char\+Sheet}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a0cb1f220d2b1ee8f4cc83e883f100bc1}\label{class_engine_1_1_game_object_a0cb1f220d2b1ee8f4cc83e883f100bc1}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ {\bfseries m\+\_\+shader}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a4d259d80f8aae87ba824683d492e1f2d}\label{class_engine_1_1_game_object_a4d259d80f8aae87ba824683d492e1f2d}} 
+glm\+::vec3 {\bfseries m\+\_\+position}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a9b59ffea7f9785ee753ffe1dc5bcfc56}\label{class_engine_1_1_game_object_a9b59ffea7f9785ee753ffe1dc5bcfc56}} 
+std\+::string {\bfseries m\+\_\+tag}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a8bfca50b947596afeac9f980f8c1e43c}\label{class_engine_1_1_game_object_a8bfca50b947596afeac9f980f8c1e43c}} 
+bool {\bfseries m\+\_\+active}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a1f96f482e4b85d229d52825fadb2b51f}\label{class_engine_1_1_game_object_a1f96f482e4b85d229d52825fadb2b51f}} 
+int {\bfseries m\+\_\+room\+Num}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_ad8070acf0b1773d20584f1e0392993c1}\label{class_engine_1_1_game_object_ad8070acf0b1773d20584f1e0392993c1}} 
+bool {\bfseries m\+\_\+delete}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a8f31e20a8614f3c451e4b4df6f3cc201}\label{class_engine_1_1_game_object_a8f31e20a8614f3c451e4b4df6f3cc201}} 
+std\+::string {\bfseries m\+\_\+shape}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a32800ddc2b838906bca9954de16f189b}\label{class_engine_1_1_game_object_a32800ddc2b838906bca9954de16f189b}} 
+bool {\bfseries m\+\_\+physics}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a52aad667f8c9f227c9b094db2f4d87ea}\label{class_engine_1_1_game_object_a52aad667f8c9f227c9b094db2f4d87ea}} 
+bool {\bfseries m\+\_\+advanced\+Phys}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_game_object_a710150a2418adf2c286341e370080b7c}\label{class_engine_1_1_game_object_a710150a2418adf2c286341e370080b7c}} 
+bool {\bfseries m\+\_\+stats}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/Game\+Object.\+h\item 
+src/\+Engine/Game\+Object.\+cpp\end{DoxyCompactItemize}

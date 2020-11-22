@@ -1,0 +1,90 @@
+\hypertarget{class_engine_1_1_physics_event_user}{}\doxysection{Engine\+::Physics\+Event\+User Class Reference}
+\label{class_engine_1_1_physics_event_user}\index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
+Inheritance diagram for Engine\+::Physics\+Event\+User\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_engine_1_1_physics_event_user}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_ae55c6ef5972f980bdee44de8fc81ad22}\label{class_engine_1_1_physics_event_user_ae55c6ef5972f980bdee44de8fc81ad22}} 
+void {\bfseries on\+Tick} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a47bbb43e36828f150d3923e33ad741c7}\label{class_engine_1_1_physics_event_user_a47bbb43e36828f150d3923e33ad741c7}} 
+bool {\bfseries check\+For\+Collisions} (float \+\_\+dT, std\+::vector$<$ std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$$>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_aa5dc5e3f336574f2635ec7b1f2bced5f}\label{class_engine_1_1_physics_event_user_aa5dc5e3f336574f2635ec7b1f2bced5f}} 
+void {\bfseries reset\+Collisions} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_ac19e19f66ae829b52eee5d77d46d0a0c}\label{class_engine_1_1_physics_event_user_ac19e19f66ae829b52eee5d77d46d0a0c}} 
+void {\bfseries set\+Collided} (bool \+\_\+val)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a2e90e0014b21222a1c9fcfef44b1e5e7}\label{class_engine_1_1_physics_event_user_a2e90e0014b21222a1c9fcfef44b1e5e7}} 
+bool {\bfseries collided} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_af8820ee6d223201074b2b47b781c71ea}\label{class_engine_1_1_physics_event_user_af8820ee6d223201074b2b47b781c71ea}} 
+void {\bfseries on\+Collision} (\mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$\+\_\+col)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a9544ce214fb5d5f7796b5643cd6cb3d4}\label{class_engine_1_1_physics_event_user_a9544ce214fb5d5f7796b5643cd6cb3d4}} 
+bool {\bfseries box\+To\+Plane} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_ae8a2318eba904496c3825489f5aa2e20}\label{class_engine_1_1_physics_event_user_ae8a2318eba904496c3825489f5aa2e20}} 
+int {\bfseries coplanar\+\_\+tri\+\_\+tri} (float N\mbox{[}3\mbox{]}, float V0\mbox{[}3\mbox{]}, float V1\mbox{[}3\mbox{]}, float V2\mbox{[}3\mbox{]}, float U0\mbox{[}3\mbox{]}, float U1\mbox{[}3\mbox{]}, float U2\mbox{[}3\mbox{]})
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_ad3aed41c707b7e78e6b990846dae57ef}\label{class_engine_1_1_physics_event_user_ad3aed41c707b7e78e6b990846dae57ef}} 
+int {\bfseries No\+Div\+Tri\+Tri\+Isect} (float V0\mbox{[}3\mbox{]}, float V1\mbox{[}3\mbox{]}, float V2\mbox{[}3\mbox{]}, float U0\mbox{[}3\mbox{]}, float U1\mbox{[}3\mbox{]}, float U2\mbox{[}3\mbox{]})
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_ae8ccc8b6ec428ebb0d568837ad01a06d}\label{class_engine_1_1_physics_event_user_ae8ccc8b6ec428ebb0d568837ad01a06d}} 
+int {\bfseries tri\+Box\+Overlap} (float boxcenter\mbox{[}3\mbox{]}, float boxhalfsize\mbox{[}3\mbox{]}, float triverts\mbox{[}3\mbox{]}\mbox{[}3\mbox{]})
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a3ca9262984fd8d48828f7fcf91f8239c}\label{class_engine_1_1_physics_event_user_a3ca9262984fd8d48828f7fcf91f8239c}} 
+int {\bfseries plane\+Box\+Overlap} (float normal\mbox{[}3\mbox{]}, float d, float maxbox\mbox{[}3\mbox{]})
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a0a5f5a3c8477f6d7f59da88ec2e973b0}\label{class_engine_1_1_physics_event_user_a0a5f5a3c8477f6d7f59da88ec2e973b0}} 
+float {\bfseries distance\+To\+Plane} (glm\+::vec3 \&n, glm\+::vec3 \&p, glm\+::vec3 \&q)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a490df75c170a3a47f490d81821f69d10}\label{class_engine_1_1_physics_event_user_a490df75c170a3a47f490d81821f69d10}} 
+bool {\bfseries box\+To\+Box} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a27f00148d327ed6ceb7fff8781c74f77}\label{class_engine_1_1_physics_event_user_a27f00148d327ed6ceb7fff8781c74f77}} 
+bool {\bfseries mesh\+To\+Mesh} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a4c737df03df5fbeef622cf7528f588f0}\label{class_engine_1_1_physics_event_user_a4c737df03df5fbeef622cf7528f588f0}} 
+bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a4c737df03df5fbeef622cf7528f588f0}{sphere\+To\+Plane}} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_engine_1_1_shape}{Shape}} Intersection functions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_acd9846923874c18c5edd280baf4ec64a}\label{class_engine_1_1_physics_event_user_acd9846923874c18c5edd280baf4ec64a}} 
+bool {\bfseries sphere\+To\+Box} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a94a167ee176f7aacf40e9f610001b05d}\label{class_engine_1_1_physics_event_user_a94a167ee176f7aacf40e9f610001b05d}} 
+bool {\bfseries sphere\+To\+Sphere} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+other)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a28de9a3e72d23ac25655cca9416d4f86}\label{class_engine_1_1_physics_event_user_a28de9a3e72d23ac25655cca9416d4f86}} 
+bool {\bfseries box\+To\+Sphere} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$\+\_\+other, glm\+::vec3 \+\_\+c1)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a6cb29149666b4fc25364e4bb4bcfec95}\label{class_engine_1_1_physics_event_user_a6cb29149666b4fc25364e4bb4bcfec95}} 
+bool {\bfseries sphere\+Box\+Overlap} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+sphere, std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+box)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_ab24e6f9cf3332e2d9a50f9ee2247264e}\label{class_engine_1_1_physics_event_user_ab24e6f9cf3332e2d9a50f9ee2247264e}} 
+int {\bfseries intersect\+\_\+triangle3} (double orig\mbox{[}3\mbox{]}, double dir\mbox{[}3\mbox{]}, double vert0\mbox{[}3\mbox{]}, double vert1\mbox{[}3\mbox{]}, double vert2\mbox{[}3\mbox{]}, double $\ast$t, double $\ast$u, double $\ast$v)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a7305c5cb9a133533487645a783fc4a1a}\label{class_engine_1_1_physics_event_user_a7305c5cb9a133533487645a783fc4a1a}} 
+glm\+::vec3 {\bfseries round\+Normals} (glm\+::vec3 \+\_\+n)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a95b2d2e649e65d203f41efc78bf5a5a4}\label{class_engine_1_1_physics_event_user_a95b2d2e649e65d203f41efc78bf5a5a4}} 
+bool {\bfseries m\+\_\+collided}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a898462bb60e3241f4150277ce728b109}\label{class_engine_1_1_physics_event_user_a898462bb60e3241f4150277ce728b109}} 
+std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$ $>$ {\bfseries m\+\_\+collisions}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/Physics\+New.\+h\item 
+src/\+Engine/Physics\+New.\+cpp\end{DoxyCompactItemize}

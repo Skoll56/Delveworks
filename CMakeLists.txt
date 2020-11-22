@@ -27,20 +27,17 @@ src/Engine/Core.cpp
 src/Engine/Entity.cpp
 src/Engine/Camera.cpp
 src/Engine/Collision.cpp
-src/Engine/GameObject.cpp
-src/Engine/Components.cpp
 src/Engine/Input.cpp
-src/Engine/Physics.cpp
-src/Engine/Scene.cpp
 src/Engine/Shader.cpp
 src/Engine/stb_image.cpp
 src/Engine/Texture.cpp
-src/Engine/Utility.cpp
 src/Engine/VertexArray.cpp
 src/Engine/VertexBuffer.cpp
 src/Engine/Component.cpp
 src/Engine/Resource.cpp
-
+src/Engine/PhysicsNew.cpp
+src/Engine/MeshRenderer.cpp
+src/Engine/Collider.cpp
 
 src/Engine/Core.h
 src/Engine/Engine.h
@@ -49,20 +46,18 @@ src/Engine/Component.h
 src/Engine/Light.h
 src/Engine/Camera.h
 src/Engine/Collision.h
-src/Engine/Components.h
-src/Engine/GameObject.h
 src/Engine/Input.h
-src/Engine/Physics.h
-src/Engine/Scene.h
 src/Engine/Room.h
 src/Engine/Shader.h
 src/Engine/stb_image.h
 src/Engine/stb_vorbis.h
 src/Engine/Texture.h
-src/Engine/Utility.h
 src/Engine/VertexArray.h
 src/Engine/VertexBuffer.h
 src/Engine/Resource.h
+src/Engine/PhysicsNew.h
+src/Engine/MeshRenderer.h
+src/Engine/Collider.h
 )
 
 

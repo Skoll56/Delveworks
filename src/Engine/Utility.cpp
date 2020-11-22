@@ -1,19 +1,20 @@
 
+//#define GLM_ENABLE_EXPERIMENTAL
 #include <iostream>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
+//#include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/quaternion.hpp>
 #include "GameObject.h"
 #include "Collision.h"
 #include "Shader.h"
-#include "Physics.h"
 #include "Utility.h"
 #include "Light.h"
 #include "VertexArray.h"
 #include "Camera.h"
 #include "VertexBuffer.h"
 #include "Input.h"
-//#include "Scene.h"
 #include <time.h>
 
 #define SHAPE(type) _obj->getShape() == type
@@ -27,13 +28,13 @@ namespace Engine
 	{
 		void onEveryFrame(Scene* _scene, float _dT) // This function runs every frame. Add various 'per frame' interactions here.
 		{			
-			GameObject* hand2 = nullptr;
-			GameObject* cat = new GameObject();
+			std::shared_ptr<Entity> hand2 = nullptr;
+			std::shared_ptr<Entity> cat = new GameObject();
 			Input* input = _scene->m_core->m_input;
 			Camera* camera = _scene->getCam();
-			//GameObject* blood = nullptr;
+			//std::shared_ptr<Entity> blood = nullptr;
 
-			std::vector<GameObject*> obj = _scene->getObjects();
+			std::vector<std::shared_ptr<Entity>> obj = _scene->getObjects();
 			std::vector<PointLight*> pLight = _scene->getpLight();
 			std::vector<SpotLight*> sLight = _scene->getsLight();
 			int numZter = 0;
@@ -192,7 +193,7 @@ namespace Engine
 			}
 		}
 
-		void moveEntity(GameObject* _obj, glm::vec3 _dir, std::vector<GameObject*> _other, float _dTs)
+		void moveEntity(std::shared_ptr<Entity> _obj, glm::vec3 _dir, std::vector<std::shared_ptr<Entity>> _other, float _dTs)
 		{
 			for (int i = 0; i < _other.size(); i++)
 			{
@@ -212,17 +213,26 @@ namespace Engine
 			_obj->setPosition(_obj->getPosition() + _dir * _obj->m_charSheet->getSpeed() * _dTs);
 		}
 
-		void update(GameObject* _obj, std::shared_ptr<Shader> _shader, std::vector<GameObject*> _allObj, float _dT)
+		void update(std::shared_ptr<Entity> _obj, std::shared_ptr<Shader> _shader, std::vector<std::shared_ptr<Entity>> _allObj, float _dT)
 		{
 			glm::mat4 modelMat(1.0f); // Model Matrix
 			modelMat = glm::translate(modelMat, _obj->getPosition()); // Translate by game object's position
+
 			if (_obj->isAdvancedPhysics())
 			{
-				glm::mat4 rotationMat = glm::mat4(_obj->m_Phy->getRotMat());
-				glm::quat rotate = glm::normalize(glm::quat_cast(rotationMat));
-				_obj->m_Phy->setRotMat(glm::mat3_cast(rotate));
+				if (_obj->getTag() != "testbox")
+				{
+					glm::mat4 rotationMat = glm::mat4(_obj->m_Phy->getRotMat());
+					glm::quat rotate = glm::normalize(glm::quat_cast(rotationMat));
+					_obj->m_Phy->setRotMat(glm::mat3_cast(rotate));
 
-				modelMat *= glm::mat4_cast(rotate);
+					modelMat *= glm::mat4_cast(rotate);
+				}
+				else
+				{
+					glm::mat4 rotMatNew = glm::mat4_cast(_obj->m_Phy->m_rotQuat);	
+					modelMat *= rotMatNew;
+				}
 			}
 
 			else
@@ -244,8 +254,15 @@ namespace Engine
 
 			if (_obj->isPhysics())
 			{
-				Physics::update(_obj, _allObj, _dT); // Also update the shape's rigidbody if it has one. Checks for collisions and adjusts position
-			}
+				if (_obj->getTag() == "testbox")
+				{
+					_obj->m_Phy->m_rotQuat = glm::rotate(_obj->m_Phy->m_rotQuat, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+				}
+				else
+				{
+					Physics::update(_obj, _allObj, _dT); // Also update the shape's rigidbody if it has one. Checks for collisions and adjusts position
+				}
+			}			
 		}
 
 		void updateLighting(std::vector<SpotLight*> _sLight, std::vector<DirLight*> _dLight, std::vector<PointLight*> _pLight, std::shared_ptr<Shader> _lSh, std::shared_ptr<Shader> _iSh)
@@ -384,40 +401,12 @@ namespace Engine
 			//_iSh->setUniform(uniform, torch->getDif());
 		}
 
-		void onRayHit(RayCollision* _col, GameObject* _shooter, Scene* _scene)
-		{
-			if (_col->m_rayTag == "bullet")
-			{
-				//Shoot the enemy, deal damage, spawn blood
-				_col->m_hitObj->m_charSheet->addHP(-_shooter->m_charSheet->getDMG());
-				for (int i = 0; i < 3; i++)
-				{
-					GameObject * particle = new GameObject(_col->m_hitPoint - i * 1.5f);
-					particle->addMeshShape("red.png", glm::vec3(0.5f, 0.5f, 0.5f), "drop");
-					particle->setShader(_scene->m_simpleSh);
-					particle->m_shapeComp->setSolid(false);
-					particle->addPhysics("drop", 0.1f, 0.0f);
-					particle->m_rb->addForce(-_scene->getCam()->getFwd() * 1.0f);
-					_scene->addObj(particle);
-				}
-				for (int i = 0; i < 3; i++)
-				{
-					GameObject * particle = new GameObject(_col->m_hitPoint + glm::vec3(i, rand() % 3, -i * 2.0));
-					particle->addMeshShape("red.png", glm::vec3(0.5f, 0.5f, 0.5f), "drop");
-					particle->setShader(_scene->m_simpleSh);
-					particle->m_shapeComp->setSolid(false);
-					particle->addPhysics("drop", 0.1f, 0.0f);
-					float r = rand() % 2 - 1;
-					particle->m_rb->addForce(_scene->getCam()->getRight() * r);
-					_scene->addObj(particle);
-				}
-			}
-		}
+		
 
 		//Copy a game object function
 		GameObject * copy(GameObject * _obj)
 		{
-			GameObject* t = new GameObject();
+			std::shared_ptr<Entity> t = new GameObject();
 
 			if (_obj->getShape() != "NO SHAPE")
 			{
@@ -476,32 +465,7 @@ namespace Engine
 		float lerp(float _a, float _b, float _f)
 		{
 			return _a + _f * (_b - _a);
-		}
-
-		//Function to shoot the gun
-		void shootgun(glm::vec3 _dir, std::vector<GameObject*> _obj, glm::vec3 _origin, GameObject* _shooter, Scene* _scene)
-		{
-			std::vector<GameObject*> target;
-
-			for (int i = 0; i < _obj.size(); i++)
-			{
-				float facing = glm::dot(_dir, -glm::normalize(_obj[i]->getPosition() - _origin)); //Only shoot people in front of us
-				if (_obj[i]->isActive() && _obj[i]->hasStats() && facing < 0.0f && _obj[i]->getTag() != _shooter->getTag())
-				{
-					target.push_back(_obj[i]);
-				}
-			}
-			if (target.size() != 0)
-			{
-				//Check for a hit
-				RayCollision* col = Physics::rayToTri(target, _dir, _origin, "bullet");
-				if (col->m_hit)
-				{
-					utility::onRayHit(col, _shooter, _scene);
-				}
-			}
-		}
-
+		}		
 	}
 }
 

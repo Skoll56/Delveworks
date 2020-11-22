@@ -17,9 +17,7 @@ namespace Engine
 		std::shared_ptr<Core> rtn = std::make_shared<Core>();
 		rtn->initialiseSDL();	
 		rtn->initialiseAL();
-		rtn->m_input = new Input();
-		rtn->m_scene = rtn->createScene();
-		rtn->m_scene->createStartScene();		
+		rtn->m_input = new Input();			
 
 		std::cout << "Initialised successfully" << std::endl;
 		return rtn;
@@ -28,7 +26,7 @@ namespace Engine
 	std::shared_ptr<Entity> Core::createEntity()
 	{
 		std::shared_ptr<Entity> rtn = std::make_shared<Entity>();
-		rtn->addComponent<Transform>();
+		rtn->addComponent<Transform>();		
 		m_entities.push_back(rtn);
 		std::cout << "I made an entity" << std::endl;
 		return rtn;
@@ -38,7 +36,7 @@ namespace Engine
 	{
 		// Re-initialise per-frame variables
 		float time = SDL_GetTicks();
-		float dTime = (time - t1) / 1000.0f;
+		dTime = (time - t1) / 1000.0f;
 		t1 = time;
 		SDL_Event event = { 0 };
 
@@ -65,7 +63,7 @@ namespace Engine
 
 		//Set the active texture buffer
 		glActiveTexture(GL_TEXTURE0 + 1);
-		m_scene->update(dTime);
+		//m_scene->update(dTime);
 		SDL_GL_SwapWindow(m_window);
 
 		quit = m_input->takeInput(event); //Handles the input, and returns a 'quit' value to see if the program should end
@@ -140,13 +138,6 @@ namespace Engine
 		{
 			throw std::exception();
 		}
-	}
-
-	Scene* Core::createScene()
-	{
-		m_scene = new Scene();
-		m_scene->m_core = this;
-		return m_scene;
 	}
 
 	void Core::initialiseAL()

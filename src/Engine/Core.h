@@ -1,19 +1,21 @@
+#ifndef _CORE_H_
+#define _CORE_H_
+
 #include <memory>
 #include <vector>
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <random>
 #include <time.h>
-#include "Scene.h"
 #include "Input.h"
 #include <AL/al.h>
 #include <AL/alc.h> 
+#include "Resource.h"
 
 
 namespace Engine
 {
-	struct Entity;	
-	class Resource;
+	struct Entity;		
 
 	struct Core
 	{
@@ -22,10 +24,9 @@ namespace Engine
 		std::shared_ptr<Entity> createEntity();
 		void start();
 		void loop();		
-		Scene* createScene();	
+		
 
-		//Not functions
-		Scene* m_scene;
+		//Not functions		
 		Input* m_input;
 		std::shared_ptr<ResourceManager> m_rManager = std::make_shared<ResourceManager>();
 
@@ -35,6 +36,8 @@ namespace Engine
 		ALCcontext* m_context;
 		void initialiseAL();
 		void initialiseSDL();
+		float getDeltaTime() { return dTime; }
+		std::vector<std::shared_ptr<Entity>> getAllEntities() { return m_entities; }
 
 	private:
 		std::vector<std::shared_ptr<Entity>> m_entities;
@@ -47,6 +50,9 @@ namespace Engine
 		int lastX; 
 		int lastY; 
 		int mouseX, mouseY;
+		float dTime;
 		long t1;
 	};
 }
+
+#endif

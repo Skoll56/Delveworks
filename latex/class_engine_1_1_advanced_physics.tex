@@ -1,0 +1,53 @@
+\hypertarget{class_engine_1_1_advanced_physics}{}\doxysection{Engine\+::Advanced\+Physics Class Reference}
+\label{class_engine_1_1_advanced_physics}\index{Engine::AdvancedPhysics@{Engine::AdvancedPhysics}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_a9a96eacc39e3b542fc9052dd1f499dc0}\label{class_engine_1_1_advanced_physics_a9a96eacc39e3b542fc9052dd1f499dc0}} 
+{\bfseries Advanced\+Physics} (std\+::string \+\_\+shape, glm\+::vec3 \+\_\+scale, float \+\_\+mass)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_a10f0d59d689f2be1c03a484f6a2a2d61}\label{class_engine_1_1_advanced_physics_a10f0d59d689f2be1c03a484f6a2a2d61}} 
+glm\+::mat3 {\bfseries get\+Rot\+Mat} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_adce7623a1c43218bcfe6abc023217e3c}\label{class_engine_1_1_advanced_physics_adce7623a1c43218bcfe6abc023217e3c}} 
+void {\bfseries update\+Rotations} (float \+\_\+d\+Ts, bool collided)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_a115de7ccb7b055635ba83e9859f156c3}\label{class_engine_1_1_advanced_physics_a115de7ccb7b055635ba83e9859f156c3}} 
+void {\bfseries set\+Avel} (glm\+::vec3 \+\_\+a\+Vel)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_a581d7cbd4c2499f9d1abbf453274b669}\label{class_engine_1_1_advanced_physics_a581d7cbd4c2499f9d1abbf453274b669}} 
+glm\+::vec3 {\bfseries get\+Avel} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_a81ef7a923f18c1b6f766f32e29675e14}\label{class_engine_1_1_advanced_physics_a81ef7a923f18c1b6f766f32e29675e14}} 
+void {\bfseries set\+Rot\+Mat} (glm\+::mat3 \+\_\+r\+Mat)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_a71f1db2c77ec4e63f3659b8379068536}\label{class_engine_1_1_advanced_physics_a71f1db2c77ec4e63f3659b8379068536}} 
+glm\+::mat3 {\bfseries calc\+Inv\+Tensor} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_a8fad8a67e9c7b3fb2f2e8722c02413db}\label{class_engine_1_1_advanced_physics_a8fad8a67e9c7b3fb2f2e8722c02413db}} 
+void {\bfseries set\+Inv\+Tensor} (glm\+::mat3 \+\_\+matrix)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_a49096ecb4b1374479bc7ed9f3c70f274}\label{class_engine_1_1_advanced_physics_a49096ecb4b1374479bc7ed9f3c70f274}} 
+glm\+::vec3 {\bfseries get\+Amom} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_ad2c4e7f7843c701196a4ba7e3afab55d}\label{class_engine_1_1_advanced_physics_ad2c4e7f7843c701196a4ba7e3afab55d}} 
+void {\bfseries set\+Amom} (glm\+::vec3 \+\_\+mom)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_ae557441ee93436cf88dbc480a269f639}\label{class_engine_1_1_advanced_physics_ae557441ee93436cf88dbc480a269f639}} 
+void {\bfseries add\+Torque} (glm\+::vec3 \+\_\+torque)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_a78dfa95b97e575b32732ab68e7077357}\label{class_engine_1_1_advanced_physics_a78dfa95b97e575b32732ab68e7077357}} 
+void {\bfseries clear\+Torque} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_advanced_physics_ab196fd48041451792147b51f6cff38b3}\label{class_engine_1_1_advanced_physics_ab196fd48041451792147b51f6cff38b3}} 
+glm\+::quat {\bfseries m\+\_\+rot\+Quat}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/Components.\+h\item 
+src/\+Engine/Components.\+cpp\end{DoxyCompactItemize}

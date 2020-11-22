@@ -1,0 +1,119 @@
+\hypertarget{class_engine_1_1_physics_obj}{}\doxysection{Engine\+::Physics\+Obj Class Reference}
+\label{class_engine_1_1_physics_obj}\index{Engine::PhysicsObj@{Engine::PhysicsObj}}
+Inheritance diagram for Engine\+::Physics\+Obj\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_engine_1_1_physics_obj}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a32854def3187ee881818d9473bc85412}\label{class_engine_1_1_physics_obj_a32854def3187ee881818d9473bc85412}} 
+{\bfseries Physics\+Obj} (float \+\_\+mass, float \+\_\+bounciness)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a6071e24b52232473acdfa0878ba9113b}\label{class_engine_1_1_physics_obj_a6071e24b52232473acdfa0878ba9113b}} 
+void {\bfseries add\+Force} (glm\+::vec3 \+\_\+force)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a83f314edc5f11b34b1f759ec7e7d9929}\label{class_engine_1_1_physics_obj_a83f314edc5f11b34b1f759ec7e7d9929}} 
+void {\bfseries clear\+Forces} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_ac8920112ef0f1bb941823cb8550c9e17}\label{class_engine_1_1_physics_obj_ac8920112ef0f1bb941823cb8550c9e17}} 
+glm\+::vec3 {\bfseries runge\+Kutta2} (float \+\_\+delta\+Ts, float \+\_\+mass)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_ad72bd967df7abcd709a727804a952bd3}\label{class_engine_1_1_physics_obj_ad72bd967df7abcd709a727804a952bd3}} 
+void {\bfseries set\+Force} (const glm\+::vec3 \+\_\+force)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a311508383866b8c47dc04a8fcf5e9f41}\label{class_engine_1_1_physics_obj_a311508383866b8c47dc04a8fcf5e9f41}} 
+glm\+::vec3 {\bfseries get\+Velocity} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a68743f60c88aff61aab9b2ca5b8161f2}\label{class_engine_1_1_physics_obj_a68743f60c88aff61aab9b2ca5b8161f2}} 
+void {\bfseries set\+Velocity} (glm\+::vec3 \+\_\+vel)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_ac4dd2031f6dcf7f00bdebfe2f856bab0}\label{class_engine_1_1_physics_obj_ac4dd2031f6dcf7f00bdebfe2f856bab0}} 
+void {\bfseries add\+Velocity} (glm\+::vec3 \+\_\+vel)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a7aff12d525fc8edfaae86b6a4d997626}\label{class_engine_1_1_physics_obj_a7aff12d525fc8edfaae86b6a4d997626}} 
+float {\bfseries get\+Bounciness} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a1245b735b31a959a36a801671fb098bf}\label{class_engine_1_1_physics_obj_a1245b735b31a959a36a801671fb098bf}} 
+void {\bfseries set\+Bounciness} (float \+\_\+amt)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a57e345494f46ec7231a91b1ce511cf8f}\label{class_engine_1_1_physics_obj_a57e345494f46ec7231a91b1ce511cf8f}} 
+float {\bfseries get\+Mass} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a5208bff5f5ea57a9053c2371184f7154}\label{class_engine_1_1_physics_obj_a5208bff5f5ea57a9053c2371184f7154}} 
+void {\bfseries set\+Mass} (float \+\_\+mass)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_afafd025f1fc33b84668e039be9d2dd9a}\label{class_engine_1_1_physics_obj_afafd025f1fc33b84668e039be9d2dd9a}} 
+const glm\+::vec3 {\bfseries get\+Force} () const
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a2493ca38e6a996cc2116aea338917049}\label{class_engine_1_1_physics_obj_a2493ca38e6a996cc2116aea338917049}} 
+glm\+::vec3 {\bfseries get\+Perm\+CP} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a88b4fd5942f7475492badbe32be62948}\label{class_engine_1_1_physics_obj_a88b4fd5942f7475492badbe32be62948}} 
+void {\bfseries set\+Perm\+CP} (glm\+::vec3 \+\_\+pos)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_ac6a0df12bd02bf1d9ae751b9c5154cc5}\label{class_engine_1_1_physics_obj_ac6a0df12bd02bf1d9ae751b9c5154cc5}} 
+void {\bfseries set\+Collided} (bool \+\_\+val)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a79edbfabbda2033f99c3167e8d0a5e33}\label{class_engine_1_1_physics_obj_a79edbfabbda2033f99c3167e8d0a5e33}} 
+bool {\bfseries collided} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a9546a9ef47065a10cc706f3181dcdd85}\label{class_engine_1_1_physics_obj_a9546a9ef47065a10cc706f3181dcdd85}} 
+void {\bfseries reset\+Collisions} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a851ecc57c91a800775973e866baaf6dc}\label{class_engine_1_1_physics_obj_a851ecc57c91a800775973e866baaf6dc}} 
+void {\bfseries set\+Col\+Before} (bool \+\_\+val)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_ade4fdc5bcfeb75901a5dbb430a9afbf9}\label{class_engine_1_1_physics_obj_ade4fdc5bcfeb75901a5dbb430a9afbf9}} 
+bool {\bfseries col\+Before} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_aca46910ca657f4d0a6a29a59677e8690}\label{class_engine_1_1_physics_obj_aca46910ca657f4d0a6a29a59677e8690}} 
+std\+::vector$<$ int $>$ {\bfseries get\+Col\+Tri} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a41f71baf9bd206fef1c14ba156120506}\label{class_engine_1_1_physics_obj_a41f71baf9bd206fef1c14ba156120506}} 
+std\+::vector$<$ int $>$ {\bfseries get\+My\+Tri} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_ae574dfa1a37f33c604a38eab382a9041}\label{class_engine_1_1_physics_obj_ae574dfa1a37f33c604a38eab382a9041}} 
+void {\bfseries set\+My\+Tri} (std\+::vector$<$ int $>$ \+\_\+my\+Tri)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a0c918440b34cedc9ca1c7ba6bc63466e}\label{class_engine_1_1_physics_obj_a0c918440b34cedc9ca1c7ba6bc63466e}} 
+void {\bfseries set\+Col\+Tri} (std\+::vector$<$ int $>$ \+\_\+col\+Tri)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a4e364a37404781d14397e95c93193bc1}\label{class_engine_1_1_physics_obj_a4e364a37404781d14397e95c93193bc1}} 
+float {\bfseries get\+Precision} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_acb4fa5fcb96667785f177edec3fa1b1d}\label{class_engine_1_1_physics_obj_acb4fa5fcb96667785f177edec3fa1b1d}} 
+void {\bfseries set\+Precision} (float \+\_\+prec)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a050f3ca019e8aa6c48c77c3cf9803d11}\label{class_engine_1_1_physics_obj_a050f3ca019e8aa6c48c77c3cf9803d11}} 
+std\+::string {\bfseries get\+Last\+Col} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a38040dee1a6f9f62e99c01b7f16f0aa8}\label{class_engine_1_1_physics_obj_a38040dee1a6f9f62e99c01b7f16f0aa8}} 
+void {\bfseries set\+Last\+Col} (std\+::string \+\_\+tag)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a4a01920b97e8ab618c518311247131c9}\label{class_engine_1_1_physics_obj_a4a01920b97e8ab618c518311247131c9}} 
+void {\bfseries set\+Floored} (bool \+\_\+val)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a13a894a2b186717d61a4362a64b6b231}\label{class_engine_1_1_physics_obj_a13a894a2b186717d61a4362a64b6b231}} 
+bool {\bfseries is\+Floored} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_afb8534c238e92854845900d51df14a1a}\label{class_engine_1_1_physics_obj_afb8534c238e92854845900d51df14a1a}} 
+void {\bfseries set\+Collider} (bool \+\_\+val)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_a02f56accb204336f5043d924838473e5}\label{class_engine_1_1_physics_obj_a02f56accb204336f5043d924838473e5}} 
+bool {\bfseries is\+Collider} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_physics_obj_ae9c0460d90afcc93391b9cc1d0b5dd2c}\label{class_engine_1_1_physics_obj_ae9c0460d90afcc93391b9cc1d0b5dd2c}} 
+std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$ $>$ {\bfseries m\+\_\+collisions}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/Components.\+h\item 
+src/\+Engine/Components.\+cpp\end{DoxyCompactItemize}

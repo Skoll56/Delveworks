@@ -1,0 +1,95 @@
+\hypertarget{class_engine_1_1_scene}{}\doxysection{Engine\+::Scene Class Reference}
+\label{class_engine_1_1_scene}\index{Engine::Scene@{Engine::Scene}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a377a7031c5edbcd12f8c8408cd1692b2}\label{class_engine_1_1_scene_a377a7031c5edbcd12f8c8408cd1692b2}} 
+std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_game_object}{Game\+Object}} $\ast$ $>$ {\bfseries get\+Objects} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_af50b9ae9797fd9ad7cc50345aafbf883}\label{class_engine_1_1_scene_af50b9ae9797fd9ad7cc50345aafbf883}} 
+\mbox{\hyperlink{class_engine_1_1_camera}{Camera}} $\ast$ {\bfseries get\+Cam} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a707d56faed9afd2ecb2513f5daa4c0be}\label{class_engine_1_1_scene_a707d56faed9afd2ecb2513f5daa4c0be}} 
+void {\bfseries set\+Cam} (\mbox{\hyperlink{class_engine_1_1_camera}{Camera}} $\ast$\+\_\+cam)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a0df1b8c86e9ad91733ffd6196cc8811e}\label{class_engine_1_1_scene_a0df1b8c86e9ad91733ffd6196cc8811e}} 
+void {\bfseries add\+Spot\+Light} (\mbox{\hyperlink{class_engine_1_1_spot_light}{Spot\+Light}} $\ast$\+\_\+light)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a6783e56ffaa25a1dcb45ab32da7f9c65}\label{class_engine_1_1_scene_a6783e56ffaa25a1dcb45ab32da7f9c65}} 
+void {\bfseries ad\+Dir\+Light} (\mbox{\hyperlink{class_engine_1_1_dir_light}{Dir\+Light}} $\ast$\+\_\+light)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a834381b52ed6f090fa9bc3fae6e2ad09}\label{class_engine_1_1_scene_a834381b52ed6f090fa9bc3fae6e2ad09}} 
+void {\bfseries add\+Point\+Light} (\mbox{\hyperlink{class_engine_1_1_point_light}{Point\+Light}} $\ast$\+\_\+light)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a3bc02496a0c2085639137bae0dd1e1a1}\label{class_engine_1_1_scene_a3bc02496a0c2085639137bae0dd1e1a1}} 
+std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_point_light}{Point\+Light}} $\ast$ $>$ {\bfseries getp\+Light} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_ad6471e2aa21076829c7c2423a060e0b3}\label{class_engine_1_1_scene_ad6471e2aa21076829c7c2423a060e0b3}} 
+std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_spot_light}{Spot\+Light}} $\ast$ $>$ {\bfseries gets\+Light} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a1fe2f2b9c09f5716fe2443f4291a6d39}\label{class_engine_1_1_scene_a1fe2f2b9c09f5716fe2443f4291a6d39}} 
+void {\bfseries create\+Room} (float \+\_\+x, float \+\_\+y, float \+\_\+z, glm\+::vec3 \+\_\+pos)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a67cf142e8ae2817237c12f3bd9c4732d}\label{class_engine_1_1_scene_a67cf142e8ae2817237c12f3bd9c4732d}} 
+void {\bfseries create\+Room} (float \+\_\+x, float \+\_\+y, float \+\_\+z, int \+\_\+\+N\+E\+SW, \mbox{\hyperlink{class_engine_1_1_room}{Room}} $\ast$\+\_\+prev)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_aa8f3e50fdb14f1a91d984ac5f943e1b2}\label{class_engine_1_1_scene_aa8f3e50fdb14f1a91d984ac5f943e1b2}} 
+void {\bfseries create\+Start\+Scene} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_scene_a360b551dbeb5f037a03c691b1303dee6}{update}} (float \+\_\+dT)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a20135fb2934ad9b1fdacb675222d22f1}\label{class_engine_1_1_scene_a20135fb2934ad9b1fdacb675222d22f1}} 
+void {\bfseries add\+To\+Room} (\mbox{\hyperlink{class_engine_1_1_game_object}{Game\+Object}} $\ast$\+\_\+obj, int \+\_\+room)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a200981828caced6cb24bfd7cf21dce93}\label{class_engine_1_1_scene_a200981828caced6cb24bfd7cf21dce93}} 
+void {\bfseries set\+Deny} (bool \+\_\+val)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a243f6e58d05bd2d942e5985c3fa5fd67}\label{class_engine_1_1_scene_a243f6e58d05bd2d942e5985c3fa5fd67}} 
+bool {\bfseries is\+Denied} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a274bcb47d1b1aeba9bae10af42d8c2dd}\label{class_engine_1_1_scene_a274bcb47d1b1aeba9bae10af42d8c2dd}} 
+void {\bfseries add\+Obj} (\mbox{\hyperlink{class_engine_1_1_game_object}{Game\+Object}} $\ast$\+\_\+obj)
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a572921b1e98e2dcc6c2f1df3ff66f852}\label{class_engine_1_1_scene_a572921b1e98e2dcc6c2f1df3ff66f852}} 
+\mbox{\hyperlink{class_engine_1_1_game_object}{Game\+Object}} $\ast$ {\bfseries get\+Zter} ()
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a0bdfa77f6eb88ff5bc347a20554ff56e}\label{class_engine_1_1_scene_a0bdfa77f6eb88ff5bc347a20554ff56e}} 
+\mbox{\hyperlink{class_engine_1_1_game_object}{Game\+Object}} $\ast$ {\bfseries get\+Hornet} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a0e22c188ce6399aa593f06218d04f536}\label{class_engine_1_1_scene_a0e22c188ce6399aa593f06218d04f536}} 
+\mbox{\hyperlink{struct_engine_1_1_core}{Core}} $\ast$ {\bfseries m\+\_\+core}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_aca2824f1a77ce5a1e449b40dfd85357e}\label{class_engine_1_1_scene_aca2824f1a77ce5a1e449b40dfd85357e}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ {\bfseries m\+\_\+simple\+Sh}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_aa61b094e671d2d1f494af5e83c275a45}\label{class_engine_1_1_scene_aa61b094e671d2d1f494af5e83c275a45}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ {\bfseries m\+\_\+lighting\+Sh}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a2d5dd1d833428a63b8030e665181d643}\label{class_engine_1_1_scene_a2d5dd1d833428a63b8030e665181d643}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ {\bfseries m\+\_\+ui\+Sh}
+\item 
+\mbox{\Hypertarget{class_engine_1_1_scene_a1ff53e78e0b0e58bd544089c5eb30462}\label{class_engine_1_1_scene_a1ff53e78e0b0e58bd544089c5eb30462}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ {\bfseries m\+\_\+inv\+Sh}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_scene_a360b551dbeb5f037a03c691b1303dee6}\label{class_engine_1_1_scene_a360b551dbeb5f037a03c691b1303dee6}} 
+\index{Engine::Scene@{Engine::Scene}!update@{update}}
+\index{update@{update}!Engine::Scene@{Engine::Scene}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Engine\+::\+Scene\+::update (\begin{DoxyParamCaption}\item[{float}]{\+\_\+dT }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_engine_1_1_camera}{Camera}} ~\newline
+
+
+Objects ~\newline
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/Scene.\+h\item 
+src/\+Engine/Scene.\+cpp\end{DoxyCompactItemize}
