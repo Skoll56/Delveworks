@@ -49,7 +49,10 @@ namespace Engine
 			std::shared_ptr<BoxCollider> b = _objects[i]->getComponent<BoxCollider>();
 			std::shared_ptr<PlaneCollider> p = _objects[i]->getComponent<PlaneCollider>();
 			bool hasCollider = false;
-			if (s || m || b || p) { hasCollider = true; }
+			if (s || m || b || p) 
+			{ 
+				hasCollider = true; 
+			}
 
 			if (hasCollider && _objects[i]->isActive()) // Don't check collisions against inactive objects and against non-solids
 			{
@@ -87,7 +90,10 @@ namespace Engine
 						else if (otherShape == "plane")
 						{
 							collision = sphereToPlane(s2, p, _c1);
-							if (collision) { setCollided(true); }
+							if (collision) 
+							{ 
+								setCollided(true); 
+							}
 
 						}
 
@@ -1020,24 +1026,18 @@ namespace Engine
 		clearForces();
 	}
 
-	PhysicsObject::PhysicsObject(float _mass, float _bounciness, Collider* _col)
+	void PhysicsObject::Initialise(float _mass, float _bounciness)
 	{
 		m_mass = _mass;
 		m_bounciness = _bounciness;
 		m_force = glm::vec3(0.0f, 0.0f, 0.0f);
-		m_precision = 0.01f;
-		m_collidedBefore = false;
-		m_lastMesh = "NA";
+		
 		m_floored = false;
 	}
 
 	PhysicsObject::PhysicsObject()
 	{
-		m_mass = 10.0f;
-		m_bounciness = 0.0f;
-		m_precision = 0.1f;
-		m_collidedBefore = false;
-		m_lastMesh = "NA";
+		
 	}
 
 	glm::vec3 PhysicsObject::rungeKutta2(float _deltaTs, float _mass)
@@ -1113,7 +1113,7 @@ namespace Engine
 					if (rForce < 0.8f) { rForce = 0.8f; }
 
 					//Angular force
-					glm::vec3 aForce = (glm::cross(vel, collision[i]->m_normal) * rForce) * (fricCoEf * (collision[i]->m_my->getCollider()->getMass() / -9.80f));
+					glm::vec3 aForce = (glm::cross(vel, collision[i]->m_normal) * rForce) * (fricCoEf * (aRB->getMass() / -9.80f));
 					aForce *= -9.0f; //Scale the force to make it look realistic
 
 									 //Torque = Sum of the angular foces acting on an object
@@ -1129,7 +1129,7 @@ namespace Engine
 		resetCollisions();
 	}
 
-	AdvPhysicsObject::AdvPhysicsObject(float _mass, float _bounciness, Collider* _col)
+	void AdvPhysicsObject::Initialise(float _mass, float _bounciness)
 	{
 		m_torque = glm::vec3(0.0f, 0.0f, 0.0f);
 		m_aMom = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -1139,10 +1139,7 @@ namespace Engine
 
 		m_mass = _mass;
 		m_bounciness = _bounciness;
-		m_force = glm::vec3(0.0f, 0.0f, 0.0f);
-		m_precision = 0.01f;
-		m_collidedBefore = false;
-		m_lastMesh = "NA";
+		m_force = glm::vec3(0.0f, 0.0f, 0.0f);		
 		m_floored = false;
 
 		m_orient = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -1181,7 +1178,7 @@ namespace Engine
 	}
 
 	void AdvPhysicsObject::updateRotations(float _dTs, bool _collided)
-	{
+	{		
 		m_aMom += m_torque * _dTs;
 		if (_collided)
 		{

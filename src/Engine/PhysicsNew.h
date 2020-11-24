@@ -68,8 +68,8 @@ namespace Engine
 
 
 	protected:
-		bool m_collided;
-		bool m_floored;
+		bool m_collided = false;
+		bool m_floored = false;
 		glm::vec3 m_permCP; // A "permanent" contact-point that stores where an object should remain once stationary (ie: stacked on top of another object)
 		std::vector<Collision*> m_collisions;
 	};
@@ -79,7 +79,7 @@ namespace Engine
 	public:
 		void onTick();
 
-		PhysicsObject(float _mass, float _bounciness, Collider* _col);
+		void Initialise(float _mass, float _bounciness);
 		PhysicsObject();
 
 		void handleCollisions();
@@ -101,45 +101,22 @@ namespace Engine
 
 		const glm::vec3 getForce() const { return m_force; }
 
-		
-
-		//Mesh-Mesh specific variables needed for optimisation. I'll probably put this somewhere tidier later.
-		void setColBefore(bool _val) { m_collidedBefore = _val; }
-		bool colBefore() { return m_collidedBefore; }
-		std::vector<int> getColTri() { return m_colTri; }
-		std::vector<int> getMyTri() { return m_myTri; }
-		void setMyTri(std::vector<int> _myTri) { m_myTri = _myTri; }
-		void setColTri(std::vector<int> _colTri) { m_colTri = _colTri; }
-		
-		std::string getLastCol() { return m_lastMesh; }
-		void setLastCol(std::string _tag) { m_lastMesh = _tag; }		
-		void setCollider(bool _val) { m_collider = _val; }
-		bool isCollider() { return m_collider; }
-
 	protected:
 		
-		float m_mass;
-		bool m_collider;
-		float m_bounciness;
-		glm::vec3 m_velocity;
-		glm::vec3 m_force;
-		float m_precision;
-		
-		float m_resist;
-		std::string m_lastMesh;
-		std::vector<int> m_colTri;
-		std::vector<int> m_myTri;
-		bool m_collidedBefore;
-		
+		float m_mass = 1.0f;		
+		float m_bounciness = 0.0f;
+		glm::vec3 m_velocity = glm::vec3(0.0f);
+		glm::vec3 m_force = glm::vec3(0.0f);
 	};
 
 	class AdvPhysicsObject : public PhysicsObject
 	{
 	public:
 		void onTick();
-		AdvPhysicsObject(float _mass, float _bounciness, Collider* _col);
+		void Initialise(float _mass, float _bounciness);
 		AdvPhysicsObject() {};
 		glm::mat3 getRotMat() { return m_rotMat; }
+		//void setRotMat(glm::mat3 _mat) { m_rotMat = _mat; }
 		void updateRotations(float _dTs, bool collided);
 		void setAvel(glm::vec3 _aVel) { m_aVel = _aVel; }
 		glm::vec3 getAvel() { return m_aVel; }
@@ -154,15 +131,15 @@ namespace Engine
 
 	private:
 		//Angular Motion
-		glm::vec3 m_torque;
-		glm::vec3 m_aVel; // Angular Velocity
-		glm::vec3 m_aMom; // Angular momentum
-		glm::vec3 m_aAcc; //Angular acceleration		
+		glm::vec3 m_torque = glm::vec3(0.0f);
+		glm::vec3 m_aVel = glm::vec3(0.0f); // Angular Velocity
+		glm::vec3 m_aMom = glm::vec3(0.0f); // Angular momentum
+		glm::vec3 m_aAcc = glm::vec3(0.0f); //Angular acceleration		
 		glm::mat3 m_invInertiaTensor; // Inverse of the body inertia tensor
 		glm::mat3 m_invBodyInertiaTensor;
 		glm::mat3 m_rotMat;
 		glm::quat m_rotQuat;
-		glm::vec3 m_orient;		
+		glm::vec3 m_orient = glm::vec3(0.0f);
 	};
 		
 	class RayCaster : public Component

@@ -71,19 +71,19 @@ namespace Engine
 		std::shared_ptr<AdvPhysicsObject> aRB = getEntity()->getComponent<AdvPhysicsObject>();
 		if (aRB)
 		{
-			/*if (_obj->getTag() != "testbox")
+			//if (_obj->getTag() != "testbox")
 			{
-				glm::mat4 rotationMat = glm::mat4(_obj->m_Phy->getRotMat());
+				glm::mat4 rotationMat = glm::mat4(aRB->getRotMat());
 				glm::quat rotate = glm::normalize(glm::quat_cast(rotationMat));
-				_obj->m_Phy->setRotMat(glm::mat3_cast(rotate));
+				aRB->setRotMat(glm::mat3_cast(rotate));
 
 				modelMat *= glm::mat4_cast(rotate);
 			}
-			else*/
+			/*else
 			{
 				glm::mat4 rotMatNew = glm::mat4_cast(aRB->getRotQuat());
 				modelMat *= rotMatNew;
-			}
+			}*/
 		}
 		else
 		{

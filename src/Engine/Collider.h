@@ -14,12 +14,10 @@ namespace Engine
 	{
 	public:
 		void setFriction(float _friction) { m_friction = _friction; }
-		float getFriction() { return m_friction; }
-		float getMass() { return m_mass; }
+		float getFriction() { return m_friction; }		
 	private:
 		bool m_trigger;
-		float m_friction;
-		float m_mass;
+		float m_friction = 0.25f;		
 	};
 
 	class SphereCollider : public Collider
@@ -27,18 +25,12 @@ namespace Engine
 	public:
 		SphereCollider(float _radius);
 		SphereCollider() {};
-		float getRadius() { return m_radius; }
-
-
-	private:
-		float m_radius;
-
+		float getRadius() { return transform()->getScale().y; }
 	};
 
 	class PlaneCollider : public Collider
 	{
-	public:
-		PlaneCollider(glm::vec3 _scale, glm::vec3 _normal);
+	public:		
 		PlaneCollider() {};
 		glm::vec3 getNorm() { return m_normal; }
 		void setNorm(glm::vec3 _norm) { m_normal = _norm; }
@@ -82,11 +74,11 @@ namespace Engine
 	private:
 		bool m_semiMesh;
 		bool m_easyCollide;
-		std::string m_lastMesh;
+		std::string m_lastMesh = "NA";
 		std::vector<int> m_colTri;
 		std::vector<int> m_myTri;
 		bool m_collidedBefore;
-		float m_precision;
+		float m_precision = 0.01f;
 	};
 }
 

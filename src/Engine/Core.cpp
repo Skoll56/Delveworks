@@ -25,6 +25,8 @@ namespace Engine
 		rtn->m_lightingSh = rtn->m_rManager->load<Shader>("light");
 		rtn->m_camera = std::make_shared<Camera>(glm::vec3(0.0f, 5.0f, 0.0f));
 		rtn->m_self = rtn;
+		srand(time(NULL));
+
 		std::cout << "Initialised successfully" << std::endl;
 		return rtn;
 	}
@@ -35,6 +37,14 @@ namespace Engine
 		rtn->self = rtn;
 		rtn->core = m_self;
 		rtn->addComponent<Transform>();
+
+		std::string tag = "";
+		for (int i = 0; i < 15; i++)
+		{
+			tag += (rand() % 8000);
+		}
+		rtn->setTag(tag);
+
 		m_entities.push_back(rtn);
 		std::cout << "I made an entity" << std::endl;
 		return rtn;
@@ -68,13 +78,13 @@ namespace Engine
 			m_entities.at(ei)->tick(); //"Update"
 		}
 
-
-		
-
+		for (size_t ei = 0; ei < m_entities.size(); ei++)
+		{
+			m_entities.at(ei)->afterTick(); //A second tick for after-tick events
+		}
 
 		//Set the active texture buffer
 		glActiveTexture(GL_TEXTURE0 + 1);
-		//m_scene->update(dTime);
 		SDL_GL_SwapWindow(m_window);
 
 		quit = m_input->takeInput(event); //Handles the input, and returns a 'quit' value to see if the program should end
@@ -93,9 +103,10 @@ namespace Engine
 		{
 			SDL_DestroyWindow(m_window); // DESTROY THAT WINDOW. STRIKE IT DOWN. DEWIT.
 			SDL_Quit();
-#if EMSCRIPTEN
+
+			#if EMSCRIPTEN
 			emscripten_cancel_main_loop();
-#endif
+			#endif
 
 			alcMakeContextCurrent(NULL);
 			alcDestroyContext(m_context);

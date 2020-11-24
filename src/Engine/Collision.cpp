@@ -19,7 +19,7 @@ namespace Engine
 			glm::vec3 otherVel;
 			float otherMass;
 
-			std::shared_ptr<PhysicsObject> orb = _my->getComponent<PhysicsObject>();
+			std::shared_ptr<PhysicsObject> orb = _other->getComponent<PhysicsObject>();
 			if (!orb) // If the other object isn't a physics object
 			{
 				otherVel = glm::vec3(0.0f, 0.0f, 0.0f);

@@ -35,6 +35,8 @@ namespace Engine
 			return rtn;
 		}
 		void tick();
+		void afterTick();
+
 
 		template <typename T>
 		std::shared_ptr<T> getComponent()
@@ -68,7 +70,7 @@ namespace Engine
 		std::weak_ptr<Entity> self;
 		std::string m_tag;
 		std::shared_ptr<Transform> m_transform;
-		bool m_active;
+		bool m_active = true;
 	};
 }
 

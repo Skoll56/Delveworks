@@ -52,9 +52,9 @@ namespace Engine
 		glm::vec3 getDirection() { return m_direction; }
 		glm::vec3 getAmb() { return m_ambient; }
 		void onTick();
-
-	private:
 		glm::vec3 m_direction;
+	private:
+		
 		glm::vec3 m_ambient;
 	};
 

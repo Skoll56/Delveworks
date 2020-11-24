@@ -43,6 +43,7 @@ namespace Engine
 		void onTick();
 		void setModel(glm::mat4 _model) { m_model = _model; }
 		void onInitialise();
+		void rotate(glm::vec3 _axis, float _amt) { m_eulerAngles += _amt * _axis; }
 
 
 	private:
