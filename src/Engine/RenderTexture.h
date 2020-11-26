@@ -2,6 +2,8 @@
 #include <GL/glew.h>
 #include <exception>
 
+
+//RENDER TEXTURES ARE A PART OF THE GRAPHICS UNIT AND WERE ADDED AS A FIRST STEP TOWARDS SHADOWS
 namespace Engine
 {
 	class RenderTexture
