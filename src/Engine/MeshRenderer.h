@@ -17,7 +17,7 @@ namespace Engine
 	class MeshRenderer : public Component
 	{
 	public:
-		void onTick();
+		void draw();
 		VertexArray * m_vAO; // The shape's mesh/obj
 		VertexBuffer *m_vBOt; // The vertex buffer for texture co-ordinates
 		VertexBuffer *m_vBOp; // The vertex buffer for object co-ordinates

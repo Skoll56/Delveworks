@@ -10,7 +10,7 @@
 #include "Input.h"
 #include <AL/al.h>
 #include <AL/alc.h> 
-
+#include "RenderTexture.h"
 
 
 namespace Engine
@@ -19,6 +19,7 @@ namespace Engine
 	struct ResourceManager;
 	class Camera;
 	class Shader;
+	class VertexArray;
 
 	struct Core
 	{
@@ -26,7 +27,8 @@ namespace Engine
 		static std::shared_ptr<Core> initialise();
 		std::shared_ptr<Entity> createEntity();
 		void start();
-		void loop();		
+		void loop();	
+		void drawScene();
 		
 
 		//Not functions		
@@ -43,6 +45,8 @@ namespace Engine
 		std::vector<std::shared_ptr<Entity>> getAllEntities() { return m_entities; }
 		std::shared_ptr<Shader> m_lightingSh;
 		void updateShader();
+		std::shared_ptr<RenderTexture> createRenderTexture();
+		void createScreenQuad();
 
 	private:
 		std::vector<std::shared_ptr<Entity>> m_entities;		
@@ -57,6 +61,11 @@ namespace Engine
 		int mouseX, mouseY;
 		float dTime;
 		long t1;
+		
+		std::vector<std::shared_ptr<RenderTexture>> m_RTs;
+		VertexArray* m_screenQuad;
+		std::shared_ptr<Shader> m_sqShader;
+
 		std::weak_ptr<Core> m_self;
 		std::shared_ptr<Camera> m_camera;
 	};

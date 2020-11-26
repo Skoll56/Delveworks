@@ -5,13 +5,15 @@
 #include "Resource.h"
 #include "Camera.h"
 #include "Shader.h"
+#include "VertexArray.h"
+#include "VertexBuffer.h"
 
 #ifdef EMSCRIPTEN
 #include <emscripten.h>
 #endif
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 800
+#define WINDOW_WIDTH 1024
+#define WINDOW_HEIGHT 1024
 
 namespace Engine
 {
@@ -25,6 +27,8 @@ namespace Engine
 		rtn->m_lightingSh = rtn->m_rManager->load<Shader>("light");
 		rtn->m_camera = std::make_shared<Camera>(glm::vec3(0.0f, 5.0f, 0.0f));
 		rtn->m_self = rtn;
+		rtn->createScreenQuad();
+		rtn->createRenderTexture();
 		srand(time(NULL));
 
 		std::cout << "Initialised successfully" << std::endl;
@@ -57,12 +61,10 @@ namespace Engine
 		dTime = (time - t1) / 1000.0f;
 		t1 = time;
 		SDL_Event event = { 0 };
-
-		glViewport(0, 0, width, height);
+		
 		//Set the clear-colour for the screen and clear it
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glEnable(GL_BLEND);
-		glClearColor(0.0, 0.0, 0.0, 0.0);
+		glEnable(GL_BLEND);		
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		SDL_GetMouseState(&mouseX, &mouseY);
@@ -83,8 +85,22 @@ namespace Engine
 			m_entities.at(ei)->afterTick(); //A second tick for after-tick events
 		}
 
+		for (size_t ri = 0; ri < m_RTs.size(); ri++)
+		{
+			glBindFramebuffer(GL_FRAMEBUFFER, m_RTs[ri]->fBufID);
+			glClearColor(0.0, 0.0, 0.0, 1.0);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			glViewport(0, 0, width, height);
+			drawScene();
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, m_RTs[ri]->fBufTexID);
+		}		
+		m_sqShader->draw(m_screenQuad);
+		//draw a quad with any render textures on it (1 by default)
+
 		//Set the active texture buffer
-		glActiveTexture(GL_TEXTURE0 + 1);
+		//glActiveTexture(GL_TEXTURE0 + 1);
 		SDL_GL_SwapWindow(m_window);
 
 		quit = m_input->takeInput(event); //Handles the input, and returns a 'quit' value to see if the program should end
@@ -111,6 +127,18 @@ namespace Engine
 			alcMakeContextCurrent(NULL);
 			alcDestroyContext(m_context);
 			alcCloseDevice(m_device);
+		}
+	}
+
+	void Core::drawScene()
+	{
+		for (size_t ei = 0; ei < m_entities.size(); ei++)
+		{
+			std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
+			if (MR)
+			{
+				MR->draw();
+			}
 		}
 	}
 
@@ -147,7 +175,7 @@ namespace Engine
 			throw std::exception();
 		}
 
-		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
 		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
 
@@ -160,8 +188,6 @@ namespace Engine
 		{
 			throw std::exception(); //TODO: Make better exception class
 		}
-
-		//glewExperimental = GL_TRUE;
 		
 		if (glewInit() != GLEW_OK)
 		{
@@ -171,14 +197,50 @@ namespace Engine
 
 	void Core::updateShader()
 	{
+		//Lighting Shaders
 		m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
 		glm::mat4 model(1.0f);
 		model = glm::lookAt(m_camera->getPos(), m_camera->getPos() + m_camera->getFwd(), m_camera->getUp());
 		
-		m_lightingSh->setUniform("in_View", model); // Establish the view matrix
-		//Lighting Shaders
+		m_lightingSh->setUniform("in_View", model); // Establish the view matrix		
 		m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));		
 		m_lightingSh->setUniform("in_CamPos", m_camera->getPos());
+
+		//Shader for the screen quad (For render textures)
+		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
+		m_sqShader->setUniform("in_Texture", 0);
+		
+		//m_quad_shader->setUniform("in_View", glm::mat4(1.0f));
+	}
+
+	std::shared_ptr<RenderTexture> Core::createRenderTexture()
+	{
+		std::shared_ptr<RenderTexture> RT = std::make_shared<RenderTexture>();
+		RT->Initialise();
+		m_RTs.push_back(RT);
+		return RT;
+	}
+
+	void Core::createScreenQuad()
+	{
+		m_screenQuad = new VertexArray();
+		m_screenQuad->setBuffer("in_Position", new VertexBuffer());
+		m_screenQuad->setBuffer("in_TexCoord", new VertexBuffer());
+
+		m_screenQuad->getTriPos()->add(glm::vec3(-1.0f, -1.0f, 0.0f));
+		m_screenQuad->getTriPos()->add(glm::vec3(1.0f, -1.0f, 0.0f));
+		m_screenQuad->getTriPos()->add(glm::vec3(1.0f, 1.0f, 0.0f));
+		m_screenQuad->getTriPos()->add(glm::vec3(1.0f, 1.0f, 0.0f));
+		m_screenQuad->getTriPos()->add(glm::vec3(-1.0f, 1.0f, 0.0f));
+		m_screenQuad->getTriPos()->add(glm::vec3(-1.0f, -1.0f, 0.0f));
+
+		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 0.0f));
+		m_screenQuad->getTriTex()->add(glm::vec2(1.0f, 0.0f));
+		m_screenQuad->getTriTex()->add(glm::vec2(1.0f, 1.0f));
+		m_screenQuad->getTriTex()->add(glm::vec2(1.0f, 1.0f));
+		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 1.0f));
+		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 0.0f));
+		m_sqShader = m_rManager->load<Shader>("UI");
 	}
 
 	void Core::initialiseAL()

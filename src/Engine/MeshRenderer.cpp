@@ -8,7 +8,7 @@
 
 namespace Engine
 {
-	void MeshRenderer::onTick()
+	void MeshRenderer::draw()
 	{
 		m_shader->setUniform("in_Shininess", (int)pow(2, getShine()));
 		m_shader->setUniform("in_Model", transform()->getModel()); // Translate the model matrix by camera position and stuff

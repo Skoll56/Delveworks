@@ -39,6 +39,7 @@ src/Engine/PhysicsNew.cpp
 src/Engine/MeshRenderer.cpp
 src/Engine/Collider.cpp
 src/Engine/Light.cpp
+src/Engine/RenderTexture.cpp
 
 src/Engine/Core.h
 src/Engine/Engine.h
@@ -59,6 +60,7 @@ src/Engine/Resource.h
 src/Engine/PhysicsNew.h
 src/Engine/MeshRenderer.h
 src/Engine/Collider.h
+src/Engine/RenderTexture.h
 )
 
 
