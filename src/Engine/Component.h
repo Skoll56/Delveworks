@@ -39,19 +39,23 @@ namespace Engine
 		void setScale(glm::vec3 _scale) { m_scale = _scale; }
 		glm::vec3 getSize() { return m_size; }
 		glm::mat4 getModel() { return m_model; }
-		glm::vec3 getEulerAngles() { return m_eulerAngles; }
 		void onTick();
 		void setModel(glm::mat4 _model) { m_model = _model; }
 		void onInitialise();
 		void rotate(glm::vec3 _axis, float _amt) { m_eulerAngles += _amt * _axis; }
-
-
-	private:
+		glm::vec3 getUp() { return m_upVec; }
+		glm::vec3 getRight() { return m_right; }
+		glm::vec3 getFwd() { return m_fwd; }
 		glm::vec3 m_position = glm::vec3(0.0f);
 		glm::vec3 m_eulerAngles = glm::vec3(0.0f);
+
+	private:		
 		glm::vec3 m_scale = glm::vec3(1.0f);
 		glm::vec3 m_size = glm::vec3(1.0f);
 		glm::mat4 m_model = glm::mat4(1.0f);
+		glm::vec3 m_fwd;
+		glm::vec3 m_upVec;
+		glm::vec3 m_right;
 	};
 
 	class SoundSource : public Component

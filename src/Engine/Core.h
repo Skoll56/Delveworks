@@ -20,6 +20,7 @@ namespace Engine
 	class Camera;
 	class Shader;
 	class VertexArray;
+	class DirLight;
 
 	struct Core
 	{
@@ -40,13 +41,20 @@ namespace Engine
 		ALCdevice* m_device;
 		ALCcontext* m_context;
 		void initialiseAL();
+		void initialiseShaders();
 		void initialiseSDL();
 		float getDeltaTime() { return dTime; }
 		std::vector<std::shared_ptr<Entity>> getAllEntities() { return m_entities; }
-		std::shared_ptr<Shader> m_lightingSh;
+		
 		void updateShader();
+		void updateShadowMapShader();
 		std::shared_ptr<RenderTexture> createRenderTexture();
+		std::shared_ptr<ShadowMap> createShadowMap();
 		void createScreenQuad();
+
+		std::shared_ptr<Shader> m_sqShader;
+		std::shared_ptr<Shader> m_lightingSh;
+		std::shared_ptr<Shader> m_shadowSh;
 
 	private:
 		std::vector<std::shared_ptr<Entity>> m_entities;		
@@ -64,10 +72,10 @@ namespace Engine
 		
 		std::vector<std::shared_ptr<RenderTexture>> m_RTs;
 		VertexArray* m_screenQuad;
-		std::shared_ptr<Shader> m_sqShader;
 
 		std::weak_ptr<Core> m_self;
 		std::shared_ptr<Camera> m_camera;
+		std::shared_ptr<DirLight> m_sun; //
 	};
 }
 

@@ -6,17 +6,19 @@
 
 namespace Engine
 {
-	void DirLight::setValues(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient, glm::vec3 _direction)
+	void DirLight::setValues(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient)
 	{
 		m_diffuse = _diffuse;
 		m_specIntens = _specular;
-		m_ambient = _ambient;
-		m_direction = _direction;
+		m_ambient = _ambient;		
 		m_antiLight = 0;
 	}
 
 	void DirLight::onTick()
 	{
+		getEntity();
+		getEntity()->getCore();
+
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
 		std::string uniform;
 		uniform = "in_dLight[0].m_specIntens";
@@ -30,7 +32,7 @@ namespace Engine
 		_lSh->setUniform(uniform, getAmb());
 
 		uniform = "in_dLight[0].m_direction";
-		_lSh->setUniform(uniform, getDirection());
+		_lSh->setUniform(uniform, transform()->getFwd());
 	}
 
 

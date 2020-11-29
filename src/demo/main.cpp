@@ -19,18 +19,14 @@ int main()
 	std::shared_ptr<Entity> test = core->createEntity();
 	std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>();
 	MR->Initialise("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
-
-	std::shared_ptr<Entity> sun = core->createEntity();
-	std::shared_ptr<DirLight> dlight = sun->addComponent<DirLight>();
-	dlight->setValues(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.3f, -1.0f, 0.0f));
 	
 	
 	std::shared_ptr<Entity> floor = core->createEntity();
 	std::shared_ptr<MeshRenderer> MR2 = floor->addComponent<MeshRenderer>();
 	MR2->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
-	floor->transform()->setScale(glm::vec3(20.0f, 1.0f, 20.0f));
+	floor->transform()->setScale(glm::vec3(30.0f, 1.0f, 30.0f));
 	std::shared_ptr<BoxCollider> p = floor->addComponent<BoxCollider>();
-	//p->setNorm(glm::vec3(0.0f, 1.0f, 0.0f));
+	
 	
 	for (int i = 0; i < 6; i++)
 	{

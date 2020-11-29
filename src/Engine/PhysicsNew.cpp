@@ -25,7 +25,7 @@ namespace Engine
 	void PhysicsEventUser::onCollision(Collision* _col) // Remember that only physics objects can be collided. Non-physics objects are collided WITH.
 											   // The 'My' will always be a physics object, but the 'other' can be any collider.
 	{
-		std::cout << "Collision Occured" << std::endl;
+		
 	}
 
 	void PhysicsEventUser::onTick()

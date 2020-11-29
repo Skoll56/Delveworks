@@ -87,7 +87,7 @@ namespace Engine
 		}
 		else
 		{
-			glm::vec3 rotation = glm::radians(getEulerAngles());
+			glm::vec3 rotation = glm::radians(m_eulerAngles);
 			{
 				modelMat = glm::rotate(modelMat, rotation.x, glm::vec3(1, 0, 0)); //Rotate by the shape component's rotation
 				modelMat = glm::rotate(modelMat, rotation.y, glm::vec3(0, 1, 0));
@@ -96,11 +96,18 @@ namespace Engine
 		}
 		modelMat = glm::scale(modelMat, getScale()); // Scale by shape object's scale
 		setModel(modelMat);
+
+		//Reference LearnOpenGL
+		m_fwd.x = cos(glm::radians(m_eulerAngles.y)) * cos(glm::radians(m_eulerAngles.x));
+		m_fwd.y = sin(glm::radians(m_eulerAngles.x));
+		m_fwd.z = sin(glm::radians(m_eulerAngles.y)) * cos(glm::radians(m_eulerAngles.x));
+		m_fwd = glm::normalize(m_fwd);
+		m_right = glm::normalize(glm::cross(glm::vec3(0.0f, 1.0f, 0.0f), m_fwd));
 	}
 
 	void Transform::onInitialise()
 	{
-		
+		m_upVec = glm::vec3(0.0f, 1.0f, 0.0f);
 	}
 
 }

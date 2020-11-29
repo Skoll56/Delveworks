@@ -9,12 +9,19 @@ namespace Engine
 	class RenderTexture
 	{
 		public:
-		void Initialise();
+		virtual void Initialise();
 		
-
-		
+		int resolutionX = 1024;
+		int resolutionY = 1024;
+			
 		GLuint fBufID = 0;
 		GLuint fBufTexID = 0;
 		GLuint rBufObjID = 0;
+	};
+
+	class ShadowMap : public RenderTexture
+	{
+	public:
+		void Initialise();
 	};
 }

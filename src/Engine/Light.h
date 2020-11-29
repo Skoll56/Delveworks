@@ -42,17 +42,15 @@ namespace Engine
 	class DirLight : public Light
 	{
 	public:
-		void setValues(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient, glm::vec3 _direction);
+		void setValues(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient);
 
 		glm::vec3 getDif() { return m_diffuse; }
 		float getSpec() { return m_specIntens; }
 
 		glm::vec3 m_diffuse;
-		float m_specIntens;
-		glm::vec3 getDirection() { return m_direction; }
+		float m_specIntens;		
 		glm::vec3 getAmb() { return m_ambient; }
-		void onTick();
-		glm::vec3 m_direction;
+		void onTick();		
 	private:
 		
 		glm::vec3 m_ambient;

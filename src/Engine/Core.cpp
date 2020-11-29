@@ -7,6 +7,7 @@
 #include "Shader.h"
 #include "VertexArray.h"
 #include "VertexBuffer.h"
+#include "Light.h"
 
 #ifdef EMSCRIPTEN
 #include <emscripten.h>
@@ -24,12 +25,28 @@ namespace Engine
 		rtn->initialiseSDL();
 		rtn->initialiseAL();
 		rtn->m_input = new Input();
-		rtn->m_lightingSh = rtn->m_rManager->load<Shader>("light");
-		rtn->m_camera = std::make_shared<Camera>(glm::vec3(0.0f, 5.0f, 0.0f));
+		rtn->initialiseShaders();
+
 		rtn->m_self = rtn;
 		rtn->createScreenQuad();
+		rtn->createShadowMap();
 		rtn->createRenderTexture();
 		srand(time(NULL));
+
+		//Create some necessary entities (TODO: Will be improved later)
+		std::shared_ptr<Entity> e = rtn->createEntity();
+		e->transform()->m_position = glm::vec3(0.0f, 8.0f, -8.0f);
+		rtn->m_camera = e->addComponent<Camera>();
+
+		std::shared_ptr<Entity> test = rtn->createEntity();
+		std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>();
+		MR->Initialise("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
+		MR->transform()->setPosition(rtn->m_camera->transform()->m_position + (rtn->m_camera->transform()->getFwd() * 10.0f));
+
+		std::shared_ptr<Entity> sun = rtn->createEntity();
+		rtn->m_sun = sun->addComponent<DirLight>();
+		rtn->m_sun->setValues(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f));
+		rtn->m_sun->transform()->m_position = glm::vec3(0.0f, 20.0f, 0.0f);
 
 		std::cout << "Initialised successfully" << std::endl;
 		return rtn;
@@ -74,7 +91,7 @@ namespace Engine
 		//Re-establish window-size to allow stretching and re-sizing
 		SDL_GetWindowSize(m_window, &width, &height);
 		m_camera->update(dTime, m_input);
-		updateShader();
+		
 		for (size_t ei = 0; ei < m_entities.size(); ei++)
 		{
 			m_entities.at(ei)->tick(); //"Update"
@@ -84,23 +101,29 @@ namespace Engine
 		{
 			m_entities.at(ei)->afterTick(); //A second tick for after-tick events
 		}
-
-		for (size_t ri = 0; ri < m_RTs.size(); ri++)
-		{
-			glBindFramebuffer(GL_FRAMEBUFFER, m_RTs[ri]->fBufID);
-			glClearColor(0.0, 0.0, 0.0, 1.0);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			glViewport(0, 0, width, height);
-			drawScene();
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, m_RTs[ri]->fBufTexID);
-		}		
+				
+		/*updateShadowMapShader();
+		glBindFramebuffer(GL_FRAMEBUFFER, m_RTs[0]->fBufID);		
+		glClear(GL_DEPTH_BUFFER_BIT);
+		glViewport(0, 0, m_RTs[0]->resolutionX, m_RTs[0]->resolutionY);
+		drawScene();
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, m_RTs[0]->fBufTexID);*/
+		
+		updateShader();
+		glBindFramebuffer(GL_FRAMEBUFFER, m_RTs[1]->fBufID);
+		glClearColor(0.0, 0.0, 0.0, 1.0);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glViewport(0, 0, m_RTs[1]->resolutionX, m_RTs[1]->resolutionY);
+		drawScene();
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, m_RTs[1]->fBufTexID);
+			
 		m_sqShader->draw(m_screenQuad);
 		//draw a quad with any render textures on it (1 by default)
 
-		//Set the active texture buffer
-		//glActiveTexture(GL_TEXTURE0 + 1);
 		SDL_GL_SwapWindow(m_window);
 
 		quit = m_input->takeInput(event); //Handles the input, and returns a 'quit' value to see if the program should end
@@ -200,11 +223,11 @@ namespace Engine
 		//Lighting Shaders
 		m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
 		glm::mat4 model(1.0f);
-		model = glm::lookAt(m_camera->getPos(), m_camera->getPos() + m_camera->getFwd(), m_camera->getUp());
+		model = glm::lookAt(m_camera->transform()->getPosition(), m_camera->transform()->getPosition() + m_camera->transform()->getFwd(), m_camera->transform()->getUp());
 		
 		m_lightingSh->setUniform("in_View", model); // Establish the view matrix		
 		m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));		
-		m_lightingSh->setUniform("in_CamPos", m_camera->getPos());
+		m_lightingSh->setUniform("in_CamPos", m_camera->transform()->m_position);
 
 		//Shader for the screen quad (For render textures)
 		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
@@ -213,12 +236,29 @@ namespace Engine
 		//m_quad_shader->setUniform("in_View", glm::mat4(1.0f));
 	}
 
+	void Core::updateShadowMapShader() //TODO: support multiple directional lights (Pass in arrays instead)
+	{
+		//Shadow Shaders
+		m_shadowSh->setUniform("in_Projection", glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 1.0f, 7.0f)); //Set the projection uniform
+		glm::mat4 model(1.0f);
+		model = glm::lookAt(m_camera->transform()->getPosition(), m_camera->transform()->getPosition() + m_camera->transform()->getFwd(), m_camera->transform()->getUp()); //Relace with light vals
+		m_shadowSh->setUniform("in_View", model); // Establish the view matrix
+	}
+
 	std::shared_ptr<RenderTexture> Core::createRenderTexture()
 	{
 		std::shared_ptr<RenderTexture> RT = std::make_shared<RenderTexture>();
 		RT->Initialise();
 		m_RTs.push_back(RT);
 		return RT;
+	}
+
+	std::shared_ptr<ShadowMap> Core::createShadowMap()
+	{
+		std::shared_ptr<ShadowMap> SM = std::make_shared<ShadowMap>();
+		SM->Initialise();
+		m_RTs.push_back(SM);
+		return SM;
 	}
 
 	void Core::createScreenQuad()
@@ -239,8 +279,7 @@ namespace Engine
 		m_screenQuad->getTriTex()->add(glm::vec2(1.0f, 1.0f));
 		m_screenQuad->getTriTex()->add(glm::vec2(1.0f, 1.0f));
 		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 1.0f));
-		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 0.0f));
-		m_sqShader = m_rManager->load<Shader>("UI");
+		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 0.0f));		
 	}
 
 	void Core::initialiseAL()
@@ -264,5 +303,12 @@ namespace Engine
 			alcCloseDevice(m_device);
 			throw std::exception();
 		}
+	}
+
+	void Core::initialiseShaders()
+	{
+		m_sqShader = m_rManager->load<Shader>("UI");
+		m_lightingSh = m_rManager->load<Shader>("light");
+		m_shadowSh = m_rManager->load<Shader>("dirShadow");
 	}
 }
