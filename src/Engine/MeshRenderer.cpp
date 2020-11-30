@@ -21,7 +21,7 @@ namespace Engine
 		m_vBOp = new VertexBuffer();
 		m_vBOt = new VertexBuffer();
 		m_vAO = new VertexArray();
-		m_tex = new Texture();
+		m_tex = std::make_shared<Texture>();
 		m_vAO->loadObj(_obj);
 		m_tex->load(_texName);
 		m_shininess = 1;

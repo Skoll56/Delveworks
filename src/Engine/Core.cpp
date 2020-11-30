@@ -36,17 +36,14 @@ namespace Engine
 		//Create some necessary entities (TODO: Will be improved later)
 		std::shared_ptr<Entity> e = rtn->createEntity();
 		e->transform()->m_position = glm::vec3(0.0f, 8.0f, -8.0f);
+		e->transform()->m_eulerAngles = glm::vec3(0.0f, -90.0f, -0.0f);
 		rtn->m_camera = e->addComponent<Camera>();
-
-		std::shared_ptr<Entity> test = rtn->createEntity();
-		std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>();
-		MR->Initialise("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
-		MR->transform()->setPosition(rtn->m_camera->transform()->m_position + (rtn->m_camera->transform()->getFwd() * 10.0f));
 
 		std::shared_ptr<Entity> sun = rtn->createEntity();
 		rtn->m_sun = sun->addComponent<DirLight>();
 		rtn->m_sun->setValues(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f));
 		rtn->m_sun->transform()->m_position = glm::vec3(0.0f, 20.0f, 0.0f);
+		rtn->m_sun->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
 
 		std::cout << "Initialised successfully" << std::endl;
 		return rtn;
@@ -102,15 +99,17 @@ namespace Engine
 			m_entities.at(ei)->afterTick(); //A second tick for after-tick events
 		}
 				
-		/*updateShadowMapShader();
+		glUseProgram(m_shadowSh->getId());
+		updateShadowMapShader();
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RTs[0]->fBufID);		
 		glClear(GL_DEPTH_BUFFER_BIT);
 		glViewport(0, 0, m_RTs[0]->resolutionX, m_RTs[0]->resolutionY);
-		drawScene();
+		drawShadowScene();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_RTs[0]->fBufTexID);*/
-		
+		glBindTexture(GL_TEXTURE_2D, m_RTs[0]->m_textureId);
+		glUseProgram(0);
+
 		updateShader();
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RTs[1]->fBufID);
 		glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -119,7 +118,7 @@ namespace Engine
 		drawScene();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_RTs[1]->fBufTexID);
+		glBindTexture(GL_TEXTURE_2D, m_RTs[1]->m_textureId);
 			
 		m_sqShader->draw(m_screenQuad);
 		//draw a quad with any render textures on it (1 by default)
@@ -161,6 +160,19 @@ namespace Engine
 			if (MR)
 			{
 				MR->draw();
+			}
+		}
+	}
+
+	void Core::drawShadowScene()
+	{
+		for (size_t ei = 0; ei < m_entities.size(); ei++)
+		{
+			std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
+			if (MR)
+			{				
+				m_shadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
+				m_shadowSh->draw(MR->m_vAO);
 			}
 		}
 	}
@@ -228,21 +240,20 @@ namespace Engine
 		m_lightingSh->setUniform("in_View", model); // Establish the view matrix		
 		m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));		
 		m_lightingSh->setUniform("in_CamPos", m_camera->transform()->m_position);
+		m_lightingSh->setUniform("in_shadowMap", m_RTs[0]);
 
 		//Shader for the screen quad (For render textures)
 		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
 		m_sqShader->setUniform("in_Texture", 0);
-		
-		//m_quad_shader->setUniform("in_View", glm::mat4(1.0f));
 	}
 
 	void Core::updateShadowMapShader() //TODO: support multiple directional lights (Pass in arrays instead)
 	{
 		//Shadow Shaders
-		m_shadowSh->setUniform("in_Projection", glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 1.0f, 7.0f)); //Set the projection uniform
+		m_shadowSh->setUniform("in_Projection", glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, 1.0f, 50.0f)); //Set the projection uniform
 		glm::mat4 model(1.0f);
-		model = glm::lookAt(m_camera->transform()->getPosition(), m_camera->transform()->getPosition() + m_camera->transform()->getFwd(), m_camera->transform()->getUp()); //Relace with light vals
-		m_shadowSh->setUniform("in_View", model); // Establish the view matrix
+		model = glm::lookAt(m_sun->transform()->getPosition(), m_sun->transform()->getPosition() + m_sun->transform()->getFwd(), m_sun->transform()->getUp()); 
+		m_shadowSh->setUniform("in_View", model); // Establish the view matrix		
 	}
 
 	std::shared_ptr<RenderTexture> Core::createRenderTexture()

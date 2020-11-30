@@ -211,6 +211,38 @@ namespace Engine
 
 		glm::vec3 triNorm = glm::normalize(glm::vec3(Normal[0], Normal[1], Normal[2])); */
 
+
+	void Shader::overrideDraw(VertexArray *_vertexArray)
+	{
+		//glUseProgram(m_id);
+		glBindVertexArray(_vertexArray->getId());
+		//glUniform4f(colorUniformId, 0, 1, 0, 1);
+
+		for (size_t i = 0; i < m_sampler.size(); i++)
+		{
+			glActiveTexture(GL_TEXTURE0 + i);
+			if (m_sampler.at(i).m_tex)
+			{
+				glBindTexture(GL_TEXTURE_2D, m_sampler.at(i).m_tex->get());
+			}
+			else
+			{
+				glBindTexture(GL_TEXTURE_2D, 0);
+			}
+
+		}
+		glDrawArrays(GL_TRIANGLES, 0, _vertexArray->getVertexCount());
+
+		for (size_t i = 0; i < m_sampler.size(); i++)
+		{
+			glActiveTexture(GL_TEXTURE0 + i);
+			glBindTexture(GL_TEXTURE_2D, 0);
+		}
+
+		glBindVertexArray(0);
+		//glUseProgram(0);
+	}
+
 	void Shader::draw(VertexArray *_vertexArray)
 	{
 		glUseProgram(m_id);
@@ -296,7 +328,7 @@ namespace Engine
 		glUseProgram(0);
 	}
 
-	void Shader::setUniform(std::string _uniform, Texture *_tex)
+	void Shader::setUniform(std::string _uniform, std::shared_ptr<Texture> _tex)
 	{
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
 		if (uniformId == -1) { throw std::exception(); }

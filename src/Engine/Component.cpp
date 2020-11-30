@@ -101,7 +101,7 @@ namespace Engine
 		m_fwd.x = cos(glm::radians(m_eulerAngles.y)) * cos(glm::radians(m_eulerAngles.x));
 		m_fwd.y = sin(glm::radians(m_eulerAngles.x));
 		m_fwd.z = sin(glm::radians(m_eulerAngles.y)) * cos(glm::radians(m_eulerAngles.x));
-		m_fwd = glm::normalize(m_fwd);
+		m_fwd = glm::normalize(-m_fwd); //Idk why it's -fwd but for some reason it works, so, moving along.
 		m_right = glm::normalize(glm::cross(glm::vec3(0.0f, 1.0f, 0.0f), m_fwd));
 	}
 

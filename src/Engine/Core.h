@@ -30,6 +30,8 @@ namespace Engine
 		void start();
 		void loop();	
 		void drawScene();
+
+		void drawShadowScene();
 		
 
 		//Not functions		

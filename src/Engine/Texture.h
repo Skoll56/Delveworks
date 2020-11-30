@@ -13,9 +13,8 @@ namespace Engine
 		~Texture() {};
 		GLuint get() { return m_textureId; }
 		void load(std::string _image);
-
-	private:
-		int m_w, m_h, m_channels;
+	
+		int resolutionX, resolutionY, m_channels;
 		GLuint m_textureId;
 	};
 }

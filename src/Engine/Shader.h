@@ -16,7 +16,7 @@ namespace Engine
 	struct Sampler
 	{
 		GLint m_id;
-		Texture *m_tex;
+		std::shared_ptr<Texture> m_tex;
 	};
 
 	class Shader : public Resource
@@ -29,12 +29,13 @@ namespace Engine
 		Shader();
 		Shader(std::string _name);
 		void load(std::string _name);
+		void overrideDraw(VertexArray * _vertexArray);
 		void draw(VertexArray *vertexArray);
 		void printShaderInfoLog(GLuint obj); //Reference Karsten
 		void setUniform(std::string _uniform, glm::vec4 _value);
 		void setUniform(std::string _uniform, float _value);
 		void setUniform(std::string _uniform, int _value);
-		void setUniform(std::string _uniform, Texture *_tex);
+		void setUniform(std::string _uniform, std::shared_ptr<Texture> _tex);
 		void setUniform(std::string _uniform, glm::mat4 _value);
 		void setUniform(std::string _uniform, glm::vec3 _value);
 		GLuint getId();

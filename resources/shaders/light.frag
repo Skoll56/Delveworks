@@ -44,25 +44,23 @@ uniform SpotLight in_sLight[NUMSPOT];
 
 
 uniform sampler2D in_Texture;
+uniform sampler2D in_shadowMap;
+
 uniform vec3 in_Emissive;
 varying vec2 ex_TexCoord;
 varying vec3 ex_FragPos;
 varying vec3 ex_Normal;
+varying vec4 ex_FragPosLightSpace;
 
-//uniform mat4 in_Mod;
+
 uniform vec3 in_CamPos;
 uniform int in_Shininess;
 
 //Reference learn OpenGL
 vec3 calcDifSpec(vec3 _norm, vec4 _tex, vec3 _difCol, float _specInt, float _attenuation, vec3 _lDir)
 {
- //Diffuse Light  
-
-  float directness = max(dot(_norm, _lDir), 0.0);  
-  //if (directness <= 0.0) {return vec3(0, 1, 0);}
-  
-
-
+ //Diffuse Light
+  float directness = max(dot(_norm, _lDir), 0.0);
   vec3 difLight = directness * vec3(_tex);
   vec3 dLight = _difCol * difLight;
 
@@ -73,15 +71,33 @@ vec3 calcDifSpec(vec3 _norm, vec4 _tex, vec3 _difCol, float _specInt, float _att
   {
 	vec3 camDir = normalize(in_CamPos - ex_FragPos);
 	vec3 reflection = reflect(_lDir, _norm);
-	float shine = pow(max(dot(camDir, reflection), 0.0), float(in_Shininess));
-	
+	float shine = pow(max(dot(camDir, reflection), 0.0), float(in_Shininess));	
 	specLight = (_specInt * shine * _difCol);
   }
 
-  //if (_attenuation < 0.1) {return vec3(1.0, 0.0, 1.0);}
-
   return (dLight + specLight) * (_attenuation * 2.0); 
 }
+
+
+//Reference learn OpenGL
+int ShadowCalculation(vec4 _fragPosLightSpace)
+{
+     // perform perspective divide
+    vec3 projCoords = _fragPosLightSpace.xyz / _fragPosLightSpace.w;
+    // transform to [0,1] range
+    projCoords = projCoords * 0.5 + 0.5;
+    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
+    float closestDepth = texture2D(in_shadowMap, projCoords.xy).r; 
+    // get depth of current fragment from light's perspective
+    float currentDepth = projCoords.z;
+    // check whether current frag pos is in shadow
+    float shadow = currentDepth > closestDepth  ? 1.0 : 0.0;
+
+    if (shadow == 1.0) {return 1;}
+    else if (shadow == 0.0) {return 0;}
+    else {return 0;} 
+	
+}  
 
 
 void main()
@@ -90,45 +106,51 @@ void main()
   
   vec3 norm = normalize(ex_Normal);
   vec3 ambient = vec3(0.0, 0.0, 0.0);
+  
 
   for (int i = 0; i < NUMDIR; i++) // For each ambient source
   {
 	ambient += in_dLight[i].m_ambient;
   }
   vec3 light = ambient + in_Emissive;
-
+  
   vec3 lDir;
   float attenuation = 1.0;
+
   for (int i = 0; i < NUMDIR; i++) // For each directional light
-  {	 
-	lDir = -in_dLight[i].m_direction;
-	light += max(calcDifSpec(norm, tex, in_dLight[i].m_diffuse, in_dLight[i].m_specIntens, attenuation/2.0, lDir), 0.0);	 
+  {	
+	int inShadow = ShadowCalculation(ex_FragPosLightSpace);	
+	if (inShadow == 1)
+	{
+	   lDir = -in_dLight[i].m_direction;
+	   light += max(calcDifSpec(norm, tex, in_dLight[i].m_diffuse, in_dLight[i].m_specIntens, attenuation/2.0, lDir), 0.0);
+	}	
+	else
+	{
+	   lDir = -in_dLight[i].m_direction;
+	   light += max(calcDifSpec(norm, tex, in_dLight[i].m_diffuse, in_dLight[i].m_specIntens, attenuation/2.0, lDir), 0.0);
+	} 
+	   
   }
 
   for (int i = 0; i < NUMPOINT; i++) // For each point light
   {
 	lDir = normalize(in_pLight[i].m_pos - ex_FragPos);
-	float d = length(in_pLight[i].m_pos - ex_FragPos);
-	
+	float d = length(in_pLight[i].m_pos - ex_FragPos);	
 	float linear = 4.5 / in_pLight[i].m_radius;
 	attenuation = 1.0 / (1.0 + linear * d + in_pLight[i].m_quadratic * (d * d));
-	
-
 	light += max(calcDifSpec(norm, tex, in_pLight[i].m_diffuse, in_pLight[i].m_specIntens, attenuation, lDir), 0.0); // Don't add negative light. That would be silly.
   }
 
 
    for (int i = 0; i < NUMSPOT; i++) // For each spotLight
-   {
+   {	
 	
-	
-    lDir = normalize(in_sLight[i].m_pos - ex_FragPos);
-	float theta = dot(normalize(in_sLight[i].m_direction), -lDir);   
-	
+        lDir = normalize(in_sLight[i].m_pos - ex_FragPos);
+	float theta = dot(normalize(in_sLight[i].m_direction), -lDir); 
 
 	float epsilon = in_sLight[i].m_angle - in_sLight[i].m_fadeAngle;
-	float intensity = clamp((theta - in_sLight[i].m_fadeAngle) / epsilon, 0.0, 1.0);
-	//if (intensity < 1.0) {intensity = 1.0;}
+	float intensity = clamp((theta - in_sLight[i].m_fadeAngle) / epsilon, 0.0, 1.0);	
 	
 	float d = length(in_sLight[i].m_pos - ex_FragPos);	
 	float linear = 4.5 / in_sLight[i].m_radius;

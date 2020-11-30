@@ -5,6 +5,8 @@ namespace Engine
 {
 	void RenderTexture::Initialise()
 	{
+		resolutionX = 1024;
+		resolutionY = 1024;
 		glGenFramebuffers(1, &fBufID);
 		if (!fBufID)
 		{
@@ -12,17 +14,17 @@ namespace Engine
 		}
 		glBindFramebuffer(GL_FRAMEBUFFER, fBufID);
 		
-		glGenTextures(1, &fBufTexID);
-		if (!fBufTexID)
+		glGenTextures(1, &m_textureId);
+		if (!m_textureId)
 		{
 			throw std::exception();
 		}
-		glBindTexture(GL_TEXTURE_2D, fBufTexID);
+		glBindTexture(GL_TEXTURE_2D, m_textureId);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, resolutionX, resolutionY, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glBindTexture(GL_TEXTURE_2D, 0);
-		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, fBufTexID, 0);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_textureId, 0);
 
 
 		glGenRenderbuffers(1, &rBufObjID);
@@ -45,6 +47,8 @@ namespace Engine
 
 	void ShadowMap::Initialise()
 	{
+		resolutionX = 1024;
+		resolutionY = 1024;
 		glGenFramebuffers(1, &fBufID);
 		if (!fBufID)
 		{
@@ -52,12 +56,12 @@ namespace Engine
 		}
 		
 
-		glGenTextures(1, &fBufTexID);
-		if (!fBufTexID)
+		glGenTextures(1, &m_textureId);
+		if (!m_textureId)
 		{
 			throw std::exception();
 		}
-		glBindTexture(GL_TEXTURE_2D, fBufTexID);
+		glBindTexture(GL_TEXTURE_2D, m_textureId);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, resolutionX, resolutionY, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL); //
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -65,7 +69,7 @@ namespace Engine
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 		glBindFramebuffer(GL_FRAMEBUFFER, fBufID);		
-		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, fBufTexID, 0);//
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_textureId, 0);//
 		glDrawBuffer(GL_NONE);
 		glReadBuffer(GL_NONE);
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);

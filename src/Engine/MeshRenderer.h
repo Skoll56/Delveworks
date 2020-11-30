@@ -21,7 +21,7 @@ namespace Engine
 		VertexArray * m_vAO; // The shape's mesh/obj
 		VertexBuffer *m_vBOt; // The vertex buffer for texture co-ordinates
 		VertexBuffer *m_vBOp; // The vertex buffer for object co-ordinates
-		Texture *m_tex;
+		std::shared_ptr<Texture> m_tex;
 		std::shared_ptr<Shader> m_shader;
 		void onInitialise();
 		void setShine(int _shininess) { m_shininess = _shininess; }
