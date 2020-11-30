@@ -33,6 +33,8 @@ namespace Engine
 
 		uniform = "in_dLight[0].m_direction";
 		_lSh->setUniform(uniform, transform()->getFwd());
+
+		transform()->rotate(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f);
 	}
 
 

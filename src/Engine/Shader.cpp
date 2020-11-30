@@ -251,6 +251,7 @@ namespace Engine
 
 		for (size_t i = 0; i < m_sampler.size(); i++)
 		{
+			glUniform1i(m_sampler.at(i).m_uniform_location, i);
 			glActiveTexture(GL_TEXTURE0 + i);
 			if (m_sampler.at(i).m_tex)
 			{
@@ -335,11 +336,11 @@ namespace Engine
 
 		for (size_t i = 0; i < m_sampler.size(); i++)
 		{
-			if (m_sampler.at(i).m_id == uniformId)
+			if (m_sampler.at(i).m_uniform_location == uniformId)
 			{
 				m_sampler.at(i).m_tex = _tex;
 				glUseProgram(m_id);
-				glUniform1f(uniformId, i);
+				glUniform1i(uniformId, i);
 				glUseProgram(0);
 				return;
 			}
@@ -347,12 +348,12 @@ namespace Engine
 		}
 
 		Sampler s;
-		s.m_id = uniformId;
+		s.m_uniform_location = uniformId;
 		s.m_tex = _tex;
 		m_sampler.push_back(s);
 
 		glUseProgram(m_id);
-		glUniform1f(uniformId, m_sampler.size() - 1);
+		glUniform1i(uniformId, m_sampler.size() - 1);
 		glUseProgram(0);
 	}
 	

@@ -15,7 +15,7 @@ namespace Engine
 
 	struct Sampler
 	{
-		GLint m_id;
+		GLint m_uniform_location;
 		std::shared_ptr<Texture> m_tex;
 	};
 

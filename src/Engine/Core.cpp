@@ -106,8 +106,6 @@ namespace Engine
 		glViewport(0, 0, m_RTs[0]->resolutionX, m_RTs[0]->resolutionY);
 		drawShadowScene();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_RTs[0]->m_textureId);
 		glUseProgram(0);
 
 		updateShader();
@@ -117,8 +115,6 @@ namespace Engine
 		glViewport(0, 0, m_RTs[1]->resolutionX, m_RTs[1]->resolutionY);
 		drawScene();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, m_RTs[1]->m_textureId);
 			
 		m_sqShader->draw(m_screenQuad);
 		//draw a quad with any render textures on it (1 by default)
@@ -241,16 +237,19 @@ namespace Engine
 		m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));		
 		m_lightingSh->setUniform("in_CamPos", m_camera->transform()->m_position);
 		m_lightingSh->setUniform("in_shadowMap", m_RTs[0]);
+		
+		glm::mat4 lightMatrix = glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, 0.0f, 50.0f) * glm::lookAt(m_sun->transform()->getPosition(), m_sun->transform()->getPosition() + m_sun->transform()->getFwd(), m_sun->transform()->getUp());
+		m_lightingSh->setUniform("in_LightMatrix", lightMatrix);
 
 		//Shader for the screen quad (For render textures)
 		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
-		m_sqShader->setUniform("in_Texture", 0);
+		m_sqShader->setUniform("in_Texture", m_RTs[1]);
 	}
 
 	void Core::updateShadowMapShader() //TODO: support multiple directional lights (Pass in arrays instead)
 	{
 		//Shadow Shaders
-		m_shadowSh->setUniform("in_Projection", glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, 1.0f, 50.0f)); //Set the projection uniform
+		m_shadowSh->setUniform("in_Projection", glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, 0.0f, 50.0f)); //Set the projection uniform
 		glm::mat4 model(1.0f);
 		model = glm::lookAt(m_sun->transform()->getPosition(), m_sun->transform()->getPosition() + m_sun->transform()->getFwd(), m_sun->transform()->getUp()); 
 		m_shadowSh->setUniform("in_View", model); // Establish the view matrix		

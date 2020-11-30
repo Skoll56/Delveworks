@@ -82,7 +82,7 @@ vec3 calcDifSpec(vec3 _norm, vec4 _tex, vec3 _difCol, float _specInt, float _att
 //Reference learn OpenGL
 int ShadowCalculation(vec4 _fragPosLightSpace)
 {
-     // perform perspective divide
+    // perform perspective divide
     vec3 projCoords = _fragPosLightSpace.xyz / _fragPosLightSpace.w;
     // transform to [0,1] range
     projCoords = projCoords * 0.5 + 0.5;
@@ -91,10 +91,9 @@ int ShadowCalculation(vec4 _fragPosLightSpace)
     // get depth of current fragment from light's perspective
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
-    float shadow = currentDepth > closestDepth  ? 1.0 : 0.0;
+    float shadow = currentDepth - 0.005 > closestDepth  ? 1.0 : 0.0;
 
-    if (shadow == 1.0) {return 1;}
-    else if (shadow == 0.0) {return 0;}
+    if (shadow == 1.0) {return 1;}    
     else {return 0;} 
 	
 }  
@@ -120,17 +119,13 @@ void main()
   for (int i = 0; i < NUMDIR; i++) // For each directional light
   {	
 	int inShadow = ShadowCalculation(ex_FragPosLightSpace);	
-	if (inShadow == 1)
-	{
+	
+	if (inShadow == 0)
+	{	   
 	   lDir = -in_dLight[i].m_direction;
 	   light += max(calcDifSpec(norm, tex, in_dLight[i].m_diffuse, in_dLight[i].m_specIntens, attenuation/2.0, lDir), 0.0);
-	}	
-	else
-	{
-	   lDir = -in_dLight[i].m_direction;
-	   light += max(calcDifSpec(norm, tex, in_dLight[i].m_diffuse, in_dLight[i].m_specIntens, attenuation/2.0, lDir), 0.0);
-	} 
-	   
+	}
+
   }
 
   for (int i = 0; i < NUMPOINT; i++) // For each point light
