@@ -8,6 +8,7 @@
 #include "VertexArray.h"
 #include "VertexBuffer.h"
 #include "Light.h"
+#include "RenderTexture.h"
 
 #ifdef EMSCRIPTEN
 #include <emscripten.h>
@@ -28,8 +29,7 @@ namespace Engine
 		rtn->initialiseShaders();
 
 		rtn->m_self = rtn;
-		rtn->createScreenQuad();
-		rtn->createShadowMap();
+		rtn->createScreenQuad();		
 		rtn->createRenderTexture();
 		srand(time(NULL));
 
@@ -39,11 +39,7 @@ namespace Engine
 		e->transform()->m_eulerAngles = glm::vec3(0.0f, -90.0f, -0.0f);
 		rtn->m_camera = e->addComponent<Camera>();
 
-		std::shared_ptr<Entity> sun = rtn->createEntity();
-		rtn->m_sun = sun->addComponent<DirLight>();
-		rtn->m_sun->setValues(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f));
-		rtn->m_sun->transform()->m_position = glm::vec3(0.0f, 20.0f, 0.0f);
-		rtn->m_sun->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
+		
 
 		std::cout << "Initialised successfully" << std::endl;
 		return rtn;
@@ -99,20 +95,24 @@ namespace Engine
 			m_entities.at(ei)->afterTick(); //A second tick for after-tick events
 		}
 				
-		glUseProgram(m_shadowSh->getId());
-		updateShadowMapShader();
-		glBindFramebuffer(GL_FRAMEBUFFER, m_RTs[0]->fBufID);		
-		glClear(GL_DEPTH_BUFFER_BIT);
-		glViewport(0, 0, m_RTs[0]->resolutionX, m_RTs[0]->resolutionY);
-		drawShadowScene();
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		glUseProgram(0);
+		for (int i = 0; i < m_dirLights.size(); i++)
+		{
+			std::shared_ptr<ShadowMap> shadowmap = m_dirLights[i]->getShadowMap();
+			glUseProgram(m_shadowSh->getId());
+			updateShadowMapShader(i);
+			glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
+			glClear(GL_DEPTH_BUFFER_BIT);
+			glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
+			drawShadowScene();
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			glUseProgram(0);
+		}
 
 		updateShader();
-		glBindFramebuffer(GL_FRAMEBUFFER, m_RTs[1]->fBufID);
+		glBindFramebuffer(GL_FRAMEBUFFER, m_RT->fBufID);
 		glClearColor(0.0, 0.0, 0.0, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glViewport(0, 0, m_RTs[1]->resolutionX, m_RTs[1]->resolutionY);
+		glViewport(0, 0, m_RT->resolutionX, m_RT->resolutionY);
 		drawScene();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 			
@@ -160,6 +160,7 @@ namespace Engine
 		}
 	}
 
+	//GRAPHICS UNIT
 	void Core::drawShadowScene()
 	{
 		for (size_t ei = 0; ei < m_entities.size(); ei++)
@@ -226,49 +227,40 @@ namespace Engine
 		}
 	}
 
+	//THESE SHADERS WERE MODIFIED TO ACCOMODATE SHADOWMAPS AS PART OF THE GRAPHICS UNIT
 	void Core::updateShader()
 	{
 		//Lighting Shaders
 		m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
-		glm::mat4 model(1.0f);
-		model = glm::lookAt(m_camera->transform()->getPosition(), m_camera->transform()->getPosition() + m_camera->transform()->getFwd(), m_camera->transform()->getUp());
+		glm::mat4 view(1.0f);
+		view = glm::lookAt(m_camera->transform()->getPosition(), m_camera->transform()->getPosition() + m_camera->transform()->getFwd(), m_camera->transform()->getUp());
 		
-		m_lightingSh->setUniform("in_View", model); // Establish the view matrix		
-		m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));		
+		m_lightingSh->setUniform("in_View", view); // Establish the view matrix		
+		m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
 		m_lightingSh->setUniform("in_CamPos", m_camera->transform()->m_position);
-		m_lightingSh->setUniform("in_shadowMap", m_RTs[0]);
 		
-		glm::mat4 lightMatrix = glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, 0.0f, 50.0f) * glm::lookAt(m_sun->transform()->getPosition(), m_sun->transform()->getPosition() + m_sun->transform()->getFwd(), m_sun->transform()->getUp());
-		m_lightingSh->setUniform("in_LightMatrix", lightMatrix);
+		//glm::mat4 lightMatrix = m_dirLights[0]->getShadowMap()->getLightSpaceMatrix();
+		//m_lightingSh->setUniform("in_LightMatrix", lightMatrix);
 
 		//Shader for the screen quad (For render textures)
 		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
-		m_sqShader->setUniform("in_Texture", m_RTs[1]);
+		m_sqShader->setUniform("in_Texture", m_RT);
 	}
 
-	void Core::updateShadowMapShader() //TODO: support multiple directional lights (Pass in arrays instead)
+	//THIS IS TO UPDATE THE SHADOWMAP'S SHADER, AS PART OF THE GRAPHICS UNIT
+	void Core::updateShadowMapShader(int _i) //TODO: support multiple directional lights (Pass in arrays instead)
 	{
 		//Shadow Shaders
-		m_shadowSh->setUniform("in_Projection", glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, 0.0f, 50.0f)); //Set the projection uniform
-		glm::mat4 model(1.0f);
-		model = glm::lookAt(m_sun->transform()->getPosition(), m_sun->transform()->getPosition() + m_sun->transform()->getFwd(), m_sun->transform()->getUp()); 
-		m_shadowSh->setUniform("in_View", model); // Establish the view matrix		
+		m_shadowSh->setUniform("in_LightSpaceMatrix", m_dirLights[_i]->getShadowMap()->getLightSpaceMatrix());
 	}
 
+	//GRAPHICS UNIT
 	std::shared_ptr<RenderTexture> Core::createRenderTexture()
 	{
 		std::shared_ptr<RenderTexture> RT = std::make_shared<RenderTexture>();
-		RT->Initialise();
-		m_RTs.push_back(RT);
+		RT->Initialise();	
+		m_RT = RT;
 		return RT;
-	}
-
-	std::shared_ptr<ShadowMap> Core::createShadowMap()
-	{
-		std::shared_ptr<ShadowMap> SM = std::make_shared<ShadowMap>();
-		SM->Initialise();
-		m_RTs.push_back(SM);
-		return SM;
 	}
 
 	void Core::createScreenQuad()

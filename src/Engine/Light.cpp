@@ -3,6 +3,7 @@
 #include "Light.h"
 #include "Entity.h"
 #include "Shader.h"
+#include "RenderTexture.h"
 
 namespace Engine
 {
@@ -12,12 +13,16 @@ namespace Engine
 		m_specIntens = _specular;
 		m_ambient = _ambient;		
 		m_antiLight = 0;
+
+		m_SM = std::make_shared<ShadowMap>();
+		m_SM->Initialise();
 	}
 
 	void DirLight::onTick()
 	{
-		getEntity();
-		getEntity()->getCore();
+		glm::mat4 view(1.0f);
+		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + transform()->getFwd(), transform()->getUp());
+		getShadowMap()->setLightSpaceMatrix(glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, 0.0f, 50.0f) * view);
 
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
 		std::string uniform;
@@ -33,6 +38,12 @@ namespace Engine
 
 		uniform = "in_dLight[0].m_direction";
 		_lSh->setUniform(uniform, transform()->getFwd());
+
+		uniform = "in_dLight[0].m_shadowMap";
+		_lSh->setUniform(uniform, getShadowMap());
+
+		uniform = "in_LightMatrix";
+		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
 
 		transform()->rotate(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f);
 	}

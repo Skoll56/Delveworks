@@ -23,10 +23,30 @@ namespace Engine
 		std::shared_ptr<T> addComponent()
 		{
 			std::shared_ptr<T> rtn = std::make_shared<T>();
+			bool foundType = false;
 			std::shared_ptr<Transform> t = std::dynamic_pointer_cast<Transform>(rtn);
 			if (t) 
 			{ 
+				foundType = true;
 				m_transform = t; 
+			}
+			if (!foundType)
+			{
+				std::shared_ptr<DirLight> d = std::dynamic_pointer_cast<DirLight>(rtn);
+				if (d)
+				{
+					foundType = true;
+					core.lock()->m_dirLights.push_back(d);
+				}
+			}
+			if (!foundType)
+			{
+				std::shared_ptr<SpotLight> s = std::dynamic_pointer_cast<SpotLight>(rtn);
+				if (s)
+				{
+					foundType = true;
+					core.lock()->m_spotLights.push_back(s);
+				}
 			}
 			rtn->m_transform = m_transform;
 			rtn->m_entity = self;
@@ -34,6 +54,7 @@ namespace Engine
 			components.push_back(rtn);
 			return rtn;
 		}
+
 		void tick();
 		void afterTick();
 

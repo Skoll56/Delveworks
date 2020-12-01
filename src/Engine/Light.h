@@ -6,6 +6,7 @@
 
 namespace Engine
 {
+	class ShadowMap;
 	class Light : public Component
 	{
 	public:		
@@ -15,12 +16,15 @@ namespace Engine
 		void setAnti(bool _val) { m_antiLight = _val; }
 		std::string getTag() { return m_tag; }
 		void setTag(std::string _tag) { m_tag = _tag; }
+		std::shared_ptr<ShadowMap> getShadowMap() { return m_SM; }
+
 
 	protected:		
 		glm::vec3 m_diffuse;
 		float m_specIntens;
 		int m_antiLight;
 		std::string m_tag;
+		std::shared_ptr<ShadowMap> m_SM;
 	};
 
 

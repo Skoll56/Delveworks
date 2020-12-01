@@ -11,6 +11,7 @@
 #include <AL/al.h>
 #include <AL/alc.h> 
 #include "RenderTexture.h"
+#include "Light.h"
 
 
 namespace Engine
@@ -20,10 +21,11 @@ namespace Engine
 	class Camera;
 	class Shader;
 	class VertexArray;
-	class DirLight;
+	
 
 	struct Core
 	{
+		friend class Entity;
 		//Functions
 		static std::shared_ptr<Core> initialise();
 		std::shared_ptr<Entity> createEntity();
@@ -49,9 +51,8 @@ namespace Engine
 		std::vector<std::shared_ptr<Entity>> getAllEntities() { return m_entities; }
 		
 		void updateShader();
-		void updateShadowMapShader();
-		std::shared_ptr<RenderTexture> createRenderTexture();
-		std::shared_ptr<ShadowMap> createShadowMap();
+		void updateShadowMapShader(int _i);
+		std::shared_ptr<RenderTexture> createRenderTexture();		
 		void createScreenQuad();
 
 		std::shared_ptr<Shader> m_sqShader;
@@ -72,12 +73,13 @@ namespace Engine
 		float dTime;
 		long t1;
 		
-		std::vector<std::shared_ptr<RenderTexture>> m_RTs;
+		std::shared_ptr<RenderTexture> m_RT;
 		VertexArray* m_screenQuad;
 
 		std::weak_ptr<Core> m_self;
 		std::shared_ptr<Camera> m_camera;
-		std::shared_ptr<DirLight> m_sun; //
+		std::vector<std::shared_ptr<DirLight>> m_dirLights; 
+		std::vector<std::shared_ptr<SpotLight>> m_spotLights; 
 	};
 }
 

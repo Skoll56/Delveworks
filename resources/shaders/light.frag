@@ -22,6 +22,7 @@ struct DirLight
 	float m_specIntens;
 	vec3 m_direction;
 	vec3 m_ambient;
+	sampler2D m_shadowMap;
 };
 
 struct SpotLight
@@ -44,7 +45,7 @@ uniform SpotLight in_sLight[NUMSPOT];
 
 
 uniform sampler2D in_Texture;
-uniform sampler2D in_shadowMap;
+
 
 uniform vec3 in_Emissive;
 varying vec2 ex_TexCoord;
@@ -80,14 +81,14 @@ vec3 calcDifSpec(vec3 _norm, vec4 _tex, vec3 _difCol, float _specInt, float _att
 
 
 //Reference learn OpenGL
-int ShadowCalculation(vec4 _fragPosLightSpace)
+int ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap)
 {
     // perform perspective divide
     vec3 projCoords = _fragPosLightSpace.xyz / _fragPosLightSpace.w;
     // transform to [0,1] range
     projCoords = projCoords * 0.5 + 0.5;
     // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
-    float closestDepth = texture2D(in_shadowMap, projCoords.xy).r; 
+    float closestDepth = texture2D(_shadowMap, projCoords.xy).r; 
     // get depth of current fragment from light's perspective
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
@@ -118,7 +119,7 @@ void main()
 
   for (int i = 0; i < NUMDIR; i++) // For each directional light
   {	
-	int inShadow = ShadowCalculation(ex_FragPosLightSpace);	
+	int inShadow = ShadowCalculation(ex_FragPosLightSpace, in_dLight[i].m_shadowMap);	
 	
 	if (inShadow == 0)
 	{	   

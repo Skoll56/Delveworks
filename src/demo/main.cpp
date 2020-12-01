@@ -19,6 +19,12 @@ int main()
 	std::shared_ptr<Entity> test = core->createEntity();
 	std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>();
 	MR->Initialise("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
+
+	std::shared_ptr<Entity> sun = core->createEntity();
+	std::shared_ptr<DirLight> d = sun->addComponent<DirLight>();
+	d->setValues(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f));
+	d->transform()->m_position = glm::vec3(0.0f, 20.0f, 0.0f);
+	d->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
 	
 	
 	std::shared_ptr<Entity> floor = core->createEntity();
