@@ -95,18 +95,7 @@ namespace Engine
 			m_entities.at(ei)->afterTick(); //A second tick for after-tick events
 		}
 				
-		for (int i = 0; i < m_dirLights.size(); i++)
-		{
-			std::shared_ptr<ShadowMap> shadowmap = m_dirLights[i]->getShadowMap();
-			glUseProgram(m_shadowSh->getId());
-			updateShadowMapShader(i);
-			glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
-			glClear(GL_DEPTH_BUFFER_BIT);
-			glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
-			drawShadowScene();
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
-			glUseProgram(0);
-		}
+		drawShadowmaps();
 
 		updateShader();
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RT->fBufID);
@@ -207,10 +196,6 @@ namespace Engine
 			throw std::exception();
 		}
 
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
-
 		m_window = SDL_CreateWindow("Delveworks",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
@@ -227,7 +212,7 @@ namespace Engine
 		}
 	}
 
-	//THESE SHADERS WERE MODIFIED TO ACCOMODATE SHADOWMAPS AS PART OF THE GRAPHICS UNIT
+	
 	void Core::updateShader()
 	{
 		//Lighting Shaders
@@ -235,23 +220,44 @@ namespace Engine
 		glm::mat4 view(1.0f);
 		view = glm::lookAt(m_camera->transform()->getPosition(), m_camera->transform()->getPosition() + m_camera->transform()->getFwd(), m_camera->transform()->getUp());
 		
+
 		m_lightingSh->setUniform("in_View", view); // Establish the view matrix		
 		m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
 		m_lightingSh->setUniform("in_CamPos", m_camera->transform()->m_position);
-		
-		//glm::mat4 lightMatrix = m_dirLights[0]->getShadowMap()->getLightSpaceMatrix();
-		//m_lightingSh->setUniform("in_LightMatrix", lightMatrix);
 
 		//Shader for the screen quad (For render textures)
 		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
 		m_sqShader->setUniform("in_Texture", m_RT);
 	}
 
-	//THIS IS TO UPDATE THE SHADOWMAP'S SHADER, AS PART OF THE GRAPHICS UNIT
-	void Core::updateShadowMapShader(int _i) //TODO: support multiple directional lights (Pass in arrays instead)
+	//THIS IS TO DRAW TO THE SHADOWMAP'S FRAMEBUFFERS, AS PART OF THE GRAPHICS UNIT
+	void Core::drawShadowmaps() //TODO: support multiple directional lights (Pass in arrays instead)
 	{
-		//Shadow Shaders
-		m_shadowSh->setUniform("in_LightSpaceMatrix", m_dirLights[_i]->getShadowMap()->getLightSpaceMatrix());
+		for (int i = 0; i < m_dirLights.size(); i++)
+		{
+			std::shared_ptr<ShadowMap> shadowmap = m_dirLights[i]->getShadowMap();
+			glUseProgram(m_shadowSh->getId());
+			m_shadowSh->setUniform("in_LightSpaceMatrix", m_dirLights[i]->getShadowMap()->getLightSpaceMatrix());
+			glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
+			glClear(GL_DEPTH_BUFFER_BIT);
+			glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
+			drawShadowScene();
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			glUseProgram(0);
+		}
+
+		for (int i = 0; i < m_spotLights.size(); i++)
+		{
+			std::shared_ptr<ShadowMap> shadowmap = m_spotLights[i]->getShadowMap();
+			glUseProgram(m_shadowSh->getId());
+			m_shadowSh->setUniform("in_LightSpaceMatrix", m_spotLights[i]->getShadowMap()->getLightSpaceMatrix());
+			glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
+			glClear(GL_DEPTH_BUFFER_BIT);
+			glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
+			drawShadowScene();
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			glUseProgram(0);
+		}		
 	}
 
 	//GRAPHICS UNIT

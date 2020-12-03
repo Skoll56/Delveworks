@@ -1,5 +1,5 @@
-precision mediump float;
 
+precision mediump float;
 uniform sampler2D in_Texture;
 
 varying vec2 ex_TexCoord;

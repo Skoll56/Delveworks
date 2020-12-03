@@ -51,14 +51,14 @@ namespace Engine
 		std::vector<std::shared_ptr<Entity>> getAllEntities() { return m_entities; }
 		
 		void updateShader();
-		void updateShadowMapShader(int _i);
+		void drawShadowmaps();
 		std::shared_ptr<RenderTexture> createRenderTexture();		
 		void createScreenQuad();
 
 		std::shared_ptr<Shader> m_sqShader;
 		std::shared_ptr<Shader> m_lightingSh;
 		std::shared_ptr<Shader> m_shadowSh;
-
+		std::shared_ptr<Camera> m_camera;
 	private:
 		std::vector<std::shared_ptr<Entity>> m_entities;		
 		int permX, permY;
@@ -77,7 +77,7 @@ namespace Engine
 		VertexArray* m_screenQuad;
 
 		std::weak_ptr<Core> m_self;
-		std::shared_ptr<Camera> m_camera;
+		
 		std::vector<std::shared_ptr<DirLight>> m_dirLights; 
 		std::vector<std::shared_ptr<SpotLight>> m_spotLights; 
 	};

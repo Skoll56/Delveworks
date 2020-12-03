@@ -40,6 +40,7 @@ namespace Engine
 	protected:
 
 		float m_radius;
+		float m_brightness;
 		float m_quadratic;
 	};
 
@@ -64,17 +65,14 @@ namespace Engine
 	class SpotLight : public PointLight
 	{
 	public:
-		void setValues(glm::vec3 _pos, glm::vec3 _diffuse, float _specular, float _angle, float _fadeAngle, float _radius, float _quadratic, glm::vec3 _direction);
+		void setValues(glm::vec3 _color, float _specular, float _angle, float _fadeAngle, float _radius, float _brightness);
+		void onTick();
 		float getAngle() { return m_angle; }
 		float getFangle() { return m_fadeAngle; }
-		glm::vec3 getDirection() { return m_direction; }
-		void setDirection(glm::vec3 _dir) { m_direction = _dir; }
-
 
 	private:
 		float m_angle;
-		float m_fadeAngle;
-		glm::vec3 m_direction;
+		float m_fadeAngle;		
 	};
 }
 #endif

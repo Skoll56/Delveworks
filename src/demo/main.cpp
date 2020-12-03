@@ -2,14 +2,6 @@
 #include <Engine/Engine.h>
 #define OUTPUT(vec) std::cout << vec.x << " " << vec.y << " " << vec.z <<std::endl;
 
-class DebugObject : public Component
-{
-	void DebugObject::onTick()
-	{
-		OUTPUT(transform()->getPosition())
-	}
-};
-
 #undef main
 int main()
 {	
@@ -20,11 +12,19 @@ int main()
 	std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>();
 	MR->Initialise("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
 
-	std::shared_ptr<Entity> sun = core->createEntity();
+	/*std::shared_ptr<Entity> sun = core->createEntity();
 	std::shared_ptr<DirLight> d = sun->addComponent<DirLight>();
 	d->setValues(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f));
 	d->transform()->m_position = glm::vec3(0.0f, 20.0f, 0.0f);
-	d->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
+	d->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);*/
+
+	std::shared_ptr<Entity> spot = core->createEntity();
+	std::shared_ptr<SpotLight> s= spot->addComponent<SpotLight>();
+	s->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);
+	s->transform()->m_position = glm::vec3(0.0f, 20.0f, 8.0f);
+	s->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
+	//s->transform()->m_eulerAngles = core->m_camera->transform()->m_eulerAngles;
+	//s->transform()->m_position = core->m_camera->transform()->m_position;
 	
 	
 	std::shared_ptr<Entity> floor = core->createEntity();
@@ -41,7 +41,7 @@ int main()
 		MR3->Initialise("Image1.bmp", "1b1sphere.obj", glm::vec3(1.0f, 1.0f, 1.0f));
 		ball->transform()->setScale(glm::vec3(1.0f, 1.0f, 1.0f));
 		ball->transform()->setPosition(glm::vec3(0.0f + (i * 0.2f), 8.0f + (i * 1.5f), 8.0f));
-		std::shared_ptr<SphereCollider> s = ball->addComponent<SphereCollider>();
+		std::shared_ptr<SphereCollider> sc = ball->addComponent<SphereCollider>();
 		std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>();
 		phys->Initialise(1.0f, 0.9f);
 	}	
@@ -49,9 +49,3 @@ int main()
 	core->start();
 	return 0;
 }
-
-//int OldMain()
-//{
-//	
-//	
-//}
