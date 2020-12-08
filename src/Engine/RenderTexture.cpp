@@ -74,5 +74,23 @@ namespace Engine
 		glReadBuffer(GL_NONE);
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glBindTexture(GL_TEXTURE_2D, 0);
+
+
+		/*glGenRenderbuffers(1, &rBufObjID);
+		if (!rBufObjID)
+		{
+			throw std::exception();
+		}
+		glBindRenderbuffer(GL_RENDERBUFFER, rBufObjID);
+		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, resolutionX, resolutionY);
+		glBindRenderbuffer(GL_RENDERBUFFER, 0);
+		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rBufObjID);
+
+		
+
+		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+		{
+			throw std::exception();
+		}*/
 	}
 }

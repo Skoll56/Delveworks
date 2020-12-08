@@ -1,6 +1,9 @@
 
 precision mediump float;
 //Fragment shader for light-affected objects
+
+
+
 #define NUMPOINT 1
 #define NUMDIR 1
 #define NUMSPOT 1
@@ -92,8 +95,11 @@ int ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap)
     // get depth of current fragment from light's perspective
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
-    int shadow = currentDepth - (0.005 / _fragPosLightSpace.w) > closestDepth  ? 1 : 0;
-	return shadow;
+    float shadow = currentDepth - (0.005 / _fragPosLightSpace.w) > closestDepth  ? 1.0 : 0.0;
+
+    if (shadow == 1.0) {return 1;}    
+    else {return 0;} 
+	
 }  
 
 

@@ -4,7 +4,6 @@
 #include "Entity.h"
 #include "Shader.h"
 #include "RenderTexture.h"
-#define OUTPUT(vec) std::cout << vec.x << " " << vec.y << " " << vec.z <<std::endl;
 
 namespace Engine
 {
@@ -18,12 +17,12 @@ namespace Engine
 		m_SM = std::make_shared<ShadowMap>();
 		m_SM->Initialise();
 	}
-	
+
 	void DirLight::onTick()
 	{
 		glm::mat4 view(1.0f);
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + transform()->getFwd(), transform()->getUp());
-		getShadowMap()->setLightSpaceMatrix(glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, -50.0f, 50.0f) * view);
+		getShadowMap()->setLightSpaceMatrix(glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, 0.0f, 50.0f) * view);
 
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
 		std::string uniform;
@@ -75,14 +74,12 @@ namespace Engine
 		m_SM->Initialise();
 	}
 
-	
-
 	void SpotLight::onTick()
 	{
 		glm::mat4 view(1.0f);
-		glm::vec3 pos = transform()->getPosition();
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + transform()->getFwd(), transform()->getUp());
-		getShadowMap()->setLightSpaceMatrix(glm::perspective(glm::radians(getFangle() * 2.0f), 1.0f, 0.1f, getRadius()) * view);		
+		getShadowMap()->setLightSpaceMatrix(glm::perspective(glm::radians(getFangle() * 2.0f), 1.0f, 0.1f, getRadius()) * view);
+		//getShadowMap()->setLightSpaceMatrix(glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, 0.0f, 50.0f) * view);
 		m_quadratic = 0.027f / m_brightness;
 
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
@@ -120,6 +117,6 @@ namespace Engine
 		uniform = "in_sLight[0].m_lightMatrix";
 		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
 
-		
+		//transform()->rotate(glm::vec3(1.0f, 1.0f, 0.5f), 2.5f);
 	}
 }
