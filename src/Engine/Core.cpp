@@ -36,7 +36,7 @@ namespace Engine
 		//Create some necessary entities (TODO: Will be improved later)
 		std::shared_ptr<Entity> e = rtn->createEntity();
 		e->transform()->m_position = glm::vec3(0.0f, 8.0f, -8.0f);
-		e->transform()->m_eulerAngles = glm::vec3(0.0f, -90.0f, -0.0f);
+		e->transform()->m_eulerAngles = glm::vec3(0.0f, 0.0f, 0.0f);
 		rtn->m_camera = e->addComponent<Camera>();
 
 		
@@ -227,11 +227,13 @@ namespace Engine
 
 		//Shader for the screen quad (For render textures)
 		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
-		m_sqShader->setUniform("in_Texture", m_RT);
+		//m_sqShader->setUniform("in_Texture", m_RT);
+		//Uncomment to draw to depth map
+		m_sqShader->setUniform("in_Texture", m_dirLights[0]->getShadowMap());
 	}
 
 	//THIS IS TO DRAW TO THE SHADOWMAP'S FRAMEBUFFERS, AS PART OF THE GRAPHICS UNIT
-	void Core::drawShadowmaps() //TODO: support multiple directional lights (Pass in arrays instead)
+	void Core::drawShadowmaps() 
 	{
 		for (int i = 0; i < m_dirLights.size(); i++)
 		{
