@@ -55,7 +55,7 @@ namespace Engine
 		glm::vec3 m_diffuse;
 		float m_specIntens;		
 		glm::vec3 getAmb() { return m_ambient; }
-		void onTick();		
+		void update(int _i);
 	private:
 		
 		glm::vec3 m_ambient;
@@ -66,7 +66,7 @@ namespace Engine
 	{
 	public:
 		void setValues(glm::vec3 _color, float _specular, float _angle, float _fadeAngle, float _radius, float _brightness);
-		void onTick();
+		void update(int _i);
 		float getAngle() { return m_angle; }
 		float getFangle() { return m_fadeAngle; }
 

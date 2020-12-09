@@ -37,7 +37,7 @@ namespace Engine
 		
 
 		//Not functions		
-		Input* m_input;
+		std::shared_ptr<Input> m_input;
 		std::shared_ptr<ResourceManager> m_rManager;
 
 		//SDL OPENGL and OPENAL STUFF		

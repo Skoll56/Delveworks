@@ -12,7 +12,7 @@ namespace Engine
 
 		public:				
 		void onInitialise();
-		void update(float _dTime, Input *_input);
+		void update(float _dTime, std::shared_ptr<Input> _input);
 	};
 }
 

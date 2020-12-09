@@ -4,12 +4,18 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/quaternion.hpp>
 #include "Entity.h"
+#include "Input.h"
 
 namespace Engine
 {
 	void Component::destroy()
 	{
 		m_delete = true;
+	}
+
+	std::shared_ptr<Input> Component::input()
+	{
+		 return getEntity()->getCore()->m_input; 
 	}
 
 	void Component::onInitialise()
@@ -103,6 +109,8 @@ namespace Engine
 		m_fwd.z = sin(glm::radians(m_eulerAngles.y)) * cos(glm::radians(m_eulerAngles.x));
 		m_fwd = glm::normalize(-m_fwd); //Idk why it's -fwd but for some reason it works, so, moving along.
 		m_right = glm::normalize(glm::cross(glm::vec3(0.0f, 1.0f, 0.0f), m_fwd));
+
+		
 	}
 
 	void Transform::onInitialise()

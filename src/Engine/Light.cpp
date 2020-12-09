@@ -18,7 +18,7 @@ namespace Engine
 		m_SM->Initialise();
 	}
 
-	void DirLight::onTick()
+	void DirLight::update(int _i)
 	{
 		glm::mat4 view(1.0f);
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + transform()->getFwd(), transform()->getUp());
@@ -26,23 +26,24 @@ namespace Engine
 
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
 		std::string uniform;
-		uniform = "in_dLight[0].m_specIntens";
+		std::string itr = std::to_string(_i);
+		uniform = "in_dLight[" + itr + "].m_specIntens";
 		float t = getSpec();
 		_lSh->setUniform(uniform, getSpec());
 
-		uniform = "in_dLight[0].m_diffuse";
+		uniform = "in_dLight[" + itr + "].m_diffuse";
 		_lSh->setUniform(uniform, getDif());
 
-		uniform = "in_dLight[0].m_ambient";
+		uniform = "in_dLight[" + itr + "].m_ambient";
 		_lSh->setUniform(uniform, getAmb());
 
-		uniform = "in_dLight[0].m_direction";
+		uniform = "in_dLight[" + itr + "].m_direction";
 		_lSh->setUniform(uniform, transform()->getFwd());
 
-		uniform = "in_dLight[0].m_shadowMap";
+		uniform = "in_dLight[" + itr + "].m_shadowMap";
 		_lSh->setUniform(uniform, getShadowMap());
 
-		uniform = "in_dLight[0].m_lightMatrix";
+		uniform = "in_dLight[" + itr + "].m_lightMatrix";
 		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
 	}
 
@@ -74,7 +75,7 @@ namespace Engine
 		m_SM->Initialise();
 	}
 
-	void SpotLight::onTick()
+	void SpotLight::update(int _i)
 	{
 		glm::mat4 view(1.0f);
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + transform()->getFwd(), transform()->getUp());
@@ -83,38 +84,39 @@ namespace Engine
 		m_quadratic = 0.027f / m_brightness;
 
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
-		std::string uniform;
-		uniform = "in_sLight[0].m_specIntens";
+		std::string uniform;	
+		std::string itr = std::to_string(_i);
+		uniform = "in_sLight[" + itr + "].m_specIntens";
 		_lSh->setUniform(uniform, getSpec());
 
-		uniform = "in_sLight[0].m_diffuse";
+		uniform = "in_sLight[" + itr + "].m_diffuse";
 		_lSh->setUniform(uniform, getDif());
 
-		uniform = "in_sLight[0].m_direction";
+		uniform = "in_sLight[" + itr + "].m_direction";
 		_lSh->setUniform(uniform, transform()->getFwd());
 
-		uniform = "in_sLight[0].m_shadowMap";
+		uniform = "in_sLight[" + itr + "].m_shadowMap";
 		_lSh->setUniform(uniform, getShadowMap());
 
-		uniform = "in_sLight[0].m_angle";
+		uniform = "in_sLight[" + itr + "].m_angle";
 		_lSh->setUniform(uniform, glm::cos(glm::radians(getAngle())));
 
-		uniform = "in_sLight[0].m_fadeAngle";
+		uniform = "in_sLight[" + itr + "].m_fadeAngle";
 		_lSh->setUniform(uniform, glm::cos(glm::radians(getFangle())));
 
-		uniform = "in_sLight[0].m_pos";
+		uniform = "in_sLight[" + itr + "].m_pos";
 		_lSh->setUniform(uniform, transform()->getPosition());
 
-		uniform = "in_sLight[0].m_radius";
+		uniform = "in_sLight[" + itr + "].m_radius";
 		_lSh->setUniform(uniform, getRadius());
 
-		uniform = "in_sLight[0].m_quadratic";
+		uniform = "in_sLight[" + itr + "].m_quadratic";
 		_lSh->setUniform(uniform, getQuad());
 
-		uniform = "in_sLight[0].m_antiLight";
+		uniform = "in_sLight[" + itr + "].m_antiLight";
 		_lSh->setUniform(uniform, 0);
 
-		uniform = "in_sLight[0].m_lightMatrix";
+		uniform = "in_sLight[" + itr + "].m_lightMatrix";
 		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
 
 		//transform()->rotate(glm::vec3(1.0f, 1.0f, 0.5f), 2.5f);

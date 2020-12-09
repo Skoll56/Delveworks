@@ -19,10 +19,18 @@ int main()
 	d->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);*/
 
 	std::shared_ptr<Entity> spot = core->createEntity();
-	std::shared_ptr<SpotLight> s= spot->addComponent<SpotLight>();
+	std::shared_ptr<SpotLight> s = spot->addComponent<SpotLight>();
 	s->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);
-	s->transform()->m_position = glm::vec3(0.0f, 20.0f, 8.0f);
-	s->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
+	s->transform()->m_position = glm::vec3(-10.0f, 15.0f, 10.0f);
+	s->transform()->m_eulerAngles = glm::vec3(155.01f, 0.0f, 0.0f);
+
+	std::shared_ptr<Entity> spot2 = core->createEntity();
+	std::shared_ptr<SpotLight> s2 = spot2->addComponent<SpotLight>();
+	s2->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);
+	s2->transform()->m_position = glm::vec3(10.0f, 15.0f, 10.0f);
+	s2->transform()->m_eulerAngles = glm::vec3(90.01f - 65.0f, 0.0f, 0.0f);
+	
+
 	//s->transform()->m_eulerAngles = core->m_camera->transform()->m_eulerAngles;
 	//s->transform()->m_position = core->m_camera->transform()->m_position;
 	

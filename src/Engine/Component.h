@@ -9,6 +9,7 @@ namespace Engine
 {
 	class Entity;	
 	class Transform;
+	class Input;
 
 	class Component
 	{
@@ -18,6 +19,7 @@ namespace Engine
 		void destroy();
 		std::shared_ptr<Entity> getEntity() { return m_entity.lock(); }
 		std::shared_ptr<Transform> transform() { return m_transform.lock(); }
+		std::shared_ptr<Input> input();
 
 	protected:
 		virtual void onInitialise();
@@ -48,6 +50,7 @@ namespace Engine
 		glm::vec3 getFwd() { return m_fwd; }
 		glm::vec3 m_position = glm::vec3(0.0f);
 		glm::vec3 m_eulerAngles = glm::vec3(0.0f);
+		
 
 	private:		
 		glm::vec3 m_scale = glm::vec3(1.0f);

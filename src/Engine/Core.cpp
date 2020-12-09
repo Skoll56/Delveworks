@@ -25,7 +25,7 @@ namespace Engine
 		rtn->m_rManager = std::make_shared<ResourceManager>();
 		rtn->initialiseSDL();
 		rtn->initialiseAL();
-		rtn->m_input = new Input();
+		rtn->m_input = std::make_shared<Input>();
 		rtn->initialiseShaders();
 
 		rtn->m_self = rtn;
@@ -93,6 +93,16 @@ namespace Engine
 		for (size_t ei = 0; ei < m_entities.size(); ei++)
 		{
 			m_entities.at(ei)->afterTick(); //A second tick for after-tick events
+		}
+
+		for (int di = 0; di < m_dirLights.size(); di++)
+		{
+			m_dirLights.at(di)->update(di); //A second tick for after-tick events
+		}
+
+		for (int si = 0; si < m_spotLights.size(); si++)
+		{
+			m_spotLights.at(si)->update(si); //A second tick for after-tick events
 		}
 				
 		drawShadowmaps();

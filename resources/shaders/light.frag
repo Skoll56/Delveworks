@@ -6,7 +6,7 @@ precision mediump float;
 
 #define NUMPOINT 1
 #define NUMDIR 1
-#define NUMSPOT 1
+#define NUMSPOT 2
 
 struct PointLight
 {
