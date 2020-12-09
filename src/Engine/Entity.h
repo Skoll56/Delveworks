@@ -23,31 +23,8 @@ namespace Engine
 		std::shared_ptr<T> addComponent()
 		{
 			std::shared_ptr<T> rtn = std::make_shared<T>();
-			bool foundType = false;
-			std::shared_ptr<Transform> t = std::dynamic_pointer_cast<Transform>(rtn);
-			if (t) 
-			{ 
-				foundType = true;
-				m_transform = t; 
-			}
-			if (!foundType)
-			{
-				std::shared_ptr<DirLight> d = std::dynamic_pointer_cast<DirLight>(rtn);
-				if (d)
-				{
-					foundType = true;
-					core.lock()->m_dirLights.push_back(d);
-				}
-			}
-			if (!foundType)
-			{
-				std::shared_ptr<SpotLight> s = std::dynamic_pointer_cast<SpotLight>(rtn);
-				if (s)
-				{
-					foundType = true;
-					core.lock()->m_spotLights.push_back(s);
-				}
-			}
+			checkType(rtn);
+
 			rtn->m_transform = m_transform;
 			rtn->m_entity = self;
 			rtn->onInitialise();
@@ -86,6 +63,45 @@ namespace Engine
 		std::shared_ptr<Transform> transform() { return m_transform; }
 
 	private:
+		template <typename T>
+		void checkType(std::shared_ptr<T> _rtn)
+		{
+			bool foundType = false;
+			std::shared_ptr<Transform> t = std::dynamic_pointer_cast<Transform>(_rtn);
+			if (t)
+			{
+				foundType = true;
+				m_transform = t;
+			}
+			if (!foundType)
+			{
+				std::shared_ptr<DirLight> d = std::dynamic_pointer_cast<DirLight>(_rtn);
+				if (d)
+				{
+					foundType = true;
+					core.lock()->m_dirLights.push_back(d);
+				}
+			}
+			if (!foundType)
+			{
+				std::shared_ptr<SpotLight> s = std::dynamic_pointer_cast<SpotLight>(_rtn);
+				if (s)
+				{
+					foundType = true;
+					core.lock()->m_spotLights.push_back(s);
+				}
+			}
+			if (!foundType)
+			{
+				std::shared_ptr<PointLight> p = std::dynamic_pointer_cast<PointLight>(_rtn);
+				if (p)
+				{
+					foundType = true;
+					core.lock()->m_pointLights.push_back(p);
+				}
+			}
+		}
+
 		std::vector<std::shared_ptr<Component>> components;		
 		std::weak_ptr<Core> core;
 		std::weak_ptr<Entity> self;

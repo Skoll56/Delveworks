@@ -48,15 +48,21 @@ namespace Engine
 	}
 
 
-	void PointLight::setValues(glm::vec3 _pos, glm::vec3 _diffuse, float _specular, float _radius, float _quadratic)
-	{
-		
+	void PointLight::setValues(glm::vec3 _diffuse, float _specular, float _radius, float _brightness)
+	{		
 		m_diffuse = _diffuse;
 		m_specIntens = _specular;
 		m_radius = _radius;
-		m_quadratic = _quadratic;
+		m_quadratic = 0.027f / m_brightness / _brightness;
+		m_brightness = _brightness;
 		m_antiLight = 0;
 		
+		m_SC.resize(6);
+		for (int i = 0; i < 6; i++)
+		{
+			m_SC[i] = std::make_shared<ShadowMap>();
+			m_SC[i]->Initialise();
+		}
 	}
 
 	void SpotLight::setValues(glm::vec3 _color, float _specular, float _angle, float _fadeAngle, float _radius, float _brightness)
@@ -80,7 +86,6 @@ namespace Engine
 		glm::mat4 view(1.0f);
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + transform()->getFwd(), transform()->getUp());
 		getShadowMap()->setLightSpaceMatrix(glm::perspective(glm::radians(getFangle() * 2.0f), 1.0f, 0.1f, getRadius()) * view);
-		//getShadowMap()->setLightSpaceMatrix(glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, 0.0f, 50.0f) * view);
 		m_quadratic = 0.027f / m_brightness;
 
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
@@ -120,5 +125,64 @@ namespace Engine
 		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
 
 		//transform()->rotate(glm::vec3(1.0f, 1.0f, 0.5f), 2.5f);
+	}
+
+	void PointLight::update(int _i)
+	{
+		glm::mat4 view(1.0f);
+		std::vector<std::shared_ptr<ShadowMap>> SC = getShadowCube();
+		
+		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f));
+		glm::mat4 zero = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius() * 3.0f) * view);
+		SC[0]->setLightSpaceMatrix(zero);
+
+		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f));
+		glm::mat4 one = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()* 3.0f) * view);
+		SC[1]->setLightSpaceMatrix(one);
+
+		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		glm::mat4 two = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()* 3.0f) * view);
+		SC[2]->setLightSpaceMatrix(two);
+
+		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f));
+		glm::mat4 three = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()* 3.0f) * view);
+		SC[3]->setLightSpaceMatrix(three);
+
+		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, -1.0f, 0.0f));
+		glm::mat4 four = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()* 3.0f) * view);
+		SC[4]->setLightSpaceMatrix(four);
+
+		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, -1.0f, 0.0f));
+		glm::mat4 five = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius() * 3.0f) * view);
+		SC[5]->setLightSpaceMatrix(five);
+
+		m_quadratic = 0.027f / m_brightness;
+		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
+		std::string uniform;
+		std::string itr = std::to_string(_i);
+		uniform = "in_pLight[" + itr + "].m_specIntens";
+		_lSh->setUniform(uniform, getSpec());
+
+		uniform = "in_pLight[" + itr + "].m_diffuse";
+		_lSh->setUniform(uniform, getDif());
+
+		for (int i = 0; i < 6; i++)
+		{
+			std::string si = std::to_string(i);
+			uniform = "in_pLight[" + itr + "].m_shadowMap[" + si + "]";
+			_lSh->setUniform(uniform, SC[i]);
+
+			uniform = "in_pLight[" + itr + "].m_lightMatrix[" + si + "]";
+			_lSh->setUniform(uniform, SC[i]->getLightSpaceMatrix());
+		}
+
+		uniform = "in_pLight[" + itr + "].m_pos";
+		_lSh->setUniform(uniform, transform()->getPosition());
+
+		uniform = "in_pLight[" + itr + "].m_radius";
+		_lSh->setUniform(uniform, getRadius());
+
+		uniform = "in_pLight[" + itr + "].m_quadratic";
+		_lSh->setUniform(uniform, getQuad());		
 	}
 }

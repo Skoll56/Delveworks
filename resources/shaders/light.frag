@@ -6,7 +6,7 @@ precision mediump float;
 
 #define NUMPOINT 1
 #define NUMDIR 1
-#define NUMSPOT 2
+#define NUMSPOT 1
 
 struct PointLight
 {
@@ -15,6 +15,8 @@ struct PointLight
 	float m_specIntens;
 	float m_radius;
 	float m_quadratic;
+	sampler2D m_shadowMap[6];
+	mat4 m_lightMatrix[6];
 };
 
 struct DirLight
@@ -95,10 +97,8 @@ int ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap)
     // get depth of current fragment from light's perspective
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
-    float shadow = currentDepth - (0.005 / _fragPosLightSpace.w) > closestDepth  ? 1.0 : 0.0;
-
-    if (shadow == 1.0) {return 1;}    
-    else {return 0;} 
+    int shadow = currentDepth - (0.005 / _fragPosLightSpace.w) > closestDepth  ? 1 : 0;
+	return shadow;
 	
 }  
 
@@ -134,11 +134,20 @@ void main()
 
   for (int i = 0; i < NUMPOINT; i++) // For each point light
   {
-	lDir = normalize(in_pLight[i].m_pos - ex_FragPos);
-	float d = length(in_pLight[i].m_pos - ex_FragPos);	
-	float linear = 4.5 / in_pLight[i].m_radius;
-	attenuation = 1.0 / (1.0 + linear * d + in_pLight[i].m_quadratic * (d * d));
-	light += max(calcDifSpec(norm, tex, in_pLight[i].m_diffuse, in_pLight[i].m_specIntens, attenuation, lDir), 0.0); // Don't add negative light. That would be silly.
+	int inShadow = 0;
+    for (int l = 0; l < 6; l++)
+	{
+		FragPosLightSpace = (in_pLight[i].m_lightMatrix[l]) * vec4(ex_FragPos, 1.0);
+		inShadow = inShadow + ShadowCalculation(FragPosLightSpace, in_pLight[i].m_shadowMap[l]);
+	}
+	if (inShadow == 4) //If all 6 faces are in shadow, the total will be 6. If any single face can see the fragment, the total will be under 6.
+	{
+		lDir = normalize(in_pLight[i].m_pos - ex_FragPos);
+		float d = length(in_pLight[i].m_pos - ex_FragPos);	
+		float linear = 4.5 / in_pLight[i].m_radius;
+		attenuation = 1.0 / (1.0 + linear * d + in_pLight[i].m_quadratic * (d * d));
+		light += max(calcDifSpec(norm, tex, in_pLight[i].m_diffuse, in_pLight[i].m_specIntens, attenuation, lDir), 0.0); // Don't add negative light. That would be silly.
+	}
   }
 
    for (int i = 0; i < NUMSPOT; i++) // For each spotLight

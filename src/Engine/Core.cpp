@@ -97,12 +97,17 @@ namespace Engine
 
 		for (int di = 0; di < m_dirLights.size(); di++)
 		{
-			m_dirLights.at(di)->update(di); //A second tick for after-tick events
+			m_dirLights.at(di)->update(di); 
 		}
 
 		for (int si = 0; si < m_spotLights.size(); si++)
 		{
-			m_spotLights.at(si)->update(si); //A second tick for after-tick events
+			m_spotLights.at(si)->update(si); 
+		}
+
+		for (int pi = 0; pi < m_pointLights.size(); pi++)
+		{
+			m_pointLights.at(pi)->update(pi);
 		}
 				
 		drawShadowmaps();
@@ -237,11 +242,15 @@ namespace Engine
 
 		//Shader for the screen quad (For render textures)
 		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
+		//Change to Shadowmap to view depth buffer
 		m_sqShader->setUniform("in_Texture", m_RT);
+		//m_sqShader->setUniform("in_Texture", m_pointLights[0]->getShadowCube()[0]);
+		//m_sqShader->setUniform("in_nearPlane", 0.01f);
+		//m_sqShader->setUniform("in_farPlane", m_pointLights[0]->getRadius());
 	}
 
 	//THIS IS TO DRAW TO THE SHADOWMAP'S FRAMEBUFFERS, AS PART OF THE GRAPHICS UNIT
-	void Core::drawShadowmaps() //TODO: support multiple directional lights (Pass in arrays instead)
+	void Core::drawShadowmaps() 
 	{
 		for (int i = 0; i < m_dirLights.size(); i++)
 		{
@@ -268,6 +277,22 @@ namespace Engine
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
 			glUseProgram(0);
 		}		
+
+		for (int i = 0; i < m_pointLights.size(); i++)
+		{
+			std::vector<std::shared_ptr<ShadowMap>> shadowcube = m_pointLights[i]->getShadowCube();
+			for (int l = 0; l < 6; l++)
+			{
+				glUseProgram(m_shadowSh->getId());
+				m_shadowSh->setUniform("in_LightSpaceMatrix", shadowcube[l]->getLightSpaceMatrix());
+				glBindFramebuffer(GL_FRAMEBUFFER, shadowcube[l]->fBufID);
+				glClear(GL_DEPTH_BUFFER_BIT);
+				glViewport(0, 0, shadowcube[l]->resolutionX, shadowcube[l]->resolutionY);
+				drawShadowScene();
+				glBindFramebuffer(GL_FRAMEBUFFER, 0);
+				glUseProgram(0);
+			}
+		}
 	}
 
 	//GRAPHICS UNIT

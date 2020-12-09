@@ -80,6 +80,7 @@ namespace Engine
 		
 		std::vector<std::shared_ptr<DirLight>> m_dirLights; 
 		std::vector<std::shared_ptr<SpotLight>> m_spotLights; 
+		std::vector<std::shared_ptr<PointLight>> m_pointLights; 
 	};
 }
 

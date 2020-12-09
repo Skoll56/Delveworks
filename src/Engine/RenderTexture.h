@@ -29,6 +29,8 @@ namespace Engine
 	private:
 		glm::mat4 m_lSpaceMatrix;
 	};
+
+	
 }
 
 #endif
