@@ -55,14 +55,10 @@ namespace Engine
 		m_radius = _radius;
 		m_quadratic = 0.027f / m_brightness / _brightness;
 		m_brightness = _brightness;
-		m_antiLight = 0;
-		
-		m_SC.resize(6);
-		for (int i = 0; i < 6; i++)
-		{
-			m_SC[i] = std::make_shared<ShadowMap>();
-			m_SC[i]->Initialise();
-		}
+		m_antiLight = 0;		
+
+		m_SC = std::make_shared<ShadowCube>();
+		m_SC->Initialise();
 	}
 
 	void SpotLight::setValues(glm::vec3 _color, float _specular, float _angle, float _fadeAngle, float _radius, float _brightness)
@@ -130,31 +126,31 @@ namespace Engine
 	void PointLight::update(int _i)
 	{
 		glm::mat4 view(1.0f);
-		std::vector<std::shared_ptr<ShadowMap>> SC = getShadowCube();
+		std::shared_ptr<ShadowCube> SC = getShadowCube();
 		
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f));
-		glm::mat4 zero = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius() * 3.0f) * view);
-		SC[0]->setLightSpaceMatrix(zero);
+		glm::mat4 zero = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()) * view);
+		SC->setMatrix(0, zero);
 
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f));
-		glm::mat4 one = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()* 3.0f) * view);
-		SC[1]->setLightSpaceMatrix(one);
+		glm::mat4 one = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()) * view);
+		SC->setMatrix(1, one);
 
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-		glm::mat4 two = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()* 3.0f) * view);
-		SC[2]->setLightSpaceMatrix(two);
+		glm::mat4 two = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()) * view);
+		SC->setMatrix(2, two);
 
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f));
-		glm::mat4 three = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()* 3.0f) * view);
-		SC[3]->setLightSpaceMatrix(three);
+		glm::mat4 three = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()) * view);
+		SC->setMatrix(3, three);
 
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, -1.0f, 0.0f));
-		glm::mat4 four = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()* 3.0f) * view);
-		SC[4]->setLightSpaceMatrix(four);
+		glm::mat4 four = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()) * view);
+		SC->setMatrix(4, four);
 
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, -1.0f, 0.0f));
-		glm::mat4 five = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius() * 3.0f) * view);
-		SC[5]->setLightSpaceMatrix(five);
+		glm::mat4 five = (glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, getRadius()) * view);
+		SC->setMatrix(5, five);
 
 		m_quadratic = 0.027f / m_brightness;
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
@@ -164,17 +160,14 @@ namespace Engine
 		_lSh->setUniform(uniform, getSpec());
 
 		uniform = "in_pLight[" + itr + "].m_diffuse";
-		_lSh->setUniform(uniform, getDif());
+		_lSh->setUniform(uniform, getDif());		
+		
+		uniform = "in_pLight[" + itr + "].m_shadowMap";
+		_lSh->setUniform(uniform, SC);
 
-		for (int i = 0; i < 6; i++)
-		{
-			std::string si = std::to_string(i);
-			uniform = "in_pLight[" + itr + "].m_shadowMap[" + si + "]";
-			_lSh->setUniform(uniform, SC[i]);
-
-			uniform = "in_pLight[" + itr + "].m_lightMatrix[" + si + "]";
-			_lSh->setUniform(uniform, SC[i]->getLightSpaceMatrix());
-		}
+		/*uniform = "in_pLight[" + itr + "].m_lightMatrix[" + si + "]";
+		_lSh->setUniform(uniform, SC[i]->getLightSpaceMatrix());*/
+		
 
 		uniform = "in_pLight[" + itr + "].m_pos";
 		_lSh->setUniform(uniform, transform()->getPosition());

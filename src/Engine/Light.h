@@ -7,6 +7,7 @@
 namespace Engine
 {
 	class ShadowMap;
+	class ShadowCube;
 	class Light : public Component
 	{
 	public:		
@@ -33,13 +34,13 @@ namespace Engine
 	public:
 		PointLight() {};
 		void setValues(glm::vec3 _diffuse, float _specular, float _radius, float _brightness);
-		std::vector<std::shared_ptr<ShadowMap>> getShadowCube() { return m_SC; }
+		std::shared_ptr<ShadowCube> getShadowCube() { return m_SC; }
 		float getRadius() { return m_radius; }
 		float getQuad() { return m_quadratic; }
 		void update(int _i);
 
 	protected:
-		std::vector<std::shared_ptr<ShadowMap>> m_SC;
+		std::shared_ptr<ShadowCube> m_SC;
 		float m_radius;
 		float m_brightness;
 		float m_quadratic;

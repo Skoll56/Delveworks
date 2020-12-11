@@ -165,6 +165,20 @@ namespace Engine
 	}
 
 	//GRAPHICS UNIT
+	void Core::drawPointShadowScene()
+	{
+		for (size_t ei = 0; ei < m_entities.size(); ei++)
+		{
+			std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
+			if (MR)
+			{
+				m_pointShadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
+				m_pointShadowSh->draw(MR->m_vAO);
+			}
+		}
+	}
+
+	//GRAPHICS UNIT
 	void Core::drawShadowScene()
 	{
 		for (size_t ei = 0; ei < m_entities.size(); ei++)
@@ -211,6 +225,10 @@ namespace Engine
 			throw std::exception();
 		}
 
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+
 		m_window = SDL_CreateWindow("Delveworks",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
@@ -244,7 +262,7 @@ namespace Engine
 		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
 		//Change to Shadowmap to view depth buffer
 		m_sqShader->setUniform("in_Texture", m_RT);
-		//m_sqShader->setUniform("in_Texture", m_pointLights[0]->getShadowCube()[0]);
+		//m_sqShader->setUniform("in_Cubemap", m_pointLights[0]->getShadowCube());
 		//m_sqShader->setUniform("in_nearPlane", 0.01f);
 		//m_sqShader->setUniform("in_farPlane", m_pointLights[0]->getRadius());
 	}
@@ -280,18 +298,25 @@ namespace Engine
 
 		for (int i = 0; i < m_pointLights.size(); i++)
 		{
-			std::vector<std::shared_ptr<ShadowMap>> shadowcube = m_pointLights[i]->getShadowCube();
+			std::shared_ptr<ShadowCube> SC = m_pointLights[i]->getShadowCube();
+			glUseProgram(m_shadowSh->getId());
+			glBindFramebuffer(GL_FRAMEBUFFER, SC->fBufID);
+			
+			
+			m_pointShadowSh->setUniform("in_lightPos", m_pointLights[i]->transform()->getPosition());
+			m_pointShadowSh->setUniform("in_farPlane", m_pointLights[i]->getRadius());
+			
 			for (int l = 0; l < 6; l++)
-			{
-				glUseProgram(m_shadowSh->getId());
-				m_shadowSh->setUniform("in_LightSpaceMatrix", shadowcube[l]->getLightSpaceMatrix());
-				glBindFramebuffer(GL_FRAMEBUFFER, shadowcube[l]->fBufID);
+			{	
+				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_CUBE_MAP_POSITIVE_X + l, SC->m_textureId, 0);
 				glClear(GL_DEPTH_BUFFER_BIT);
-				glViewport(0, 0, shadowcube[l]->resolutionX, shadowcube[l]->resolutionY);
-				drawShadowScene();
-				glBindFramebuffer(GL_FRAMEBUFFER, 0);
-				glUseProgram(0);
+				m_pointShadowSh->setUniform("in_LightSpaceMatrix", SC->getMatrix(l));
+				glViewport(0, 0, SC->resolutionX, SC->resolutionY);
+				drawPointShadowScene();
+
 			}
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			glUseProgram(0);
 		}
 	}
 
@@ -353,5 +378,6 @@ namespace Engine
 		m_sqShader = m_rManager->load<Shader>("UI");
 		m_lightingSh = m_rManager->load<Shader>("light");
 		m_shadowSh = m_rManager->load<Shader>("dirShadow");
+		m_pointShadowSh = m_rManager->load<Shader>("pointShadow");
 	}
 }

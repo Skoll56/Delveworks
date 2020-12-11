@@ -16,6 +16,7 @@ namespace Engine
 	
 		int resolutionX, resolutionY, m_channels;
 		GLuint m_textureId;
+		GLuint m_faceTextureID[6];
 	};
 }
 

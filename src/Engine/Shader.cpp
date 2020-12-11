@@ -9,6 +9,7 @@
 #include "VertexArray.h"
 #include "Shader.h"
 #include "Light.h"
+#include "RenderTexture.h"
 
 namespace Engine
 {
@@ -25,7 +26,7 @@ namespace Engine
 		std::string _vert, _frag;
 		_vert = "../resources/shaders/" + _name + ".vert";
 		_frag = "../resources/shaders/" + _name + ".frag";
-		std::cout << "Started Shader load" << std::endl; //
+		std::cout << "Started Shader load: " + _name << std::endl; //
 		std::string vertShader;
 		std::string fragShader;
 
@@ -350,6 +351,34 @@ namespace Engine
 		Sampler s;
 		s.m_uniform_location = uniformId;
 		s.m_tex = _tex;
+		m_sampler.push_back(s);
+
+		glUseProgram(m_id);
+		glUniform1i(uniformId, m_sampler.size() - 1);
+		glUseProgram(0);
+	}
+
+	void Shader::setUniform(std::string _uniform, std::shared_ptr<ShadowCube> _sc)
+	{
+		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
+		if (uniformId == -1) { throw std::exception(); }
+
+		for (size_t i = 0; i < m_sampler.size(); i++)
+		{
+			if (m_sampler.at(i).m_uniform_location == uniformId)
+			{
+				m_sampler.at(i).m_tex = _sc;
+				glUseProgram(m_id);
+				glUniform1i(uniformId, i);
+				glUseProgram(0);
+				return;
+			}
+
+		}
+
+		Sampler s;
+		s.m_uniform_location = uniformId;
+		s.m_tex = _sc;
 		m_sampler.push_back(s);
 
 		glUseProgram(m_id);

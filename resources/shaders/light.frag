@@ -15,8 +15,7 @@ struct PointLight
 	float m_specIntens;
 	float m_radius;
 	float m_quadratic;
-	sampler2D m_shadowMap[6];
-	mat4 m_lightMatrix[6];
+	samplerCube m_shadowMap;	
 };
 
 struct DirLight
@@ -102,6 +101,18 @@ int ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap)
 	
 }  
 
+int ShadowCubeCalculation(vec3 _fragPos, vec3 _lightPos, samplerCube _shadowMap, float _farPlane)
+{
+	vec3 fragToLight = _fragPos - _lightPos;    
+    float closestDepth = texture(_shadowMap, fragToLight).r; 
+	closestDepth *= _farPlane;
+	float currentDepth = length(fragToLight);
+    gl_FragColor = vec4(vec3(closestDepth / _farPlane), 1.0);
+    // check whether current frag pos is in shadow
+    int shadow = currentDepth - 0.1 > closestDepth  ? 1 : 0;
+	return shadow;	
+}  
+
 
 void main()
 {
@@ -134,13 +145,8 @@ void main()
 
   for (int i = 0; i < NUMPOINT; i++) // For each point light
   {
-	int inShadow = 0;
-    for (int l = 0; l < 6; l++)
-	{
-		FragPosLightSpace = (in_pLight[i].m_lightMatrix[l]) * vec4(ex_FragPos, 1.0);
-		inShadow = inShadow + ShadowCalculation(FragPosLightSpace, in_pLight[i].m_shadowMap[l]);
-	}
-	if (inShadow == 4) //If all 6 faces are in shadow, the total will be 6. If any single face can see the fragment, the total will be under 6.
+	int inShadow =  ShadowCubeCalculation(ex_FragPos, in_pLight[i].m_pos, in_pLight[i].m_shadowMap, in_pLight[i].m_radius);	
+	if (inShadow == 0) 
 	{
 		lDir = normalize(in_pLight[i].m_pos - ex_FragPos);
 		float d = length(in_pLight[i].m_pos - ex_FragPos);	

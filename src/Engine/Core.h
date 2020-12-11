@@ -33,6 +33,8 @@ namespace Engine
 		void loop();	
 		void drawScene();
 
+		void drawPointShadowScene();
+
 		void drawShadowScene();
 		
 
@@ -58,6 +60,7 @@ namespace Engine
 		std::shared_ptr<Shader> m_sqShader;
 		std::shared_ptr<Shader> m_lightingSh;
 		std::shared_ptr<Shader> m_shadowSh;
+		std::shared_ptr<Shader> m_pointShadowSh;
 		std::shared_ptr<Camera> m_camera;
 	private:
 		std::vector<std::shared_ptr<Entity>> m_entities;		

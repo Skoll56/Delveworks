@@ -30,7 +30,16 @@ namespace Engine
 		glm::mat4 m_lSpaceMatrix;
 	};
 
-	
+	class ShadowCube : public RenderTexture
+	{
+	public:
+		void Initialise();
+		glm::mat4 getMatrix(int _i) { return m_lSpaceMatrix[_i]; }
+		void setMatrix(int _i, glm::mat4 _mat) { m_lSpaceMatrix[_i] = _mat; }
+
+	private:
+		std::vector<glm::mat4> m_lSpaceMatrix;
+	};
 }
 
 #endif
