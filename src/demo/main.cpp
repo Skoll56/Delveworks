@@ -11,6 +11,7 @@ int main()
 	std::shared_ptr<Entity> test = core->createEntity();
 	std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>();
 	MR->Initialise("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
+	test->transform()->m_position = glm::vec3(0.0f, 1.0f, 0.0f);
 	//test->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
 
 	std::shared_ptr<Entity> sun = core->createEntity();
@@ -19,11 +20,11 @@ int main()
 	d->transform()->m_position = glm::vec3(0.0f, 100.0f, 0.0f);
 	d->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
 
-	/*std::shared_ptr<Entity> point = core->createEntity();
+	std::shared_ptr<Entity> point = core->createEntity();
 	std::shared_ptr<PointLight> p = point->addComponent<PointLight>();
-	p->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 30.0f, 3.0f);
+	p->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 30.0f, 0.5f);
 	p->transform()->m_position = glm::vec3(0.0f, 16.0f, 8.0f);
-	p->transform()->m_eulerAngles = glm::vec3(0.0f, 0.0f, 0.0f);*/
+	p->transform()->m_eulerAngles = glm::vec3(0.0f, 0.0f, 0.0f);
 
 	/*std::shared_ptr<Entity> point2 = core->createEntity();
 	std::shared_ptr<PointLight> p2 = point2->addComponent<PointLight>();
@@ -31,11 +32,11 @@ int main()
 	p2->transform()->m_position = glm::vec3(0.0f, 16.0f, -8.0f);
 	p2->transform()->m_eulerAngles = glm::vec3(0.0f, 0.0f, 0.0f);*/
 
-	std::shared_ptr<Entity> spot2 = core->createEntity();
+	/*std::shared_ptr<Entity> spot2 = core->createEntity();
 	std::shared_ptr<SpotLight> s2 = spot2->addComponent<SpotLight>();
 	s2->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);
 	s2->transform()->m_position = glm::vec3(0.0f, 15.0f, 5.0f);
-	s2->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
+	s2->transform()->m_eulerAngles = glm::vec3(35.0f, 0.0f, 0.0f);*/
 	
 
 	//s->transform()->m_eulerAngles = core->m_camera->transform()->m_eulerAngles;
