@@ -73,8 +73,9 @@ namespace Engine
 		SDL_Event event = { 0 };
 		
 		//Set the clear-colour for the screen and clear it
+		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glEnable(GL_BLEND);		
+		
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		SDL_GetMouseState(&mouseX, &mouseY);
@@ -265,6 +266,7 @@ namespace Engine
 		//m_sqShader->setUniform("in_Cubemap", m_pointLights[0]->getShadowCube());
 		//m_sqShader->setUniform("in_nearPlane", 0.01f);
 		//m_sqShader->setUniform("in_farPlane", m_pointLights[0]->getRadius());
+
 	}
 
 	//THIS IS TO DRAW TO THE SHADOWMAP'S FRAMEBUFFERS, AS PART OF THE GRAPHICS UNIT
@@ -283,6 +285,28 @@ namespace Engine
 			glUseProgram(0);
 		}
 
+		for (int i = 0; i < m_pointLights.size(); i++)
+		{
+			std::shared_ptr<ShadowCube> SC = m_pointLights[i]->getShadowCube();
+			glUseProgram(m_shadowSh->getId());
+			glBindFramebuffer(GL_FRAMEBUFFER, SC->fBufID);
+
+
+			m_pointShadowSh->setUniform("in_lightPos", m_pointLights[i]->transform()->getPosition());
+			m_pointShadowSh->setUniform("in_farPlane", m_pointLights[i]->getRadius());
+
+			for (int l = 0; l < 6; l++)
+			{
+				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_CUBE_MAP_POSITIVE_X + l, SC->m_textureId, 0);
+				glClear(GL_DEPTH_BUFFER_BIT);
+				m_pointShadowSh->setUniform("in_LightSpaceMatrix", SC->getMatrix(l));
+				glViewport(0, 0, SC->resolutionX, SC->resolutionY);
+				drawPointShadowScene();
+			}
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			glUseProgram(0);
+		}
+
 		for (int i = 0; i < m_spotLights.size(); i++)
 		{
 			std::shared_ptr<ShadowMap> shadowmap = m_spotLights[i]->getShadowMap();
@@ -296,28 +320,7 @@ namespace Engine
 			glUseProgram(0);
 		}		
 
-		for (int i = 0; i < m_pointLights.size(); i++)
-		{
-			std::shared_ptr<ShadowCube> SC = m_pointLights[i]->getShadowCube();
-			glUseProgram(m_shadowSh->getId());
-			glBindFramebuffer(GL_FRAMEBUFFER, SC->fBufID);
-			
-			
-			m_pointShadowSh->setUniform("in_lightPos", m_pointLights[i]->transform()->getPosition());
-			m_pointShadowSh->setUniform("in_farPlane", m_pointLights[i]->getRadius());
-			
-			for (int l = 0; l < 6; l++)
-			{	
-				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_CUBE_MAP_POSITIVE_X + l, SC->m_textureId, 0);
-				glClear(GL_DEPTH_BUFFER_BIT);
-				m_pointShadowSh->setUniform("in_LightSpaceMatrix", SC->getMatrix(l));
-				glViewport(0, 0, SC->resolutionX, SC->resolutionY);
-				drawPointShadowScene();
-
-			}
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
-			glUseProgram(0);
-		}
+		
 	}
 
 	//GRAPHICS UNIT

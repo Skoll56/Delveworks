@@ -16,7 +16,7 @@ int main()
 	/*std::shared_ptr<Entity> sun = core->createEntity();
 	std::shared_ptr<DirLight> d = sun->addComponent<DirLight>();
 	d->setValues(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f));
-	d->transform()->m_position = glm::vec3(0.0f, 20.0f, 0.0f);
+	d->transform()->m_position = glm::vec3(0.0f, 80.0f, 0.0f);
 	d->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);*/
 
 	std::shared_ptr<Entity> point = core->createEntity();
@@ -25,11 +25,17 @@ int main()
 	p->transform()->m_position = glm::vec3(0.0f, 16.0f, 8.0f);
 	p->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
 
-	/*std::shared_ptr<Entity> spot2 = core->createEntity();
+	/*std::shared_ptr<Entity> point2 = core->createEntity();
+	std::shared_ptr<PointLight> p2 = point2->addComponent<PointLight>();
+	p2->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 30.0f, 3.0f);
+	p2->transform()->m_position = glm::vec3(0.0f, 16.0f, -8.0f);
+	p2->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);*/
+
+	std::shared_ptr<Entity> spot2 = core->createEntity();
 	std::shared_ptr<SpotLight> s2 = spot2->addComponent<SpotLight>();
 	s2->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);
 	s2->transform()->m_position = glm::vec3(10.0f, 15.0f, 0.0f);
-	s2->transform()->m_eulerAngles = glm::vec3(90.01f - 65.0f, 0.0f, 0.0f);*/
+	s2->transform()->m_eulerAngles = glm::vec3(90.01f - 65.0f, 0.0f, 0.0f);
 	
 
 	//s->transform()->m_eulerAngles = core->m_camera->transform()->m_eulerAngles;

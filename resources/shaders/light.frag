@@ -96,7 +96,7 @@ int ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap)
     // get depth of current fragment from light's perspective
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
-    int shadow = currentDepth - (0.005 / _fragPosLightSpace.w) > closestDepth  ? 1 : 0;
+    int shadow = currentDepth - (0.002 / _fragPosLightSpace.w) > closestDepth  ? 1 : 0;
 	return shadow;
 	
 }  
@@ -106,8 +106,7 @@ int ShadowCubeCalculation(vec3 _fragPos, vec3 _lightPos, samplerCube _shadowMap,
 	vec3 fragToLight = _fragPos - _lightPos;    
     float closestDepth = texture(_shadowMap, fragToLight).r; 
 	closestDepth *= _farPlane;
-	float currentDepth = length(fragToLight);
-    gl_FragColor = vec4(vec3(closestDepth / _farPlane), 1.0);
+	float currentDepth = length(fragToLight);    
     // check whether current frag pos is in shadow
     int shadow = currentDepth - 0.1 > closestDepth  ? 1 : 0;
 	return shadow;	

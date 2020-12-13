@@ -22,7 +22,7 @@ namespace Engine
 	{
 		glm::mat4 view(1.0f);
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + transform()->getFwd(), transform()->getUp());
-		getShadowMap()->setLightSpaceMatrix(glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, 0.0f, 50.0f) * view);
+		getShadowMap()->setLightSpaceMatrix(glm::ortho(-200.0f, 200.0f, -200.0f, 200.0f, 0.0f, 500.0f) * view);
 
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
 		std::string uniform;
@@ -164,10 +164,6 @@ namespace Engine
 		
 		uniform = "in_pLight[" + itr + "].m_shadowMap";
 		_lSh->setUniform(uniform, SC);
-
-		/*uniform = "in_pLight[" + itr + "].m_lightMatrix[" + si + "]";
-		_lSh->setUniform(uniform, SC[i]->getLightSpaceMatrix());*/
-		
 
 		uniform = "in_pLight[" + itr + "].m_pos";
 		_lSh->setUniform(uniform, transform()->getPosition());

@@ -355,6 +355,9 @@ namespace Engine
 
 		glUseProgram(m_id);
 		glUniform1i(uniformId, m_sampler.size() - 1);
+		glActiveTexture(GL_TEXTURE0 + m_sampler.size() - 1);
+		glBindTexture(GL_TEXTURE_2D, _tex->m_textureId);
+		glActiveTexture(GL_TEXTURE0);
 		glUseProgram(0);
 	}
 
@@ -383,6 +386,9 @@ namespace Engine
 
 		glUseProgram(m_id);
 		glUniform1i(uniformId, m_sampler.size() - 1);
+		glActiveTexture(GL_TEXTURE0 + m_sampler.size() - 1);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, _sc->m_textureId);
+		glActiveTexture(GL_TEXTURE0);
 		glUseProgram(0);
 	}
 	
