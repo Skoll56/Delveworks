@@ -12,7 +12,7 @@ namespace Engine
 		m_diffuse = _diffuse;
 		m_specIntens = _specular;
 		m_ambient = _ambient;		
-		m_antiLight = 0;
+		m_antiLight = 0;		
 
 		m_SM = std::make_shared<ShadowMap>();
 		m_SM->Initialise();
@@ -96,7 +96,7 @@ namespace Engine
 		uniform = "in_sLight[" + itr + "].m_direction";
 		_lSh->setUniform(uniform, transform()->getFwd());
 
-		uniform = "in_sLight[" + itr + "].m_shadowMap";
+		uniform = "in_sLight[" + itr + "].m_shadowMap"; //Breaks pointlights?
 		_lSh->setUniform(uniform, getShadowMap());
 
 		uniform = "in_sLight[" + itr + "].m_angle";
@@ -114,13 +114,8 @@ namespace Engine
 		uniform = "in_sLight[" + itr + "].m_quadratic";
 		_lSh->setUniform(uniform, getQuad());
 
-		uniform = "in_sLight[" + itr + "].m_antiLight";
-		_lSh->setUniform(uniform, 0);
-
 		uniform = "in_sLight[" + itr + "].m_lightMatrix";
 		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
-
-		//transform()->rotate(glm::vec3(1.0f, 1.0f, 0.5f), 2.5f);
 	}
 
 	void PointLight::update(int _i)
