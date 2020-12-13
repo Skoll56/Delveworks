@@ -27,11 +27,19 @@ namespace Engine
 
 		if (input()->GetKeyIsDown(SDLK_w))
 		{
-			transform()->m_position += transform()->getFwd() * 0.08f;
+			transform()->m_position += transform()->getFwd() * 0.16f;
 		}
 		else if (input()->GetKeyIsDown(SDLK_s))
 		{
-			transform()->m_position -= transform()->getFwd() * 0.08f;
+			transform()->m_position -= transform()->getFwd() * 0.16f;
+		}
+		else if (input()->GetKeyIsDown(SDLK_d))
+		{
+			transform()->m_position -= transform()->getRight() * 0.16f;
+		}
+		else if (input()->GetKeyIsDown(SDLK_a))
+		{
+			transform()->m_position += transform()->getRight() * 0.16f;
 		}
 		
 		OUTPUT(transform()->m_eulerAngles);

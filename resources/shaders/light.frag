@@ -84,21 +84,35 @@ vec3 calcDifSpec(vec3 _norm, vec4 _tex, vec3 _difCol, float _specInt, float _att
 
 
 //Reference learn OpenGL
-int ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap)
+float ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap)
 {
-    // perform perspective divide
+    //Linearises the depth in perspective matrixes
     vec3 projCoords = _fragPosLightSpace.xyz / _fragPosLightSpace.w;
-    // transform to [0,1] range
-    projCoords = projCoords * 0.5 + 0.5;	
 
-    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
-    float closestDepth = texture2D(_shadowMap, projCoords.xy).r; 
-    // get depth of current fragment from light's perspective
+    //Transform to [0,1] range
+    projCoords = projCoords * 0.5 + 0.5;	
+	if (projCoords.z > 1.0) {return 0; }
+
+    //Get closest depth value from the shadowmap (in 0-1)
+    float closestDepth = texture2D(_shadowMap, projCoords.xy).r;
+
+    //Depth of the current fragment
     float currentDepth = projCoords.z;
-    // check whether current frag pos is in shadow
-    int shadow = currentDepth - (0.005 / _fragPosLightSpace.w) > closestDepth  ? 1 : 0;
-	return shadow;
-	
+   
+    float shadow = 0.0; 
+	vec2 texelRes = 1.0 / textureSize(_shadowMap, 0);
+	//if (currentDepth - (0.002 / _fragPosLightSpace.w) > closestDepth)
+	{
+		for (int x = -1; x < 4; x++)
+		{
+			for (int y = -1; y < 4; y++)
+			{
+				float pcf = texture2D(_shadowMap, projCoords.xy + vec2(x-1, y-1) * texelRes).r;
+				shadow += currentDepth - (0.002 / _fragPosLightSpace.w) > pcf ? 1.0 : 0.0;
+			}
+		}
+	}
+	return shadow / 12.0f;
 }  
 
 int ShadowCubeCalculation(vec3 _fragPos, vec3 _lightPos, samplerCube _shadowMap, float _farPlane)
@@ -106,8 +120,7 @@ int ShadowCubeCalculation(vec3 _fragPos, vec3 _lightPos, samplerCube _shadowMap,
 	vec3 fragToLight = _fragPos - _lightPos;    
     float closestDepth = texture(_shadowMap, fragToLight).r; 
 	closestDepth *= _farPlane;
-	float currentDepth = length(fragToLight);
-    gl_FragColor = vec4(vec3(closestDepth / _farPlane), 1.0);
+	float currentDepth = length(fragToLight);    
     // check whether current frag pos is in shadow
     int shadow = currentDepth - 0.1 > closestDepth  ? 1 : 0;
 	return shadow;	
@@ -134,13 +147,9 @@ void main()
   for (int i = 0; i < NUMDIR; i++) // For each directional light
   {	
 	FragPosLightSpace = (in_dLight[i].m_lightMatrix) * vec4(ex_FragPos, 1.0);
-	int inShadow = ShadowCalculation(FragPosLightSpace, in_dLight[i].m_shadowMap);
-	if (inShadow == 0)
-	{	   
-	   lDir = -in_dLight[i].m_direction;
-	   light += max(calcDifSpec(norm, tex, in_dLight[i].m_diffuse, in_dLight[i].m_specIntens, attenuation/2.0, lDir), 0.0);
-	}
-
+	float inShadow = ShadowCalculation(FragPosLightSpace, in_dLight[i].m_shadowMap);	   
+	lDir = -in_dLight[i].m_direction;
+	light += (1.0 - inShadow) * max(calcDifSpec(norm, tex, in_dLight[i].m_diffuse, in_dLight[i].m_specIntens, attenuation/2.0, lDir), 0.0);
   }
 
   for (int i = 0; i < NUMPOINT; i++) // For each point light
@@ -159,33 +168,21 @@ void main()
    for (int i = 0; i < NUMSPOT; i++) // For each spotLight
    {
 	 FragPosLightSpace = (in_sLight[i].m_lightMatrix) * vec4(ex_FragPos, 1.0);
-	 int inShadow = ShadowCalculation(FragPosLightSpace, in_sLight[i].m_shadowMap);
-	 if (inShadow == 0)
-	 {
+	 float inShadow = ShadowCalculation(FragPosLightSpace, in_sLight[i].m_shadowMap);
+	
 		lDir = normalize(in_sLight[i].m_pos - ex_FragPos);
 		float theta = dot(normalize(in_sLight[i].m_direction), -lDir);   
 		
 
 		float epsilon = in_sLight[i].m_angle - in_sLight[i].m_fadeAngle;
-		float intensity = clamp((theta - in_sLight[i].m_fadeAngle) / epsilon, 0.0, 1.0);
-		//if (intensity < 1.0) {intensity = 1.0;}
+		float intensity = clamp((theta - in_sLight[i].m_fadeAngle) / epsilon, 0.0, 1.0);		
 		
 		float d = length(in_sLight[i].m_pos - ex_FragPos);	
 		float linear = 4.5 / in_sLight[i].m_radius;
 		attenuation = 1.0 / (1.0 + linear * d + in_sLight[i].m_quadratic * (d * d));
-		
-		if (in_sLight[i].m_antiLight == 0) // If a normal light
-		{
-			light+= max(calcDifSpec(norm, tex, in_sLight[i].m_diffuse, in_sLight[i].m_specIntens, attenuation, lDir), 0.0) * intensity;		
-		}
-
-		else //If an anti light
-		{
-			
-			light+= min(calcDifSpec(norm, tex, in_sLight[i].m_diffuse, in_sLight[i].m_specIntens, attenuation, lDir), 0.0) * intensity; // sLight[2] is a 'blotch' (anti-light)
-		}
-	 }
+		light+= (1.0 - inShadow) * max(calcDifSpec(norm, tex, in_sLight[i].m_diffuse, in_sLight[i].m_specIntens, attenuation, lDir), 0.0) * intensity;		 
    }  
+
    gl_FragColor = tex * vec4(light, 1.0);
 }
 
