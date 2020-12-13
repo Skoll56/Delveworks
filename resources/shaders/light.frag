@@ -101,18 +101,20 @@ float ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap)
    
     float shadow = 0.0; 
 	vec2 texelRes = 1.0 / textureSize(_shadowMap, 0);
-	//if (currentDepth - (0.002 / _fragPosLightSpace.w) > closestDepth)
+	//if (currentDepth - (0.002 / _fragPosLightSpace.w) > closestDepth) {return 1.0;}
+	//else {return 0.0;}
+
 	{
-		for (int x = -1; x < 4; x++)
+		for (int x = 0; x < 4; x++)
 		{
-			for (int y = -1; y < 4; y++)
+			for (int y = 0; y < 4; y++)
 			{
-				float pcf = texture2D(_shadowMap, projCoords.xy + vec2(x-1, y-1) * texelRes).r;
+				float pcf = texture2D(_shadowMap, projCoords.xy + vec2(x-2, y-2) * texelRes).r;
 				shadow += currentDepth - (0.002 / _fragPosLightSpace.w) > pcf ? 1.0 : 0.0;
 			}
 		}
 	}
-	return shadow / 12.0f;
+	return shadow / 16.0f;
 }  
 
 int ShadowCubeCalculation(vec3 _fragPos, vec3 _lightPos, samplerCube _shadowMap, float _farPlane)

@@ -15,14 +15,14 @@ namespace Engine
 		m_antiLight = 0;		
 
 		m_SM = std::make_shared<ShadowMap>();
-		m_SM->Initialise();
+		m_SM->Initialise(2048.0f * 4.0f, 2048.0f * 4.0f);
 	}
 
 	void DirLight::update(int _i)
 	{
 		glm::mat4 view(1.0f);
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + transform()->getFwd(), transform()->getUp());
-		getShadowMap()->setLightSpaceMatrix(glm::ortho(-200.0f, 200.0f, -200.0f, 200.0f, 0.0f, 500.0f) * view);
+		getShadowMap()->setLightSpaceMatrix(glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, 0.0f, 200.0f) * view);
 
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
 		std::string uniform;
@@ -74,7 +74,7 @@ namespace Engine
 		m_antiLight = 0;
 
 		m_SM = std::make_shared<ShadowMap>();
-		m_SM->Initialise();
+		m_SM->Initialise(1024.0f, 1024.0f);
 	}
 
 	void SpotLight::update(int _i)

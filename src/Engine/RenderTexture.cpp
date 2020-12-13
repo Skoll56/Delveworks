@@ -45,10 +45,10 @@ namespace Engine
 		}		
 	}
 
-	void ShadowMap::Initialise()
+	void ShadowMap::Initialise(float _xres, float _yres)
 	{
-		resolutionX = 1024;
-		resolutionY = 1024;
+		resolutionX = _xres;
+		resolutionY = _yres;
 		glGenFramebuffers(1, &fBufID);
 		if (!fBufID)
 		{

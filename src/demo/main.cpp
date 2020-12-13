@@ -17,7 +17,7 @@ int main()
 	std::shared_ptr<DirLight> d = sun->addComponent<DirLight>();
 	d->setValues(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f));
 	d->transform()->m_position = glm::vec3(0.0f, 100.0f, 0.0f);
-	d->transform()->m_eulerAngles = glm::vec3(90.01f, 0.0f, 0.0f);
+	d->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
 
 	/*std::shared_ptr<Entity> point = core->createEntity();
 	std::shared_ptr<PointLight> p = point->addComponent<PointLight>();

@@ -22,7 +22,7 @@ namespace Engine
 	class ShadowMap : public RenderTexture
 	{
 	public:
-		void Initialise();
+		void Initialise(float _xres, float _yres);
 		glm::mat4 getLightSpaceMatrix() { return m_lSpaceMatrix; }
 		void setLightSpaceMatrix(glm::mat4 _lSpaceMatrix) { m_lSpaceMatrix = _lSpaceMatrix; }
 
