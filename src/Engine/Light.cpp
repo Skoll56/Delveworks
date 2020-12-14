@@ -21,7 +21,8 @@ namespace Engine
 	void DirLight::update(int _i)
 	{
 		glm::mat4 view(1.0f);
-		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + transform()->getFwd(), transform()->getUp());
+		glm::vec3 camPos = getEntity()->getCore()->m_camera->transform()->getPosition();
+		view = glm::lookAt(camPos + glm::vec3(0.0f, 100.0f, 0.0f), camPos + glm::vec3(0.0f, 100.0f, 0.0f) + transform()->getFwd(), transform()->getUp());
 		getShadowMap()->setLightSpaceMatrix(glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, 0.0f, 200.0f) * view);
 
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;

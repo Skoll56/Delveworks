@@ -1,9 +1,6 @@
-
+#version 130
 precision mediump float;
 //Fragment shader for light-affected objects
-
-
-
 #define NUMPOINT 1
 #define NUMDIR 1
 #define NUMSPOT 1
@@ -71,7 +68,7 @@ vec3 calcDifSpec(vec3 _norm, vec4 _tex, vec3 _difCol, float _specInt, float _att
   //Specular
   vec3 specLight = vec3(0.0, 0.0, 0.0);
 
-  if (dot(_norm, _lDir) > 0) // Stop specular affecting facing away objects
+  if (dot(_norm, _lDir) > 0.0) // Stop specular affecting facing away objects
   {
 	vec3 camDir = normalize(in_CamPos - ex_FragPos);
 	vec3 reflection = reflect(_lDir, _norm);
@@ -79,7 +76,7 @@ vec3 calcDifSpec(vec3 _norm, vec4 _tex, vec3 _difCol, float _specInt, float _att
 	specLight = (_specInt * shine * _difCol);
   }
 
-  return (dLight + specLight) * (_attenuation * 2); 
+  return (dLight + specLight) * (_attenuation * 2.0); 
 }
 
 
@@ -107,7 +104,7 @@ float ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap)
 
 	float samples = 5.0;
 	float inc = 3.0;
-	float shadow = 0.0f;
+	float shadow = 0.0;
 	for (float x = -inc; x < inc; x+= inc / (samples * 0.5)) 
 	{
 		for (float y = -inc; y < inc; y+= inc / (samples * 0.5)) 
@@ -136,7 +133,7 @@ float ShadowCubeCalculation(vec3 _fragPos, vec3 _lightPos, samplerCube _shadowMa
 	);   
 	
 	float samples = 20.0;
-	float shadow = 0.0f;
+	float shadow = 0.0;
 	for (int i = 0; i < samples; i++)
 	{
 		float closestDepth = texture(_shadowMap, fragToLight + directionList[i] * 0.05).r; 

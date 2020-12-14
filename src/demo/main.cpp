@@ -92,7 +92,7 @@ int main()
 			std::shared_ptr<MeshRenderer> MR3 = ball->addComponent<MeshRenderer>();
 			MR3->Initialise("Image1.bmp", "1b1sphere.obj", glm::vec3(1.0f, 1.0f, 1.0f));
 			ball->transform()->setScale(glm::vec3(1.0f, 1.0f, 1.0f));
-			ball->transform()->setPosition(glm::vec3(0.0f + (i * 0.2f) + l, 13.0f + (i * 1.5f), 10.0f));
+			ball->transform()->setPosition(glm::vec3(0.0f + (i * 0.2f) + l, 13.0f + (i * 1.5f), 10.0f - i * 0.1f));
 			std::shared_ptr<SphereCollider> sc = ball->addComponent<SphereCollider>();
 			std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>();
 			phys->Initialise(1.0f, 0.9f);
