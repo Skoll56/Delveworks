@@ -1,3 +1,5 @@
+/* !This has been created as part of the GRAPHICS UNIT! */
+//This shader simply draws the scene to a quad on the screen, but can be edited to view a depth map texture also
 
 precision mediump float;
 uniform sampler2D in_Texture;

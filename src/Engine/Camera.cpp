@@ -6,9 +6,9 @@
 #include "Input.h"
 #define OUTPUT(vec) std::cout << vec.x << " " << vec.y << " " << vec.z <<std::endl;
 
+/* !This has been created as part of the GAME ENGINE unit! */
 namespace Engine
-{
-	
+{	
 	void Camera::onInitialise()
 	{
 		m_rotSpeed = 12.0f;

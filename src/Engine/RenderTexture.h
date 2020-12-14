@@ -7,9 +7,10 @@
 #include <exception>
 #include "Texture.h"
 
-//RENDER TEXTURES ARE A PART OF THE GRAPHICS UNIT AND WERE ADDED AS A FIRST STEP TOWARDS SHADOWS
+
 namespace Engine
 {
+	/* !This has been CREATED as part of the GRAPHICS UNIT! */
 	class RenderTexture : public Texture
 	{
 		public:
@@ -19,6 +20,7 @@ namespace Engine
 		GLuint rBufObjID = 0;
 	};
 
+	/* !This has been CREATED as part of the GRAPHICS UNIT! */
 	class ShadowMap : public RenderTexture
 	{
 	public:
@@ -30,6 +32,7 @@ namespace Engine
 		glm::mat4 m_lSpaceMatrix;
 	};
 
+	/* !This has been CREATED as part of the GRAPHICS UNIT! */
 	class ShadowCube : public RenderTexture
 	{
 	public:

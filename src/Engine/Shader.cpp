@@ -330,6 +330,7 @@ namespace Engine
 		glUseProgram(0);
 	}
 
+	/* !This has been modified as part of the GRAPHICS UNIT! */
 	void Shader::setUniform(std::string _uniform, std::shared_ptr<Texture> _tex)
 	{
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
@@ -345,7 +346,6 @@ namespace Engine
 				glUseProgram(0);
 				return;
 			}
-
 		}
 
 		Sampler s;
@@ -361,6 +361,7 @@ namespace Engine
 		glUseProgram(0);
 	}
 
+	/* !This has been CREATED as part of the GRAPHICS UNIT! */
 	void Shader::setUniform(std::string _uniform, std::shared_ptr<ShadowCube> _sc)
 	{
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
@@ -376,7 +377,6 @@ namespace Engine
 				glUseProgram(0);
 				return;
 			}
-
 		}
 
 		Sampler s;

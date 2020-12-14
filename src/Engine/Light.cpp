@@ -5,8 +5,12 @@
 #include "Shader.h"
 #include "RenderTexture.h"
 
+
 namespace Engine
 {
+	/* !This has been modified as part of the GRAPHICS UNIT to support shadows! */
+	/* !The ability to cast lights (but not shadows) was already a feature that has been submitted before! */
+
 	void DirLight::setValues(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient)
 	{
 		m_diffuse = _diffuse;
@@ -47,7 +51,6 @@ namespace Engine
 		uniform = "in_dLight[" + itr + "].m_lightMatrix";
 		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
 	}
-
 
 	void PointLight::setValues(glm::vec3 _diffuse, float _specular, float _radius, float _brightness)
 	{		
@@ -97,7 +100,7 @@ namespace Engine
 		uniform = "in_sLight[" + itr + "].m_direction";
 		_lSh->setUniform(uniform, transform()->getFwd());
 
-		uniform = "in_sLight[" + itr + "].m_shadowMap"; //Breaks pointlights?
+		uniform = "in_sLight[" + itr + "].m_shadowMap"; 
 		_lSh->setUniform(uniform, getShadowMap());
 
 		uniform = "in_sLight[" + itr + "].m_angle";

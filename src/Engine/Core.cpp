@@ -39,8 +39,6 @@ namespace Engine
 		e->transform()->m_eulerAngles = glm::vec3(0.0f, -90.0f, -0.0f);
 		rtn->m_camera = e->addComponent<Camera>();
 
-		
-
 		std::cout << "Initialised successfully" << std::endl;
 		return rtn;
 	}
@@ -111,7 +109,7 @@ namespace Engine
 			m_pointLights.at(pi)->update(pi);
 		}
 				
-		drawShadowmaps();
+		drawShadowmaps(); /* <-- !GRAPHICS UNIT! */
 
 		updateShader();
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RT->fBufID);
@@ -153,6 +151,7 @@ namespace Engine
 		}
 	}
 
+	/* !This has been MODIFIED as part of the GRAPHICS UNIT! */
 	void Core::drawScene()
 	{
 		for (size_t ei = 0; ei < m_entities.size(); ei++)
@@ -165,7 +164,21 @@ namespace Engine
 		}
 	}
 
-	//GRAPHICS UNIT
+	/* !This has been CREATED as part of the GRAPHICS UNIT! */
+	void Core::drawShadowScene()
+	{
+		for (size_t ei = 0; ei < m_entities.size(); ei++)
+		{
+			std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
+			if (MR)
+			{				
+				m_shadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
+				m_shadowSh->draw(MR->m_vAO);
+			}
+		}
+	}
+
+	/* !This has been CREATED as part of the GRAPHICS UNIT! */
 	void Core::drawPointShadowScene()
 	{
 		for (size_t ei = 0; ei < m_entities.size(); ei++)
@@ -179,19 +192,6 @@ namespace Engine
 		}
 	}
 
-	//GRAPHICS UNIT
-	void Core::drawShadowScene()
-	{
-		for (size_t ei = 0; ei < m_entities.size(); ei++)
-		{
-			std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
-			if (MR)
-			{				
-				m_shadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
-				m_shadowSh->draw(MR->m_vAO);
-			}
-		}
-	}
 
 	void Core::start()
 	{
@@ -208,14 +208,14 @@ namespace Engine
 		glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
 		SDL_ShowCursor(true);
-#ifdef EMSCRIPTEN
+		#ifdef EMSCRIPTEN
 		emscripten_set_main_loop_arg([](void* _core) { ((Core*)_core)->loop(); }, this, 0, 1);
-#else
+		#else
 		while (!quit)
 		{
 			Core::loop();
 		}
-#endif
+		#endif
 
 	}
 
@@ -227,8 +227,6 @@ namespace Engine
 		}
 
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 
 		m_window = SDL_CreateWindow("Delveworks",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -246,14 +244,13 @@ namespace Engine
 		}
 	}
 
-	
+	/* !This has been MODIFIED as part of the GRAPHICS UNIT! */
 	void Core::updateShader()
 	{
 		//Lighting Shaders
 		m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
 		glm::mat4 view(1.0f);
-		view = glm::lookAt(m_camera->transform()->getPosition(), m_camera->transform()->getPosition() + m_camera->transform()->getFwd(), m_camera->transform()->getUp());
-		
+		view = glm::lookAt(m_camera->transform()->getPosition(), m_camera->transform()->getPosition() + m_camera->transform()->getFwd(), m_camera->transform()->getUp());		
 
 		m_lightingSh->setUniform("in_View", view); // Establish the view matrix		
 		m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
@@ -269,7 +266,7 @@ namespace Engine
 
 	}
 
-	//THIS IS TO DRAW TO THE SHADOWMAP'S FRAMEBUFFERS, AS PART OF THE GRAPHICS UNIT
+	/* !This has been CREATED as part of the GRAPHICS UNIT! */
 	void Core::drawShadowmaps() 
 	{
 		for (int i = 0; i < m_dirLights.size(); i++)
@@ -323,7 +320,7 @@ namespace Engine
 		
 	}
 
-	//GRAPHICS UNIT
+	/* !This has been CREATED as part of the GRAPHICS UNIT! */
 	std::shared_ptr<RenderTexture> Core::createRenderTexture()
 	{
 		std::shared_ptr<RenderTexture> RT = std::make_shared<RenderTexture>();
@@ -331,7 +328,7 @@ namespace Engine
 		m_RT = RT;
 		return RT;
 	}
-
+	
 	void Core::createScreenQuad()
 	{
 		m_screenQuad = new VertexArray();

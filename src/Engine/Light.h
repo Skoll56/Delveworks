@@ -8,6 +8,9 @@ namespace Engine
 {
 	class ShadowMap;
 	class ShadowCube;
+
+	/* !This has been modified as part of the GRAPHICS UNIT to support shadows! */
+	/* !The ability to cast lights (but not shadows) was already a feature that has been submitted before! */
 	class Light : public Component
 	{
 	public:		

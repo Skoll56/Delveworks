@@ -32,10 +32,8 @@ namespace Engine
 		void start();
 		void loop();	
 		void drawScene();
-
-		void drawPointShadowScene();
-
-		void drawShadowScene();
+		void drawShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
+		void drawPointShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
 		
 
 		//Not functions		
@@ -56,12 +54,12 @@ namespace Engine
 		void drawShadowmaps();
 		std::shared_ptr<RenderTexture> createRenderTexture();		
 		void createScreenQuad();
-
 		std::shared_ptr<Shader> m_sqShader;
 		std::shared_ptr<Shader> m_lightingSh;
 		std::shared_ptr<Shader> m_shadowSh;
 		std::shared_ptr<Shader> m_pointShadowSh;
 		std::shared_ptr<Camera> m_camera;
+
 	private:
 		std::vector<std::shared_ptr<Entity>> m_entities;		
 		int permX, permY;

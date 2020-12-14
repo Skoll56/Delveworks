@@ -3,6 +3,8 @@
 
 namespace Engine
 {
+	/* !This file has been CREATED as part of the GRAPHICS UNIT! */
+
 	void RenderTexture::Initialise()
 	{
 		resolutionX = 1024;
