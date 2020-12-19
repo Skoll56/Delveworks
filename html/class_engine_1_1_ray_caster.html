@@ -61,16 +61,19 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Engine</b></li><li class="navelem"><a class="el" href="class_engine_1_1_ray_caster.html">RayCaster</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_engine.html">Engine</a></li><li class="navelem"><a class="el" href="class_engine_1_1_ray_caster.html">RayCaster</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_engine_1_1_ray_caster-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Engine::RayCaster Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_physics_new_8h_source.html">PhysicsNew.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::RayCaster:</div>
 <div class="dyncontent">
@@ -81,36 +84,149 @@ Inheritance diagram for Engine::RayCaster:</div>
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a3e43ae59c737eb35e2e32cfb2273ac19"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_ray_caster.html#a3e43ae59c737eb35e2e32cfb2273ac19">intersect_triangle3</a> (double orig[3], double dir[3], double vert0[3], double vert1[3], double vert2[3], double *t, double *u, double *v)</td></tr>
+<tr class="separator:a3e43ae59c737eb35e2e32cfb2273ac19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7cb87436a2365ea165caac77d83e1e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_engine_1_1_ray_collision.html">RayCollision</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_ray_caster.html#af7cb87436a2365ea165caac77d83e1e5">rayToTri</a> (std::vector&lt; std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&gt; _obj, glm::vec3 _rayDir, glm::vec3 _origin, std::string _rayTag)</td></tr>
+<tr class="separator:af7cb87436a2365ea165caac77d83e1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
+<tr class="memitem:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">destroy</a> ()</td></tr>
+<tr class="separator:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">getEntity</a> ()</td></tr>
+<tr class="separator:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">transform</a> ()</td></tr>
+<tr class="separator:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bbd31f8047e7d026977f90362fe42d8 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_input.html">Input</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a7bbd31f8047e7d026977f90362fe42d8">input</a> ()</td></tr>
+<tr class="separator:a7bbd31f8047e7d026977f90362fe42d8 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
-<tr class="memitem:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top"><a id="a00efa93260fc3d08aa096aa1025869e2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>destroy</b> ()</td></tr>
-<tr class="separator:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
-<tr class="memitem:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top"><a id="a698b7e82b695c3e056dc0f929e631b6d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onInitialise</b> ()</td></tr>
+<tr class="memitem:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a698b7e82b695c3e056dc0f929e631b6d">onInitialise</a> ()</td></tr>
 <tr class="separator:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8763aeb9a9bcd10bbef2b74a8a22f24c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top"><a id="a8763aeb9a9bcd10bbef2b74a8a22f24c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onTick</b> ()</td></tr>
+<tr class="memitem:a8763aeb9a9bcd10bbef2b74a8a22f24c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a8763aeb9a9bcd10bbef2b74a8a22f24c">onTick</a> ()</td></tr>
 <tr class="separator:a8763aeb9a9bcd10bbef2b74a8a22f24c inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bf4b58e99c0ad73db8ff257728ba830 inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top"><a id="a6bf4b58e99c0ad73db8ff257728ba830"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onRender</b> ()</td></tr>
+<tr class="memitem:a6bf4b58e99c0ad73db8ff257728ba830 inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a6bf4b58e99c0ad73db8ff257728ba830">onRender</a> ()</td></tr>
 <tr class="separator:a6bf4b58e99c0ad73db8ff257728ba830 inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top"><a id="ac103051527cfb9b716379fd115c99f5c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onDestroy</b> ()</td></tr>
+<tr class="memitem:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ac103051527cfb9b716379fd115c99f5c">onDestroy</a> ()</td></tr>
 <tr class="separator:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
-<tr class="memitem:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top"><a id="aef5560490656209dac0858c9f405a5fc"></a>
-std::weak_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_entity</b></td></tr>
+<tr class="memitem:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">m_entity</a></td></tr>
 <tr class="separator:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top"><a id="a374bb0eb27722760feba88aa779b33a4"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_delete</b> = false</td></tr>
+<tr class="memitem:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">m_transform</a></td></tr>
+<tr class="separator:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">m_delete</a> = false</td></tr>
 <tr class="separator:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3e43ae59c737eb35e2e32cfb2273ac19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e43ae59c737eb35e2e32cfb2273ac19">&#9670;&nbsp;</a></span>intersect_triangle3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::RayCaster::intersect_triangle3 </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>orig</em>[3], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dir</em>[3], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>vert0</em>[3], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>vert1</em>[3], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>vert2</em>[3], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7cb87436a2365ea165caac77d83e1e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7cb87436a2365ea165caac77d83e1e5">&#9670;&nbsp;</a></span>rayToTri()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_engine_1_1_ray_collision.html">RayCollision</a> * Engine::RayCaster::rayToTri </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&gt;&#160;</td>
+          <td class="paramname"><em>_obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>_rayDir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>_origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_rayTag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/Engine/<a class="el" href="_physics_new_8h_source.html">PhysicsNew.h</a></li>
-<li>src/Engine/PhysicsNew.cpp</li>
+<li>src/Engine/<a class="el" href="_physics_new_8cpp.html">PhysicsNew.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

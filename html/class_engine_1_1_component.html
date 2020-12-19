@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Engine</b></li><li class="navelem"><a class="el" href="class_engine_1_1_component.html">Component</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_engine.html">Engine</a></li><li class="navelem"><a class="el" href="class_engine_1_1_component.html">Component</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -75,61 +75,343 @@ $(function() {
 <div class="title">Engine::Component Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_component_8h_source.html">Component.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::Component:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_engine_1_1_component.png" usemap="#Engine::Component_map" alt=""/>
   <map id="Engine::Component_map" name="Engine::Component_map">
-<area href="class_engine_1_1_collider.html" alt="Engine::Collider" shape="rect" coords="0,56,161,80"/>
-<area href="class_engine_1_1_physics_event_user.html" alt="Engine::PhysicsEventUser" shape="rect" coords="171,56,332,80"/>
-<area href="class_engine_1_1_ray_caster.html" alt="Engine::RayCaster" shape="rect" coords="342,56,503,80"/>
-<area href="class_engine_1_1_sound_source.html" alt="Engine::SoundSource" shape="rect" coords="513,56,674,80"/>
-<area href="class_engine_1_1_transform.html" alt="Engine::Transform" shape="rect" coords="684,56,845,80"/>
-<area href="class_engine_1_1_physics_object.html" alt="Engine::PhysicsObject" shape="rect" coords="171,112,332,136"/>
-<area href="class_engine_1_1_adv_physics_object.html" alt="Engine::AdvPhysicsObject" shape="rect" coords="171,168,332,192"/>
+<area href="class_engine_1_1_camera.html" alt="Engine::Camera" shape="rect" coords="169,56,328,80"/>
+<area href="class_engine_1_1_collider.html" alt="Engine::Collider" shape="rect" coords="169,112,328,136"/>
+<area href="class_engine_1_1_light.html" alt="Engine::Light" shape="rect" coords="169,168,328,192"/>
+<area href="class_engine_1_1_mesh_renderer.html" alt="Engine::MeshRenderer" shape="rect" coords="169,224,328,248"/>
+<area href="class_engine_1_1_physics_event_user.html" alt="Engine::PhysicsEventUser" shape="rect" coords="169,280,328,304"/>
+<area href="class_engine_1_1_ray_caster.html" alt="Engine::RayCaster" shape="rect" coords="169,336,328,360"/>
+<area href="class_engine_1_1_sound_source.html" alt="Engine::SoundSource" shape="rect" coords="169,392,328,416"/>
+<area href="class_engine_1_1_transform.html" alt="Engine::Transform" shape="rect" coords="169,448,328,472"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a00efa93260fc3d08aa096aa1025869e2"><td class="memItemLeft" align="right" valign="top"><a id="a00efa93260fc3d08aa096aa1025869e2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>destroy</b> ()</td></tr>
+<tr class="memitem:a00efa93260fc3d08aa096aa1025869e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">destroy</a> ()</td></tr>
 <tr class="separator:a00efa93260fc3d08aa096aa1025869e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a914f7c81c44b707e39d2898bdd141281"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">getEntity</a> ()</td></tr>
+<tr class="separator:a914f7c81c44b707e39d2898bdd141281"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37740b395821ce65269c317db6b4102b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">transform</a> ()</td></tr>
+<tr class="separator:a37740b395821ce65269c317db6b4102b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bbd31f8047e7d026977f90362fe42d8"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_input.html">Input</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a7bbd31f8047e7d026977f90362fe42d8">input</a> ()</td></tr>
+<tr class="separator:a7bbd31f8047e7d026977f90362fe42d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a698b7e82b695c3e056dc0f929e631b6d"><td class="memItemLeft" align="right" valign="top"><a id="a698b7e82b695c3e056dc0f929e631b6d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onInitialise</b> ()</td></tr>
+<tr class="memitem:a698b7e82b695c3e056dc0f929e631b6d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a698b7e82b695c3e056dc0f929e631b6d">onInitialise</a> ()</td></tr>
 <tr class="separator:a698b7e82b695c3e056dc0f929e631b6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8763aeb9a9bcd10bbef2b74a8a22f24c"><td class="memItemLeft" align="right" valign="top"><a id="a8763aeb9a9bcd10bbef2b74a8a22f24c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onTick</b> ()</td></tr>
+<tr class="memitem:a8763aeb9a9bcd10bbef2b74a8a22f24c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a8763aeb9a9bcd10bbef2b74a8a22f24c">onTick</a> ()</td></tr>
 <tr class="separator:a8763aeb9a9bcd10bbef2b74a8a22f24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bf4b58e99c0ad73db8ff257728ba830"><td class="memItemLeft" align="right" valign="top"><a id="a6bf4b58e99c0ad73db8ff257728ba830"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onRender</b> ()</td></tr>
+<tr class="memitem:a6bf4b58e99c0ad73db8ff257728ba830"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a6bf4b58e99c0ad73db8ff257728ba830">onRender</a> ()</td></tr>
 <tr class="separator:a6bf4b58e99c0ad73db8ff257728ba830"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac103051527cfb9b716379fd115c99f5c"><td class="memItemLeft" align="right" valign="top"><a id="ac103051527cfb9b716379fd115c99f5c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onDestroy</b> ()</td></tr>
+<tr class="memitem:ac103051527cfb9b716379fd115c99f5c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ac103051527cfb9b716379fd115c99f5c">onDestroy</a> ()</td></tr>
 <tr class="separator:ac103051527cfb9b716379fd115c99f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aef5560490656209dac0858c9f405a5fc"><td class="memItemLeft" align="right" valign="top"><a id="aef5560490656209dac0858c9f405a5fc"></a>
-std::weak_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_entity</b></td></tr>
+<tr class="memitem:aef5560490656209dac0858c9f405a5fc"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">m_entity</a></td></tr>
 <tr class="separator:aef5560490656209dac0858c9f405a5fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a374bb0eb27722760feba88aa779b33a4"><td class="memItemLeft" align="right" valign="top"><a id="a374bb0eb27722760feba88aa779b33a4"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_delete</b> = false</td></tr>
+<tr class="memitem:a0f0787fce807ad80c8a55d1b02dfc3b5"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">m_transform</a></td></tr>
+<tr class="separator:a0f0787fce807ad80c8a55d1b02dfc3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a374bb0eb27722760feba88aa779b33a4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">m_delete</a> = false</td></tr>
 <tr class="separator:a374bb0eb27722760feba88aa779b33a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a614439ccac0344926adc4c0165d64060"><td class="memItemLeft" align="right" valign="top"><a id="a614439ccac0344926adc4c0165d64060"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b></td></tr>
+<tr class="memitem:a614439ccac0344926adc4c0165d64060"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a614439ccac0344926adc4c0165d64060">Entity</a></td></tr>
 <tr class="separator:a614439ccac0344926adc4c0165d64060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a00efa93260fc3d08aa096aa1025869e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00efa93260fc3d08aa096aa1025869e2">&#9670;&nbsp;</a></span>destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Component::destroy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a914f7c81c44b707e39d2898bdd141281"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a914f7c81c44b707e39d2898bdd141281">&#9670;&nbsp;</a></span>getEntity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="struct_engine_1_1_entity.html">Entity</a>&gt; Engine::Component::getEntity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7bbd31f8047e7d026977f90362fe42d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bbd31f8047e7d026977f90362fe42d8">&#9670;&nbsp;</a></span>input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_input.html">Input</a> &gt; Engine::Component::input </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac103051527cfb9b716379fd115c99f5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac103051527cfb9b716379fd115c99f5c">&#9670;&nbsp;</a></span>onDestroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Component::onDestroy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a698b7e82b695c3e056dc0f929e631b6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a698b7e82b695c3e056dc0f929e631b6d">&#9670;&nbsp;</a></span>onInitialise()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Component::onInitialise </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_engine_1_1_mesh_renderer.html#ab02daa4ecddb453337ce53d135d71ab9">Engine::MeshRenderer</a>, <a class="el" href="class_engine_1_1_transform.html#a2e1159a746481dcc6e31f3fce87b7270">Engine::Transform</a>, and <a class="el" href="class_engine_1_1_camera.html#a16df865e6139a822c0e7ab7548bca24e">Engine::Camera</a>.</p>
+
+</div>
+</div>
+<a id="a6bf4b58e99c0ad73db8ff257728ba830"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bf4b58e99c0ad73db8ff257728ba830">&#9670;&nbsp;</a></span>onRender()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Component::onRender </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8763aeb9a9bcd10bbef2b74a8a22f24c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8763aeb9a9bcd10bbef2b74a8a22f24c">&#9670;&nbsp;</a></span>onTick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Component::onTick </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_engine_1_1_adv_physics_object.html#ace6d62205063c01f652b02c0b44afe1a">Engine::AdvPhysicsObject</a>, <a class="el" href="class_engine_1_1_physics_object.html#a61e0c0862c01676f6d79bec3423ff8a0">Engine::PhysicsObject</a>, <a class="el" href="class_engine_1_1_physics_event_user.html#ae55c6ef5972f980bdee44de8fc81ad22">Engine::PhysicsEventUser</a>, <a class="el" href="class_engine_1_1_sound_source.html#a1fec1228d1a8c467a6febbdac1a4f219">Engine::SoundSource</a>, and <a class="el" href="class_engine_1_1_transform.html#a73bf4bd9c49e0d40275eda859756c2f6">Engine::Transform</a>.</p>
+
+</div>
+</div>
+<a id="a37740b395821ce65269c317db6b4102b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37740b395821ce65269c317db6b4102b">&#9670;&nbsp;</a></span>transform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_transform.html">Transform</a>&gt; Engine::Component::transform </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a614439ccac0344926adc4c0165d64060"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a614439ccac0344926adc4c0165d64060">&#9670;&nbsp;</a></span>Entity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="struct_engine_1_1_entity.html">Entity</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a374bb0eb27722760feba88aa779b33a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a374bb0eb27722760feba88aa779b33a4">&#9670;&nbsp;</a></span>m_delete</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Component::m_delete = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef5560490656209dac0858c9f405a5fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef5560490656209dac0858c9f405a5fc">&#9670;&nbsp;</a></span>m_entity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::weak_ptr&lt;<a class="el" href="struct_engine_1_1_entity.html">Entity</a>&gt; Engine::Component::m_entity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f0787fce807ad80c8a55d1b02dfc3b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f0787fce807ad80c8a55d1b02dfc3b5">&#9670;&nbsp;</a></span>m_transform</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::weak_ptr&lt;<a class="el" href="class_engine_1_1_transform.html">Transform</a>&gt; Engine::Component::m_transform</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/Engine/<a class="el" href="_component_8h_source.html">Component.h</a></li>
-<li>src/Engine/Component.cpp</li>
+<li>src/Engine/<a class="el" href="_component_8cpp.html">Component.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

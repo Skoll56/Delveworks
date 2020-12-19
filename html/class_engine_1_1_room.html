@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Engine</b></li><li class="navelem"><a class="el" href="class_engine_1_1_room.html">Room</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_engine.html">Engine</a></li><li class="navelem"><a class="el" href="class_engine_1_1_room.html">Room</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,34 +72,141 @@ $(function() {
 <div class="title">Engine::Room Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_room_8h_source.html">Room.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aac5af6629def943c24ad713bfc1b612e"><td class="memItemLeft" align="right" valign="top"><a id="aac5af6629def943c24ad713bfc1b612e"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>m_pos</b></td></tr>
+<tr class="memitem:aac5af6629def943c24ad713bfc1b612e"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_room.html#aac5af6629def943c24ad713bfc1b612e">m_pos</a></td></tr>
 <tr class="separator:aac5af6629def943c24ad713bfc1b612e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab33a013398570b51ce136ad228c33882"><td class="memItemLeft" align="right" valign="top"><a id="ab33a013398570b51ce136ad228c33882"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_id</b></td></tr>
+<tr class="memitem:ab33a013398570b51ce136ad228c33882"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_room.html#ab33a013398570b51ce136ad228c33882">m_id</a></td></tr>
 <tr class="separator:ab33a013398570b51ce136ad228c33882"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc4dd6f5106d75a8ef32d6b5916cd23a"><td class="memItemLeft" align="right" valign="top"><a id="afc4dd6f5106d75a8ef32d6b5916cd23a"></a>
-std::vector&lt; <a class="el" href="class_engine_1_1_game_object.html">GameObject</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_walls</b></td></tr>
+<tr class="memitem:afc4dd6f5106d75a8ef32d6b5916cd23a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; GameObject * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_room.html#afc4dd6f5106d75a8ef32d6b5916cd23a">m_walls</a></td></tr>
 <tr class="separator:afc4dd6f5106d75a8ef32d6b5916cd23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9bb18c9fa669cf9c67033e2873a7391"><td class="memItemLeft" align="right" valign="top"><a id="aa9bb18c9fa669cf9c67033e2873a7391"></a>
-<a class="el" href="class_engine_1_1_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_inDoor</b></td></tr>
+<tr class="memitem:aa9bb18c9fa669cf9c67033e2873a7391"><td class="memItemLeft" align="right" valign="top">GameObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_room.html#aa9bb18c9fa669cf9c67033e2873a7391">m_inDoor</a></td></tr>
 <tr class="separator:aa9bb18c9fa669cf9c67033e2873a7391"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2fb8b1fbe9b384769574882882f8903"><td class="memItemLeft" align="right" valign="top"><a id="aa2fb8b1fbe9b384769574882882f8903"></a>
-<a class="el" href="class_engine_1_1_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_outDoor</b></td></tr>
+<tr class="memitem:aa2fb8b1fbe9b384769574882882f8903"><td class="memItemLeft" align="right" valign="top">GameObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_room.html#aa2fb8b1fbe9b384769574882882f8903">m_outDoor</a></td></tr>
 <tr class="separator:aa2fb8b1fbe9b384769574882882f8903"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0686db83512402fcd636dfeda2e34f6"><td class="memItemLeft" align="right" valign="top"><a id="ae0686db83512402fcd636dfeda2e34f6"></a>
-std::vector&lt; <a class="el" href="class_engine_1_1_game_object.html">GameObject</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_lamp</b></td></tr>
+<tr class="memitem:ae0686db83512402fcd636dfeda2e34f6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; GameObject * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_room.html#ae0686db83512402fcd636dfeda2e34f6">m_lamp</a></td></tr>
 <tr class="separator:ae0686db83512402fcd636dfeda2e34f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5101dc0946153bafc464e6667142cd72"><td class="memItemLeft" align="right" valign="top"><a id="a5101dc0946153bafc464e6667142cd72"></a>
-std::vector&lt; <a class="el" href="class_engine_1_1_point_light.html">PointLight</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_light</b></td></tr>
+<tr class="memitem:a5101dc0946153bafc464e6667142cd72"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_engine_1_1_point_light.html">PointLight</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_room.html#a5101dc0946153bafc464e6667142cd72">m_light</a></td></tr>
 <tr class="separator:a5101dc0946153bafc464e6667142cd72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8e39f8476c02adabffc25efcbd6cd5d"><td class="memItemLeft" align="right" valign="top"><a id="af8e39f8476c02adabffc25efcbd6cd5d"></a>
-<a class="el" href="class_engine_1_1_corridor.html">Corridor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_exit</b></td></tr>
+<tr class="memitem:af8e39f8476c02adabffc25efcbd6cd5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_1_1_corridor.html">Corridor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_room.html#af8e39f8476c02adabffc25efcbd6cd5d">m_exit</a></td></tr>
 <tr class="separator:af8e39f8476c02adabffc25efcbd6cd5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="af8e39f8476c02adabffc25efcbd6cd5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8e39f8476c02adabffc25efcbd6cd5d">&#9670;&nbsp;</a></span>m_exit</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_engine_1_1_corridor.html">Corridor</a>* Engine::Room::m_exit</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab33a013398570b51ce136ad228c33882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab33a013398570b51ce136ad228c33882">&#9670;&nbsp;</a></span>m_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Room::m_id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa9bb18c9fa669cf9c67033e2873a7391"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9bb18c9fa669cf9c67033e2873a7391">&#9670;&nbsp;</a></span>m_inDoor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject* Engine::Room::m_inDoor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae0686db83512402fcd636dfeda2e34f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0686db83512402fcd636dfeda2e34f6">&#9670;&nbsp;</a></span>m_lamp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;GameObject*&gt; Engine::Room::m_lamp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5101dc0946153bafc464e6667142cd72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5101dc0946153bafc464e6667142cd72">&#9670;&nbsp;</a></span>m_light</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="class_engine_1_1_point_light.html">PointLight</a>*&gt; Engine::Room::m_light</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa2fb8b1fbe9b384769574882882f8903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2fb8b1fbe9b384769574882882f8903">&#9670;&nbsp;</a></span>m_outDoor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject* Engine::Room::m_outDoor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aac5af6629def943c24ad713bfc1b612e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac5af6629def943c24ad713bfc1b612e">&#9670;&nbsp;</a></span>m_pos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Engine::Room::m_pos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc4dd6f5106d75a8ef32d6b5916cd23a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc4dd6f5106d75a8ef32d6b5916cd23a">&#9670;&nbsp;</a></span>m_walls</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;GameObject*&gt; Engine::Room::m_walls</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/Engine/<a class="el" href="_room_8h_source.html">Room.h</a></li>
 </ul>

@@ -1,44 +1,59 @@
 \hypertarget{class_engine_1_1_camera}{}\doxysection{Engine\+::Camera Class Reference}
 \label{class_engine_1_1_camera}\index{Engine::Camera@{Engine::Camera}}
+
+
+{\ttfamily \#include $<$Camera.\+h$>$}
+
+Inheritance diagram for Engine\+::Camera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_engine_1_1_camera}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_camera_a86cf79144ad9f9d470c2e356d497a35d}\label{class_engine_1_1_camera_a86cf79144ad9f9d470c2e356d497a35d}} 
-{\bfseries Camera} (glm\+::vec3 \+\_\+start\+Pos)
+void \mbox{\hyperlink{class_engine_1_1_camera_a16df865e6139a822c0e7ab7548bca24e}{on\+Initialise}} ()
 \item 
-\mbox{\Hypertarget{class_engine_1_1_camera_a20920deba88366501a86d8fcfcb3ccec}\label{class_engine_1_1_camera_a20920deba88366501a86d8fcfcb3ccec}} 
-float {\bfseries speed} ()
-\item 
-\mbox{\Hypertarget{class_engine_1_1_camera_af2ea1cb4962e07b2c127d3e2c7ab3e2e}\label{class_engine_1_1_camera_af2ea1cb4962e07b2c127d3e2c7ab3e2e}} 
-glm\+::vec3 {\bfseries get\+Pos} ()
-\item 
-\mbox{\Hypertarget{class_engine_1_1_camera_a9fd707c196c54f5661773860f2528c96}\label{class_engine_1_1_camera_a9fd707c196c54f5661773860f2528c96}} 
-glm\+::vec3 {\bfseries get\+Up} ()
-\item 
-\mbox{\Hypertarget{class_engine_1_1_camera_a02018fe92415615893052d1826c8e05c}\label{class_engine_1_1_camera_a02018fe92415615893052d1826c8e05c}} 
-glm\+::vec3 {\bfseries get\+Right} ()
-\item 
-\mbox{\Hypertarget{class_engine_1_1_camera_aa5c2054fec94c612c47f425a345e14eb}\label{class_engine_1_1_camera_aa5c2054fec94c612c47f425a345e14eb}} 
-float {\bfseries get\+Pitch} ()
-\item 
-\mbox{\Hypertarget{class_engine_1_1_camera_a256cd631b0d6e188a7413f3de47299e5}\label{class_engine_1_1_camera_a256cd631b0d6e188a7413f3de47299e5}} 
-float {\bfseries get\+Yaw} ()
-\item 
-\mbox{\Hypertarget{class_engine_1_1_camera_a51366970db0175f80f26b917154280fa}\label{class_engine_1_1_camera_a51366970db0175f80f26b917154280fa}} 
-void {\bfseries set\+Pos} (glm\+::vec3 \+\_\+pos)
-\item 
-\mbox{\Hypertarget{class_engine_1_1_camera_a08babacf9db74f5135e6a302012c140e}\label{class_engine_1_1_camera_a08babacf9db74f5135e6a302012c140e}} 
-void {\bfseries set\+Rot} (glm\+::vec3 \+\_\+rot)
-\item 
-\mbox{\Hypertarget{class_engine_1_1_camera_a562b598248aba997433c8220ac85d103}\label{class_engine_1_1_camera_a562b598248aba997433c8220ac85d103}} 
-void {\bfseries update} (float \+\_\+d\+Time, \mbox{\hyperlink{class_engine_1_1_input}{Input}} $\ast$\+\_\+input)
-\item 
-\mbox{\Hypertarget{class_engine_1_1_camera_a7149e8f9ad511620eb3d702353bf6da3}\label{class_engine_1_1_camera_a7149e8f9ad511620eb3d702353bf6da3}} 
-glm\+::vec3 {\bfseries get\+Fwd} ()
+void \mbox{\hyperlink{class_engine_1_1_camera_aad2e51138d91c5ffafe46d1db0cebecf}{update}} (float \+\_\+d\+Time, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_input}{Input}} $>$ \+\_\+input)
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_engine_1_1_camera_ac03b8514f4b2923612cad298f99c58c1}{m\+\_\+rot\+Speed}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_camera_a16df865e6139a822c0e7ab7548bca24e}\label{class_engine_1_1_camera_a16df865e6139a822c0e7ab7548bca24e}} 
+\index{Engine::Camera@{Engine::Camera}!onInitialise@{onInitialise}}
+\index{onInitialise@{onInitialise}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{onInitialise()}{onInitialise()}}
+{\footnotesize\ttfamily void Engine\+::\+Camera\+::on\+Initialise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a698b7e82b695c3e056dc0f929e631b6d}{Engine\+::\+Component}}.
+
+\mbox{\Hypertarget{class_engine_1_1_camera_aad2e51138d91c5ffafe46d1db0cebecf}\label{class_engine_1_1_camera_aad2e51138d91c5ffafe46d1db0cebecf}} 
+\index{Engine::Camera@{Engine::Camera}!update@{update}}
+\index{update@{update}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Engine\+::\+Camera\+::update (\begin{DoxyParamCaption}\item[{float}]{\+\_\+d\+Time,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_input}{Input}} $>$}]{\+\_\+input }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_camera_ac03b8514f4b2923612cad298f99c58c1}\label{class_engine_1_1_camera_ac03b8514f4b2923612cad298f99c58c1}} 
+\index{Engine::Camera@{Engine::Camera}!m\_rotSpeed@{m\_rotSpeed}}
+\index{m\_rotSpeed@{m\_rotSpeed}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{m\_rotSpeed}{m\_rotSpeed}}
+{\footnotesize\ttfamily float Engine\+::\+Camera\+::m\+\_\+rot\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Camera.\+h\item 
-src/\+Engine/Camera.\+cpp\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_camera_8h}{Camera.\+h}}\item 
+src/\+Engine/\mbox{\hyperlink{_camera_8cpp}{Camera.\+cpp}}\end{DoxyCompactItemize}

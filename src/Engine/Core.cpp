@@ -35,7 +35,7 @@ namespace Engine
 
 		//Create some necessary entities (TODO: Will be improved later)
 		std::shared_ptr<Entity> e = rtn->createEntity();
-		e->transform()->m_position = glm::vec3(0.0f, 8.0f, -8.0f);
+		e->transform()->m_position = glm::vec3(0.0f, 4.0f, -12.0f);
 		e->transform()->m_eulerAngles = glm::vec3(0.0f, -90.0f, -0.0f);
 		rtn->m_camera = e->addComponent<Camera>();
 
@@ -260,9 +260,9 @@ namespace Engine
 		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
 		//Change to Shadowmap to view depth buffer
 		m_sqShader->setUniform("in_Texture", m_RT);
-		//m_sqShader->setUniform("in_Cubemap", m_pointLights[0]->getShadowCube());
-		//m_sqShader->setUniform("in_nearPlane", 0.01f);
-		//m_sqShader->setUniform("in_farPlane", m_pointLights[0]->getRadius());
+		/*m_sqShader->setUniform("in_Texture", m_dirLights[0]->getShadowMap());
+		m_sqShader->setUniform("in_nearPlane", 0.01f);
+		m_sqShader->setUniform("in_farPlane", m_pointLights[0]->getRadius());*/
 
 	}
 

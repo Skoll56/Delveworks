@@ -61,17 +61,20 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Engine</b></li><li class="navelem"><a class="el" href="class_engine_1_1_shader.html">Shader</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_engine.html">Engine</a></li><li class="navelem"><a class="el" href="class_engine_1_1_shader.html">Shader</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_engine_1_1_shader-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Engine::Shader Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_shader_8h_source.html">Shader.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::Shader:</div>
 <div class="dyncontent">
@@ -84,50 +87,418 @@ Inheritance diagram for Engine::Shader:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a38bfa7d8d496af017bf13a9d7f2879b5"><td class="memItemLeft" align="right" valign="top"><a id="a38bfa7d8d496af017bf13a9d7f2879b5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Shader</b> (std::string _name)</td></tr>
+<tr class="memitem:a7e599fca532f8f9bb912c9843276533f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a7e599fca532f8f9bb912c9843276533f">Shader</a> ()</td></tr>
+<tr class="separator:a7e599fca532f8f9bb912c9843276533f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38bfa7d8d496af017bf13a9d7f2879b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a38bfa7d8d496af017bf13a9d7f2879b5">Shader</a> (std::string _name)</td></tr>
 <tr class="separator:a38bfa7d8d496af017bf13a9d7f2879b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa7f74079302c4bc924cc357208d9195"><td class="memItemLeft" align="right" valign="top"><a id="afa7f74079302c4bc924cc357208d9195"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (std::string _name)</td></tr>
+<tr class="memitem:afa7f74079302c4bc924cc357208d9195"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#afa7f74079302c4bc924cc357208d9195">load</a> (std::string _name)</td></tr>
 <tr class="separator:afa7f74079302c4bc924cc357208d9195"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d31d2aa442d04ed3d94b9730fa68676"><td class="memItemLeft" align="right" valign="top"><a id="a7d31d2aa442d04ed3d94b9730fa68676"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (<a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a> *vertexArray)</td></tr>
+<tr class="memitem:a2c966b191c0f1ef9a24b519505151bab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a2c966b191c0f1ef9a24b519505151bab">overrideDraw</a> (<a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a> *_vertexArray)</td></tr>
+<tr class="separator:a2c966b191c0f1ef9a24b519505151bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d31d2aa442d04ed3d94b9730fa68676"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a7d31d2aa442d04ed3d94b9730fa68676">draw</a> (<a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a> *vertexArray)</td></tr>
 <tr class="separator:a7d31d2aa442d04ed3d94b9730fa68676"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a363cf4695bbeacc4366d9aed0c68e9a4"><td class="memItemLeft" align="right" valign="top"><a id="a363cf4695bbeacc4366d9aed0c68e9a4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printShaderInfoLog</b> (GLuint obj)</td></tr>
+<tr class="memitem:a363cf4695bbeacc4366d9aed0c68e9a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a363cf4695bbeacc4366d9aed0c68e9a4">printShaderInfoLog</a> (GLuint obj)</td></tr>
 <tr class="separator:a363cf4695bbeacc4366d9aed0c68e9a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15b69127b3efa9632e05e6e420dad2dc"><td class="memItemLeft" align="right" valign="top"><a id="a15b69127b3efa9632e05e6e420dad2dc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (std::string _uniform, glm::vec4 _value)</td></tr>
+<tr class="memitem:a15b69127b3efa9632e05e6e420dad2dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a15b69127b3efa9632e05e6e420dad2dc">setUniform</a> (std::string _uniform, glm::vec4 _value)</td></tr>
 <tr class="separator:a15b69127b3efa9632e05e6e420dad2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60818975397428df3f5e165d69b7acc3"><td class="memItemLeft" align="right" valign="top"><a id="a60818975397428df3f5e165d69b7acc3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (std::string _uniform, float _value)</td></tr>
+<tr class="memitem:a60818975397428df3f5e165d69b7acc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a60818975397428df3f5e165d69b7acc3">setUniform</a> (std::string _uniform, float _value)</td></tr>
 <tr class="separator:a60818975397428df3f5e165d69b7acc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a560427b1361d748d0a821fe79fbe3958"><td class="memItemLeft" align="right" valign="top"><a id="a560427b1361d748d0a821fe79fbe3958"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (std::string _uniform, int _value)</td></tr>
+<tr class="memitem:a560427b1361d748d0a821fe79fbe3958"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a560427b1361d748d0a821fe79fbe3958">setUniform</a> (std::string _uniform, int _value)</td></tr>
 <tr class="separator:a560427b1361d748d0a821fe79fbe3958"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a181f2a0be0eba262550ffef2e021f72d"><td class="memItemLeft" align="right" valign="top"><a id="a181f2a0be0eba262550ffef2e021f72d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (std::string _uniform, <a class="el" href="class_engine_1_1_texture.html">Texture</a> *_tex)</td></tr>
-<tr class="separator:a181f2a0be0eba262550ffef2e021f72d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cfebd2af1acf33b654a7a34b27df427"><td class="memItemLeft" align="right" valign="top"><a id="a8cfebd2af1acf33b654a7a34b27df427"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (std::string _uniform, glm::mat4 _value)</td></tr>
+<tr class="memitem:adf1d1252cb4e1e35a5d714186226aa97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#adf1d1252cb4e1e35a5d714186226aa97">setUniform</a> (std::string _uniform, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_texture.html">Texture</a> &gt; _tex)</td></tr>
+<tr class="separator:adf1d1252cb4e1e35a5d714186226aa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeec3308ce8795cb8cba3acf6ebf69524"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#aeec3308ce8795cb8cba3acf6ebf69524">setUniform</a> (std::string _uniform, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shadow_cube.html">ShadowCube</a> &gt; _sc)</td></tr>
+<tr class="separator:aeec3308ce8795cb8cba3acf6ebf69524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cfebd2af1acf33b654a7a34b27df427"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a8cfebd2af1acf33b654a7a34b27df427">setUniform</a> (std::string _uniform, glm::mat4 _value)</td></tr>
 <tr class="separator:a8cfebd2af1acf33b654a7a34b27df427"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9790f7997e43ded03f8e006a412affee"><td class="memItemLeft" align="right" valign="top"><a id="a9790f7997e43ded03f8e006a412affee"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (std::string _uniform, glm::vec3 _value)</td></tr>
+<tr class="memitem:a9790f7997e43ded03f8e006a412affee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a9790f7997e43ded03f8e006a412affee">setUniform</a> (std::string _uniform, glm::vec3 _value)</td></tr>
 <tr class="separator:a9790f7997e43ded03f8e006a412affee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac62aebec5c7fd75b0c7b7fc03f8d5225"><td class="memItemLeft" align="right" valign="top"><a id="ac62aebec5c7fd75b0c7b7fc03f8d5225"></a>
-GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> ()</td></tr>
+<tr class="memitem:ac62aebec5c7fd75b0c7b7fc03f8d5225"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#ac62aebec5c7fd75b0c7b7fc03f8d5225">getId</a> ()</td></tr>
 <tr class="separator:ac62aebec5c7fd75b0c7b7fc03f8d5225"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a1858127dc1b2467313a4030f1c8a7b4f"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a1858127dc1b2467313a4030f1c8a7b4f">m_id</a></td></tr>
+<tr class="separator:a1858127dc1b2467313a4030f1c8a7b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4973ca557bedfe194fdb99f673157009"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_engine_1_1_sampler.html">Sampler</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_shader.html#a4973ca557bedfe194fdb99f673157009">m_sampler</a></td></tr>
+<tr class="separator:a4973ca557bedfe194fdb99f673157009"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_attribs_class_engine_1_1_resource"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_engine_1_1_resource')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_engine_1_1_resource.html">Engine::Resource</a></td></tr>
-<tr class="memitem:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="memItemLeft" align="right" valign="top"><a id="a0b6159004b4fc901f8df833f97f02670"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_path</b></td></tr>
+<tr class="memitem:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">m_path</a></td></tr>
 <tr class="separator:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7e599fca532f8f9bb912c9843276533f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e599fca532f8f9bb912c9843276533f">&#9670;&nbsp;</a></span>Shader() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Engine::Shader::Shader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a38bfa7d8d496af017bf13a9d7f2879b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38bfa7d8d496af017bf13a9d7f2879b5">&#9670;&nbsp;</a></span>Shader() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Engine::Shader::Shader </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7d31d2aa442d04ed3d94b9730fa68676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d31d2aa442d04ed3d94b9730fa68676">&#9670;&nbsp;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Shader::draw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a> *&#160;</td>
+          <td class="paramname"><em>vertexArray</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac62aebec5c7fd75b0c7b7fc03f8d5225"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62aebec5c7fd75b0c7b7fc03f8d5225">&#9670;&nbsp;</a></span>getId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLuint Engine::Shader::getId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afa7f74079302c4bc924cc357208d9195"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa7f74079302c4bc924cc357208d9195">&#9670;&nbsp;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Shader::load </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c966b191c0f1ef9a24b519505151bab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c966b191c0f1ef9a24b519505151bab">&#9670;&nbsp;</a></span>overrideDraw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Shader::overrideDraw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a> *&#160;</td>
+          <td class="paramname"><em>_vertexArray</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a363cf4695bbeacc4366d9aed0c68e9a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a363cf4695bbeacc4366d9aed0c68e9a4">&#9670;&nbsp;</a></span>printShaderInfoLog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Shader::printShaderInfoLog </td>
+          <td>(</td>
+          <td class="paramtype">GLuint&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a60818975397428df3f5e165d69b7acc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60818975397428df3f5e165d69b7acc3">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[1/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Shader::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_uniform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8cfebd2af1acf33b654a7a34b27df427"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cfebd2af1acf33b654a7a34b27df427">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[2/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Shader::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_uniform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::mat4&#160;</td>
+          <td class="paramname"><em>_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9790f7997e43ded03f8e006a412affee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9790f7997e43ded03f8e006a412affee">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[3/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Shader::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_uniform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15b69127b3efa9632e05e6e420dad2dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15b69127b3efa9632e05e6e420dad2dc">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[4/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Shader::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_uniform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec4&#160;</td>
+          <td class="paramname"><em>_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a560427b1361d748d0a821fe79fbe3958"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a560427b1361d748d0a821fe79fbe3958">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[5/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Shader::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_uniform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeec3308ce8795cb8cba3acf6ebf69524"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeec3308ce8795cb8cba3acf6ebf69524">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[6/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Shader::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_uniform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shadow_cube.html">ShadowCube</a> &gt;&#160;</td>
+          <td class="paramname"><em>_sc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf1d1252cb4e1e35a5d714186226aa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf1d1252cb4e1e35a5d714186226aa97">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[7/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Shader::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_uniform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_texture.html">Texture</a> &gt;&#160;</td>
+          <td class="paramname"><em>_tex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1858127dc1b2467313a4030f1c8a7b4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1858127dc1b2467313a4030f1c8a7b4f">&#9670;&nbsp;</a></span>m_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLuint Engine::Shader::m_id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4973ca557bedfe194fdb99f673157009"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4973ca557bedfe194fdb99f673157009">&#9670;&nbsp;</a></span>m_sampler</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="struct_engine_1_1_sampler.html">Sampler</a>&gt; Engine::Shader::m_sampler</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/Engine/<a class="el" href="_shader_8h_source.html">Shader.h</a></li>
-<li>src/Engine/Shader.cpp</li>
+<li>src/Engine/<a class="el" href="_shader_8cpp.html">Shader.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

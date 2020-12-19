@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Engine</b></li><li class="navelem"><a class="el" href="struct_engine_1_1_core.html">Core</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_engine.html">Engine</a></li><li class="navelem"><a class="el" href="struct_engine_1_1_core.html">Core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -69,63 +69,1053 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="struct_engine_1_1_core-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Engine::Core Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_core_8h_source.html">Core.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aebe300991eb916b32c43f73149c35ca8"><td class="memItemLeft" align="right" valign="top"><a id="aebe300991eb916b32c43f73149c35ca8"></a>
-std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>createEntity</b> ()</td></tr>
+<tr class="memitem:aebe300991eb916b32c43f73149c35ca8"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#aebe300991eb916b32c43f73149c35ca8">createEntity</a> ()</td></tr>
 <tr class="separator:aebe300991eb916b32c43f73149c35ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a8da6e558931a88e7fdb2414c11070d"><td class="memItemLeft" align="right" valign="top"><a id="a6a8da6e558931a88e7fdb2414c11070d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
+<tr class="memitem:a6a8da6e558931a88e7fdb2414c11070d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a6a8da6e558931a88e7fdb2414c11070d">start</a> ()</td></tr>
 <tr class="separator:a6a8da6e558931a88e7fdb2414c11070d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8dcbb100e5fcfecc2da5cb60a78aa54"><td class="memItemLeft" align="right" valign="top"><a id="ab8dcbb100e5fcfecc2da5cb60a78aa54"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loop</b> ()</td></tr>
+<tr class="memitem:ab8dcbb100e5fcfecc2da5cb60a78aa54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ab8dcbb100e5fcfecc2da5cb60a78aa54">loop</a> ()</td></tr>
 <tr class="separator:ab8dcbb100e5fcfecc2da5cb60a78aa54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cb0031922f8cea12c75850475f0cbfe"><td class="memItemLeft" align="right" valign="top"><a id="a4cb0031922f8cea12c75850475f0cbfe"></a>
-<a class="el" href="class_engine_1_1_scene.html">Scene</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createScene</b> ()</td></tr>
-<tr class="separator:a4cb0031922f8cea12c75850475f0cbfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77c170145546cc72ff9a997f4b677690"><td class="memItemLeft" align="right" valign="top"><a id="a77c170145546cc72ff9a997f4b677690"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initialiseAL</b> ()</td></tr>
+<tr class="memitem:ae4594e28cf18c1ec887090c95298bb00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ae4594e28cf18c1ec887090c95298bb00">drawScene</a> ()</td></tr>
+<tr class="separator:ae4594e28cf18c1ec887090c95298bb00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af646f2461a27e9233f01c98836461416"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#af646f2461a27e9233f01c98836461416">drawShadowScene</a> ()</td></tr>
+<tr class="separator:af646f2461a27e9233f01c98836461416"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab77e7911587546f9e633e97d4c46b4cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ab77e7911587546f9e633e97d4c46b4cc">drawPointShadowScene</a> ()</td></tr>
+<tr class="separator:ab77e7911587546f9e633e97d4c46b4cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77c170145546cc72ff9a997f4b677690"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a77c170145546cc72ff9a997f4b677690">initialiseAL</a> ()</td></tr>
 <tr class="separator:a77c170145546cc72ff9a997f4b677690"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61a30c369baa28e8d059c644de7f68c1"><td class="memItemLeft" align="right" valign="top"><a id="a61a30c369baa28e8d059c644de7f68c1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initialiseSDL</b> ()</td></tr>
+<tr class="memitem:a43364507983ce638f590fe137b2ae5e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a43364507983ce638f590fe137b2ae5e3">initialiseShaders</a> ()</td></tr>
+<tr class="separator:a43364507983ce638f590fe137b2ae5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61a30c369baa28e8d059c644de7f68c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a61a30c369baa28e8d059c644de7f68c1">initialiseSDL</a> ()</td></tr>
 <tr class="separator:a61a30c369baa28e8d059c644de7f68c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61254df62344da5ba1ee1b58a0ca0cbc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a61254df62344da5ba1ee1b58a0ca0cbc">getDeltaTime</a> ()</td></tr>
+<tr class="separator:a61254df62344da5ba1ee1b58a0ca0cbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57e7d233b0a1cd6224947c1a55ee7e5e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a57e7d233b0a1cd6224947c1a55ee7e5e">getAllEntities</a> ()</td></tr>
+<tr class="separator:a57e7d233b0a1cd6224947c1a55ee7e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac29e74cf51bd28d31c8247e842f501b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ac29e74cf51bd28d31c8247e842f501b6">updateShader</a> ()</td></tr>
+<tr class="separator:ac29e74cf51bd28d31c8247e842f501b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41f337d9f0a1ce85e05f2ca5e21b8850"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a41f337d9f0a1ce85e05f2ca5e21b8850">drawShadowmaps</a> ()</td></tr>
+<tr class="separator:a41f337d9f0a1ce85e05f2ca5e21b8850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d830d9abbbf92e43a03f0b2660891f1"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_render_texture.html">RenderTexture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a8d830d9abbbf92e43a03f0b2660891f1">createRenderTexture</a> ()</td></tr>
+<tr class="separator:a8d830d9abbbf92e43a03f0b2660891f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad27a1cee727927f8f4c7be01f187929f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ad27a1cee727927f8f4c7be01f187929f">createScreenQuad</a> ()</td></tr>
+<tr class="separator:ad27a1cee727927f8f4c7be01f187929f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a05f9c038a94ded559cee0a3f55674a8f"><td class="memItemLeft" align="right" valign="top"><a id="a05f9c038a94ded559cee0a3f55674a8f"></a>
-static std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_core.html">Core</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>initialise</b> ()</td></tr>
+<tr class="memitem:a05f9c038a94ded559cee0a3f55674a8f"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_core.html">Core</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a05f9c038a94ded559cee0a3f55674a8f">initialise</a> ()</td></tr>
 <tr class="separator:a05f9c038a94ded559cee0a3f55674a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a28d5d7e218efea86103b4179a4867ec3"><td class="memItemLeft" align="right" valign="top"><a id="a28d5d7e218efea86103b4179a4867ec3"></a>
-<a class="el" href="class_engine_1_1_scene.html">Scene</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_scene</b></td></tr>
-<tr class="separator:a28d5d7e218efea86103b4179a4867ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89a42917c23ffbc0fe60adf0ddd77348"><td class="memItemLeft" align="right" valign="top"><a id="a89a42917c23ffbc0fe60adf0ddd77348"></a>
-<a class="el" href="class_engine_1_1_input.html">Input</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_input</b></td></tr>
-<tr class="separator:a89a42917c23ffbc0fe60adf0ddd77348"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1caaf7c673d326f1ed4271977ed3f83c"><td class="memItemLeft" align="right" valign="top"><a id="a1caaf7c673d326f1ed4271977ed3f83c"></a>
-std::shared_ptr&lt; <a class="el" href="class_engine_1_1_resource_manager.html">ResourceManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_rManager</b> = std::make_shared&lt;<a class="el" href="class_engine_1_1_resource_manager.html">ResourceManager</a>&gt;()</td></tr>
+<tr class="memitem:ab0ce45a9efe1b641997b0f214f50d9d2"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_input.html">Input</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ab0ce45a9efe1b641997b0f214f50d9d2">m_input</a></td></tr>
+<tr class="separator:ab0ce45a9efe1b641997b0f214f50d9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1caaf7c673d326f1ed4271977ed3f83c"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_resource_manager.html">ResourceManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a1caaf7c673d326f1ed4271977ed3f83c">m_rManager</a></td></tr>
 <tr class="separator:a1caaf7c673d326f1ed4271977ed3f83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d76ccf574db36c251b7848804820612"><td class="memItemLeft" align="right" valign="top"><a id="a2d76ccf574db36c251b7848804820612"></a>
-SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><b>m_window</b></td></tr>
+<tr class="memitem:a2d76ccf574db36c251b7848804820612"><td class="memItemLeft" align="right" valign="top">SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a2d76ccf574db36c251b7848804820612">m_window</a></td></tr>
 <tr class="separator:a2d76ccf574db36c251b7848804820612"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3c192a2cac6782cf8cb9c3809d37fe7"><td class="memItemLeft" align="right" valign="top"><a id="ab3c192a2cac6782cf8cb9c3809d37fe7"></a>
-ALCdevice *&#160;</td><td class="memItemRight" valign="bottom"><b>m_device</b></td></tr>
+<tr class="memitem:ab3c192a2cac6782cf8cb9c3809d37fe7"><td class="memItemLeft" align="right" valign="top">ALCdevice *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ab3c192a2cac6782cf8cb9c3809d37fe7">m_device</a></td></tr>
 <tr class="separator:ab3c192a2cac6782cf8cb9c3809d37fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab74459339fbe12487c218887fd94bc36"><td class="memItemLeft" align="right" valign="top"><a id="ab74459339fbe12487c218887fd94bc36"></a>
-ALCcontext *&#160;</td><td class="memItemRight" valign="bottom"><b>m_context</b></td></tr>
+<tr class="memitem:ab74459339fbe12487c218887fd94bc36"><td class="memItemLeft" align="right" valign="top">ALCcontext *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ab74459339fbe12487c218887fd94bc36">m_context</a></td></tr>
 <tr class="separator:ab74459339fbe12487c218887fd94bc36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a802cbccb00c087383e047995b58d9b0c"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a802cbccb00c087383e047995b58d9b0c">m_sqShader</a></td></tr>
+<tr class="separator:a802cbccb00c087383e047995b58d9b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bd19a837301d3b4c2e45849111cdfed"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a1bd19a837301d3b4c2e45849111cdfed">m_lightingSh</a></td></tr>
+<tr class="separator:a1bd19a837301d3b4c2e45849111cdfed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0af78e1a53b6f1fd520fb621851d209"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#af0af78e1a53b6f1fd520fb621851d209">m_shadowSh</a></td></tr>
+<tr class="separator:af0af78e1a53b6f1fd520fb621851d209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1bb715180b3f1eeae7b98310b87205e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ac1bb715180b3f1eeae7b98310b87205e">m_pointShadowSh</a></td></tr>
+<tr class="separator:ac1bb715180b3f1eeae7b98310b87205e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd842d13e5fa3aa6d5ee7698331dc483"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_camera.html">Camera</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#afd842d13e5fa3aa6d5ee7698331dc483">m_camera</a></td></tr>
+<tr class="separator:afd842d13e5fa3aa6d5ee7698331dc483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac482274a686f14cbf880ac76f151c6e9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ac482274a686f14cbf880ac76f151c6e9">m_entities</a></td></tr>
+<tr class="separator:ac482274a686f14cbf880ac76f151c6e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada3789e707556c4174415e948d72c095"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ada3789e707556c4174415e948d72c095">permX</a></td></tr>
+<tr class="separator:ada3789e707556c4174415e948d72c095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ce808b59927d3b23b0b5535d800b882"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a5ce808b59927d3b23b0b5535d800b882">permY</a></td></tr>
+<tr class="separator:a5ce808b59927d3b23b0b5535d800b882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7295a1729ff623e4d7e9f9b4ccfed786"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a7295a1729ff623e4d7e9f9b4ccfed786">quit</a></td></tr>
+<tr class="separator:a7295a1729ff623e4d7e9f9b4ccfed786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c7562ca4e3a8c1c037ae042c87b6bba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a6c7562ca4e3a8c1c037ae042c87b6bba">restart</a></td></tr>
+<tr class="separator:a6c7562ca4e3a8c1c037ae042c87b6bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a47b9c0ec2e3bfb2857f13eff11a08"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#af9a47b9c0ec2e3bfb2857f13eff11a08">width</a></td></tr>
+<tr class="separator:af9a47b9c0ec2e3bfb2857f13eff11a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a967d125778312c997f0d05f1c40328c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a967d125778312c997f0d05f1c40328c5">height</a></td></tr>
+<tr class="separator:a967d125778312c997f0d05f1c40328c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a8ddeffc9883cf45108152de2411087"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a2a8ddeffc9883cf45108152de2411087">halfX</a></td></tr>
+<tr class="separator:a2a8ddeffc9883cf45108152de2411087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34baad7163b4d969a4e042cd6552a4d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a34baad7163b4d969a4e042cd6552a4d8">halfY</a></td></tr>
+<tr class="separator:a34baad7163b4d969a4e042cd6552a4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a848dcbbd0a04dc543cfa312fd19de406"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a848dcbbd0a04dc543cfa312fd19de406">lastX</a></td></tr>
+<tr class="separator:a848dcbbd0a04dc543cfa312fd19de406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fdd9bd870e76f4c688686976f422b69"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a0fdd9bd870e76f4c688686976f422b69">lastY</a></td></tr>
+<tr class="separator:a0fdd9bd870e76f4c688686976f422b69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13ddb88ef847afa32290c624f8e25dfe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a13ddb88ef847afa32290c624f8e25dfe">mouseX</a></td></tr>
+<tr class="separator:a13ddb88ef847afa32290c624f8e25dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a233138a10c69c1bacb0b7d158d102627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a233138a10c69c1bacb0b7d158d102627">mouseY</a></td></tr>
+<tr class="separator:a233138a10c69c1bacb0b7d158d102627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9407afd4305d84be4a6e740127fb4af5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a9407afd4305d84be4a6e740127fb4af5">dTime</a></td></tr>
+<tr class="separator:a9407afd4305d84be4a6e740127fb4af5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a767ab1d2de0010c23abd32fc25ee7bdf"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a767ab1d2de0010c23abd32fc25ee7bdf">t1</a></td></tr>
+<tr class="separator:a767ab1d2de0010c23abd32fc25ee7bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae13a638884d941c86df361016ced685c"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_render_texture.html">RenderTexture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ae13a638884d941c86df361016ced685c">m_RT</a></td></tr>
+<tr class="separator:ae13a638884d941c86df361016ced685c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad11faac9621951f908fe4cda9c6e877e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ad11faac9621951f908fe4cda9c6e877e">m_screenQuad</a></td></tr>
+<tr class="separator:ad11faac9621951f908fe4cda9c6e877e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebeb9e9951cc6eab7a77a849641920b7"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="struct_engine_1_1_core.html">Core</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#aebeb9e9951cc6eab7a77a849641920b7">m_self</a></td></tr>
+<tr class="separator:aebeb9e9951cc6eab7a77a849641920b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b756008e825da742334e777ac6ce4e4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_dir_light.html">DirLight</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a2b756008e825da742334e777ac6ce4e4">m_dirLights</a></td></tr>
+<tr class="separator:a2b756008e825da742334e777ac6ce4e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26e25c029c139afbbf421ad688378113"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_spot_light.html">SpotLight</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a26e25c029c139afbbf421ad688378113">m_spotLights</a></td></tr>
+<tr class="separator:a26e25c029c139afbbf421ad688378113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac095a64a249cb58e384c97c2956166c1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_point_light.html">PointLight</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#ac095a64a249cb58e384c97c2956166c1">m_pointLights</a></td></tr>
+<tr class="separator:ac095a64a249cb58e384c97c2956166c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a614439ccac0344926adc4c0165d64060"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_engine_1_1_core.html#a614439ccac0344926adc4c0165d64060">Entity</a></td></tr>
+<tr class="separator:a614439ccac0344926adc4c0165d64060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aebe300991eb916b32c43f73149c35ca8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebe300991eb916b32c43f73149c35ca8">&#9670;&nbsp;</a></span>createEntity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt; Engine::Core::createEntity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d830d9abbbf92e43a03f0b2660891f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d830d9abbbf92e43a03f0b2660891f1">&#9670;&nbsp;</a></span>createRenderTexture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_render_texture.html">RenderTexture</a> &gt; Engine::Core::createRenderTexture </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad27a1cee727927f8f4c7be01f187929f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad27a1cee727927f8f4c7be01f187929f">&#9670;&nbsp;</a></span>createScreenQuad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Core::createScreenQuad </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab77e7911587546f9e633e97d4c46b4cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab77e7911587546f9e633e97d4c46b4cc">&#9670;&nbsp;</a></span>drawPointShadowScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Core::drawPointShadowScene </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4594e28cf18c1ec887090c95298bb00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4594e28cf18c1ec887090c95298bb00">&#9670;&nbsp;</a></span>drawScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Core::drawScene </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41f337d9f0a1ce85e05f2ca5e21b8850"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41f337d9f0a1ce85e05f2ca5e21b8850">&#9670;&nbsp;</a></span>drawShadowmaps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Core::drawShadowmaps </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af646f2461a27e9233f01c98836461416"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af646f2461a27e9233f01c98836461416">&#9670;&nbsp;</a></span>drawShadowScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Core::drawShadowScene </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a57e7d233b0a1cd6224947c1a55ee7e5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57e7d233b0a1cd6224947c1a55ee7e5e">&#9670;&nbsp;</a></span>getAllEntities()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="struct_engine_1_1_entity.html">Entity</a>&gt; &gt; Engine::Core::getAllEntities </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a61254df62344da5ba1ee1b58a0ca0cbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61254df62344da5ba1ee1b58a0ca0cbc">&#9670;&nbsp;</a></span>getDeltaTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Engine::Core::getDeltaTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a05f9c038a94ded559cee0a3f55674a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05f9c038a94ded559cee0a3f55674a8f">&#9670;&nbsp;</a></span>initialise()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_core.html">Core</a> &gt; Engine::Core::initialise </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a77c170145546cc72ff9a997f4b677690"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77c170145546cc72ff9a997f4b677690">&#9670;&nbsp;</a></span>initialiseAL()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Core::initialiseAL </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a61a30c369baa28e8d059c644de7f68c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61a30c369baa28e8d059c644de7f68c1">&#9670;&nbsp;</a></span>initialiseSDL()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Core::initialiseSDL </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a43364507983ce638f590fe137b2ae5e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43364507983ce638f590fe137b2ae5e3">&#9670;&nbsp;</a></span>initialiseShaders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Core::initialiseShaders </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8dcbb100e5fcfecc2da5cb60a78aa54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8dcbb100e5fcfecc2da5cb60a78aa54">&#9670;&nbsp;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Core::loop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a8da6e558931a88e7fdb2414c11070d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a8da6e558931a88e7fdb2414c11070d">&#9670;&nbsp;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Core::start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac29e74cf51bd28d31c8247e842f501b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac29e74cf51bd28d31c8247e842f501b6">&#9670;&nbsp;</a></span>updateShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Core::updateShader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a614439ccac0344926adc4c0165d64060"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a614439ccac0344926adc4c0165d64060">&#9670;&nbsp;</a></span>Entity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="struct_engine_1_1_entity.html">Entity</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a9407afd4305d84be4a6e740127fb4af5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9407afd4305d84be4a6e740127fb4af5">&#9670;&nbsp;</a></span>dTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Engine::Core::dTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a8ddeffc9883cf45108152de2411087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a8ddeffc9883cf45108152de2411087">&#9670;&nbsp;</a></span>halfX</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Core::halfX</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34baad7163b4d969a4e042cd6552a4d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34baad7163b4d969a4e042cd6552a4d8">&#9670;&nbsp;</a></span>halfY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Core::halfY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a967d125778312c997f0d05f1c40328c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a967d125778312c997f0d05f1c40328c5">&#9670;&nbsp;</a></span>height</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Core::height</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a848dcbbd0a04dc543cfa312fd19de406"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a848dcbbd0a04dc543cfa312fd19de406">&#9670;&nbsp;</a></span>lastX</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Core::lastX</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0fdd9bd870e76f4c688686976f422b69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fdd9bd870e76f4c688686976f422b69">&#9670;&nbsp;</a></span>lastY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Core::lastY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd842d13e5fa3aa6d5ee7698331dc483"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd842d13e5fa3aa6d5ee7698331dc483">&#9670;&nbsp;</a></span>m_camera</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_camera.html">Camera</a>&gt; Engine::Core::m_camera</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab74459339fbe12487c218887fd94bc36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab74459339fbe12487c218887fd94bc36">&#9670;&nbsp;</a></span>m_context</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALCcontext* Engine::Core::m_context</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3c192a2cac6782cf8cb9c3809d37fe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3c192a2cac6782cf8cb9c3809d37fe7">&#9670;&nbsp;</a></span>m_device</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALCdevice* Engine::Core::m_device</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b756008e825da742334e777ac6ce4e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b756008e825da742334e777ac6ce4e4">&#9670;&nbsp;</a></span>m_dirLights</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="class_engine_1_1_dir_light.html">DirLight</a>&gt; &gt; Engine::Core::m_dirLights</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac482274a686f14cbf880ac76f151c6e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac482274a686f14cbf880ac76f151c6e9">&#9670;&nbsp;</a></span>m_entities</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="struct_engine_1_1_entity.html">Entity</a>&gt; &gt; Engine::Core::m_entities</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab0ce45a9efe1b641997b0f214f50d9d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0ce45a9efe1b641997b0f214f50d9d2">&#9670;&nbsp;</a></span>m_input</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_input.html">Input</a>&gt; Engine::Core::m_input</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1bd19a837301d3b4c2e45849111cdfed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bd19a837301d3b4c2e45849111cdfed">&#9670;&nbsp;</a></span>m_lightingSh</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_shader.html">Shader</a>&gt; Engine::Core::m_lightingSh</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac095a64a249cb58e384c97c2956166c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac095a64a249cb58e384c97c2956166c1">&#9670;&nbsp;</a></span>m_pointLights</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="class_engine_1_1_point_light.html">PointLight</a>&gt; &gt; Engine::Core::m_pointLights</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac1bb715180b3f1eeae7b98310b87205e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1bb715180b3f1eeae7b98310b87205e">&#9670;&nbsp;</a></span>m_pointShadowSh</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_shader.html">Shader</a>&gt; Engine::Core::m_pointShadowSh</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1caaf7c673d326f1ed4271977ed3f83c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1caaf7c673d326f1ed4271977ed3f83c">&#9670;&nbsp;</a></span>m_rManager</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_resource_manager.html">ResourceManager</a>&gt; Engine::Core::m_rManager</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae13a638884d941c86df361016ced685c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae13a638884d941c86df361016ced685c">&#9670;&nbsp;</a></span>m_RT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_render_texture.html">RenderTexture</a>&gt; Engine::Core::m_RT</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad11faac9621951f908fe4cda9c6e877e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad11faac9621951f908fe4cda9c6e877e">&#9670;&nbsp;</a></span>m_screenQuad</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a>* Engine::Core::m_screenQuad</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aebeb9e9951cc6eab7a77a849641920b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebeb9e9951cc6eab7a77a849641920b7">&#9670;&nbsp;</a></span>m_self</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::weak_ptr&lt;<a class="el" href="struct_engine_1_1_core.html">Core</a>&gt; Engine::Core::m_self</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0af78e1a53b6f1fd520fb621851d209"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0af78e1a53b6f1fd520fb621851d209">&#9670;&nbsp;</a></span>m_shadowSh</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_shader.html">Shader</a>&gt; Engine::Core::m_shadowSh</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26e25c029c139afbbf421ad688378113"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26e25c029c139afbbf421ad688378113">&#9670;&nbsp;</a></span>m_spotLights</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="class_engine_1_1_spot_light.html">SpotLight</a>&gt; &gt; Engine::Core::m_spotLights</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a802cbccb00c087383e047995b58d9b0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a802cbccb00c087383e047995b58d9b0c">&#9670;&nbsp;</a></span>m_sqShader</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_shader.html">Shader</a>&gt; Engine::Core::m_sqShader</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d76ccf574db36c251b7848804820612"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d76ccf574db36c251b7848804820612">&#9670;&nbsp;</a></span>m_window</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Window* Engine::Core::m_window</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a13ddb88ef847afa32290c624f8e25dfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13ddb88ef847afa32290c624f8e25dfe">&#9670;&nbsp;</a></span>mouseX</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Core::mouseX</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a233138a10c69c1bacb0b7d158d102627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a233138a10c69c1bacb0b7d158d102627">&#9670;&nbsp;</a></span>mouseY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Core::mouseY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ada3789e707556c4174415e948d72c095"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada3789e707556c4174415e948d72c095">&#9670;&nbsp;</a></span>permX</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Core::permX</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ce808b59927d3b23b0b5535d800b882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ce808b59927d3b23b0b5535d800b882">&#9670;&nbsp;</a></span>permY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Core::permY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7295a1729ff623e4d7e9f9b4ccfed786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7295a1729ff623e4d7e9f9b4ccfed786">&#9670;&nbsp;</a></span>quit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Core::quit</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c7562ca4e3a8c1c037ae042c87b6bba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c7562ca4e3a8c1c037ae042c87b6bba">&#9670;&nbsp;</a></span>restart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Engine::Core::restart</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a767ab1d2de0010c23abd32fc25ee7bdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a767ab1d2de0010c23abd32fc25ee7bdf">&#9670;&nbsp;</a></span>t1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long Engine::Core::t1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9a47b9c0ec2e3bfb2857f13eff11a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9a47b9c0ec2e3bfb2857f13eff11a08">&#9670;&nbsp;</a></span>width</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Core::width</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
 <li>src/Engine/<a class="el" href="_core_8h_source.html">Core.h</a></li>
-<li>src/Engine/Core.cpp</li>
+<li>src/Engine/<a class="el" href="_core_8cpp.html">Core.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

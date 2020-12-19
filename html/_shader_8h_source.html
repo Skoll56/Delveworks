@@ -69,55 +69,70 @@ $(function() {
 <div class="title">Shader.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _SHADER_H_</span></div>
+<a href="_shader_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _SHADER_H_</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _SHADER_H_</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;GL/glew.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Texture.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_texture_8h.html">Texture.h</a>&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>Engine</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_engine.html">Engine</a></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">class </span>VertexArray;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">class </span>Texture;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">class </span>SpotLight;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">class </span>PointLight;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">class </span>DirLight;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">class </span>ShadowCube;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="struct_engine_1_1_sampler.html">   16</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_engine_1_1_sampler.html">Sampler</a></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        GLint m_id;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="class_engine_1_1_texture.html">Texture</a> *m_tex;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    };</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_engine_1_1_shader.html">   22</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_shader.html">Shader</a> : <span class="keyword">public</span> <a class="code" href="class_engine_1_1_resource.html">Resource</a></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        GLuint m_id;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        std::vector&lt;Sampler&gt; m_sampler;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="class_engine_1_1_shader.html">Shader</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="class_engine_1_1_shader.html">Shader</a>(std::string _name);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> load(std::string _name);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">void</span> draw(<a class="code" href="class_engine_1_1_vertex_array.html">VertexArray</a> *vertexArray);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> printShaderInfoLog(GLuint obj); <span class="comment">//Reference Karsten</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> setUniform(std::string _uniform, glm::vec4 _value);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> setUniform(std::string _uniform, <span class="keywordtype">float</span> _value);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> setUniform(std::string _uniform, <span class="keywordtype">int</span> _value);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> setUniform(std::string _uniform, <a class="code" href="class_engine_1_1_texture.html">Texture</a> *_tex);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">void</span> setUniform(std::string _uniform, glm::mat4 _value);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">void</span> setUniform(std::string _uniform, glm::vec3 _value);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        GLuint getId();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    };</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="struct_engine_1_1_sampler.html">   17</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_engine_1_1_sampler.html">Sampler</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="struct_engine_1_1_sampler.html#ae2f7f053512f7e68ae1a1d4eec887987">   19</a></span>&#160;        GLint <a class="code" href="struct_engine_1_1_sampler.html#ae2f7f053512f7e68ae1a1d4eec887987">m_uniform_location</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="struct_engine_1_1_sampler.html#a33c6abd2d5ff7dc8c163910995f37d50">   20</a></span>&#160;        std::shared_ptr&lt;Texture&gt; <a class="code" href="struct_engine_1_1_sampler.html#a33c6abd2d5ff7dc8c163910995f37d50">m_tex</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    };</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_engine_1_1_shader.html">   23</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_shader.html">Shader</a> : <span class="keyword">public</span> <a class="code" href="class_engine_1_1_resource.html">Resource</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_engine_1_1_shader.html#a1858127dc1b2467313a4030f1c8a7b4f">   26</a></span>&#160;        GLuint <a class="code" href="class_engine_1_1_shader.html#a1858127dc1b2467313a4030f1c8a7b4f">m_id</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_engine_1_1_shader.html#a4973ca557bedfe194fdb99f673157009">   27</a></span>&#160;        std::vector&lt;Sampler&gt; <a class="code" href="class_engine_1_1_shader.html#a4973ca557bedfe194fdb99f673157009">m_sampler</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="class_engine_1_1_shader.html#a7e599fca532f8f9bb912c9843276533f">Shader</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="class_engine_1_1_shader.html#a7e599fca532f8f9bb912c9843276533f">Shader</a>(std::string _name);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_shader.html#afa7f74079302c4bc924cc357208d9195">load</a>(std::string _name);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_shader.html#a2c966b191c0f1ef9a24b519505151bab">overrideDraw</a>(<a class="code" href="class_engine_1_1_vertex_array.html">VertexArray</a> * _vertexArray);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_shader.html#a7d31d2aa442d04ed3d94b9730fa68676">draw</a>(<a class="code" href="class_engine_1_1_vertex_array.html">VertexArray</a> *vertexArray);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_shader.html#a363cf4695bbeacc4366d9aed0c68e9a4">printShaderInfoLog</a>(GLuint obj); <span class="comment">//Reference Karsten</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_shader.html#a15b69127b3efa9632e05e6e420dad2dc">setUniform</a>(std::string _uniform, glm::vec4 _value);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_shader.html#a15b69127b3efa9632e05e6e420dad2dc">setUniform</a>(std::string _uniform, <span class="keywordtype">float</span> _value);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_shader.html#a15b69127b3efa9632e05e6e420dad2dc">setUniform</a>(std::string _uniform, <span class="keywordtype">int</span> _value);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_shader.html#a15b69127b3efa9632e05e6e420dad2dc">setUniform</a>(std::string _uniform, std::shared_ptr&lt;Texture&gt; _tex); <span class="comment">/* !This has been modified as part of the GRAPHICS UNIT! */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_shader.html#a15b69127b3efa9632e05e6e420dad2dc">setUniform</a>(std::string _uniform, std::shared_ptr&lt;ShadowCube&gt; _sc); <span class="comment">/* !This has been modified as part of the GRAPHICS UNIT! */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_shader.html#a15b69127b3efa9632e05e6e420dad2dc">setUniform</a>(std::string _uniform, glm::mat4 _value);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_shader.html#a15b69127b3efa9632e05e6e420dad2dc">setUniform</a>(std::string _uniform, glm::vec3 _value);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        GLuint <a class="code" href="class_engine_1_1_shader.html#ac62aebec5c7fd75b0c7b7fc03f8d5225">getId</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    };</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_engine_1_1_texture_html"><div class="ttname"><a href="class_engine_1_1_texture.html">Engine::Texture</a></div><div class="ttdef"><b>Definition:</b> Texture.h:10</div></div>
-<div class="ttc" id="aclass_engine_1_1_shader_html"><div class="ttname"><a href="class_engine_1_1_shader.html">Engine::Shader</a></div><div class="ttdef"><b>Definition:</b> Shader.h:23</div></div>
+<div class="ttc" id="aclass_engine_1_1_shader_html_a7e599fca532f8f9bb912c9843276533f"><div class="ttname"><a href="class_engine_1_1_shader.html#a7e599fca532f8f9bb912c9843276533f">Engine::Shader::Shader</a></div><div class="ttdeci">Shader()</div><div class="ttdef"><b>Definition:</b> Shader.cpp:16</div></div>
+<div class="ttc" id="astruct_engine_1_1_sampler_html_ae2f7f053512f7e68ae1a1d4eec887987"><div class="ttname"><a href="struct_engine_1_1_sampler.html#ae2f7f053512f7e68ae1a1d4eec887987">Engine::Sampler::m_uniform_location</a></div><div class="ttdeci">GLint m_uniform_location</div><div class="ttdef"><b>Definition:</b> Shader.h:19</div></div>
+<div class="ttc" id="anamespace_engine_html"><div class="ttname"><a href="namespace_engine.html">Engine</a></div><div class="ttdef"><b>Definition:</b> Camera.cpp:11</div></div>
+<div class="ttc" id="aclass_engine_1_1_shader_html"><div class="ttname"><a href="class_engine_1_1_shader.html">Engine::Shader</a></div><div class="ttdef"><b>Definition:</b> Shader.h:24</div></div>
+<div class="ttc" id="aclass_engine_1_1_shader_html_a7d31d2aa442d04ed3d94b9730fa68676"><div class="ttname"><a href="class_engine_1_1_shader.html#a7d31d2aa442d04ed3d94b9730fa68676">Engine::Shader::draw</a></div><div class="ttdeci">void draw(VertexArray *vertexArray)</div><div class="ttdef"><b>Definition:</b> Shader.cpp:247</div></div>
+<div class="ttc" id="aclass_engine_1_1_shader_html_a4973ca557bedfe194fdb99f673157009"><div class="ttname"><a href="class_engine_1_1_shader.html#a4973ca557bedfe194fdb99f673157009">Engine::Shader::m_sampler</a></div><div class="ttdeci">std::vector&lt; Sampler &gt; m_sampler</div><div class="ttdef"><b>Definition:</b> Shader.h:27</div></div>
 <div class="ttc" id="aclass_engine_1_1_resource_html"><div class="ttname"><a href="class_engine_1_1_resource.html">Engine::Resource</a></div><div class="ttdef"><b>Definition:</b> Resource.h:14</div></div>
-<div class="ttc" id="astruct_engine_1_1_sampler_html"><div class="ttname"><a href="struct_engine_1_1_sampler.html">Engine::Sampler</a></div><div class="ttdef"><b>Definition:</b> Shader.h:17</div></div>
+<div class="ttc" id="astruct_engine_1_1_sampler_html_a33c6abd2d5ff7dc8c163910995f37d50"><div class="ttname"><a href="struct_engine_1_1_sampler.html#a33c6abd2d5ff7dc8c163910995f37d50">Engine::Sampler::m_tex</a></div><div class="ttdeci">std::shared_ptr&lt; Texture &gt; m_tex</div><div class="ttdef"><b>Definition:</b> Shader.h:20</div></div>
+<div class="ttc" id="aclass_engine_1_1_shader_html_a2c966b191c0f1ef9a24b519505151bab"><div class="ttname"><a href="class_engine_1_1_shader.html#a2c966b191c0f1ef9a24b519505151bab">Engine::Shader::overrideDraw</a></div><div class="ttdeci">void overrideDraw(VertexArray *_vertexArray)</div><div class="ttdef"><b>Definition:</b> Shader.cpp:216</div></div>
+<div class="ttc" id="aclass_engine_1_1_shader_html_ac62aebec5c7fd75b0c7b7fc03f8d5225"><div class="ttname"><a href="class_engine_1_1_shader.html#ac62aebec5c7fd75b0c7b7fc03f8d5225">Engine::Shader::getId</a></div><div class="ttdeci">GLuint getId()</div><div class="ttdef"><b>Definition:</b> Shader.cpp:395</div></div>
+<div class="ttc" id="aclass_engine_1_1_shader_html_afa7f74079302c4bc924cc357208d9195"><div class="ttname"><a href="class_engine_1_1_shader.html#afa7f74079302c4bc924cc357208d9195">Engine::Shader::load</a></div><div class="ttdeci">void load(std::string _name)</div><div class="ttdef"><b>Definition:</b> Shader.cpp:24</div></div>
+<div class="ttc" id="aclass_engine_1_1_shader_html_a363cf4695bbeacc4366d9aed0c68e9a4"><div class="ttname"><a href="class_engine_1_1_shader.html#a363cf4695bbeacc4366d9aed0c68e9a4">Engine::Shader::printShaderInfoLog</a></div><div class="ttdeci">void printShaderInfoLog(GLuint obj)</div><div class="ttdef"><b>Definition:</b> Shader.cpp:132</div></div>
+<div class="ttc" id="aclass_engine_1_1_shader_html_a15b69127b3efa9632e05e6e420dad2dc"><div class="ttname"><a href="class_engine_1_1_shader.html#a15b69127b3efa9632e05e6e420dad2dc">Engine::Shader::setUniform</a></div><div class="ttdeci">void setUniform(std::string _uniform, glm::vec4 _value)</div><div class="ttdef"><b>Definition:</b> Shader.cpp:280</div></div>
+<div class="ttc" id="aclass_engine_1_1_shader_html_a1858127dc1b2467313a4030f1c8a7b4f"><div class="ttname"><a href="class_engine_1_1_shader.html#a1858127dc1b2467313a4030f1c8a7b4f">Engine::Shader::m_id</a></div><div class="ttdeci">GLuint m_id</div><div class="ttdef"><b>Definition:</b> Shader.h:26</div></div>
+<div class="ttc" id="a_texture_8h_html"><div class="ttname"><a href="_texture_8h.html">Texture.h</a></div></div>
+<div class="ttc" id="astruct_engine_1_1_sampler_html"><div class="ttname"><a href="struct_engine_1_1_sampler.html">Engine::Sampler</a></div><div class="ttdef"><b>Definition:</b> Shader.h:18</div></div>
 <div class="ttc" id="aclass_engine_1_1_vertex_array_html"><div class="ttname"><a href="class_engine_1_1_vertex_array.html">Engine::VertexArray</a></div><div class="ttdef"><b>Definition:</b> VertexArray.h:12</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

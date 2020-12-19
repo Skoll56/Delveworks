@@ -61,25 +61,84 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Engine</b></li><li class="navelem"><a class="el" href="class_engine_1_1_resource_manager.html">ResourceManager</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_engine.html">Engine</a></li><li class="navelem"><a class="el" href="class_engine_1_1_resource_manager.html">ResourceManager</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_engine_1_1_resource_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Engine::ResourceManager Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_resource_8h_source.html">Resource.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab9e4daa6c7ac9572e18ceeaf453efd4b"><td class="memTemplParams" colspan="2"><a id="ab9e4daa6c7ac9572e18ceeaf453efd4b"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ab9e4daa6c7ac9572e18ceeaf453efd4b"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>load</b> (std::string _path)</td></tr>
+<tr class="memitem:ab9e4daa6c7ac9572e18ceeaf453efd4b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ab9e4daa6c7ac9572e18ceeaf453efd4b"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#ab9e4daa6c7ac9572e18ceeaf453efd4b">load</a> (std::string _path)</td></tr>
 <tr class="separator:ab9e4daa6c7ac9572e18ceeaf453efd4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ab20eae98367e681270b2a755ac067f7e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_resource.html">Resource</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a></td></tr>
+<tr class="separator:ab20eae98367e681270b2a755ac067f7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab9e4daa6c7ac9572e18ceeaf453efd4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9e4daa6c7ac9572e18ceeaf453efd4b">&#9670;&nbsp;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;T&gt; Engine::ResourceManager::load </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>_path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab20eae98367e681270b2a755ac067f7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab20eae98367e681270b2a755ac067f7e">&#9670;&nbsp;</a></span>m_resourceList</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="class_engine_1_1_resource.html">Resource</a>&gt; &gt; Engine::ResourceManager::m_resourceList</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/Engine/<a class="el" href="_resource_8h_source.html">Resource.h</a></li>
 </ul>

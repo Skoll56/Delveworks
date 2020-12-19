@@ -61,101 +61,340 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Engine</b></li><li class="navelem"><a class="el" href="class_engine_1_1_dir_light.html">DirLight</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_engine.html">Engine</a></li><li class="navelem"><a class="el" href="class_engine_1_1_dir_light.html">DirLight</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_engine_1_1_dir_light-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Engine::DirLight Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_light_8h_source.html">Light.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::DirLight:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_engine_1_1_dir_light.png" usemap="#Engine::DirLight_map" alt=""/>
   <map id="Engine::DirLight_map" name="Engine::DirLight_map">
-<area href="class_engine_1_1_light.html" alt="Engine::Light" shape="rect" coords="0,0,101,24"/>
+<area href="class_engine_1_1_light.html" alt="Engine::Light" shape="rect" coords="0,56,120,80"/>
+<area href="class_engine_1_1_component.html" alt="Engine::Component" shape="rect" coords="0,0,120,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ada7462b78e20ecc2d3b5315761afb83f"><td class="memItemLeft" align="right" valign="top"><a id="ada7462b78e20ecc2d3b5315761afb83f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DirLight</b> (glm::vec3 _diffuse, float _specular, glm::vec3 _ambient, glm::vec3 _direction)</td></tr>
-<tr class="separator:ada7462b78e20ecc2d3b5315761afb83f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a272f9f2fb49ea2d0c3fa8b6c81d1d356"><td class="memItemLeft" align="right" valign="top"><a id="a272f9f2fb49ea2d0c3fa8b6c81d1d356"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getDif</b> ()</td></tr>
+<tr class="memitem:a0f364a41c103de1f69df110d61da8c95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_dir_light.html#a0f364a41c103de1f69df110d61da8c95">setValues</a> (glm::vec3 _diffuse, float _specular, glm::vec3 _ambient)</td></tr>
+<tr class="separator:a0f364a41c103de1f69df110d61da8c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a272f9f2fb49ea2d0c3fa8b6c81d1d356"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_dir_light.html#a272f9f2fb49ea2d0c3fa8b6c81d1d356">getDif</a> ()</td></tr>
 <tr class="separator:a272f9f2fb49ea2d0c3fa8b6c81d1d356"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89fc98379c0989c39ff6137df0039f90"><td class="memItemLeft" align="right" valign="top"><a id="a89fc98379c0989c39ff6137df0039f90"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getSpec</b> ()</td></tr>
+<tr class="memitem:a89fc98379c0989c39ff6137df0039f90"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_dir_light.html#a89fc98379c0989c39ff6137df0039f90">getSpec</a> ()</td></tr>
 <tr class="separator:a89fc98379c0989c39ff6137df0039f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a1545c41557eda360489fa97c121ceb"><td class="memItemLeft" align="right" valign="top"><a id="a7a1545c41557eda360489fa97c121ceb"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getDirection</b> ()</td></tr>
-<tr class="separator:a7a1545c41557eda360489fa97c121ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac584070707adb53657d3d44c56b96792"><td class="memItemLeft" align="right" valign="top"><a id="ac584070707adb53657d3d44c56b96792"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getAmb</b> ()</td></tr>
+<tr class="memitem:ac09a96eecec92cd2afb4fee72df280e7"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shadow_map.html">ShadowMap</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_dir_light.html#ac09a96eecec92cd2afb4fee72df280e7">getShadowMap</a> ()</td></tr>
+<tr class="separator:ac09a96eecec92cd2afb4fee72df280e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac584070707adb53657d3d44c56b96792"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_dir_light.html#ac584070707adb53657d3d44c56b96792">getAmb</a> ()</td></tr>
 <tr class="separator:ac584070707adb53657d3d44c56b96792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5366178bd740214562f1ffb273afe432"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_dir_light.html#a5366178bd740214562f1ffb273afe432">update</a> (int _i)</td></tr>
+<tr class="separator:a5366178bd740214562f1ffb273afe432"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_engine_1_1_light"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_light')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_light.html">Engine::Light</a></td></tr>
-<tr class="memitem:a4934ba2c0f1af83132cfdb665c22d5b9 inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="a4934ba2c0f1af83132cfdb665c22d5b9"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getPos</b> ()</td></tr>
-<tr class="separator:a4934ba2c0f1af83132cfdb665c22d5b9 inherit pub_methods_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac62e491b91b20701e0b878fe8488e587 inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="ac62e491b91b20701e0b878fe8488e587"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPos</b> (glm::vec3 _pos)</td></tr>
-<tr class="separator:ac62e491b91b20701e0b878fe8488e587 inherit pub_methods_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6a067b05d2841995296bfca4e3f00dd inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="ae6a067b05d2841995296bfca4e3f00dd"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>getDif</b> ()</td></tr>
+<tr class="memitem:ae6a067b05d2841995296bfca4e3f00dd inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_light.html#ae6a067b05d2841995296bfca4e3f00dd">getDif</a> ()</td></tr>
 <tr class="separator:ae6a067b05d2841995296bfca4e3f00dd inherit pub_methods_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2a8de4f8547ec1d36531c92717d4679 inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="ab2a8de4f8547ec1d36531c92717d4679"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getSpec</b> ()</td></tr>
+<tr class="memitem:ab2a8de4f8547ec1d36531c92717d4679 inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_light.html#ab2a8de4f8547ec1d36531c92717d4679">getSpec</a> ()</td></tr>
 <tr class="separator:ab2a8de4f8547ec1d36531c92717d4679 inherit pub_methods_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5136c26d6fb52e2df4b124cda8dd98f4 inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="a5136c26d6fb52e2df4b124cda8dd98f4"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isAnti</b> ()</td></tr>
+<tr class="memitem:a5136c26d6fb52e2df4b124cda8dd98f4 inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_light.html#a5136c26d6fb52e2df4b124cda8dd98f4">isAnti</a> ()</td></tr>
 <tr class="separator:a5136c26d6fb52e2df4b124cda8dd98f4 inherit pub_methods_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55523df0f4741ce4b33aa1c63da14e0f inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="a55523df0f4741ce4b33aa1c63da14e0f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setAnti</b> (bool _val)</td></tr>
+<tr class="memitem:a55523df0f4741ce4b33aa1c63da14e0f inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_light.html#a55523df0f4741ce4b33aa1c63da14e0f">setAnti</a> (bool _val)</td></tr>
 <tr class="separator:a55523df0f4741ce4b33aa1c63da14e0f inherit pub_methods_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0de32f04e093b7e1fe396597578f32a inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="ae0de32f04e093b7e1fe396597578f32a"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getTag</b> ()</td></tr>
+<tr class="memitem:ae0de32f04e093b7e1fe396597578f32a inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_light.html#ae0de32f04e093b7e1fe396597578f32a">getTag</a> ()</td></tr>
 <tr class="separator:ae0de32f04e093b7e1fe396597578f32a inherit pub_methods_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e241062da641354629d9d8a8605e130 inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="a2e241062da641354629d9d8a8605e130"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setTag</b> (std::string _tag)</td></tr>
+<tr class="memitem:a2e241062da641354629d9d8a8605e130 inherit pub_methods_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_light.html#a2e241062da641354629d9d8a8605e130">setTag</a> (std::string _tag)</td></tr>
 <tr class="separator:a2e241062da641354629d9d8a8605e130 inherit pub_methods_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
+<tr class="memitem:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">destroy</a> ()</td></tr>
+<tr class="separator:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">getEntity</a> ()</td></tr>
+<tr class="separator:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">transform</a> ()</td></tr>
+<tr class="separator:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bbd31f8047e7d026977f90362fe42d8 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_input.html">Input</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a7bbd31f8047e7d026977f90362fe42d8">input</a> ()</td></tr>
+<tr class="separator:a7bbd31f8047e7d026977f90362fe42d8 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a73bb1d3f118a91a7758c8f2bd6407c1b"><td class="memItemLeft" align="right" valign="top"><a id="a73bb1d3f118a91a7758c8f2bd6407c1b"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>m_diffuse</b></td></tr>
+<tr class="memitem:a73bb1d3f118a91a7758c8f2bd6407c1b"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_dir_light.html#a73bb1d3f118a91a7758c8f2bd6407c1b">m_diffuse</a></td></tr>
 <tr class="separator:a73bb1d3f118a91a7758c8f2bd6407c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e7fa6558a78a9d1fa8d66371974da99"><td class="memItemLeft" align="right" valign="top"><a id="a9e7fa6558a78a9d1fa8d66371974da99"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>m_specIntens</b></td></tr>
+<tr class="memitem:a9e7fa6558a78a9d1fa8d66371974da99"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_dir_light.html#a9e7fa6558a78a9d1fa8d66371974da99">m_specIntens</a></td></tr>
 <tr class="separator:a9e7fa6558a78a9d1fa8d66371974da99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aa758ce136bbd7f41e79da21cfaf70b19"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_dir_light.html#aa758ce136bbd7f41e79da21cfaf70b19">m_ambient</a></td></tr>
+<tr class="separator:aa758ce136bbd7f41e79da21cfaf70b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a612650d9d81e9358806a8fbe836a3f02"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shadow_map.html">ShadowMap</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_dir_light.html#a612650d9d81e9358806a8fbe836a3f02">m_SM</a></td></tr>
+<tr class="separator:a612650d9d81e9358806a8fbe836a3f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
+<tr class="memitem:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a698b7e82b695c3e056dc0f929e631b6d">onInitialise</a> ()</td></tr>
+<tr class="separator:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8763aeb9a9bcd10bbef2b74a8a22f24c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a8763aeb9a9bcd10bbef2b74a8a22f24c">onTick</a> ()</td></tr>
+<tr class="separator:a8763aeb9a9bcd10bbef2b74a8a22f24c inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bf4b58e99c0ad73db8ff257728ba830 inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a6bf4b58e99c0ad73db8ff257728ba830">onRender</a> ()</td></tr>
+<tr class="separator:a6bf4b58e99c0ad73db8ff257728ba830 inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ac103051527cfb9b716379fd115c99f5c">onDestroy</a> ()</td></tr>
+<tr class="separator:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_engine_1_1_light"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_engine_1_1_light')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_engine_1_1_light.html">Engine::Light</a></td></tr>
-<tr class="memitem:ac2ae4bde5c1e2fda1b6f1dcca7042598 inherit pro_attribs_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="ac2ae4bde5c1e2fda1b6f1dcca7042598"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>m_pos</b></td></tr>
-<tr class="separator:ac2ae4bde5c1e2fda1b6f1dcca7042598 inherit pro_attribs_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9ea69e274393cb91f6ac1cc33234aab inherit pro_attribs_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="aa9ea69e274393cb91f6ac1cc33234aab"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>m_diffuse</b></td></tr>
+<tr class="memitem:aa9ea69e274393cb91f6ac1cc33234aab inherit pro_attribs_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_light.html#aa9ea69e274393cb91f6ac1cc33234aab">m_diffuse</a></td></tr>
 <tr class="separator:aa9ea69e274393cb91f6ac1cc33234aab inherit pro_attribs_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58250254e49d65ecad8dc139547f019a inherit pro_attribs_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="a58250254e49d65ecad8dc139547f019a"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>m_specIntens</b></td></tr>
+<tr class="memitem:a58250254e49d65ecad8dc139547f019a inherit pro_attribs_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_light.html#a58250254e49d65ecad8dc139547f019a">m_specIntens</a></td></tr>
 <tr class="separator:a58250254e49d65ecad8dc139547f019a inherit pro_attribs_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95ca0c121eec3c861a768ca9a3dd401a inherit pro_attribs_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="a95ca0c121eec3c861a768ca9a3dd401a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_antiLight</b></td></tr>
+<tr class="memitem:a95ca0c121eec3c861a768ca9a3dd401a inherit pro_attribs_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_light.html#a95ca0c121eec3c861a768ca9a3dd401a">m_antiLight</a></td></tr>
 <tr class="separator:a95ca0c121eec3c861a768ca9a3dd401a inherit pro_attribs_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ac7212521e1d4d9ee5b528a6388dbbb inherit pro_attribs_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top"><a id="a2ac7212521e1d4d9ee5b528a6388dbbb"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_tag</b></td></tr>
+<tr class="memitem:a2ac7212521e1d4d9ee5b528a6388dbbb inherit pro_attribs_class_engine_1_1_light"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_light.html#a2ac7212521e1d4d9ee5b528a6388dbbb">m_tag</a></td></tr>
 <tr class="separator:a2ac7212521e1d4d9ee5b528a6388dbbb inherit pro_attribs_class_engine_1_1_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
+<tr class="memitem:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">m_entity</a></td></tr>
+<tr class="separator:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">m_transform</a></td></tr>
+<tr class="separator:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">m_delete</a> = false</td></tr>
+<tr class="separator:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac584070707adb53657d3d44c56b96792"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac584070707adb53657d3d44c56b96792">&#9670;&nbsp;</a></span>getAmb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Engine::DirLight::getAmb </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a272f9f2fb49ea2d0c3fa8b6c81d1d356"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a272f9f2fb49ea2d0c3fa8b6c81d1d356">&#9670;&nbsp;</a></span>getDif()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Engine::DirLight::getDif </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac09a96eecec92cd2afb4fee72df280e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac09a96eecec92cd2afb4fee72df280e7">&#9670;&nbsp;</a></span>getShadowMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_shadow_map.html">ShadowMap</a>&gt; Engine::DirLight::getShadowMap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a89fc98379c0989c39ff6137df0039f90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89fc98379c0989c39ff6137df0039f90">&#9670;&nbsp;</a></span>getSpec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Engine::DirLight::getSpec </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f364a41c103de1f69df110d61da8c95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f364a41c103de1f69df110d61da8c95">&#9670;&nbsp;</a></span>setValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::DirLight::setValues </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>_diffuse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_specular</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>_ambient</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5366178bd740214562f1ffb273afe432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5366178bd740214562f1ffb273afe432">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::DirLight::update </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa758ce136bbd7f41e79da21cfaf70b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa758ce136bbd7f41e79da21cfaf70b19">&#9670;&nbsp;</a></span>m_ambient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Engine::DirLight::m_ambient</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a73bb1d3f118a91a7758c8f2bd6407c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73bb1d3f118a91a7758c8f2bd6407c1b">&#9670;&nbsp;</a></span>m_diffuse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Engine::DirLight::m_diffuse</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a612650d9d81e9358806a8fbe836a3f02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a612650d9d81e9358806a8fbe836a3f02">&#9670;&nbsp;</a></span>m_SM</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_shadow_map.html">ShadowMap</a>&gt; Engine::DirLight::m_SM</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e7fa6558a78a9d1fa8d66371974da99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e7fa6558a78a9d1fa8d66371974da99">&#9670;&nbsp;</a></span>m_specIntens</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Engine::DirLight::m_specIntens</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/Engine/<a class="el" href="_light_8h_source.html">Light.h</a></li>
+<li>src/Engine/<a class="el" href="_light_8cpp.html">Light.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,29 +1,188 @@
 \hypertarget{struct_engine_1_1_entity}{}\doxysection{Engine\+::Entity Struct Reference}
 \label{struct_engine_1_1_entity}\index{Engine::Entity@{Engine::Entity}}
+
+
+{\ttfamily \#include $<$Entity.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{struct_engine_1_1_entity_aa534fd4b26261c12140c1b8a823acb5d}\label{struct_engine_1_1_entity_aa534fd4b26261c12140c1b8a823acb5d}} 
-{\footnotesize template$<$typename T $>$ }\\std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries add\+Component} ()
+{\footnotesize template$<$typename T $>$ }\\std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{struct_engine_1_1_entity_aa534fd4b26261c12140c1b8a823acb5d}{add\+Component}} ()
 \item 
-\mbox{\Hypertarget{struct_engine_1_1_entity_a985b03be14b4fcf730d7416e0af43ab2}\label{struct_engine_1_1_entity_a985b03be14b4fcf730d7416e0af43ab2}} 
-void {\bfseries tick} ()
+void \mbox{\hyperlink{struct_engine_1_1_entity_a985b03be14b4fcf730d7416e0af43ab2}{tick}} ()
 \item 
-\mbox{\Hypertarget{struct_engine_1_1_entity_a56a16e603cc31649d13ee0f3fbfd10a6}\label{struct_engine_1_1_entity_a56a16e603cc31649d13ee0f3fbfd10a6}} 
-{\footnotesize template$<$typename T $>$ }\\std\+::shared\+\_\+ptr$<$ T $>$ {\bfseries get\+Component} ()
+void \mbox{\hyperlink{struct_engine_1_1_entity_a1a850cb770598ce33efbc69ddf08b8ff}{after\+Tick}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{struct_engine_1_1_entity_a56a16e603cc31649d13ee0f3fbfd10a6}{get\+Component}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collider}{Collider}} $>$ \mbox{\hyperlink{struct_engine_1_1_entity_a2eb3948dbab62fdd918c419cd2f4af36}{get\+Collider}} ()
+\item 
+std\+::string \mbox{\hyperlink{struct_engine_1_1_entity_af272cf8e2a5280c89725242d1b7b7166}{get\+Tag}} ()
+\item 
+void \mbox{\hyperlink{struct_engine_1_1_entity_a5e039d8cd9b3c90e43bf80d79bc03d4a}{set\+Tag}} (std\+::string \+\_\+tag)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_core}{Core}} $>$ \mbox{\hyperlink{struct_engine_1_1_entity_a92d0a9b49d7ca64a3155ba9669d700e0}{get\+Core}} ()
+\item 
+bool \mbox{\hyperlink{struct_engine_1_1_entity_ac63076f7721c8c988c7a8e748c4db77c}{is\+Active}} ()
+\item 
+void \mbox{\hyperlink{struct_engine_1_1_entity_a7e39741596aa2b2f22a345e54bc87df4}{set\+Active}} (bool \+\_\+status)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} $>$ \mbox{\hyperlink{struct_engine_1_1_entity_ae86fd4068a8f514a103a12a86fe3d038}{transform}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{struct_engine_1_1_entity_acd41bebe021cfe3ddb5650e76a06473b}\label{struct_engine_1_1_entity_acd41bebe021cfe3ddb5650e76a06473b}} 
-std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_core}{Core}} $>$ {\bfseries core}
-\item 
-\mbox{\Hypertarget{struct_engine_1_1_entity_ab43df6235a2f356b341bdff328a8787d}\label{struct_engine_1_1_entity_ab43df6235a2f356b341bdff328a8787d}} 
-std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ {\bfseries self}
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{struct_engine_1_1_entity_a7d346bfcc0e1073adf95f1eb89745bf6}{check\+Type}} (std\+::shared\+\_\+ptr$<$ T $>$ \+\_\+rtn)
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_component}{Component}} $>$ $>$ \mbox{\hyperlink{struct_engine_1_1_entity_aae410ba24141bcc584d94800fe2111db}{components}}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_core}{Core}} $>$ \mbox{\hyperlink{struct_engine_1_1_entity_acd41bebe021cfe3ddb5650e76a06473b}{core}}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{struct_engine_1_1_entity_ab43df6235a2f356b341bdff328a8787d}{self}}
+\item 
+std\+::string \mbox{\hyperlink{struct_engine_1_1_entity_a58b7e401cb6023102512795cf7cece08}{m\+\_\+tag}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} $>$ \mbox{\hyperlink{struct_engine_1_1_entity_a4989f1f643ebde5f197b3aa2970d9499}{m\+\_\+transform}}
+\item 
+bool \mbox{\hyperlink{struct_engine_1_1_entity_acb33698575735da1932c15a23cc96950}{m\+\_\+active}} = true
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_engine_1_1_entity_acd0789873af2006e142a579250891ce8}{Core}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_engine_1_1_entity_aa534fd4b26261c12140c1b8a823acb5d}\label{struct_engine_1_1_entity_aa534fd4b26261c12140c1b8a823acb5d}} 
+\index{Engine::Entity@{Engine::Entity}!addComponent@{addComponent}}
+\index{addComponent@{addComponent}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{addComponent()}{addComponent()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::shared\+\_\+ptr$<$T$>$ Engine\+::\+Entity\+::add\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_a1a850cb770598ce33efbc69ddf08b8ff}\label{struct_engine_1_1_entity_a1a850cb770598ce33efbc69ddf08b8ff}} 
+\index{Engine::Entity@{Engine::Entity}!afterTick@{afterTick}}
+\index{afterTick@{afterTick}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{afterTick()}{afterTick()}}
+{\footnotesize\ttfamily void Engine\+::\+Entity\+::after\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_a7d346bfcc0e1073adf95f1eb89745bf6}\label{struct_engine_1_1_entity_a7d346bfcc0e1073adf95f1eb89745bf6}} 
+\index{Engine::Entity@{Engine::Entity}!checkType@{checkType}}
+\index{checkType@{checkType}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{checkType()}{checkType()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Engine\+::\+Entity\+::check\+Type (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ T $>$}]{\+\_\+rtn }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_a2eb3948dbab62fdd918c419cd2f4af36}\label{struct_engine_1_1_entity_a2eb3948dbab62fdd918c419cd2f4af36}} 
+\index{Engine::Entity@{Engine::Entity}!getCollider@{getCollider}}
+\index{getCollider@{getCollider}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{getCollider()}{getCollider()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collider}{Collider}} $>$ Engine\+::\+Entity\+::get\+Collider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_a56a16e603cc31649d13ee0f3fbfd10a6}\label{struct_engine_1_1_entity_a56a16e603cc31649d13ee0f3fbfd10a6}} 
+\index{Engine::Entity@{Engine::Entity}!getComponent@{getComponent}}
+\index{getComponent@{getComponent}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{getComponent()}{getComponent()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::shared\+\_\+ptr$<$T$>$ Engine\+::\+Entity\+::get\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_a92d0a9b49d7ca64a3155ba9669d700e0}\label{struct_engine_1_1_entity_a92d0a9b49d7ca64a3155ba9669d700e0}} 
+\index{Engine::Entity@{Engine::Entity}!getCore@{getCore}}
+\index{getCore@{getCore}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{getCore()}{getCore()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{struct_engine_1_1_core}{Core}}$>$ Engine\+::\+Entity\+::get\+Core (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_af272cf8e2a5280c89725242d1b7b7166}\label{struct_engine_1_1_entity_af272cf8e2a5280c89725242d1b7b7166}} 
+\index{Engine::Entity@{Engine::Entity}!getTag@{getTag}}
+\index{getTag@{getTag}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{getTag()}{getTag()}}
+{\footnotesize\ttfamily std\+::string Engine\+::\+Entity\+::get\+Tag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_ac63076f7721c8c988c7a8e748c4db77c}\label{struct_engine_1_1_entity_ac63076f7721c8c988c7a8e748c4db77c}} 
+\index{Engine::Entity@{Engine::Entity}!isActive@{isActive}}
+\index{isActive@{isActive}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily bool Engine\+::\+Entity\+::is\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_a7e39741596aa2b2f22a345e54bc87df4}\label{struct_engine_1_1_entity_a7e39741596aa2b2f22a345e54bc87df4}} 
+\index{Engine::Entity@{Engine::Entity}!setActive@{setActive}}
+\index{setActive@{setActive}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{setActive()}{setActive()}}
+{\footnotesize\ttfamily void Engine\+::\+Entity\+::set\+Active (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_a5e039d8cd9b3c90e43bf80d79bc03d4a}\label{struct_engine_1_1_entity_a5e039d8cd9b3c90e43bf80d79bc03d4a}} 
+\index{Engine::Entity@{Engine::Entity}!setTag@{setTag}}
+\index{setTag@{setTag}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{setTag()}{setTag()}}
+{\footnotesize\ttfamily void Engine\+::\+Entity\+::set\+Tag (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_a985b03be14b4fcf730d7416e0af43ab2}\label{struct_engine_1_1_entity_a985b03be14b4fcf730d7416e0af43ab2}} 
+\index{Engine::Entity@{Engine::Entity}!tick@{tick}}
+\index{tick@{tick}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily void Engine\+::\+Entity\+::tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_ae86fd4068a8f514a103a12a86fe3d038}\label{struct_engine_1_1_entity_ae86fd4068a8f514a103a12a86fe3d038}} 
+\index{Engine::Entity@{Engine::Entity}!transform@{transform}}
+\index{transform@{transform}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_transform}{Transform}}$>$ Engine\+::\+Entity\+::transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{struct_engine_1_1_entity_acd0789873af2006e142a579250891ce8}\label{struct_engine_1_1_entity_acd0789873af2006e142a579250891ce8}} 
+\index{Engine::Entity@{Engine::Entity}!Core@{Core}}
+\index{Core@{Core}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{Core}{Core}}
+{\footnotesize\ttfamily friend struct \mbox{\hyperlink{struct_engine_1_1_core}{Core}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_engine_1_1_entity_aae410ba24141bcc584d94800fe2111db}\label{struct_engine_1_1_entity_aae410ba24141bcc584d94800fe2111db}} 
+\index{Engine::Entity@{Engine::Entity}!components@{components}}
+\index{components@{components}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{components}{components}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_component}{Component}}$>$ $>$ Engine\+::\+Entity\+::components\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_acd41bebe021cfe3ddb5650e76a06473b}\label{struct_engine_1_1_entity_acd41bebe021cfe3ddb5650e76a06473b}} 
+\index{Engine::Entity@{Engine::Entity}!core@{core}}
+\index{core@{core}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{core}{core}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{struct_engine_1_1_core}{Core}}$>$ Engine\+::\+Entity\+::core\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_acb33698575735da1932c15a23cc96950}\label{struct_engine_1_1_entity_acb33698575735da1932c15a23cc96950}} 
+\index{Engine::Entity@{Engine::Entity}!m\_active@{m\_active}}
+\index{m\_active@{m\_active}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{m\_active}{m\_active}}
+{\footnotesize\ttfamily bool Engine\+::\+Entity\+::m\+\_\+active = true\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_a58b7e401cb6023102512795cf7cece08}\label{struct_engine_1_1_entity_a58b7e401cb6023102512795cf7cece08}} 
+\index{Engine::Entity@{Engine::Entity}!m\_tag@{m\_tag}}
+\index{m\_tag@{m\_tag}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{m\_tag}{m\_tag}}
+{\footnotesize\ttfamily std\+::string Engine\+::\+Entity\+::m\+\_\+tag\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_a4989f1f643ebde5f197b3aa2970d9499}\label{struct_engine_1_1_entity_a4989f1f643ebde5f197b3aa2970d9499}} 
+\index{Engine::Entity@{Engine::Entity}!m\_transform@{m\_transform}}
+\index{m\_transform@{m\_transform}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{m\_transform}{m\_transform}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_transform}{Transform}}$>$ Engine\+::\+Entity\+::m\+\_\+transform\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{struct_engine_1_1_entity_ab43df6235a2f356b341bdff328a8787d}\label{struct_engine_1_1_entity_ab43df6235a2f356b341bdff328a8787d}} 
+\index{Engine::Entity@{Engine::Entity}!self@{self}}
+\index{self@{self}!Engine::Entity@{Engine::Entity}}
+\doxysubsubsection{\texorpdfstring{self}{self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{struct_engine_1_1_entity}{Entity}}$>$ Engine\+::\+Entity\+::self\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Entity.\+h\item 
-src/\+Engine/Entity.\+cpp\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_entity_8h}{Entity.\+h}}\item 
+src/\+Engine/\mbox{\hyperlink{_entity_8cpp}{Entity.\+cpp}}\end{DoxyCompactItemize}

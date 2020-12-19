@@ -1,5 +1,9 @@
 \hypertarget{class_engine_1_1_shader}{}\doxysection{Engine\+::Shader Class Reference}
 \label{class_engine_1_1_shader}\index{Engine::Shader@{Engine::Shader}}
+
+
+{\ttfamily \#include $<$Shader.\+h$>$}
+
 Inheritance diagram for Engine\+::Shader\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,43 +13,150 @@ Inheritance diagram for Engine\+::Shader\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_shader_a38bfa7d8d496af017bf13a9d7f2879b5}\label{class_engine_1_1_shader_a38bfa7d8d496af017bf13a9d7f2879b5}} 
-{\bfseries Shader} (std\+::string \+\_\+name)
+\mbox{\hyperlink{class_engine_1_1_shader_a7e599fca532f8f9bb912c9843276533f}{Shader}} ()
 \item 
-\mbox{\Hypertarget{class_engine_1_1_shader_afa7f74079302c4bc924cc357208d9195}\label{class_engine_1_1_shader_afa7f74079302c4bc924cc357208d9195}} 
-void {\bfseries load} (std\+::string \+\_\+name)
+\mbox{\hyperlink{class_engine_1_1_shader_a38bfa7d8d496af017bf13a9d7f2879b5}{Shader}} (std\+::string \+\_\+name)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_shader_a7d31d2aa442d04ed3d94b9730fa68676}\label{class_engine_1_1_shader_a7d31d2aa442d04ed3d94b9730fa68676}} 
-void {\bfseries draw} (\mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $\ast$vertex\+Array)
+void \mbox{\hyperlink{class_engine_1_1_shader_afa7f74079302c4bc924cc357208d9195}{load}} (std\+::string \+\_\+name)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_shader_a363cf4695bbeacc4366d9aed0c68e9a4}\label{class_engine_1_1_shader_a363cf4695bbeacc4366d9aed0c68e9a4}} 
-void {\bfseries print\+Shader\+Info\+Log} (G\+Luint obj)
+void \mbox{\hyperlink{class_engine_1_1_shader_a2c966b191c0f1ef9a24b519505151bab}{override\+Draw}} (\mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $\ast$\+\_\+vertex\+Array)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_shader_a15b69127b3efa9632e05e6e420dad2dc}\label{class_engine_1_1_shader_a15b69127b3efa9632e05e6e420dad2dc}} 
-void {\bfseries set\+Uniform} (std\+::string \+\_\+uniform, glm\+::vec4 \+\_\+value)
+void \mbox{\hyperlink{class_engine_1_1_shader_a7d31d2aa442d04ed3d94b9730fa68676}{draw}} (\mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $\ast$vertex\+Array)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_shader_a60818975397428df3f5e165d69b7acc3}\label{class_engine_1_1_shader_a60818975397428df3f5e165d69b7acc3}} 
-void {\bfseries set\+Uniform} (std\+::string \+\_\+uniform, float \+\_\+value)
+void \mbox{\hyperlink{class_engine_1_1_shader_a363cf4695bbeacc4366d9aed0c68e9a4}{print\+Shader\+Info\+Log}} (G\+Luint obj)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_shader_a560427b1361d748d0a821fe79fbe3958}\label{class_engine_1_1_shader_a560427b1361d748d0a821fe79fbe3958}} 
-void {\bfseries set\+Uniform} (std\+::string \+\_\+uniform, int \+\_\+value)
+void \mbox{\hyperlink{class_engine_1_1_shader_a15b69127b3efa9632e05e6e420dad2dc}{set\+Uniform}} (std\+::string \+\_\+uniform, glm\+::vec4 \+\_\+value)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_shader_a181f2a0be0eba262550ffef2e021f72d}\label{class_engine_1_1_shader_a181f2a0be0eba262550ffef2e021f72d}} 
-void {\bfseries set\+Uniform} (std\+::string \+\_\+uniform, \mbox{\hyperlink{class_engine_1_1_texture}{Texture}} $\ast$\+\_\+tex)
+void \mbox{\hyperlink{class_engine_1_1_shader_a60818975397428df3f5e165d69b7acc3}{set\+Uniform}} (std\+::string \+\_\+uniform, float \+\_\+value)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_shader_a8cfebd2af1acf33b654a7a34b27df427}\label{class_engine_1_1_shader_a8cfebd2af1acf33b654a7a34b27df427}} 
-void {\bfseries set\+Uniform} (std\+::string \+\_\+uniform, glm\+::mat4 \+\_\+value)
+void \mbox{\hyperlink{class_engine_1_1_shader_a560427b1361d748d0a821fe79fbe3958}{set\+Uniform}} (std\+::string \+\_\+uniform, int \+\_\+value)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_shader_a9790f7997e43ded03f8e006a412affee}\label{class_engine_1_1_shader_a9790f7997e43ded03f8e006a412affee}} 
-void {\bfseries set\+Uniform} (std\+::string \+\_\+uniform, glm\+::vec3 \+\_\+value)
+void \mbox{\hyperlink{class_engine_1_1_shader_adf1d1252cb4e1e35a5d714186226aa97}{set\+Uniform}} (std\+::string \+\_\+uniform, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_texture}{Texture}} $>$ \+\_\+tex)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_shader_ac62aebec5c7fd75b0c7b7fc03f8d5225}\label{class_engine_1_1_shader_ac62aebec5c7fd75b0c7b7fc03f8d5225}} 
-G\+Luint {\bfseries get\+Id} ()
+void \mbox{\hyperlink{class_engine_1_1_shader_aeec3308ce8795cb8cba3acf6ebf69524}{set\+Uniform}} (std\+::string \+\_\+uniform, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} $>$ \+\_\+sc)
+\item 
+void \mbox{\hyperlink{class_engine_1_1_shader_a8cfebd2af1acf33b654a7a34b27df427}{set\+Uniform}} (std\+::string \+\_\+uniform, glm\+::mat4 \+\_\+value)
+\item 
+void \mbox{\hyperlink{class_engine_1_1_shader_a9790f7997e43ded03f8e006a412affee}{set\+Uniform}} (std\+::string \+\_\+uniform, glm\+::vec3 \+\_\+value)
+\item 
+G\+Luint \mbox{\hyperlink{class_engine_1_1_shader_ac62aebec5c7fd75b0c7b7fc03f8d5225}{get\+Id}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+G\+Luint \mbox{\hyperlink{class_engine_1_1_shader_a1858127dc1b2467313a4030f1c8a7b4f}{m\+\_\+id}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_engine_1_1_sampler}{Sampler}} $>$ \mbox{\hyperlink{class_engine_1_1_shader_a4973ca557bedfe194fdb99f673157009}{m\+\_\+sampler}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_engine_1_1_shader_a7e599fca532f8f9bb912c9843276533f}\label{class_engine_1_1_shader_a7e599fca532f8f9bb912c9843276533f}} 
+\index{Engine::Shader@{Engine::Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{Shader()}{Shader()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Engine\+::\+Shader\+::\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_a38bfa7d8d496af017bf13a9d7f2879b5}\label{class_engine_1_1_shader_a38bfa7d8d496af017bf13a9d7f2879b5}} 
+\index{Engine::Shader@{Engine::Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{Shader()}{Shader()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Engine\+::\+Shader\+::\+Shader (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_shader_a7d31d2aa442d04ed3d94b9730fa68676}\label{class_engine_1_1_shader_a7d31d2aa442d04ed3d94b9730fa68676}} 
+\index{Engine::Shader@{Engine::Shader}!draw@{draw}}
+\index{draw@{draw}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $\ast$}]{vertex\+Array }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_ac62aebec5c7fd75b0c7b7fc03f8d5225}\label{class_engine_1_1_shader_ac62aebec5c7fd75b0c7b7fc03f8d5225}} 
+\index{Engine::Shader@{Engine::Shader}!getId@{getId}}
+\index{getId@{getId}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily G\+Luint Engine\+::\+Shader\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_afa7f74079302c4bc924cc357208d9195}\label{class_engine_1_1_shader_afa7f74079302c4bc924cc357208d9195}} 
+\index{Engine::Shader@{Engine::Shader}!load@{load}}
+\index{load@{load}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::load (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_a2c966b191c0f1ef9a24b519505151bab}\label{class_engine_1_1_shader_a2c966b191c0f1ef9a24b519505151bab}} 
+\index{Engine::Shader@{Engine::Shader}!overrideDraw@{overrideDraw}}
+\index{overrideDraw@{overrideDraw}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{overrideDraw()}{overrideDraw()}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::override\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $\ast$}]{\+\_\+vertex\+Array }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_a363cf4695bbeacc4366d9aed0c68e9a4}\label{class_engine_1_1_shader_a363cf4695bbeacc4366d9aed0c68e9a4}} 
+\index{Engine::Shader@{Engine::Shader}!printShaderInfoLog@{printShaderInfoLog}}
+\index{printShaderInfoLog@{printShaderInfoLog}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{printShaderInfoLog()}{printShaderInfoLog()}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::print\+Shader\+Info\+Log (\begin{DoxyParamCaption}\item[{G\+Luint}]{obj }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_a60818975397428df3f5e165d69b7acc3}\label{class_engine_1_1_shader_a60818975397428df3f5e165d69b7acc3}} 
+\index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
+\index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{float}]{\+\_\+value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_a8cfebd2af1acf33b654a7a34b27df427}\label{class_engine_1_1_shader_a8cfebd2af1acf33b654a7a34b27df427}} 
+\index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
+\index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{glm\+::mat4}]{\+\_\+value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_a9790f7997e43ded03f8e006a412affee}\label{class_engine_1_1_shader_a9790f7997e43ded03f8e006a412affee}} 
+\index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
+\index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{glm\+::vec3}]{\+\_\+value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_a15b69127b3efa9632e05e6e420dad2dc}\label{class_engine_1_1_shader_a15b69127b3efa9632e05e6e420dad2dc}} 
+\index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
+\index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{glm\+::vec4}]{\+\_\+value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_a560427b1361d748d0a821fe79fbe3958}\label{class_engine_1_1_shader_a560427b1361d748d0a821fe79fbe3958}} 
+\index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
+\index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{int}]{\+\_\+value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_aeec3308ce8795cb8cba3acf6ebf69524}\label{class_engine_1_1_shader_aeec3308ce8795cb8cba3acf6ebf69524}} 
+\index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
+\index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} $>$}]{\+\_\+sc }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_adf1d1252cb4e1e35a5d714186226aa97}\label{class_engine_1_1_shader_adf1d1252cb4e1e35a5d714186226aa97}} 
+\index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
+\index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_texture}{Texture}} $>$}]{\+\_\+tex }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_shader_a1858127dc1b2467313a4030f1c8a7b4f}\label{class_engine_1_1_shader_a1858127dc1b2467313a4030f1c8a7b4f}} 
+\index{Engine::Shader@{Engine::Shader}!m\_id@{m\_id}}
+\index{m\_id@{m\_id}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
+{\footnotesize\ttfamily G\+Luint Engine\+::\+Shader\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_shader_a4973ca557bedfe194fdb99f673157009}\label{class_engine_1_1_shader_a4973ca557bedfe194fdb99f673157009}} 
+\index{Engine::Shader@{Engine::Shader}!m\_sampler@{m\_sampler}}
+\index{m\_sampler@{m\_sampler}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{m\_sampler}{m\_sampler}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_engine_1_1_sampler}{Sampler}}$>$ Engine\+::\+Shader\+::m\+\_\+sampler\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Shader.\+h\item 
-src/\+Engine/Shader.\+cpp\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_shader_8h}{Shader.\+h}}\item 
+src/\+Engine/\mbox{\hyperlink{_shader_8cpp}{Shader.\+cpp}}\end{DoxyCompactItemize}

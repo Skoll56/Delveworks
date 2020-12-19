@@ -69,39 +69,50 @@ $(function() {
 <div class="title">VertexBuffer.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _VertexBuffer_H_</span></div>
+<a href="_vertex_buffer_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _VertexBuffer_H_</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _VertexBuffer_H_</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;GL/glew.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>Engine</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_engine.html">Engine</a></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_engine_1_1_vertex_buffer.html">    8</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        GLuint m_id;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">int</span> m_components;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        std::vector &lt;GLfloat&gt; m_data;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">bool</span> m_dirty;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_engine_1_1_vertex_buffer.html#af326a120613f4c619cb789848a4f228a">   12</a></span>&#160;        GLuint <a class="code" href="class_engine_1_1_vertex_buffer.html#af326a120613f4c619cb789848a4f228a">m_id</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_engine_1_1_vertex_buffer.html#ab8f9198319047ca455145aa1bc9c6b49">   13</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_engine_1_1_vertex_buffer.html#ab8f9198319047ca455145aa1bc9c6b49">m_components</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_engine_1_1_vertex_buffer.html#adddb17a79af15c923e5dbf1ef7639c65">   14</a></span>&#160;        std::vector &lt;GLfloat&gt; <a class="code" href="class_engine_1_1_vertex_buffer.html#adddb17a79af15c923e5dbf1ef7639c65">m_data</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_engine_1_1_vertex_buffer.html#a20b536145f91501fa239231a323d0adb">   15</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_engine_1_1_vertex_buffer.html#a20b536145f91501fa239231a323d0adb">m_dirty</a>;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">float</span> getData(<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> m_data[i]; }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> add(glm::vec2 _value);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> add(glm::vec3 _value);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> add(glm::vec4 _value);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">int</span> getComponents();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">int</span> getDataSize();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        GLuint getId();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="class_engine_1_1_vertex_buffer.html#aa1c974d2a167da2b4f16b584b40f0687">VertexBuffer</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_engine_1_1_vertex_buffer.html#a42933853cbdfebb945ac534d02e3de55">   20</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_engine_1_1_vertex_buffer.html#a42933853cbdfebb945ac534d02e3de55">getData</a>(<span class="keywordtype">int</span> i) { <span class="keywordflow">return</span> <a class="code" href="class_engine_1_1_vertex_buffer.html#adddb17a79af15c923e5dbf1ef7639c65">m_data</a>[i]; }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_vertex_buffer.html#a76fd7c9a7754f8e5a33bbf78dad638e7">add</a>(glm::vec2 _value);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_vertex_buffer.html#a76fd7c9a7754f8e5a33bbf78dad638e7">add</a>(glm::vec3 _value);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_vertex_buffer.html#a76fd7c9a7754f8e5a33bbf78dad638e7">add</a>(glm::vec4 _value);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_engine_1_1_vertex_buffer.html#a5d3978b120a111a4e5291bdf28b3e64b">getComponents</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_engine_1_1_vertex_buffer.html#aff1a161de89f8972f1d0088c8dcb0412">getDataSize</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        GLuint <a class="code" href="class_engine_1_1_vertex_buffer.html#a0092173b97e5193875b3a9af379245f0">getId</a>();</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    };</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_engine_1_1_vertex_buffer_html_a0092173b97e5193875b3a9af379245f0"><div class="ttname"><a href="class_engine_1_1_vertex_buffer.html#a0092173b97e5193875b3a9af379245f0">Engine::VertexBuffer::getId</a></div><div class="ttdeci">GLuint getId()</div><div class="ttdef"><b>Definition:</b> VertexBuffer.cpp:64</div></div>
+<div class="ttc" id="anamespace_engine_html"><div class="ttname"><a href="namespace_engine.html">Engine</a></div><div class="ttdef"><b>Definition:</b> Camera.cpp:11</div></div>
+<div class="ttc" id="aclass_engine_1_1_vertex_buffer_html_aa1c974d2a167da2b4f16b584b40f0687"><div class="ttname"><a href="class_engine_1_1_vertex_buffer.html#aa1c974d2a167da2b4f16b584b40f0687">Engine::VertexBuffer::VertexBuffer</a></div><div class="ttdeci">VertexBuffer()</div><div class="ttdef"><b>Definition:</b> VertexBuffer.cpp:6</div></div>
+<div class="ttc" id="aclass_engine_1_1_vertex_buffer_html_a42933853cbdfebb945ac534d02e3de55"><div class="ttname"><a href="class_engine_1_1_vertex_buffer.html#a42933853cbdfebb945ac534d02e3de55">Engine::VertexBuffer::getData</a></div><div class="ttdeci">float getData(int i)</div><div class="ttdef"><b>Definition:</b> VertexBuffer.h:20</div></div>
+<div class="ttc" id="aclass_engine_1_1_vertex_buffer_html_a20b536145f91501fa239231a323d0adb"><div class="ttname"><a href="class_engine_1_1_vertex_buffer.html#a20b536145f91501fa239231a323d0adb">Engine::VertexBuffer::m_dirty</a></div><div class="ttdeci">bool m_dirty</div><div class="ttdef"><b>Definition:</b> VertexBuffer.h:15</div></div>
+<div class="ttc" id="aclass_engine_1_1_vertex_buffer_html_adddb17a79af15c923e5dbf1ef7639c65"><div class="ttname"><a href="class_engine_1_1_vertex_buffer.html#adddb17a79af15c923e5dbf1ef7639c65">Engine::VertexBuffer::m_data</a></div><div class="ttdeci">std::vector&lt; GLfloat &gt; m_data</div><div class="ttdef"><b>Definition:</b> VertexBuffer.h:14</div></div>
 <div class="ttc" id="aclass_engine_1_1_vertex_buffer_html"><div class="ttname"><a href="class_engine_1_1_vertex_buffer.html">Engine::VertexBuffer</a></div><div class="ttdef"><b>Definition:</b> VertexBuffer.h:10</div></div>
+<div class="ttc" id="aclass_engine_1_1_vertex_buffer_html_a5d3978b120a111a4e5291bdf28b3e64b"><div class="ttname"><a href="class_engine_1_1_vertex_buffer.html#a5d3978b120a111a4e5291bdf28b3e64b">Engine::VertexBuffer::getComponents</a></div><div class="ttdeci">int getComponents()</div><div class="ttdef"><b>Definition:</b> VertexBuffer.cpp:50</div></div>
+<div class="ttc" id="aclass_engine_1_1_vertex_buffer_html_af326a120613f4c619cb789848a4f228a"><div class="ttname"><a href="class_engine_1_1_vertex_buffer.html#af326a120613f4c619cb789848a4f228a">Engine::VertexBuffer::m_id</a></div><div class="ttdeci">GLuint m_id</div><div class="ttdef"><b>Definition:</b> VertexBuffer.h:12</div></div>
+<div class="ttc" id="aclass_engine_1_1_vertex_buffer_html_a76fd7c9a7754f8e5a33bbf78dad638e7"><div class="ttname"><a href="class_engine_1_1_vertex_buffer.html#a76fd7c9a7754f8e5a33bbf78dad638e7">Engine::VertexBuffer::add</a></div><div class="ttdeci">void add(glm::vec2 _value)</div><div class="ttdef"><b>Definition:</b> VertexBuffer.cpp:18</div></div>
+<div class="ttc" id="aclass_engine_1_1_vertex_buffer_html_ab8f9198319047ca455145aa1bc9c6b49"><div class="ttname"><a href="class_engine_1_1_vertex_buffer.html#ab8f9198319047ca455145aa1bc9c6b49">Engine::VertexBuffer::m_components</a></div><div class="ttdeci">int m_components</div><div class="ttdef"><b>Definition:</b> VertexBuffer.h:13</div></div>
+<div class="ttc" id="aclass_engine_1_1_vertex_buffer_html_aff1a161de89f8972f1d0088c8dcb0412"><div class="ttname"><a href="class_engine_1_1_vertex_buffer.html#aff1a161de89f8972f1d0088c8dcb0412">Engine::VertexBuffer::getDataSize</a></div><div class="ttdeci">int getDataSize()</div><div class="ttdef"><b>Definition:</b> VertexBuffer.cpp:55</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

@@ -96,7 +96,7 @@ float ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap)
     float currentDepth = projCoords.z;
     
 	vec2 texelRes = 1.0 / textureSize(_shadowMap, 0); //The resolution of each texel
-
+	
 	float samples = 5.0;
 	float inc = 3.0;
 	float shadow = 0.0;
@@ -104,11 +104,14 @@ float ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap)
 	{
 		for (float y = -inc; y < inc; y+= inc / (samples * 0.5)) 
 		{			
-			float closestDepth = texture2D(_shadowMap, projCoords.xy + vec2(x, y) * texelRes).r; //Sample surrounding texels on the X and Y for PCF
+			float closestDepth = texture2D(_shadowMap, projCoords.xy + vec2(x, y) * texelRes).r; //Sample surrounding texels on the X and Y for PCF			
 			shadow += currentDepth - (0.002 / _fragPosLightSpace.w) > closestDepth ? 1.0 : 0.0;			
 		}
 	}		
 	return shadow / (samples * samples); //Average out the surrounding samples to create a 'blur' like effect (PCF)
+
+	//float closestDepth = texture2D(_shadowMap, projCoords.xy).r;
+	//return currentDepth - (0.002 / _fragPosLightSpace.w) > closestDepth ? 1.0 : 0.0;	
 }  
 
 /* This function is to calculate shadows with 3D Depth Cubes and is part of the GRAPHICS UNIT */
@@ -131,7 +134,8 @@ float ShadowCubeCalculation(vec3 _fragPos, vec3 _lightPos, samplerCube _shadowMa
 	{
 		float closestDepth = texture(_shadowMap, fragToLight + directionList[i] * 0.05).r; //Sample surrounding texels (for PCF)
 		closestDepth *= _farPlane;
-		float currentDepth = length(fragToLight);  
+		float currentDepth = length(fragToLight);  		
+
 		shadow += currentDepth - 0.4 > closestDepth ? 1.0 : 0.0;
 	}
 	return shadow / samples; //Average out the surrounding texels (for PCF)

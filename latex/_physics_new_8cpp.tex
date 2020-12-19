@@ -1,0 +1,449 @@
+\hypertarget{_physics_new_8cpp}{}\doxysection{src/\+Engine/\+Physics\+New.cpp File Reference}
+\label{_physics_new_8cpp}\index{src/Engine/PhysicsNew.cpp@{src/Engine/PhysicsNew.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$glm/glm.\+hpp$>$}\newline
+{\ttfamily \#include \char`\"{}Collision.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Physics\+New.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$typeinfo.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Mesh\+Renderer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Vertex\+Buffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Vertex\+Array.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Collider.\+h\char`\"{}}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespace_engine}{Engine}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a2e25521af11f96d9029e762395365891}{W\+I\+T\+H\+IN}}(n1,  n2,  var)~n1 $>$ n2 -\/ var \&\& n1 $<$ n2 + var
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_adac4e8e1f58344548f1513bceef9ab7b}{O\+U\+T\+P\+UT}}(vec)~std\+::cout $<$$<$ vec.\+x $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+y $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+z $<$$<$std\+::endl;
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a1965eaca47dbf3f87acdafc2208f04eb}{UP}}~glm\+::vec3(0.\+0f, 1.\+0f, 0.\+0f)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a4193cd1c8c2e6ebd0e056fa2364a663f}{D\+O\+WN}}~glm\+::vec3(0.\+0f, -\/1.\+0f, 0.\+0f)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a437ef08681e7210d6678427030446a54}{L\+E\+FT}}~glm\+::vec3(1.\+0f, 0.\+0f, 0.\+0f)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a80fb826a684cf3f0d306b22aa100ddac}{R\+I\+G\+HT}}~glm\+::vec3(-\/1.\+0f, 0.\+0f, 0.\+0f)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_af8bd8217f4676f967cd1d9712042baf6}{F\+O\+R\+W\+A\+R\+DS}}~glm\+::vec3(0.\+0f, 0.\+0f, 1.\+0f)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a4440df5c11c855cc62ab734a1a7dee71}{B\+A\+C\+K\+W\+A\+R\+DS}}~glm\+::vec3(0.\+0f, 0.\+0f, 1.\+0f)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a9b649f4d878e64a80b4cd2cad45f43b3}{F\+A\+BS}}(x)~(float(fabs(x)))        /$\ast$ implement as is fastest on your machine $\ast$/
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a30e72ae9306395819bee85199878fa9e}{U\+S\+E\+\_\+\+E\+P\+S\+I\+L\+O\+N\+\_\+\+T\+E\+ST}}~\mbox{\hyperlink{stb__vorbis_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{T\+R\+UE}}
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a002b2f4894492820fe708b1b7e7c5e70}{E\+P\+S\+I\+L\+ON}}~0.\+000001
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a275587ce22080c4c09deb818b1ce3564}{C\+R\+O\+SS}}(dest,  v1,  v2)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a7942047af87f6f42fe6880a4c7c842ae}{D\+OT}}(v1,  v2)~(v1\mbox{[}0\mbox{]}$\ast$v2\mbox{[}0\mbox{]}+v1\mbox{[}1\mbox{]}$\ast$v2\mbox{[}1\mbox{]}+v1\mbox{[}2\mbox{]}$\ast$v2\mbox{[}2\mbox{]})
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a241dda3a0a43611f1187bdfebc3391d7}{S\+UB}}(dest,  v1,  v2)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_ac226bc1ed04fd7d4865263484ed22a47}{S\+O\+RT}}(a,  b)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a1c2f23f22443903c367825ed07f65c0f}{E\+D\+G\+E\+\_\+\+E\+D\+G\+E\+\_\+\+T\+E\+ST}}(V0,  U0,  U1)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a831bfa37e6247abd79136fbd5c5ebee3}{E\+D\+G\+E\+\_\+\+A\+G\+A\+I\+N\+S\+T\+\_\+\+T\+R\+I\+\_\+\+E\+D\+G\+ES}}(V0,  V1,  U0,  U1,  U2)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_add43cd9d9b223e41583e509300913a33}{P\+O\+I\+N\+T\+\_\+\+I\+N\+\_\+\+T\+RI}}(V0,  U0,  U1,  U2)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a6fec81c12c0221d10380595bb646bc65}{N\+E\+W\+C\+O\+M\+P\+U\+T\+E\+\_\+\+I\+N\+T\+E\+R\+V\+A\+LS}}(V\+V0,  V\+V1,  V\+V2,  D0,  D1,  D2,  D0\+D1,  D0\+D2,  A,  B,  \mbox{\hyperlink{stb__vorbis_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}},  X0,  X1)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}~0
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}~1
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}~2
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a275587ce22080c4c09deb818b1ce3564}{C\+R\+O\+SS}}(dest,  v1,  v2)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a7942047af87f6f42fe6880a4c7c842ae}{D\+OT}}(v1,  v2)~(v1\mbox{[}0\mbox{]}$\ast$v2\mbox{[}0\mbox{]}+v1\mbox{[}1\mbox{]}$\ast$v2\mbox{[}1\mbox{]}+v1\mbox{[}2\mbox{]}$\ast$v2\mbox{[}2\mbox{]})
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a241dda3a0a43611f1187bdfebc3391d7}{S\+UB}}(dest,  v1,  v2)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a27cf54160e51334c0f90ede5b9a30173}{F\+I\+N\+D\+M\+I\+N\+M\+AX}}(x0,  x1,  x2,  min,  max)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_aa455fd95e25e2df0f1cf93a2de985fd8}{A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+X01}}(a,  b,  fa,  fb)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a7f81d4a738f6ce0916cda8d449f1e757}{A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+X2}}(a,  b,  fa,  fb)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a2409651c6dcde598145e0434cc80f8cb}{A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+Y02}}(a,  b,  fa,  fb)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a77a3cf69f7cdf4e359d10a50a0498a75}{A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+Y1}}(a,  b,  fa,  fb)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_a2f2534d1e427de530b66531a42a7af82}{A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+Z12}}(a,  b,  fa,  fb)
+\item 
+\#define \mbox{\hyperlink{_physics_new_8cpp_ae7c0544b51ee58f7b8891c5906d554ce}{A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+Z0}}(a,  b,  fa,  fb)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_physics_new_8cpp_aa455fd95e25e2df0f1cf93a2de985fd8}\label{_physics_new_8cpp_aa455fd95e25e2df0f1cf93a2de985fd8}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!AXISTEST\_X01@{AXISTEST\_X01}}
+\index{AXISTEST\_X01@{AXISTEST\_X01}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{AXISTEST\_X01}{AXISTEST\_X01}}
+{\footnotesize\ttfamily \#define A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+X01(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b,  }\item[{}]{fa,  }\item[{}]{fb }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    p0 = a*v0[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}] -\/ b*v0[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];                    \(\backslash\)}
+\DoxyCodeLine{    p2 = a*v2[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}] -\/ b*v2[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];                    \(\backslash\)}
+\DoxyCodeLine{        if(p0<p2) \{min=p0; max=p2;\} \textcolor{keywordflow}{else} \{min=p2; max=p0;\} \(\backslash\)}
+\DoxyCodeLine{    rad = fa * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}] + fb * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];   \(\backslash\)}
+\DoxyCodeLine{    if(min>rad || max<-\/rad) \textcolor{keywordflow}{return} 0;}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a7f81d4a738f6ce0916cda8d449f1e757}\label{_physics_new_8cpp_a7f81d4a738f6ce0916cda8d449f1e757}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!AXISTEST\_X2@{AXISTEST\_X2}}
+\index{AXISTEST\_X2@{AXISTEST\_X2}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{AXISTEST\_X2}{AXISTEST\_X2}}
+{\footnotesize\ttfamily \#define A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+X2(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b,  }\item[{}]{fa,  }\item[{}]{fb }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    p0 = a*v0[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}] -\/ b*v0[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];                    \(\backslash\)}
+\DoxyCodeLine{    p1 = a*v1[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}] -\/ b*v1[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];                    \(\backslash\)}
+\DoxyCodeLine{        if(p0<p1) \{min=p0; max=p1;\} \textcolor{keywordflow}{else} \{min=p1; max=p0;\} \(\backslash\)}
+\DoxyCodeLine{    rad = fa * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}] + fb * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];   \(\backslash\)}
+\DoxyCodeLine{    if(min>rad || max<-\/rad) \textcolor{keywordflow}{return} 0;}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a2409651c6dcde598145e0434cc80f8cb}\label{_physics_new_8cpp_a2409651c6dcde598145e0434cc80f8cb}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!AXISTEST\_Y02@{AXISTEST\_Y02}}
+\index{AXISTEST\_Y02@{AXISTEST\_Y02}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{AXISTEST\_Y02}{AXISTEST\_Y02}}
+{\footnotesize\ttfamily \#define A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+Y02(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b,  }\item[{}]{fa,  }\item[{}]{fb }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    p0 = -\/a*v0[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] + b*v0[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];                   \(\backslash\)}
+\DoxyCodeLine{    p2 = -\/a*v2[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] + b*v2[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];                       \(\backslash\)}
+\DoxyCodeLine{        if(p0<p2) \{min=p0; max=p2;\} \textcolor{keywordflow}{else} \{min=p2; max=p0;\} \(\backslash\)}
+\DoxyCodeLine{    rad = fa * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] + fb * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];   \(\backslash\)}
+\DoxyCodeLine{    if(min>rad || max<-\/rad) \textcolor{keywordflow}{return} 0;}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a77a3cf69f7cdf4e359d10a50a0498a75}\label{_physics_new_8cpp_a77a3cf69f7cdf4e359d10a50a0498a75}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!AXISTEST\_Y1@{AXISTEST\_Y1}}
+\index{AXISTEST\_Y1@{AXISTEST\_Y1}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{AXISTEST\_Y1}{AXISTEST\_Y1}}
+{\footnotesize\ttfamily \#define A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+Y1(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b,  }\item[{}]{fa,  }\item[{}]{fb }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    p0 = -\/a*v0[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] + b*v0[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];                   \(\backslash\)}
+\DoxyCodeLine{    p1 = -\/a*v1[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] + b*v1[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];                       \(\backslash\)}
+\DoxyCodeLine{        if(p0<p1) \{min=p0; max=p1;\} \textcolor{keywordflow}{else} \{min=p1; max=p0;\} \(\backslash\)}
+\DoxyCodeLine{    rad = fa * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] + fb * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}{Z}}];   \(\backslash\)}
+\DoxyCodeLine{    if(min>rad || max<-\/rad) \textcolor{keywordflow}{return} 0;}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_ae7c0544b51ee58f7b8891c5906d554ce}\label{_physics_new_8cpp_ae7c0544b51ee58f7b8891c5906d554ce}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!AXISTEST\_Z0@{AXISTEST\_Z0}}
+\index{AXISTEST\_Z0@{AXISTEST\_Z0}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{AXISTEST\_Z0}{AXISTEST\_Z0}}
+{\footnotesize\ttfamily \#define A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+Z0(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b,  }\item[{}]{fa,  }\item[{}]{fb }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    p0 = a*v0[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] -\/ b*v0[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}];                \(\backslash\)}
+\DoxyCodeLine{    p1 = a*v1[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] -\/ b*v1[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}];                    \(\backslash\)}
+\DoxyCodeLine{        if(p0<p1) \{min=p0; max=p1;\} \textcolor{keywordflow}{else} \{min=p1; max=p0;\} \(\backslash\)}
+\DoxyCodeLine{    rad = fa * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] + fb * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}];   \(\backslash\)}
+\DoxyCodeLine{    if(min>rad || max<-\/rad) \textcolor{keywordflow}{return} 0;}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a2f2534d1e427de530b66531a42a7af82}\label{_physics_new_8cpp_a2f2534d1e427de530b66531a42a7af82}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!AXISTEST\_Z12@{AXISTEST\_Z12}}
+\index{AXISTEST\_Z12@{AXISTEST\_Z12}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{AXISTEST\_Z12}{AXISTEST\_Z12}}
+{\footnotesize\ttfamily \#define A\+X\+I\+S\+T\+E\+S\+T\+\_\+\+Z12(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b,  }\item[{}]{fa,  }\item[{}]{fb }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    p1 = a*v1[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] -\/ b*v1[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}];                    \(\backslash\)}
+\DoxyCodeLine{    p2 = a*v2[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] -\/ b*v2[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}];                    \(\backslash\)}
+\DoxyCodeLine{        if(p2<p1) \{min=p2; max=p1;\} \textcolor{keywordflow}{else} \{min=p1; max=p2;\} \(\backslash\)}
+\DoxyCodeLine{    rad = fa * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}{X}}] + fb * boxhalfsize[\mbox{\hyperlink{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}{Y}}];   \(\backslash\)}
+\DoxyCodeLine{    if(min>rad || max<-\/rad) \textcolor{keywordflow}{return} 0;}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a4440df5c11c855cc62ab734a1a7dee71}\label{_physics_new_8cpp_a4440df5c11c855cc62ab734a1a7dee71}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!BACKWARDS@{BACKWARDS}}
+\index{BACKWARDS@{BACKWARDS}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{BACKWARDS}{BACKWARDS}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+W\+A\+R\+DS~glm\+::vec3(0.\+0f, 0.\+0f, 1.\+0f)}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a275587ce22080c4c09deb818b1ce3564}\label{_physics_new_8cpp_a275587ce22080c4c09deb818b1ce3564}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!CROSS@{CROSS}}
+\index{CROSS@{CROSS}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{CROSS}{CROSS}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define C\+R\+O\+SS(\begin{DoxyParamCaption}\item[{}]{dest,  }\item[{}]{v1,  }\item[{}]{v2 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{              \{                     \(\backslash\)}
+\DoxyCodeLine{              dest[0]=v1[1]*v2[2]-\/v1[2]*v2[1]; \(\backslash\)}
+\DoxyCodeLine{              dest[1]=v1[2]*v2[0]-\/v1[0]*v2[2]; \(\backslash\)}
+\DoxyCodeLine{              dest[2]=v1[0]*v2[1]-\/v1[1]*v2[0];\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a275587ce22080c4c09deb818b1ce3564}\label{_physics_new_8cpp_a275587ce22080c4c09deb818b1ce3564}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!CROSS@{CROSS}}
+\index{CROSS@{CROSS}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{CROSS}{CROSS}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define C\+R\+O\+SS(\begin{DoxyParamCaption}\item[{}]{dest,  }\item[{}]{v1,  }\item[{}]{v2 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{          dest[0]=v1[1]*v2[2]-\/v1[2]*v2[1]; \(\backslash\)}
+\DoxyCodeLine{          dest[1]=v1[2]*v2[0]-\/v1[0]*v2[2]; \(\backslash\)}
+\DoxyCodeLine{          dest[2]=v1[0]*v2[1]-\/v1[1]*v2[0];}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a7942047af87f6f42fe6880a4c7c842ae}\label{_physics_new_8cpp_a7942047af87f6f42fe6880a4c7c842ae}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!DOT@{DOT}}
+\index{DOT@{DOT}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{DOT}{DOT}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define D\+OT(\begin{DoxyParamCaption}\item[{}]{v1,  }\item[{}]{v2 }\end{DoxyParamCaption})~(v1\mbox{[}0\mbox{]}$\ast$v2\mbox{[}0\mbox{]}+v1\mbox{[}1\mbox{]}$\ast$v2\mbox{[}1\mbox{]}+v1\mbox{[}2\mbox{]}$\ast$v2\mbox{[}2\mbox{]})}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a7942047af87f6f42fe6880a4c7c842ae}\label{_physics_new_8cpp_a7942047af87f6f42fe6880a4c7c842ae}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!DOT@{DOT}}
+\index{DOT@{DOT}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{DOT}{DOT}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define D\+OT(\begin{DoxyParamCaption}\item[{}]{v1,  }\item[{}]{v2 }\end{DoxyParamCaption})~(v1\mbox{[}0\mbox{]}$\ast$v2\mbox{[}0\mbox{]}+v1\mbox{[}1\mbox{]}$\ast$v2\mbox{[}1\mbox{]}+v1\mbox{[}2\mbox{]}$\ast$v2\mbox{[}2\mbox{]})}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a4193cd1c8c2e6ebd0e056fa2364a663f}\label{_physics_new_8cpp_a4193cd1c8c2e6ebd0e056fa2364a663f}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!DOWN@{DOWN}}
+\index{DOWN@{DOWN}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{DOWN}{DOWN}}
+{\footnotesize\ttfamily \#define D\+O\+WN~glm\+::vec3(0.\+0f, -\/1.\+0f, 0.\+0f)}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a831bfa37e6247abd79136fbd5c5ebee3}\label{_physics_new_8cpp_a831bfa37e6247abd79136fbd5c5ebee3}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!EDGE\_AGAINST\_TRI\_EDGES@{EDGE\_AGAINST\_TRI\_EDGES}}
+\index{EDGE\_AGAINST\_TRI\_EDGES@{EDGE\_AGAINST\_TRI\_EDGES}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{EDGE\_AGAINST\_TRI\_EDGES}{EDGE\_AGAINST\_TRI\_EDGES}}
+{\footnotesize\ttfamily \#define E\+D\+G\+E\+\_\+\+A\+G\+A\+I\+N\+S\+T\+\_\+\+T\+R\+I\+\_\+\+E\+D\+G\+ES(\begin{DoxyParamCaption}\item[{}]{V0,  }\item[{}]{V1,  }\item[{}]{U0,  }\item[{}]{U1,  }\item[{}]{U2 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{                                              \(\backslash\)}
+\DoxyCodeLine{  float Ax,Ay,Bx,By,Cx,Cy,e,d,f;               \(\backslash\)}
+\DoxyCodeLine{  Ax=V1[i0]-\/V0[i0];                            \(\backslash\)}
+\DoxyCodeLine{  Ay=V1[i1]-\/V0[i1];                            \(\backslash\)}
+\DoxyCodeLine{  \textcolor{comment}{/* test edge U0,U1 against V0,V1 */}          \(\backslash\)}
+\DoxyCodeLine{  EDGE\_EDGE\_TEST(V0,U0,U1);                    \(\backslash\)}
+\DoxyCodeLine{  \textcolor{comment}{/* test edge U1,U2 against V0,V1 */}          \(\backslash\)}
+\DoxyCodeLine{  EDGE\_EDGE\_TEST(V0,U1,U2);                    \(\backslash\)}
+\DoxyCodeLine{  \textcolor{comment}{/* test edge U2,U1 against V0,V1 */}          \(\backslash\)}
+\DoxyCodeLine{  EDGE\_EDGE\_TEST(V0,U2,U0);                    \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a1c2f23f22443903c367825ed07f65c0f}\label{_physics_new_8cpp_a1c2f23f22443903c367825ed07f65c0f}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!EDGE\_EDGE\_TEST@{EDGE\_EDGE\_TEST}}
+\index{EDGE\_EDGE\_TEST@{EDGE\_EDGE\_TEST}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{EDGE\_EDGE\_TEST}{EDGE\_EDGE\_TEST}}
+{\footnotesize\ttfamily \#define E\+D\+G\+E\+\_\+\+E\+D\+G\+E\+\_\+\+T\+E\+ST(\begin{DoxyParamCaption}\item[{}]{V0,  }\item[{}]{U0,  }\item[{}]{U1 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  Bx=U0[i0]-\/U1[i0];                                   \(\backslash\)}
+\DoxyCodeLine{  By=U0[i1]-\/U1[i1];                                   \(\backslash\)}
+\DoxyCodeLine{  Cx=V0[i0]-\/U0[i0];                                   \(\backslash\)}
+\DoxyCodeLine{  Cy=V0[i1]-\/U0[i1];                                   \(\backslash\)}
+\DoxyCodeLine{  f=Ay*Bx-\/Ax*By;                                      \(\backslash\)}
+\DoxyCodeLine{  d=By*Cx-\/Bx*Cy;                                      \(\backslash\)}
+\DoxyCodeLine{  if((f>0 \&\& d>=0 \&\& d<=f) || (f<0 \&\& d<=0 \&\& d>=f))  \(\backslash\)}
+\DoxyCodeLine{  \{                                                   \(\backslash\)}
+\DoxyCodeLine{    e=Ax*Cy-\/Ay*Cx;                                    \(\backslash\)}
+\DoxyCodeLine{    if(f>0)                                           \(\backslash\)}
+\DoxyCodeLine{    \{                                                 \(\backslash\)}
+\DoxyCodeLine{      if(e>=0 \&\& e<=f) \textcolor{keywordflow}{return} 1;                      \(\backslash\)}
+\DoxyCodeLine{    \}                                                 \(\backslash\)}
+\DoxyCodeLine{    else                                              \(\backslash\)}
+\DoxyCodeLine{    \{                                                 \(\backslash\)}
+\DoxyCodeLine{      if(e<=0 \&\& e>=f) \textcolor{keywordflow}{return} 1;                      \(\backslash\)}
+\DoxyCodeLine{    \}                                                 \(\backslash\)}
+\DoxyCodeLine{  \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a002b2f4894492820fe708b1b7e7c5e70}\label{_physics_new_8cpp_a002b2f4894492820fe708b1b7e7c5e70}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!EPSILON@{EPSILON}}
+\index{EPSILON@{EPSILON}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{EPSILON}{EPSILON}}
+{\footnotesize\ttfamily \#define E\+P\+S\+I\+L\+ON~0.\+000001}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a9b649f4d878e64a80b4cd2cad45f43b3}\label{_physics_new_8cpp_a9b649f4d878e64a80b4cd2cad45f43b3}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!FABS@{FABS}}
+\index{FABS@{FABS}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{FABS}{FABS}}
+{\footnotesize\ttfamily \#define F\+A\+BS(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(float(fabs(x)))        /$\ast$ implement as is fastest on your machine $\ast$/}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a27cf54160e51334c0f90ede5b9a30173}\label{_physics_new_8cpp_a27cf54160e51334c0f90ede5b9a30173}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!FINDMINMAX@{FINDMINMAX}}
+\index{FINDMINMAX@{FINDMINMAX}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{FINDMINMAX}{FINDMINMAX}}
+{\footnotesize\ttfamily \#define F\+I\+N\+D\+M\+I\+N\+M\+AX(\begin{DoxyParamCaption}\item[{}]{x0,  }\item[{}]{x1,  }\item[{}]{x2,  }\item[{}]{min,  }\item[{}]{max }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  min = max = x0;   \(\backslash\)}
+\DoxyCodeLine{  if(x1<min) min=x1;\(\backslash\)}
+\DoxyCodeLine{  if(x1>max) max=x1;\(\backslash\)}
+\DoxyCodeLine{  if(x2<min) min=x2;\(\backslash\)}
+\DoxyCodeLine{  if(x2>max) max=x2;}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_af8bd8217f4676f967cd1d9712042baf6}\label{_physics_new_8cpp_af8bd8217f4676f967cd1d9712042baf6}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!FORWARDS@{FORWARDS}}
+\index{FORWARDS@{FORWARDS}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{FORWARDS}{FORWARDS}}
+{\footnotesize\ttfamily \#define F\+O\+R\+W\+A\+R\+DS~glm\+::vec3(0.\+0f, 0.\+0f, 1.\+0f)}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a437ef08681e7210d6678427030446a54}\label{_physics_new_8cpp_a437ef08681e7210d6678427030446a54}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!LEFT@{LEFT}}
+\index{LEFT@{LEFT}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{LEFT}{LEFT}}
+{\footnotesize\ttfamily \#define L\+E\+FT~glm\+::vec3(1.\+0f, 0.\+0f, 0.\+0f)}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a6fec81c12c0221d10380595bb646bc65}\label{_physics_new_8cpp_a6fec81c12c0221d10380595bb646bc65}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!NEWCOMPUTE\_INTERVALS@{NEWCOMPUTE\_INTERVALS}}
+\index{NEWCOMPUTE\_INTERVALS@{NEWCOMPUTE\_INTERVALS}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{NEWCOMPUTE\_INTERVALS}{NEWCOMPUTE\_INTERVALS}}
+{\footnotesize\ttfamily \#define N\+E\+W\+C\+O\+M\+P\+U\+T\+E\+\_\+\+I\+N\+T\+E\+R\+V\+A\+LS(\begin{DoxyParamCaption}\item[{}]{V\+V0,  }\item[{}]{V\+V1,  }\item[{}]{V\+V2,  }\item[{}]{D0,  }\item[{}]{D1,  }\item[{}]{D2,  }\item[{}]{D0\+D1,  }\item[{}]{D0\+D2,  }\item[{}]{A,  }\item[{}]{B,  }\item[{}]{\mbox{\hyperlink{stb__vorbis_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}},  }\item[{}]{X0,  }\item[{}]{X1 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_physics_new_8cpp_adac4e8e1f58344548f1513bceef9ab7b}\label{_physics_new_8cpp_adac4e8e1f58344548f1513bceef9ab7b}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!OUTPUT@{OUTPUT}}
+\index{OUTPUT@{OUTPUT}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{OUTPUT}{OUTPUT}}
+{\footnotesize\ttfamily \#define O\+U\+T\+P\+UT(\begin{DoxyParamCaption}\item[{}]{vec }\end{DoxyParamCaption})~std\+::cout $<$$<$ vec.\+x $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+y $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+z $<$$<$std\+::endl;}
+
+\mbox{\Hypertarget{_physics_new_8cpp_add43cd9d9b223e41583e509300913a33}\label{_physics_new_8cpp_add43cd9d9b223e41583e509300913a33}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!POINT\_IN\_TRI@{POINT\_IN\_TRI}}
+\index{POINT\_IN\_TRI@{POINT\_IN\_TRI}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{POINT\_IN\_TRI}{POINT\_IN\_TRI}}
+{\footnotesize\ttfamily \#define P\+O\+I\+N\+T\+\_\+\+I\+N\+\_\+\+T\+RI(\begin{DoxyParamCaption}\item[{}]{V0,  }\item[{}]{U0,  }\item[{}]{U1,  }\item[{}]{U2 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{                                           \(\backslash\)}
+\DoxyCodeLine{  float a,b,c,d0,d1,d2;                     \(\backslash\)}
+\DoxyCodeLine{  \textcolor{comment}{/* is T1 completly inside T2? */}          \(\backslash\)}
+\DoxyCodeLine{  \textcolor{comment}{/* check if V0 is inside tri(U0,U1,U2) */} \(\backslash\)}
+\DoxyCodeLine{  a=U1[i1]-\/U0[i1];                          \(\backslash\)}
+\DoxyCodeLine{  b=-\/(U1[i0]-\/U0[i0]);                       \(\backslash\)}
+\DoxyCodeLine{  c=-\/a*U0[i0]-\/b*U0[i1];                     \(\backslash\)}
+\DoxyCodeLine{  d0=a*V0[i0]+b*V0[i1]+c;                   \(\backslash\)}
+\DoxyCodeLine{                                            \(\backslash\)}
+\DoxyCodeLine{  a=U2[i1]-\/U1[i1];                          \(\backslash\)}
+\DoxyCodeLine{  b=-\/(U2[i0]-\/U1[i0]);                       \(\backslash\)}
+\DoxyCodeLine{  c=-\/a*U1[i0]-\/b*U1[i1];                     \(\backslash\)}
+\DoxyCodeLine{  d1=a*V0[i0]+b*V0[i1]+c;                   \(\backslash\)}
+\DoxyCodeLine{                                            \(\backslash\)}
+\DoxyCodeLine{  a=U0[i1]-\/U2[i1];                          \(\backslash\)}
+\DoxyCodeLine{  b=-\/(U0[i0]-\/U2[i0]);                       \(\backslash\)}
+\DoxyCodeLine{  c=-\/a*U2[i0]-\/b*U2[i1];                     \(\backslash\)}
+\DoxyCodeLine{  d2=a*V0[i0]+b*V0[i1]+c;                   \(\backslash\)}
+\DoxyCodeLine{  if(d0*d1>0.0)                             \(\backslash\)}
+\DoxyCodeLine{  \{                                         \(\backslash\)}
+\DoxyCodeLine{    if(d0*d2>0.0) return 1;                 \(\backslash\)}
+\DoxyCodeLine{  \}                                         \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a80fb826a684cf3f0d306b22aa100ddac}\label{_physics_new_8cpp_a80fb826a684cf3f0d306b22aa100ddac}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!RIGHT@{RIGHT}}
+\index{RIGHT@{RIGHT}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{RIGHT}{RIGHT}}
+{\footnotesize\ttfamily \#define R\+I\+G\+HT~glm\+::vec3(-\/1.\+0f, 0.\+0f, 0.\+0f)}
+
+\mbox{\Hypertarget{_physics_new_8cpp_ac226bc1ed04fd7d4865263484ed22a47}\label{_physics_new_8cpp_ac226bc1ed04fd7d4865263484ed22a47}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!SORT@{SORT}}
+\index{SORT@{SORT}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{SORT}{SORT}}
+{\footnotesize\ttfamily \#define S\+O\+RT(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{             \textcolor{keywordflow}{if}(a>b)    \(\backslash\)}
+\DoxyCodeLine{             \{          \(\backslash\)}
+\DoxyCodeLine{               float c; \(\backslash\)}
+\DoxyCodeLine{               c=a;     \(\backslash\)}
+\DoxyCodeLine{               a=b;     \(\backslash\)}
+\DoxyCodeLine{               b=c;     \(\backslash\)}
+\DoxyCodeLine{             \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a241dda3a0a43611f1187bdfebc3391d7}\label{_physics_new_8cpp_a241dda3a0a43611f1187bdfebc3391d7}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!SUB@{SUB}}
+\index{SUB@{SUB}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{SUB}{SUB}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define S\+UB(\begin{DoxyParamCaption}\item[{}]{dest,  }\item[{}]{v1,  }\item[{}]{v2 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{            \{         \(\backslash\)}
+\DoxyCodeLine{            dest[0]=v1[0]-\/v2[0]; \(\backslash\)}
+\DoxyCodeLine{            dest[1]=v1[1]-\/v2[1]; \(\backslash\)}
+\DoxyCodeLine{            dest[2]=v1[2]-\/v2[2];\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a241dda3a0a43611f1187bdfebc3391d7}\label{_physics_new_8cpp_a241dda3a0a43611f1187bdfebc3391d7}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!SUB@{SUB}}
+\index{SUB@{SUB}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{SUB}{SUB}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define S\+UB(\begin{DoxyParamCaption}\item[{}]{dest,  }\item[{}]{v1,  }\item[{}]{v2 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{          dest[0]=v1[0]-\/v2[0]; \(\backslash\)}
+\DoxyCodeLine{          dest[1]=v1[1]-\/v2[1]; \(\backslash\)}
+\DoxyCodeLine{          dest[2]=v1[2]-\/v2[2];}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{_physics_new_8cpp_a1965eaca47dbf3f87acdafc2208f04eb}\label{_physics_new_8cpp_a1965eaca47dbf3f87acdafc2208f04eb}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!UP@{UP}}
+\index{UP@{UP}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{UP}{UP}}
+{\footnotesize\ttfamily \#define UP~glm\+::vec3(0.\+0f, 1.\+0f, 0.\+0f)}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a30e72ae9306395819bee85199878fa9e}\label{_physics_new_8cpp_a30e72ae9306395819bee85199878fa9e}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!USE\_EPSILON\_TEST@{USE\_EPSILON\_TEST}}
+\index{USE\_EPSILON\_TEST@{USE\_EPSILON\_TEST}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{USE\_EPSILON\_TEST}{USE\_EPSILON\_TEST}}
+{\footnotesize\ttfamily \#define U\+S\+E\+\_\+\+E\+P\+S\+I\+L\+O\+N\+\_\+\+T\+E\+ST~\mbox{\hyperlink{stb__vorbis_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{T\+R\+UE}}}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a2e25521af11f96d9029e762395365891}\label{_physics_new_8cpp_a2e25521af11f96d9029e762395365891}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!WITHIN@{WITHIN}}
+\index{WITHIN@{WITHIN}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{WITHIN}{WITHIN}}
+{\footnotesize\ttfamily \#define W\+I\+T\+H\+IN(\begin{DoxyParamCaption}\item[{}]{n1,  }\item[{}]{n2,  }\item[{}]{var }\end{DoxyParamCaption})~n1 $>$ n2 -\/ var \&\& n1 $<$ n2 + var}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}\label{_physics_new_8cpp_a207fd5507206d307cd63f95374fcd00d}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!X@{X}}
+\index{X@{X}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{X}{X}}
+{\footnotesize\ttfamily \#define X~0}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}\label{_physics_new_8cpp_a798e4073d613ca5ba9618e1b3253df14}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!Y@{Y}}
+\index{Y@{Y}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{Y}{Y}}
+{\footnotesize\ttfamily \#define Y~1}
+
+\mbox{\Hypertarget{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}\label{_physics_new_8cpp_a51591cf51bdd6c1f6015532422e7770e}} 
+\index{PhysicsNew.cpp@{PhysicsNew.cpp}!Z@{Z}}
+\index{Z@{Z}!PhysicsNew.cpp@{PhysicsNew.cpp}}
+\doxysubsubsection{\texorpdfstring{Z}{Z}}
+{\footnotesize\ttfamily \#define Z~2}
+

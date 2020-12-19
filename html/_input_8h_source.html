@@ -69,36 +69,47 @@ $(function() {
 <div class="title">Input.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _INPUT_H_</span></div>
+<a href="_input_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _INPUT_H_</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _INPUT_H_</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>Engine</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_engine.html">Engine</a></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_engine_1_1_input.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_input.html">Input</a></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        std::vector&lt;SDL_Keycode&gt; m_keyDown;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        std::vector&lt;SDL_Keycode&gt; m_keyUp;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        std::vector&lt;SDL_Keycode&gt; m_keyIsDown;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_engine_1_1_input.html#a153080cb6dca6113512192dafd0c9d58">   10</a></span>&#160;        std::vector&lt;SDL_Keycode&gt; <a class="code" href="class_engine_1_1_input.html#a153080cb6dca6113512192dafd0c9d58">m_keyDown</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_engine_1_1_input.html#a6169855b06b325d73022d852535b14f3">   11</a></span>&#160;        std::vector&lt;SDL_Keycode&gt; <a class="code" href="class_engine_1_1_input.html#a6169855b06b325d73022d852535b14f3">m_keyUp</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_engine_1_1_input.html#ace628006fe98427ce792b8f618b7d1f1">   12</a></span>&#160;        std::vector&lt;SDL_Keycode&gt; <a class="code" href="class_engine_1_1_input.html#ace628006fe98427ce792b8f618b7d1f1">m_keyIsDown</a>;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="class_engine_1_1_input.html">Input</a>();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">bool</span> takeInput(SDL_Event &amp;_event);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="class_engine_1_1_input.html#a16e3c3225e4803ec007d7ba1ed8ad205">Input</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_engine_1_1_input.html#a4d927791ca0beb6428907f1b348bf8d0">takeInput</a>(SDL_Event &amp;_event);</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="comment">//bool m_left, m_right, m_up, m_down, m_asc, m_desc, m_r1, m_r2, m_r, m_f, m_restart;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">bool</span> GetKeyIsDown(SDL_Keycode _event);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">bool</span> GetKeyDown(SDL_Keycode _event);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">bool</span> GetKeyUp(SDL_Keycode _event);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_engine_1_1_input.html#add1b5a496aa29aa7bad852991093b7c2">GetKeyIsDown</a>(SDL_Keycode _event);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_engine_1_1_input.html#a0d626839a3b443a43566ebd2637e3026">GetKeyDown</a>(SDL_Keycode _event);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_engine_1_1_input.html#aab7f5d277a58c7cfd482ba369013b5ec">GetKeyUp</a>(SDL_Keycode _event);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">int</span> m_xOffset, m_yOffset;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_engine_1_1_input.html#a902a8cf514dca028d888dc7992123119">   24</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_engine_1_1_input.html#a2b07191f8ffe40398256186d4d7f8a39">m_xOffset</a>, <a class="code" href="class_engine_1_1_input.html#a902a8cf514dca028d888dc7992123119">m_yOffset</a>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    };</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_engine_1_1_input_html_a153080cb6dca6113512192dafd0c9d58"><div class="ttname"><a href="class_engine_1_1_input.html#a153080cb6dca6113512192dafd0c9d58">Engine::Input::m_keyDown</a></div><div class="ttdeci">std::vector&lt; SDL_Keycode &gt; m_keyDown</div><div class="ttdef"><b>Definition:</b> Input.h:10</div></div>
+<div class="ttc" id="aclass_engine_1_1_input_html_a4d927791ca0beb6428907f1b348bf8d0"><div class="ttname"><a href="class_engine_1_1_input.html#a4d927791ca0beb6428907f1b348bf8d0">Engine::Input::takeInput</a></div><div class="ttdeci">bool takeInput(SDL_Event &amp;_event)</div><div class="ttdef"><b>Definition:</b> Input.cpp:10</div></div>
+<div class="ttc" id="anamespace_engine_html"><div class="ttname"><a href="namespace_engine.html">Engine</a></div><div class="ttdef"><b>Definition:</b> Camera.cpp:11</div></div>
+<div class="ttc" id="aclass_engine_1_1_input_html_a16e3c3225e4803ec007d7ba1ed8ad205"><div class="ttname"><a href="class_engine_1_1_input.html#a16e3c3225e4803ec007d7ba1ed8ad205">Engine::Input::Input</a></div><div class="ttdeci">Input()</div><div class="ttdef"><b>Definition:</b> Input.cpp:6</div></div>
+<div class="ttc" id="aclass_engine_1_1_input_html_a0d626839a3b443a43566ebd2637e3026"><div class="ttname"><a href="class_engine_1_1_input.html#a0d626839a3b443a43566ebd2637e3026">Engine::Input::GetKeyDown</a></div><div class="ttdeci">bool GetKeyDown(SDL_Keycode _event)</div><div class="ttdef"><b>Definition:</b> Input.cpp:74</div></div>
+<div class="ttc" id="aclass_engine_1_1_input_html_a902a8cf514dca028d888dc7992123119"><div class="ttname"><a href="class_engine_1_1_input.html#a902a8cf514dca028d888dc7992123119">Engine::Input::m_yOffset</a></div><div class="ttdeci">int m_yOffset</div><div class="ttdef"><b>Definition:</b> Input.h:24</div></div>
+<div class="ttc" id="aclass_engine_1_1_input_html_a6169855b06b325d73022d852535b14f3"><div class="ttname"><a href="class_engine_1_1_input.html#a6169855b06b325d73022d852535b14f3">Engine::Input::m_keyUp</a></div><div class="ttdeci">std::vector&lt; SDL_Keycode &gt; m_keyUp</div><div class="ttdef"><b>Definition:</b> Input.h:11</div></div>
+<div class="ttc" id="aclass_engine_1_1_input_html_aab7f5d277a58c7cfd482ba369013b5ec"><div class="ttname"><a href="class_engine_1_1_input.html#aab7f5d277a58c7cfd482ba369013b5ec">Engine::Input::GetKeyUp</a></div><div class="ttdeci">bool GetKeyUp(SDL_Keycode _event)</div><div class="ttdef"><b>Definition:</b> Input.cpp:90</div></div>
+<div class="ttc" id="aclass_engine_1_1_input_html_ace628006fe98427ce792b8f618b7d1f1"><div class="ttname"><a href="class_engine_1_1_input.html#ace628006fe98427ce792b8f618b7d1f1">Engine::Input::m_keyIsDown</a></div><div class="ttdeci">std::vector&lt; SDL_Keycode &gt; m_keyIsDown</div><div class="ttdef"><b>Definition:</b> Input.h:12</div></div>
 <div class="ttc" id="aclass_engine_1_1_input_html"><div class="ttname"><a href="class_engine_1_1_input.html">Engine::Input</a></div><div class="ttdef"><b>Definition:</b> Input.h:8</div></div>
+<div class="ttc" id="aclass_engine_1_1_input_html_add1b5a496aa29aa7bad852991093b7c2"><div class="ttname"><a href="class_engine_1_1_input.html#add1b5a496aa29aa7bad852991093b7c2">Engine::Input::GetKeyIsDown</a></div><div class="ttdeci">bool GetKeyIsDown(SDL_Keycode _event)</div><div class="ttdef"><b>Definition:</b> Input.cpp:57</div></div>
+<div class="ttc" id="aclass_engine_1_1_input_html_a2b07191f8ffe40398256186d4d7f8a39"><div class="ttname"><a href="class_engine_1_1_input.html#a2b07191f8ffe40398256186d4d7f8a39">Engine::Input::m_xOffset</a></div><div class="ttdeci">int m_xOffset</div><div class="ttdef"><b>Definition:</b> Input.h:24</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

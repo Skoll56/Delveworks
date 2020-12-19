@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['vertexarray_56',['VertexArray',['../class_engine_1_1_vertex_array.html',1,'Engine']]],
-  ['vertexbuffer_57',['VertexBuffer',['../class_engine_1_1_vertex_buffer.html',1,'Engine']]]
+  ['quit_452',['quit',['../struct_engine_1_1_core.html#a7295a1729ff623e4d7e9f9b4ccfed786',1,'Engine::Core']]]
 ];

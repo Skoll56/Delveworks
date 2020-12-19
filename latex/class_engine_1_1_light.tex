@@ -1,58 +1,110 @@
 \hypertarget{class_engine_1_1_light}{}\doxysection{Engine\+::Light Class Reference}
 \label{class_engine_1_1_light}\index{Engine::Light@{Engine::Light}}
+
+
+{\ttfamily \#include $<$Light.\+h$>$}
+
 Inheritance diagram for Engine\+::Light\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=3.000000cm]{class_engine_1_1_light}
+\includegraphics[height=4.000000cm]{class_engine_1_1_light}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_light_a4934ba2c0f1af83132cfdb665c22d5b9}\label{class_engine_1_1_light_a4934ba2c0f1af83132cfdb665c22d5b9}} 
-glm\+::vec3 {\bfseries get\+Pos} ()
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_light_ae6a067b05d2841995296bfca4e3f00dd}{get\+Dif}} ()
 \item 
-\mbox{\Hypertarget{class_engine_1_1_light_ac62e491b91b20701e0b878fe8488e587}\label{class_engine_1_1_light_ac62e491b91b20701e0b878fe8488e587}} 
-void {\bfseries set\+Pos} (glm\+::vec3 \+\_\+pos)
+float \mbox{\hyperlink{class_engine_1_1_light_ab2a8de4f8547ec1d36531c92717d4679}{get\+Spec}} ()
 \item 
-\mbox{\Hypertarget{class_engine_1_1_light_ae6a067b05d2841995296bfca4e3f00dd}\label{class_engine_1_1_light_ae6a067b05d2841995296bfca4e3f00dd}} 
-glm\+::vec3 {\bfseries get\+Dif} ()
+bool \mbox{\hyperlink{class_engine_1_1_light_a5136c26d6fb52e2df4b124cda8dd98f4}{is\+Anti}} ()
 \item 
-\mbox{\Hypertarget{class_engine_1_1_light_ab2a8de4f8547ec1d36531c92717d4679}\label{class_engine_1_1_light_ab2a8de4f8547ec1d36531c92717d4679}} 
-float {\bfseries get\+Spec} ()
+void \mbox{\hyperlink{class_engine_1_1_light_a55523df0f4741ce4b33aa1c63da14e0f}{set\+Anti}} (bool \+\_\+val)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_light_a5136c26d6fb52e2df4b124cda8dd98f4}\label{class_engine_1_1_light_a5136c26d6fb52e2df4b124cda8dd98f4}} 
-bool {\bfseries is\+Anti} ()
+std\+::string \mbox{\hyperlink{class_engine_1_1_light_ae0de32f04e093b7e1fe396597578f32a}{get\+Tag}} ()
 \item 
-\mbox{\Hypertarget{class_engine_1_1_light_a55523df0f4741ce4b33aa1c63da14e0f}\label{class_engine_1_1_light_a55523df0f4741ce4b33aa1c63da14e0f}} 
-void {\bfseries set\+Anti} (bool \+\_\+val)
-\item 
-\mbox{\Hypertarget{class_engine_1_1_light_ae0de32f04e093b7e1fe396597578f32a}\label{class_engine_1_1_light_ae0de32f04e093b7e1fe396597578f32a}} 
-std\+::string {\bfseries get\+Tag} ()
-\item 
-\mbox{\Hypertarget{class_engine_1_1_light_a2e241062da641354629d9d8a8605e130}\label{class_engine_1_1_light_a2e241062da641354629d9d8a8605e130}} 
-void {\bfseries set\+Tag} (std\+::string \+\_\+tag)
+void \mbox{\hyperlink{class_engine_1_1_light_a2e241062da641354629d9d8a8605e130}{set\+Tag}} (std\+::string \+\_\+tag)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_light_ac2ae4bde5c1e2fda1b6f1dcca7042598}\label{class_engine_1_1_light_ac2ae4bde5c1e2fda1b6f1dcca7042598}} 
-glm\+::vec3 {\bfseries m\+\_\+pos}
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_light_aa9ea69e274393cb91f6ac1cc33234aab}{m\+\_\+diffuse}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_light_aa9ea69e274393cb91f6ac1cc33234aab}\label{class_engine_1_1_light_aa9ea69e274393cb91f6ac1cc33234aab}} 
-glm\+::vec3 {\bfseries m\+\_\+diffuse}
+float \mbox{\hyperlink{class_engine_1_1_light_a58250254e49d65ecad8dc139547f019a}{m\+\_\+spec\+Intens}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_light_a58250254e49d65ecad8dc139547f019a}\label{class_engine_1_1_light_a58250254e49d65ecad8dc139547f019a}} 
-float {\bfseries m\+\_\+spec\+Intens}
+int \mbox{\hyperlink{class_engine_1_1_light_a95ca0c121eec3c861a768ca9a3dd401a}{m\+\_\+anti\+Light}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_light_a95ca0c121eec3c861a768ca9a3dd401a}\label{class_engine_1_1_light_a95ca0c121eec3c861a768ca9a3dd401a}} 
-int {\bfseries m\+\_\+anti\+Light}
-\item 
-\mbox{\Hypertarget{class_engine_1_1_light_a2ac7212521e1d4d9ee5b528a6388dbbb}\label{class_engine_1_1_light_a2ac7212521e1d4d9ee5b528a6388dbbb}} 
-std\+::string {\bfseries m\+\_\+tag}
+std\+::string \mbox{\hyperlink{class_engine_1_1_light_a2ac7212521e1d4d9ee5b528a6388dbbb}{m\+\_\+tag}}
 \end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_light_ae6a067b05d2841995296bfca4e3f00dd}\label{class_engine_1_1_light_ae6a067b05d2841995296bfca4e3f00dd}} 
+\index{Engine::Light@{Engine::Light}!getDif@{getDif}}
+\index{getDif@{getDif}!Engine::Light@{Engine::Light}}
+\doxysubsubsection{\texorpdfstring{getDif()}{getDif()}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Light\+::get\+Dif (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_light_ab2a8de4f8547ec1d36531c92717d4679}\label{class_engine_1_1_light_ab2a8de4f8547ec1d36531c92717d4679}} 
+\index{Engine::Light@{Engine::Light}!getSpec@{getSpec}}
+\index{getSpec@{getSpec}!Engine::Light@{Engine::Light}}
+\doxysubsubsection{\texorpdfstring{getSpec()}{getSpec()}}
+{\footnotesize\ttfamily float Engine\+::\+Light\+::get\+Spec (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_light_ae0de32f04e093b7e1fe396597578f32a}\label{class_engine_1_1_light_ae0de32f04e093b7e1fe396597578f32a}} 
+\index{Engine::Light@{Engine::Light}!getTag@{getTag}}
+\index{getTag@{getTag}!Engine::Light@{Engine::Light}}
+\doxysubsubsection{\texorpdfstring{getTag()}{getTag()}}
+{\footnotesize\ttfamily std\+::string Engine\+::\+Light\+::get\+Tag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_light_a5136c26d6fb52e2df4b124cda8dd98f4}\label{class_engine_1_1_light_a5136c26d6fb52e2df4b124cda8dd98f4}} 
+\index{Engine::Light@{Engine::Light}!isAnti@{isAnti}}
+\index{isAnti@{isAnti}!Engine::Light@{Engine::Light}}
+\doxysubsubsection{\texorpdfstring{isAnti()}{isAnti()}}
+{\footnotesize\ttfamily bool Engine\+::\+Light\+::is\+Anti (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_light_a55523df0f4741ce4b33aa1c63da14e0f}\label{class_engine_1_1_light_a55523df0f4741ce4b33aa1c63da14e0f}} 
+\index{Engine::Light@{Engine::Light}!setAnti@{setAnti}}
+\index{setAnti@{setAnti}!Engine::Light@{Engine::Light}}
+\doxysubsubsection{\texorpdfstring{setAnti()}{setAnti()}}
+{\footnotesize\ttfamily void Engine\+::\+Light\+::set\+Anti (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_light_a2e241062da641354629d9d8a8605e130}\label{class_engine_1_1_light_a2e241062da641354629d9d8a8605e130}} 
+\index{Engine::Light@{Engine::Light}!setTag@{setTag}}
+\index{setTag@{setTag}!Engine::Light@{Engine::Light}}
+\doxysubsubsection{\texorpdfstring{setTag()}{setTag()}}
+{\footnotesize\ttfamily void Engine\+::\+Light\+::set\+Tag (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_light_a95ca0c121eec3c861a768ca9a3dd401a}\label{class_engine_1_1_light_a95ca0c121eec3c861a768ca9a3dd401a}} 
+\index{Engine::Light@{Engine::Light}!m\_antiLight@{m\_antiLight}}
+\index{m\_antiLight@{m\_antiLight}!Engine::Light@{Engine::Light}}
+\doxysubsubsection{\texorpdfstring{m\_antiLight}{m\_antiLight}}
+{\footnotesize\ttfamily int Engine\+::\+Light\+::m\+\_\+anti\+Light\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_engine_1_1_light_aa9ea69e274393cb91f6ac1cc33234aab}\label{class_engine_1_1_light_aa9ea69e274393cb91f6ac1cc33234aab}} 
+\index{Engine::Light@{Engine::Light}!m\_diffuse@{m\_diffuse}}
+\index{m\_diffuse@{m\_diffuse}!Engine::Light@{Engine::Light}}
+\doxysubsubsection{\texorpdfstring{m\_diffuse}{m\_diffuse}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Light\+::m\+\_\+diffuse\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_engine_1_1_light_a58250254e49d65ecad8dc139547f019a}\label{class_engine_1_1_light_a58250254e49d65ecad8dc139547f019a}} 
+\index{Engine::Light@{Engine::Light}!m\_specIntens@{m\_specIntens}}
+\index{m\_specIntens@{m\_specIntens}!Engine::Light@{Engine::Light}}
+\doxysubsubsection{\texorpdfstring{m\_specIntens}{m\_specIntens}}
+{\footnotesize\ttfamily float Engine\+::\+Light\+::m\+\_\+spec\+Intens\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_engine_1_1_light_a2ac7212521e1d4d9ee5b528a6388dbbb}\label{class_engine_1_1_light_a2ac7212521e1d4d9ee5b528a6388dbbb}} 
+\index{Engine::Light@{Engine::Light}!m\_tag@{m\_tag}}
+\index{m\_tag@{m\_tag}!Engine::Light@{Engine::Light}}
+\doxysubsubsection{\texorpdfstring{m\_tag}{m\_tag}}
+{\footnotesize\ttfamily std\+::string Engine\+::\+Light\+::m\+\_\+tag\hspace{0.3cm}{\ttfamily [protected]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Light.\+h\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_light_8h}{Light.\+h}}\end{DoxyCompactItemize}

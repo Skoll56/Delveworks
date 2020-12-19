@@ -1,32 +1,110 @@
 \hypertarget{class_engine_1_1_input}{}\doxysection{Engine\+::Input Class Reference}
 \label{class_engine_1_1_input}\index{Engine::Input@{Engine::Input}}
+
+
+{\ttfamily \#include $<$Input.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_input_a4d927791ca0beb6428907f1b348bf8d0}\label{class_engine_1_1_input_a4d927791ca0beb6428907f1b348bf8d0}} 
-bool {\bfseries take\+Input} (S\+D\+L\+\_\+\+Event \&\+\_\+event)
+\mbox{\hyperlink{class_engine_1_1_input_a16e3c3225e4803ec007d7ba1ed8ad205}{Input}} ()
 \item 
-\mbox{\Hypertarget{class_engine_1_1_input_add1b5a496aa29aa7bad852991093b7c2}\label{class_engine_1_1_input_add1b5a496aa29aa7bad852991093b7c2}} 
-bool {\bfseries Get\+Key\+Is\+Down} (S\+D\+L\+\_\+\+Keycode \+\_\+event)
+bool \mbox{\hyperlink{class_engine_1_1_input_a4d927791ca0beb6428907f1b348bf8d0}{take\+Input}} (S\+D\+L\+\_\+\+Event \&\+\_\+event)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_input_a0d626839a3b443a43566ebd2637e3026}\label{class_engine_1_1_input_a0d626839a3b443a43566ebd2637e3026}} 
-bool {\bfseries Get\+Key\+Down} (S\+D\+L\+\_\+\+Keycode \+\_\+event)
+bool \mbox{\hyperlink{class_engine_1_1_input_add1b5a496aa29aa7bad852991093b7c2}{Get\+Key\+Is\+Down}} (S\+D\+L\+\_\+\+Keycode \+\_\+event)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_input_aab7f5d277a58c7cfd482ba369013b5ec}\label{class_engine_1_1_input_aab7f5d277a58c7cfd482ba369013b5ec}} 
-bool {\bfseries Get\+Key\+Up} (S\+D\+L\+\_\+\+Keycode \+\_\+event)
+bool \mbox{\hyperlink{class_engine_1_1_input_a0d626839a3b443a43566ebd2637e3026}{Get\+Key\+Down}} (S\+D\+L\+\_\+\+Keycode \+\_\+event)
+\item 
+bool \mbox{\hyperlink{class_engine_1_1_input_aab7f5d277a58c7cfd482ba369013b5ec}{Get\+Key\+Up}} (S\+D\+L\+\_\+\+Keycode \+\_\+event)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_input_a2b07191f8ffe40398256186d4d7f8a39}\label{class_engine_1_1_input_a2b07191f8ffe40398256186d4d7f8a39}} 
-int {\bfseries m\+\_\+x\+Offset}
+int \mbox{\hyperlink{class_engine_1_1_input_a2b07191f8ffe40398256186d4d7f8a39}{m\+\_\+x\+Offset}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_input_a902a8cf514dca028d888dc7992123119}\label{class_engine_1_1_input_a902a8cf514dca028d888dc7992123119}} 
-int {\bfseries m\+\_\+y\+Offset}
+int \mbox{\hyperlink{class_engine_1_1_input_a902a8cf514dca028d888dc7992123119}{m\+\_\+y\+Offset}}
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ S\+D\+L\+\_\+\+Keycode $>$ \mbox{\hyperlink{class_engine_1_1_input_a153080cb6dca6113512192dafd0c9d58}{m\+\_\+key\+Down}}
+\item 
+std\+::vector$<$ S\+D\+L\+\_\+\+Keycode $>$ \mbox{\hyperlink{class_engine_1_1_input_a6169855b06b325d73022d852535b14f3}{m\+\_\+key\+Up}}
+\item 
+std\+::vector$<$ S\+D\+L\+\_\+\+Keycode $>$ \mbox{\hyperlink{class_engine_1_1_input_ace628006fe98427ce792b8f618b7d1f1}{m\+\_\+key\+Is\+Down}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_engine_1_1_input_a16e3c3225e4803ec007d7ba1ed8ad205}\label{class_engine_1_1_input_a16e3c3225e4803ec007d7ba1ed8ad205}} 
+\index{Engine::Input@{Engine::Input}!Input@{Input}}
+\index{Input@{Input}!Engine::Input@{Engine::Input}}
+\doxysubsubsection{\texorpdfstring{Input()}{Input()}}
+{\footnotesize\ttfamily Engine\+::\+Input\+::\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_input_a0d626839a3b443a43566ebd2637e3026}\label{class_engine_1_1_input_a0d626839a3b443a43566ebd2637e3026}} 
+\index{Engine::Input@{Engine::Input}!GetKeyDown@{GetKeyDown}}
+\index{GetKeyDown@{GetKeyDown}!Engine::Input@{Engine::Input}}
+\doxysubsubsection{\texorpdfstring{GetKeyDown()}{GetKeyDown()}}
+{\footnotesize\ttfamily bool Engine\+::\+Input\+::\+Get\+Key\+Down (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Keycode}]{\+\_\+event }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_input_add1b5a496aa29aa7bad852991093b7c2}\label{class_engine_1_1_input_add1b5a496aa29aa7bad852991093b7c2}} 
+\index{Engine::Input@{Engine::Input}!GetKeyIsDown@{GetKeyIsDown}}
+\index{GetKeyIsDown@{GetKeyIsDown}!Engine::Input@{Engine::Input}}
+\doxysubsubsection{\texorpdfstring{GetKeyIsDown()}{GetKeyIsDown()}}
+{\footnotesize\ttfamily bool Engine\+::\+Input\+::\+Get\+Key\+Is\+Down (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Keycode}]{\+\_\+event }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_input_aab7f5d277a58c7cfd482ba369013b5ec}\label{class_engine_1_1_input_aab7f5d277a58c7cfd482ba369013b5ec}} 
+\index{Engine::Input@{Engine::Input}!GetKeyUp@{GetKeyUp}}
+\index{GetKeyUp@{GetKeyUp}!Engine::Input@{Engine::Input}}
+\doxysubsubsection{\texorpdfstring{GetKeyUp()}{GetKeyUp()}}
+{\footnotesize\ttfamily bool Engine\+::\+Input\+::\+Get\+Key\+Up (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Keycode}]{\+\_\+event }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_input_a4d927791ca0beb6428907f1b348bf8d0}\label{class_engine_1_1_input_a4d927791ca0beb6428907f1b348bf8d0}} 
+\index{Engine::Input@{Engine::Input}!takeInput@{takeInput}}
+\index{takeInput@{takeInput}!Engine::Input@{Engine::Input}}
+\doxysubsubsection{\texorpdfstring{takeInput()}{takeInput()}}
+{\footnotesize\ttfamily bool Engine\+::\+Input\+::take\+Input (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event \&}]{\+\_\+event }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_input_a153080cb6dca6113512192dafd0c9d58}\label{class_engine_1_1_input_a153080cb6dca6113512192dafd0c9d58}} 
+\index{Engine::Input@{Engine::Input}!m\_keyDown@{m\_keyDown}}
+\index{m\_keyDown@{m\_keyDown}!Engine::Input@{Engine::Input}}
+\doxysubsubsection{\texorpdfstring{m\_keyDown}{m\_keyDown}}
+{\footnotesize\ttfamily std\+::vector$<$S\+D\+L\+\_\+\+Keycode$>$ Engine\+::\+Input\+::m\+\_\+key\+Down\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_input_ace628006fe98427ce792b8f618b7d1f1}\label{class_engine_1_1_input_ace628006fe98427ce792b8f618b7d1f1}} 
+\index{Engine::Input@{Engine::Input}!m\_keyIsDown@{m\_keyIsDown}}
+\index{m\_keyIsDown@{m\_keyIsDown}!Engine::Input@{Engine::Input}}
+\doxysubsubsection{\texorpdfstring{m\_keyIsDown}{m\_keyIsDown}}
+{\footnotesize\ttfamily std\+::vector$<$S\+D\+L\+\_\+\+Keycode$>$ Engine\+::\+Input\+::m\+\_\+key\+Is\+Down\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_input_a6169855b06b325d73022d852535b14f3}\label{class_engine_1_1_input_a6169855b06b325d73022d852535b14f3}} 
+\index{Engine::Input@{Engine::Input}!m\_keyUp@{m\_keyUp}}
+\index{m\_keyUp@{m\_keyUp}!Engine::Input@{Engine::Input}}
+\doxysubsubsection{\texorpdfstring{m\_keyUp}{m\_keyUp}}
+{\footnotesize\ttfamily std\+::vector$<$S\+D\+L\+\_\+\+Keycode$>$ Engine\+::\+Input\+::m\+\_\+key\+Up\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_input_a2b07191f8ffe40398256186d4d7f8a39}\label{class_engine_1_1_input_a2b07191f8ffe40398256186d4d7f8a39}} 
+\index{Engine::Input@{Engine::Input}!m\_xOffset@{m\_xOffset}}
+\index{m\_xOffset@{m\_xOffset}!Engine::Input@{Engine::Input}}
+\doxysubsubsection{\texorpdfstring{m\_xOffset}{m\_xOffset}}
+{\footnotesize\ttfamily int Engine\+::\+Input\+::m\+\_\+x\+Offset}
+
+\mbox{\Hypertarget{class_engine_1_1_input_a902a8cf514dca028d888dc7992123119}\label{class_engine_1_1_input_a902a8cf514dca028d888dc7992123119}} 
+\index{Engine::Input@{Engine::Input}!m\_yOffset@{m\_yOffset}}
+\index{m\_yOffset@{m\_yOffset}!Engine::Input@{Engine::Input}}
+\doxysubsubsection{\texorpdfstring{m\_yOffset}{m\_yOffset}}
+{\footnotesize\ttfamily int Engine\+::\+Input\+::m\+\_\+y\+Offset}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Input.\+h\item 
-src/\+Engine/Input.\+cpp\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_input_8h}{Input.\+h}}\item 
+src/\+Engine/\mbox{\hyperlink{_input_8cpp}{Input.\+cpp}}\end{DoxyCompactItemize}

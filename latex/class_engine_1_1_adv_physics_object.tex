@@ -1,15 +1,230 @@
 \hypertarget{class_engine_1_1_adv_physics_object}{}\doxysection{Engine\+::Adv\+Physics\+Object Class Reference}
 \label{class_engine_1_1_adv_physics_object}\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+
+
+{\ttfamily \#include $<$Physics\+New.\+h$>$}
+
 Inheritance diagram for Engine\+::Adv\+Physics\+Object\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=4.000000cm]{class_engine_1_1_adv_physics_object}
 \end{center}
 \end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205063c01f652b02c0b44afe1a}{on\+Tick}} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a458a52398534dad8aac4492961b95846}{Initialise}} (float \+\_\+mass, float \+\_\+bounciness)
+\item 
+\mbox{\hyperlink{class_engine_1_1_adv_physics_object_ae346adabb15053c851f845f9bfc318ad}{Adv\+Physics\+Object}} ()
+\item 
+glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ae32e6829036cd669f41745136fc5c1be}{get\+Rot\+Mat}} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ad6ef2daa6e84da213e320bbbc901864e}{update\+Rotations}} (float \+\_\+d\+Ts, bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a2e90e0014b21222a1c9fcfef44b1e5e7}{collided}})
+\item 
+void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ae35f99bf986d7112f4ee11c093c4cf4d}{set\+Avel}} (glm\+::vec3 \+\_\+a\+Vel)
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a7f8bed1e8f7112f101a71dca01459d04}{get\+Avel}} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a72567a5e2cb7355e0dece4aa13ee1b8b}{set\+Rot\+Mat}} (glm\+::mat3 \+\_\+r\+Mat)
+\item 
+glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_aafadf8f25c145b8ead0d54b080bc9b7f}{calc\+Inv\+Tensor}} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a77a290f36486e07da822c7d7182b8e12}{set\+Inv\+Tensor}} (glm\+::mat3 \+\_\+matrix)
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_af92702df9047f9dc538fd1bae5bfefa2}{get\+Amom}} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a61d37668bd9c178ebc178fee3361c414}{set\+Amom}} (glm\+::vec3 \+\_\+mom)
+\item 
+void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_aaea8baf2f49ba52c5cab1b3dc2363ede}{add\+Torque}} (glm\+::vec3 \+\_\+torque)
+\item 
+void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ab9b9d32dd267691ebe929e29dcd90cdd}{clear\+Torque}} ()
+\item 
+glm\+::quat \mbox{\hyperlink{class_engine_1_1_adv_physics_object_af752bbfeee36c63afaf1c240f3dcd611}{get\+Rot\+Quat}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a2a803fa99168b227d0cf88b6a9f30a9c}{m\+\_\+torque}} = glm\+::vec3(0.\+0f)
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ac04326740ff444414bee55999e279d58}{m\+\_\+a\+Vel}} = glm\+::vec3(0.\+0f)
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a6105b3696e7eee1fe34290a94d18b6a0}{m\+\_\+a\+Mom}} = glm\+::vec3(0.\+0f)
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a49825833d7c58bfd91f72794e11245cc}{m\+\_\+a\+Acc}} = glm\+::vec3(0.\+0f)
+\item 
+glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a6ccd95b7d8a1d34fe1cc2066985a672e}{m\+\_\+inv\+Inertia\+Tensor}}
+\item 
+glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a48bf98f9c8d24588d881cfbc5f46b7f5}{m\+\_\+inv\+Body\+Inertia\+Tensor}}
+\item 
+glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a8ea2eda823e872b9df92f2caec84c927}{m\+\_\+rot\+Mat}}
+\item 
+glm\+::quat \mbox{\hyperlink{class_engine_1_1_adv_physics_object_aaaea939e86c45d0f27a7809209c1cd5c}{m\+\_\+rot\+Quat}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ad5a232ff7e20f233976824feecd87787}{m\+\_\+orient}} = glm\+::vec3(0.\+0f)
+\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ae346adabb15053c851f845f9bfc318ad}\label{class_engine_1_1_adv_physics_object_ae346adabb15053c851f845f9bfc318ad}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!AdvPhysicsObject@{AdvPhysicsObject}}
+\index{AdvPhysicsObject@{AdvPhysicsObject}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{AdvPhysicsObject()}{AdvPhysicsObject()}}
+{\footnotesize\ttfamily Engine\+::\+Adv\+Physics\+Object\+::\+Adv\+Physics\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_aaea8baf2f49ba52c5cab1b3dc2363ede}\label{class_engine_1_1_adv_physics_object_aaea8baf2f49ba52c5cab1b3dc2363ede}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!addTorque@{addTorque}}
+\index{addTorque@{addTorque}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{addTorque()}{addTorque()}}
+{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::add\+Torque (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+torque }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_aafadf8f25c145b8ead0d54b080bc9b7f}\label{class_engine_1_1_adv_physics_object_aafadf8f25c145b8ead0d54b080bc9b7f}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!calcInvTensor@{calcInvTensor}}
+\index{calcInvTensor@{calcInvTensor}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{calcInvTensor()}{calcInvTensor()}}
+{\footnotesize\ttfamily glm\+::mat3 Engine\+::\+Adv\+Physics\+Object\+::calc\+Inv\+Tensor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ab9b9d32dd267691ebe929e29dcd90cdd}\label{class_engine_1_1_adv_physics_object_ab9b9d32dd267691ebe929e29dcd90cdd}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!clearTorque@{clearTorque}}
+\index{clearTorque@{clearTorque}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{clearTorque()}{clearTorque()}}
+{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::clear\+Torque (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_af92702df9047f9dc538fd1bae5bfefa2}\label{class_engine_1_1_adv_physics_object_af92702df9047f9dc538fd1bae5bfefa2}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!getAmom@{getAmom}}
+\index{getAmom@{getAmom}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{getAmom()}{getAmom()}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::get\+Amom (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a7f8bed1e8f7112f101a71dca01459d04}\label{class_engine_1_1_adv_physics_object_a7f8bed1e8f7112f101a71dca01459d04}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!getAvel@{getAvel}}
+\index{getAvel@{getAvel}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{getAvel()}{getAvel()}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::get\+Avel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ae32e6829036cd669f41745136fc5c1be}\label{class_engine_1_1_adv_physics_object_ae32e6829036cd669f41745136fc5c1be}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!getRotMat@{getRotMat}}
+\index{getRotMat@{getRotMat}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{getRotMat()}{getRotMat()}}
+{\footnotesize\ttfamily glm\+::mat3 Engine\+::\+Adv\+Physics\+Object\+::get\+Rot\+Mat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_af752bbfeee36c63afaf1c240f3dcd611}\label{class_engine_1_1_adv_physics_object_af752bbfeee36c63afaf1c240f3dcd611}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!getRotQuat@{getRotQuat}}
+\index{getRotQuat@{getRotQuat}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{getRotQuat()}{getRotQuat()}}
+{\footnotesize\ttfamily glm\+::quat Engine\+::\+Adv\+Physics\+Object\+::get\+Rot\+Quat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a458a52398534dad8aac4492961b95846}\label{class_engine_1_1_adv_physics_object_a458a52398534dad8aac4492961b95846}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!Initialise@{Initialise}}
+\index{Initialise@{Initialise}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{Initialise()}{Initialise()}}
+{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::\+Initialise (\begin{DoxyParamCaption}\item[{float}]{\+\_\+mass,  }\item[{float}]{\+\_\+bounciness }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ace6d62205063c01f652b02c0b44afe1a}\label{class_engine_1_1_adv_physics_object_ace6d62205063c01f652b02c0b44afe1a}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!onTick@{onTick}}
+\index{onTick@{onTick}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{onTick()}{onTick()}}
+{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c01676f6d79bec3423ff8a0}{Engine\+::\+Physics\+Object}}.
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a61d37668bd9c178ebc178fee3361c414}\label{class_engine_1_1_adv_physics_object_a61d37668bd9c178ebc178fee3361c414}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!setAmom@{setAmom}}
+\index{setAmom@{setAmom}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{setAmom()}{setAmom()}}
+{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::set\+Amom (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+mom }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ae35f99bf986d7112f4ee11c093c4cf4d}\label{class_engine_1_1_adv_physics_object_ae35f99bf986d7112f4ee11c093c4cf4d}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!setAvel@{setAvel}}
+\index{setAvel@{setAvel}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{setAvel()}{setAvel()}}
+{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::set\+Avel (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+a\+Vel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a77a290f36486e07da822c7d7182b8e12}\label{class_engine_1_1_adv_physics_object_a77a290f36486e07da822c7d7182b8e12}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!setInvTensor@{setInvTensor}}
+\index{setInvTensor@{setInvTensor}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{setInvTensor()}{setInvTensor()}}
+{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::set\+Inv\+Tensor (\begin{DoxyParamCaption}\item[{glm\+::mat3}]{\+\_\+matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a72567a5e2cb7355e0dece4aa13ee1b8b}\label{class_engine_1_1_adv_physics_object_a72567a5e2cb7355e0dece4aa13ee1b8b}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!setRotMat@{setRotMat}}
+\index{setRotMat@{setRotMat}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{setRotMat()}{setRotMat()}}
+{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::set\+Rot\+Mat (\begin{DoxyParamCaption}\item[{glm\+::mat3}]{\+\_\+r\+Mat }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ad6ef2daa6e84da213e320bbbc901864e}\label{class_engine_1_1_adv_physics_object_ad6ef2daa6e84da213e320bbbc901864e}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!updateRotations@{updateRotations}}
+\index{updateRotations@{updateRotations}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{updateRotations()}{updateRotations()}}
+{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::update\+Rotations (\begin{DoxyParamCaption}\item[{float}]{\+\_\+d\+Ts,  }\item[{bool}]{collided }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a49825833d7c58bfd91f72794e11245cc}\label{class_engine_1_1_adv_physics_object_a49825833d7c58bfd91f72794e11245cc}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_aAcc@{m\_aAcc}}
+\index{m\_aAcc@{m\_aAcc}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_aAcc}{m\_aAcc}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+a\+Acc = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a6105b3696e7eee1fe34290a94d18b6a0}\label{class_engine_1_1_adv_physics_object_a6105b3696e7eee1fe34290a94d18b6a0}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_aMom@{m\_aMom}}
+\index{m\_aMom@{m\_aMom}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_aMom}{m\_aMom}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+a\+Mom = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ac04326740ff444414bee55999e279d58}\label{class_engine_1_1_adv_physics_object_ac04326740ff444414bee55999e279d58}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_aVel@{m\_aVel}}
+\index{m\_aVel@{m\_aVel}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_aVel}{m\_aVel}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+a\+Vel = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a48bf98f9c8d24588d881cfbc5f46b7f5}\label{class_engine_1_1_adv_physics_object_a48bf98f9c8d24588d881cfbc5f46b7f5}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_invBodyInertiaTensor@{m\_invBodyInertiaTensor}}
+\index{m\_invBodyInertiaTensor@{m\_invBodyInertiaTensor}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_invBodyInertiaTensor}{m\_invBodyInertiaTensor}}
+{\footnotesize\ttfamily glm\+::mat3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+inv\+Body\+Inertia\+Tensor\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a6ccd95b7d8a1d34fe1cc2066985a672e}\label{class_engine_1_1_adv_physics_object_a6ccd95b7d8a1d34fe1cc2066985a672e}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_invInertiaTensor@{m\_invInertiaTensor}}
+\index{m\_invInertiaTensor@{m\_invInertiaTensor}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_invInertiaTensor}{m\_invInertiaTensor}}
+{\footnotesize\ttfamily glm\+::mat3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+inv\+Inertia\+Tensor\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ad5a232ff7e20f233976824feecd87787}\label{class_engine_1_1_adv_physics_object_ad5a232ff7e20f233976824feecd87787}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_orient@{m\_orient}}
+\index{m\_orient@{m\_orient}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_orient}{m\_orient}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+orient = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a8ea2eda823e872b9df92f2caec84c927}\label{class_engine_1_1_adv_physics_object_a8ea2eda823e872b9df92f2caec84c927}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_rotMat@{m\_rotMat}}
+\index{m\_rotMat@{m\_rotMat}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_rotMat}{m\_rotMat}}
+{\footnotesize\ttfamily glm\+::mat3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+rot\+Mat\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_aaaea939e86c45d0f27a7809209c1cd5c}\label{class_engine_1_1_adv_physics_object_aaaea939e86c45d0f27a7809209c1cd5c}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_rotQuat@{m\_rotQuat}}
+\index{m\_rotQuat@{m\_rotQuat}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_rotQuat}{m\_rotQuat}}
+{\footnotesize\ttfamily glm\+::quat Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+rot\+Quat\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a2a803fa99168b227d0cf88b6a9f30a9c}\label{class_engine_1_1_adv_physics_object_a2a803fa99168b227d0cf88b6a9f30a9c}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_torque@{m\_torque}}
+\index{m\_torque@{m\_torque}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_torque}{m\_torque}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+torque = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Physics\+New.\+h\item 
-src/\+Engine/Physics\+New.\+cpp\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_physics_new_8h}{Physics\+New.\+h}}\item 
+src/\+Engine/\mbox{\hyperlink{_physics_new_8cpp}{Physics\+New.\+cpp}}\end{DoxyCompactItemize}

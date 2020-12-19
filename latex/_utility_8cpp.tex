@@ -1,0 +1,77 @@
+\hypertarget{_utility_8cpp}{}\doxysection{src/\+Engine/\+Utility.cpp File Reference}
+\label{_utility_8cpp}\index{src/Engine/Utility.cpp@{src/Engine/Utility.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$glm/glm.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/ext.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/gtc/matrix\+\_\+transform.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/gtc/quaternion.\+hpp$>$}\newline
+{\ttfamily \#include \char`\"{}Game\+Object.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Collision.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Shader.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Utility.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Light.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Vertex\+Array.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Camera.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Vertex\+Buffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Input.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespace_engine}{Engine}}
+\item 
+ \mbox{\hyperlink{namespace_engine_1_1utility}{Engine\+::utility}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_utility_8cpp_a57fc7dfba4047aa60308c697806a7f7f}{S\+H\+A\+PE}}(type)~\+\_\+obj-\/$>$get\+Shape() == type
+\item 
+\#define \mbox{\hyperlink{_utility_8cpp_adac4e8e1f58344548f1513bceef9ab7b}{O\+U\+T\+P\+UT}}(vec)~std\+::cout $<$$<$ vec.\+x $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+y $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+z $<$$<$std\+::endl;
+\item 
+\#define \mbox{\hyperlink{_utility_8cpp_a9f563347c7e6b8c4c1071f0dd8072199}{O\+T\+AG}}(tag)~obj\mbox{[}i\mbox{]}-\/$>$get\+Tag() == tag
+\item 
+\#define \mbox{\hyperlink{_utility_8cpp_a52d40bb2397fc5b63bb526872a77bad6}{S\+T\+AG}}(tag)~s\+Light\mbox{[}i\mbox{]}-\/$>$get\+Tag() == tag
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_engine_1_1utility_af3d23f5b87e00fcd4c91ac7e9dde42e5}{Engine\+::utility\+::on\+Every\+Frame}} (Scene $\ast$\+\_\+scene, float \+\_\+dT)
+\item 
+void \mbox{\hyperlink{namespace_engine_1_1utility_af2eb3df2b5e0669005d2cca0443608d7}{Engine\+::utility\+::move\+Entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+obj, glm\+::vec3 \+\_\+dir, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$$>$ \+\_\+other, float \+\_\+d\+Ts)
+\item 
+void \mbox{\hyperlink{namespace_engine_1_1utility_a74e815f4ad18ce31274190bcf817fd83}{Engine\+::utility\+::update}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+obj, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ \+\_\+shader, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$$>$ \+\_\+all\+Obj, float \+\_\+dT)
+\item 
+void \mbox{\hyperlink{namespace_engine_1_1utility_af09ae4b14df272c50b9a68f5616110f0}{Engine\+::utility\+::update\+Lighting}} (std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_spot_light}{Spot\+Light}} $\ast$ $>$ \+\_\+s\+Light, std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_dir_light}{Dir\+Light}} $\ast$ $>$ \+\_\+d\+Light, std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_point_light}{Point\+Light}} $\ast$ $>$ \+\_\+p\+Light, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ \+\_\+l\+Sh, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ \+\_\+i\+Sh)
+\item 
+Game\+Object $\ast$ \mbox{\hyperlink{namespace_engine_1_1utility_ad64cb6be3e144b9336689a1864facbc2}{Engine\+::utility\+::copy}} (Game\+Object $\ast$\+\_\+obj)
+\item 
+float \mbox{\hyperlink{namespace_engine_1_1utility_aa2a561a4539bb84f8cdd0d7b90959481}{Engine\+::utility\+::lerp}} (float \+\_\+a, float \+\_\+b, float \+\_\+f)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_utility_8cpp_a9f563347c7e6b8c4c1071f0dd8072199}\label{_utility_8cpp_a9f563347c7e6b8c4c1071f0dd8072199}} 
+\index{Utility.cpp@{Utility.cpp}!OTAG@{OTAG}}
+\index{OTAG@{OTAG}!Utility.cpp@{Utility.cpp}}
+\doxysubsubsection{\texorpdfstring{OTAG}{OTAG}}
+{\footnotesize\ttfamily \#define O\+T\+AG(\begin{DoxyParamCaption}\item[{}]{tag }\end{DoxyParamCaption})~obj\mbox{[}i\mbox{]}-\/$>$get\+Tag() == tag}
+
+\mbox{\Hypertarget{_utility_8cpp_adac4e8e1f58344548f1513bceef9ab7b}\label{_utility_8cpp_adac4e8e1f58344548f1513bceef9ab7b}} 
+\index{Utility.cpp@{Utility.cpp}!OUTPUT@{OUTPUT}}
+\index{OUTPUT@{OUTPUT}!Utility.cpp@{Utility.cpp}}
+\doxysubsubsection{\texorpdfstring{OUTPUT}{OUTPUT}}
+{\footnotesize\ttfamily \#define O\+U\+T\+P\+UT(\begin{DoxyParamCaption}\item[{}]{vec }\end{DoxyParamCaption})~std\+::cout $<$$<$ vec.\+x $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+y $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+z $<$$<$std\+::endl;}
+
+\mbox{\Hypertarget{_utility_8cpp_a57fc7dfba4047aa60308c697806a7f7f}\label{_utility_8cpp_a57fc7dfba4047aa60308c697806a7f7f}} 
+\index{Utility.cpp@{Utility.cpp}!SHAPE@{SHAPE}}
+\index{SHAPE@{SHAPE}!Utility.cpp@{Utility.cpp}}
+\doxysubsubsection{\texorpdfstring{SHAPE}{SHAPE}}
+{\footnotesize\ttfamily \#define S\+H\+A\+PE(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})~\+\_\+obj-\/$>$get\+Shape() == type}
+
+\mbox{\Hypertarget{_utility_8cpp_a52d40bb2397fc5b63bb526872a77bad6}\label{_utility_8cpp_a52d40bb2397fc5b63bb526872a77bad6}} 
+\index{Utility.cpp@{Utility.cpp}!STAG@{STAG}}
+\index{STAG@{STAG}!Utility.cpp@{Utility.cpp}}
+\doxysubsubsection{\texorpdfstring{STAG}{STAG}}
+{\footnotesize\ttfamily \#define S\+T\+AG(\begin{DoxyParamCaption}\item[{}]{tag }\end{DoxyParamCaption})~s\+Light\mbox{[}i\mbox{]}-\/$>$get\+Tag() == tag}
+

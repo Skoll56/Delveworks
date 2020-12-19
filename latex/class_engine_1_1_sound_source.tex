@@ -1,15 +1,91 @@
 \hypertarget{class_engine_1_1_sound_source}{}\doxysection{Engine\+::Sound\+Source Class Reference}
 \label{class_engine_1_1_sound_source}\index{Engine::SoundSource@{Engine::SoundSource}}
+
+
+{\ttfamily \#include $<$Component.\+h$>$}
+
 Inheritance diagram for Engine\+::Sound\+Source\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_engine_1_1_sound_source}
 \end{center}
 \end{figure}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_engine_1_1_sound_source_a69306a04bda61b5470c93b5992297491}{on\+Initialise}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sound}{Sound}} $>$ \+\_\+sound)
+\item 
+void \mbox{\hyperlink{class_engine_1_1_sound_source_a1fec1228d1a8c467a6febbdac1a4f219}{on\+Tick}} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_sound_source_a1690e3bd1c45b9192d003a0daf49a040}{Play}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+A\+Luint \mbox{\hyperlink{class_engine_1_1_sound_source_a268c23b6886316e971eb328e14032344}{m\+\_\+id}} = 0
+\item 
+bool \mbox{\hyperlink{class_engine_1_1_sound_source_a7e033f0ef0b9dfdc4a4014716fefb4a1}{m\+\_\+played}} = false
+\item 
+bool \mbox{\hyperlink{class_engine_1_1_sound_source_afa3c586b59cce8b7cb587f426c5bdd2a}{m\+\_\+loop}} = false
+\item 
+bool \mbox{\hyperlink{class_engine_1_1_sound_source_af4e032421938c60c8dfb8d5d6664ae3c}{m\+\_\+destroy\+On\+Play}} = false
+\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_sound_source_a69306a04bda61b5470c93b5992297491}\label{class_engine_1_1_sound_source_a69306a04bda61b5470c93b5992297491}} 
+\index{Engine::SoundSource@{Engine::SoundSource}!onInitialise@{onInitialise}}
+\index{onInitialise@{onInitialise}!Engine::SoundSource@{Engine::SoundSource}}
+\doxysubsubsection{\texorpdfstring{onInitialise()}{onInitialise()}}
+{\footnotesize\ttfamily void Engine\+::\+Sound\+Source\+::on\+Initialise (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sound}{Sound}} $>$}]{\+\_\+sound }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_sound_source_a1fec1228d1a8c467a6febbdac1a4f219}\label{class_engine_1_1_sound_source_a1fec1228d1a8c467a6febbdac1a4f219}} 
+\index{Engine::SoundSource@{Engine::SoundSource}!onTick@{onTick}}
+\index{onTick@{onTick}!Engine::SoundSource@{Engine::SoundSource}}
+\doxysubsubsection{\texorpdfstring{onTick()}{onTick()}}
+{\footnotesize\ttfamily void Engine\+::\+Sound\+Source\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10bbef2b74a8a22f24c}{Engine\+::\+Component}}.
+
+\mbox{\Hypertarget{class_engine_1_1_sound_source_a1690e3bd1c45b9192d003a0daf49a040}\label{class_engine_1_1_sound_source_a1690e3bd1c45b9192d003a0daf49a040}} 
+\index{Engine::SoundSource@{Engine::SoundSource}!Play@{Play}}
+\index{Play@{Play}!Engine::SoundSource@{Engine::SoundSource}}
+\doxysubsubsection{\texorpdfstring{Play()}{Play()}}
+{\footnotesize\ttfamily void Engine\+::\+Sound\+Source\+::\+Play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_sound_source_af4e032421938c60c8dfb8d5d6664ae3c}\label{class_engine_1_1_sound_source_af4e032421938c60c8dfb8d5d6664ae3c}} 
+\index{Engine::SoundSource@{Engine::SoundSource}!m\_destroyOnPlay@{m\_destroyOnPlay}}
+\index{m\_destroyOnPlay@{m\_destroyOnPlay}!Engine::SoundSource@{Engine::SoundSource}}
+\doxysubsubsection{\texorpdfstring{m\_destroyOnPlay}{m\_destroyOnPlay}}
+{\footnotesize\ttfamily bool Engine\+::\+Sound\+Source\+::m\+\_\+destroy\+On\+Play = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_sound_source_a268c23b6886316e971eb328e14032344}\label{class_engine_1_1_sound_source_a268c23b6886316e971eb328e14032344}} 
+\index{Engine::SoundSource@{Engine::SoundSource}!m\_id@{m\_id}}
+\index{m\_id@{m\_id}!Engine::SoundSource@{Engine::SoundSource}}
+\doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
+{\footnotesize\ttfamily A\+Luint Engine\+::\+Sound\+Source\+::m\+\_\+id = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_sound_source_afa3c586b59cce8b7cb587f426c5bdd2a}\label{class_engine_1_1_sound_source_afa3c586b59cce8b7cb587f426c5bdd2a}} 
+\index{Engine::SoundSource@{Engine::SoundSource}!m\_loop@{m\_loop}}
+\index{m\_loop@{m\_loop}!Engine::SoundSource@{Engine::SoundSource}}
+\doxysubsubsection{\texorpdfstring{m\_loop}{m\_loop}}
+{\footnotesize\ttfamily bool Engine\+::\+Sound\+Source\+::m\+\_\+loop = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_sound_source_a7e033f0ef0b9dfdc4a4014716fefb4a1}\label{class_engine_1_1_sound_source_a7e033f0ef0b9dfdc4a4014716fefb4a1}} 
+\index{Engine::SoundSource@{Engine::SoundSource}!m\_played@{m\_played}}
+\index{m\_played@{m\_played}!Engine::SoundSource@{Engine::SoundSource}}
+\doxysubsubsection{\texorpdfstring{m\_played}{m\_played}}
+{\footnotesize\ttfamily bool Engine\+::\+Sound\+Source\+::m\+\_\+played = false\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Component.\+h\item 
-src/\+Engine/Component.\+cpp\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_component_8h}{Component.\+h}}\item 
+src/\+Engine/\mbox{\hyperlink{_component_8cpp}{Component.\+cpp}}\end{DoxyCompactItemize}

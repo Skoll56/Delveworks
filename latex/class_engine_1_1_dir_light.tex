@@ -1,41 +1,114 @@
 \hypertarget{class_engine_1_1_dir_light}{}\doxysection{Engine\+::Dir\+Light Class Reference}
 \label{class_engine_1_1_dir_light}\index{Engine::DirLight@{Engine::DirLight}}
+
+
+{\ttfamily \#include $<$Light.\+h$>$}
+
 Inheritance diagram for Engine\+::Dir\+Light\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_engine_1_1_dir_light}
+\includegraphics[height=3.000000cm]{class_engine_1_1_dir_light}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_dir_light_ada7462b78e20ecc2d3b5315761afb83f}\label{class_engine_1_1_dir_light_ada7462b78e20ecc2d3b5315761afb83f}} 
-{\bfseries Dir\+Light} (glm\+::vec3 \+\_\+diffuse, float \+\_\+specular, glm\+::vec3 \+\_\+ambient, glm\+::vec3 \+\_\+direction)
+void \mbox{\hyperlink{class_engine_1_1_dir_light_a0f364a41c103de1f69df110d61da8c95}{set\+Values}} (glm\+::vec3 \+\_\+diffuse, float \+\_\+specular, glm\+::vec3 \+\_\+ambient)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_dir_light_a272f9f2fb49ea2d0c3fa8b6c81d1d356}\label{class_engine_1_1_dir_light_a272f9f2fb49ea2d0c3fa8b6c81d1d356}} 
-glm\+::vec3 {\bfseries get\+Dif} ()
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_dir_light_a272f9f2fb49ea2d0c3fa8b6c81d1d356}{get\+Dif}} ()
 \item 
-\mbox{\Hypertarget{class_engine_1_1_dir_light_a89fc98379c0989c39ff6137df0039f90}\label{class_engine_1_1_dir_light_a89fc98379c0989c39ff6137df0039f90}} 
-float {\bfseries get\+Spec} ()
+float \mbox{\hyperlink{class_engine_1_1_dir_light_a89fc98379c0989c39ff6137df0039f90}{get\+Spec}} ()
 \item 
-\mbox{\Hypertarget{class_engine_1_1_dir_light_a7a1545c41557eda360489fa97c121ceb}\label{class_engine_1_1_dir_light_a7a1545c41557eda360489fa97c121ceb}} 
-glm\+::vec3 {\bfseries get\+Direction} ()
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}} $>$ \mbox{\hyperlink{class_engine_1_1_dir_light_ac09a96eecec92cd2afb4fee72df280e7}{get\+Shadow\+Map}} ()
 \item 
-\mbox{\Hypertarget{class_engine_1_1_dir_light_ac584070707adb53657d3d44c56b96792}\label{class_engine_1_1_dir_light_ac584070707adb53657d3d44c56b96792}} 
-glm\+::vec3 {\bfseries get\+Amb} ()
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_dir_light_ac584070707adb53657d3d44c56b96792}{get\+Amb}} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_dir_light_a5366178bd740214562f1ffb273afe432}{update}} (int \+\_\+i)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_dir_light_a73bb1d3f118a91a7758c8f2bd6407c1b}\label{class_engine_1_1_dir_light_a73bb1d3f118a91a7758c8f2bd6407c1b}} 
-glm\+::vec3 {\bfseries m\+\_\+diffuse}
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_dir_light_a73bb1d3f118a91a7758c8f2bd6407c1b}{m\+\_\+diffuse}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_dir_light_a9e7fa6558a78a9d1fa8d66371974da99}\label{class_engine_1_1_dir_light_a9e7fa6558a78a9d1fa8d66371974da99}} 
-float {\bfseries m\+\_\+spec\+Intens}
+float \mbox{\hyperlink{class_engine_1_1_dir_light_a9e7fa6558a78a9d1fa8d66371974da99}{m\+\_\+spec\+Intens}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_dir_light_aa758ce136bbd7f41e79da21cfaf70b19}{m\+\_\+ambient}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}} $>$ \mbox{\hyperlink{class_engine_1_1_dir_light_a612650d9d81e9358806a8fbe836a3f02}{m\+\_\+\+SM}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_dir_light_ac584070707adb53657d3d44c56b96792}\label{class_engine_1_1_dir_light_ac584070707adb53657d3d44c56b96792}} 
+\index{Engine::DirLight@{Engine::DirLight}!getAmb@{getAmb}}
+\index{getAmb@{getAmb}!Engine::DirLight@{Engine::DirLight}}
+\doxysubsubsection{\texorpdfstring{getAmb()}{getAmb()}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Dir\+Light\+::get\+Amb (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_dir_light_a272f9f2fb49ea2d0c3fa8b6c81d1d356}\label{class_engine_1_1_dir_light_a272f9f2fb49ea2d0c3fa8b6c81d1d356}} 
+\index{Engine::DirLight@{Engine::DirLight}!getDif@{getDif}}
+\index{getDif@{getDif}!Engine::DirLight@{Engine::DirLight}}
+\doxysubsubsection{\texorpdfstring{getDif()}{getDif()}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Dir\+Light\+::get\+Dif (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_dir_light_ac09a96eecec92cd2afb4fee72df280e7}\label{class_engine_1_1_dir_light_ac09a96eecec92cd2afb4fee72df280e7}} 
+\index{Engine::DirLight@{Engine::DirLight}!getShadowMap@{getShadowMap}}
+\index{getShadowMap@{getShadowMap}!Engine::DirLight@{Engine::DirLight}}
+\doxysubsubsection{\texorpdfstring{getShadowMap()}{getShadowMap()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}}$>$ Engine\+::\+Dir\+Light\+::get\+Shadow\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_dir_light_a89fc98379c0989c39ff6137df0039f90}\label{class_engine_1_1_dir_light_a89fc98379c0989c39ff6137df0039f90}} 
+\index{Engine::DirLight@{Engine::DirLight}!getSpec@{getSpec}}
+\index{getSpec@{getSpec}!Engine::DirLight@{Engine::DirLight}}
+\doxysubsubsection{\texorpdfstring{getSpec()}{getSpec()}}
+{\footnotesize\ttfamily float Engine\+::\+Dir\+Light\+::get\+Spec (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_dir_light_a0f364a41c103de1f69df110d61da8c95}\label{class_engine_1_1_dir_light_a0f364a41c103de1f69df110d61da8c95}} 
+\index{Engine::DirLight@{Engine::DirLight}!setValues@{setValues}}
+\index{setValues@{setValues}!Engine::DirLight@{Engine::DirLight}}
+\doxysubsubsection{\texorpdfstring{setValues()}{setValues()}}
+{\footnotesize\ttfamily void Engine\+::\+Dir\+Light\+::set\+Values (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+diffuse,  }\item[{float}]{\+\_\+specular,  }\item[{glm\+::vec3}]{\+\_\+ambient }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_dir_light_a5366178bd740214562f1ffb273afe432}\label{class_engine_1_1_dir_light_a5366178bd740214562f1ffb273afe432}} 
+\index{Engine::DirLight@{Engine::DirLight}!update@{update}}
+\index{update@{update}!Engine::DirLight@{Engine::DirLight}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Engine\+::\+Dir\+Light\+::update (\begin{DoxyParamCaption}\item[{int}]{\+\_\+i }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_dir_light_aa758ce136bbd7f41e79da21cfaf70b19}\label{class_engine_1_1_dir_light_aa758ce136bbd7f41e79da21cfaf70b19}} 
+\index{Engine::DirLight@{Engine::DirLight}!m\_ambient@{m\_ambient}}
+\index{m\_ambient@{m\_ambient}!Engine::DirLight@{Engine::DirLight}}
+\doxysubsubsection{\texorpdfstring{m\_ambient}{m\_ambient}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Dir\+Light\+::m\+\_\+ambient\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_dir_light_a73bb1d3f118a91a7758c8f2bd6407c1b}\label{class_engine_1_1_dir_light_a73bb1d3f118a91a7758c8f2bd6407c1b}} 
+\index{Engine::DirLight@{Engine::DirLight}!m\_diffuse@{m\_diffuse}}
+\index{m\_diffuse@{m\_diffuse}!Engine::DirLight@{Engine::DirLight}}
+\doxysubsubsection{\texorpdfstring{m\_diffuse}{m\_diffuse}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Dir\+Light\+::m\+\_\+diffuse}
+
+\mbox{\Hypertarget{class_engine_1_1_dir_light_a612650d9d81e9358806a8fbe836a3f02}\label{class_engine_1_1_dir_light_a612650d9d81e9358806a8fbe836a3f02}} 
+\index{Engine::DirLight@{Engine::DirLight}!m\_SM@{m\_SM}}
+\index{m\_SM@{m\_SM}!Engine::DirLight@{Engine::DirLight}}
+\doxysubsubsection{\texorpdfstring{m\_SM}{m\_SM}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}}$>$ Engine\+::\+Dir\+Light\+::m\+\_\+\+SM\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_dir_light_a9e7fa6558a78a9d1fa8d66371974da99}\label{class_engine_1_1_dir_light_a9e7fa6558a78a9d1fa8d66371974da99}} 
+\index{Engine::DirLight@{Engine::DirLight}!m\_specIntens@{m\_specIntens}}
+\index{m\_specIntens@{m\_specIntens}!Engine::DirLight@{Engine::DirLight}}
+\doxysubsubsection{\texorpdfstring{m\_specIntens}{m\_specIntens}}
+{\footnotesize\ttfamily float Engine\+::\+Dir\+Light\+::m\+\_\+spec\+Intens}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Light.\+h\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_light_8h}{Light.\+h}}\item 
+src/\+Engine/\mbox{\hyperlink{_light_8cpp}{Light.\+cpp}}\end{DoxyCompactItemize}

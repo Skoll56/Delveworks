@@ -1,53 +1,131 @@
 \hypertarget{class_engine_1_1_collision}{}\doxysection{Engine\+::Collision Class Reference}
 \label{class_engine_1_1_collision}\index{Engine::Collision@{Engine::Collision}}
+
+
+{\ttfamily \#include $<$Collision.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_a6d6b0822215217cf807eddf9fb3385be}\label{class_engine_1_1_collision_a6d6b0822215217cf807eddf9fb3385be}} 
-{\bfseries Collision} (glm\+::vec3 \+\_\+cP, glm\+::vec3 \+\_\+norm, \mbox{\hyperlink{class_engine_1_1_game_object}{Game\+Object}} $\ast$\+\_\+other, \mbox{\hyperlink{class_engine_1_1_game_object}{Game\+Object}} $\ast$\+\_\+my)
+\mbox{\hyperlink{class_engine_1_1_collision_a140de284be0a32d89687b9f7a9351982}{Collision}} (glm\+::vec3 \+\_\+cP, glm\+::vec3 \+\_\+norm, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+other, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+my)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_ae38a204ed31c3947a74627eb3238fa1c}\label{class_engine_1_1_collision_ae38a204ed31c3947a74627eb3238fa1c}} 
-void {\bfseries ignore\+Collision} ()
+void \mbox{\hyperlink{class_engine_1_1_collision_ae38a204ed31c3947a74627eb3238fa1c}{ignore\+Collision}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_afd26bfd0f016e87911b73f5cee085c25}\label{class_engine_1_1_collision_afd26bfd0f016e87911b73f5cee085c25}} 
-\mbox{\hyperlink{class_engine_1_1_game_object}{Game\+Object}} $\ast$ {\bfseries m\+\_\+other}
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{class_engine_1_1_collision_a4e20e4bf242abde95993c328043a47ff}{m\+\_\+other}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_aa91beb905804f1b4c0b6db2f537603fb}\label{class_engine_1_1_collision_aa91beb905804f1b4c0b6db2f537603fb}} 
-\mbox{\hyperlink{class_engine_1_1_game_object}{Game\+Object}} $\ast$ {\bfseries m\+\_\+my}
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{class_engine_1_1_collision_a01abf2557eaef96685cfd77d3180d01f}{m\+\_\+my}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_a186225d35d8f55c294a6ddf5576c4a73}\label{class_engine_1_1_collision_a186225d35d8f55c294a6ddf5576c4a73}} 
-glm\+::vec3 {\bfseries m\+\_\+poC}
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_collision_a186225d35d8f55c294a6ddf5576c4a73}{m\+\_\+poC}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_ac6c1de18980241f0e7273a447870895e}\label{class_engine_1_1_collision_ac6c1de18980241f0e7273a447870895e}} 
-glm\+::vec3 {\bfseries m\+\_\+cP}
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_collision_ac6c1de18980241f0e7273a447870895e}{m\+\_\+cP}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_ab35b0d710e77cb3210edc3ff172bb90e}\label{class_engine_1_1_collision_ab35b0d710e77cb3210edc3ff172bb90e}} 
-glm\+::vec3 {\bfseries m\+\_\+normal}
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_collision_ab35b0d710e77cb3210edc3ff172bb90e}{m\+\_\+normal}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_a9835dd5d051cd359c71899ca4ca15ccf}\label{class_engine_1_1_collision_a9835dd5d051cd359c71899ca4ca15ccf}} 
-float {\bfseries m\+\_\+result\+Force}
+float \mbox{\hyperlink{class_engine_1_1_collision_a9835dd5d051cd359c71899ca4ca15ccf}{m\+\_\+result\+Force}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_a6cbbe1e5d160942df54573b39392b839}\label{class_engine_1_1_collision_a6cbbe1e5d160942df54573b39392b839}} 
-glm\+::vec3 {\bfseries m\+\_\+vel\+Dif}
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_collision_a6cbbe1e5d160942df54573b39392b839}{m\+\_\+vel\+Dif}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_a770725e6bcb1d1648711498b4ceb353b}\label{class_engine_1_1_collision_a770725e6bcb1d1648711498b4ceb353b}} 
-glm\+::vec3 {\bfseries m\+\_\+fric}
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_collision_a770725e6bcb1d1648711498b4ceb353b}{m\+\_\+fric}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_a46526683e8e579e18362aebc87b6a3f5}\label{class_engine_1_1_collision_a46526683e8e579e18362aebc87b6a3f5}} 
-float {\bfseries m\+\_\+mass\+Calc}
+float \mbox{\hyperlink{class_engine_1_1_collision_a46526683e8e579e18362aebc87b6a3f5}{m\+\_\+mass\+Calc}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_ae5d474dcc70dfb678ca5a79eeab51fa3}\label{class_engine_1_1_collision_ae5d474dcc70dfb678ca5a79eeab51fa3}} 
-glm\+::vec3 {\bfseries m\+\_\+delta\+Vel}
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_collision_ae5d474dcc70dfb678ca5a79eeab51fa3}{m\+\_\+delta\+Vel}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collision_afb94ffd89a987a2401302f28e359086f}\label{class_engine_1_1_collision_afb94ffd89a987a2401302f28e359086f}} 
-bool {\bfseries m\+\_\+const\+Col}
+bool \mbox{\hyperlink{class_engine_1_1_collision_afb94ffd89a987a2401302f28e359086f}{m\+\_\+const\+Col}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_engine_1_1_collision_a140de284be0a32d89687b9f7a9351982}\label{class_engine_1_1_collision_a140de284be0a32d89687b9f7a9351982}} 
+\index{Engine::Collision@{Engine::Collision}!Collision@{Collision}}
+\index{Collision@{Collision}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{Collision()}{Collision()}}
+{\footnotesize\ttfamily Engine\+::\+Collision\+::\+Collision (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+cP,  }\item[{glm\+::vec3}]{\+\_\+norm,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$}]{\+\_\+other,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$}]{\+\_\+my }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_collision_ae38a204ed31c3947a74627eb3238fa1c}\label{class_engine_1_1_collision_ae38a204ed31c3947a74627eb3238fa1c}} 
+\index{Engine::Collision@{Engine::Collision}!ignoreCollision@{ignoreCollision}}
+\index{ignoreCollision@{ignoreCollision}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{ignoreCollision()}{ignoreCollision()}}
+{\footnotesize\ttfamily void Engine\+::\+Collision\+::ignore\+Collision (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_collision_afb94ffd89a987a2401302f28e359086f}\label{class_engine_1_1_collision_afb94ffd89a987a2401302f28e359086f}} 
+\index{Engine::Collision@{Engine::Collision}!m\_constCol@{m\_constCol}}
+\index{m\_constCol@{m\_constCol}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{m\_constCol}{m\_constCol}}
+{\footnotesize\ttfamily bool Engine\+::\+Collision\+::m\+\_\+const\+Col}
+
+\mbox{\Hypertarget{class_engine_1_1_collision_ac6c1de18980241f0e7273a447870895e}\label{class_engine_1_1_collision_ac6c1de18980241f0e7273a447870895e}} 
+\index{Engine::Collision@{Engine::Collision}!m\_cP@{m\_cP}}
+\index{m\_cP@{m\_cP}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{m\_cP}{m\_cP}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Collision\+::m\+\_\+cP}
+
+\mbox{\Hypertarget{class_engine_1_1_collision_ae5d474dcc70dfb678ca5a79eeab51fa3}\label{class_engine_1_1_collision_ae5d474dcc70dfb678ca5a79eeab51fa3}} 
+\index{Engine::Collision@{Engine::Collision}!m\_deltaVel@{m\_deltaVel}}
+\index{m\_deltaVel@{m\_deltaVel}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{m\_deltaVel}{m\_deltaVel}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Collision\+::m\+\_\+delta\+Vel}
+
+\mbox{\Hypertarget{class_engine_1_1_collision_a770725e6bcb1d1648711498b4ceb353b}\label{class_engine_1_1_collision_a770725e6bcb1d1648711498b4ceb353b}} 
+\index{Engine::Collision@{Engine::Collision}!m\_fric@{m\_fric}}
+\index{m\_fric@{m\_fric}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{m\_fric}{m\_fric}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Collision\+::m\+\_\+fric}
+
+\mbox{\Hypertarget{class_engine_1_1_collision_a46526683e8e579e18362aebc87b6a3f5}\label{class_engine_1_1_collision_a46526683e8e579e18362aebc87b6a3f5}} 
+\index{Engine::Collision@{Engine::Collision}!m\_massCalc@{m\_massCalc}}
+\index{m\_massCalc@{m\_massCalc}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{m\_massCalc}{m\_massCalc}}
+{\footnotesize\ttfamily float Engine\+::\+Collision\+::m\+\_\+mass\+Calc}
+
+\mbox{\Hypertarget{class_engine_1_1_collision_a01abf2557eaef96685cfd77d3180d01f}\label{class_engine_1_1_collision_a01abf2557eaef96685cfd77d3180d01f}} 
+\index{Engine::Collision@{Engine::Collision}!m\_my@{m\_my}}
+\index{m\_my@{m\_my}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{m\_my}{m\_my}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{struct_engine_1_1_entity}{Entity}}$>$ Engine\+::\+Collision\+::m\+\_\+my}
+
+\mbox{\Hypertarget{class_engine_1_1_collision_ab35b0d710e77cb3210edc3ff172bb90e}\label{class_engine_1_1_collision_ab35b0d710e77cb3210edc3ff172bb90e}} 
+\index{Engine::Collision@{Engine::Collision}!m\_normal@{m\_normal}}
+\index{m\_normal@{m\_normal}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{m\_normal}{m\_normal}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Collision\+::m\+\_\+normal}
+
+\mbox{\Hypertarget{class_engine_1_1_collision_a4e20e4bf242abde95993c328043a47ff}\label{class_engine_1_1_collision_a4e20e4bf242abde95993c328043a47ff}} 
+\index{Engine::Collision@{Engine::Collision}!m\_other@{m\_other}}
+\index{m\_other@{m\_other}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{m\_other}{m\_other}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{struct_engine_1_1_entity}{Entity}}$>$ Engine\+::\+Collision\+::m\+\_\+other}
+
+\mbox{\Hypertarget{class_engine_1_1_collision_a186225d35d8f55c294a6ddf5576c4a73}\label{class_engine_1_1_collision_a186225d35d8f55c294a6ddf5576c4a73}} 
+\index{Engine::Collision@{Engine::Collision}!m\_poC@{m\_poC}}
+\index{m\_poC@{m\_poC}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{m\_poC}{m\_poC}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Collision\+::m\+\_\+poC}
+
+\mbox{\Hypertarget{class_engine_1_1_collision_a9835dd5d051cd359c71899ca4ca15ccf}\label{class_engine_1_1_collision_a9835dd5d051cd359c71899ca4ca15ccf}} 
+\index{Engine::Collision@{Engine::Collision}!m\_resultForce@{m\_resultForce}}
+\index{m\_resultForce@{m\_resultForce}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{m\_resultForce}{m\_resultForce}}
+{\footnotesize\ttfamily float Engine\+::\+Collision\+::m\+\_\+result\+Force}
+
+\mbox{\Hypertarget{class_engine_1_1_collision_a6cbbe1e5d160942df54573b39392b839}\label{class_engine_1_1_collision_a6cbbe1e5d160942df54573b39392b839}} 
+\index{Engine::Collision@{Engine::Collision}!m\_velDif@{m\_velDif}}
+\index{m\_velDif@{m\_velDif}!Engine::Collision@{Engine::Collision}}
+\doxysubsubsection{\texorpdfstring{m\_velDif}{m\_velDif}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Collision\+::m\+\_\+vel\+Dif}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Collision.\+h\item 
-src/\+Engine/Collision.\+cpp\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_collision_8h}{Collision.\+h}}\item 
+src/\+Engine/\mbox{\hyperlink{_collision_8cpp}{Collision.\+cpp}}\end{DoxyCompactItemize}

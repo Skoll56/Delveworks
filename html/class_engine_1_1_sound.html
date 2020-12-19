@@ -61,17 +61,21 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Engine</b></li><li class="navelem"><a class="el" href="class_engine_1_1_sound.html">Sound</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_engine.html">Engine</a></li><li class="navelem"><a class="el" href="class_engine_1_1_sound.html">Sound</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="class_engine_1_1_sound-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Engine::Sound Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_resource_8h_source.html">Resource.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::Sound:</div>
 <div class="dyncontent">
@@ -82,22 +86,153 @@ Inheritance diagram for Engine::Sound:</div>
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a1e4bb287f587e2e18e914ca491809661"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound.html#a1e4bb287f587e2e18e914ca491809661">load</a> (const std::string &amp;path)</td></tr>
+<tr class="separator:a1e4bb287f587e2e18e914ca491809661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87a0412c08250823a666364db113d75e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound.html#a87a0412c08250823a666364db113d75e">loadOgg</a> (const std::string &amp;fileName, std::vector&lt; char &gt; &amp;buffer, ALenum &amp;format, ALsizei &amp;freq)</td></tr>
+<tr class="separator:a87a0412c08250823a666364db113d75e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a7cfddf8329dce7d3336c5f42de436685"><td class="memItemLeft" align="right" valign="top">ALuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound.html#a7cfddf8329dce7d3336c5f42de436685">m_id</a> = 0</td></tr>
+<tr class="separator:a7cfddf8329dce7d3336c5f42de436685"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:ac3c1855ffb28082902708af2a25f934d"><td class="memItemLeft" align="right" valign="top"><a id="ac3c1855ffb28082902708af2a25f934d"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>SoundSource</b></td></tr>
+<tr class="memitem:ac3c1855ffb28082902708af2a25f934d"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound.html#ac3c1855ffb28082902708af2a25f934d">SoundSource</a></td></tr>
 <tr class="separator:ac3c1855ffb28082902708af2a25f934d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_attribs_class_engine_1_1_resource"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_engine_1_1_resource')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_engine_1_1_resource.html">Engine::Resource</a></td></tr>
-<tr class="memitem:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="memItemLeft" align="right" valign="top"><a id="a0b6159004b4fc901f8df833f97f02670"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_path</b></td></tr>
+<tr class="memitem:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">m_path</a></td></tr>
 <tr class="separator:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1e4bb287f587e2e18e914ca491809661"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e4bb287f587e2e18e914ca491809661">&#9670;&nbsp;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Sound::load </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87a0412c08250823a666364db113d75e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87a0412c08250823a666364db113d75e">&#9670;&nbsp;</a></span>loadOgg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Sound::loadOgg </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; char &gt; &amp;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ALenum &amp;&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ALsizei &amp;&#160;</td>
+          <td class="paramname"><em>freq</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="ac3c1855ffb28082902708af2a25f934d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3c1855ffb28082902708af2a25f934d">&#9670;&nbsp;</a></span>SoundSource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_engine_1_1_sound_source.html">SoundSource</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7cfddf8329dce7d3336c5f42de436685"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cfddf8329dce7d3336c5f42de436685">&#9670;&nbsp;</a></span>m_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALuint Engine::Sound::m_id = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/Engine/<a class="el" href="_resource_8h_source.html">Resource.h</a></li>
-<li>src/Engine/Resource.cpp</li>
+<li>src/Engine/<a class="el" href="_resource_8cpp.html">Resource.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -69,10 +69,10 @@ $(function() {
 <div class="title">Room.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<a href="_room_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;glm/glm.hpp&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span>Engine</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_engine.html">Engine</a></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">class </span>PointLight;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">class </span>GameObject;</div>
@@ -81,29 +81,40 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_engine_1_1_corridor.html">   10</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_corridor.html">Corridor</a></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        std::vector&lt;GameObject*&gt; m_walls;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        std::vector&lt;GameObject*&gt; m_lamp;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        std::vector&lt;PointLight*&gt; m_light;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_engine_1_1_corridor.html#ab04532b7443bf84914fd79625628c481">   13</a></span>&#160;        std::vector&lt;GameObject*&gt; <a class="code" href="class_engine_1_1_corridor.html#ab04532b7443bf84914fd79625628c481">m_walls</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_engine_1_1_corridor.html#a4bd80753c40ec16270130e2cce06f464">   14</a></span>&#160;        std::vector&lt;GameObject*&gt; <a class="code" href="class_engine_1_1_corridor.html#a4bd80753c40ec16270130e2cce06f464">m_lamp</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_engine_1_1_corridor.html#ae3d912d052ab267288634050b97c6952">   15</a></span>&#160;        std::vector&lt;PointLight*&gt; <a class="code" href="class_engine_1_1_corridor.html#ae3d912d052ab267288634050b97c6952">m_light</a>;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    };</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_engine_1_1_room.html">   18</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_room.html">Room</a></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        glm::vec3 m_pos;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">int</span> m_id;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        std::vector&lt;GameObject*&gt; m_walls;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="class_engine_1_1_game_object.html">GameObject</a>* m_inDoor;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="class_engine_1_1_game_object.html">GameObject</a>* m_outDoor;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        std::vector&lt;GameObject*&gt; m_lamp;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        std::vector&lt;PointLight*&gt; m_light;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="class_engine_1_1_corridor.html">Corridor</a>* m_exit;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_engine_1_1_room.html#aac5af6629def943c24ad713bfc1b612e">   21</a></span>&#160;        glm::vec3 <a class="code" href="class_engine_1_1_room.html#aac5af6629def943c24ad713bfc1b612e">m_pos</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_engine_1_1_room.html#ab33a013398570b51ce136ad228c33882">   22</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_engine_1_1_room.html#ab33a013398570b51ce136ad228c33882">m_id</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_engine_1_1_room.html#afc4dd6f5106d75a8ef32d6b5916cd23a">   23</a></span>&#160;        std::vector&lt;GameObject*&gt; <a class="code" href="class_engine_1_1_room.html#afc4dd6f5106d75a8ef32d6b5916cd23a">m_walls</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_engine_1_1_room.html#aa9bb18c9fa669cf9c67033e2873a7391">   24</a></span>&#160;        GameObject* <a class="code" href="class_engine_1_1_room.html#aa9bb18c9fa669cf9c67033e2873a7391">m_inDoor</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_engine_1_1_room.html#aa2fb8b1fbe9b384769574882882f8903">   25</a></span>&#160;        GameObject* <a class="code" href="class_engine_1_1_room.html#aa2fb8b1fbe9b384769574882882f8903">m_outDoor</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_engine_1_1_room.html#ae0686db83512402fcd636dfeda2e34f6">   26</a></span>&#160;        std::vector&lt;GameObject*&gt; <a class="code" href="class_engine_1_1_room.html#ae0686db83512402fcd636dfeda2e34f6">m_lamp</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_engine_1_1_room.html#a5101dc0946153bafc464e6667142cd72">   27</a></span>&#160;        std::vector&lt;PointLight*&gt; <a class="code" href="class_engine_1_1_room.html#a5101dc0946153bafc464e6667142cd72">m_light</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_engine_1_1_room.html#af8e39f8476c02adabffc25efcbd6cd5d">   28</a></span>&#160;        <a class="code" href="class_engine_1_1_corridor.html">Corridor</a>* <a class="code" href="class_engine_1_1_room.html#af8e39f8476c02adabffc25efcbd6cd5d">m_exit</a>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_engine_1_1_room_html_afc4dd6f5106d75a8ef32d6b5916cd23a"><div class="ttname"><a href="class_engine_1_1_room.html#afc4dd6f5106d75a8ef32d6b5916cd23a">Engine::Room::m_walls</a></div><div class="ttdeci">std::vector&lt; GameObject * &gt; m_walls</div><div class="ttdef"><b>Definition:</b> Room.h:23</div></div>
+<div class="ttc" id="anamespace_engine_html"><div class="ttname"><a href="namespace_engine.html">Engine</a></div><div class="ttdef"><b>Definition:</b> Camera.cpp:11</div></div>
+<div class="ttc" id="aclass_engine_1_1_corridor_html_ab04532b7443bf84914fd79625628c481"><div class="ttname"><a href="class_engine_1_1_corridor.html#ab04532b7443bf84914fd79625628c481">Engine::Corridor::m_walls</a></div><div class="ttdeci">std::vector&lt; GameObject * &gt; m_walls</div><div class="ttdef"><b>Definition:</b> Room.h:13</div></div>
+<div class="ttc" id="aclass_engine_1_1_room_html_aac5af6629def943c24ad713bfc1b612e"><div class="ttname"><a href="class_engine_1_1_room.html#aac5af6629def943c24ad713bfc1b612e">Engine::Room::m_pos</a></div><div class="ttdeci">glm::vec3 m_pos</div><div class="ttdef"><b>Definition:</b> Room.h:21</div></div>
+<div class="ttc" id="aclass_engine_1_1_room_html_aa2fb8b1fbe9b384769574882882f8903"><div class="ttname"><a href="class_engine_1_1_room.html#aa2fb8b1fbe9b384769574882882f8903">Engine::Room::m_outDoor</a></div><div class="ttdeci">GameObject * m_outDoor</div><div class="ttdef"><b>Definition:</b> Room.h:25</div></div>
+<div class="ttc" id="aclass_engine_1_1_corridor_html_ae3d912d052ab267288634050b97c6952"><div class="ttname"><a href="class_engine_1_1_corridor.html#ae3d912d052ab267288634050b97c6952">Engine::Corridor::m_light</a></div><div class="ttdeci">std::vector&lt; PointLight * &gt; m_light</div><div class="ttdef"><b>Definition:</b> Room.h:15</div></div>
+<div class="ttc" id="aclass_engine_1_1_room_html_a5101dc0946153bafc464e6667142cd72"><div class="ttname"><a href="class_engine_1_1_room.html#a5101dc0946153bafc464e6667142cd72">Engine::Room::m_light</a></div><div class="ttdeci">std::vector&lt; PointLight * &gt; m_light</div><div class="ttdef"><b>Definition:</b> Room.h:27</div></div>
 <div class="ttc" id="aclass_engine_1_1_corridor_html"><div class="ttname"><a href="class_engine_1_1_corridor.html">Engine::Corridor</a></div><div class="ttdef"><b>Definition:</b> Room.h:11</div></div>
 <div class="ttc" id="aclass_engine_1_1_room_html"><div class="ttname"><a href="class_engine_1_1_room.html">Engine::Room</a></div><div class="ttdef"><b>Definition:</b> Room.h:19</div></div>
-<div class="ttc" id="aclass_engine_1_1_game_object_html"><div class="ttname"><a href="class_engine_1_1_game_object.html">Engine::GameObject</a></div><div class="ttdef"><b>Definition:</b> GameObject.h:12</div></div>
+<div class="ttc" id="aclass_engine_1_1_corridor_html_a4bd80753c40ec16270130e2cce06f464"><div class="ttname"><a href="class_engine_1_1_corridor.html#a4bd80753c40ec16270130e2cce06f464">Engine::Corridor::m_lamp</a></div><div class="ttdeci">std::vector&lt; GameObject * &gt; m_lamp</div><div class="ttdef"><b>Definition:</b> Room.h:14</div></div>
+<div class="ttc" id="aclass_engine_1_1_room_html_aa9bb18c9fa669cf9c67033e2873a7391"><div class="ttname"><a href="class_engine_1_1_room.html#aa9bb18c9fa669cf9c67033e2873a7391">Engine::Room::m_inDoor</a></div><div class="ttdeci">GameObject * m_inDoor</div><div class="ttdef"><b>Definition:</b> Room.h:24</div></div>
+<div class="ttc" id="aclass_engine_1_1_room_html_ae0686db83512402fcd636dfeda2e34f6"><div class="ttname"><a href="class_engine_1_1_room.html#ae0686db83512402fcd636dfeda2e34f6">Engine::Room::m_lamp</a></div><div class="ttdeci">std::vector&lt; GameObject * &gt; m_lamp</div><div class="ttdef"><b>Definition:</b> Room.h:26</div></div>
+<div class="ttc" id="aclass_engine_1_1_room_html_ab33a013398570b51ce136ad228c33882"><div class="ttname"><a href="class_engine_1_1_room.html#ab33a013398570b51ce136ad228c33882">Engine::Room::m_id</a></div><div class="ttdeci">int m_id</div><div class="ttdef"><b>Definition:</b> Room.h:22</div></div>
+<div class="ttc" id="aclass_engine_1_1_room_html_af8e39f8476c02adabffc25efcbd6cd5d"><div class="ttname"><a href="class_engine_1_1_room.html#af8e39f8476c02adabffc25efcbd6cd5d">Engine::Room::m_exit</a></div><div class="ttdeci">Corridor * m_exit</div><div class="ttdef"><b>Definition:</b> Room.h:28</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

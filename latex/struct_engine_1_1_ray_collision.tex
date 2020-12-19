@@ -1,28 +1,65 @@
 \hypertarget{struct_engine_1_1_ray_collision}{}\doxysection{Engine\+::Ray\+Collision Struct Reference}
 \label{struct_engine_1_1_ray_collision}\index{Engine::RayCollision@{Engine::RayCollision}}
+
+
+{\ttfamily \#include $<$Collision.\+h$>$}
+
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{struct_engine_1_1_ray_collision_a7c4e8ed9c989ffdb68de20cf946f1519}\label{struct_engine_1_1_ray_collision_a7c4e8ed9c989ffdb68de20cf946f1519}} 
-\mbox{\hyperlink{class_engine_1_1_game_object}{Game\+Object}} $\ast$ {\bfseries m\+\_\+hit\+Obj}
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{struct_engine_1_1_ray_collision_aef2966f6ed9fc268f75f8e6ab575b152}{m\+\_\+hit\+Obj}}
 \item 
-\mbox{\Hypertarget{struct_engine_1_1_ray_collision_a79e38c5b1710344f14f69ea58b73e1a7}\label{struct_engine_1_1_ray_collision_a79e38c5b1710344f14f69ea58b73e1a7}} 
-glm\+::vec3 {\bfseries m\+\_\+ray\+Dir}
+glm\+::vec3 \mbox{\hyperlink{struct_engine_1_1_ray_collision_a79e38c5b1710344f14f69ea58b73e1a7}{m\+\_\+ray\+Dir}}
 \item 
-\mbox{\Hypertarget{struct_engine_1_1_ray_collision_aa30455db7cdae1f0768842c719b1e8d3}\label{struct_engine_1_1_ray_collision_aa30455db7cdae1f0768842c719b1e8d3}} 
-glm\+::vec3 {\bfseries m\+\_\+origin}
+glm\+::vec3 \mbox{\hyperlink{struct_engine_1_1_ray_collision_aa30455db7cdae1f0768842c719b1e8d3}{m\+\_\+origin}}
 \item 
-\mbox{\Hypertarget{struct_engine_1_1_ray_collision_ae6ae339bddb0fbb99564309b4a70040e}\label{struct_engine_1_1_ray_collision_ae6ae339bddb0fbb99564309b4a70040e}} 
-std\+::string {\bfseries m\+\_\+ray\+Tag}
+std\+::string \mbox{\hyperlink{struct_engine_1_1_ray_collision_ae6ae339bddb0fbb99564309b4a70040e}{m\+\_\+ray\+Tag}}
 \item 
-\mbox{\Hypertarget{struct_engine_1_1_ray_collision_acaad7149c52180b770e9b1e455cf391c}\label{struct_engine_1_1_ray_collision_acaad7149c52180b770e9b1e455cf391c}} 
-glm\+::vec3 {\bfseries m\+\_\+hit\+Point}
+glm\+::vec3 \mbox{\hyperlink{struct_engine_1_1_ray_collision_acaad7149c52180b770e9b1e455cf391c}{m\+\_\+hit\+Point}}
 \item 
-\mbox{\Hypertarget{struct_engine_1_1_ray_collision_ad94ff7034932eb32f4a3313761610052}\label{struct_engine_1_1_ray_collision_ad94ff7034932eb32f4a3313761610052}} 
-bool {\bfseries m\+\_\+hit}
+bool \mbox{\hyperlink{struct_engine_1_1_ray_collision_ad94ff7034932eb32f4a3313761610052}{m\+\_\+hit}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_engine_1_1_ray_collision_ad94ff7034932eb32f4a3313761610052}\label{struct_engine_1_1_ray_collision_ad94ff7034932eb32f4a3313761610052}} 
+\index{Engine::RayCollision@{Engine::RayCollision}!m\_hit@{m\_hit}}
+\index{m\_hit@{m\_hit}!Engine::RayCollision@{Engine::RayCollision}}
+\doxysubsubsection{\texorpdfstring{m\_hit}{m\_hit}}
+{\footnotesize\ttfamily bool Engine\+::\+Ray\+Collision\+::m\+\_\+hit}
+
+\mbox{\Hypertarget{struct_engine_1_1_ray_collision_aef2966f6ed9fc268f75f8e6ab575b152}\label{struct_engine_1_1_ray_collision_aef2966f6ed9fc268f75f8e6ab575b152}} 
+\index{Engine::RayCollision@{Engine::RayCollision}!m\_hitObj@{m\_hitObj}}
+\index{m\_hitObj@{m\_hitObj}!Engine::RayCollision@{Engine::RayCollision}}
+\doxysubsubsection{\texorpdfstring{m\_hitObj}{m\_hitObj}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{struct_engine_1_1_entity}{Entity}}$>$ Engine\+::\+Ray\+Collision\+::m\+\_\+hit\+Obj}
+
+\mbox{\Hypertarget{struct_engine_1_1_ray_collision_acaad7149c52180b770e9b1e455cf391c}\label{struct_engine_1_1_ray_collision_acaad7149c52180b770e9b1e455cf391c}} 
+\index{Engine::RayCollision@{Engine::RayCollision}!m\_hitPoint@{m\_hitPoint}}
+\index{m\_hitPoint@{m\_hitPoint}!Engine::RayCollision@{Engine::RayCollision}}
+\doxysubsubsection{\texorpdfstring{m\_hitPoint}{m\_hitPoint}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Ray\+Collision\+::m\+\_\+hit\+Point}
+
+\mbox{\Hypertarget{struct_engine_1_1_ray_collision_aa30455db7cdae1f0768842c719b1e8d3}\label{struct_engine_1_1_ray_collision_aa30455db7cdae1f0768842c719b1e8d3}} 
+\index{Engine::RayCollision@{Engine::RayCollision}!m\_origin@{m\_origin}}
+\index{m\_origin@{m\_origin}!Engine::RayCollision@{Engine::RayCollision}}
+\doxysubsubsection{\texorpdfstring{m\_origin}{m\_origin}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Ray\+Collision\+::m\+\_\+origin}
+
+\mbox{\Hypertarget{struct_engine_1_1_ray_collision_a79e38c5b1710344f14f69ea58b73e1a7}\label{struct_engine_1_1_ray_collision_a79e38c5b1710344f14f69ea58b73e1a7}} 
+\index{Engine::RayCollision@{Engine::RayCollision}!m\_rayDir@{m\_rayDir}}
+\index{m\_rayDir@{m\_rayDir}!Engine::RayCollision@{Engine::RayCollision}}
+\doxysubsubsection{\texorpdfstring{m\_rayDir}{m\_rayDir}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Ray\+Collision\+::m\+\_\+ray\+Dir}
+
+\mbox{\Hypertarget{struct_engine_1_1_ray_collision_ae6ae339bddb0fbb99564309b4a70040e}\label{struct_engine_1_1_ray_collision_ae6ae339bddb0fbb99564309b4a70040e}} 
+\index{Engine::RayCollision@{Engine::RayCollision}!m\_rayTag@{m\_rayTag}}
+\index{m\_rayTag@{m\_rayTag}!Engine::RayCollision@{Engine::RayCollision}}
+\doxysubsubsection{\texorpdfstring{m\_rayTag}{m\_rayTag}}
+{\footnotesize\ttfamily std\+::string Engine\+::\+Ray\+Collision\+::m\+\_\+ray\+Tag}
+
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Collision.\+h\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_collision_8h}{Collision.\+h}}\end{DoxyCompactItemize}

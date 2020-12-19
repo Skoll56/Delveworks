@@ -1,34 +1,114 @@
 \hypertarget{class_engine_1_1_point_light}{}\doxysection{Engine\+::Point\+Light Class Reference}
 \label{class_engine_1_1_point_light}\index{Engine::PointLight@{Engine::PointLight}}
+
+
+{\ttfamily \#include $<$Light.\+h$>$}
+
 Inheritance diagram for Engine\+::Point\+Light\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=3.000000cm]{class_engine_1_1_point_light}
+\includegraphics[height=4.000000cm]{class_engine_1_1_point_light}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_point_light_af7d2555bab418d167dafde6ecf24c3c6}\label{class_engine_1_1_point_light_af7d2555bab418d167dafde6ecf24c3c6}} 
-{\bfseries Point\+Light} (glm\+::vec3 \+\_\+pos, glm\+::vec3 \+\_\+diffuse, float \+\_\+specular, float \+\_\+radius, float \+\_\+quadratic)
+\mbox{\hyperlink{class_engine_1_1_point_light_a445a69eb177e8149024f6b17f45c9895}{Point\+Light}} ()
 \item 
-\mbox{\Hypertarget{class_engine_1_1_point_light_a18b6da4dc3573098880bcb52c3070e0b}\label{class_engine_1_1_point_light_a18b6da4dc3573098880bcb52c3070e0b}} 
-float {\bfseries get\+Radius} ()
+void \mbox{\hyperlink{class_engine_1_1_point_light_a85fa71ff4d69af56925b6acd872009b5}{set\+Values}} (glm\+::vec3 \+\_\+diffuse, float \+\_\+specular, float \+\_\+radius, float \+\_\+brightness)
 \item 
-\mbox{\Hypertarget{class_engine_1_1_point_light_a6c4c0c47be86a7c35531d2772f6ee402}\label{class_engine_1_1_point_light_a6c4c0c47be86a7c35531d2772f6ee402}} 
-float {\bfseries get\+Quad} ()
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} $>$ \mbox{\hyperlink{class_engine_1_1_point_light_afa6d57042f15da68c06bcbc05e84c0f3}{get\+Shadow\+Cube}} ()
+\item 
+float \mbox{\hyperlink{class_engine_1_1_point_light_a18b6da4dc3573098880bcb52c3070e0b}{get\+Radius}} ()
+\item 
+float \mbox{\hyperlink{class_engine_1_1_point_light_a6c4c0c47be86a7c35531d2772f6ee402}{get\+Quad}} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_point_light_a84245fed6392920796112b5acbd2ee7b}{update}} (int \+\_\+i)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_point_light_acd8c7149df6ce845a02505452d943528}\label{class_engine_1_1_point_light_acd8c7149df6ce845a02505452d943528}} 
-float {\bfseries m\+\_\+radius}
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} $>$ \mbox{\hyperlink{class_engine_1_1_point_light_a4df218e00502a6982a06a02b97dae538}{m\+\_\+\+SC}}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_point_light_aa09f42522a2b257d1f092b4084334310}\label{class_engine_1_1_point_light_aa09f42522a2b257d1f092b4084334310}} 
-float {\bfseries m\+\_\+quadratic}
+float \mbox{\hyperlink{class_engine_1_1_point_light_acd8c7149df6ce845a02505452d943528}{m\+\_\+radius}}
+\item 
+float \mbox{\hyperlink{class_engine_1_1_point_light_a17a079c5ecfea42ef60c7b4d9fba61e6}{m\+\_\+brightness}}
+\item 
+float \mbox{\hyperlink{class_engine_1_1_point_light_aa09f42522a2b257d1f092b4084334310}{m\+\_\+quadratic}}
 \end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_engine_1_1_point_light_a445a69eb177e8149024f6b17f45c9895}\label{class_engine_1_1_point_light_a445a69eb177e8149024f6b17f45c9895}} 
+\index{Engine::PointLight@{Engine::PointLight}!PointLight@{PointLight}}
+\index{PointLight@{PointLight}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{PointLight()}{PointLight()}}
+{\footnotesize\ttfamily Engine\+::\+Point\+Light\+::\+Point\+Light (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_point_light_a6c4c0c47be86a7c35531d2772f6ee402}\label{class_engine_1_1_point_light_a6c4c0c47be86a7c35531d2772f6ee402}} 
+\index{Engine::PointLight@{Engine::PointLight}!getQuad@{getQuad}}
+\index{getQuad@{getQuad}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{getQuad()}{getQuad()}}
+{\footnotesize\ttfamily float Engine\+::\+Point\+Light\+::get\+Quad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_point_light_a18b6da4dc3573098880bcb52c3070e0b}\label{class_engine_1_1_point_light_a18b6da4dc3573098880bcb52c3070e0b}} 
+\index{Engine::PointLight@{Engine::PointLight}!getRadius@{getRadius}}
+\index{getRadius@{getRadius}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{getRadius()}{getRadius()}}
+{\footnotesize\ttfamily float Engine\+::\+Point\+Light\+::get\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_point_light_afa6d57042f15da68c06bcbc05e84c0f3}\label{class_engine_1_1_point_light_afa6d57042f15da68c06bcbc05e84c0f3}} 
+\index{Engine::PointLight@{Engine::PointLight}!getShadowCube@{getShadowCube}}
+\index{getShadowCube@{getShadowCube}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{getShadowCube()}{getShadowCube()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}}$>$ Engine\+::\+Point\+Light\+::get\+Shadow\+Cube (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_point_light_a85fa71ff4d69af56925b6acd872009b5}\label{class_engine_1_1_point_light_a85fa71ff4d69af56925b6acd872009b5}} 
+\index{Engine::PointLight@{Engine::PointLight}!setValues@{setValues}}
+\index{setValues@{setValues}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{setValues()}{setValues()}}
+{\footnotesize\ttfamily void Engine\+::\+Point\+Light\+::set\+Values (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+diffuse,  }\item[{float}]{\+\_\+specular,  }\item[{float}]{\+\_\+radius,  }\item[{float}]{\+\_\+brightness }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_point_light_a84245fed6392920796112b5acbd2ee7b}\label{class_engine_1_1_point_light_a84245fed6392920796112b5acbd2ee7b}} 
+\index{Engine::PointLight@{Engine::PointLight}!update@{update}}
+\index{update@{update}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Engine\+::\+Point\+Light\+::update (\begin{DoxyParamCaption}\item[{int}]{\+\_\+i }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_point_light_a17a079c5ecfea42ef60c7b4d9fba61e6}\label{class_engine_1_1_point_light_a17a079c5ecfea42ef60c7b4d9fba61e6}} 
+\index{Engine::PointLight@{Engine::PointLight}!m\_brightness@{m\_brightness}}
+\index{m\_brightness@{m\_brightness}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{m\_brightness}{m\_brightness}}
+{\footnotesize\ttfamily float Engine\+::\+Point\+Light\+::m\+\_\+brightness\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_engine_1_1_point_light_aa09f42522a2b257d1f092b4084334310}\label{class_engine_1_1_point_light_aa09f42522a2b257d1f092b4084334310}} 
+\index{Engine::PointLight@{Engine::PointLight}!m\_quadratic@{m\_quadratic}}
+\index{m\_quadratic@{m\_quadratic}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{m\_quadratic}{m\_quadratic}}
+{\footnotesize\ttfamily float Engine\+::\+Point\+Light\+::m\+\_\+quadratic\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_engine_1_1_point_light_acd8c7149df6ce845a02505452d943528}\label{class_engine_1_1_point_light_acd8c7149df6ce845a02505452d943528}} 
+\index{Engine::PointLight@{Engine::PointLight}!m\_radius@{m\_radius}}
+\index{m\_radius@{m\_radius}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{m\_radius}{m\_radius}}
+{\footnotesize\ttfamily float Engine\+::\+Point\+Light\+::m\+\_\+radius\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_engine_1_1_point_light_a4df218e00502a6982a06a02b97dae538}\label{class_engine_1_1_point_light_a4df218e00502a6982a06a02b97dae538}} 
+\index{Engine::PointLight@{Engine::PointLight}!m\_SC@{m\_SC}}
+\index{m\_SC@{m\_SC}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{m\_SC}{m\_SC}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}}$>$ Engine\+::\+Point\+Light\+::m\+\_\+\+SC\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Light.\+h\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_light_8h}{Light.\+h}}\item 
+src/\+Engine/\mbox{\hyperlink{_light_8cpp}{Light.\+cpp}}\end{DoxyCompactItemize}

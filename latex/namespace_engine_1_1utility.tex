@@ -1,0 +1,56 @@
+\hypertarget{namespace_engine_1_1utility}{}\doxysection{Engine\+::utility Namespace Reference}
+\label{namespace_engine_1_1utility}\index{Engine::utility@{Engine::utility}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_engine_1_1utility_af3d23f5b87e00fcd4c91ac7e9dde42e5}{on\+Every\+Frame}} (Scene $\ast$\+\_\+scene, float \+\_\+dT)
+\item 
+void \mbox{\hyperlink{namespace_engine_1_1utility_af2eb3df2b5e0669005d2cca0443608d7}{move\+Entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+obj, glm\+::vec3 \+\_\+dir, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$$>$ \+\_\+other, float \+\_\+d\+Ts)
+\item 
+void \mbox{\hyperlink{namespace_engine_1_1utility_a74e815f4ad18ce31274190bcf817fd83}{update}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \+\_\+obj, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ \+\_\+shader, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$$>$ \+\_\+all\+Obj, float \+\_\+dT)
+\item 
+void \mbox{\hyperlink{namespace_engine_1_1utility_af09ae4b14df272c50b9a68f5616110f0}{update\+Lighting}} (std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_spot_light}{Spot\+Light}} $\ast$ $>$ \+\_\+s\+Light, std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_dir_light}{Dir\+Light}} $\ast$ $>$ \+\_\+d\+Light, std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_point_light}{Point\+Light}} $\ast$ $>$ \+\_\+p\+Light, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ \+\_\+l\+Sh, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ \+\_\+i\+Sh)
+\item 
+Game\+Object $\ast$ \mbox{\hyperlink{namespace_engine_1_1utility_ad64cb6be3e144b9336689a1864facbc2}{copy}} (Game\+Object $\ast$\+\_\+obj)
+\item 
+float \mbox{\hyperlink{namespace_engine_1_1utility_aa2a561a4539bb84f8cdd0d7b90959481}{lerp}} (float \+\_\+a, float \+\_\+b, float \+\_\+f)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_engine_1_1utility_ad64cb6be3e144b9336689a1864facbc2}\label{namespace_engine_1_1utility_ad64cb6be3e144b9336689a1864facbc2}} 
+\index{Engine::utility@{Engine::utility}!copy@{copy}}
+\index{copy@{copy}!Engine::utility@{Engine::utility}}
+\doxysubsubsection{\texorpdfstring{copy()}{copy()}}
+{\footnotesize\ttfamily Game\+Object$\ast$ Engine\+::utility\+::copy (\begin{DoxyParamCaption}\item[{Game\+Object $\ast$}]{\+\_\+obj }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespace_engine_1_1utility_aa2a561a4539bb84f8cdd0d7b90959481}\label{namespace_engine_1_1utility_aa2a561a4539bb84f8cdd0d7b90959481}} 
+\index{Engine::utility@{Engine::utility}!lerp@{lerp}}
+\index{lerp@{lerp}!Engine::utility@{Engine::utility}}
+\doxysubsubsection{\texorpdfstring{lerp()}{lerp()}}
+{\footnotesize\ttfamily float Engine\+::utility\+::lerp (\begin{DoxyParamCaption}\item[{float}]{\+\_\+a,  }\item[{float}]{\+\_\+b,  }\item[{float}]{\+\_\+f }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespace_engine_1_1utility_af2eb3df2b5e0669005d2cca0443608d7}\label{namespace_engine_1_1utility_af2eb3df2b5e0669005d2cca0443608d7}} 
+\index{Engine::utility@{Engine::utility}!moveEntity@{moveEntity}}
+\index{moveEntity@{moveEntity}!Engine::utility@{Engine::utility}}
+\doxysubsubsection{\texorpdfstring{moveEntity()}{moveEntity()}}
+{\footnotesize\ttfamily void Engine\+::utility\+::move\+Entity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$}]{\+\_\+obj,  }\item[{glm\+::vec3}]{\+\_\+dir,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$$>$}]{\+\_\+other,  }\item[{float}]{\+\_\+d\+Ts }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespace_engine_1_1utility_af3d23f5b87e00fcd4c91ac7e9dde42e5}\label{namespace_engine_1_1utility_af3d23f5b87e00fcd4c91ac7e9dde42e5}} 
+\index{Engine::utility@{Engine::utility}!onEveryFrame@{onEveryFrame}}
+\index{onEveryFrame@{onEveryFrame}!Engine::utility@{Engine::utility}}
+\doxysubsubsection{\texorpdfstring{onEveryFrame()}{onEveryFrame()}}
+{\footnotesize\ttfamily void Engine\+::utility\+::on\+Every\+Frame (\begin{DoxyParamCaption}\item[{Scene $\ast$}]{\+\_\+scene,  }\item[{float}]{\+\_\+dT }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespace_engine_1_1utility_a74e815f4ad18ce31274190bcf817fd83}\label{namespace_engine_1_1utility_a74e815f4ad18ce31274190bcf817fd83}} 
+\index{Engine::utility@{Engine::utility}!update@{update}}
+\index{update@{update}!Engine::utility@{Engine::utility}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Engine\+::utility\+::update (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$}]{\+\_\+obj,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$}]{\+\_\+shader,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$$>$}]{\+\_\+all\+Obj,  }\item[{float}]{\+\_\+dT }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespace_engine_1_1utility_af09ae4b14df272c50b9a68f5616110f0}\label{namespace_engine_1_1utility_af09ae4b14df272c50b9a68f5616110f0}} 
+\index{Engine::utility@{Engine::utility}!updateLighting@{updateLighting}}
+\index{updateLighting@{updateLighting}!Engine::utility@{Engine::utility}}
+\doxysubsubsection{\texorpdfstring{updateLighting()}{updateLighting()}}
+{\footnotesize\ttfamily void Engine\+::utility\+::update\+Lighting (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_spot_light}{Spot\+Light}} $\ast$ $>$}]{\+\_\+s\+Light,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_dir_light}{Dir\+Light}} $\ast$ $>$}]{\+\_\+d\+Light,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_point_light}{Point\+Light}} $\ast$ $>$}]{\+\_\+p\+Light,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$}]{\+\_\+l\+Sh,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$}]{\+\_\+i\+Sh }\end{DoxyParamCaption})}
+

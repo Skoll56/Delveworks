@@ -1,0 +1,142 @@
+\hypertarget{class_engine_1_1_mesh_renderer}{}\doxysection{Engine\+::Mesh\+Renderer Class Reference}
+\label{class_engine_1_1_mesh_renderer}\index{Engine::MeshRenderer@{Engine::MeshRenderer}}
+
+
+{\ttfamily \#include $<$Mesh\+Renderer.\+h$>$}
+
+Inheritance diagram for Engine\+::Mesh\+Renderer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_engine_1_1_mesh_renderer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a5de76fca7dbfa433ffd3a1603ce3bce7}{draw}} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_mesh_renderer_ab02daa4ecddb453337ce53d135d71ab9}{on\+Initialise}} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a91866623f270b24adfb9e38d0bd5dd31}{set\+Shine}} (int \+\_\+shininess)
+\item 
+int \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a696c8a75ff6ea73ceba5f0d4d4628453}{get\+Shine}} ()
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a4d3b221c2591526cbd4840b95be09aa0}{get\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_engine_1_1_mesh_renderer_af8d6c39e77cfd044d13653481e369519}{Initialise}} (std\+::string \+\_\+tex\+Name, std\+::string \+\_\+obj, glm\+::vec3 \+\_\+size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $\ast$ \mbox{\hyperlink{class_engine_1_1_mesh_renderer_ad9c2b924a17b16941fff42624d4778ce}{m\+\_\+v\+AO}}
+\item 
+\mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}} $\ast$ \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a9eb3809ecccf4de08123dbfc73d38c7b}{m\+\_\+v\+B\+Ot}}
+\item 
+\mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}} $\ast$ \mbox{\hyperlink{class_engine_1_1_mesh_renderer_af95889b6e9319c56fec5d58f0512c50b}{m\+\_\+v\+B\+Op}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_texture}{Texture}} $>$ \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a733d879a839ec13bfb0fa812f64cd994}{m\+\_\+tex}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$ \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a883053053f6a5b61510a93ed8767ea36}{m\+\_\+shader}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a1c0df4802e14aa3d7b64f7eb8f16f233}{m\+\_\+size}}
+\item 
+int \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a71fc2df8038e68286cd32c82d683ab41}{m\+\_\+shininess}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a5de76fca7dbfa433ffd3a1603ce3bce7}\label{class_engine_1_1_mesh_renderer_a5de76fca7dbfa433ffd3a1603ce3bce7}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!draw@{draw}}
+\index{draw@{draw}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Engine\+::\+Mesh\+Renderer\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a696c8a75ff6ea73ceba5f0d4d4628453}\label{class_engine_1_1_mesh_renderer_a696c8a75ff6ea73ceba5f0d4d4628453}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!getShine@{getShine}}
+\index{getShine@{getShine}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{getShine()}{getShine()}}
+{\footnotesize\ttfamily int Engine\+::\+Mesh\+Renderer\+::get\+Shine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a4d3b221c2591526cbd4840b95be09aa0}\label{class_engine_1_1_mesh_renderer_a4d3b221c2591526cbd4840b95be09aa0}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!getSize@{getSize}}
+\index{getSize@{getSize}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Mesh\+Renderer\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_af8d6c39e77cfd044d13653481e369519}\label{class_engine_1_1_mesh_renderer_af8d6c39e77cfd044d13653481e369519}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!Initialise@{Initialise}}
+\index{Initialise@{Initialise}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{Initialise()}{Initialise()}}
+{\footnotesize\ttfamily void Engine\+::\+Mesh\+Renderer\+::\+Initialise (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+tex\+Name,  }\item[{std\+::string}]{\+\_\+obj,  }\item[{glm\+::vec3}]{\+\_\+size }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_ab02daa4ecddb453337ce53d135d71ab9}\label{class_engine_1_1_mesh_renderer_ab02daa4ecddb453337ce53d135d71ab9}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!onInitialise@{onInitialise}}
+\index{onInitialise@{onInitialise}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{onInitialise()}{onInitialise()}}
+{\footnotesize\ttfamily void Engine\+::\+Mesh\+Renderer\+::on\+Initialise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a698b7e82b695c3e056dc0f929e631b6d}{Engine\+::\+Component}}.
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a91866623f270b24adfb9e38d0bd5dd31}\label{class_engine_1_1_mesh_renderer_a91866623f270b24adfb9e38d0bd5dd31}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!setShine@{setShine}}
+\index{setShine@{setShine}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{setShine()}{setShine()}}
+{\footnotesize\ttfamily void Engine\+::\+Mesh\+Renderer\+::set\+Shine (\begin{DoxyParamCaption}\item[{int}]{\+\_\+shininess }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a883053053f6a5b61510a93ed8767ea36}\label{class_engine_1_1_mesh_renderer_a883053053f6a5b61510a93ed8767ea36}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!m\_shader@{m\_shader}}
+\index{m\_shader@{m\_shader}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_shader}{m\_shader}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_shader}{Shader}}$>$ Engine\+::\+Mesh\+Renderer\+::m\+\_\+shader}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a71fc2df8038e68286cd32c82d683ab41}\label{class_engine_1_1_mesh_renderer_a71fc2df8038e68286cd32c82d683ab41}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!m\_shininess@{m\_shininess}}
+\index{m\_shininess@{m\_shininess}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_shininess}{m\_shininess}}
+{\footnotesize\ttfamily int Engine\+::\+Mesh\+Renderer\+::m\+\_\+shininess\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a1c0df4802e14aa3d7b64f7eb8f16f233}\label{class_engine_1_1_mesh_renderer_a1c0df4802e14aa3d7b64f7eb8f16f233}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!m\_size@{m\_size}}
+\index{m\_size@{m\_size}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_size}{m\_size}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Mesh\+Renderer\+::m\+\_\+size\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a733d879a839ec13bfb0fa812f64cd994}\label{class_engine_1_1_mesh_renderer_a733d879a839ec13bfb0fa812f64cd994}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!m\_tex@{m\_tex}}
+\index{m\_tex@{m\_tex}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_tex}{m\_tex}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_texture}{Texture}}$>$ Engine\+::\+Mesh\+Renderer\+::m\+\_\+tex}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_ad9c2b924a17b16941fff42624d4778ce}\label{class_engine_1_1_mesh_renderer_ad9c2b924a17b16941fff42624d4778ce}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!m\_vAO@{m\_vAO}}
+\index{m\_vAO@{m\_vAO}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_vAO}{m\_vAO}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}}$\ast$ Engine\+::\+Mesh\+Renderer\+::m\+\_\+v\+AO}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_af95889b6e9319c56fec5d58f0512c50b}\label{class_engine_1_1_mesh_renderer_af95889b6e9319c56fec5d58f0512c50b}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!m\_vBOp@{m\_vBOp}}
+\index{m\_vBOp@{m\_vBOp}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_vBOp}{m\_vBOp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}}$\ast$ Engine\+::\+Mesh\+Renderer\+::m\+\_\+v\+B\+Op}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a9eb3809ecccf4de08123dbfc73d38c7b}\label{class_engine_1_1_mesh_renderer_a9eb3809ecccf4de08123dbfc73d38c7b}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!m\_vBOt@{m\_vBOt}}
+\index{m\_vBOt@{m\_vBOt}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_vBOt}{m\_vBOt}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}}$\ast$ Engine\+::\+Mesh\+Renderer\+::m\+\_\+v\+B\+Ot}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/\mbox{\hyperlink{_mesh_renderer_8h}{Mesh\+Renderer.\+h}}\item 
+src/\+Engine/\mbox{\hyperlink{_mesh_renderer_8cpp}{Mesh\+Renderer.\+cpp}}\end{DoxyCompactItemize}

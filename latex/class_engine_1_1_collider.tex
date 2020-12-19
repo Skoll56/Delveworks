@@ -1,30 +1,62 @@
 \hypertarget{class_engine_1_1_collider}{}\doxysection{Engine\+::Collider Class Reference}
 \label{class_engine_1_1_collider}\index{Engine::Collider@{Engine::Collider}}
+
+
+{\ttfamily \#include $<$Collider.\+h$>$}
+
 Inheritance diagram for Engine\+::Collider\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_engine_1_1_collider}
+\includegraphics[height=2.800000cm]{class_engine_1_1_collider}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Types}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collider_ac4399276c3c1a233cdc1dedc7b805802}\label{class_engine_1_1_collider_ac4399276c3c1a233cdc1dedc7b805802}} 
-enum {\bfseries Shape} \{ {\bfseries Box}, 
-{\bfseries Sphere}, 
-{\bfseries Plane}, 
-{\bfseries Mesh}
- \}
+void \mbox{\hyperlink{class_engine_1_1_collider_a22625f5a3088603e839600a9cf87bb63}{set\+Friction}} (float \+\_\+friction)
+\item 
+float \mbox{\hyperlink{class_engine_1_1_collider_a4f28993ceab63b82dbf249f290492a88}{get\+Friction}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_engine_1_1_collider_a7fe82dd894e883f92bb1dcedf9f5bbad}\label{class_engine_1_1_collider_a7fe82dd894e883f92bb1dcedf9f5bbad}} 
-bool {\bfseries m\+\_\+trigger}
+bool \mbox{\hyperlink{class_engine_1_1_collider_a7fe82dd894e883f92bb1dcedf9f5bbad}{m\+\_\+trigger}}
+\item 
+float \mbox{\hyperlink{class_engine_1_1_collider_aa3da74fbe36fa5e79f572b6ea8804589}{m\+\_\+friction}} = 0.\+25f
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_collider_a4f28993ceab63b82dbf249f290492a88}\label{class_engine_1_1_collider_a4f28993ceab63b82dbf249f290492a88}} 
+\index{Engine::Collider@{Engine::Collider}!getFriction@{getFriction}}
+\index{getFriction@{getFriction}!Engine::Collider@{Engine::Collider}}
+\doxysubsubsection{\texorpdfstring{getFriction()}{getFriction()}}
+{\footnotesize\ttfamily float Engine\+::\+Collider\+::get\+Friction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_engine_1_1_collider_a22625f5a3088603e839600a9cf87bb63}\label{class_engine_1_1_collider_a22625f5a3088603e839600a9cf87bb63}} 
+\index{Engine::Collider@{Engine::Collider}!setFriction@{setFriction}}
+\index{setFriction@{setFriction}!Engine::Collider@{Engine::Collider}}
+\doxysubsubsection{\texorpdfstring{setFriction()}{setFriction()}}
+{\footnotesize\ttfamily void Engine\+::\+Collider\+::set\+Friction (\begin{DoxyParamCaption}\item[{float}]{\+\_\+friction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_collider_aa3da74fbe36fa5e79f572b6ea8804589}\label{class_engine_1_1_collider_aa3da74fbe36fa5e79f572b6ea8804589}} 
+\index{Engine::Collider@{Engine::Collider}!m\_friction@{m\_friction}}
+\index{m\_friction@{m\_friction}!Engine::Collider@{Engine::Collider}}
+\doxysubsubsection{\texorpdfstring{m\_friction}{m\_friction}}
+{\footnotesize\ttfamily float Engine\+::\+Collider\+::m\+\_\+friction = 0.\+25f\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_collider_a7fe82dd894e883f92bb1dcedf9f5bbad}\label{class_engine_1_1_collider_a7fe82dd894e883f92bb1dcedf9f5bbad}} 
+\index{Engine::Collider@{Engine::Collider}!m\_trigger@{m\_trigger}}
+\index{m\_trigger@{m\_trigger}!Engine::Collider@{Engine::Collider}}
+\doxysubsubsection{\texorpdfstring{m\_trigger}{m\_trigger}}
+{\footnotesize\ttfamily bool Engine\+::\+Collider\+::m\+\_\+trigger\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Engine/Physics\+New.\+h\end{DoxyCompactItemize}
+src/\+Engine/\mbox{\hyperlink{_collider_8h}{Collider.\+h}}\end{DoxyCompactItemize}
