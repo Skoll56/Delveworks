@@ -1059,7 +1059,6 @@ namespace Engine
 	{
 		std::vector<Collision*> collision = m_collisions;
 
-
 		for (int i = 0; i < collision.size(); i++)
 		{
 			onCollision(collision[i]);

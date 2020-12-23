@@ -77,8 +77,10 @@ namespace Engine
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		SDL_GetMouseState(&mouseX, &mouseY);
-		m_input->m_xOffset = mouseX - lastX;
-		m_input->m_yOffset = mouseY - lastY;
+		m_input->m_xOffset = mouseX - WINDOW_WIDTH /2;
+		m_input->m_yOffset = mouseY - WINDOW_HEIGHT/2;
+
+		SDL_WarpMouseInWindow(m_window, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 
 		//Re-establish window-size to allow stretching and re-sizing
 		SDL_GetWindowSize(m_window, &width, &height);
@@ -125,17 +127,15 @@ namespace Engine
 		SDL_GL_SwapWindow(m_window);
 
 		quit = m_input->takeInput(event); //Handles the input, and returns a 'quit' value to see if the program should end
+		
 
 		float targetTime = 1.0f / 60.f;
 		if (targetTime > dTime) //The FPS cap
 		{
 			SDL_Delay((targetTime - dTime) * 1000.0f);
 		}
-
-		if (dTime > 100.0f) { dTime = 100.0f; }
-		lastX = mouseX;
-		lastY = mouseY;
-
+		
+		
 		if (quit)
 		{
 			SDL_DestroyWindow(m_window); // DESTROY THAT WINDOW. STRIKE IT DOWN. DEWIT.
@@ -207,7 +207,7 @@ namespace Engine
 
 		glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
-		SDL_ShowCursor(true);
+		
 		#ifdef EMSCRIPTEN
 		emscripten_set_main_loop_arg([](void* _core) { ((Core*)_core)->loop(); }, this, 0, 1);
 		#else
@@ -225,7 +225,7 @@ namespace Engine
 		{
 			throw std::exception();
 		}
-
+		SDL_ShowCursor(false);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 		m_window = SDL_CreateWindow("Delveworks",
