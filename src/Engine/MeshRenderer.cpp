@@ -10,7 +10,7 @@ namespace Engine
 {
 	void MeshRenderer::draw()
 	{
-		//m_shader->setUniform("in_Shininess", (int)pow(2, getShine()));
+		m_shader->setUniform("in_Shininess", (int)pow(2, getShine()));
 		m_shader->setUniform("in_Model", transform()->getModel()); // Translate the model matrix by camera position and stuff
 		m_shader->setUniform("in_TransverseModel", glm::transpose(glm::inverse(transform()->getModel())));
 		m_shader->setUniform("in_Texture", m_tex);

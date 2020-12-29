@@ -32,23 +32,24 @@ namespace Engine
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
 		std::string uniform;
 		std::string itr = std::to_string(_i);
-		uniform = "in_dLight[" + itr + "].m_specIntens";		
-		//_lSh->setUniform(uniform, getSpec());
+		uniform = "in_dLight[" + itr + "].m_specIntens";
+		float t = getSpec();
+		_lSh->setUniform(uniform, getSpec());
 
 		uniform = "in_dLight[" + itr + "].m_diffuse";
-		//_lSh->setUniform(uniform, getDif());
+		_lSh->setUniform(uniform, getDif());
 
 		uniform = "in_dLight[" + itr + "].m_ambient";
-		//_lSh->setUniform(uniform, getAmb());
+		_lSh->setUniform(uniform, getAmb());
 
 		uniform = "in_dLight[" + itr + "].m_direction";
-		//_lSh->setUniform(uniform, transform()->getFwd());
+		_lSh->setUniform(uniform, transform()->getFwd());
 
-		uniform = "in_dMap[" + itr + "]";
-		//_lSh->setUniform(uniform, getShadowMap());
+		uniform = "in_dLight[" + itr + "].m_shadowMap";
+		_lSh->setUniform(uniform, getShadowMap());
 
 		uniform = "in_dLight[" + itr + "].m_lightMatrix";
-		//_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
+		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
 	}
 
 	void PointLight::setValues(glm::vec3 _diffuse, float _specular, float _radius, float _brightness)
@@ -91,34 +92,34 @@ namespace Engine
 		std::string uniform;	
 		std::string itr = std::to_string(_i);
 		uniform = "in_sLight[" + itr + "].m_specIntens";
-		//_lSh->setUniform(uniform, getSpec());
+		_lSh->setUniform(uniform, getSpec());
 
 		uniform = "in_sLight[" + itr + "].m_diffuse";
-		//_lSh->setUniform(uniform, getDif());
+		_lSh->setUniform(uniform, getDif());
 
 		uniform = "in_sLight[" + itr + "].m_direction";
-		//_lSh->setUniform(uniform, transform()->getFwd());
+		_lSh->setUniform(uniform, transform()->getFwd());
 
-		uniform = "in_sMap[" + itr + "]"; 
-		//_lSh->setUniform(uniform, getShadowMap());
+		uniform = "in_sLight[" + itr + "].m_shadowMap"; 
+		_lSh->setUniform(uniform, getShadowMap());
 
 		uniform = "in_sLight[" + itr + "].m_angle";
-		//_lSh->setUniform(uniform, glm::cos(glm::radians(getAngle())));
+		_lSh->setUniform(uniform, glm::cos(glm::radians(getAngle())));
 
 		uniform = "in_sLight[" + itr + "].m_fadeAngle";
-		//_lSh->setUniform(uniform, glm::cos(glm::radians(getFangle())));
+		_lSh->setUniform(uniform, glm::cos(glm::radians(getFangle())));
 
 		uniform = "in_sLight[" + itr + "].m_pos";
-		//_lSh->setUniform(uniform, transform()->getPosition());
+		_lSh->setUniform(uniform, transform()->getPosition());
 
 		uniform = "in_sLight[" + itr + "].m_radius";
-		//_lSh->setUniform(uniform, getRadius());
+		_lSh->setUniform(uniform, getRadius());
 
 		uniform = "in_sLight[" + itr + "].m_quadratic";
-		//_lSh->setUniform(uniform, getQuad());
+		_lSh->setUniform(uniform, getQuad());
 
 		uniform = "in_sLight[" + itr + "].m_lightMatrix";
-		//_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
+		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
 	}
 
 	void PointLight::update(int _i)
@@ -155,21 +156,21 @@ namespace Engine
 		std::string uniform;
 		std::string itr = std::to_string(_i);
 		uniform = "in_pLight[" + itr + "].m_specIntens";
-		//_lSh->setUniform(uniform, getSpec());
+		_lSh->setUniform(uniform, getSpec());
 
 		uniform = "in_pLight[" + itr + "].m_diffuse";
-		//_lSh->setUniform(uniform, getDif());		
+		_lSh->setUniform(uniform, getDif());		
 		
-		uniform = "in_pMap[" + itr + "]";
-		//_lSh->setUniform(uniform, SC);
+		uniform = "in_pLight[" + itr + "].m_shadowMap";
+		_lSh->setUniform(uniform, SC);
 
 		uniform = "in_pLight[" + itr + "].m_pos";
-		//_lSh->setUniform(uniform, transform()->getPosition());
+		_lSh->setUniform(uniform, transform()->getPosition());
 
 		uniform = "in_pLight[" + itr + "].m_radius";
-		//_lSh->setUniform(uniform, getRadius());
+		_lSh->setUniform(uniform, getRadius());
 
 		uniform = "in_pLight[" + itr + "].m_quadratic";
-		//_lSh->setUniform(uniform, getQuad());		
+		_lSh->setUniform(uniform, getQuad());		
 	}
 }

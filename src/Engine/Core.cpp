@@ -253,8 +253,8 @@ namespace Engine
 		view = glm::lookAt(m_camera->transform()->getPosition(), m_camera->transform()->getPosition() + m_camera->transform()->getFwd(), m_camera->transform()->getUp());		
 
 		m_lightingSh->setUniform("in_View", view); // Establish the view matrix		
-		//m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
-		//m_lightingSh->setUniform("in_CamPos", m_camera->transform()->m_position);
+		m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
+		m_lightingSh->setUniform("in_CamPos", m_camera->transform()->m_position);
 
 		//Shader for the screen quad (For render textures)
 		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
