@@ -27,63 +27,63 @@ int main()
 		std::shared_ptr<Entity> point = core->createEntity();
 		std::shared_ptr<PointLight> p = point->addComponent<PointLight>();
 		p->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 30.0f, 0.8f);
-		p->transform()->m_position = glm::vec3(0.0f, 16.0f, 8.0f);
+		p->transform()->m_position = glm::vec3(0.0f, 6.0f, -2.0f);
 		p->transform()->m_eulerAngles = glm::vec3(0.0f, 0.0f, 0.0f);
 	}
 
 	//Create a spotlight (in another room)
-	std::shared_ptr<Entity> spot2 = core->createEntity();
+	/*std::shared_ptr<Entity> spot2 = core->createEntity();
 	std::shared_ptr<SpotLight> s2 = spot2->addComponent<SpotLight>();
 	s2->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);
 	s2->transform()->m_position = glm::vec3(60.0f, 16.0f, 8.0f);
 	s2->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 8.0f);
-	
+	*/
 	//This creates three rooms all 50 units away from eachother.
 	for (float l = 0.0f; l < 50.0f; l+= 50.0f)
 	{
 		std::shared_ptr<Entity> floor = core->createEntity();
 		std::shared_ptr<MeshRenderer> MR0 = floor->addComponent<MeshRenderer>(); //floor
-		MR0->Initialise("diffuse.bmp", "1b1plane.obj", glm::vec3(1.0f, 1.0f, 1.0f));
+		MR0->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
 		floor->transform()->m_position = glm::vec3(0.0f + l, 0.0f, 0.0f);
-		floor->transform()->setScale(glm::vec3(30.0f, 0.0f, 30.0f));
+		floor->transform()->setScale(glm::vec3(30.0f, 0.1f, 30.0f));
 		std::shared_ptr<PlaneCollider> b = floor->addComponent<PlaneCollider>();
 		b->setNorm(glm::vec3(0.0f, 1.0f, 0.0f));
 		
 
-		//std::shared_ptr<Entity> wall1 = core->createEntity();
-		//std::shared_ptr<MeshRenderer> MR1 = wall1->addComponent<MeshRenderer>();
-		//MR1->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
-		//wall1->transform()->setScale(glm::vec3(30.0f, 20.0f, 1.0f)); //Forward
-		//wall1->transform()->m_position = glm::vec3(0.0f + l, 10.0f, 15.0f);
-		//std::shared_ptr<BoxCollider> b1 = wall1->addComponent<BoxCollider>();
+		std::shared_ptr<Entity> wall1 = core->createEntity();
+		std::shared_ptr<MeshRenderer> MR1 = wall1->addComponent<MeshRenderer>();
+		MR1->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
+		wall1->transform()->setScale(glm::vec3(30.0f, 20.0f, 1.0f)); //Forward
+		wall1->transform()->m_position = glm::vec3(0.0f + l, 10.0f, 15.0f);
+		std::shared_ptr<BoxCollider> b1 = wall1->addComponent<BoxCollider>();
 
-		//std::shared_ptr<Entity> wall2 = core->createEntity();
-		//std::shared_ptr<MeshRenderer> MR2 = wall2->addComponent<MeshRenderer>();
-		//MR2->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
-		//wall2->transform()->setScale(glm::vec3(1.0f, 20.0f, 30.0f)); //Left
-		//wall2->transform()->m_position = glm::vec3(-15.0f + l, 10.0f, 0.0f);
-		//std::shared_ptr<BoxCollider> b2 = wall2->addComponent<BoxCollider>();
+		std::shared_ptr<Entity> wall2 = core->createEntity();
+		std::shared_ptr<MeshRenderer> MR2 = wall2->addComponent<MeshRenderer>();
+		MR2->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
+		wall2->transform()->setScale(glm::vec3(1.0f, 20.0f, 30.0f)); //Left
+		wall2->transform()->m_position = glm::vec3(-15.0f + l, 10.0f, 0.0f);
+		std::shared_ptr<BoxCollider> b2 = wall2->addComponent<BoxCollider>();
 
-		//std::shared_ptr<Entity> wall3 = core->createEntity();
-		//std::shared_ptr<MeshRenderer> MR3 = wall3->addComponent<MeshRenderer>();
-		//MR3->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
-		//wall3->transform()->setScale(glm::vec3(1.0f, 20.0f, 30.0f));  //Right
-		//wall3->transform()->m_position = glm::vec3(15.0f + l, 10.0f, 0.0f);
-		//std::shared_ptr<BoxCollider> b3 = wall3->addComponent<BoxCollider>();
+		std::shared_ptr<Entity> wall3 = core->createEntity();
+		std::shared_ptr<MeshRenderer> MR3 = wall3->addComponent<MeshRenderer>();
+		MR3->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
+		wall3->transform()->setScale(glm::vec3(1.0f, 20.0f, 30.0f));  //Right
+		wall3->transform()->m_position = glm::vec3(15.0f + l, 10.0f, 0.0f);
+		std::shared_ptr<BoxCollider> b3 = wall3->addComponent<BoxCollider>();
 
-		//std::shared_ptr<Entity> wall4 = core->createEntity();
-		//std::shared_ptr<MeshRenderer> MR4 = wall4->addComponent<MeshRenderer>();
-		//MR4->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
-		//wall4->transform()->setScale(glm::vec3(30.0f, 20.0f, 1.0f)); //Back
-		//wall4->transform()->m_position = glm::vec3(0.0f + l, 10.0f, -15.0f);
-		//std::shared_ptr<BoxCollider> b4 = wall4->addComponent<BoxCollider>();
+		std::shared_ptr<Entity> wall4 = core->createEntity();
+		std::shared_ptr<MeshRenderer> MR4 = wall4->addComponent<MeshRenderer>();
+		MR4->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
+		wall4->transform()->setScale(glm::vec3(30.0f, 20.0f, 1.0f)); //Back
+		wall4->transform()->m_position = glm::vec3(0.0f + l, 10.0f, -15.0f);
+		std::shared_ptr<BoxCollider> b4 = wall4->addComponent<BoxCollider>();
 
-		//std::shared_ptr<Entity> wall5 = core->createEntity();
-		//std::shared_ptr<MeshRenderer> MR5 = wall5->addComponent<MeshRenderer>();
-		//MR5->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
-		//wall5->transform()->setScale(glm::vec3(30.0f, 1.0f, 30.0f)); //Roof
-		//wall5->transform()->m_position = glm::vec3(0.0f + l , 20.0f, 0.0f);
-		//std::shared_ptr<BoxCollider> b5 = wall5->addComponent<BoxCollider>();
+		std::shared_ptr<Entity> wall5 = core->createEntity();
+		std::shared_ptr<MeshRenderer> MR5 = wall5->addComponent<MeshRenderer>();
+		MR5->Initialise("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
+		wall5->transform()->setScale(glm::vec3(30.0f, 1.0f, 30.0f)); //Roof
+		wall5->transform()->m_position = glm::vec3(0.0f + l , 20.0f, 0.0f);
+		std::shared_ptr<BoxCollider> b5 = wall5->addComponent<BoxCollider>();
 
 		//Create bouncy balls (with WiP physics) to see
 		for (int i = 0; i < 1; i++)
