@@ -22,11 +22,6 @@
 
 namespace Engine
 {
-	void PhysicsEventUser::onCollision(Collision* _col) // Remember that only physics objects can be collided. Non-physics objects are collided WITH.
-											   // The 'My' will always be a physics object, but the 'other' can be any collider.
-	{
-		
-	}
 
 	void PhysicsEventUser::onTick()
 	{
@@ -204,7 +199,7 @@ namespace Engine
 			glm::vec3 d2p = dis2Plane * n;
 			d2p -= r * n;
 			ci = c0 - d2p;
-			m_collisions.push_back(new Collision(ci, n, _other->getEntity(), _my->getEntity()));
+			m_collisions.push_back(std::make_shared<Collision>(ci, n, _other->getEntity(), _my->getEntity()));
 			
 			return true;
 		}
@@ -226,7 +221,7 @@ namespace Engine
 		{
 			glm::vec3 sN = glm::normalize(c0 - c1);
 			glm::vec3 cp = (r1 * sN) + (c1 + r2 * sN);
-			m_collisions.push_back(new Collision(cp, sN, _other->getEntity(), _my->getEntity()));
+			m_collisions.push_back(std::make_shared<Collision>(cp, sN, _other->getEntity(), _my->getEntity()));
 			return true;
 		}
 		else { return false; }
@@ -284,7 +279,7 @@ namespace Engine
 			glm::vec3 expected = (otherP + (oLength * n) + (length * n)); //Expected position in the normal
 			glm::vec3 dif = ((pos * n) - (expected * n)) * n; //Difference between ^ and actual position
 			glm::vec3 cp = pos - dif; //Aforementioned difference saved and ready to be applied
-			m_collisions.push_back(new Collision(cp, n, _other->getEntity(), _my->getEntity()));
+			m_collisions.push_back(std::make_shared<Collision>(cp, n, _other->getEntity(), _my->getEntity()));
 			return true;
 
 		}
@@ -353,7 +348,7 @@ namespace Engine
 			glm::vec3 dif = ((pos * n) - (expected * n)) * n;//Difference between ^ and actual position
 			glm::vec3 cp = pos - dif;//Aforementioned difference saved and ready to be applied
 
-			m_collisions.push_back(new Collision(cp, n, _other->getEntity(), _my->getEntity())); //Create a collision
+			m_collisions.push_back(std::make_shared<Collision>(cp, n, _other->getEntity(), _my->getEntity())); //Create a collision
 			return true;
 		}
 		return false;
@@ -448,7 +443,7 @@ namespace Engine
 						setFloored(true);
 					}
 
-					m_collisions.push_back(new Collision(cp, n, _other->getEntity(), _my->getEntity()));
+					m_collisions.push_back(std::make_shared<Collision>(cp, n, _other->getEntity(), _my->getEntity()));
 					return true;
 					//Needs to find the normal, the CP and create the collision
 				}
@@ -502,7 +497,7 @@ namespace Engine
 			dif *= n;
 			ci = c0 - dif;
 			rb->setFloored(true);
-			rb->m_collisions.push_back(new Collision(ci, n, _other->getEntity(), _my->getEntity()));
+			rb->m_collisions.push_back(std::make_shared<Collision>(ci, n, _other->getEntity(), _my->getEntity()));
 		}
 		return true;
 
@@ -521,7 +516,7 @@ namespace Engine
 				ci *= -1.0f;
 			}
 			rb->setPermCP(ci);
-			rb->m_collisions.push_back(new Collision(ci, n, _other->getEntity(), _my->getEntity()));
+			rb->m_collisions.push_back(std::make_shared<Collision>(ci, n, _other->getEntity(), _my->getEntity()));
 			rb->setFloored(true);
 			return true;
 		}
@@ -671,7 +666,7 @@ namespace Engine
 							}	
 							cP = _my->transform()->getPosition() + offset;  // Set the CP to the last place we collided at.
 
-							rb->m_collisions.push_back(new Collision(cP, cN, _other->getEntity(), _my->getEntity()));
+							rb->m_collisions.push_back(std::make_shared<Collision>(cP, cN, _other->getEntity(), _my->getEntity()));
 							return true;
 						}
 					}
@@ -875,7 +870,7 @@ namespace Engine
 								cP = _my->transform()->getPosition() + offset;  // Set the CP to the last place we collided at.								
 								_my->setColBefore(true);
 								_my->setLastCol(_other->getEntity()->getTag());
-								rb->m_collisions.push_back(new Collision(cP, cN, _other->getEntity(), _my->getEntity()));
+								rb->m_collisions.push_back(std::make_shared<Collision>(cP, cN, _other->getEntity(), _my->getEntity()));
 								return true;
 							}
 						}
@@ -1026,7 +1021,7 @@ namespace Engine
 		clearForces();
 	}
 
-	void PhysicsObject::Initialise(float _mass, float _bounciness)
+	void PhysicsObject::onInitialise(float _mass, float _bounciness)
 	{
 		m_mass = _mass;
 		m_bounciness = _bounciness;
@@ -1057,11 +1052,11 @@ namespace Engine
 
 	void PhysicsObject::handleCollisions() // Handles multiple collisions at once
 	{
-		std::vector<Collision*> collision = m_collisions;
+		std::vector<std::shared_ptr<Collision>> collision = m_collisions;
 
 		for (int i = 0; i < collision.size(); i++)
 		{
-			onCollision(collision[i]);
+			getEntity()->onCollision(collision[i]);
 
 
 			glm::vec3 move = transform()->getPosition() - collision[i]->m_cP;
@@ -1128,7 +1123,7 @@ namespace Engine
 		resetCollisions();
 	}
 
-	void AdvPhysicsObject::Initialise(float _mass, float _bounciness)
+	void AdvPhysicsObject::onInitialise(float _mass, float _bounciness)
 	{
 		m_torque = glm::vec3(0.0f, 0.0f, 0.0f);
 		m_aMom = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -1197,7 +1192,7 @@ namespace Engine
 
 	}	
 
-	RayCollision* RayCaster::rayToTri(std::vector<std::shared_ptr<Entity>> _obj, glm::vec3 _rayDir, glm::vec3 _origin, std::string _rayTag)
+	std::shared_ptr<RayCollision> RayCaster::rayToTri(std::vector<std::shared_ptr<Entity>> _obj, glm::vec3 _rayDir, glm::vec3 _origin, std::string _rayTag)
 	{
 		std::shared_ptr<Entity> winObject = nullptr;
 		glm::vec3 triLoc = glm::vec3(1000.0f, 1000.0f, 1000.0f); //Random big starting number
@@ -1278,7 +1273,7 @@ namespace Engine
 				}
 			}
 		}
-		RayCollision* col = new RayCollision;
+		std::shared_ptr<RayCollision> col = std::make_shared<RayCollision>();
 		col->m_hit = collideMesh;
 		if (collideMesh)
 		{

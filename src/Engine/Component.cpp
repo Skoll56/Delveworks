@@ -5,6 +5,7 @@
 #include <glm/gtc/quaternion.hpp>
 #include "Entity.h"
 #include "Input.h"
+#include "PhysicsNew.h"
 
 namespace Engine
 {
@@ -23,6 +24,10 @@ namespace Engine
 
 	}
 
+	void Component::onCollision(std::shared_ptr<Collision> _col)
+	{
+	}
+
 	void Component::onTick()
 	{
 	}
@@ -36,20 +41,31 @@ namespace Engine
 
 	void SoundSource::onInitialise(std::shared_ptr<Sound> _sound)
 	{
-		alGenSources(1, &m_id);		
-		//alListener3f(AL_POSITION, 0.0f, 0.0f, 0.0f);
-		//alSource3f(m_id, AL_POSITION, 0.0f, 0.0f, 0.0f);
+		alGenSources(1, &m_id);
 		alSourcei(m_id, AL_BUFFER, _sound->m_id);		
 	}
 
-	void SoundSource::Play()
+	void SoundSource::Play(float _vol)
 	{
+		glm::vec3 camPos = getEntity()->getCore()->m_camera->transform()->m_position;
+		//alListener3f(AL_POSITION, camPos.x, camPos.y, camPos.z);
+		alListener3f(AL_POSITION, 0.0f, 0.0f, 0.0f);
+
+		glm::vec3 pos = transform()->m_position;
+		glm::vec4 pos4 = glm::vec4(1.0f);
+
+		pos4 = pos4 * (getEntity()->getCore()->m_camera->getView() * transform()->getModel());
+		alSource3f(m_id, AL_POSITION, pos4.x, pos4.y, pos4.z);
+		//alSource3f(m_id, AL_POSITION, 10000.0f, pos4.y, pos4.z);
+
+		alSourcef(m_id, AL_GAIN, _vol);
+
 		alSourcePlay(m_id);
 		m_played = true;
 	}
 
 	void SoundSource::onTick()
-	{
+	{	
 		if (m_played)
 		{
 			ALint state = 0;
@@ -117,6 +133,8 @@ namespace Engine
 	{
 		m_upVec = glm::vec3(0.0f, 1.0f, 0.0f);
 	}
+
+	
 
 }
  

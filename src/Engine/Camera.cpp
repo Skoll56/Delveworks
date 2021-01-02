@@ -15,8 +15,7 @@ namespace Engine
 	}
 
 	void Camera::update(float _dTime, std::shared_ptr<Input> _input)
-	{
-
+	{		
 		transform()->rotate(glm::vec3(0.0f, 1.0f, 0.0f), _input->m_xOffset * m_rotSpeed * _dTime);
 		transform()->rotate(glm::vec3(1.0f, 0.0f, 0.0f), _input->m_yOffset * m_rotSpeed * _dTime);
 
@@ -41,7 +40,6 @@ namespace Engine
 		{
 			transform()->m_position += transform()->getRight() * 0.16f;
 		}
-		
-		OUTPUT(transform()->m_eulerAngles);
+		m_viewMat = glm::lookAt(transform()->getPosition(), transform()->getPosition() + transform()->getFwd(), transform()->getUp());
 	}
 }

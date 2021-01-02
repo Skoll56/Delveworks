@@ -1,16 +1,18 @@
 #include "Resource.h"
 #include "stb_vorbis.h"
+#include "Exception.h"
 
 
 namespace Engine
 {
-	void Sound::load(const std::string& path)
+	void Sound::load(std::string path)
 	{
 		alGenBuffers(1, &m_id);
 		ALenum format = 0;
 		ALsizei freq = 0;
 		std::vector<char> bufferData;
-		loadOgg(path + ".ogg", bufferData, format, freq);
+		path = "../resources/Sounds/" + path + ".ogg";
+		loadOgg(path, bufferData, format, freq);
 		alBufferData(m_id, format, &bufferData[0], static_cast<ALsizei>(bufferData.size()), freq);
 	}
 	void Sound::loadOgg(const std::string & fileName, std::vector<char>& buffer, ALenum & format, ALsizei & freq)
@@ -21,7 +23,7 @@ namespace Engine
 		size_t samples = stb_vorbis_decode_filename(fileName.c_str(), &channels, &sampleRate, &output);
 		if (samples == -1)
 		{
-			throw std::exception();
+			throw Exception("loadOgg failed");
 		}
 		
 		if (channels == 1)

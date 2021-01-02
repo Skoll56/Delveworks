@@ -36,7 +36,7 @@ namespace Engine
 	{
 	public:
 		PointLight() {};
-		void setValues(glm::vec3 _diffuse, float _specular, float _radius, float _brightness);
+		void onInitialise(glm::vec3 _diffuse, float _specular, float _radius, float _brightness);
 		std::shared_ptr<ShadowCube> getShadowCube() { return m_SC; }
 		float getRadius() { return m_radius; }
 		float getQuad() { return m_quadratic; }
@@ -53,7 +53,7 @@ namespace Engine
 	class DirLight : public Light
 	{
 	public:
-		void setValues(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient);
+		void onInitialise(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient);
 
 		glm::vec3 getDif() { return m_diffuse; }
 		float getSpec() { return m_specIntens; }
@@ -72,7 +72,7 @@ namespace Engine
 	class SpotLight : public PointLight
 	{
 	public:
-		void setValues(glm::vec3 _color, float _specular, float _angle, float _fadeAngle, float _radius, float _brightness);
+		void onInitialise(glm::vec3 _color, float _specular, float _angle, float _fadeAngle, float _radius, float _brightness);
 		void update(int _i);
 		float getAngle() { return m_angle; }
 		float getFangle() { return m_fadeAngle; }

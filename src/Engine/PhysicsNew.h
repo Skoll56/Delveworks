@@ -27,9 +27,6 @@ namespace Engine
 
 		void setCollided(bool _val) { m_collided = _val; }
 		bool collided() { return m_collided; }
-
-		void onCollision(Collision* _col);
-
 		void setFloored(bool _val) { m_floored = _val; }
 		bool isFloored() { return m_floored; }
 
@@ -71,7 +68,7 @@ namespace Engine
 		bool m_collided = false;
 		bool m_floored = false;
 		glm::vec3 m_permCP; // A "permanent" contact-point that stores where an object should remain once stationary (ie: stacked on top of another object)
-		std::vector<Collision*> m_collisions;
+		std::vector<std::shared_ptr<Collision>> m_collisions;
 	};
 
 	class PhysicsObject : public PhysicsEventUser
@@ -79,7 +76,7 @@ namespace Engine
 	public:
 		void onTick();
 
-		void Initialise(float _mass, float _bounciness);
+		void onInitialise(float _mass, float _bounciness);
 		PhysicsObject();
 
 		void handleCollisions();
@@ -113,7 +110,7 @@ namespace Engine
 	{
 	public:
 		void onTick();
-		void Initialise(float _mass, float _bounciness);
+		void onInitialise(float _mass, float _bounciness);
 		AdvPhysicsObject() {};
 		glm::mat3 getRotMat() { return m_rotMat; }
 		//void setRotMat(glm::mat3 _mat) { m_rotMat = _mat; }
@@ -149,7 +146,7 @@ namespace Engine
 		int intersect_triangle3(double orig[3], double dir[3], double vert0[3], double vert1[3], double vert2[3], double *t, double *u, double *v);
 		//T = distance to the triangle
 		//U and V are two points inside the triangle
-		RayCollision* rayToTri(std::vector<std::shared_ptr<Entity>> _obj, glm::vec3 _rayDir, glm::vec3 _origin, std::string _rayTag);
+		std::shared_ptr<RayCollision> rayToTri(std::vector<std::shared_ptr<Entity>> _obj, glm::vec3 _rayDir, glm::vec3 _origin, std::string _rayTag);
 	};
 }
 #endif

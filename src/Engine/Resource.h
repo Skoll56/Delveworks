@@ -5,6 +5,8 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 #include <vector>
+#include <iostream>
+#include "Exception.h"
 
 namespace Engine
 {
@@ -24,17 +26,26 @@ namespace Engine
 		template <typename T>
 		std::shared_ptr<T> load(std::string _path)
 		{	
-			for (int i = 0; i < m_resourceList.size(); i++)
-			{
-				if (m_resourceList[i]->m_path == _path)
-				{
-					return std::static_pointer_cast<T>(m_resourceList[i]);
-				}
-			}
 			std::shared_ptr<T> rtn = std::make_shared<T>();
-			rtn->m_path = _path;
-			rtn->load(_path);			
-			m_resourceList.push_back(rtn);
+			try
+			{
+				for (int i = 0; i < m_resourceList.size(); i++)
+				{
+					if (m_resourceList[i]->m_path == _path)
+					{
+						return std::static_pointer_cast<T>(m_resourceList[i]);
+					}
+				}
+				
+				rtn->m_path = _path;
+				rtn->load(_path);
+				m_resourceList.push_back(rtn);
+				
+			}
+			catch(Exception& e)
+			{
+				std::cout << "[ResourceManager] " + e.message() << std::endl;
+			}
 			return rtn;
 		}
 
@@ -44,10 +55,11 @@ namespace Engine
 	class Sound : public Resource
 	{
 		friend class SoundSource;
+	public:
+		void load(std::string path);
 
 	private:
-		ALuint m_id  = 0;
-		void load(const std::string& path);
+		ALuint m_id  = 0;		
 		void loadOgg(const std::string& fileName, std::vector<char> &buffer, ALenum &format, ALsizei &freq);
 	};
 }

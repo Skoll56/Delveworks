@@ -1,4 +1,3 @@
-
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <glm/glm.hpp>
@@ -10,6 +9,8 @@
 #include "Shader.h"
 #include "Light.h"
 #include "RenderTexture.h"
+#include "Exception.h"
+
 
 namespace Engine
 {
@@ -33,7 +34,7 @@ namespace Engine
 		std::ifstream file(_vert);
 		if (!file.is_open())
 		{
-			throw std::exception();
+			throw Exception("Failed to open vertex shader file");
 		}
 		else
 		{
@@ -49,8 +50,7 @@ namespace Engine
 		file.open(_frag);
 		if (!file.is_open())
 		{
-			std::cout << "Broke mate2" << std::endl;
-			throw std::exception();
+			throw Exception("Failed to open fragment shader file");
 		}
 		else
 		{
@@ -74,16 +74,15 @@ namespace Engine
 		GLint success = 0;
 		glGetShaderiv(vertexShaderId, GL_COMPILE_STATUS, &success);
 		if (!success)
-		{
-			std::cout << "Broke mate3" << std::endl;
+		{			
 			GLint maxLength = 0;
 			glGetShaderiv(vertexShaderId, GL_INFO_LOG_LENGTH, &maxLength);
 
 			// The maxLength includes the NULL character
 			std::vector<GLchar> errorLog(maxLength);
-			glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);
-			std::cout << &errorLog.at(0) << std::endl;
-			throw std::exception();
+			glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);			
+			std::string error = &errorLog.at(0);
+			throw Exception("Failed to compile vertex shader: " + error);
 		}
 
 		GLuint fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
@@ -93,16 +92,15 @@ namespace Engine
 		glGetShaderiv(fragmentShaderId, GL_COMPILE_STATUS, &success);
 		printShaderInfoLog(fragmentShaderId);
 		if (!success)
-		{
-			std::cout << "Broke mate4" << std::endl; //
+		{			
 			GLint maxLength = 0;
 			glGetShaderiv(vertexShaderId, GL_INFO_LOG_LENGTH, &maxLength);
 
 			// The maxLength includes the NULL character
 			std::vector<GLchar> errorLog(maxLength);
 			glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);
-			std::cout << &errorLog.at(0) << std::endl;
-			throw std::exception();//
+			std::string error = &errorLog.at(0);
+			throw Exception("Failed to compile fragment shader: " + error);
 		}
 		m_id = glCreateProgram();
 		glAttachShader(m_id, vertexShaderId);
@@ -118,9 +116,8 @@ namespace Engine
 		success = 0;
 		glGetProgramiv(m_id, GL_LINK_STATUS, &success);
 		if (!success)
-		{
-			std::cout << "Broke mate5" << std::endl;
-			throw std::exception();
+		{			
+			throw Exception("Failed to link shader program");
 		}
 
 		//glDetachShader(m_id, vertexShaderId);
@@ -213,7 +210,10 @@ namespace Engine
 	void Shader::setUniform(std::string _uniform, glm::vec4 _value)
 	{
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
-		if (uniformId == -1) { throw std::exception(); }
+		if (uniformId == -1) 
+		{ 
+			throw Exception("Failed to set uniform: (" + _uniform + ")"); 
+		}
 
 		glUseProgram(m_id);
 		glUniform4f(uniformId, _value.x, _value.y, _value.z, _value.w);
@@ -223,7 +223,10 @@ namespace Engine
 	void Shader::setUniform(std::string _uniform, glm::vec3 _value)
 	{
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
-		if (uniformId == -1) { throw std::exception(); }
+		if (uniformId == -1)
+		{
+			throw Exception("Failed to set uniform: (" + _uniform + ")");
+		}
 
 		glUseProgram(m_id);
 		glUniform3f(uniformId, _value.x, _value.y, _value.z);
@@ -233,7 +236,10 @@ namespace Engine
 	void Shader::setUniform(std::string _uniform, glm::mat4 _value)
 	{
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
-		if (uniformId == -1) { throw std::exception(); }
+		if (uniformId == -1)
+		{
+			throw Exception("Failed to set uniform: (" + _uniform + ")");
+		}
 
 		glUseProgram(m_id);
 		glUniformMatrix4fv(uniformId, 1, GL_FALSE, glm::value_ptr(_value));
@@ -245,7 +251,7 @@ namespace Engine
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
 		if (uniformId == -1)
 		{
-			throw std::exception();
+			throw Exception("Failed to set uniform: (" + _uniform + ")");
 		}
 
 		glUseProgram(m_id);
@@ -256,8 +262,10 @@ namespace Engine
 	void Shader::setUniform(std::string _uniform, int _value)
 	{
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
-		if (uniformId == -1) { throw std::exception(); }
-
+		if (uniformId == -1)
+		{
+			throw Exception("Failed to set uniform: (" + _uniform + ")");
+		}
 		glUseProgram(m_id);
 		glUniform1i(uniformId, _value);
 		glUseProgram(0);
@@ -267,7 +275,17 @@ namespace Engine
 	void Shader::setUniform(std::string _uniform, std::shared_ptr<Texture> _tex)
 	{
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
-		if (uniformId == -1) { throw std::exception(); }
+		if (uniformId == -1)
+		{
+			if (_tex->m_path == "")
+			{
+				throw Exception("Failed to set uniform: (" + _uniform + ")");
+			}
+			else
+			{
+				throw Exception("Failed to set uniform: (" + _uniform + ") to " + _tex->m_path);
+			}			
+		}
 
 		for (size_t i = 0; i < m_sampler.size(); i++)
 		{
@@ -298,7 +316,10 @@ namespace Engine
 	void Shader::setUniform(std::string _uniform, std::shared_ptr<ShadowCube> _sc)
 	{
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
-		if (uniformId == -1) { throw std::exception(); }
+		if (uniformId == -1)
+		{
+			throw Exception("Failed to set uniform: (" + _uniform + ")");
+		}
 
 		for (size_t i = 0; i < m_sampler.size(); i++)
 		{

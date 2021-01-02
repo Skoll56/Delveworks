@@ -2,6 +2,32 @@
 #include <Engine/Engine.h>
 #define OUTPUT(vec) std::cout << vec.x << " " << vec.y << " " << vec.z <<std::endl;
 
+
+class Ball : public Component
+{
+	std::shared_ptr<SoundSource> m_sound;
+	int i = 0;
+
+	public:
+	void Ball::onInitialise()
+	{		
+		m_sound = getEntity()->addComponent<SoundSource>(getEntity()->getCore()->m_rManager->load<Sound>("pew"));
+	}
+
+	void Ball::onCollision(std::shared_ptr<Collision> _col)
+	{
+		m_sound->Play(0.2f);
+	}
+
+	void Ball::onTick()
+	{
+		i++;
+		if (i > 600) { getEntity()->destroy(); }
+	}
+
+};
+
+
 #undef main
 int main()
 {	
@@ -16,8 +42,8 @@ int main()
 
 	//Create the directional (and ambient) light
 	std::shared_ptr<Entity> sun = core->createEntity();
-	std::shared_ptr<DirLight> d = sun->addComponent<DirLight>();
-	d->setValues(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f));
+	std::shared_ptr<DirLight> d = sun->addComponent<DirLight>(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f));
+	
 	d->transform()->m_position = glm::vec3(0.0f, 100.0f, 0.0f);
 	d->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
 
@@ -25,8 +51,8 @@ int main()
 	for (int i = 0; i < 1; i++)
 	{
 		std::shared_ptr<Entity> point = core->createEntity();
-		std::shared_ptr<PointLight> p = point->addComponent<PointLight>();
-		p->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 30.0f, 0.8f);
+		std::shared_ptr<PointLight> p = point->addComponent<PointLight>(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 30.0f, 0.8f);
+		
 		p->transform()->m_position = glm::vec3(0.0f, 6.0f, -2.0f);
 		p->transform()->m_eulerAngles = glm::vec3(0.0f, 0.0f, 0.0f);
 	}
@@ -94,8 +120,9 @@ int main()
 			ball->transform()->setScale(glm::vec3(1.0f, 1.0f, 1.0f));
 			ball->transform()->setPosition(glm::vec3(-20.0f + (i * 0.2f) + l, 13.0f + (i * 1.5f), -20.0f));
 			std::shared_ptr<SphereCollider> sc = ball->addComponent<SphereCollider>();
-			std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>();
-			phys->Initialise(1.0f, 0.9f);
+			std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>(1.0f, 0.9f);	
+			ball->addComponent<Ball>();
+			
 		}
 	}
 

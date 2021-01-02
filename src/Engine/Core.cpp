@@ -9,6 +9,8 @@
 #include "VertexBuffer.h"
 #include "Light.h"
 #include "RenderTexture.h"
+#include "Exception.h"
+
 
 #ifdef EMSCRIPTEN
 #include <emscripten.h>
@@ -29,7 +31,7 @@ namespace Engine
 		rtn->initialiseShaders();
 
 		rtn->m_self = rtn;
-		rtn->createScreenQuad();		
+		rtn->createScreenQuad();
 		rtn->createRenderTexture();
 		srand(time(NULL));
 
@@ -69,46 +71,90 @@ namespace Engine
 		dTime = (time - t1) / 1000.0f;
 		t1 = time;
 		SDL_Event event = { 0 };
-		
+
 		//Set the clear-colour for the screen and clear it
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		
+
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		SDL_GetMouseState(&mouseX, &mouseY);
-		m_input->m_xOffset = mouseX - WINDOW_WIDTH /2;
-		m_input->m_yOffset = mouseY - WINDOW_HEIGHT/2;
+		m_input->m_xOffset = mouseX - WINDOW_WIDTH / 2;
+		m_input->m_yOffset = mouseY - WINDOW_HEIGHT / 2;
 
 		SDL_WarpMouseInWindow(m_window, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 
 		//Re-establish window-size to allow stretching and re-sizing
 		SDL_GetWindowSize(m_window, &width, &height);
 		m_camera->update(dTime, m_input);
-		
-		for (size_t ei = 0; ei < m_entities.size(); ei++)
+
+		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end(); it++)
 		{
-			m_entities.at(ei)->tick(); //"Update"
+			try
+			{
+				(*it)->tick(); //"Update"
+			}
+			catch (Exception &e)
+			{
+				std::cout << "[Core] " + e.message() << std::endl;
+			}
 		}
 
-		for (size_t ei = 0; ei < m_entities.size(); ei++)
+		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end();)
 		{
-			m_entities.at(ei)->afterTick(); //A second tick for after-tick events
+			try
+			{
+				(*it)->afterTick(); //A second tick for after-tick events
+				if ((*it)->m_delete)
+				{
+					it = m_entities.erase(it);
+				}
+				else
+				{
+					it++;
+				}
+			}
+			catch (Exception &e)
+			{
+				std::cout << "[Core] " + e.message() << std::endl;
+				it++;
+			}
 		}
 
 		for (int di = 0; di < m_dirLights.size(); di++)
 		{
-			m_dirLights.at(di)->update(di); 
+			try
+			{
+				m_dirLights.at(di)->update(di);
+			}
+			catch (Exception &e)
+			{
+				std::cout << "[Core] " + e.message() << std::endl;
+			}
 		}
 
 		for (int si = 0; si < m_spotLights.size(); si++)
 		{
-			m_spotLights.at(si)->update(si); 
+			try
+			{
+				m_spotLights.at(si)->update(si);
+			}
+			catch (Exception &e)
+			{
+				std::cout << "[Core] " + e.message() << std::endl;
+			}
 		}
 
 		for (int pi = 0; pi < m_pointLights.size(); pi++)
 		{
-			m_pointLights.at(pi)->update(pi);
+			try
+			{
+				m_pointLights.at(pi)->update(pi);
+			}
+			catch (Exception &e)
+			{
+				std::cout << "[Core] " + e.message() << std::endl;
+			}
 		}
 				
 		drawShadowmaps(); /* <-- !GRAPHICS UNIT! */
@@ -156,10 +202,17 @@ namespace Engine
 	{
 		for (size_t ei = 0; ei < m_entities.size(); ei++)
 		{
-			std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
-			if (MR)
+			try
 			{
-				MR->draw();
+				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
+				if (MR)
+				{
+					MR->draw();
+				}
+			}
+			catch (Exception &e)
+			{
+				std::cout << "[Core] " + e.message() << std::endl;
 			}
 		}
 	}
@@ -169,11 +222,18 @@ namespace Engine
 	{
 		for (size_t ei = 0; ei < m_entities.size(); ei++)
 		{
-			std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
-			if (MR)
-			{				
-				m_shadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
-				m_shadowSh->draw(MR->m_vAO);
+			try
+			{
+				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
+				if (MR)
+				{
+					m_shadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
+					m_shadowSh->draw(MR->m_vAO);
+				}
+			}
+			catch(Exception &e)
+			{
+				std::cout << "[Core] " + e.message() << std::endl;
 			}
 		}
 	}
@@ -182,12 +242,19 @@ namespace Engine
 	void Core::drawPointShadowScene()
 	{
 		for (size_t ei = 0; ei < m_entities.size(); ei++)
-		{
-			std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
-			if (MR)
+		{ 
+			try
 			{
-				m_pointShadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
-				m_pointShadowSh->draw(MR->m_vAO);
+				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
+				if (MR)
+				{
+					m_pointShadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
+					m_pointShadowSh->draw(MR->m_vAO);
+				}
+			}
+			catch (Exception &e)
+			{
+				std::cout << "[Core] " + e.message() << std::endl;
 			}
 		}
 	}
@@ -223,7 +290,7 @@ namespace Engine
 	{
 		if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		{
-			throw std::exception();
+			throw Exception("Failed to Initialise SDL");
 		}
 		SDL_ShowCursor(false);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
@@ -235,34 +302,38 @@ namespace Engine
 
 		if (!SDL_GL_CreateContext(m_window))
 		{
-			throw std::exception(); //TODO: Make better exception class
+			throw Exception("Failed to create SDL Window");
 		}
 		
 		if (glewInit() != GLEW_OK)
 		{
-			throw std::exception();
+			throw Exception("Failed to initialise GLEW");
 		}
 	}
 
 	/* !This has been MODIFIED as part of the GRAPHICS UNIT! */
 	void Core::updateShader()
 	{
-		//Lighting Shaders
-		m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
-		glm::mat4 view(1.0f);
-		view = glm::lookAt(m_camera->transform()->getPosition(), m_camera->transform()->getPosition() + m_camera->transform()->getFwd(), m_camera->transform()->getUp());		
+		try
+		{
+			//Lighting Shaders
+			m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
+			m_lightingSh->setUniform("in_View", m_camera->getView()); // Establish the view matrix		
+			m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
+			m_lightingSh->setUniform("in_CamPos", m_camera->transform()->m_position);
 
-		m_lightingSh->setUniform("in_View", view); // Establish the view matrix		
-		m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
-		m_lightingSh->setUniform("in_CamPos", m_camera->transform()->m_position);
-
-		//Shader for the screen quad (For render textures)
-		m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
-		//Change to Shadowmap to view depth buffer
-		m_sqShader->setUniform("in_Texture", m_RT);
-		/*m_sqShader->setUniform("in_Texture", m_dirLights[0]->getShadowMap());
-		m_sqShader->setUniform("in_nearPlane", 0.01f);
-		m_sqShader->setUniform("in_farPlane", m_pointLights[0]->getRadius());*/
+			//Shader for the screen quad (For render textures)
+			m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
+			//Change to Shadowmap to view depth buffer
+			m_sqShader->setUniform("in_Texture", m_RT);
+			/*m_sqShader->setUniform("in_Texture", m_dirLights[0]->getShadowMap());
+			m_sqShader->setUniform("in_nearPlane", 0.01f);
+			m_sqShader->setUniform("in_farPlane", m_pointLights[0]->getRadius());*/
+		}
+		catch (Exception &e)
+		{
+			std::cout << "[Core] " + e.message() << std::endl;
+		}
 
 	}
 
@@ -271,50 +342,71 @@ namespace Engine
 	{
 		for (int i = 0; i < m_dirLights.size(); i++)
 		{
-			std::shared_ptr<ShadowMap> shadowmap = m_dirLights[i]->getShadowMap();
-			glUseProgram(m_shadowSh->getId());
-			m_shadowSh->setUniform("in_LightSpaceMatrix", m_dirLights[i]->getShadowMap()->getLightSpaceMatrix());
-			glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
-			glClear(GL_DEPTH_BUFFER_BIT);
-			glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
-			drawShadowScene();
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
-			glUseProgram(0);
+			try
+			{
+				std::shared_ptr<ShadowMap> shadowmap = m_dirLights[i]->getShadowMap();
+				glUseProgram(m_shadowSh->getId());
+				m_shadowSh->setUniform("in_LightSpaceMatrix", m_dirLights[i]->getShadowMap()->getLightSpaceMatrix());
+				glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
+				glClear(GL_DEPTH_BUFFER_BIT);
+				glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
+				drawShadowScene();
+				glBindFramebuffer(GL_FRAMEBUFFER, 0);
+				glUseProgram(0);
+			}
+			catch (Exception &e)
+			{
+				std::cout << "[Core] " + e.message() << std::endl;
+			}
 		}
 
 		for (int i = 0; i < m_pointLights.size(); i++)
 		{
-			std::shared_ptr<ShadowCube> SC = m_pointLights[i]->getShadowCube();
-			glUseProgram(m_shadowSh->getId());
-			glBindFramebuffer(GL_FRAMEBUFFER, SC->fBufID);
-
-
-			m_pointShadowSh->setUniform("in_lightPos", m_pointLights[i]->transform()->getPosition());
-			m_pointShadowSh->setUniform("in_farPlane", m_pointLights[i]->getRadius());
-
-			for (int l = 0; l < 6; l++)
+			try
 			{
-				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_CUBE_MAP_POSITIVE_X + l, SC->m_textureId, 0);
-				glClear(GL_DEPTH_BUFFER_BIT);
-				m_pointShadowSh->setUniform("in_LightSpaceMatrix", SC->getMatrix(l));
-				glViewport(0, 0, SC->resolutionX, SC->resolutionY);
-				drawPointShadowScene();
+				std::shared_ptr<ShadowCube> SC = m_pointLights[i]->getShadowCube();
+				glUseProgram(m_shadowSh->getId());
+				glBindFramebuffer(GL_FRAMEBUFFER, SC->fBufID);
+
+
+				m_pointShadowSh->setUniform("in_lightPos", m_pointLights[i]->transform()->getPosition());
+				m_pointShadowSh->setUniform("in_farPlane", m_pointLights[i]->getRadius());
+
+				for (int l = 0; l < 6; l++)
+				{
+					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_CUBE_MAP_POSITIVE_X + l, SC->m_textureId, 0);
+					glClear(GL_DEPTH_BUFFER_BIT);
+					m_pointShadowSh->setUniform("in_LightSpaceMatrix", SC->getMatrix(l));
+					glViewport(0, 0, SC->resolutionX, SC->resolutionY);
+					drawPointShadowScene();
+				}
+				glBindFramebuffer(GL_FRAMEBUFFER, 0);
+				glUseProgram(0);
 			}
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
-			glUseProgram(0);
+			catch (Exception &e)
+			{
+				std::cout << "[Core] " + e.message() << std::endl;
+			}
 		}
 
 		for (int i = 0; i < m_spotLights.size(); i++)
 		{
-			std::shared_ptr<ShadowMap> shadowmap = m_spotLights[i]->getShadowMap();
-			glUseProgram(m_shadowSh->getId());
-			m_shadowSh->setUniform("in_LightSpaceMatrix", m_spotLights[i]->getShadowMap()->getLightSpaceMatrix());
-			glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
-			glClear(GL_DEPTH_BUFFER_BIT);
-			glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
-			drawShadowScene();
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
-			glUseProgram(0);
+			try
+			{
+				std::shared_ptr<ShadowMap> shadowmap = m_spotLights[i]->getShadowMap();
+				glUseProgram(m_shadowSh->getId());
+				m_shadowSh->setUniform("in_LightSpaceMatrix", m_spotLights[i]->getShadowMap()->getLightSpaceMatrix());
+				glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
+				glClear(GL_DEPTH_BUFFER_BIT);
+				glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
+				drawShadowScene();
+				glBindFramebuffer(GL_FRAMEBUFFER, 0);
+				glUseProgram(0);
+			}
+			catch (Exception &e)
+			{
+				std::cout << "[Core] " + e.message() << std::endl;
+			}
 		}		
 
 		
@@ -355,21 +447,21 @@ namespace Engine
 		m_device = alcOpenDevice(NULL);
 		if (!m_device)
 		{
-			throw std::exception();
+			throw Exception("Failed to create ALC Device");
 		}
 
 		m_context = alcCreateContext(m_device, NULL);
 		if (!m_context)
 		{
 			alcCloseDevice(m_device);
-			throw std::exception();
+			throw Exception("Failed to create SDL Window");
 		}
 
 		if (!alcMakeContextCurrent(m_context))
 		{
 			alcDestroyContext(m_context);
 			alcCloseDevice(m_device);
-			throw std::exception();
+			throw Exception("Failed to create ALC Context");
 		}
 	}
 

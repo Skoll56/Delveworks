@@ -19,15 +19,15 @@ namespace Engine
 	{
 		friend struct Core;
 
-		template <typename T>
-		std::shared_ptr<T> addComponent()
+		template <typename T, typename ... Args>
+		std::shared_ptr<T> addComponent(Args&&... args)
 		{
 			std::shared_ptr<T> rtn = std::make_shared<T>();
 			checkType(rtn);
 
 			rtn->m_transform = m_transform;
 			rtn->m_entity = self;
-			rtn->onInitialise();
+			rtn->onInitialise(std::forward<Args>(args)...);
 			components.push_back(rtn);
 			return rtn;
 		}
@@ -61,6 +61,8 @@ namespace Engine
 		bool isActive() { return m_active; };
 		void setActive(bool _status) { m_active = _status; }
 		std::shared_ptr<Transform> transform() { return m_transform; }
+		void onCollision(std::shared_ptr<Collision> _c);
+		void destroy() { m_delete = true; }
 
 	private:
 		template <typename T>
@@ -108,6 +110,7 @@ namespace Engine
 		std::string m_tag;
 		std::shared_ptr<Transform> m_transform;	
 		bool m_active = true;
+		bool m_delete = false;
 	};
 }
 

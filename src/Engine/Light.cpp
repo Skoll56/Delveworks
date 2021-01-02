@@ -11,7 +11,7 @@ namespace Engine
 	/* !This has been modified as part of the GRAPHICS UNIT to support shadows! */
 	/* !The ability to cast lights (but not shadows) was already a feature that has been submitted before! */
 
-	void DirLight::setValues(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient)
+	void DirLight::onInitialise(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient)
 	{
 		m_diffuse = _diffuse;
 		m_specIntens = _specular;
@@ -52,7 +52,7 @@ namespace Engine
 		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
 	}
 
-	void PointLight::setValues(glm::vec3 _diffuse, float _specular, float _radius, float _brightness)
+	void PointLight::onInitialise(glm::vec3 _diffuse, float _specular, float _radius, float _brightness)
 	{		
 		m_diffuse = _diffuse;
 		m_specIntens = _specular;
@@ -65,7 +65,7 @@ namespace Engine
 		m_SC->Initialise();
 	}
 
-	void SpotLight::setValues(glm::vec3 _color, float _specular, float _angle, float _fadeAngle, float _radius, float _brightness)
+	void SpotLight::onInitialise(glm::vec3 _color, float _specular, float _angle, float _fadeAngle, float _radius, float _brightness)
 	{
 		m_diffuse = _color;
 		m_specIntens = _specular;

@@ -10,6 +10,7 @@ namespace Engine
 	class Entity;	
 	class Transform;
 	class Input;
+	class Collision;
 
 	class Component
 	{
@@ -23,6 +24,7 @@ namespace Engine
 
 	protected:
 		virtual void onInitialise();
+		virtual void onCollision(std::shared_ptr<Collision> _col);
 		virtual void onTick();
 		virtual void onRender();
 		virtual void onDestroy();
@@ -43,7 +45,7 @@ namespace Engine
 		glm::mat4 getModel() { return m_model; }
 		void onTick();
 		void setModel(glm::mat4 _model) { m_model = _model; }
-		void onInitialise();
+		void onInitialise();		
 		void rotate(glm::vec3 _axis, float _amt) { m_eulerAngles += _amt * _axis; }
 		glm::vec3 getUp() { return m_upVec; }
 		glm::vec3 getRight() { return m_right; }
@@ -63,14 +65,18 @@ namespace Engine
 
 	class SoundSource : public Component
 	{
+		public:
 		void onInitialise(std::shared_ptr<Sound> _sound);
 		void onTick();
-		void Play();
-
-		ALuint m_id = 0;
-		bool m_played = false;
+		void Play(float _vol);
 		bool m_loop = false;
 		bool m_destroyOnPlay = false;
+
+
+		private:
+		ALuint m_id = 0;
+		bool m_played = false;
+		
 	};
 }
 

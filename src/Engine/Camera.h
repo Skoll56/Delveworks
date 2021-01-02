@@ -9,9 +9,11 @@ namespace Engine
 	{		
 		private:		
 		float m_rotSpeed;
+		glm::mat4 m_viewMat;
 
 		public:				
 		void onInitialise();
+		glm::mat4 getView() { return m_viewMat; }
 		void update(float _dTime, std::shared_ptr<Input> _input);
 	};
 }
