@@ -14,6 +14,7 @@
 #include "Light.h"
 
 
+
 namespace Engine
 {
 	struct Entity;		
@@ -21,7 +22,6 @@ namespace Engine
 	class Camera;
 	class Shader;
 	class VertexArray;
-	
 
 	struct Core
 	{

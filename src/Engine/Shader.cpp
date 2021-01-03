@@ -34,7 +34,7 @@ namespace Engine
 		std::ifstream file(_vert);
 		if (!file.is_open())
 		{
-			throw Exception("Failed to open vertex shader file");
+			throw Exception("Shader", "Failed to open vertex shader file");
 		}
 		else
 		{
@@ -50,7 +50,7 @@ namespace Engine
 		file.open(_frag);
 		if (!file.is_open())
 		{
-			throw Exception("Failed to open fragment shader file");
+			throw Exception("Shader", "Failed to open fragment shader file");
 		}
 		else
 		{
@@ -82,7 +82,7 @@ namespace Engine
 			std::vector<GLchar> errorLog(maxLength);
 			glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);			
 			std::string error = &errorLog.at(0);
-			throw Exception("Failed to compile vertex shader: " + error);
+			throw Exception("Shader", "Failed to compile vertex shader: " + error);
 		}
 
 		GLuint fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
@@ -100,7 +100,7 @@ namespace Engine
 			std::vector<GLchar> errorLog(maxLength);
 			glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);
 			std::string error = &errorLog.at(0);
-			throw Exception("Failed to compile fragment shader: " + error);
+			throw Exception("Shader", "Failed to compile fragment shader: " + error);
 		}
 		m_id = glCreateProgram();
 		glAttachShader(m_id, vertexShaderId);
@@ -117,7 +117,7 @@ namespace Engine
 		glGetProgramiv(m_id, GL_LINK_STATUS, &success);
 		if (!success)
 		{			
-			throw Exception("Failed to link shader program");
+			throw Exception("Shader", "Failed to link shader program");
 		}
 
 		//glDetachShader(m_id, vertexShaderId);
@@ -212,7 +212,7 @@ namespace Engine
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
 		if (uniformId == -1) 
 		{ 
-			throw Exception("Failed to set uniform: (" + _uniform + ")"); 
+			throw Exception("Shader", "Failed to set uniform: (" + _uniform + ")"); 
 		}
 
 		glUseProgram(m_id);
@@ -225,7 +225,7 @@ namespace Engine
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
 		if (uniformId == -1)
 		{
-			throw Exception("Failed to set uniform: (" + _uniform + ")");
+			throw Exception("Shader", "Failed to set uniform: (" + _uniform + ")");
 		}
 
 		glUseProgram(m_id);
@@ -238,7 +238,7 @@ namespace Engine
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
 		if (uniformId == -1)
 		{
-			throw Exception("Failed to set uniform: (" + _uniform + ")");
+			throw Exception("Shader", "Failed to set uniform: (" + _uniform + ")");
 		}
 
 		glUseProgram(m_id);
@@ -251,7 +251,7 @@ namespace Engine
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
 		if (uniformId == -1)
 		{
-			throw Exception("Failed to set uniform: (" + _uniform + ")");
+			throw Exception("Shader", "Failed to set uniform: (" + _uniform + ")");
 		}
 
 		glUseProgram(m_id);
@@ -264,7 +264,7 @@ namespace Engine
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
 		if (uniformId == -1)
 		{
-			throw Exception("Failed to set uniform: (" + _uniform + ")");
+			throw Exception("Shader", "Failed to set uniform: (" + _uniform + ")");
 		}
 		glUseProgram(m_id);
 		glUniform1i(uniformId, _value);
@@ -279,11 +279,11 @@ namespace Engine
 		{
 			if (_tex->m_path == "")
 			{
-				throw Exception("Failed to set uniform: (" + _uniform + ")");
+				throw Exception("Shader", "Failed to set uniform: (" + _uniform + ")");
 			}
 			else
 			{
-				throw Exception("Failed to set uniform: (" + _uniform + ") to " + _tex->m_path);
+				throw Exception("Shader", "Failed to set uniform: (" + _uniform + ") to " + _tex->m_path);
 			}			
 		}
 
@@ -318,7 +318,7 @@ namespace Engine
 		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
 		if (uniformId == -1)
 		{
-			throw Exception("Failed to set uniform: (" + _uniform + ")");
+			throw Exception("Shader", "Failed to set uniform: (" + _uniform + ")");
 		}
 
 		for (size_t i = 0; i < m_sampler.size(); i++)

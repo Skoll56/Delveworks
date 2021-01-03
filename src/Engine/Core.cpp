@@ -290,8 +290,9 @@ namespace Engine
 	{
 		if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		{
-			throw Exception("Failed to Initialise SDL");
+			throw FatalException("Core", "Failed to Initialise SDL");
 		}
+
 		SDL_ShowCursor(false);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
@@ -302,12 +303,12 @@ namespace Engine
 
 		if (!SDL_GL_CreateContext(m_window))
 		{
-			throw Exception("Failed to create SDL Window");
+			throw FatalException("Core", "Failed to create SDL Window");
 		}
 		
 		if (glewInit() != GLEW_OK)
 		{
-			throw Exception("Failed to initialise GLEW");
+			throw FatalException("Core", "Failed to initialise GLEW");
 		}
 	}
 
@@ -447,21 +448,21 @@ namespace Engine
 		m_device = alcOpenDevice(NULL);
 		if (!m_device)
 		{
-			throw Exception("Failed to create ALC Device");
+			throw FatalException("Core", "Failed to create ALC Device");
 		}
 
 		m_context = alcCreateContext(m_device, NULL);
 		if (!m_context)
 		{
 			alcCloseDevice(m_device);
-			throw Exception("Failed to create SDL Window");
+			throw FatalException("Core", "Failed to create SDL Window");
 		}
 
 		if (!alcMakeContextCurrent(m_context))
 		{
 			alcDestroyContext(m_context);
 			alcCloseDevice(m_device);
-			throw Exception("Failed to create ALC Context");
+			throw FatalException("Core", "Failed to create ALC Context");
 		}
 	}
 

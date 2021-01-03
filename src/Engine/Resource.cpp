@@ -23,7 +23,7 @@ namespace Engine
 		size_t samples = stb_vorbis_decode_filename(fileName.c_str(), &channels, &sampleRate, &output);
 		if (samples == -1)
 		{
-			throw Exception("loadOgg failed");
+			throw Exception("Sound", "loadOgg failed");
 		}
 		
 		if (channels == 1)

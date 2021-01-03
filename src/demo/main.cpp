@@ -16,7 +16,8 @@ class Ball : public Component
 
 	void Ball::onCollision(std::shared_ptr<Collision> _col)
 	{
-		m_sound->Play(0.2f);
+		m_sound->Play(0.2f);		
+		Console::output(Console::Message, "Ball", "Hello");
 	}
 
 	void Ball::onTick()

@@ -70,7 +70,7 @@ namespace Engine
 
 		if (!m_id)
 		{
-			throw Exception("Failed to generate Vertex Array Object");
+			throw Exception("VertexArray", "Failed to generate Vertex Array Object");
 		}
 
 		m_buffers.resize(10);
@@ -78,7 +78,7 @@ namespace Engine
 
 		if (!file.is_open())
 		{
-			throw Exception("Failed to open OBJ at: " + path);
+			throw Exception("VertexArray", "Failed to open OBJ at: " + path);
 		}
 
 		std::string line;
@@ -170,7 +170,7 @@ namespace Engine
 
 		if (!file.is_open())
 		{
-			throw Exception("Failed to open OBJ at: " + path);
+			throw Exception("VertexArray", "Failed to open OBJ at: " + path);
 		}
 
 		std::string line;
@@ -261,7 +261,7 @@ namespace Engine
 
 		if (!m_id)
 		{
-			throw Exception("Failed to generate Vertex Array");
+			throw Exception("VertexArray", "Failed to generate Vertex Array");
 		}
 
 		m_buffers.resize(10);
@@ -287,7 +287,7 @@ namespace Engine
 		}
 		else
 		{
-			throw Exception("Failed to set attribute in Vertex Array:" + attribute);
+			throw Exception("VertexArray", "Failed to set attribute in Vertex Array: " + attribute);
 		}
 
 		m_dirty = true;
@@ -297,7 +297,7 @@ namespace Engine
 	{
 		if (!m_buffers.at(0))
 		{
-			throw Exception("Failed to read Vertex Count (Buffer empty)");
+			throw Exception("VertexArray", "Failed to read Vertex Count (Buffer empty)");
 		}
 
 		return m_buffers.at(0)->getDataSize() / m_buffers.at(0)->getComponents();

@@ -17,6 +17,7 @@
 #include "MeshRenderer.h"
 #include "Collider.h"
 #include "Light.h"
+#include "Console.h"
 
 using namespace Engine;
 
