@@ -13,14 +13,14 @@ namespace Engine
 		glGenFramebuffers(1, &fBufID);
 		if (!fBufID)
 		{
-			throw Exception("RenderTexture", "Failed to generate framebuffer (Render Texture)");
+			throw Exception("Failed to generate framebuffer (Render Texture)");
 		}
 		glBindFramebuffer(GL_FRAMEBUFFER, fBufID);
 		
 		glGenTextures(1, &m_textureId);
 		if (!m_textureId)
 		{
-			throw Exception("RenderTexture", "Failed to generate textureID (Render Texture)");
+			throw Exception("Failed to generate textureID (Render Texture)");
 		}
 		glBindTexture(GL_TEXTURE_2D, m_textureId);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, resolutionX, resolutionY, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
@@ -33,7 +33,7 @@ namespace Engine
 		glGenRenderbuffers(1, &rBufObjID);
 		if (!rBufObjID)
 		{
-			throw Exception("RenderTexture", "Failed to generate buffer object (Render Texture)");
+			throw Exception("Failed to generate buffer object (Render Texture)");
 		}
 		glBindRenderbuffer(GL_RENDERBUFFER, rBufObjID);
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, resolutionX, resolutionY);
@@ -44,7 +44,7 @@ namespace Engine
 
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			throw Exception("RenderTexture", "Failed to generate Render Texture");
+			throw Exception("Failed to generate Render Texture");
 		}		
 	}
 
@@ -55,14 +55,14 @@ namespace Engine
 		glGenFramebuffers(1, &fBufID);
 		if (!fBufID)
 		{
-			throw Exception("RenderTexture", "Failed to generate framebuffer (Shadowmap)");
+			throw Exception("Failed to generate framebuffer (Shadowmap)");
 		}
 		
 
 		glGenTextures(1, &m_textureId);
 		if (!m_textureId)
 		{
-			throw Exception("RenderTexture", "Failed to generate textureID (Shadowmap)");
+			throw Exception("Failed to generate textureID (Shadowmap)");
 		}
 		glBindTexture(GL_TEXTURE_2D, m_textureId);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, resolutionX, resolutionY, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL); //
@@ -92,13 +92,13 @@ namespace Engine
 		glGenFramebuffers(1, &fBufID);
 		if (!fBufID)
 		{
-			throw Exception("RenderTexture", "Failed to generate framebuffer (Shadowcube)");
+			throw Exception("Failed to generate framebuffer (Shadowcube)");
 		}
 
 		glGenTextures(1, &m_textureId);
 		if (!m_textureId)
 		{
-			throw Exception("RenderTexture", "Failed to generate textureID (Shadowcube)");
+			throw Exception("Failed to generate textureID (Shadowcube)");
 		}
 		glBindTexture(GL_TEXTURE_CUBE_MAP, m_textureId);
 		

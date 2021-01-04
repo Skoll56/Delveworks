@@ -47,21 +47,28 @@ namespace Engine
 
 	void SoundSource::Play(float _vol)
 	{
-		glm::vec3 camPos = getEntity()->getCore()->m_camera->transform()->m_position;
-		//alListener3f(AL_POSITION, camPos.x, camPos.y, camPos.z);
-		alListener3f(AL_POSITION, 0.0f, 0.0f, 0.0f);
+		try
+		{
+			glm::vec3 camPos = getEntity()->getCore()->m_camera->transform()->m_position;
+			//alListener3f(AL_POSITION, camPos.x, camPos.y, camPos.z);
+			alListener3f(AL_POSITION, 0.0f, 0.0f, 0.0f);
 
-		glm::vec3 pos = transform()->m_position;
-		glm::vec4 pos4 = glm::vec4(1.0f);
+			glm::vec3 pos = transform()->m_position;
+			glm::vec4 pos4 = glm::vec4(1.0f);
 
-		pos4 = pos4 * (getEntity()->getCore()->m_camera->getView() * transform()->getModel());
-		alSource3f(m_id, AL_POSITION, pos4.x, pos4.y, pos4.z);
-		//alSource3f(m_id, AL_POSITION, 10000.0f, pos4.y, pos4.z);
+			pos4 = pos4 * (getEntity()->getCore()->m_camera->getView() * transform()->getModel());
+			alSource3f(m_id, AL_POSITION, pos4.x, pos4.y, pos4.z);
+			//alSource3f(m_id, AL_POSITION, 10000.0f, pos4.y, pos4.z);
 
-		alSourcef(m_id, AL_GAIN, _vol);
+			alSourcef(m_id, AL_GAIN, _vol);
 
-		alSourcePlay(m_id);
-		m_played = true;
+			alSourcePlay(m_id);
+			m_played = true;
+		}
+		catch(Exception &e)
+		{
+			Console::output(Console::Error, "SoundSource", e.message());
+		}
 	}
 
 	void SoundSource::onTick()

@@ -44,12 +44,10 @@ namespace Engine
 			}
 			catch(Exception& e)
 			{
-				std::cout << "[ResourceManager] " + e.message() << std::endl;
+				Console::output(Console::Error, "Resource Load", e.message());
 			}
 			return rtn;
 		}
-
-
 	};
 
 	class Sound : public Resource

@@ -1,6 +1,6 @@
 #include "Entity.h"
 #include "Component.h"
-
+#include "Console.h"
 
 namespace Engine
 {
@@ -8,7 +8,14 @@ namespace Engine
 	{
 		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
 		{
-			(*it)->onTick();			
+			try
+			{
+				(*it)->onTick();
+			}
+			catch(Exception &e)
+			{
+				Console::output(Console::Error, "Entity Tick", e.message());
+			}
 		}
 	}
 
@@ -16,18 +23,26 @@ namespace Engine
 	{
 		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end();)
 		{
-			if ((*it)->m_delete || m_delete)
+			try
 			{
-				(*it)->onDestroy(); 
-				it = components.erase(it);
-			}
-			else
-			{				
-				std::shared_ptr<PhysicsObject> p = std::dynamic_pointer_cast<PhysicsObject>((*it));
-				if (p)
+				if ((*it)->m_delete || m_delete)
 				{
-					p->handleCollisions();					
+					(*it)->onDestroy();
+					it = components.erase(it);
 				}
+				else
+				{
+					std::shared_ptr<PhysicsObject> p = std::dynamic_pointer_cast<PhysicsObject>((*it));
+					if (p)
+					{
+						p->handleCollisions();
+					}
+					it++;
+				}
+			}
+			catch (Exception &e)
+			{
+				Console::output(Console::Error, "Entity AfterTick", e.message());
 				it++;
 			}
 		}
@@ -57,8 +72,7 @@ namespace Engine
 			{
 				return rtn4;
 			}
-		}
-		//std::cout << "Component not found" << std::endl;
+		}		
 		return nullptr;
 	}
 
@@ -66,7 +80,14 @@ namespace Engine
 	{
 		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
 		{
-			(*it)->onCollision(_c);
+			try
+			{
+				(*it)->onCollision(_c);
+			}
+			catch (Exception &e)
+			{
+				Console::output(Console::Error, "Entity OnCollision", e.message());
+			}			
 		}
 	}
 }

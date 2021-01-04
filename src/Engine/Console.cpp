@@ -2,7 +2,9 @@
 #include <time.h>
 
 namespace Engine
-{
+{	
+	std::vector<std::string> Console::m_messageLog;
+
 	void Console::output(type _t, std::string _sender, std::string _text)
 	{
 		//Reference https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
@@ -40,7 +42,7 @@ namespace Engine
 		}
 
 		std::cout << logEntry << std::endl;
-	
+		m_messageLog.push_back(logEntry);
 	}
 
 	void Console::message(std::string _text)

@@ -30,8 +30,8 @@ namespace Engine
 		Shader();
 		Shader(std::string _name);
 		void load(std::string _name);
-		void overrideDraw(VertexArray * _vertexArray);
-		void draw(VertexArray *vertexArray);
+		void overrideDraw(std::shared_ptr<VertexArray> _vertexArray);
+		void draw(std::shared_ptr<VertexArray> vertexArray);
 		void printShaderInfoLog(GLuint obj); //Reference Karsten
 		void setUniform(std::string _uniform, glm::vec4 _value);
 		void setUniform(std::string _uniform, float _value);

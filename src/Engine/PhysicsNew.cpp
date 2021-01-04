@@ -12,7 +12,6 @@
 #include "Collider.h"
 
 #define WITHIN(n1, n2, var) n1 > n2 - var && n1 < n2 + var
-#define OUTPUT(vec) std::cout << vec.x << " " << vec.y << " " << vec.z <<std::endl;
 #define UP glm::vec3(0.0f, 1.0f, 0.0f)
 #define DOWN glm::vec3(0.0f, -1.0f, 0.0f)
 #define LEFT glm::vec3(1.0f, 0.0f, 0.0f)

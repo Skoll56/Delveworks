@@ -3,12 +3,13 @@
 #include <vector>
 #include <string>
 #include <GL/glew.h>
+#include "Resource.h"
 
 namespace Engine
 {
 	class VertexBuffer;
 
-	class VertexArray
+	class VertexArray : public Resource
 	{
 		GLuint m_id;
 		bool m_dirty;
@@ -24,7 +25,7 @@ namespace Engine
 		VertexBuffer* getTriPos() { return m_buffers.at(0); }
 		VertexBuffer* getTriTex() { return m_buffers.at(2); }
 		VertexBuffer* getTriNorm() { return m_buffers.at(1); } //Changed from 2, TODO: Check mesh collision normals
-		void loadObj(std::string _path);
+		void load(std::string _path);
 		void setBuffer(std::string _attribute, VertexBuffer *_buffer);
 		int getVertexCount();
 		GLuint getId();

@@ -22,14 +22,23 @@ namespace Engine
 		template <typename T, typename ... Args>
 		std::shared_ptr<T> addComponent(Args&&... args)
 		{
-			std::shared_ptr<T> rtn = std::make_shared<T>();
-			checkType(rtn);
+			try
+			{
+				std::shared_ptr<T> rtn = std::make_shared<T>();
+				checkType(rtn);
 
-			rtn->m_transform = m_transform;
-			rtn->m_entity = self;
-			rtn->onInitialise(std::forward<Args>(args)...);
-			components.push_back(rtn);
-			return rtn;
+				rtn->m_transform = m_transform;
+				rtn->m_entity = self;
+				rtn->onInitialise(std::forward<Args>(args)...);
+				components.push_back(rtn);
+				return rtn;
+			}
+			catch(Exception &e)
+			{
+				Console::output(Console::Error, "AddComponent", e.message());
+				return nullptr;
+			}
+			
 		}
 
 		void tick();
@@ -46,8 +55,7 @@ namespace Engine
 				{
 					return rtn;
 				}
-			}
-			//std::cout << "Component not found" << std::endl;
+			}	
 			return nullptr;
 		}
 

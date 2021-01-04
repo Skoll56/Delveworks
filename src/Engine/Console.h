@@ -1,10 +1,13 @@
+#ifndef _CONSOLE_H_
+#define _CONSOLE_H_
 #include <iostream>
 #include <vector>
 #include <string>
 
+
 namespace Engine
 {
-	class Console
+	static class Console
 	{
 	public:
 		enum type
@@ -20,5 +23,7 @@ namespace Engine
 
 	private:		
 		Console() {};
+		static std::vector<std::string> m_messageLog;
 	};
 }
+#endif

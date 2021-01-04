@@ -13,13 +13,13 @@ namespace Engine
 
 		if (!m_id)
 		{
-			throw Exception("VertexBuffer", "Failed to generate Vertex Buffer");
+			throw Exception("Failed to generate Vertex Buffer");
 		}
 	}
 
 	void VertexBuffer::add(glm::vec2 value)
 	{
-		if (m_components != 2 && m_components != 0) { throw Exception("VertexBuffer", "Failed to add to Vertex Buffer"); }
+		if (m_components != 2 && m_components != 0) { throw Exception("Failed to add to Vertex Buffer"); }
 		m_data.push_back(value.x);
 		m_data.push_back(value.y);
 		m_components = 2;
@@ -29,7 +29,7 @@ namespace Engine
 
 	void VertexBuffer::add(glm::vec3 _value)
 	{
-		if (m_components != 3 && m_components != 0) { throw Exception("VertexBuffer", "Failed to add to Vertex Buffer"); }
+		if (m_components != 3 && m_components != 0) { throw Exception("Failed to add to Vertex Buffer"); }
 		m_data.push_back(_value.x);
 		m_data.push_back(_value.y);
 		m_data.push_back(_value.z);
@@ -40,7 +40,7 @@ namespace Engine
 
 	void VertexBuffer::add(glm::vec4 value)
 	{
-		if (m_components != 4 && m_components != 0) { throw Exception("VertexBuffer", "Failed to add to Vertex Buffer"); }
+		if (m_components != 4 && m_components != 0) { throw Exception("Failed to add to Vertex Buffer"); }
 		m_data.push_back(value.x);
 		m_data.push_back(value.y);
 		m_data.push_back(value.z);

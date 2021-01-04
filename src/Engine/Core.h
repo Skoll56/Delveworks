@@ -73,9 +73,10 @@ namespace Engine
 		int mouseX, mouseY;
 		float dTime;
 		long t1;
+		bool freeMouse = false;
 		
 		std::shared_ptr<RenderTexture> m_RT;
-		VertexArray* m_screenQuad;
+		std::shared_ptr<VertexArray> m_screenQuad;
 
 		std::weak_ptr<Core> m_self;
 		

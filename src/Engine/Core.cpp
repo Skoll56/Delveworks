@@ -41,7 +41,7 @@ namespace Engine
 		e->transform()->m_eulerAngles = glm::vec3(0.0f, -90.0f, -0.0f);
 		rtn->m_camera = e->addComponent<Camera>();
 
-		std::cout << "Initialised successfully" << std::endl;
+		Console::message("Initialised successfully");
 		return rtn;
 	}
 
@@ -60,7 +60,7 @@ namespace Engine
 		rtn->setTag(tag);
 
 		m_entities.push_back(rtn);
-		std::cout << "I made an entity" << std::endl;
+		Console::message("I made an entity");
 		return rtn;
 	}
 
@@ -82,8 +82,11 @@ namespace Engine
 		m_input->m_xOffset = mouseX - WINDOW_WIDTH / 2;
 		m_input->m_yOffset = mouseY - WINDOW_HEIGHT / 2;
 
-		SDL_WarpMouseInWindow(m_window, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-
+		if (m_input->GetKeyIsDown(SDLK_SPACE)) { freeMouse = true; }
+		if (!freeMouse)
+		{
+			SDL_WarpMouseInWindow(m_window, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+		}
 		//Re-establish window-size to allow stretching and re-sizing
 		SDL_GetWindowSize(m_window, &width, &height);
 		m_camera->update(dTime, m_input);
@@ -96,14 +99,14 @@ namespace Engine
 			}
 			catch (Exception &e)
 			{
-				std::cout << "[Core] " + e.message() << std::endl;
+				Console::output(Console::Error, (*it)->getTag(), e.message());
 			}
 		}
 
 		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end();)
 		{
 			try
-			{
+			{				
 				(*it)->afterTick(); //A second tick for after-tick events
 				if ((*it)->m_delete)
 				{
@@ -116,7 +119,7 @@ namespace Engine
 			}
 			catch (Exception &e)
 			{
-				std::cout << "[Core] " + e.message() << std::endl;
+				Console::output(Console::Error, (*it)->getTag(), e.message());
 				it++;
 			}
 		}
@@ -129,7 +132,7 @@ namespace Engine
 			}
 			catch (Exception &e)
 			{
-				std::cout << "[Core] " + e.message() << std::endl;
+				Console::output(Console::Error, "DirLight Update", e.message());
 			}
 		}
 
@@ -141,7 +144,7 @@ namespace Engine
 			}
 			catch (Exception &e)
 			{
-				std::cout << "[Core] " + e.message() << std::endl;
+				Console::output(Console::Error, "PointLight Update", e.message());
 			}
 		}
 
@@ -151,14 +154,13 @@ namespace Engine
 			{
 				m_pointLights.at(pi)->update(pi);
 			}
-			catch (Exception &e)
+			catch(Exception &e)
 			{
-				std::cout << "[Core] " + e.message() << std::endl;
+				Console::output(Console::Error, "PointLight Update", e.message());
 			}
 		}
 				
-		drawShadowmaps(); /* <-- !GRAPHICS UNIT! */
-
+		drawShadowmaps(); /* <-- !GRAPHICS UNIT! */		
 		updateShader();
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RT->fBufID);
 		glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -182,7 +184,7 @@ namespace Engine
 		}
 		
 		
-		if (quit)
+		if (quit) 
 		{
 			SDL_DestroyWindow(m_window); // DESTROY THAT WINDOW. STRIKE IT DOWN. DEWIT.
 			SDL_Quit();
@@ -212,7 +214,7 @@ namespace Engine
 			}
 			catch (Exception &e)
 			{
-				std::cout << "[Core] " + e.message() << std::endl;
+				Console::output(Console::Error, "Draw Scene", e.message());
 			}
 		}
 	}
@@ -233,7 +235,7 @@ namespace Engine
 			}
 			catch(Exception &e)
 			{
-				std::cout << "[Core] " + e.message() << std::endl;
+				Console::output(Console::Error, "Draw Shadowmap", e.message());
 			}
 		}
 	}
@@ -254,7 +256,7 @@ namespace Engine
 			}
 			catch (Exception &e)
 			{
-				std::cout << "[Core] " + e.message() << std::endl;
+				Console::output(Console::Error, "Draw Shadowcube", e.message());
 			}
 		}
 	}
@@ -262,7 +264,7 @@ namespace Engine
 
 	void Core::start()
 	{
-		std::cout << "I started to start" << std::endl;
+		Console::message("I started to start");
 		quit = false;
 		restart = false;
 		halfX = WINDOW_WIDTH / 2;
@@ -290,7 +292,7 @@ namespace Engine
 	{
 		if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		{
-			throw FatalException("Core", "Failed to Initialise SDL");
+			throw Exception("Failed to Initialise SDL");
 		}
 
 		SDL_ShowCursor(false);
@@ -303,12 +305,12 @@ namespace Engine
 
 		if (!SDL_GL_CreateContext(m_window))
 		{
-			throw FatalException("Core", "Failed to create SDL Window");
+			throw Exception("Failed to create SDL Window");
 		}
 		
 		if (glewInit() != GLEW_OK)
 		{
-			throw FatalException("Core", "Failed to initialise GLEW");
+			throw Exception("Failed to initialise GLEW");
 		}
 	}
 
@@ -333,7 +335,7 @@ namespace Engine
 		}
 		catch (Exception &e)
 		{
-			std::cout << "[Core] " + e.message() << std::endl;
+			Console::output(Console::Error, "Update Shaders", e.message());
 		}
 
 	}
@@ -357,7 +359,7 @@ namespace Engine
 			}
 			catch (Exception &e)
 			{
-				std::cout << "[Core] " + e.message() << std::endl;
+				Console::output(Console::Error, "Draw Shadowmaps", e.message());
 			}
 		}
 
@@ -386,7 +388,7 @@ namespace Engine
 			}
 			catch (Exception &e)
 			{
-				std::cout << "[Core] " + e.message() << std::endl;
+				Console::output(Console::Error, "Pointlight Update", e.message());
 			}
 		}
 
@@ -406,11 +408,9 @@ namespace Engine
 			}
 			catch (Exception &e)
 			{
-				std::cout << "[Core] " + e.message() << std::endl;
+				Console::output(Console::Error, "Spotlight Update", e.message());
 			}
 		}		
-
-		
 	}
 
 	/* !This has been CREATED as part of the GRAPHICS UNIT! */
@@ -424,7 +424,7 @@ namespace Engine
 	
 	void Core::createScreenQuad()
 	{
-		m_screenQuad = new VertexArray();
+		m_screenQuad = std::make_shared<VertexArray>();
 		m_screenQuad->setBuffer("in_Position", new VertexBuffer());
 		m_screenQuad->setBuffer("in_TexCoord", new VertexBuffer());
 
@@ -448,21 +448,21 @@ namespace Engine
 		m_device = alcOpenDevice(NULL);
 		if (!m_device)
 		{
-			throw FatalException("Core", "Failed to create ALC Device");
+			throw Exception("Failed to create ALC Device");
 		}
 
 		m_context = alcCreateContext(m_device, NULL);
 		if (!m_context)
 		{
 			alcCloseDevice(m_device);
-			throw FatalException("Core", "Failed to create SDL Window");
+			throw Exception("Failed to create SDL Window");
 		}
 
 		if (!alcMakeContextCurrent(m_context))
 		{
 			alcDestroyContext(m_context);
 			alcCloseDevice(m_device);
-			throw FatalException("Core", "Failed to create ALC Context");
+			throw Exception("Failed to create ALC Context");
 		}
 	}
 
