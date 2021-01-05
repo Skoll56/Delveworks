@@ -11,6 +11,8 @@ namespace Engine
 	class Transform;
 	class Input;
 	class Collision;
+	class Core;
+	class Collider;
 
 	class Component
 	{
@@ -20,11 +22,21 @@ namespace Engine
 		void destroy();
 		std::shared_ptr<Entity> getEntity() { return m_entity.lock(); }
 		std::shared_ptr<Transform> transform() { return m_transform.lock(); }
-		std::shared_ptr<Input> input();
+		std::shared_ptr<Input> getInput();
+		std::shared_ptr<Core> getCore();
+
+		template <typename T>
+		std::shared_ptr<T> getComponent()
+		{
+			getEntity()->getComponent<T>();
+		}
+
 
 	protected:
 		virtual void onInitialise();
 		virtual void onCollision(std::shared_ptr<Collision> _col);
+		virtual void onCollisionEnter(std::shared_ptr<Collision> _col);
+		virtual void onCollisionExit(std::shared_ptr<Entity> _other);
 		virtual void onTick();
 		virtual void onRender();
 		virtual void onDestroy();
@@ -35,6 +47,7 @@ namespace Engine
 
 	class Transform : public Component
 	{
+		friend class Entity;
 	public:
 		void setPosition(float _posX, float _posY, float _posZ) { m_position.x = _posX; m_position.y = _posY; m_position.z = _posZ; }
 		void setPosition(glm::vec3 _value) { m_position = _value; }
@@ -45,7 +58,7 @@ namespace Engine
 		glm::mat4 getModel() { return m_model; }
 		void onTick();
 		void setModel(glm::mat4 _model) { m_model = _model; }
-		void onInitialise();		
+				
 		void rotate(glm::vec3 _axis, float _amt) { m_eulerAngles += _amt * _axis; }
 		glm::vec3 getUp() { return m_upVec; }
 		glm::vec3 getRight() { return m_right; }
@@ -55,6 +68,7 @@ namespace Engine
 		
 
 	private:		
+		void onInitialise();
 		glm::vec3 m_scale = glm::vec3(1.0f);
 		glm::vec3 m_size = glm::vec3(1.0f);
 		glm::mat4 m_model = glm::mat4(1.0f);
@@ -65,8 +79,9 @@ namespace Engine
 
 	class SoundSource : public Component
 	{
+		friend class Entity;
 		public:
-		void onInitialise(std::shared_ptr<Sound> _sound);
+		
 		void onTick();
 		void Play(float _vol);
 		bool m_loop = false;
@@ -74,6 +89,7 @@ namespace Engine
 
 
 		private:
+		void onInitialise(std::shared_ptr<Sound> _sound);
 		ALuint m_id = 0;
 		bool m_played = false;
 		

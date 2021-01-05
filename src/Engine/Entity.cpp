@@ -76,6 +76,36 @@ namespace Engine
 		return nullptr;
 	}
 
+	void Entity::onCollisionEnter(std::shared_ptr<Collision> _c)
+	{
+		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
+		{
+			try
+			{
+				(*it)->onCollisionEnter(_c);
+			}
+			catch (Exception &e)
+			{
+				Console::output(Console::Error, "Entity OnCollisionEnter", e.message());
+			}
+		}
+	}
+
+	void Entity::onCollisionExit(std::shared_ptr<Entity> _c)
+	{
+		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
+		{
+			try
+			{
+				(*it)->onCollisionExit(_c);
+			}
+			catch (Exception &e)
+			{
+				Console::output(Console::Error, "Entity OnCollisionExit", e.message());
+			}
+		}
+	}
+
 	void Entity::onCollision(std::shared_ptr<Collision> _c)
 	{
 		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)

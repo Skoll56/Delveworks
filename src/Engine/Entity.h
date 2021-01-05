@@ -61,6 +61,8 @@ namespace Engine
 
 		
 		std::shared_ptr<Collider> getCollider();
+
+		void onCollisionEnter(std::shared_ptr<Collision> _c);
 		
 
 		std::string getTag() { return m_tag; }
@@ -69,6 +71,7 @@ namespace Engine
 		bool isActive() { return m_active; };
 		void setActive(bool _status) { m_active = _status; }
 		std::shared_ptr<Transform> transform() { return m_transform; }
+		void onCollisionExit(std::shared_ptr<Entity> _c);
 		void onCollision(std::shared_ptr<Collision> _c);
 		void destroy() { m_delete = true; }
 

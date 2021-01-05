@@ -142,8 +142,11 @@ namespace Engine
 
 					else if (myShape == "mesh")
 					{
-						collision = meshToMesh(m2, m, _c1);
-						if (collision) { setCollided(true); }
+						collision = meshToMesh(m2, _objects[i]->getComponent<Collider>(), _c1);
+						if (collision) 
+						{ 
+							setCollided(true); 
+						}
 
 					}  // End of collision code	
 
@@ -524,12 +527,7 @@ namespace Engine
 
 	//Works, although buggy. DOES NOT WORK WITH 2D PLANES. (But is more than happy with an infinitely thin box)
 	bool PhysicsEventUser::meshToMesh(std::shared_ptr<MeshCollider> _my, std::shared_ptr<Collider> _other, glm::vec3 _c1)
-	{
-		std::shared_ptr<SphereCollider> s = std::static_pointer_cast<SphereCollider>(_other);
-		if (s) // Too many polygons. Not worth it
-		{
-			return false;
-		}
+	{		
 		glm::vec3 otherP = _other->transform()->getPosition();
 		glm::vec3 pos = _my->transform()->getPosition();
 		glm::vec3 length = ((_my->transform()->getScale() / 2.0f) * _my->transform()->getSize()); // We factor size into the calculations because meshes use the same collision function
@@ -1049,76 +1047,114 @@ namespace Engine
 		m_velocity = _vel;
 	}
 
+	bool PhysicsObject::isInColList(std::vector<std::shared_ptr<Collision>> _list, std::shared_ptr<Collision> _col)
+	{
+		for (int i = 0; i < _list.size(); i++)
+		{
+			if (_list[i]->m_other->getTag() == _col->m_other->getTag())
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	void PhysicsObject::handleCollisions() // Handles multiple collisions at once
 	{
 		std::vector<std::shared_ptr<Collision>> collision = m_collisions;
 
+		//Iterate through every collision
 		for (int i = 0; i < collision.size(); i++)
 		{
+			//Check to see if this collision happened last frame too. If not, call CollisionEnter.
+			if (!isInColList(m_lastCol, collision[i]))
+			{
+				getEntity()->onCollisionEnter(collision[i]);
+			}
+
+			//Call onCollision
 			getEntity()->onCollision(collision[i]);
 
-
-			glm::vec3 move = transform()->getPosition() - collision[i]->m_cP;
-			//The amount the object will move away from another object it collides with so as not to clip
-
-			
-
-			//Floored is a simple boolean optimisation that is used to tell if an object is now resting on a flat surface
-			//If it is, we can simplify the responses to save time
-			if (isFloored() && move.y > 0.0f)
+			if (collision[i]->m_other->getComponent<Collider>()->m_trigger)
 			{
-				move.y = 0.0f;
-			}
-			transform()->setPosition(transform()->getPosition() - move);
-
-			if (getEntity()->getComponent<MeshCollider>()) // To do: Make velocity in the offending direction turn to 0
-			{
-				collision[i]->m_deltaVel = glm::vec3(0.0f); // We don't want to adjust Mesh position here. Meshes get weird. Meshes only use pseudo-physics and do not need realistic responses.
-
+				collision[i]->ignoreCollision();
 			}
 			else
 			{
-				//The friction co-efficient of two objects
-				float fricCoEf = collision[i]->m_my->getCollider()->getFriction() + collision[i]->m_other->getCollider()->getFriction() / 10.0f;
+				glm::vec3 move = transform()->getPosition() - collision[i]->m_cP;
+				//The amount the object will move away from another object it collides with so as not to clip
 
-				//Also adjust angular velocity by an impulse value if it has advanced physics
-				std::shared_ptr<AdvPhysicsObject> aRB = getEntity()->getComponent<AdvPhysicsObject>();
-				if (aRB)
+				//Floored is a simple boolean optimisation that is used to tell if an object is now resting on a flat surface
+				//If it is, we can simplify the responses to save time
+				if (isFloored() && move.y > 0.0f)
 				{
-					glm::vec3 vel = aRB->getVelocity();
-					if (WITHIN(vel.x, 0.0f, 0.01f) && WITHIN(vel.z, 0.0f, 0.01f))
-					{
-						vel.y = 0.0f;
-					}
-
-					if (WITHIN(vel.y, 0.0f, 0.01f) && WITHIN(vel.z, 0.0f, 0.01f))
-					{
-						vel.x = 0.0f;
-					}
-
-					if (WITHIN(vel.x, 0.0f, 0.01f) && WITHIN(vel.y, 0.0f, 0.01f))
-					{
-						vel.z = 0.0f;
-					}
-
-					//If the result force gets too low, it starts to stop rolling prematurely
-					float rForce = collision[i]->m_resultForce;
-					if (rForce < 0.8f) { rForce = 0.8f; }
-
-					//Angular force
-					glm::vec3 aForce = (glm::cross(vel, collision[i]->m_normal) * rForce) * (fricCoEf * (aRB->getMass() / -9.80f));
-					aForce *= -9.0f; //Scale the force to make it look realistic
-
-									 //Torque = Sum of the angular foces acting on an object
-					aRB->addTorque(aForce);
+					move.y = 0.0f;
 				}
+				transform()->setPosition(transform()->getPosition() - move);
 
-				glm::vec3 friction = getVelocity() / (fricCoEf * 100.0f);
-				setVelocity((getVelocity() + collision[i]->m_deltaVel) - friction);
+				if (getEntity()->getComponent<MeshCollider>()) // To do: Make velocity in the offending direction turn to 0
+				{
+					collision[i]->m_deltaVel = glm::vec3(0.0f); // We don't want to adjust Mesh position here. Meshes get weird. Meshes only use pseudo-physics and do not need realistic responses.
+				}
+				else
+				{
+					//The friction co-efficient of two objects
+					float fricCoEf = collision[i]->m_my->getCollider()->getFriction() + collision[i]->m_other->getCollider()->getFriction() / 10.0f;
+
+					//Also adjust angular velocity by an impulse value if it has advanced physics
+					std::shared_ptr<AdvPhysicsObject> aRB = getEntity()->getComponent<AdvPhysicsObject>();
+					if (aRB)
+					{
+						glm::vec3 vel = aRB->getVelocity();
+						if (WITHIN(vel.x, 0.0f, 0.01f) && WITHIN(vel.z, 0.0f, 0.01f))
+						{
+							vel.y = 0.0f;
+						}
+
+						if (WITHIN(vel.y, 0.0f, 0.01f) && WITHIN(vel.z, 0.0f, 0.01f))
+						{
+							vel.x = 0.0f;
+						}
+
+						if (WITHIN(vel.x, 0.0f, 0.01f) && WITHIN(vel.y, 0.0f, 0.01f))
+						{
+							vel.z = 0.0f;
+						}
+
+						//If the result force gets too low, it starts to stop rolling prematurely
+						float rForce = collision[i]->m_resultForce;
+						if (rForce < 0.8f) { rForce = 0.8f; }
+
+						//Angular force
+						glm::vec3 aForce = (glm::cross(vel, collision[i]->m_normal) * rForce) * (fricCoEf * (aRB->getMass() / -9.80f));
+						aForce *= -9.0f; //Scale the force to make it look realistic
+
+										 //Torque = Sum of the angular foces acting on an object
+						aRB->addTorque(aForce);
+					}
+
+					glm::vec3 friction = getVelocity() / (fricCoEf * 100.0f);
+					setVelocity((getVelocity() + collision[i]->m_deltaVel) - friction);
+				}
+			}
+		}
+
+		//Iterate through every collision from last frame (To see if the collision ended for OnCollisionExit)
+		for (int i = 0; i < m_lastCol.size(); i++)
+		{
+			if (!isInColList(collision, m_lastCol[i]))
+			{
+				getEntity()->onCollisionExit(m_lastCol[i]->m_other);
 			}
 		}
 
 		//Clears the collisions ready to re-detect next frame
+		m_lastCol.clear();
+		for (int i = 0; i < collision.size(); i++)
+		{
+			m_lastCol.push_back(collision[i]);
+		}
 		resetCollisions();
 	}
 

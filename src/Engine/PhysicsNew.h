@@ -99,7 +99,10 @@ namespace Engine
 		const glm::vec3 getForce() const { return m_force; }
 
 	protected:
+		std::vector<std::shared_ptr<Collision>> m_lastCol;		
+		bool isInColList(std::vector<std::shared_ptr<Collision>> _list, std::shared_ptr<Collision> _col);
 		
+
 		float m_mass = 1.0f;		
 		float m_bounciness = 0.0f;
 		glm::vec3 m_velocity = glm::vec3(0.0f);

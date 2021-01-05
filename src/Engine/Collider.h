@@ -14,9 +14,10 @@ namespace Engine
 	{
 	public:
 		void setFriction(float _friction) { m_friction = _friction; }
-		float getFriction() { return m_friction; }		
+		float getFriction() { return m_friction; }	
+		bool m_trigger = false;
 	private:
-		bool m_trigger;
+		
 		float m_friction = 0.25f;		
 	};
 
@@ -54,8 +55,8 @@ namespace Engine
 	class MeshCollider : public Collider
 	{
 	public:
-		MeshCollider(std::string _obj, glm::vec3 _scale, glm::vec3 _size);
-		MeshCollider(glm::vec3 _scale);
+		//MeshCollider(std::string _obj, glm::vec3 _scale, glm::vec3 _size);
+		//MeshCollider(glm::vec3 _scale);
 		MeshCollider() {};
 		void setEasy(bool _val) { m_easyCollide = _val; }
 		bool isEasy() { return m_easyCollide; }
@@ -72,12 +73,12 @@ namespace Engine
 
 
 	private:
-		bool m_semiMesh;
-		bool m_easyCollide;
+		bool m_semiMesh = false;
+		bool m_easyCollide = false;
 		std::string m_lastMesh = "NA";
 		std::vector<int> m_colTri;
 		std::vector<int> m_myTri;
-		bool m_collidedBefore;
+		bool m_collidedBefore = false;
 		float m_precision = 0.01f;
 	};
 }

@@ -14,9 +14,14 @@ namespace Engine
 		m_delete = true;
 	}
 
-	std::shared_ptr<Input> Component::input()
+	std::shared_ptr<Input> Component::getInput()
 	{
 		 return getEntity()->getCore()->m_input; 
+	}
+
+	std::shared_ptr<Core> Component::getCore()
+	{
+		return getEntity()->getCore();
 	}
 
 	void Component::onInitialise()
@@ -25,6 +30,14 @@ namespace Engine
 	}
 
 	void Component::onCollision(std::shared_ptr<Collision> _col)
+	{
+	}
+
+	void Component::onCollisionEnter(std::shared_ptr<Collision> _col)
+	{
+	}
+
+	void Component::onCollisionExit(std::shared_ptr<Entity> _other)
 	{
 	}
 

@@ -15,18 +15,24 @@ class Ball : public Component
 
 	void Ball::onCollision(std::shared_ptr<Collision> _col)
 	{	
+		
+	}
+
+	void Ball::onCollisionExit(std::shared_ptr<Entity> _other)
+	{
 		if (!m_sound.lock()) throw Exception();
 		m_sound.lock()->Play(0.2f);
 		Console::message("Collision happened");
 	}
 
+	void Ball::onCollisionEnter(std::shared_ptr<Collision> _col)
+	{
+		
+	}
+
 	void Ball::onTick()
 	{
-		i++;	
-		if (i == 200)
-		{
-			m_sound.lock()->destroy();
-		}
+		
 	}
 };
 
@@ -39,7 +45,7 @@ int main()
 	//Create the statue entity
 	std::shared_ptr<Entity> test = core->createEntity();
 	std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
-	//MR->Initialise();
+	//test->addComponent<MeshCollider>();
 	test->transform()->m_position = glm::vec3(0.0f, 1.0f, 5.0f);
 
 	//Create the directional (and ambient) light
@@ -75,6 +81,7 @@ int main()
 		floor->transform()->m_position = glm::vec3(0.0f + l, 0.0f, 0.0f);
 		floor->transform()->setScale(glm::vec3(30.0f, 0.1f, 30.0f));
 		std::shared_ptr<PlaneCollider> b = floor->addComponent<PlaneCollider>();
+		//b->m_trigger = true;
 		b->setNorm(glm::vec3(0.0f, 1.0f, 0.0f));
 
 
@@ -114,15 +121,16 @@ int main()
 		std::shared_ptr<BoxCollider> b5 = wall5->addComponent<BoxCollider>();
 
 		//Create bouncy balls (with WiP physics) to see
-		for (int i = 0; i < 1; i++)
+		for (int i = 0; i < 2; i++)
 		{
 			std::shared_ptr<Entity> ball = core->createEntity();
 			std::shared_ptr<MeshRenderer> MR3 = ball->addComponent<MeshRenderer>("Image1.bmp", "1b1sphere.obj", glm::vec3(1.0f, 1.0f, 1.0f));
 			//MR3->Initialise();
 			ball->transform()->setScale(glm::vec3(1.0f, 1.0f, 1.0f));
-			ball->transform()->setPosition(glm::vec3(-20.0f + (i * 0.2f) + l, 13.0f + (i * 1.5f), -20.0f));
+			ball->transform()->setPosition(glm::vec3(-0.0f + (i * 0.2f) + l, 13.0f + (i * 1.5f), 5.0f));
 			std::shared_ptr<SphereCollider> sc = ball->addComponent<SphereCollider>();
-			std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>(1.0f, 0.9f);
+			std::shared_ptr<PhysicsObject> phys = ball->addComponent<PhysicsObject>(1.0f, 0.5f);
+			//std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>(1.0f, 0.9f);
 			ball->addComponent<Ball>();
 		}	
 		core->start();

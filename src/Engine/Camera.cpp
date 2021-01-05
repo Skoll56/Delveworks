@@ -24,19 +24,19 @@ namespace Engine
 		if (transform()->m_eulerAngles.y > 360.0f) { transform()->m_eulerAngles.y = 0.0f; }
 		else if (transform()->m_eulerAngles.y < -360.0f) { transform()->m_eulerAngles.y = 0.0f; }
 
-		if (input()->GetKeyIsDown(SDLK_w))
+		if (getInput()->GetKeyIsDown(SDLK_w))
 		{
 			transform()->m_position += transform()->getFwd() * 0.16f;
 		}
-		if (input()->GetKeyIsDown(SDLK_s))
+		if (getInput()->GetKeyIsDown(SDLK_s))
 		{
 			transform()->m_position -= transform()->getFwd() * 0.16f;
 		}
-		if (input()->GetKeyIsDown(SDLK_d))
+		if (getInput()->GetKeyIsDown(SDLK_d))
 		{
 			transform()->m_position -= transform()->getRight() * 0.16f;
 		}
-		if (input()->GetKeyIsDown(SDLK_a))
+		if (getInput()->GetKeyIsDown(SDLK_a))
 		{
 			transform()->m_position += transform()->getRight() * 0.16f;
 		}
