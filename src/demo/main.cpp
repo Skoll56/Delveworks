@@ -20,14 +20,14 @@ class Ball : public Component
 
 	void onCollisionExit(std::shared_ptr<Entity> _other)
 	{
-		if (!m_sound.lock()) throw Exception();
-		m_sound.lock()->Play(0.2f);
-		Console::message("Collision happened");
+		
 	}
 
 	void onCollisionEnter(std::shared_ptr<Collision> _col)
 	{
-		
+		if (!m_sound.lock()) throw Exception();
+		m_sound.lock()->Play(0.2f);
+		Console::message("Collision happened");
 	}
 
 	void onTick()
@@ -121,16 +121,16 @@ int main()
 		std::shared_ptr<BoxCollider> b5 = wall5->addComponent<BoxCollider>();
 
 		//Create bouncy balls (with WiP physics) to see
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 1; i++)
 		{
 			std::shared_ptr<Entity> ball = core->createEntity();
 			std::shared_ptr<MeshRenderer> MR3 = ball->addComponent<MeshRenderer>("Image1.bmp", "1b1sphere.obj", glm::vec3(1.0f, 1.0f, 1.0f));
 			//MR3->Initialise();
 			ball->transform()->setScale(glm::vec3(1.0f, 1.0f, 1.0f));
-			ball->transform()->setPosition(glm::vec3(-0.0f + (i * 0.2f) + l, 13.0f + (i * 1.5f), 5.0f));
+			ball->transform()->setPosition(glm::vec3(5.0f + (i * 0.2f) + l, 13.0f + (i * 1.5f), 5.0f));
 			std::shared_ptr<SphereCollider> sc = ball->addComponent<SphereCollider>();
-			std::shared_ptr<PhysicsObject> phys = ball->addComponent<PhysicsObject>(1.0f, 0.5f);
-			//std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>(1.0f, 0.9f);
+			//std::shared_ptr<PhysicsObject> phys = ball->addComponent<PhysicsObject>(1.0f, 0.5f);
+			std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>(1.0f, 0.9f);
 			ball->addComponent<Ball>();
 		}	
 		core->start();

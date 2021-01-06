@@ -194,7 +194,7 @@ namespace Engine
 
 		if (fabs(dis2Plane) <= r) //If already colliding with the plane
 		{
-			if (aPos.x > aPpos.x + aLength.x || aPos.y > aPpos.y + aLength.y || aPos.z > aPpos.z + aLength.z) // If we fall off the plane
+			if (fabs(aPos.x) > aPpos.x + aLength.x || fabs(aPos.y) > aPpos.y + aLength.y || fabs(aPos.z) > aPpos.z + aLength.z) // If we fall off the plane
 			{
 				return false;
 			}

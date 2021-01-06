@@ -14,7 +14,7 @@ namespace Engine
 		m_delete = true;
 	}
 
-	std::shared_ptr<Input> Component::getInput()
+	std::shared_ptr<Keyboard> Component::getInput()
 	{
 		 return getEntity()->getCore()->m_input; 
 	}

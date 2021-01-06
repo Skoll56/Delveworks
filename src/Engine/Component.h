@@ -10,7 +10,7 @@ namespace Engine
 {
 	class Entity;	
 	class Transform;
-	class Input;
+	class Keyboard;
 	class Collision;
 	class Core;
 	class Collider;
@@ -23,7 +23,7 @@ namespace Engine
 		void destroy();
 		std::shared_ptr<Entity> getEntity() { return m_entity.lock(); }
 		std::shared_ptr<Transform> transform() { return m_transform.lock(); }
-		std::shared_ptr<Input> getInput();
+		std::shared_ptr<Keyboard> getInput();
 		std::shared_ptr<Core> getCore();
 
 		/*template <typename T>

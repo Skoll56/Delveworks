@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-	class Input;	
+	class Keyboard;	
 	class Camera : public Component
 	{		
 		private:		
@@ -14,7 +14,7 @@ namespace Engine
 		public:				
 		void onInitialise();
 		glm::mat4 getView() { return m_viewMat; }
-		void update(float _dTime, std::shared_ptr<Input> _input);
+		void update(float _dTime, std::shared_ptr<Keyboard> _input);
 	};
 }
 

@@ -27,7 +27,7 @@ namespace Engine
 		rtn->m_rManager = std::make_shared<ResourceManager>();
 		rtn->initialiseSDL();
 		rtn->initialiseAL();
-		rtn->m_input = std::make_shared<Input>();
+		rtn->m_input = std::make_shared<Keyboard>();
 		rtn->initialiseShaders();
 
 		rtn->m_self = rtn;
@@ -70,17 +70,16 @@ namespace Engine
 		float time = SDL_GetTicks();
 		dTime = (time - t1) / 1000.0f;
 		t1 = time;
-		SDL_Event event = { 0 };
-
+		
 		//Set the clear-colour for the screen and clear it
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		SDL_GetMouseState(&mouseX, &mouseY);
-		m_input->m_xOffset = mouseX - WINDOW_WIDTH / 2;
-		m_input->m_yOffset = mouseY - WINDOW_HEIGHT / 2;
+		
+		//m_input->m_xOffset = mouseX - WINDOW_WIDTH / 2;
+		//m_input->m_yOffset = mouseY - WINDOW_HEIGHT / 2;
 
 		if (m_input->GetKeyIsDown(SDLK_SPACE)) { freeMouse = true; }
 		if (!freeMouse)
@@ -174,7 +173,7 @@ namespace Engine
 
 		SDL_GL_SwapWindow(m_window);
 
-		quit = m_input->takeInput(event); //Handles the input, and returns a 'quit' value to see if the program should end
+		quit = m_input->update(); //Handles the input, and returns a 'quit' value to see if the program should end
 		
 
 		float targetTime = 1.0f / 60.f;
