@@ -5,7 +5,7 @@
 #include "PhysicsNew.h"
 #include <math.h>
 #include <stdio.h>
-#include <typeinfo.h>
+//#include <typeinfo.h>
 #include "MeshRenderer.h"
 #include "VertexBuffer.h"
 #include "VertexArray.h"

@@ -7,7 +7,7 @@
 
 namespace Engine
 {
-	static class Console
+	class Console
 	{
 	public:
 		enum type

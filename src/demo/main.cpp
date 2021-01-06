@@ -8,29 +8,29 @@ class Ball : public Component
 	int i = 0;
 
 	public:
-	void Ball::onInitialise()
+	void onInitialise()
 	{		
 		m_sound = getEntity()->addComponent<SoundSource>(getEntity()->getCore()->m_rManager->load<Sound>("pew"));
 	}
 
-	void Ball::onCollision(std::shared_ptr<Collision> _col)
+	void onCollision(std::shared_ptr<Collision> _col)
 	{	
 		
 	}
 
-	void Ball::onCollisionExit(std::shared_ptr<Entity> _other)
+	void onCollisionExit(std::shared_ptr<Entity> _other)
 	{
 		if (!m_sound.lock()) throw Exception();
 		m_sound.lock()->Play(0.2f);
 		Console::message("Collision happened");
 	}
 
-	void Ball::onCollisionEnter(std::shared_ptr<Collision> _col)
+	void onCollisionEnter(std::shared_ptr<Collision> _col)
 	{
 		
 	}
 
-	void Ball::onTick()
+	void onTick()
 	{
 		
 	}

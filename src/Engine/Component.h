@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include <AL/al.h>
 #include "Resource.h"
+//#include "Entity.h"
 
 namespace Engine
 {
@@ -25,11 +26,11 @@ namespace Engine
 		std::shared_ptr<Input> getInput();
 		std::shared_ptr<Core> getCore();
 
-		template <typename T>
+		/*template <typename T>
 		std::shared_ptr<T> getComponent()
 		{
 			getEntity()->getComponent<T>();
-		}
+		}*/
 
 
 	protected:

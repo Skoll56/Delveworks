@@ -7,6 +7,7 @@
 #include <vector>
 #include <iostream>
 #include "Exception.h"
+#include "Console.h"
 
 namespace Engine
 {

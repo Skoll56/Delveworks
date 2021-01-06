@@ -12,14 +12,14 @@
 #include <AL/alc.h> 
 #include "RenderTexture.h"
 #include "Light.h"
-
+#include "Camera.h"
 
 
 namespace Engine
 {
 	struct Entity;		
 	struct ResourceManager;
-	class Camera;
+	//class Camera;
 	class Shader;
 	class VertexArray;
 

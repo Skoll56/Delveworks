@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Component.h"
 #include "Resource.h"
-#include "Camera.h"
+//#include "Camera.h"
 #include "Shader.h"
 #include "VertexArray.h"
 #include "VertexBuffer.h"
@@ -296,7 +296,7 @@ namespace Engine
 		}
 
 		SDL_ShowCursor(false);
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 		m_window = SDL_CreateWindow("Delveworks",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
