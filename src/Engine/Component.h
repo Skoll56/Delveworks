@@ -23,7 +23,15 @@ namespace Engine
 		void destroy();
 		std::shared_ptr<Entity> getEntity() { return m_entity.lock(); }
 		std::shared_ptr<Transform> transform() { return m_transform.lock(); }
-		std::shared_ptr<Keyboard> getInput();
+
+		template <typename T>
+		std::shared_ptr<T> getInputDevice()
+		{
+			return getCore()->getInput()->getDevice<T>();
+		}
+
+
+
 		std::shared_ptr<Core> getCore();
 
 		/*template <typename T>

@@ -36,6 +36,72 @@ class Ball : public Component
 	}
 };
 
+class Demo : public Component
+{
+	public:
+	std::weak_ptr<Transform> camera;
+	std::weak_ptr<Keyboard> keyboard;	
+	std::weak_ptr<Mouse> mouse;	
+	float moveSpeed = 10.0f;
+	float rotSpeed = 10.0f;
+	
+
+	void onInitialise()
+	{
+		camera = getCore()->m_camera->transform();
+
+		std::shared_ptr<InputManager> IM = getCore()->getInput();
+		mouse = IM->addDevice<Mouse>();
+		keyboard = IM->addDevice<Keyboard>();
+	}
+
+	void onTick()
+	{
+		float dTime = getCore()->getDeltaTime();
+		
+
+		if (keyboard.lock()->GetKeyIsDown(SDLK_w))
+		{
+			camera.lock()->m_position += camera.lock()->getFwd() * moveSpeed * dTime;
+		}
+		if (keyboard.lock()->GetKeyIsDown(SDLK_s))
+		{
+			camera.lock()->m_position -= camera.lock()->getFwd() * moveSpeed * dTime;
+		}
+		if (keyboard.lock()->GetKeyIsDown(SDLK_d))
+		{
+			camera.lock()->m_position -= camera.lock()->getRight() * moveSpeed * dTime;
+		}
+		if (keyboard.lock()->GetKeyIsDown(SDLK_a))
+		{
+			camera.lock()->m_position += camera.lock()->getRight() * moveSpeed * dTime;
+		}
+
+		camera.lock()->rotate(glm::vec3(0.0f, 1.0f, 0.0f), mouse.lock()->getDeltaPos().x * rotSpeed * dTime);
+		camera.lock()->rotate(glm::vec3(1.0f, 0.0f, 0.0f), mouse.lock()->getDeltaPos().y * rotSpeed * dTime);
+
+		if (camera.lock()->m_eulerAngles.x > 89.0f) { camera.lock()->m_eulerAngles.x = 89.0f; }
+		else if (camera.lock()->m_eulerAngles.x < -89.0f) { camera.lock()->m_eulerAngles.x = -89.0f; }
+		if (camera.lock()->m_eulerAngles.y > 360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
+		else if (camera.lock()->m_eulerAngles.y < -360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
+
+	}
+};
+
+class CustomInput : public InputDevice
+{
+	void update(std::vector<SDL_Event> _eventList)
+	{
+		for (int i = 0; i < _eventList.size(); i++)
+		{
+			if (_eventList[i].type == SDL_WINDOWEVENT)
+			{
+				//Do Window stuff, or whatever. This is just an example of a custom input module.
+			}
+		}
+	}
+};
+
 
 #undef main
 int main()
@@ -47,6 +113,11 @@ int main()
 	std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
 	//test->addComponent<MeshCollider>();
 	test->transform()->m_position = glm::vec3(0.0f, 1.0f, 5.0f);
+
+	//Create a demo object
+	std::shared_ptr<Entity> demo = core->createEntity();
+	demo->addComponent<Demo>();
+
 
 	//Create the directional (and ambient) light
 	std::shared_ptr<Entity> sun = core->createEntity();

@@ -27,7 +27,9 @@ namespace Engine
 		rtn->m_rManager = std::make_shared<ResourceManager>();
 		rtn->initialiseSDL();
 		rtn->initialiseAL();
-		rtn->m_input = std::make_shared<Keyboard>();
+		rtn->m_inputManager = std::make_shared<InputManager>();
+		
+
 		rtn->initialiseShaders();
 
 		rtn->m_self = rtn;
@@ -81,14 +83,14 @@ namespace Engine
 		//m_input->m_xOffset = mouseX - WINDOW_WIDTH / 2;
 		//m_input->m_yOffset = mouseY - WINDOW_HEIGHT / 2;
 
-		if (m_input->GetKeyIsDown(SDLK_SPACE)) { freeMouse = true; }
-		if (!freeMouse)
-		{
-			SDL_WarpMouseInWindow(m_window, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-		}
+
+		quit = m_inputManager->update(); //Handles the input, and returns a 'quit' value to see if the program should end
+		//m_mouse->update();
+		//SDL_WarpMouseInWindow(m_window, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+		
 		//Re-establish window-size to allow stretching and re-sizing
 		SDL_GetWindowSize(m_window, &width, &height);
-		m_camera->update(dTime, m_input);
+		m_camera->update(dTime);
 
 		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end(); it++)
 		{
@@ -173,7 +175,6 @@ namespace Engine
 
 		SDL_GL_SwapWindow(m_window);
 
-		quit = m_input->update(); //Handles the input, and returns a 'quit' value to see if the program should end
 		
 
 		float targetTime = 1.0f / 60.f;

@@ -18,8 +18,7 @@
 namespace Engine
 {
 	struct Entity;		
-	struct ResourceManager;
-	//class Camera;
+	struct ResourceManager;	
 	class Shader;
 	class VertexArray;
 
@@ -34,10 +33,13 @@ namespace Engine
 		void drawScene();
 		void drawShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
 		void drawPointShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
+		std::shared_ptr<InputManager> getInput() { return m_inputManager; }
+
 		
 
 		//Not functions		
-		std::shared_ptr<Keyboard> m_input;
+		
+		
 		std::shared_ptr<ResourceManager> m_rManager;
 
 		//SDL OPENGL and OPENAL STUFF		
@@ -61,7 +63,8 @@ namespace Engine
 		std::shared_ptr<Camera> m_camera;
 
 	private:
-		std::vector<std::shared_ptr<Entity>> m_entities;		
+		std::vector<std::shared_ptr<Entity>> m_entities;	
+		std::shared_ptr<InputManager> m_inputManager;
 		int permX, permY;
 		bool quit;
 		bool restart;
