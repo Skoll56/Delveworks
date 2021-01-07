@@ -9,10 +9,12 @@ namespace Engine
 {
 	class InputDevice
 	{
-	public:
-		virtual void update(std::vector<SDL_Event> _eventList) {};
-
+		friend class InputManager;
 	protected:
+		virtual void update(std::vector<SDL_Event> _eventList) {};
+		virtual void close() {};
+		std::weak_ptr<InputManager> m_IM;
+
 		template <typename T>
 		bool isContainedIn(T _obj, std::vector<T> _vector)
 		{
@@ -29,12 +31,33 @@ namespace Engine
 			}
 			return false;
 		}
+
+		template <typename T>
+		void removeFromList(T _obj, std::vector<T>* _vector)
+		{
+			for (std::vector<T>::iterator it = _vector->begin(); it != _vector->end();)
+			{
+				if (*it == _obj)
+				{
+					it = _vector->erase(it);
+					break;
+				}
+				else
+				{
+					it++;
+				}
+			}
+		}
 	};
 
 	class InputManager
-	{
+	{		
+		friend class Mouse;
+		friend class Core;
 		public:
 		bool update();
+		void closeInputDevices();
+
 
 		template <typename T>
 		std::shared_ptr<T> getDevice()
@@ -62,6 +85,7 @@ namespace Engine
 				}
 				else
 				{					
+					rtn->m_IM = m_self;
 					m_devices.push_back(rtn);					
 				}
 				return rtn;
@@ -73,8 +97,13 @@ namespace Engine
 			}
 		}
 
+		glm::vec2 getWindowSize() { return m_windowSize; }
+		
 
 		private:		
+		SDL_Window* m_window;
+		glm::vec2 m_windowSize;
+		std::weak_ptr<InputManager> m_self;
 		std::vector<SDL_Event> m_eventList;
 		std::vector<std::shared_ptr<InputDevice>> m_devices;
 	};
@@ -83,14 +112,14 @@ namespace Engine
 
 	class Keyboard : public InputDevice
 	{
+		friend class InputManager;
 	private:
 		std::vector<SDL_Keycode> m_keyDown;
 		std::vector<SDL_Keycode> m_keyUp;
 		std::vector<SDL_Keycode> m_keyIsDown;
+		void update(std::vector<SDL_Event> _eventList);
 
-	public:
-		Keyboard();
-		void update(std::vector<SDL_Event> _eventList);		
+	public:						
 		bool GetKeyIsDown(SDL_Keycode _event) { return isContainedIn(_event, m_keyIsDown); }
 		bool GetKeyDown(SDL_Keycode _event) { return isContainedIn(_event, m_keyDown); }
 		bool GetKeyUp(SDL_Keycode _event) { return isContainedIn(_event, m_keyUp); }
@@ -99,18 +128,23 @@ namespace Engine
 
 	class Mouse : public InputDevice
 	{	
+		friend class InputManager;
 		public:
 		enum MouseButton { Left = 0, Middle = 1, Right = 2 };
 		bool getButtonDown(MouseButton _button) { return isContainedIn(_button, m_buttonDown); }
 		bool getButtonUp(MouseButton _button) { return isContainedIn(_button, m_buttonUp); }
 		bool getButtonIsDown(MouseButton _button) { return isContainedIn(_button, m_buttonIsDown); }
 		int getScrollWheel() { return m_scroll; }
-
-		void update(std::vector<SDL_Event> _eventList);
+		void hideCursor(bool _tf);
+		void lockCursor(bool _tf) { m_cursorLocked = _tf; }
+		
 		glm::vec2 getPosition() { return m_pos; }
 		glm::vec2 getDeltaPos() { return m_deltaPos; }
 
 		private:
+		void update(std::vector<SDL_Event> _eventList);
+		bool m_cursorHidden;
+		bool m_cursorLocked;
 		glm::vec2 m_deltaPos;
 		glm::vec2 m_pos;
 		glm::vec2 m_lastPos;
@@ -118,6 +152,49 @@ namespace Engine
 		std::vector<MouseButton> m_buttonDown;
 		std::vector<MouseButton> m_buttonUp;
 		std::vector<MouseButton> m_buttonIsDown;
+	};
+
+	class Controller : public InputDevice
+	{
+		friend class InputManager;
+	public:
+		glm::vec2 getLeftStickPosition() { return m_leftStick; }
+		glm::vec2 getRightStickPosition() { return m_rightStick; }
+		float getRightTrigger() { return m_rightTrigger; }
+		float getLeftTrigger() { return m_leftTrigger; }
+
+		int getThreshold() { return m_moveThreshold; }
+		void setThreshold(int _val) { m_moveThreshold = _val; }
+
+		enum ControllerButton
+		{
+			ArrowUp, ArrowRight, ArrowDown, ArrowLeft, //D-Pad
+			LeftBumper, RightBumper, 
+			MiddleOne, MiddleTwo, //Select / Start
+			PrimaryOne, PrimaryTwo, PrimaryThree, PrimaryFour, //A-B-X-Y
+			LeftStick, RightStick
+		};
+
+		bool getButtonDown(ControllerButton _button) { return isContainedIn(_button, m_buttonDown); }
+		bool getButtonUp(ControllerButton _button) { return isContainedIn(_button, m_buttonUp); }
+		bool getButtonIsDown(ControllerButton _button) { return isContainedIn(_button, m_buttonIsDown); }
+
+	private:
+		void update(std::vector<SDL_Event> _eventList);
+		void close();
+		int m_moveThreshold = 6400;
+		bool m_init = false;
+		SDL_Joystick* m_joystick;
+		SDL_GameController* m_controller;
+		std::vector<ControllerButton> m_buttonDown;
+		std::vector<ControllerButton> m_buttonIsDown;
+		std::vector<ControllerButton> m_buttonUp;
+		void initialise();
+		glm::vec2 m_leftStick;
+		glm::vec2 m_rightStick;
+		float m_leftTrigger;
+		float m_rightTrigger;
+
 	};
 }
 

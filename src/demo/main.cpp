@@ -20,14 +20,14 @@ class Ball : public Component
 
 	void onCollisionExit(std::shared_ptr<Entity> _other)
 	{
-		
+		if (!m_sound.lock()) throw Exception();
+		m_sound.lock()->Play(0.2f);
+		Console::message("Collision happened");
 	}
 
 	void onCollisionEnter(std::shared_ptr<Collision> _col)
 	{
-		if (!m_sound.lock()) throw Exception();
-		m_sound.lock()->Play(0.2f);
-		Console::message("Collision happened");
+		
 	}
 
 	void onTick()
@@ -42,8 +42,10 @@ class Demo : public Component
 	std::weak_ptr<Transform> camera;
 	std::weak_ptr<Keyboard> keyboard;	
 	std::weak_ptr<Mouse> mouse;	
+	std::weak_ptr<Controller> con;	
 	float moveSpeed = 10.0f;
 	float rotSpeed = 10.0f;
+	bool controller = false;
 	
 
 	void onInitialise()
@@ -53,38 +55,56 @@ class Demo : public Component
 		std::shared_ptr<InputManager> IM = getCore()->getInput();
 		mouse = IM->addDevice<Mouse>();
 		keyboard = IM->addDevice<Keyboard>();
+		con = IM->addDevice<Controller>();
+
+		mouse.lock()->hideCursor(false);
+		mouse.lock()->lockCursor(false);
 	}
 
 	void onTick()
 	{
 		float dTime = getCore()->getDeltaTime();
 		
+		if (!controller)
+		{
+			if (keyboard.lock()->GetKeyIsDown(SDLK_w))
+			{
+				camera.lock()->m_position += camera.lock()->getFwd() * moveSpeed * dTime;
+			}
+			if (keyboard.lock()->GetKeyIsDown(SDLK_s))
+			{
+				camera.lock()->m_position -= camera.lock()->getFwd() * moveSpeed * dTime;
+			}
+			if (keyboard.lock()->GetKeyIsDown(SDLK_d))
+			{
+				camera.lock()->m_position -= camera.lock()->getRight() * moveSpeed * dTime;
+			}
+			if (keyboard.lock()->GetKeyIsDown(SDLK_a))
+			{
+				camera.lock()->m_position += camera.lock()->getRight() * moveSpeed * dTime;
+			}	
 
-		if (keyboard.lock()->GetKeyIsDown(SDLK_w))
-		{
-			camera.lock()->m_position += camera.lock()->getFwd() * moveSpeed * dTime;
+			camera.lock()->rotate(glm::vec3(0.0f, 1.0f, 0.0f), mouse.lock()->getDeltaPos().x * rotSpeed * dTime);
+			camera.lock()->rotate(glm::vec3(1.0f, 0.0f, 0.0f), mouse.lock()->getDeltaPos().y * rotSpeed * dTime);
 		}
-		if (keyboard.lock()->GetKeyIsDown(SDLK_s))
+		else
 		{
-			camera.lock()->m_position -= camera.lock()->getFwd() * moveSpeed * dTime;
-		}
-		if (keyboard.lock()->GetKeyIsDown(SDLK_d))
-		{
-			camera.lock()->m_position -= camera.lock()->getRight() * moveSpeed * dTime;
-		}
-		if (keyboard.lock()->GetKeyIsDown(SDLK_a))
-		{
-			camera.lock()->m_position += camera.lock()->getRight() * moveSpeed * dTime;
-		}
+			camera.lock()->m_position -= camera.lock()->getFwd() * moveSpeed * con.lock()->getLeftStickPosition().y * dTime;
+			camera.lock()->m_position -= camera.lock()->getRight() * moveSpeed * con.lock()->getLeftStickPosition().x * dTime;
 
-		camera.lock()->rotate(glm::vec3(0.0f, 1.0f, 0.0f), mouse.lock()->getDeltaPos().x * rotSpeed * dTime);
-		camera.lock()->rotate(glm::vec3(1.0f, 0.0f, 0.0f), mouse.lock()->getDeltaPos().y * rotSpeed * dTime);
+			camera.lock()->rotate(glm::vec3(0.0f, 1.0f, 0.0f), con.lock()->getRightStickPosition().x * rotSpeed * 10.0f * dTime);
+			camera.lock()->rotate(glm::vec3(1.0f, 0.0f, 0.0f), con.lock()->getRightStickPosition().y * rotSpeed * 10.0f * dTime);
+
+			if (con.lock()->getButtonIsDown(Controller::LeftStick))
+			{
+				Console::message("Yes, Controller works, too!");
+			}
+		}
 
 		if (camera.lock()->m_eulerAngles.x > 89.0f) { camera.lock()->m_eulerAngles.x = 89.0f; }
 		else if (camera.lock()->m_eulerAngles.x < -89.0f) { camera.lock()->m_eulerAngles.x = -89.0f; }
 		if (camera.lock()->m_eulerAngles.y > 360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
 		else if (camera.lock()->m_eulerAngles.y < -360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
-
 	}
 };
 

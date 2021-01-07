@@ -28,6 +28,8 @@ namespace Engine
 		rtn->initialiseSDL();
 		rtn->initialiseAL();
 		rtn->m_inputManager = std::make_shared<InputManager>();
+		rtn->m_inputManager->m_window = rtn->m_window;
+		rtn->m_inputManager->m_self = rtn->m_inputManager;
 		
 
 		rtn->initialiseShaders();
@@ -79,14 +81,7 @@ namespace Engine
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		
-		//m_input->m_xOffset = mouseX - WINDOW_WIDTH / 2;
-		//m_input->m_yOffset = mouseY - WINDOW_HEIGHT / 2;
-
-
 		quit = m_inputManager->update(); //Handles the input, and returns a 'quit' value to see if the program should end
-		//m_mouse->update();
-		//SDL_WarpMouseInWindow(m_window, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 		
 		//Re-establish window-size to allow stretching and re-sizing
 		SDL_GetWindowSize(m_window, &width, &height);
@@ -186,6 +181,7 @@ namespace Engine
 		
 		if (quit) 
 		{
+			m_inputManager->closeInputDevices();
 			SDL_DestroyWindow(m_window); // DESTROY THAT WINDOW. STRIKE IT DOWN. DEWIT.
 			SDL_Quit();
 
@@ -292,10 +288,11 @@ namespace Engine
 	{
 		if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		{
+			Console::output(Console::FatalError, "Core", "Failed to initialise SDL");
 			throw Exception("Failed to Initialise SDL");
 		}
 
-		SDL_ShowCursor(false);
+		
 		//SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 		m_window = SDL_CreateWindow("Delveworks",

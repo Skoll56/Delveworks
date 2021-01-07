@@ -24,7 +24,8 @@ namespace Engine
 
 	struct Core
 	{
-		friend class Entity;
+		friend class Entity;		
+
 		//Functions
 		static std::shared_ptr<Core> initialise();
 		std::shared_ptr<Entity> createEntity();
