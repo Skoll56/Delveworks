@@ -60,7 +60,7 @@ namespace Engine
 	private:
 		ALuint m_id  = 0;		
 		void loadOgg(const std::string& fileName, std::vector<char> &buffer, ALenum &format, ALsizei &freq);
-		void LoadWav(const std::string & fileName, std::vector<char>& buffer, ALenum & format, ALsizei & freq);
+		char* loadWav(const std::string & fileName, int &size, ALenum & format, ALsizei & freq);
 	};
 }
 

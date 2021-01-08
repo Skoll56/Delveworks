@@ -12,32 +12,51 @@ namespace Engine
 		ALenum format = 0;
 		ALsizei freq = 0;
 		std::vector<char> bufferData;
+		int size;
 		path = "../resources/Sounds/" + path;
 		if (path[path.size() - 1] == 'v')
 		{
-			LoadWav(path, bufferData, format, freq);
+			char* data = loadWav(path, size, format, freq);
+			alBufferData(m_id, format, data, static_cast<ALsizei>(size), freq);
 		}
 		else
 		{
 			loadOgg(path, bufferData, format, freq);
+			alBufferData(m_id, format, &bufferData[0], static_cast<ALsizei>(bufferData.size()), freq);
 		}
-		
-		alBufferData(m_id, format, &bufferData[0], static_cast<ALsizei>(bufferData.size()), freq);
 	}
 
-	//The Wav File loader was provided by Adam Stark: https://github.com/adamstark/AudioFile and doesn't work at all
-	void Sound::LoadWav(const std::string & fileName, std::vector<char>& buffer, ALenum & format, ALsizei & freq)
+	char* Sound::loadWav(const std::string & fileName, int & size, ALenum & format, ALsizei & freq)
 	{
-		WavFile<float> wav;		
-		wav.load(fileName);
+		int channels = 0;		
+		int bps = 0;		
+		char* t = WavFile::loadWAV(fileName.c_str(), channels, freq, bps, size);
+
+		if (!t);
+		{
+			throw Exception("loadWav failed: " + fileName);
+		}
+
+		if (channels == 1)
+		{
+			format = AL_FORMAT_MONO16;
+		}
+		else
+		{
+			format = AL_FORMAT_MONO16;
+			freq *= 2;
+			Console::output(Console::Warning, "Sound", "Sound file is not mono. The quality may be slightly degraded: " + fileName);			
+		}			
+		
+		return t;
 	}
+
 
 	void Sound::loadOgg(const std::string & fileName, std::vector<char>& buffer, ALenum & format, ALsizei & freq)
 	{
-		int channels = 0;
-		int sampleRate = 0;
+		int channels = 0;		
 		short *output = NULL;
-		size_t samples = stb_vorbis_decode_filename(fileName.c_str(), &channels, &sampleRate, &output);
+		size_t samples = stb_vorbis_decode_filename(fileName.c_str(), &channels, &freq, &output);
 		if (samples == -1)
 		{
 			throw Exception("loadOgg failed: " + fileName);
@@ -47,14 +66,17 @@ namespace Engine
 		{
 			format = AL_FORMAT_MONO16;
 		}
+		else if (channels == 2)
+		{
+			format = AL_FORMAT_MONO16;
+			freq *= 2;
+			Console::output(Console::Warning, "Sound", "Sound file is not mono. The quality may be slightly degraded: " + fileName);			
+		}
 		else
 		{
-			format = AL_FORMAT_STEREO16;
-			Console::output(Console::Warning, "Sound", "Sound file is not mono. Spatial sound is not supported for stereo files: " + fileName);
-			//format = AL_FORMAT_MONO16;
+			throw Exception("loadOgg failed, unsupported number of channels: " + fileName);
 		}
-		
-		freq = sampleRate;
+
 		buffer.resize(samples * 2);
 		memcpy(&buffer.at(0), output, buffer.size());
 		

@@ -10,8 +10,8 @@ class Ball : public Component
 	public:
 	void onInitialise()
 	{		
-		m_sound = getEntity()->addComponent<SoundSource>(getEntity()->getCore()->m_rManager->load<Sound>("pew.ogg"));
-		m_sound = getEntity()->addComponent<SoundSource>(getEntity()->getCore()->m_rManager->load<Sound>("pewTest.wav"));
+		m_sound = getEntity()->addComponent<SoundSource>(getCore()->m_rManager->load<Sound>("test2.ogg"));
+		//m_sound = getEntity()->addComponent<SoundSource>(getCore()->m_rManager->load<Sound>("pewTest.wav"));
 	}
 
 	void onCollision(std::shared_ptr<Collision> _col)
@@ -115,9 +115,9 @@ class CustomInput : public InputDevice
 	{
 		for (int i = 0; i < _eventList.size(); i++)
 		{
-			if (_eventList[i].type == SDL_WINDOWEVENT)
+			if (_eventList[i].type == SDL_USEREVENT)
 			{
-				//Do Window stuff, or whatever. This is just an example of a custom input module.
+				//Do stuff, or whatever. This is just an example of a custom input module.
 			}
 		}
 	}
