@@ -10,7 +10,8 @@ class Ball : public Component
 	public:
 	void onInitialise()
 	{		
-		m_sound = getEntity()->addComponent<SoundSource>(getEntity()->getCore()->m_rManager->load<Sound>("pew"));
+		m_sound = getEntity()->addComponent<SoundSource>(getEntity()->getCore()->m_rManager->load<Sound>("pew.ogg"));
+		m_sound = getEntity()->addComponent<SoundSource>(getEntity()->getCore()->m_rManager->load<Sound>("pewTest.wav"));
 	}
 
 	void onCollision(std::shared_ptr<Collision> _col)
@@ -21,7 +22,7 @@ class Ball : public Component
 	void onCollisionExit(std::shared_ptr<Entity> _other)
 	{
 		if (!m_sound.lock()) throw Exception();
-		m_sound.lock()->Play(0.2f);
+		m_sound.lock()->Play(0.8f);
 		Console::message("Collision happened");
 	}
 

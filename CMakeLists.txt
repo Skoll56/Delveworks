@@ -64,6 +64,7 @@ src/Engine/MeshRenderer.h
 src/Engine/Collider.h
 src/Engine/RenderTexture.h
 src/Engine/Console.h
+src/Engine/WavFile.h
 )
 
 

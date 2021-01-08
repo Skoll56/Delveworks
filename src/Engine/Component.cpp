@@ -57,16 +57,20 @@ namespace Engine
 	{
 		try
 		{
-			glm::vec3 camPos = getEntity()->getCore()->m_camera->transform()->m_position;
-			//alListener3f(AL_POSITION, camPos.x, camPos.y, camPos.z);
-			alListener3f(AL_POSITION, 0.0f, 0.0f, 0.0f);
+			
+			std::shared_ptr<Transform> t = getEntity()->getCore()->m_camera->transform();
+			glm::vec3 camPos = t->m_position;
+			glm::vec3 fwd = t->getFwd();
+			glm::vec3 up = t->getUp();
 
-			glm::vec3 pos = transform()->m_position;
-			glm::vec4 pos4 = glm::vec4(1.0f);
+			alListener3f(AL_POSITION, camPos.x, camPos.y, camPos.z);
+			float vals[6] = { fwd.x, fwd.y, fwd.z, up.x, up.y, up.z };
+			alListenerfv(AL_ORIENTATION, vals);
+			
 
-			pos4 = pos4 * (getEntity()->getCore()->m_camera->getView() * transform()->getModel());
-			alSource3f(m_id, AL_POSITION, pos4.x, pos4.y, pos4.z);
-			//alSource3f(m_id, AL_POSITION, 10000.0f, pos4.y, pos4.z);
+			glm::vec3 pos = transform()->m_position;			
+			alSource3f(m_id, AL_POSITION, pos.x, pos.y, pos.z);
+			
 
 			alSourcef(m_id, AL_GAIN, _vol);
 
