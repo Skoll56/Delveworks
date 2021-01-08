@@ -12,15 +12,24 @@ namespace Engine
 		ALenum format = 0;
 		ALsizei freq = 0;
 		std::vector<char> bufferData;
-		path = "../resources/Sounds/" + path + ".ogg";
-		loadOgg(path, bufferData, format, freq);
+		path = "../resources/Sounds/" + path;
+		if (path[path.size() - 1] == 'v')
+		{
+			LoadWav(path, bufferData, format, freq);
+		}
+		else
+		{
+			loadOgg(path, bufferData, format, freq);
+		}
+		
 		alBufferData(m_id, format, &bufferData[0], static_cast<ALsizei>(bufferData.size()), freq);
 	}
 
 	//The Wav File loader was provided by Adam Stark: https://github.com/adamstark/AudioFile and doesn't work at all
 	void Sound::LoadWav(const std::string & fileName, std::vector<char>& buffer, ALenum & format, ALsizei & freq)
 	{
-
+		WavFile<float> wav;		
+		wav.load(fileName);
 	}
 
 	void Sound::loadOgg(const std::string & fileName, std::vector<char>& buffer, ALenum & format, ALsizei & freq)
