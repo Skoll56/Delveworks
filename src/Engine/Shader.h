@@ -40,6 +40,8 @@ namespace Engine
 		void setUniform(std::string _uniform, std::shared_ptr<ShadowCube> _sc); /* !This has been modified as part of the GRAPHICS UNIT! */
 		void setUniform(std::string _uniform, glm::mat4 _value);
 		void setUniform(std::string _uniform, glm::vec3 _value);
+		void setUniform(std::string _uniform, glm::vec2 _value);
+
 		GLuint getId();
 	};
 }

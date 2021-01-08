@@ -26,7 +26,7 @@ namespace Engine
 		void onInitialise(std::string _texName, std::string _obj, glm::vec3 _size);
 		void setShine(int _shininess) { m_shininess = _shininess; }
 		int getShine() { return m_shininess; }
-		glm::vec3 getSize() { return m_size; }
+		glm::vec3 getSize() { return m_size; }//
 		
 
 	private:

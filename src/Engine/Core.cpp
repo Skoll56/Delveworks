@@ -27,13 +27,13 @@ namespace Engine
 		rtn->m_inputManager = std::make_shared<InputManager>();
 		rtn->m_inputManager->m_window = rtn->m_window;
 		rtn->m_inputManager->m_self = rtn->m_inputManager;
-		rtn->m_inputManager->m_core = rtn;
-		
+		rtn->m_inputManager->m_core = rtn;//
+		//
 
 		rtn->initialiseShaders();
 
-		rtn->m_self = rtn;
-		
+		rtn->m_self = rtn;//
+		//
 		rtn->createScreenQuad();
 
 		rtn->createRenderTexture();
@@ -135,7 +135,7 @@ namespace Engine
 		for (int si = 0; si < m_spotLights.size(); si++)
 		{
 			try
-			{
+			{//
 				m_spotLights.at(si)->update(si);
 			}
 			catch (Exception &e)
@@ -282,10 +282,10 @@ namespace Engine
 
 	void Core::initialiseSDL() // Starts the window and initialises a lot of the SDL/GLEW stuff
 	{
-		if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_GAMECONTROLLER) < 0)
 		{
 			Console::output(Console::FatalError, "Core", "Failed to initialise SDL");
-			throw Exception("Failed to Initialise SDL");
+			throw Exception("Failed to Initialise SDL"); //
 		}
 
 		
@@ -301,7 +301,7 @@ namespace Engine
 			throw Exception("Failed to create SDL Window");
 		}
 		
-		if (glewInit() != GLEW_OK)
+		if (glewInit() != GLEW_OK)//
 		{
 			throw Exception("Failed to initialise GLEW");
 		}

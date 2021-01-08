@@ -28,7 +28,7 @@ namespace Engine
 		std::string _vert, _frag;
 		_vert = "../resources/shaders/" + _name + ".vert";
 		_frag = "../resources/shaders/" + _name + ".frag";
-		Console::message("Started Shader load: " + _name ); //
+		Console::message("Started Shader load: " + _name ); ////
 		std::string vertShader;
 		std::string fragShader;
 
@@ -231,6 +231,19 @@ namespace Engine
 
 		glUseProgram(m_id);
 		glUniform3f(uniformId, _value.x, _value.y, _value.z);
+		glUseProgram(0);
+	}
+
+	void Shader::setUniform(std::string _uniform, glm::vec2 _value)
+	{
+		GLint uniformId = glGetUniformLocation(m_id, _uniform.c_str());
+		if (uniformId == -1)
+		{
+			throw Exception("Failed to set uniform: (" + _uniform + ")");
+		}
+
+		glUseProgram(m_id);
+		glUniform2f(uniformId, _value.x, _value.y);
 		glUseProgram(0);
 	}
 

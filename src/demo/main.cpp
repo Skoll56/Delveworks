@@ -153,16 +153,15 @@ int main()
 		std::shared_ptr<Entity> point = core->createEntity();
 		std::shared_ptr<PointLight> p = point->addComponent<PointLight>(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 30.0f, 0.8f);
 
-		p->transform()->m_position = glm::vec3(0.0f, 6.0f, -2.0f);
-		p->transform()->m_eulerAngles = glm::vec3(0.0f, 0.0f, 0.0f);
+		p->transform()->m_position = glm::vec3(0.0f, 6.0f, -2.0f);		
 	}
 
 	//Create a spotlight (in another room)
 	/*std::shared_ptr<Entity> spot2 = core->createEntity();
 	std::shared_ptr<SpotLight> s2 = spot2->addComponent<SpotLight>();
-	s2->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);
+	s2->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);//
 	s2->transform()->m_position = glm::vec3(60.0f, 16.0f, 8.0f);
-	s2->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 8.0f);
+	s2->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 8.0f);//
 	*/
 	//This creates three rooms all 50 units away from eachother.
 	for (float l = 0.0f; l < 50.0f; l += 50.0f)
@@ -210,7 +209,7 @@ int main()
 		//MR5->Initialise();
 		wall5->transform()->setScale(glm::vec3(30.0f, 1.0f, 30.0f)); //Roof
 		wall5->transform()->m_position = glm::vec3(0.0f + l, 20.0f, 0.0f);
-		std::shared_ptr<BoxCollider> b5 = wall5->addComponent<BoxCollider>();
+		std::shared_ptr<BoxCollider> b5 = wall5->addComponent<BoxCollider>(); ////////////////
 
 		//Create bouncy balls (with WiP physics) to see
 		for (int i = 0; i < 1; i++)
@@ -219,7 +218,7 @@ int main()
 			std::shared_ptr<MeshRenderer> MR3 = ball->addComponent<MeshRenderer>("Image1.bmp", "1b1sphere.obj", glm::vec3(1.0f, 1.0f, 1.0f));
 			//MR3->Initialise();
 			ball->transform()->setScale(glm::vec3(1.0f, 1.0f, 1.0f));
-			ball->transform()->setPosition(glm::vec3(5.0f + (i * 0.2f) + l, 13.0f + (i * 1.5f), 5.0f));
+			ball->transform()->setPosition(glm::vec3(5.0f + (i * 0.2f) + l, 33.0f + (i * 1.5f), 5.0f));
 			std::shared_ptr<SphereCollider> sc = ball->addComponent<SphereCollider>();
 			//std::shared_ptr<PhysicsObject> phys = ball->addComponent<PhysicsObject>(1.0f, 0.5f);
 			std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>(1.0f, 0.9f);

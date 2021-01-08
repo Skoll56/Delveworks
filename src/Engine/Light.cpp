@@ -24,14 +24,19 @@ namespace Engine
 
 	void DirLight::update(int _i)
 	{
+		std::shared_ptr<ShadowMap> sm = getShadowMap();
+
 		glm::mat4 view(1.0f);
 		glm::vec3 camPos = getEntity()->getCore()->m_camera->transform()->getPosition();
 		view = glm::lookAt(camPos + glm::vec3(0.0f, 100.0f, 0.0f), camPos + glm::vec3(0.0f, 100.0f, 0.0f) + transform()->getFwd(), transform()->getUp());
-		getShadowMap()->setLightSpaceMatrix(glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, 0.0f, 200.0f) * view);
+		sm->setLightSpaceMatrix(glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, 0.0f, 200.0f) * view);
 
 		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
 		std::string uniform;
 		std::string itr = std::to_string(_i);
+
+		
+
 		uniform = "in_dLight[" + itr + "].m_specIntens";
 		float t = getSpec();
 		_lSh->setUniform(uniform, getSpec());
@@ -46,10 +51,13 @@ namespace Engine
 		_lSh->setUniform(uniform, transform()->getFwd());
 
 		uniform = "in_dLight[" + itr + "].m_shadowMap";
-		_lSh->setUniform(uniform, getShadowMap());
+		_lSh->setUniform(uniform, sm);
+
+		uniform = "in_dLight[" + itr + "].m_textureSize";
+		_lSh->setUniform(uniform, glm::vec2(sm->resolutionX, sm->resolutionY));
 
 		uniform = "in_dLight[" + itr + "].m_lightMatrix";
-		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
+		_lSh->setUniform(uniform, sm->getLightSpaceMatrix());
 	}
 
 	void PointLight::onInitialise(glm::vec3 _diffuse, float _specular, float _radius, float _brightness)
@@ -84,8 +92,10 @@ namespace Engine
 	void SpotLight::update(int _i)
 	{
 		glm::mat4 view(1.0f);
+		std::shared_ptr<ShadowMap> sm = getShadowMap();
+
 		view = glm::lookAt(transform()->getPosition(), transform()->getPosition() + transform()->getFwd(), transform()->getUp());
-		getShadowMap()->setLightSpaceMatrix(glm::perspective(glm::radians(getFangle() * 2.0f), 1.0f, 0.1f, getRadius()) * view);
+		sm->setLightSpaceMatrix(glm::perspective(glm::radians(getFangle() * 2.0f), 1.0f, 0.1f, getRadius()) * view);
 		m_quadratic = 0.027f / m_brightness;
 
 		std::shared_ptr<Shader> _lSh = getCore()->m_lightingSh;
@@ -101,7 +111,7 @@ namespace Engine
 		_lSh->setUniform(uniform, transform()->getFwd());
 
 		uniform = "in_sLight[" + itr + "].m_shadowMap"; 
-		_lSh->setUniform(uniform, getShadowMap());
+		_lSh->setUniform(uniform, sm);
 
 		uniform = "in_sLight[" + itr + "].m_angle";
 		_lSh->setUniform(uniform, glm::cos(glm::radians(getAngle())));
@@ -118,8 +128,11 @@ namespace Engine
 		uniform = "in_sLight[" + itr + "].m_quadratic";
 		_lSh->setUniform(uniform, getQuad());
 
+		uniform = "in_sLight[" + itr + "].m_textureSize";
+		_lSh->setUniform(uniform, glm::vec2(sm->resolutionX, sm->resolutionY));
+
 		uniform = "in_sLight[" + itr + "].m_lightMatrix";
-		_lSh->setUniform(uniform, getShadowMap()->getLightSpaceMatrix());
+		_lSh->setUniform(uniform, sm->getLightSpaceMatrix());
 	}
 
 	void PointLight::update(int _i)
@@ -169,6 +182,9 @@ namespace Engine
 
 		uniform = "in_pLight[" + itr + "].m_radius";
 		_lSh->setUniform(uniform, getRadius());
+
+		//uniform = "in_pLight[" + itr + "].m_textureSize";
+		//_lSh->setUniform(uniform, glm::vec2(SC->resolutionX, SC->resolutionY));
 
 		uniform = "in_pLight[" + itr + "].m_quadratic";
 		_lSh->setUniform(uniform, getQuad());		
