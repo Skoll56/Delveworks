@@ -1,9 +1,12 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
+
 #include <memory>
 #include <glm/glm.hpp>
 #include <AL/al.h>
 #include "Resource.h"
+#include "Input.h"
+#include "Core.h"
 //#include "Entity.h"
 
 namespace Engine
@@ -11,8 +14,7 @@ namespace Engine
 	class Entity;	
 	class Transform;
 	class Keyboard;
-	class Collision;
-	class Core;
+	class Collision;	
 	class Collider;
 
 	class Component

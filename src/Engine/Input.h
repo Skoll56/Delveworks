@@ -4,9 +4,14 @@
 #include <SDL2/SDL.h>
 #include <glm/glm.hpp>
 #include "Console.h"
+#include "Exception.h"
+//#include "Core.h"
 
 namespace Engine
 {
+	class InputManager;
+	class Core;
+
 	class InputDevice
 	{
 		friend class InputManager;
@@ -18,7 +23,7 @@ namespace Engine
 		template <typename T>
 		bool isContainedIn(T _obj, std::vector<T> _vector)
 		{
-			for (std::vector<T>::iterator it = _vector.begin(); it != _vector.end();)
+			for (typename std::vector<T>::iterator it = _vector.begin(); it != _vector.end();)
 			{
 				if (*it == _obj)
 				{
@@ -35,7 +40,7 @@ namespace Engine
 		template <typename T>
 		void removeFromList(T _obj, std::vector<T>* _vector)
 		{
-			for (std::vector<T>::iterator it = _vector->begin(); it != _vector->end();)
+			for (typename std::vector<T>::iterator it = _vector->begin(); it != _vector->end();)
 			{
 				if (*it == _obj)
 				{
@@ -104,6 +109,7 @@ namespace Engine
 		SDL_Window* m_window;
 		glm::vec2 m_windowSize;
 		std::weak_ptr<InputManager> m_self;
+		std::weak_ptr<Core> m_core;
 		std::vector<SDL_Event> m_eventList;
 		std::vector<std::shared_ptr<InputDevice>> m_devices;
 	};

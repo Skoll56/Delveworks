@@ -16,9 +16,6 @@
 #include <emscripten.h>
 #endif
 
-#define WINDOW_WIDTH 1024
-#define WINDOW_HEIGHT 1024
-
 namespace Engine
 {
 	std::shared_ptr<Core> Core::initialise()
@@ -30,12 +27,15 @@ namespace Engine
 		rtn->m_inputManager = std::make_shared<InputManager>();
 		rtn->m_inputManager->m_window = rtn->m_window;
 		rtn->m_inputManager->m_self = rtn->m_inputManager;
+		rtn->m_inputManager->m_core = rtn;
 		
 
 		rtn->initialiseShaders();
 
 		rtn->m_self = rtn;
+		
 		rtn->createScreenQuad();
+
 		rtn->createRenderTexture();
 		srand(time(NULL));
 
@@ -73,7 +73,7 @@ namespace Engine
 		// Re-initialise per-frame variables
 		float time = SDL_GetTicks();
 		dTime = (time - t1) / 1000.0f;
-		t1 = time;
+		t1 = time;		
 		
 		//Set the clear-colour for the screen and clear it
 		glEnable(GL_BLEND);
@@ -84,7 +84,7 @@ namespace Engine
 		quit = m_inputManager->update(); //Handles the input, and returns a 'quit' value to see if the program should end
 		
 		//Re-establish window-size to allow stretching and re-sizing
-		SDL_GetWindowSize(m_window, &width, &height);
+		SDL_GetWindowSize(m_window, &width, &height);		
 		m_camera->update(dTime);
 
 		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end(); it++)
@@ -161,7 +161,7 @@ namespace Engine
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RT->fBufID);
 		glClearColor(0.0, 0.0, 0.0, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glViewport(0, 0, m_RT->resolutionX, m_RT->resolutionY);
+		glViewport(0, 0, width, height);		
 		drawScene();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 			
@@ -263,10 +263,6 @@ namespace Engine
 		Console::message("I started to start");
 		quit = false;
 		restart = false;
-		halfX = WINDOW_WIDTH / 2;
-		halfY = WINDOW_HEIGHT / 2;
-		lastX = halfX;
-		lastY = halfY;
 		t1 = SDL_GetTicks(); //
 
 
@@ -297,7 +293,7 @@ namespace Engine
 
 		m_window = SDL_CreateWindow("Delveworks",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-			WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+			width, height, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 
 
 		if (!SDL_GL_CreateContext(m_window))
@@ -317,7 +313,7 @@ namespace Engine
 		try
 		{
 			//Lighting Shaders
-			m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f)); //Set the projection uniform
+			m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f)); //Set the projection uniform
 			m_lightingSh->setUniform("in_View", m_camera->getView()); // Establish the view matrix		
 			m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
 			m_lightingSh->setUniform("in_CamPos", m_camera->transform()->m_position);
@@ -438,6 +434,11 @@ namespace Engine
 		m_screenQuad->getTriTex()->add(glm::vec2(1.0f, 1.0f));
 		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 1.0f));
 		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 0.0f));		
+	}
+
+	void Core::resizeWindow(int _x, int _y)
+	{
+		
 	}
 
 	void Core::initialiseAL()

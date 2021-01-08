@@ -88,7 +88,7 @@ namespace Engine
 		getShadowMap()->setLightSpaceMatrix(glm::perspective(glm::radians(getFangle() * 2.0f), 1.0f, 0.1f, getRadius()) * view);
 		m_quadratic = 0.027f / m_brightness;
 
-		std::shared_ptr<Shader> _lSh = getEntity()->getCore()->m_lightingSh;
+		std::shared_ptr<Shader> _lSh = getCore()->m_lightingSh;
 		std::string uniform;	
 		std::string itr = std::to_string(_i);
 		uniform = "in_sLight[" + itr + "].m_specIntens";

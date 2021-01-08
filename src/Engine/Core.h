@@ -11,8 +11,7 @@
 #include <AL/al.h>
 #include <AL/alc.h> 
 #include "RenderTexture.h"
-#include "Light.h"
-#include "Camera.h"
+//#include "Light.h"
 
 
 namespace Engine
@@ -21,6 +20,10 @@ namespace Engine
 	struct ResourceManager;	
 	class Shader;
 	class VertexArray;
+	class Camera; 
+	class DirLight;
+	class SpotLight;
+	class PointLight;
 
 	struct Core
 	{
@@ -62,6 +65,8 @@ namespace Engine
 		std::shared_ptr<Shader> m_shadowSh;
 		std::shared_ptr<Shader> m_pointShadowSh;
 		std::shared_ptr<Camera> m_camera;
+		void resizeWindow(int _x, int _y);
+
 
 	private:
 		std::vector<std::shared_ptr<Entity>> m_entities;	
@@ -69,12 +74,9 @@ namespace Engine
 		int permX, permY;
 		bool quit;
 		bool restart;
-		int width, height;
-		int halfX;
-		int halfY; 
-		int lastX; 
-		int lastY; 
-		int mouseX, mouseY;
+		int width = 1024;
+		int height = 1024;
+		
 		float dTime;
 		long t1;
 		bool freeMouse = false;

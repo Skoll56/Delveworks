@@ -130,6 +130,14 @@ namespace Engine
 			{
 				quit = true;
 			}
+			else if (event.type == SDL_WINDOWEVENT)
+			{
+				if (event.window.event == SDL_WINDOWEVENT_RESIZED)
+				{
+					m_core.lock()->resizeWindow(event.window.data1, event.window.data2);
+				}
+			}
+
 		}
 		int x, y;
 		SDL_GetWindowSize(m_window, &x, &y);
