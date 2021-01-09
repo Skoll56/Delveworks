@@ -47,6 +47,7 @@ class Demo : public Component
 	float moveSpeed = 10.0f;
 	float rotSpeed = 10.0f;
 	bool controller = false;
+	int i = 0;
 	
 
 	void onInitialise()
@@ -66,7 +67,7 @@ class Demo : public Component
 	void onTick()
 	{
 		float dTime = getCore()->getDeltaTime();
-		
+		i++;
 		if (!controller)
 		{
 			if (keyboard.lock()->GetKeyIsDown(SDLK_w))
@@ -107,6 +108,39 @@ class Demo : public Component
 		else if (camera.lock()->m_eulerAngles.x < -89.0f) { camera.lock()->m_eulerAngles.x = -89.0f; }
 		if (camera.lock()->m_eulerAngles.y > 360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
 		else if (camera.lock()->m_eulerAngles.y < -360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
+
+
+		bool iWantToTest = false;
+		if (iWantToTest)
+		{
+			if (i == 500)
+			{
+				std::shared_ptr<Camera> s = camera.lock()->getEntity()->getComponent<Camera>(); // ->getSurface();
+				s->destroy();
+				//s->setSize(glm::vec2(600, 600));
+			}
+			else if (i == 1000)
+			{
+				std::shared_ptr<Entity> e = getCore()->createEntity();
+				std::shared_ptr<Camera> c = e->addComponent<Camera>();
+				getCore()->setDefaultCamera(c);
+				getCore()->getSurface(0)->setCamera(c);
+			}
+		}
+
+
+		bool test = true;
+		if (test)
+		{
+			if (i == 120)
+			{
+				//std::shared_ptr<Surface> surf = getCore()->createSurface(camera.lock()->getEntity()->getComponent<Camera>(), 1);
+				std::shared_ptr<Surface> surf = getCore()->createSurface(getCore()->m_rManager->load<Texture>("Image1.bmp"), 1);
+
+				surf->setSize(300, 300);
+				Console::message("Done");
+			}
+		}
 	}
 };
 

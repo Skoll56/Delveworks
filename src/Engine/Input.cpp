@@ -134,7 +134,7 @@ namespace Engine
 			{
 				if (event.window.event == SDL_WINDOWEVENT_RESIZED)
 				{
-					m_core.lock()->resizeWindow(event.window.data1, event.window.data2);
+					m_core.lock()->onWindowResized(event.window.data1, event.window.data2);
 				}
 			}
 

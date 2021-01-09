@@ -27,7 +27,7 @@ namespace Engine
 			{
 				if ((*it)->m_delete || m_delete)
 				{
-					std::shared_ptr<Camera> cam = std::dynamic_pointer_cast<Camera>((*it));
+					/*std::shared_ptr<Camera> cam = std::dynamic_pointer_cast<Camera>((*it));
 					if (cam)
 					{
 						if (cam->getSurface())
@@ -43,7 +43,7 @@ namespace Engine
 							it = components.erase(it);
 						}
 					}
-					else
+					else*/
 					{
 						(*it)->onDestroy();
 						it = components.erase(it);

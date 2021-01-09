@@ -9,7 +9,7 @@
 #include "Light.h"
 #include "RenderTexture.h"
 #include "Exception.h"
-#include "Surface.h"
+//#include "Surface.h"
 
 
 #ifdef EMSCRIPTEN
@@ -33,7 +33,7 @@ namespace Engine
 		rtn->initialiseShaders();
 
 		rtn->m_self = rtn;
-		rtn->createScreenQuad();
+		//rtn->createScreenQuad();
 
 		//rtn->createRenderTexture();
 		srand(time(NULL));
@@ -41,7 +41,8 @@ namespace Engine
 		//Create some necessary entities (TODO: Will be improved later)
 		std::shared_ptr<Entity> defaultCamera = rtn->createEntity();
 		std::shared_ptr<Camera> cam = defaultCamera->addComponent<Camera>();
-		std::shared_ptr<Surface> s = rtn->createSurface(cam);
+		rtn->setDefaultCamera(cam);
+		std::shared_ptr<Surface> s = rtn->createSurface(cam, 0);
 		s->setSize(glm::vec2(rtn->width, rtn->height));
 
 		Console::message("Initialised successfully");
@@ -222,7 +223,7 @@ namespace Engine
 	}
 
 	/* !This has been MODIFIED as part of the GRAPHICS UNIT! */
-	void Core::updateShader(std::shared_ptr<Camera> _cam, std::shared_ptr<RenderTexture> _RT, glm::vec2 _viewport)
+	void Core::updateLightingShader(std::shared_ptr<Camera> _cam, glm::vec2 _viewport)
 	{
 		try
 		{
@@ -231,18 +232,28 @@ namespace Engine
 			m_lightingSh->setUniform("in_View", _cam->getView()); // Establish the view matrix		
 			m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
 			m_lightingSh->setUniform("in_CamPos", _cam->transform()->m_position);
+		}
+		catch (Exception &e)
+		{
+			Console::output(Console::Error, "Update Light Shaders", e.message());
+		}
+	}
 
+	void Core::updateSurfaceShader(std::shared_ptr<Texture> _tex)
+	{
+		try
+		{
 			//Shader for the screen quad (For render textures)
 			m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
 			//Change to Shadowmap to view depth buffer
-			m_sqShader->setUniform("in_Texture", _RT);
+			m_sqShader->setUniform("in_Texture", _tex);
 			/*m_sqShader->setUniform("in_Texture", m_dirLights[0]->getShadowMap());
 			m_sqShader->setUniform("in_nearPlane", 0.01f);
 			m_sqShader->setUniform("in_farPlane", m_pointLights[0]->getRadius());*/
 		}
 		catch (Exception &e)
 		{
-			Console::output(Console::Error, "Update Shaders", e.message());
+			Console::output(Console::Error, "Update Surface Shaders", e.message());
 		}
 	}
 
@@ -319,27 +330,7 @@ namespace Engine
 		}		
 	}
 
-	/* !This has been CREATED as part of the GRAPHICS UNIT! */
-	void Core::createScreenQuad()
-	{
-		m_screenQuad = std::make_shared<VertexArray>();
-		m_screenQuad->setBuffer("in_Position", new VertexBuffer());
-		m_screenQuad->setBuffer("in_TexCoord", new VertexBuffer());
-
-		m_screenQuad->getTriPos()->add(glm::vec3(-1.0f, -1.0f, 0.0f));
-		m_screenQuad->getTriPos()->add(glm::vec3(1.0f, -1.0f, 0.0f));
-		m_screenQuad->getTriPos()->add(glm::vec3(1.0f, 1.0f, 0.0f));
-		m_screenQuad->getTriPos()->add(glm::vec3(1.0f, 1.0f, 0.0f));
-		m_screenQuad->getTriPos()->add(glm::vec3(-1.0f, 1.0f, 0.0f));
-		m_screenQuad->getTriPos()->add(glm::vec3(-1.0f, -1.0f, 0.0f));
-
-		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 0.0f));
-		m_screenQuad->getTriTex()->add(glm::vec2(1.0f, 0.0f));
-		m_screenQuad->getTriTex()->add(glm::vec2(1.0f, 1.0f));
-		m_screenQuad->getTriTex()->add(glm::vec2(1.0f, 1.0f));
-		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 1.0f));
-		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 0.0f));		
-	}
+	
 
 	void Core::initialiseAL()
 	{
@@ -364,22 +355,27 @@ namespace Engine
 		}
 	}
 
-	void Core::resizeWindow(int _x, int _y)
-	{
+	void Core::onWindowResized(int _x, int _y)
+	{		
 		//m_RT->Initialise(_x, _y);
 	}
 
 	std::shared_ptr<Camera> Core::getDefaultCamera()
 	{
-		try
+		if (m_defaultCamera.lock())
 		{
-			return m_cameras[0].lock();
+			return m_defaultCamera.lock();
 		}
-		catch(Exception e)
+		else
 		{
-			Console::output(Console::Error, "GetCamera", "There are no cameras in the scene");
+			throw Exception("There is no set default camera. The engine requires a default camera specified");			
 			return nullptr;
 		}
+	}
+
+	void Core::setDefaultCamera(std::shared_ptr<Camera> _cam)
+	{
+		m_defaultCamera = _cam;
 	}
 
 	void Core::initialiseShaders()
@@ -409,6 +405,7 @@ namespace Engine
 			catch (Exception &e)
 			{
 				Console::output(Console::Error, "DirLight Update", e.message());
+				it++;
 			}
 		}
 
@@ -429,6 +426,7 @@ namespace Engine
 			catch (Exception &e)
 			{
 				Console::output(Console::Error, "pointLight Update", e.message());
+				it++;
 			}
 		}
 
@@ -449,6 +447,7 @@ namespace Engine
 			catch (Exception &e)
 			{
 				Console::output(Console::Error, "spotLight Update", e.message());
+				it++;
 			}
 		}
 	}
@@ -464,6 +463,7 @@ namespace Engine
 			catch (Exception &e)
 			{
 				Console::output(Console::Error, (*it)->getTag(), e.message());
+				it++;
 			}
 		}
 		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end();)
@@ -488,13 +488,53 @@ namespace Engine
 		}
 	}
 
-	std::shared_ptr<Surface> Core::createSurface(std::shared_ptr<Camera> _cam)
+	std::shared_ptr<Surface> Core::createSurface(std::shared_ptr<Camera> _cam, int _layer)
 	{
 		std::shared_ptr<Surface> s = std::make_shared<Surface>();
 		s->m_self = s;
-		s->initialize(_cam);		
+		s->initialize(_cam, _layer);
+		s->m_core = m_self;
 		m_surfaces.push_back(s);
+		orderSurfaces();
 		return s;
+	}
+
+	std::shared_ptr<Surface> Core::createSurface(std::shared_ptr<Texture> _tex, int _layer)
+	{
+		std::shared_ptr<Surface> s = std::make_shared<Surface>();
+		s->m_self = s;
+		s->initialize(_tex, _layer);
+		s->m_core = m_self;
+		m_surfaces.push_back(s);
+		orderSurfaces();
+		return s;
+	}
+
+	std::shared_ptr<Surface> Core::getSurface(int _layer)
+	{
+		for (std::vector<std::shared_ptr<Surface>>::iterator it = m_surfaces.begin(); it != m_surfaces.end(); it++)
+		{
+			if ((*it)->m_layer == _layer)
+			{				
+				return (*it);
+			}
+		}
+		Console::output(Console::Warning, "GetSurface", "No surface found on layer: " + _layer);
+		return nullptr;
+		
+	}
+
+	struct 
+	{
+		bool operator()(std::shared_ptr<Surface> _a, std::shared_ptr<Surface> _b) const
+		{
+			return _a->getLayer() > _b->getLayer();
+		}
+	} layerCompare;
+
+	void Core::orderSurfaces()
+	{
+		std::sort(m_surfaces.begin(), m_surfaces.end(), layerCompare);
 	}
 
 	void Core::renderScreen()
@@ -505,7 +545,7 @@ namespace Engine
 		}
 		else
 		{
-			for (std::vector<std::shared_ptr<Surface>>::iterator it = m_surfaces.begin(); it != m_surfaces.end(); it++)
+			for (std::vector<std::shared_ptr<Surface>>::iterator it = m_surfaces.begin(); it != m_surfaces.end();)
 			{
 				if ((*it)->m_destroy)
 				{
@@ -514,18 +554,44 @@ namespace Engine
 				}
 				else
 				{
-					glBindFramebuffer(GL_FRAMEBUFFER, (*it)->m_RT->fBufID);
-					glClearColor(0.0, 0.0, 0.0, 1.0);
-					glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-					glViewport((*it)->m_position.x, (*it)->m_position.y, (*it)->m_size.x, (*it)->m_size.y);
-					updateShader((*it)->m_camera.lock(), (*it)->m_RT, (*it)->m_size);
-					drawScene();
-					glBindFramebuffer(GL_FRAMEBUFFER, 0);
+					
+
+					if ((*it)->m_RT)
+					{
+						if ((*it)->m_camera.lock())
+						{							
+							glBindFramebuffer(GL_FRAMEBUFFER, (*it)->m_RT->fBufID);
+							glClearColor(0.0, 0.0, 0.0, 1.0);
+							glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+							glViewport((*it)->m_position.x, (*it)->m_position.y, (*it)->m_size.x, (*it)->m_size.y);
+							updateLightingShader((*it)->m_camera.lock(), (*it)->m_size);
+							updateSurfaceShader((*it)->m_RT);
+							drawScene();
+							glBindFramebuffer(GL_FRAMEBUFFER, 0);
+							m_sqShader->draw((*it)->m_screenQuad); //draw a quad with any render textures on it (1 by default)
+						}
+						else
+						{
+							Console::output(Console::Error, "Render Surface", "Surface has a render texture but no attached camera");
+						}												
+					}		
+					else if ((*it)->m_tex)
+					{
+						glClearColor(0.0, 0.0, 0.0, 1.0);
+						glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+						glViewport((*it)->m_position.x, (*it)->m_position.y, (*it)->m_size.x, (*it)->m_size.y);
+						updateSurfaceShader((*it)->m_tex);
+						drawScene();						
+						m_sqShader->draw((*it)->m_screenQuad); //draw a quad with any render textures on it (1 by default)
+					}
+					else
+					{
+						Console::output(Console::Error, "Render Surface", "Surface has no texture or render texture attached");
+					}	
 				}
-			}
-			m_sqShader->draw(m_screenQuad); //draw a quad with any render textures on it (1 by default)	
+				it++;				
+			}				
 			SDL_GL_SwapWindow(m_window);
 		}
 	}
-
 }

@@ -40,10 +40,15 @@ namespace Engine
 		float getDeltaTime() { return dTime; }
 		std::vector<std::shared_ptr<Entity>> getAllEntities() { return m_entities; }
 		//std::shared_ptr<RenderTexture> createRenderTexture();
-		void resizeWindow(int _x, int _y);
+		void onWindowResized(int _x, int _y);
 		std::shared_ptr<Camera> getDefaultCamera();
-		std::shared_ptr<Surface> createSurface(std::shared_ptr<Camera> _cam);
+		void setDefaultCamera(std::shared_ptr<Camera> _cam);
+		std::shared_ptr<Surface> createSurface(std::shared_ptr<Camera> _cam, int _layer);
+		std::shared_ptr<Surface> createSurface(std::shared_ptr<Texture> _tex, int _layer);
+		std::shared_ptr<Surface> getSurface(int _layer);
+		void orderSurfaces();
 		std::shared_ptr<AudioReceiver> getAudioReceiver() { return m_listener.lock(); }
+
 
 
 		//std::shared_ptr<Camera> getCurrentCamera();		
@@ -73,14 +78,14 @@ namespace Engine
 		
 		//My things
 		//std::shared_ptr<RenderTexture> m_RT;
-		std::shared_ptr<VertexArray> m_screenQuad;
+		
 		std::vector<std::shared_ptr<Entity>> m_entities;
 		std::shared_ptr<InputManager> m_inputManager;
 		std::vector<std::shared_ptr<Surface>> m_surfaces;
 
 		//Things I just hold references to
 		std::weak_ptr<Core> m_self;		
-		std::vector<std::weak_ptr<Camera>> m_cameras;
+		std::weak_ptr<Camera> m_defaultCamera;
 		std::vector<std::weak_ptr<DirLight>> m_dirLights; 
 		std::vector<std::weak_ptr<SpotLight>> m_spotLights; 
 		std::vector<std::weak_ptr<PointLight>> m_pointLights; 
@@ -91,15 +96,18 @@ namespace Engine
 		void drawScene();
 		void drawShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
 		void drawPointShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
-		void updateShader(std::shared_ptr<Camera> _cam, std::shared_ptr<RenderTexture> _RT, glm::vec2 _viewport);
+		void updateLightingShader(std::shared_ptr<Camera> _cam, glm::vec2 _viewport);
+		void updateSurfaceShader(std::shared_ptr<Texture> _tex);
 		void initialiseAL();
 		void initialiseShaders();
 		void initialiseSDL();
 		void updateLighting();
 		void updateEntities();		
 		void drawShadowmaps();
-		void createScreenQuad();
+		
 		void renderScreen();
+		//bool layerCompare(std::shared_ptr<Surface> _a, std::shared_ptr<Surface> _b);
+		
 	};
 }
 

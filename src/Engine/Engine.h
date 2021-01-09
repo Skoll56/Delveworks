@@ -18,6 +18,7 @@
 #include "Collider.h"
 #include "Light.h"
 #include "Console.h"
+#include "Surface.h"
 
 using namespace Engine;
 

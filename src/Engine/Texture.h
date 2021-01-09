@@ -15,8 +15,7 @@ namespace Engine
 		void load(std::string _image);
 	
 		int resolutionX, resolutionY, m_channels;
-		GLuint m_textureId;
-		GLuint m_faceTextureID[6];
+		GLuint m_textureId;		
 	};
 }
 
