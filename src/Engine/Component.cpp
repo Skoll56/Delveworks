@@ -57,7 +57,13 @@ namespace Engine
 	{
 		try
 		{
-			std::shared_ptr<Transform> t = getEntity()->getCore()->getCurrentCamera()->transform();
+			std::shared_ptr<AudioReceiver> AR = getEntity()->getCore()->getAudioReceiver();
+			if (!AR)
+			{
+				throw Exception("No Audio Receiver in scene. There must be exactly one at any time.");
+			}
+
+			std::shared_ptr<Transform> t = AR->transform();
 			glm::vec3 camPos = t->m_position;
 			glm::vec3 fwd = t->getFwd();
 			glm::vec3 up = t->getUp();

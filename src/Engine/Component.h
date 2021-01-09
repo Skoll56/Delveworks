@@ -105,6 +105,11 @@ namespace Engine
 		bool m_played = false;
 		
 	};
+
+	class AudioReceiver : public Component
+	{
+
+	};
 }
 
 #endif

@@ -9,6 +9,7 @@
 #include "Light.h"
 #include "RenderTexture.h"
 #include "Exception.h"
+#include "Surface.h"
 
 
 #ifdef EMSCRIPTEN
@@ -26,23 +27,22 @@ namespace Engine
 		rtn->m_inputManager = std::make_shared<InputManager>();
 		rtn->m_inputManager->m_window = rtn->m_window;
 		rtn->m_inputManager->m_self = rtn->m_inputManager;
-		rtn->m_inputManager->m_core = rtn;//
-		//
+		rtn->m_inputManager->m_core = rtn;
+		
 
 		rtn->initialiseShaders();
 
-		rtn->m_self = rtn;//
-		//
+		rtn->m_self = rtn;
 		rtn->createScreenQuad();
 
-		rtn->createRenderTexture();
+		//rtn->createRenderTexture();
 		srand(time(NULL));
 
 		//Create some necessary entities (TODO: Will be improved later)
-		std::shared_ptr<Entity> e = rtn->createEntity();
-		e->transform()->m_position = glm::vec3(0.0f, 4.0f, -12.0f);
-		e->transform()->m_eulerAngles = glm::vec3(0.0f, -90.0f, -0.0f);
-		rtn->m_camera = e->addComponent<Camera>();
+		std::shared_ptr<Entity> defaultCamera = rtn->createEntity();
+		std::shared_ptr<Camera> cam = defaultCamera->addComponent<Camera>();
+		std::shared_ptr<Surface> s = rtn->createSurface(cam);
+		s->setSize(glm::vec2(rtn->width, rtn->height));
 
 		Console::message("Initialised successfully");
 		return rtn;
@@ -83,7 +83,7 @@ namespace Engine
 		//Re-establish window-size to allow stretching and re-sizing
 		SDL_GetWindowSize(m_window, &width, &height);		
 		
-		getCurrentCamera()->update(dTime);
+		
 		updateEntities();
 		updateLighting();				
 		drawShadowmaps(); /* <-- !GRAPHICS UNIT! */
@@ -179,8 +179,7 @@ namespace Engine
 		Console::message("I started to start");
 		quit = false;
 		restart = false;
-		t1 = SDL_GetTicks(); //
-
+		t1 = SDL_GetTicks(); 
 
 		glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
@@ -193,7 +192,6 @@ namespace Engine
 			Core::loop();
 		}
 		#endif
-
 	}
 
 	void Core::initialiseSDL() // Starts the window and initialises a lot of the SDL/GLEW stuff
@@ -224,20 +222,20 @@ namespace Engine
 	}
 
 	/* !This has been MODIFIED as part of the GRAPHICS UNIT! */
-	void Core::updateShader()
+	void Core::updateShader(std::shared_ptr<Camera> _cam, std::shared_ptr<RenderTexture> _RT, glm::vec2 _viewport)
 	{
 		try
 		{
 			//Lighting Shaders
-			m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f)); //Set the projection uniform
-			m_lightingSh->setUniform("in_View", getCurrentCamera()->getView()); // Establish the view matrix		
+			m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(_cam->getFOV()), (float)_viewport.x / (float)_viewport.y, 0.1f, 100.0f)); //Set the projection uniform
+			m_lightingSh->setUniform("in_View", _cam->getView()); // Establish the view matrix		
 			m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
-			m_lightingSh->setUniform("in_CamPos", getCurrentCamera()->transform()->m_position);
+			m_lightingSh->setUniform("in_CamPos", _cam->transform()->m_position);
 
 			//Shader for the screen quad (For render textures)
 			m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
 			//Change to Shadowmap to view depth buffer
-			m_sqShader->setUniform("in_Texture", m_RT);
+			m_sqShader->setUniform("in_Texture", _RT);
 			/*m_sqShader->setUniform("in_Texture", m_dirLights[0]->getShadowMap());
 			m_sqShader->setUniform("in_nearPlane", 0.01f);
 			m_sqShader->setUniform("in_farPlane", m_pointLights[0]->getRadius());*/
@@ -322,14 +320,6 @@ namespace Engine
 	}
 
 	/* !This has been CREATED as part of the GRAPHICS UNIT! */
-	std::shared_ptr<RenderTexture> Core::createRenderTexture()
-	{
-		std::shared_ptr<RenderTexture> RT = std::make_shared<RenderTexture>();
-		RT->Initialise(width, height);	
-		m_RT = RT;
-		return RT;
-	}
-	
 	void Core::createScreenQuad()
 	{
 		m_screenQuad = std::make_shared<VertexArray>();
@@ -376,12 +366,20 @@ namespace Engine
 
 	void Core::resizeWindow(int _x, int _y)
 	{
-		m_RT->Initialise(_x, _y);
+		//m_RT->Initialise(_x, _y);
 	}
 
-	std::shared_ptr<Camera> Core::getCurrentCamera()
+	std::shared_ptr<Camera> Core::getDefaultCamera()
 	{
-		return m_camera.lock();
+		try
+		{
+			return m_cameras[0].lock();
+		}
+		catch(Exception e)
+		{
+			Console::output(Console::Error, "GetCamera", "There are no cameras in the scene");
+			return nullptr;
+		}
 	}
 
 	void Core::initialiseShaders()
@@ -490,17 +488,44 @@ namespace Engine
 		}
 	}
 
+	std::shared_ptr<Surface> Core::createSurface(std::shared_ptr<Camera> _cam)
+	{
+		std::shared_ptr<Surface> s = std::make_shared<Surface>();
+		s->m_self = s;
+		s->initialize(_cam);		
+		m_surfaces.push_back(s);
+		return s;
+	}
+
 	void Core::renderScreen()
 	{
-		glBindFramebuffer(GL_FRAMEBUFFER, m_RT->fBufID);
-		glClearColor(0.0, 0.0, 0.0, 1.0);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glViewport(0, 0, width, height);
-		updateShader();
-		drawScene();
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		m_sqShader->draw(m_screenQuad); //draw a quad with any render textures on it (1 by default)		
-		SDL_GL_SwapWindow(m_window);
+		if (m_surfaces.size() == 0)
+		{
+			Console::output(Console::Error, "Core", "There must be at least one surface for rendering to.");
+		}
+		else
+		{
+			for (std::vector<std::shared_ptr<Surface>>::iterator it = m_surfaces.begin(); it != m_surfaces.end(); it++)
+			{
+				if ((*it)->m_destroy)
+				{
+					(*it)->onDestroy();
+					it = m_surfaces.erase(it);
+				}
+				else
+				{
+					glBindFramebuffer(GL_FRAMEBUFFER, (*it)->m_RT->fBufID);
+					glClearColor(0.0, 0.0, 0.0, 1.0);
+					glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+					glViewport((*it)->m_position.x, (*it)->m_position.y, (*it)->m_size.x, (*it)->m_size.y);
+					updateShader((*it)->m_camera.lock(), (*it)->m_RT, (*it)->m_size);
+					drawScene();
+					glBindFramebuffer(GL_FRAMEBUFFER, 0);
+				}
+			}
+			m_sqShader->draw(m_screenQuad); //draw a quad with any render textures on it (1 by default)	
+			SDL_GL_SwapWindow(m_window);
+		}
 	}
 
 }

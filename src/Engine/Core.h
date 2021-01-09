@@ -16,14 +16,16 @@
 
 namespace Engine
 {
-	struct Entity;		
-	struct ResourceManager;	
+	class Entity;		
+	class ResourceManager;	
 	class Shader;
 	class VertexArray;
 	class Camera; 
 	class DirLight;
 	class SpotLight;
 	class PointLight;
+	class Surface;
+	class AudioReceiver;
 
 	struct Core
 	{
@@ -37,9 +39,14 @@ namespace Engine
 		std::shared_ptr<InputManager> getInput() { return m_inputManager; }
 		float getDeltaTime() { return dTime; }
 		std::vector<std::shared_ptr<Entity>> getAllEntities() { return m_entities; }
-		std::shared_ptr<RenderTexture> createRenderTexture();
+		//std::shared_ptr<RenderTexture> createRenderTexture();
 		void resizeWindow(int _x, int _y);
-		std::shared_ptr<Camera> getCurrentCamera();		
+		std::shared_ptr<Camera> getDefaultCamera();
+		std::shared_ptr<Surface> createSurface(std::shared_ptr<Camera> _cam);
+		std::shared_ptr<AudioReceiver> getAudioReceiver() { return m_listener.lock(); }
+
+
+		//std::shared_ptr<Camera> getCurrentCamera();		
 
 		//SDL OPENGL and OPENAL STUFF		
 		SDL_Window* m_window;
@@ -65,29 +72,31 @@ namespace Engine
 		long t1;		
 		
 		//My things
-		std::shared_ptr<RenderTexture> m_RT;
+		//std::shared_ptr<RenderTexture> m_RT;
 		std::shared_ptr<VertexArray> m_screenQuad;
 		std::vector<std::shared_ptr<Entity>> m_entities;
 		std::shared_ptr<InputManager> m_inputManager;
+		std::vector<std::shared_ptr<Surface>> m_surfaces;
 
 		//Things I just hold references to
-		std::weak_ptr<Core> m_self;
-		std::weak_ptr<Camera> m_camera;
+		std::weak_ptr<Core> m_self;		
+		std::vector<std::weak_ptr<Camera>> m_cameras;
 		std::vector<std::weak_ptr<DirLight>> m_dirLights; 
 		std::vector<std::weak_ptr<SpotLight>> m_spotLights; 
 		std::vector<std::weak_ptr<PointLight>> m_pointLights; 
+		std::weak_ptr<AudioReceiver> m_listener;
 
 
 		//Utility functions that just make the code easier for my eyes
 		void drawScene();
 		void drawShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
 		void drawPointShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
-		void updateShader();
+		void updateShader(std::shared_ptr<Camera> _cam, std::shared_ptr<RenderTexture> _RT, glm::vec2 _viewport);
 		void initialiseAL();
 		void initialiseShaders();
 		void initialiseSDL();
 		void updateLighting();
-		void updateEntities();
+		void updateEntities();		
 		void drawShadowmaps();
 		void createScreenQuad();
 		void renderScreen();

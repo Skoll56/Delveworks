@@ -27,7 +27,7 @@ namespace Engine
 		std::shared_ptr<ShadowMap> sm = getShadowMap();
 
 		glm::mat4 view(1.0f);
-		glm::vec3 camPos = getEntity()->getCore()->getCurrentCamera()->transform()->getPosition();
+		glm::vec3 camPos = getEntity()->getCore()->getDefaultCamera()->transform()->getPosition();
 		view = glm::lookAt(camPos + glm::vec3(0.0f, 100.0f, 0.0f), camPos + glm::vec3(0.0f, 100.0f, 0.0f) + transform()->getFwd(), transform()->getUp());
 		sm->setLightSpaceMatrix(glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, 0.0f, 200.0f) * view);
 

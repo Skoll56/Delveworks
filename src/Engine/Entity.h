@@ -113,6 +113,24 @@ namespace Engine
 					core.lock()->m_pointLights.push_back(p);
 				}
 			}
+			if (!foundType)
+			{
+				std::shared_ptr<Camera> p = std::dynamic_pointer_cast<Camera>(_rtn);
+				if (p)
+				{
+					foundType = true;
+					core.lock()->m_cameras.push_back(p);
+				}
+			}
+			if (!foundType)
+			{
+				std::shared_ptr<AudioReceiver> p = std::dynamic_pointer_cast<AudioReceiver>(_rtn);
+				if (p)
+				{
+					foundType = true;
+					core.lock()->m_listener = p;
+				}
+			}
 		}
 
 		std::vector<std::shared_ptr<Component>> components;		

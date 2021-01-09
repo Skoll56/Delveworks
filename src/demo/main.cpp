@@ -51,7 +51,8 @@ class Demo : public Component
 
 	void onInitialise()
 	{
-		camera = getCore()->getCurrentCamera()->transform();
+		camera = getCore()->getDefaultCamera()->transform();
+		camera.lock()->getEntity()->addComponent<AudioReceiver>();
 
 		std::shared_ptr<InputManager> IM = getCore()->getInput();
 		mouse = IM->addDevice<Mouse>();
