@@ -134,10 +134,13 @@ class Demo : public Component
 		{
 			if (i == 120)
 			{
-				//std::shared_ptr<Surface> surf = getCore()->createSurface(camera.lock()->getEntity()->getComponent<Camera>(), 1);
-				std::shared_ptr<Surface> surf = getCore()->createSurface(getCore()->m_rManager->load<Texture>("Image1.bmp"), 1);
+				std::shared_ptr<Surface> surf = getCore()->createSurface(camera.lock()->getEntity()->getComponent<Camera>(), 1);
+				//std::shared_ptr<Surface> surf = getCore()->createSurface(getCore()->m_rManager->load<Texture>("Image1.bmp"), 1);
+				surf->setSize(400, 400);
+				surf->setPosition(100, 100);
 
-				surf->setSize(300, 300);
+				std::shared_ptr<Surface> surf2 = getCore()->getSurface(0);
+				surf2->setPosition(0, 0);
 				Console::message("Done");
 			}
 		}

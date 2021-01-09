@@ -18,7 +18,8 @@ namespace Engine
 		void update();
 		std::shared_ptr<RenderTexture> createRenderTexture();
 		void destroy() { m_destroy = true; }
-		void setPosition(glm::vec2 _pos) { m_position = _pos; }
+		void setPosition(glm::vec2 _pos) { m_position = _pos;  }
+		void setPosition(float _x, float _y) { m_position.x = _x; m_position.y = _y; }
 		glm::vec2 getPosition() { return m_position; }
 		void setSize(glm::vec2 _XY) { m_size = _XY; update(); }
 		void setSize(int _X, int _Y) { m_size.x = _X; m_size.y = _Y; update(); }

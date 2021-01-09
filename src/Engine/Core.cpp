@@ -230,7 +230,7 @@ namespace Engine
 			//Lighting Shaders
 			m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(_cam->getFOV()), (float)_viewport.x / (float)_viewport.y, 0.1f, 100.0f)); //Set the projection uniform
 			m_lightingSh->setUniform("in_View", _cam->getView()); // Establish the view matrix		
-			m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
+			m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f)); //TODO
 			m_lightingSh->setUniform("in_CamPos", _cam->transform()->m_position);
 		}
 		catch (Exception &e)
@@ -554,8 +554,6 @@ namespace Engine
 				}
 				else
 				{
-					
-
 					if ((*it)->m_RT)
 					{
 						if ((*it)->m_camera.lock())
@@ -563,12 +561,13 @@ namespace Engine
 							glBindFramebuffer(GL_FRAMEBUFFER, (*it)->m_RT->fBufID);
 							glClearColor(0.0, 0.0, 0.0, 1.0);
 							glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-							glViewport((*it)->m_position.x, (*it)->m_position.y, (*it)->m_size.x, (*it)->m_size.y);
+							glViewport(0, 0, (*it)->m_size.x, (*it)->m_size.y);
 							updateLightingShader((*it)->m_camera.lock(), (*it)->m_size);
 							updateSurfaceShader((*it)->m_RT);
 							drawScene();
 							glBindFramebuffer(GL_FRAMEBUFFER, 0);
-							m_sqShader->draw((*it)->m_screenQuad); //draw a quad with any render textures on it (1 by default)
+							glViewport((*it)->m_position.x, (*it)->m_position.y, (*it)->m_size.x, (*it)->m_size.y);
+							m_sqShader->draw((*it)->m_screenQuad); //draw a quad with any render textures on it (1 by default)							
 						}
 						else
 						{
@@ -578,7 +577,7 @@ namespace Engine
 					else if ((*it)->m_tex)
 					{
 						glClearColor(0.0, 0.0, 0.0, 1.0);
-						glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+						glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);					
 						glViewport((*it)->m_position.x, (*it)->m_position.y, (*it)->m_size.x, (*it)->m_size.y);
 						updateSurfaceShader((*it)->m_tex);
 						drawScene();						
