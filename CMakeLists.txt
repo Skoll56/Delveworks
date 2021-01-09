@@ -42,6 +42,7 @@ src/Engine/Light.cpp
 src/Engine/RenderTexture.cpp
 src/Engine/Exception.cpp
 src/Engine/Console.cpp
+src/Engine/Surface.cpp
 
 src/Engine/Core.h
 src/Engine/Engine.h
@@ -65,6 +66,7 @@ src/Engine/Collider.h
 src/Engine/RenderTexture.h
 src/Engine/Console.h
 src/Engine/WavFile.h
+src/Engine/Surface.h
 )
 
 

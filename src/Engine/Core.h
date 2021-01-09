@@ -90,6 +90,7 @@ namespace Engine
 		void updateEntities();
 		void drawShadowmaps();
 		void createScreenQuad();
+		void renderScreen();
 	};
 }
 

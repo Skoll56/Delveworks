@@ -3,7 +3,6 @@
 #include <iostream>
 #include "Component.h"
 #include "Resource.h"
-//#include "Camera.h"
 #include "Shader.h"
 #include "VertexArray.h"
 #include "VertexBuffer.h"
@@ -78,66 +77,17 @@ namespace Engine
 		//Set the clear-colour for the screen and clear it
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		quit = m_inputManager->update(); //Handles the input, and returns a 'quit' value to see if the program should end
-		
+		quit = m_inputManager->update(); //Handles the input, and returns a 'quit' value to see if the program should end		
 		//Re-establish window-size to allow stretching and re-sizing
 		SDL_GetWindowSize(m_window, &width, &height);		
+		
 		getCurrentCamera()->update(dTime);
-
-		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end(); it++)
-		{
-			try
-			{
-				(*it)->tick(); //"Update"
-			}
-			catch (Exception &e)
-			{
-				Console::output(Console::Error, (*it)->getTag(), e.message());
-			}
-		}
-
-		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end();)
-		{
-			try
-			{				
-				(*it)->afterTick(); //A second tick for after-tick events
-				if ((*it)->m_delete)
-				{
-					it = m_entities.erase(it);
-				}
-				else
-				{
-					it++;
-				}
-			}
-			catch (Exception &e)
-			{
-				Console::output(Console::Error, (*it)->getTag(), e.message());
-				it++;
-			}
-		}
-
-		updateLighting();
-				
-		drawShadowmaps(); /* <-- !GRAPHICS UNIT! */		
-		
-		glBindFramebuffer(GL_FRAMEBUFFER, m_RT->fBufID);
-		glClearColor(0.0, 0.0, 0.0, 1.0);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glViewport(0, 0, width, height);
-		updateShader();
-		drawScene();
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-			
-		m_sqShader->draw(m_screenQuad);
-		//draw a quad with any render textures on it (1 by default)
-
-		SDL_GL_SwapWindow(m_window);
-
-		
+		updateEntities();
+		updateLighting();				
+		drawShadowmaps(); /* <-- !GRAPHICS UNIT! */
+		renderScreen();
 
 		float targetTime = 1.0f / 60.f;
 		if (targetTime > dTime) //The FPS cap
@@ -223,7 +173,6 @@ namespace Engine
 			}
 		}
 	}
-
 
 	void Core::start()
 	{
@@ -504,6 +453,54 @@ namespace Engine
 				Console::output(Console::Error, "spotLight Update", e.message());
 			}
 		}
+	}
+
+	void Core::updateEntities()
+	{
+		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end(); it++)
+		{
+			try
+			{
+				(*it)->tick(); //"Update"
+			}
+			catch (Exception &e)
+			{
+				Console::output(Console::Error, (*it)->getTag(), e.message());
+			}
+		}
+		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end();)
+		{
+			try
+			{
+				(*it)->afterTick(); //A second tick for after-tick events
+				if ((*it)->m_delete)
+				{
+					it = m_entities.erase(it);
+				}
+				else
+				{
+					it++;
+				}
+			}
+			catch (Exception &e)
+			{
+				Console::output(Console::Error, (*it)->getTag(), e.message());
+				it++;
+			}
+		}
+	}
+
+	void Core::renderScreen()
+	{
+		glBindFramebuffer(GL_FRAMEBUFFER, m_RT->fBufID);
+		glClearColor(0.0, 0.0, 0.0, 1.0);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glViewport(0, 0, width, height);
+		updateShader();
+		drawScene();
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		m_sqShader->draw(m_screenQuad); //draw a quad with any render textures on it (1 by default)		
+		SDL_GL_SwapWindow(m_window);
 	}
 
 }
