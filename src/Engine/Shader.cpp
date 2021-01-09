@@ -118,7 +118,24 @@ namespace Engine
 		glGetProgramiv(m_id, GL_LINK_STATUS, &success);
 		if (!success)
 		{			
-			throw Exception("Failed to link shader program");
+			GLint maxLength = 0;
+			glGetProgramiv(m_id, GL_INFO_LOG_LENGTH, &maxLength);
+
+			// The maxLength includes the NULL character
+			std::vector<GLchar> infoLog(maxLength);
+			glGetProgramInfoLog(m_id, maxLength, &maxLength, &infoLog[0]);
+
+			// The program is useless now. So delete it.
+			glDeleteProgram(m_id);
+
+			// Provide the infolog in whatever manner you deem best.
+			std::string error = "Sam: ";
+			for (int i = 0; i < infoLog.size(); i++)
+			{
+				error += infoLog[i];
+			}
+			// Exit with failure.			
+			throw Exception("Failed to link shader program: " + error);
 		}
 
 		//glDetachShader(m_id, vertexShaderId);
