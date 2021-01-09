@@ -10,6 +10,5 @@ void main()
 {             
     float d = length(ex_FragPos.xyz - in_lightPos);
 	d = d / in_farPlane;
-	gl_FragDepth = d;
-	//gl_FragColor = vec4(d);
+	gl_FragDepth = d;	
 }  

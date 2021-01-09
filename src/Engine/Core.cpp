@@ -140,7 +140,7 @@ namespace Engine
 			}
 			catch (Exception &e)
 			{
-				Console::output(Console::Error, "PointLight Update", e.message());
+				Console::output(Console::Error, "SpotLight Update", e.message());
 			}
 		}
 
@@ -157,11 +157,12 @@ namespace Engine
 		}
 				
 		drawShadowmaps(); /* <-- !GRAPHICS UNIT! */		
-		updateShader();
+		
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RT->fBufID);
 		glClearColor(0.0, 0.0, 0.0, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glViewport(0, 0, width, height);		
+		glViewport(0, 0, width, height);
+		updateShader();
 		drawScene();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 			
@@ -410,7 +411,7 @@ namespace Engine
 	std::shared_ptr<RenderTexture> Core::createRenderTexture()
 	{
 		std::shared_ptr<RenderTexture> RT = std::make_shared<RenderTexture>();
-		RT->Initialise();	
+		RT->Initialise(width, height);	
 		m_RT = RT;
 		return RT;
 	}
@@ -436,11 +437,6 @@ namespace Engine
 		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 0.0f));		
 	}
 
-	void Core::resizeWindow(int _x, int _y)
-	{
-		
-	}
-
 	void Core::initialiseAL()
 	{
 		m_device = alcOpenDevice(NULL);
@@ -462,6 +458,11 @@ namespace Engine
 			alcCloseDevice(m_device);
 			throw Exception("Failed to create ALC Context");
 		}
+	}
+
+	void Core::resizeWindow(int _x, int _y)
+	{
+		m_RT->Initialise(_x, _y);
 	}
 
 	void Core::initialiseShaders()

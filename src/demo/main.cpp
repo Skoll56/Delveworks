@@ -23,7 +23,7 @@ class Ball : public Component
 	{
 		if (!m_sound.lock()) throw Exception();
 		m_sound.lock()->Play(0.8f);
-		Console::message("Collision happened");
+		//Console::message("Collision happened");
 	}
 
 	void onCollisionEnter(std::shared_ptr<Collision> _col)

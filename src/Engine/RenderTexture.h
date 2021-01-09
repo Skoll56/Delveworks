@@ -15,6 +15,7 @@ namespace Engine
 	{
 		public:
 		virtual void Initialise();
+		virtual void Initialise(int _resX, int _resY);
 			
 		GLuint fBufID = 0;		
 		GLuint rBufObjID = 0;
