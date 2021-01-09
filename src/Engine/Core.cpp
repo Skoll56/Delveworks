@@ -85,7 +85,7 @@ namespace Engine
 		
 		//Re-establish window-size to allow stretching and re-sizing
 		SDL_GetWindowSize(m_window, &width, &height);		
-		m_camera->update(dTime);
+		getCurrentCamera()->update(dTime);
 
 		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end(); it++)
 		{
@@ -120,41 +120,7 @@ namespace Engine
 			}
 		}
 
-		for (int di = 0; di < m_dirLights.size(); di++)
-		{
-			try
-			{
-				m_dirLights.at(di)->update(di);
-			}
-			catch (Exception &e)
-			{
-				Console::output(Console::Error, "DirLight Update", e.message());
-			}
-		}
-
-		for (int si = 0; si < m_spotLights.size(); si++)
-		{
-			try
-			{//
-				m_spotLights.at(si)->update(si);
-			}
-			catch (Exception &e)
-			{
-				Console::output(Console::Error, "SpotLight Update", e.message());
-			}
-		}
-
-		for (int pi = 0; pi < m_pointLights.size(); pi++)
-		{
-			try
-			{
-				m_pointLights.at(pi)->update(pi);
-			}
-			catch(Exception &e)
-			{
-				Console::output(Console::Error, "PointLight Update", e.message());
-			}
-		}
+		updateLighting();
 				
 		drawShadowmaps(); /* <-- !GRAPHICS UNIT! */		
 		
@@ -315,9 +281,9 @@ namespace Engine
 		{
 			//Lighting Shaders
 			m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f)); //Set the projection uniform
-			m_lightingSh->setUniform("in_View", m_camera->getView()); // Establish the view matrix		
+			m_lightingSh->setUniform("in_View", getCurrentCamera()->getView()); // Establish the view matrix		
 			m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f));
-			m_lightingSh->setUniform("in_CamPos", m_camera->transform()->m_position);
+			m_lightingSh->setUniform("in_CamPos", getCurrentCamera()->transform()->m_position);
 
 			//Shader for the screen quad (For render textures)
 			m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
@@ -331,7 +297,6 @@ namespace Engine
 		{
 			Console::output(Console::Error, "Update Shaders", e.message());
 		}
-
 	}
 
 	/* !This has been CREATED as part of the GRAPHICS UNIT! */
@@ -341,9 +306,9 @@ namespace Engine
 		{
 			try
 			{
-				std::shared_ptr<ShadowMap> shadowmap = m_dirLights[i]->getShadowMap();
+				std::shared_ptr<ShadowMap> shadowmap = m_dirLights[i].lock()->getShadowMap();
 				glUseProgram(m_shadowSh->getId());
-				m_shadowSh->setUniform("in_LightSpaceMatrix", m_dirLights[i]->getShadowMap()->getLightSpaceMatrix());
+				m_shadowSh->setUniform("in_LightSpaceMatrix", m_dirLights[i].lock()->getShadowMap()->getLightSpaceMatrix());
 				glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
 				glClear(GL_DEPTH_BUFFER_BIT);
 				glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
@@ -361,13 +326,13 @@ namespace Engine
 		{
 			try
 			{
-				std::shared_ptr<ShadowCube> SC = m_pointLights[i]->getShadowCube();
+				std::shared_ptr<ShadowCube> SC = m_pointLights[i].lock()->getShadowCube();
 				glUseProgram(m_shadowSh->getId());
 				glBindFramebuffer(GL_FRAMEBUFFER, SC->fBufID);
 
 
-				m_pointShadowSh->setUniform("in_lightPos", m_pointLights[i]->transform()->getPosition());
-				m_pointShadowSh->setUniform("in_farPlane", m_pointLights[i]->getRadius());
+				m_pointShadowSh->setUniform("in_lightPos", m_pointLights[i].lock()->transform()->getPosition());
+				m_pointShadowSh->setUniform("in_farPlane", m_pointLights[i].lock()->getRadius());
 
 				for (int l = 0; l < 6; l++)
 				{
@@ -390,9 +355,9 @@ namespace Engine
 		{
 			try
 			{
-				std::shared_ptr<ShadowMap> shadowmap = m_spotLights[i]->getShadowMap();
+				std::shared_ptr<ShadowMap> shadowmap = m_spotLights[i].lock()->getShadowMap();
 				glUseProgram(m_shadowSh->getId());
-				m_shadowSh->setUniform("in_LightSpaceMatrix", m_spotLights[i]->getShadowMap()->getLightSpaceMatrix());
+				m_shadowSh->setUniform("in_LightSpaceMatrix", m_spotLights[i].lock()->getShadowMap()->getLightSpaceMatrix());
 				glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
 				glClear(GL_DEPTH_BUFFER_BIT);
 				glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
@@ -465,6 +430,11 @@ namespace Engine
 		m_RT->Initialise(_x, _y);
 	}
 
+	std::shared_ptr<Camera> Core::getCurrentCamera()
+	{
+		return m_camera.lock();
+	}
+
 	void Core::initialiseShaders()
 	{
 		m_sqShader = m_rManager->load<Shader>("UI");
@@ -472,4 +442,68 @@ namespace Engine
 		m_shadowSh = m_rManager->load<Shader>("dirShadow");
 		m_pointShadowSh = m_rManager->load<Shader>("pointShadow");
 	}
+
+	void Core::updateLighting()
+	{
+		for (std::vector<std::weak_ptr<DirLight>>::iterator it = m_dirLights.begin(); it != m_dirLights.end();)
+		{
+			try
+			{
+				if ((*it).lock())
+				{
+					(*it).lock()->update(std::distance(m_dirLights.begin(), it));
+					it++;
+				}
+				else //This object got deleted
+				{
+					it = m_dirLights.erase(it);
+				}
+			}
+			catch (Exception &e)
+			{
+				Console::output(Console::Error, "DirLight Update", e.message());
+			}
+		}
+
+		for (std::vector<std::weak_ptr<PointLight>>::iterator it = m_pointLights.begin(); it != m_pointLights.end();)
+		{
+			try
+			{
+				if ((*it).lock())
+				{
+					(*it).lock()->update(std::distance(m_pointLights.begin(), it));
+					it++;
+				}
+				else //This object got deleted
+				{
+					it = m_pointLights.erase(it);
+				}
+			}
+			catch (Exception &e)
+			{
+				Console::output(Console::Error, "pointLight Update", e.message());
+			}
+		}
+
+		for (std::vector<std::weak_ptr<SpotLight>>::iterator it = m_spotLights.begin(); it != m_spotLights.end();)
+		{
+			try
+			{
+				if ((*it).lock())
+				{
+					(*it).lock()->update(std::distance(m_spotLights.begin(), it));
+					it++;
+				}
+				else //This object got deleted
+				{
+					it = m_spotLights.erase(it);
+				}
+			}
+			catch (Exception &e)
+			{
+				Console::output(Console::Error, "spotLight Update", e.message());
+			}
+		}
+	}
+
 }

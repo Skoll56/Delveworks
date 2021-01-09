@@ -51,7 +51,7 @@ class Demo : public Component
 
 	void onInitialise()
 	{
-		camera = getCore()->m_camera->transform();
+		camera = getCore()->getCurrentCamera()->transform();
 
 		std::shared_ptr<InputManager> IM = getCore()->getInput();
 		mouse = IM->addDevice<Mouse>();

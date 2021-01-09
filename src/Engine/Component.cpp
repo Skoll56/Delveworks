@@ -57,8 +57,7 @@ namespace Engine
 	{
 		try
 		{
-			
-			std::shared_ptr<Transform> t = getEntity()->getCore()->m_camera->transform();
+			std::shared_ptr<Transform> t = getEntity()->getCore()->getCurrentCamera()->transform();
 			glm::vec3 camPos = t->m_position;
 			glm::vec3 fwd = t->getFwd();
 			glm::vec3 up = t->getUp();
@@ -101,7 +100,6 @@ namespace Engine
 				}
 			}
 		}
-
 	}
 
 	void Transform::onTick()
@@ -152,8 +150,5 @@ namespace Engine
 	{
 		m_upVec = glm::vec3(0.0f, 1.0f, 0.0f);
 	}
-
-	
-
 }
  
