@@ -7,6 +7,7 @@ namespace Engine
 	class Camera;
 	class VertexArray;
 	class Texture;
+	class Core;
 	
 	class Surface		
 	{
