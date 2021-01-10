@@ -51,14 +51,16 @@ uniform DirLight in_dLight[NUMDIR];
 uniform SpotLight in_sLight[NUMSPOT];
 
 uniform sampler2D in_Texture;
-
+uniform float in_alpha;
+uniform vec3 in_color;
 uniform vec3 in_Emissive;
+uniform vec3 in_CamPos;
+uniform int in_Shininess;
+uniform int in_rShadows;
+
 varying vec2 ex_TexCoord;
 varying vec3 ex_FragPos;
 varying vec3 ex_Normal;
-
-uniform vec3 in_CamPos;
-uniform int in_Shininess;
 
 vec3 directionList[20]; //This is an optimisation for PCF (although it does degrade quality a bit, it saves 44 samples)
 
@@ -192,16 +194,21 @@ void main()
 
   for (int i = 0; i < NUMDIR; i++) // For each directional light
   {	
-	FragPosLightSpace = (in_dLight[i].m_lightMatrix) * vec4(ex_FragPos, 1.0);
-	inShadow = ShadowCalculation(FragPosLightSpace, in_dLight[i].m_shadowMap, in_dLight[i].m_textureSize); //Calculate how much in-shadow the fragment is	(GRAPHICS UNIT)   
+	if (in_rShadows == 1)
+	{
+		FragPosLightSpace = (in_dLight[i].m_lightMatrix) * vec4(ex_FragPos, 1.0);
+		inShadow = ShadowCalculation(FragPosLightSpace, in_dLight[i].m_shadowMap, in_dLight[i].m_textureSize); //Calculate how much in-shadow the fragment is	(GRAPHICS UNIT)   
+	}
 	lDir = -in_dLight[i].m_direction;
 	light += (1.0 - inShadow) * max(calcDifSpec(norm, tex, in_dLight[i].m_diffuse, in_dLight[i].m_specIntens, attenuation/2.0, lDir), 0.0); //Add to the light value
   }
 
   for (int i = 0; i < NUMPOINT; i++) // For each point light
   {
+	if (in_rShadows == 1)
+	{
 		inShadow =  ShadowCubeCalculation(ex_FragPos, in_pLight[i].m_pos, in_pLight[i].m_shadowMap, in_pLight[i].m_radius); //Calculate how much in-shadow the fragment is
-	
+	}
 		lDir = normalize(in_pLight[i].m_pos - ex_FragPos);
 		float d = length(in_pLight[i].m_pos - ex_FragPos);	
 		float linear = 4.5 / in_pLight[i].m_radius;
@@ -212,9 +219,11 @@ void main()
 
    for (int i = 0; i < NUMSPOT; i++) // For each spotLight
    {
-		FragPosLightSpace = (in_sLight[i].m_lightMatrix) * vec4(ex_FragPos, 1.0);
-		float inShadow = ShadowCalculation(FragPosLightSpace, in_sLight[i].m_shadowMap, in_sLight[i].m_textureSize); //Calculate how much in-shadow the fragment is	 
-	
+		 if (in_rShadows == 1)
+		{
+			FragPosLightSpace = (in_sLight[i].m_lightMatrix) * vec4(ex_FragPos, 1.0);
+			float inShadow = ShadowCalculation(FragPosLightSpace, in_sLight[i].m_shadowMap, in_sLight[i].m_textureSize); //Calculate how much in-shadow the fragment is	 
+		}
 		lDir = normalize(in_sLight[i].m_pos - ex_FragPos);
 		float theta = dot(normalize(in_sLight[i].m_direction), -lDir);   		
 
@@ -226,7 +235,9 @@ void main()
 		attenuation = 1.0 / (1.0 + linear * d + in_sLight[i].m_quadratic * (d * d));
 		light+= (1.0 - inShadow) * max(calcDifSpec(norm, tex, in_sLight[i].m_diffuse, in_sLight[i].m_specIntens, attenuation, lDir), 0.0) * intensity;	//Add to the light value	 
    }  
-
-   gl_FragColor = tex * vec4(light, 1.0); //Use the sum of the light from each source to add light to the colour of the fragment
+   
+	tex.a *= in_alpha;
+	tex *= vec4(in_color, 1.0);
+    gl_FragColor = tex * vec4(light, 1.0); //Use the sum of the light from each source to add light to the colour of the fragment
 }
 

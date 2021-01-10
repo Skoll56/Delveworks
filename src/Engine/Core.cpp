@@ -42,8 +42,9 @@ namespace Engine
 		std::shared_ptr<Entity> defaultCamera = rtn->createEntity();
 		std::shared_ptr<Camera> cam = defaultCamera->addComponent<Camera>();
 		rtn->setDefaultCamera(cam);
-		std::shared_ptr<Surface> s = rtn->createSurface(cam, 0);
-		s->setSize(glm::vec2(rtn->width, rtn->height));
+		std::shared_ptr<RenderSurface> s = rtn->createRenderSurface(cam, 0);
+		s->setSize(glm::vec2(rtn->width - 400, rtn->height));
+		s->setPosition(400, 0);
 
 		Console::message("Initialised successfully");
 		return rtn;
@@ -116,14 +117,23 @@ namespace Engine
 	/* !This has been MODIFIED as part of the GRAPHICS UNIT! */
 	void Core::drawScene()
 	{
+		std::vector<std::shared_ptr<MeshRenderer>> drawLater;
+
 		for (size_t ei = 0; ei < m_entities.size(); ei++)
 		{
 			try
 			{
 				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
 				if (MR)
-				{
-					MR->draw();
+				{			
+					if (MR->m_alpha < 1.0f)
+					{
+						drawLater.push_back(MR); //Transparent objects need to be drawn last, because of reasons and things.
+					}
+					else
+					{
+						MR->draw();
+					}					
 				}
 			}
 			catch (Exception &e)
@@ -131,6 +141,21 @@ namespace Engine
 				Console::output(Console::Error, "Draw Scene", e.message());
 			}
 		}
+
+		for (size_t ei = 0; ei < drawLater.size(); ei++)
+		{
+			try
+			{				
+				//glDepthMask(false);
+				drawLater[ei]->draw();	
+				//glDepthMask(true);
+			}
+			catch (Exception &e)
+			{
+				Console::output(Console::Error, "Draw Transparent Scene", e.message());
+			}
+		}
+
 	}
 
 	/* !This has been CREATED as part of the GRAPHICS UNIT! */
@@ -143,8 +168,11 @@ namespace Engine
 				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
 				if (MR)
 				{
-					m_shadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
-					m_shadowSh->draw(MR->m_vAO);
+					if (MR->castShadows)
+					{
+						m_shadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
+						m_shadowSh->draw(MR->m_vAO);
+					}
 				}
 			}
 			catch(Exception &e)
@@ -164,8 +192,11 @@ namespace Engine
 				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
 				if (MR)
 				{
-					m_pointShadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
-					m_pointShadowSh->draw(MR->m_vAO);
+					if (MR->castShadows)
+					{
+						m_pointShadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
+						m_pointShadowSh->draw(MR->m_vAO);
+					}
 				}
 			}
 			catch (Exception &e)
@@ -239,7 +270,7 @@ namespace Engine
 		}
 	}
 
-	void Core::updateSurfaceShader(std::shared_ptr<Texture> _tex)
+	void Core::updateSurfaceShader(std::shared_ptr<Texture> _tex, float _alpha)
 	{
 		try
 		{
@@ -247,6 +278,7 @@ namespace Engine
 			m_sqShader->setUniform("in_Projection", glm::ortho(-1, 1, -1, 1));
 			//Change to Shadowmap to view depth buffer
 			m_sqShader->setUniform("in_Texture", _tex);
+			m_sqShader->setUniform("in_alpha", _alpha);
 			/*m_sqShader->setUniform("in_Texture", m_dirLights[0]->getShadowMap());
 			m_sqShader->setUniform("in_nearPlane", 0.01f);
 			m_sqShader->setUniform("in_farPlane", m_pointLights[0]->getRadius());*/
@@ -488,10 +520,11 @@ namespace Engine
 		}
 	}
 
-	std::shared_ptr<Surface> Core::createSurface(std::shared_ptr<Camera> _cam, int _layer)
+	std::shared_ptr<RenderSurface> Core::createRenderSurface(std::shared_ptr<Camera> _cam, int _layer)
 	{
-		std::shared_ptr<Surface> s = std::make_shared<Surface>();
+		std::shared_ptr<RenderSurface> s = std::make_shared<RenderSurface>();
 		s->m_self = s;
+		s->isRender = true;
 		s->initialize(_cam, _layer);
 		s->m_core = m_self;
 		m_surfaces.push_back(s);
@@ -499,9 +532,9 @@ namespace Engine
 		return s;
 	}
 
-	std::shared_ptr<Surface> Core::createSurface(std::shared_ptr<Texture> _tex, int _layer)
+	std::shared_ptr<UISurface> Core::createUISurface(std::shared_ptr<Texture> _tex, int _layer)
 	{
-		std::shared_ptr<Surface> s = std::make_shared<Surface>();
+		std::shared_ptr<UISurface> s = std::make_shared<UISurface>();
 		s->m_self = s;
 		s->initialize(_tex, _layer);
 		s->m_core = m_self;
@@ -528,7 +561,7 @@ namespace Engine
 	{
 		bool operator()(std::shared_ptr<Surface> _a, std::shared_ptr<Surface> _b) const
 		{
-			return _a->getLayer() > _b->getLayer();
+			return _a->getLayer() < _b->getLayer();
 		}
 	} layerCompare;
 
@@ -545,6 +578,7 @@ namespace Engine
 		}
 		else
 		{
+			
 			for (std::vector<std::shared_ptr<Surface>>::iterator it = m_surfaces.begin(); it != m_surfaces.end();)
 			{
 				if ((*it)->m_destroy)
@@ -554,42 +588,51 @@ namespace Engine
 				}
 				else
 				{
-					if ((*it)->m_RT)
-					{
-						if ((*it)->m_camera.lock())
-						{							
-							glBindFramebuffer(GL_FRAMEBUFFER, (*it)->m_RT->fBufID);
-							glClearColor(0.0, 0.0, 0.0, 1.0);
-							glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-							glViewport(0, 0, (*it)->m_size.x, (*it)->m_size.y);
-							updateLightingShader((*it)->m_camera.lock(), (*it)->m_size);
-							updateSurfaceShader((*it)->m_RT);
-							drawScene();
-							glBindFramebuffer(GL_FRAMEBUFFER, 0);
-							glViewport((*it)->m_position.x, (*it)->m_position.y, (*it)->m_size.x, (*it)->m_size.y);
-							m_sqShader->draw((*it)->m_screenQuad); //draw a quad with any render textures on it (1 by default)							
+					if ((*it)->isRender)
+					{ 
+						std::shared_ptr<RenderSurface> r = std::static_pointer_cast<RenderSurface>((*it));					
+						if (r->m_RT)
+						{
+							if (r->m_camera.lock())
+							{								
+								glBindFramebuffer(GL_FRAMEBUFFER, r->m_RT->fBufID);								
+								glClearColor(0.0, 0.0, 0.0, 1.0);
+								glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+								glViewport(0, 0, r->m_size.x, r->m_size.y);
+								updateLightingShader(r->m_camera.lock(), r->m_size);
+								updateSurfaceShader(r->m_RT, r->m_alpha);
+								drawScene();
+								glBindFramebuffer(GL_FRAMEBUFFER, 0);
+								glViewport((*it)->m_position.x, (*it)->m_position.y, (*it)->m_size.x, (*it)->m_size.y);
+								glDisable(GL_DEPTH_TEST);
+								m_sqShader->draw((*it)->m_screenQuad); //draw a quad with any render textures on it (1 by default)	
+								glEnable(GL_DEPTH_TEST);
+							}
+							else
+							{
+								Console::output(Console::Error, "Render Surface", "Surface has a render texture but no attached camera");
+							}
 						}
 						else
 						{
-							Console::output(Console::Error, "Render Surface", "Surface has a render texture but no attached camera");
-						}												
-					}		
-					else if ((*it)->m_tex)
-					{
-						glClearColor(0.0, 0.0, 0.0, 1.0);
-						glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);					
-						glViewport((*it)->m_position.x, (*it)->m_position.y, (*it)->m_size.x, (*it)->m_size.y);
-						updateSurfaceShader((*it)->m_tex);
-						drawScene();						
-						m_sqShader->draw((*it)->m_screenQuad); //draw a quad with any render textures on it (1 by default)
+							Console::output(Console::Error, "Render Surface", "Render Surface has no rendertexture attached");
+						}
 					}
-					else
-					{
-						Console::output(Console::Error, "Render Surface", "Surface has no texture or render texture attached");
-					}	
+					else 
+					{						
+						std::shared_ptr<UISurface> ui = std::static_pointer_cast<UISurface>((*it));						
+						glClearColor(0.0, 0.0, 0.0, 1.0);
+						glClear(GL_DEPTH_BUFFER_BIT);
+						glViewport(ui->m_position.x, ui->m_position.y, ui->m_size.x, ui->m_size.y);
+						updateSurfaceShader(ui->m_tex, ui->m_alpha);
+						glDisable(GL_DEPTH_TEST);
+						m_sqShader->draw(ui->m_screenQuad); //draw a quad with any render textures on it (1 by default)
+						glEnable(GL_DEPTH_TEST);
+					}					
 				}
 				it++;				
 			}				
+			
 			SDL_GL_SwapWindow(m_window);
 		}
 	}

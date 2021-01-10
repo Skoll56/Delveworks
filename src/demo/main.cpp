@@ -4,9 +4,7 @@
 class Ball : public Component
 {
 	std::weak_ptr<SoundSource> m_sound;
-	std::vector<int> t;
-	int i = 0;
-
+	
 	public:
 	void onInitialise()
 	{		
@@ -14,26 +12,11 @@ class Ball : public Component
 		//m_sound = getEntity()->addComponent<SoundSource>(getCore()->m_rManager->load<Sound>("pewTest.wav"));
 	}
 
-	void onCollision(std::shared_ptr<Collision> _col)
-	{	
-		
-	}
-
 	void onCollisionExit(std::shared_ptr<Entity> _other)
 	{
 		if (!m_sound.lock()) throw Exception();
 		m_sound.lock()->Play(0.8f);
 		//Console::message("Collision happened");
-	}
-
-	void onCollisionEnter(std::shared_ptr<Collision> _col)
-	{
-		
-	}
-
-	void onTick()
-	{
-		
 	}
 };
 
@@ -85,7 +68,7 @@ class Demo : public Component
 			if (keyboard.lock()->GetKeyIsDown(SDLK_a))
 			{
 				camera.lock()->m_position += camera.lock()->getRight() * moveSpeed * dTime;
-			}	
+			}
 
 			camera.lock()->rotate(glm::vec3(0.0f, 1.0f, 0.0f), mouse.lock()->getDeltaPos().x * rotSpeed * dTime);
 			camera.lock()->rotate(glm::vec3(1.0f, 0.0f, 0.0f), mouse.lock()->getDeltaPos().y * rotSpeed * dTime);
@@ -124,24 +107,42 @@ class Demo : public Component
 				std::shared_ptr<Entity> e = getCore()->createEntity();
 				std::shared_ptr<Camera> c = e->addComponent<Camera>();
 				getCore()->setDefaultCamera(c);
-				getCore()->getSurface(0)->setCamera(c);
 			}
 		}
+	}
+};
 
+class UI : public Component
+{
+	public:
+	bool test = true;
+	int i;
+	std::weak_ptr<Transform> camera;
+	
+	void onInitialise()
+	{
+		camera = getCore()->getDefaultCamera()->transform();
+	}
 
-		bool test = true;
+	void onTick()
+	{
+		i++;
 		if (test)
 		{
 			if (i == 120)
 			{
-				std::shared_ptr<Surface> surf = getCore()->createSurface(camera.lock()->getEntity()->getComponent<Camera>(), 1);
-				//std::shared_ptr<Surface> surf = getCore()->createSurface(getCore()->m_rManager->load<Texture>("Image1.bmp"), 1);
+				std::shared_ptr<Texture> t = getCore()->m_rManager->load<Texture>("defaultUI.bmp");
+				t->m_col = glm::vec3(0.7f, 0.7f, 0.7f);
+				std::shared_ptr<UISurface> surf = getCore()->createUISurface(t, 1);
 				surf->setSize(400, 400);
 				surf->setPosition(100, 100);
 
-				std::shared_ptr<Surface> surf2 = getCore()->getSurface(0);
-				surf2->setPosition(0, 0);
-				Console::message("Done");
+
+				//std::shared_ptr<RenderSurface> surf2 = getCore()->createRenderSurface(camera.lock()->getEntity()->getComponent<Camera>(), 2);
+				////std::shared_ptr<UISurface> surf2 = getCore()->createUISurface(t, 2);
+				//surf2->setSize(400, 400);
+				//surf2->setAlpha(0.5f);
+				//surf2->setPosition(300, 300);				
 			}
 		}
 	}
@@ -164,18 +165,21 @@ class CustomInput : public InputDevice
 
 #undef main
 int main()
-{			
+{
 	std::shared_ptr<Core> core = Core::initialise();
 
 	//Create the statue entity
 	std::shared_ptr<Entity> test = core->createEntity();
 	std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
+	MR->m_alpha = 0.5f;
+	MR->castShadows = true;
 	//test->addComponent<MeshCollider>();
 	test->transform()->m_position = glm::vec3(0.0f, 1.0f, 5.0f);
 
 	//Create a demo object
 	std::shared_ptr<Entity> demo = core->createEntity();
 	demo->addComponent<Demo>();
+	demo->addComponent<UI>();
 
 
 	//Create the directional (and ambient) light
@@ -190,8 +194,7 @@ int main()
 	{
 		std::shared_ptr<Entity> point = core->createEntity();
 		std::shared_ptr<PointLight> p = point->addComponent<PointLight>(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 30.0f, 0.8f);
-
-		p->transform()->m_position = glm::vec3(0.0f, 6.0f, -2.0f);		
+		p->transform()->m_position = glm::vec3(0.0f, 6.0f, -2.0f);
 	}
 
 	//Create a spotlight (in another room)
@@ -206,11 +209,11 @@ int main()
 	{
 		std::shared_ptr<Entity> floor = core->createEntity();
 		std::shared_ptr<MeshRenderer> MR0 = floor->addComponent<MeshRenderer>("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f)); //floor
+
 		//MR0->Initialise();
 		floor->transform()->m_position = glm::vec3(0.0f + l, 0.0f, 0.0f);
 		floor->transform()->setScale(glm::vec3(30.0f, 0.1f, 30.0f));
 		std::shared_ptr<PlaneCollider> b = floor->addComponent<PlaneCollider>();
-		//b->m_trigger = true;
 		b->setNorm(glm::vec3(0.0f, 1.0f, 0.0f));
 
 
@@ -244,10 +247,11 @@ int main()
 
 		std::shared_ptr<Entity> wall5 = core->createEntity();
 		std::shared_ptr<MeshRenderer> MR5 = wall5->addComponent<MeshRenderer>("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
-		//MR5->Initialise();
+		MR5->m_alpha = 0.25f;
+		MR5->receiveShadows = true;
 		wall5->transform()->setScale(glm::vec3(30.0f, 1.0f, 30.0f)); //Roof
 		wall5->transform()->m_position = glm::vec3(0.0f + l, 20.0f, 0.0f);
-		std::shared_ptr<BoxCollider> b5 = wall5->addComponent<BoxCollider>(); ////////////////
+		std::shared_ptr<BoxCollider> b5 = wall5->addComponent<BoxCollider>(); 
 
 		//Create bouncy balls (with WiP physics) to see
 		for (int i = 0; i < 1; i++)
@@ -261,8 +265,8 @@ int main()
 			//std::shared_ptr<PhysicsObject> phys = ball->addComponent<PhysicsObject>(1.0f, 0.5f);
 			std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>(1.0f, 0.9f);
 			ball->addComponent<Ball>();
-		}	
+		}
 		core->start();
 	}
-	return 0;
+	return 0;	
 }

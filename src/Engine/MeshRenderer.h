@@ -27,7 +27,9 @@ namespace Engine
 		void setShine(int _shininess) { m_shininess = _shininess; }
 		int getShine() { return m_shininess; }
 		glm::vec3 getSize() { return m_size; }//
-		
+		float m_alpha = 1.0f;
+		bool castShadows = true;
+		bool receiveShadows = true;
 
 	private:
 		glm::vec3 m_size; // The size of the obj in generic units (ie: box objs are 1/1/1 units)

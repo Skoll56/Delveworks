@@ -25,6 +25,8 @@ namespace Engine
 	class SpotLight;
 	class PointLight;
 	class Surface;
+	class RenderSurface;
+	class UISurface;
 	class AudioReceiver;
 
 	struct Core
@@ -43,8 +45,8 @@ namespace Engine
 		void onWindowResized(int _x, int _y);
 		std::shared_ptr<Camera> getDefaultCamera();
 		void setDefaultCamera(std::shared_ptr<Camera> _cam);
-		std::shared_ptr<Surface> createSurface(std::shared_ptr<Camera> _cam, int _layer);
-		std::shared_ptr<Surface> createSurface(std::shared_ptr<Texture> _tex, int _layer);
+		std::shared_ptr<RenderSurface> createRenderSurface(std::shared_ptr<Camera> _cam, int _layer);
+		std::shared_ptr<UISurface> createUISurface(std::shared_ptr<Texture> _tex, int _layer);
 		std::shared_ptr<Surface> getSurface(int _layer);
 		void orderSurfaces();
 		std::shared_ptr<AudioReceiver> getAudioReceiver() { return m_listener.lock(); }
@@ -69,7 +71,7 @@ namespace Engine
 		//General variables
 		bool quit;
 		bool restart;
-		int width = 1024;
+		int width = 1424;
 		int height = 1024;
 		
 		//Time variables
@@ -77,8 +79,6 @@ namespace Engine
 		long t1;		
 		
 		//My things
-		//std::shared_ptr<RenderTexture> m_RT;
-		
 		std::vector<std::shared_ptr<Entity>> m_entities;
 		std::shared_ptr<InputManager> m_inputManager;
 		std::vector<std::shared_ptr<Surface>> m_surfaces;
@@ -97,7 +97,7 @@ namespace Engine
 		void drawShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
 		void drawPointShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
 		void updateLightingShader(std::shared_ptr<Camera> _cam, glm::vec2 _viewport);
-		void updateSurfaceShader(std::shared_ptr<Texture> _tex);
+		void updateSurfaceShader(std::shared_ptr<Texture> _tex, float _alpha);
 		void initialiseAL();
 		void initialiseShaders();
 		void initialiseSDL();

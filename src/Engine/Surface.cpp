@@ -6,7 +6,7 @@
 
 namespace Engine
 {
-	void Surface::initialize(std::shared_ptr<Camera> _cam, int _layer)
+	void RenderSurface::initialize(std::shared_ptr<Camera> _cam, int _layer)
 	{
 		m_RT = createRenderTexture();
 		createScreenQuad();
@@ -15,14 +15,14 @@ namespace Engine
 		_cam->setSurface(m_self.lock());
 	}
 
-	void Surface::initialize(std::shared_ptr<Texture> _tex, int _layer)
+	void UISurface::initialize(std::shared_ptr<Texture> _tex, int _layer)
 	{
 		m_tex = _tex;
 		createScreenQuad();
 		m_layer = _layer;
 	}
 
-	void Surface::update()
+	void RenderSurface::update()
 	{		
 		if (m_RT)
 		{
@@ -30,13 +30,13 @@ namespace Engine
 		}		
 	}
 
-	std::shared_ptr<RenderTexture> Surface::createRenderTexture()
+	std::shared_ptr<RenderTexture> RenderSurface::createRenderTexture()
 	{
 		std::shared_ptr<RenderTexture> RT = std::make_shared<RenderTexture>();
 		RT->Initialise(m_size.x, m_size.y);		
 		return RT;
 	}
-	void Surface::setCamera(std::shared_ptr<Camera> _cam)
+	void RenderSurface::setCamera(std::shared_ptr<Camera> _cam)
 	{
 		m_camera = _cam;
 	}
