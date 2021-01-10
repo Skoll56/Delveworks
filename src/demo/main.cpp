@@ -91,7 +91,7 @@ class Demo : public Component
 		else if (camera.lock()->m_eulerAngles.x < -89.0f) { camera.lock()->m_eulerAngles.x = -89.0f; }
 		if (camera.lock()->m_eulerAngles.y > 360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
 		else if (camera.lock()->m_eulerAngles.y < -360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
-
+		Console::message(std::to_string(mouse.lock()->getPosition().x));
 
 		bool iWantToTest = false;
 		if (iWantToTest)
@@ -131,11 +131,12 @@ class UI : public Component
 		{
 			if (i == 120)
 			{
-				std::shared_ptr<Texture> t = getCore()->m_rManager->load<Texture>("defaultUI.bmp");
+				std::shared_ptr<Texture> t = getCore()->m_rManager->load<Texture>("Image1.bmp");
 				t->m_col = glm::vec3(0.7f, 0.7f, 0.7f);
 				std::shared_ptr<UISurface> surf = getCore()->createUISurface(t, 1);
 				surf->setSize(400, 400);
-				surf->setPosition(100, 100);
+				surf->setAlpha(0.5f);
+				surf->setPosition(-200, 100);
 
 
 				//std::shared_ptr<RenderSurface> surf2 = getCore()->createRenderSurface(camera.lock()->getEntity()->getComponent<Camera>(), 2);
@@ -166,7 +167,7 @@ class CustomInput : public InputDevice
 #undef main
 int main()
 {
-	std::shared_ptr<Core> core = Core::initialise();
+	std::shared_ptr<Core> core = Core::initialise(Core::Debug, glm::vec2(1024, 824));
 
 	//Create the statue entity
 	std::shared_ptr<Entity> test = core->createEntity();

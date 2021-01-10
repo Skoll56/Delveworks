@@ -1,5 +1,6 @@
 #include <glm/glm.hpp>
 #include <memory>
+#include <vector>
 
 namespace Engine 
 {
@@ -8,15 +9,18 @@ namespace Engine
 	class VertexArray;
 	class Texture;
 	class Core;
+	class Context;
 	
 	class Surface		
 	{
 		friend class Core;
 		public:
 		void destroy() { m_destroy = true; }
-		void setPosition(glm::vec2 _pos) { m_position = _pos;  }
-		void setPosition(float _x, float _y) { m_position.x = _x; m_position.y = _y; }
-		glm::vec2 getPosition() { return m_position; }
+		void setPosition(glm::vec2 _pos);
+		void setPosition(float _x, float _y);
+		glm::vec2 getPosition();
+
+		glm::vec2 getTruePosition();
 		
 		glm::vec2 getSize() { return m_size; }
 		
@@ -25,6 +29,7 @@ namespace Engine
 		void createScreenQuad();
 		void setAlpha(float _a) { m_alpha = _a; }
 		float getAlpha() { return m_alpha; }
+		void setScaleWithContext(bool _tf) { scaleWithContext = _tf; }
 
 		protected:
 		bool m_destroy = false;
@@ -32,16 +37,17 @@ namespace Engine
 		int m_layer = 0;
 		void onDestroy();
 		glm::vec2 m_position;
-		glm::vec2 m_size = glm::vec2(1024, 1024);
+		glm::vec2 m_size = glm::vec2(200, 200);
 		bool isRender = false;
+		bool scaleWithContext = true;
 		
 		
-		
+		std::weak_ptr<Context> m_context;
 		std::weak_ptr<Core> m_core;
 		std::shared_ptr<VertexArray> m_screenQuad;		
 	};
 
-	class RenderSurface : public Surface
+	class Display : public Surface
 	{
 		friend class Core;
 		public:
@@ -53,7 +59,7 @@ namespace Engine
 
 		private:
 			std::weak_ptr<Camera> m_camera;
-			std::weak_ptr<RenderSurface> m_self;
+			std::weak_ptr<Display> m_self;
 			std::shared_ptr<RenderTexture> m_RT;
 
 			std::shared_ptr<RenderTexture> createRenderTexture();
@@ -70,6 +76,22 @@ namespace Engine
 
 	private:
 		std::shared_ptr<Texture> m_tex;
+	};
+
+
+	class Context
+	{
+		friend class Core;
+		public:		
+		glm::vec2 getPosition() { return m_position; }
+		glm::vec2 getSize() { return m_size; }
+
+		private:
+		void setPosition(glm::vec2 _pos) { m_position = _pos; }
+		void setPosition(float _x, float _y) { m_position.x = _x; m_position.y = _y; }
+		std::vector<std::shared_ptr<Surface>> m_surfaces;
+		glm::vec2 m_position;
+		glm::vec2 m_size = glm::vec2(1024, 1024);
 	};
 
 }

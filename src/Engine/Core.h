@@ -25,16 +25,22 @@ namespace Engine
 	class SpotLight;
 	class PointLight;
 	class Surface;
-	class RenderSurface;
+	class Display;
 	class UISurface;
 	class AudioReceiver;
+	class Context;
 
 	struct Core
 	{
 		friend class Entity;		
+		enum RunMode
+		{
+			Debug, Release
+		};
+
 
 		//Functions
-		static std::shared_ptr<Core> initialise();
+		static std::shared_ptr<Core> initialise(RunMode _mode, glm::vec2 _gameWindowize);
 		std::shared_ptr<Entity> createEntity();
 		void start();
 		void loop();
@@ -45,7 +51,7 @@ namespace Engine
 		void onWindowResized(int _x, int _y);
 		std::shared_ptr<Camera> getDefaultCamera();
 		void setDefaultCamera(std::shared_ptr<Camera> _cam);
-		std::shared_ptr<RenderSurface> createRenderSurface(std::shared_ptr<Camera> _cam, int _layer);
+		std::shared_ptr<Display> createDisplay(std::shared_ptr<Camera> _cam, int _layer);
 		std::shared_ptr<UISurface> createUISurface(std::shared_ptr<Texture> _tex, int _layer);
 		std::shared_ptr<Surface> getSurface(int _layer);
 		void orderSurfaces();
@@ -67,21 +73,31 @@ namespace Engine
 		std::shared_ptr<Shader> m_shadowSh;
 		std::shared_ptr<Shader> m_pointShadowSh;
 
+		
+
 	private:		
 		//General variables
 		bool quit;
 		bool restart;
-		int width = 1424;
-		int height = 1024;
+		int width;
+		int height;
+
+		glm::vec2 defaultGameSize = glm::vec2(1024, 1024);
+		glm::vec2 defaultWindowSize = glm::vec2(1424, 1052);
+
+
 		
 		//Time variables
 		float dTime;
 		long t1;		
 		
-		//My things
+		//My things 
 		std::vector<std::shared_ptr<Entity>> m_entities;
 		std::shared_ptr<InputManager> m_inputManager;
-		std::vector<std::shared_ptr<Surface>> m_surfaces;
+		//std::vector<std::shared_ptr<Surface>> m_surfaces;
+		std::shared_ptr<Context> m_engineContext;
+		std::shared_ptr<Context> m_gameContext;
+
 
 		//Things I just hold references to
 		std::weak_ptr<Core> m_self;		
@@ -104,6 +120,7 @@ namespace Engine
 		void updateLighting();
 		void updateEntities();		
 		void drawShadowmaps();
+		void buildEngineUI();
 		
 		void renderScreen();
 		//bool layerCompare(std::shared_ptr<Surface> _a, std::shared_ptr<Surface> _b);

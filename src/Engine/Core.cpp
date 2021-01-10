@@ -18,33 +18,48 @@
 
 namespace Engine
 {
-	std::shared_ptr<Core> Core::initialise()
+	std::shared_ptr<Core> Core::initialise(Core::RunMode _mode, glm::vec2 _gameWindowSize)
 	{
 		std::shared_ptr<Core> rtn = std::make_shared<Core>();
 		rtn->m_rManager = std::make_shared<ResourceManager>();
+		if (_mode == Core::Debug)
+		{
+			rtn->width = _gameWindowSize.x + 400;
+			rtn->height = _gameWindowSize.y + 56;
+		}
+		else
+		{
+			rtn->width = _gameWindowSize.x;
+			rtn->height = _gameWindowSize.y;
+		}
+
 		rtn->initialiseSDL();
 		rtn->initialiseAL();
 		rtn->m_inputManager = std::make_shared<InputManager>();
 		rtn->m_inputManager->m_window = rtn->m_window;
 		rtn->m_inputManager->m_self = rtn->m_inputManager;
 		rtn->m_inputManager->m_core = rtn;
-		
-
 		rtn->initialiseShaders();
-
-		rtn->m_self = rtn;
-		//rtn->createScreenQuad();
-
-		//rtn->createRenderTexture();
+		rtn->m_self = rtn;		
 		srand(time(NULL));
 
-		//Create some necessary entities (TODO: Will be improved later)
+		//Create some necessary entities 
 		std::shared_ptr<Entity> defaultCamera = rtn->createEntity();
 		std::shared_ptr<Camera> cam = defaultCamera->addComponent<Camera>();
 		rtn->setDefaultCamera(cam);
-		std::shared_ptr<RenderSurface> s = rtn->createRenderSurface(cam, 0);
-		s->setSize(glm::vec2(rtn->width - 400, rtn->height));
-		s->setPosition(400, 0);
+		
+		rtn->m_gameContext = std::make_shared<Context>();
+		rtn->m_gameContext->m_size = _gameWindowSize;
+		if (_mode == Core::Debug)
+		{
+			rtn->m_gameContext->m_position = glm::vec2(400, 28);
+			rtn->buildEngineUI();
+		}
+		
+
+		std::shared_ptr<Display> s = rtn->createDisplay(cam, 0);
+		s->setSize(s->m_context.lock()->m_size);
+		
 
 		Console::message("Initialised successfully");
 		return rtn;
@@ -359,10 +374,44 @@ namespace Engine
 			{
 				Console::output(Console::Error, "Spotlight Update", e.message());
 			}
-		}		
+		}
 	}
 
-	
+	void Core::buildEngineUI()
+	{
+		m_engineContext = std::make_shared<Context>();
+		m_engineContext->m_size = defaultWindowSize;
+		for (int i = 0; i < 4; i++)
+		{
+			std::shared_ptr<UISurface> s = std::make_shared<UISurface>();
+			std::shared_ptr<Texture> t = m_rManager->load<Texture>("defaultUI.bmp");
+			s->initialize(t, i);
+			s->m_context = m_engineContext;
+
+			if (i == 0)
+			{
+				s->setSize(400, height);
+				s->setPosition(0, 0);
+			}
+			else if (i == 1)
+			{
+				s->setSize(width, 28);
+				s->setPosition(0, 0);
+			}
+			else if (i == 2)
+			{
+				s->setSize(width, 28);
+				s->setPosition(0, height - 28);
+			}
+			else if (i == 3)
+			{
+				s->setSize(28, height);
+				s->setPosition(width - 28, 0);
+			}
+
+			m_engineContext->m_surfaces.push_back(s);
+		}
+	}
 
 	void Core::initialiseAL()
 	{
@@ -388,8 +437,44 @@ namespace Engine
 	}
 
 	void Core::onWindowResized(int _x, int _y)
-	{		
+	{
 		//m_RT->Initialise(_x, _y);
+
+		glm::vec2 delta = glm::vec2(_x - width, _y - height);
+		width = _x;
+		height = _y;
+
+		float xRatio = delta.x / m_gameContext->m_size.x;
+		float yRatio = delta.y / m_gameContext->m_size.y;
+		xRatio += 1.0f;
+		yRatio += 1.0f;
+		m_gameContext->m_size += delta;
+
+		for (std::vector<std::shared_ptr<Surface>>::iterator it = m_gameContext->m_surfaces.begin(); it != m_gameContext->m_surfaces.end(); it++)
+		{
+			if ((*it)->scaleWithContext)
+			{
+				if ((*it)->isRender)
+				{
+					std::shared_ptr<Display> r = std::static_pointer_cast<Display>((*it));
+					if (r->m_RT)
+					{
+						r->setSize(r->getSize().x * xRatio, r->getSize().y * yRatio);
+					}
+				}
+				else
+				{
+					(*it)->m_size = glm::vec2((*it)->m_size.x * xRatio, (*it)->m_size.y * yRatio);
+				}
+			}
+		}
+
+
+		if (m_engineContext)
+		{
+			m_engineContext->m_surfaces.clear();
+			buildEngineUI();
+		}
 	}
 
 	std::shared_ptr<Camera> Core::getDefaultCamera()
@@ -520,14 +605,16 @@ namespace Engine
 		}
 	}
 
-	std::shared_ptr<RenderSurface> Core::createRenderSurface(std::shared_ptr<Camera> _cam, int _layer)
+	std::shared_ptr<Display> Core::createDisplay(std::shared_ptr<Camera> _cam, int _layer)
 	{
-		std::shared_ptr<RenderSurface> s = std::make_shared<RenderSurface>();
+		std::shared_ptr<Display> s = std::make_shared<Display>();
 		s->m_self = s;
 		s->isRender = true;
 		s->initialize(_cam, _layer);
 		s->m_core = m_self;
-		m_surfaces.push_back(s);
+		s->m_context = m_gameContext;
+		s->setPosition(0, 0);
+		m_gameContext->m_surfaces.push_back(s);
 		orderSurfaces();
 		return s;
 	}
@@ -538,14 +625,15 @@ namespace Engine
 		s->m_self = s;
 		s->initialize(_tex, _layer);
 		s->m_core = m_self;
-		m_surfaces.push_back(s);
+		s->m_context = m_gameContext;
+		m_gameContext->m_surfaces.push_back(s);
 		orderSurfaces();
 		return s;
 	}
 
 	std::shared_ptr<Surface> Core::getSurface(int _layer)
 	{
-		for (std::vector<std::shared_ptr<Surface>>::iterator it = m_surfaces.begin(); it != m_surfaces.end(); it++)
+		for (std::vector<std::shared_ptr<Surface>>::iterator it = m_gameContext->m_surfaces.begin(); it != m_gameContext->m_surfaces.end(); it++)
 		{
 			if ((*it)->m_layer == _layer)
 			{				
@@ -554,7 +642,6 @@ namespace Engine
 		}
 		Console::output(Console::Warning, "GetSurface", "No surface found on layer: " + _layer);
 		return nullptr;
-		
 	}
 
 	struct 
@@ -567,30 +654,30 @@ namespace Engine
 
 	void Core::orderSurfaces()
 	{
-		std::sort(m_surfaces.begin(), m_surfaces.end(), layerCompare);
+		std::sort(m_gameContext->m_surfaces.begin(), m_gameContext->m_surfaces.end(), layerCompare);
 	}
 
 	void Core::renderScreen()
 	{
-		if (m_surfaces.size() == 0)
+		//First update the game context
+		if (m_gameContext->m_surfaces.size() == 0)
 		{
 			Console::output(Console::Error, "Core", "There must be at least one surface for rendering to.");
 		}
 		else
-		{
-			
-			for (std::vector<std::shared_ptr<Surface>>::iterator it = m_surfaces.begin(); it != m_surfaces.end();)
+		{			
+			for (std::vector<std::shared_ptr<Surface>>::iterator it = m_gameContext->m_surfaces.begin(); it != m_gameContext->m_surfaces.end();)
 			{
 				if ((*it)->m_destroy)
 				{
 					(*it)->onDestroy();
-					it = m_surfaces.erase(it);
+					it = m_gameContext->m_surfaces.erase(it);
 				}
 				else
 				{
 					if ((*it)->isRender)
 					{ 
-						std::shared_ptr<RenderSurface> r = std::static_pointer_cast<RenderSurface>((*it));					
+						std::shared_ptr<Display> r = std::static_pointer_cast<Display>((*it));					
 						if (r->m_RT)
 						{
 							if (r->m_camera.lock())
@@ -603,7 +690,7 @@ namespace Engine
 								updateSurfaceShader(r->m_RT, r->m_alpha);
 								drawScene();
 								glBindFramebuffer(GL_FRAMEBUFFER, 0);
-								glViewport((*it)->m_position.x, (*it)->m_position.y, (*it)->m_size.x, (*it)->m_size.y);
+								glViewport((*it)->getTruePosition().x, (*it)->getTruePosition().y, (*it)->m_size.x, (*it)->m_size.y);
 								glDisable(GL_DEPTH_TEST);
 								m_sqShader->draw((*it)->m_screenQuad); //draw a quad with any render textures on it (1 by default)	
 								glEnable(GL_DEPTH_TEST);
@@ -622,18 +709,34 @@ namespace Engine
 					{						
 						std::shared_ptr<UISurface> ui = std::static_pointer_cast<UISurface>((*it));						
 						glClearColor(0.0, 0.0, 0.0, 1.0);
-						glClear(GL_DEPTH_BUFFER_BIT);
-						glViewport(ui->m_position.x, ui->m_position.y, ui->m_size.x, ui->m_size.y);
+						glClear(GL_DEPTH_BUFFER_BIT);						
+						glViewport(ui->getTruePosition().x, ui->getTruePosition().y, ui->m_size.x, ui->m_size.y);						
 						updateSurfaceShader(ui->m_tex, ui->m_alpha);
 						glDisable(GL_DEPTH_TEST);
 						m_sqShader->draw(ui->m_screenQuad); //draw a quad with any render textures on it (1 by default)
 						glEnable(GL_DEPTH_TEST);
 					}					
-				}
+				}				
 				it++;				
-			}				
-			
-			SDL_GL_SwapWindow(m_window);
+			}
 		}
+
+		if (m_engineContext)
+		{
+			//second, update the Engine Context (for UI and stuff)
+			for (std::vector<std::shared_ptr<Surface>>::iterator it = m_engineContext->m_surfaces.begin(); it != m_engineContext->m_surfaces.end(); it++)
+			{
+				std::shared_ptr<UISurface> ui = std::static_pointer_cast<UISurface>((*it));
+				glClearColor(0.0, 0.0, 0.0, 1.0);
+				glClear(GL_DEPTH_BUFFER_BIT);
+				glViewport(ui->getTruePosition().x, ui->getTruePosition().y, ui->m_size.x, ui->m_size.y);
+				updateSurfaceShader(ui->m_tex, ui->m_alpha);
+				glDisable(GL_DEPTH_TEST);
+				m_sqShader->draw(ui->m_screenQuad); //draw a quad with any render textures on it (1 by default)
+				glEnable(GL_DEPTH_TEST);
+			}
+		}
+
+		SDL_GL_SwapWindow(m_window);
 	}
 }

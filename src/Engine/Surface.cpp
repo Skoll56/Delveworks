@@ -6,7 +6,7 @@
 
 namespace Engine
 {
-	void RenderSurface::initialize(std::shared_ptr<Camera> _cam, int _layer)
+	void Display::initialize(std::shared_ptr<Camera> _cam, int _layer)
 	{
 		m_RT = createRenderTexture();
 		createScreenQuad();
@@ -17,12 +17,12 @@ namespace Engine
 
 	void UISurface::initialize(std::shared_ptr<Texture> _tex, int _layer)
 	{
-		m_tex = _tex;
+		m_tex = _tex;		
 		createScreenQuad();
 		m_layer = _layer;
 	}
 
-	void RenderSurface::update()
+	void Display::update()
 	{		
 		if (m_RT)
 		{
@@ -30,16 +30,33 @@ namespace Engine
 		}		
 	}
 
-	std::shared_ptr<RenderTexture> RenderSurface::createRenderTexture()
+	std::shared_ptr<RenderTexture> Display::createRenderTexture()
 	{
 		std::shared_ptr<RenderTexture> RT = std::make_shared<RenderTexture>();
 		RT->Initialise(m_size.x, m_size.y);		
 		return RT;
 	}
-	void RenderSurface::setCamera(std::shared_ptr<Camera> _cam)
+	void Display::setCamera(std::shared_ptr<Camera> _cam)
 	{
 		m_camera = _cam;
 	}
+	void Surface::setPosition(glm::vec2 _pos)
+	{
+		m_position = _pos + m_context.lock()->getPosition();
+	}
+	void Surface::setPosition(float _x, float _y)
+	{
+		m_position = glm::vec2(_x, _y) + m_context.lock()->getPosition();
+	}
+	glm::vec2 Surface::getPosition()
+	{
+		return m_position - m_context.lock()->getPosition();
+	}
+	glm::vec2 Surface::getTruePosition()
+	{
+		return m_position; 
+	}
+
 	void Surface::setLayer(int _layer)
 	{
 		m_layer = _layer;
