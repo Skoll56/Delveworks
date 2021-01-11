@@ -25,6 +25,7 @@ namespace Engine
 		void destroy();
 		std::shared_ptr<Entity> getEntity() { return m_entity.lock(); }
 		std::shared_ptr<Transform> transform() { return m_transform.lock(); }
+		std::weak_ptr<Component> m_self;
 
 		template <typename T>
 		std::shared_ptr<T> getInputDevice()
@@ -51,7 +52,7 @@ namespace Engine
 		virtual void onTick();
 		virtual void onRender();
 		virtual void onDestroy();
-		std::weak_ptr<Entity> m_entity;	
+		std::weak_ptr<Entity> m_entity;
 		std::weak_ptr<Transform> m_transform;
 		bool m_delete = false;
 	};
@@ -69,7 +70,7 @@ namespace Engine
 		glm::mat4 getModel() { return m_model; }
 		void onTick();
 		void setModel(glm::mat4 _model) { m_model = _model; }
-				
+		std::weak_ptr<Transform> m_self;
 		void rotate(glm::vec3 _axis, float _amt) { m_eulerAngles += _amt * _axis; }
 		glm::vec3 getUp() { return m_upVec; }
 		glm::vec3 getRight() { return m_right; }
@@ -97,7 +98,7 @@ namespace Engine
 		void Play(float _vol);
 		bool m_loop = false;
 		bool m_destroyOnPlay = false;
-
+		std::weak_ptr<SoundSource> m_self;
 
 		private:
 		void onInitialise(std::shared_ptr<Sound> _sound);
@@ -108,7 +109,8 @@ namespace Engine
 
 	class AudioReceiver : public Component
 	{
-
+		public:
+		std::weak_ptr<AudioReceiver> m_self;
 	};
 }
 

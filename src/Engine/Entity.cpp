@@ -6,11 +6,11 @@ namespace Engine
 {
 	void Entity::tick()
 	{
-		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
+		for (int i = 0; i < components.size(); i++)
 		{
 			try
 			{
-				(*it)->onTick();
+				components[i]->onTick();
 			}
 			catch(Exception &e)
 			{
@@ -21,29 +21,13 @@ namespace Engine
 
 	void Entity::afterTick()
 	{
+		m_inAftertick = true;
 		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end();)
 		{
 			try
 			{
 				if ((*it)->m_delete || m_delete)
-				{
-					/*std::shared_ptr<Camera> cam = std::dynamic_pointer_cast<Camera>((*it));
-					if (cam)
-					{
-						if (cam->getSurface())
-						{
-							m_delete = false;
-							(*it)->m_delete = false;
-							it++;
-							Console::output(Console::Error, "Component Delete", "A camera cannot be deleted with a surface still attached. Consider deleting the surface first");
-						}		
-						else
-						{
-							(*it)->onDestroy();
-							it = components.erase(it);
-						}
-					}
-					else*/
+				{					
 					{
 						(*it)->onDestroy();
 						it = components.erase(it);
@@ -65,6 +49,7 @@ namespace Engine
 				it++;
 			}
 		}
+		m_inAftertick = false;
 	}
 
 	std::shared_ptr<Collider> Entity::getCollider() 

@@ -28,7 +28,7 @@ namespace Engine
 		float m_specIntens;
 		int m_antiLight;
 		std::string m_tag;
-		
+		Light() {};
 	};
 
 
@@ -41,6 +41,7 @@ namespace Engine
 		float getRadius() { return m_radius; }
 		float getQuad() { return m_quadratic; }
 		void update(int _i);
+		std::weak_ptr<PointLight> m_self;
 
 	protected:
 		std::shared_ptr<ShadowCube> m_SC;
@@ -62,8 +63,9 @@ namespace Engine
 		float m_specIntens;		
 		glm::vec3 getAmb() { return m_ambient; }
 		void update(int _i);
-	private:
-		
+		std::weak_ptr<DirLight> m_self;
+
+	private:		
 		glm::vec3 m_ambient;
 		std::shared_ptr<ShadowMap> m_SM;
 	};
@@ -77,6 +79,8 @@ namespace Engine
 		float getAngle() { return m_angle; }
 		float getFangle() { return m_fadeAngle; }
 		std::shared_ptr<ShadowMap> getShadowMap() { return m_SM; }
+		std::weak_ptr<SpotLight> m_self;
+
 	private:
 		float m_angle;
 		std::shared_ptr<ShadowMap> m_SM;

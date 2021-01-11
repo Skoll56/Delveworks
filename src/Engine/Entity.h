@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Engine.h"
 #include "Collider.h"
+#include "Console.h"
 
 
 namespace Engine
@@ -24,14 +25,24 @@ namespace Engine
 		{
 			try
 			{
-				std::shared_ptr<T> rtn = std::make_shared<T>();
-				checkType(rtn);
+				if (!m_inAftertick)
+				{
+					std::shared_ptr<T> rtn = std::make_shared<T>();
+					checkType(rtn);
 
-				rtn->m_transform = m_transform;
-				rtn->m_entity = self;
-				rtn->onInitialise(std::forward<Args>(args)...);
-				components.push_back(rtn);
-				return rtn;
+					rtn->m_transform = m_transform;
+					rtn->m_entity = self;
+					rtn->m_self = rtn;
+					rtn->onInitialise(std::forward<Args>(args)...);
+					components.push_back(rtn);
+					return rtn;
+				}
+				else
+				{
+					Console::output(Console::Error, "Add Component", "New components cannot be add while the Entity is in AfterTick phase as it conflicts with the delete phase. Try using onTick to add the component instead.");
+					return nullptr;
+				}
+
 			}
 			catch(Exception &e)
 			{
@@ -121,7 +132,7 @@ namespace Engine
 					foundType = true;
 					core.lock()->m_listener = a;
 				}
-			}
+			}			
 		}
 
 		std::vector<std::shared_ptr<Component>> components;		
@@ -131,6 +142,8 @@ namespace Engine
 		std::shared_ptr<Transform> m_transform;	
 		bool m_active = true;
 		bool m_delete = false;
+		bool m_inAftertick = false;
+
 	};
 }
 

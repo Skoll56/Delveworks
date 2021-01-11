@@ -30,6 +30,8 @@ namespace Engine
 		float m_alpha = 1.0f;
 		bool castShadows = true;
 		bool receiveShadows = true;
+		std::weak_ptr<MeshRenderer> m_self;
+		glm::vec3 m_col = glm::vec3(1.0f, 1.0f, 1.0f);
 
 	private:
 		glm::vec3 m_size; // The size of the obj in generic units (ie: box objs are 1/1/1 units)

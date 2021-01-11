@@ -23,6 +23,7 @@ namespace Engine
 		float getFOV() { return m_FoV; }
 		void setFOV(float _angle) { m_FoV = _angle; }
 		void onTick();
+		std::weak_ptr<Camera> m_self;
 	};
 }
 

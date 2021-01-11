@@ -28,7 +28,7 @@ namespace Engine
 		std::string _vert, _frag;
 		_vert = "../resources/shaders/" + _name + ".vert";
 		_frag = "../resources/shaders/" + _name + ".frag";
-		Console::message("Started Shader load: " + _name ); ////
+		Console::output("Started Shader load: " + _name ); ////
 		std::string vertShader;
 		std::string fragShader;
 

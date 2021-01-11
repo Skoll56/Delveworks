@@ -16,9 +16,11 @@ namespace Engine
 		void setFriction(float _friction) { m_friction = _friction; }
 		float getFriction() { return m_friction; }	
 		bool m_trigger = false;
-	private:
-		
-		float m_friction = 0.25f;		
+		std::weak_ptr<Collider> m_self;
+
+	protected:		
+		float m_friction = 0.25f;	
+		Collider() {};
 	};
 
 	class SphereCollider : public Collider
@@ -26,6 +28,7 @@ namespace Engine
 	public:
 		SphereCollider(float _radius);
 		SphereCollider() {};
+		std::weak_ptr<SphereCollider> m_self;
 		float getRadius() { return transform()->getScale().y; }
 	};
 
@@ -35,6 +38,7 @@ namespace Engine
 		PlaneCollider() {};
 		glm::vec3 getNorm() { return m_normal; }
 		void setNorm(glm::vec3 _norm) { m_normal = _norm; }
+		std::weak_ptr<PlaneCollider> m_self;
 
 	private:
 		glm::vec3 m_normal;
@@ -46,6 +50,7 @@ namespace Engine
 	public:
 		BoxCollider(glm::vec3 _scale);
 		BoxCollider() {};
+		std::weak_ptr<BoxCollider> m_self;
 
 	private:
 		std::vector<PlaneCollider> m_face;
@@ -70,7 +75,7 @@ namespace Engine
 		std::vector<int> getMyTri() { return m_myTri; }
 		void setMyTri(std::vector<int> _myTri) { m_myTri = _myTri; }
 		void setColTri(std::vector<int> _colTri) { m_colTri = _colTri; }
-
+		std::weak_ptr<MeshCollider> m_self;
 
 	private:
 		bool m_semiMesh = false;

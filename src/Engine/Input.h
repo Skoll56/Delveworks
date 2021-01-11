@@ -144,7 +144,8 @@ namespace Engine
 		void hideCursor(bool _tf);
 		void lockCursor(bool _tf) { m_cursorLocked = _tf; }
 		
-		glm::vec2 getPosition() { return m_pos; }
+		glm::vec2 getPosition();
+		glm::vec2 getTruePosition() { return m_pos; };
 		glm::vec2 getDeltaPos() { return m_deltaPos; }
 
 		private:

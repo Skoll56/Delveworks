@@ -45,7 +45,7 @@ namespace Engine
 		m_messageLog.push_back(logEntry);
 	}
 
-	void Console::message(std::string _text)
+	void Console::output(std::string _text)
 	{
 		output(type::Message, "Console", _text);
 	}

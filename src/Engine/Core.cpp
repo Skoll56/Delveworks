@@ -44,8 +44,8 @@ namespace Engine
 		srand(time(NULL));
 
 		//Create some necessary entities 
-		std::shared_ptr<Entity> defaultCamera = rtn->createEntity();
-		std::shared_ptr<Camera> cam = defaultCamera->addComponent<Camera>();
+		std::shared_ptr<Entity> defaultEntity = rtn->createEntity();
+		std::shared_ptr<Camera> cam = defaultEntity->addComponent<Camera>();
 		rtn->setDefaultCamera(cam);
 		
 		rtn->m_gameContext = std::make_shared<Context>();
@@ -55,13 +55,12 @@ namespace Engine
 			rtn->m_gameContext->m_position = glm::vec2(400, 28);
 			rtn->buildEngineUI();
 		}
-		
 
-		std::shared_ptr<Display> s = rtn->createDisplay(cam, 0);
+		std::shared_ptr<DisplayUI> s = defaultEntity->addComponent<DisplayUI>(cam, 0);
 		s->setSize(s->m_context.lock()->m_size);
 		
 
-		Console::message("Initialised successfully");
+		Console::output("Initialised successfully");
 		return rtn;
 	}
 
@@ -80,7 +79,7 @@ namespace Engine
 		rtn->setTag(tag);
 
 		m_entities.push_back(rtn);
-		Console::message("I made an entity");
+		Console::output("I made an entity");
 		return rtn;
 	}
 
@@ -223,7 +222,7 @@ namespace Engine
 
 	void Core::start()
 	{
-		Console::message("I started to start");
+		Console::output("I started to start");
 		quit = false;
 		restart = false;
 		t1 = SDL_GetTicks(); 
@@ -285,7 +284,7 @@ namespace Engine
 		}
 	}
 
-	void Core::updateSurfaceShader(std::shared_ptr<Texture> _tex, float _alpha)
+	void Core::updateSurfaceShader(std::shared_ptr<Texture> _tex, float _alpha, glm::vec3 _color)
 	{
 		try
 		{
@@ -294,6 +293,7 @@ namespace Engine
 			//Change to Shadowmap to view depth buffer
 			m_sqShader->setUniform("in_Texture", _tex);
 			m_sqShader->setUniform("in_alpha", _alpha);
+			m_sqShader->setUniform("in_col", _color);
 			/*m_sqShader->setUniform("in_Texture", m_dirLights[0]->getShadowMap());
 			m_sqShader->setUniform("in_nearPlane", 0.01f);
 			m_sqShader->setUniform("in_farPlane", m_pointLights[0]->getRadius());*/
@@ -378,15 +378,18 @@ namespace Engine
 	}
 
 	void Core::buildEngineUI()
-	{
+	{		
 		m_engineContext = std::make_shared<Context>();
 		m_engineContext->m_size = defaultWindowSize;
 		for (int i = 0; i < 4; i++)
-		{
-			std::shared_ptr<UISurface> s = std::make_shared<UISurface>();
+		{			
+			std::shared_ptr<ImageUI> s = std::make_shared<ImageUI>();
 			std::shared_ptr<Texture> t = m_rManager->load<Texture>("defaultUI.bmp");
-			s->initialize(t, i);
+			s->m_tex = t;
+			s->createScreenQuad();
+			s->m_layer = i;			
 			s->m_context = m_engineContext;
+			s->m_self = s;
 
 			if (i == 0)
 			{
@@ -409,7 +412,7 @@ namespace Engine
 				s->setPosition(width - 28, 0);
 			}
 
-			m_engineContext->m_surfaces.push_back(s);
+			m_engineContext->m_engineSurfaces.push_back(s);
 		}
 	}
 
@@ -450,13 +453,13 @@ namespace Engine
 		yRatio += 1.0f;
 		m_gameContext->m_size += delta;
 
-		for (std::vector<std::shared_ptr<Surface>>::iterator it = m_gameContext->m_surfaces.begin(); it != m_gameContext->m_surfaces.end(); it++)
+		for (std::vector<std::weak_ptr<Surface>>::iterator it = m_gameContext->m_surfaces.begin(); it != m_gameContext->m_surfaces.end(); it++)
 		{
-			if ((*it)->scaleWithContext)
+			if ((*it).lock()->scaleWithContext)
 			{
-				if ((*it)->isRender)
+				if ((*it).lock()->isRender)
 				{
-					std::shared_ptr<Display> r = std::static_pointer_cast<Display>((*it));
+					std::shared_ptr<DisplayUI> r = std::static_pointer_cast<DisplayUI>((*it).lock());
 					if (r->m_RT)
 					{
 						r->setSize(r->getSize().x * xRatio, r->getSize().y * yRatio);
@@ -464,7 +467,7 @@ namespace Engine
 				}
 				else
 				{
-					(*it)->m_size = glm::vec2((*it)->m_size.x * xRatio, (*it)->m_size.y * yRatio);
+					(*it).lock()->m_size = glm::vec2((*it).lock()->m_size.x * xRatio, (*it).lock()->m_size.y * yRatio);
 				}
 			}
 		}
@@ -605,39 +608,28 @@ namespace Engine
 		}
 	}
 
-	std::shared_ptr<Display> Core::createDisplay(std::shared_ptr<Camera> _cam, int _layer)
-	{
-		std::shared_ptr<Display> s = std::make_shared<Display>();
-		s->m_self = s;
-		s->isRender = true;
-		s->initialize(_cam, _layer);
-		s->m_core = m_self;
-		s->m_context = m_gameContext;
-		s->setPosition(0, 0);
-		m_gameContext->m_surfaces.push_back(s);
-		orderSurfaces();
-		return s;
+	void Core::addDisplay(std::shared_ptr<DisplayUI> _display)
+	{			
+		_display->m_context = m_gameContext;
+		_display->setPosition(0, 0);
+		m_gameContext->m_surfaces.push_back(_display);
+		orderSurfaces();		
 	}
 
-	std::shared_ptr<UISurface> Core::createUISurface(std::shared_ptr<Texture> _tex, int _layer)
-	{
-		std::shared_ptr<UISurface> s = std::make_shared<UISurface>();
-		s->m_self = s;
-		s->initialize(_tex, _layer);
-		s->m_core = m_self;
-		s->m_context = m_gameContext;
-		m_gameContext->m_surfaces.push_back(s);
-		orderSurfaces();
-		return s;
+	void Core::addUISurface(std::shared_ptr<Surface> _surface)
+	{		
+		_surface->m_context = m_gameContext;
+		m_gameContext->m_surfaces.push_back(_surface);
+		orderSurfaces();		
 	}
 
 	std::shared_ptr<Surface> Core::getSurface(int _layer)
 	{
-		for (std::vector<std::shared_ptr<Surface>>::iterator it = m_gameContext->m_surfaces.begin(); it != m_gameContext->m_surfaces.end(); it++)
+		for (std::vector<std::weak_ptr<Surface>>::iterator it = m_gameContext->m_surfaces.begin(); it != m_gameContext->m_surfaces.end(); it++)
 		{
-			if ((*it)->m_layer == _layer)
+			if ((*it).lock()->m_layer == _layer)
 			{				
-				return (*it);
+				return (*it).lock();
 			}
 		}
 		Console::output(Console::Warning, "GetSurface", "No surface found on layer: " + _layer);
@@ -646,9 +638,9 @@ namespace Engine
 
 	struct 
 	{
-		bool operator()(std::shared_ptr<Surface> _a, std::shared_ptr<Surface> _b) const
+		bool operator()(std::weak_ptr<Surface> _a, std::weak_ptr<Surface> _b) const
 		{
-			return _a->getLayer() < _b->getLayer();
+			return _a.lock()->getLayer() < _b.lock()->getLayer();
 		}
 	} layerCompare;
 
@@ -666,18 +658,17 @@ namespace Engine
 		}
 		else
 		{			
-			for (std::vector<std::shared_ptr<Surface>>::iterator it = m_gameContext->m_surfaces.begin(); it != m_gameContext->m_surfaces.end();)
+			for (std::vector<std::weak_ptr<Surface>>::iterator it = m_gameContext->m_surfaces.begin(); it != m_gameContext->m_surfaces.end();)
 			{
-				if ((*it)->m_destroy)
-				{
-					(*it)->onDestroy();
+				if (!(*it).lock()) //It has been deleted by the user already, so we need to remove it from our list too.
+				{					
 					it = m_gameContext->m_surfaces.erase(it);
 				}
 				else
 				{
-					if ((*it)->isRender)
+					if ((*it).lock()->isRender)
 					{ 
-						std::shared_ptr<Display> r = std::static_pointer_cast<Display>((*it));					
+						std::shared_ptr<DisplayUI> r = std::static_pointer_cast<DisplayUI>((*it).lock());
 						if (r->m_RT)
 						{
 							if (r->m_camera.lock())
@@ -687,12 +678,12 @@ namespace Engine
 								glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 								glViewport(0, 0, r->m_size.x, r->m_size.y);
 								updateLightingShader(r->m_camera.lock(), r->m_size);
-								updateSurfaceShader(r->m_RT, r->m_alpha);
+								updateSurfaceShader(r->m_RT, r->m_alpha, r->m_col);
 								drawScene();
 								glBindFramebuffer(GL_FRAMEBUFFER, 0);
-								glViewport((*it)->getTruePosition().x, (*it)->getTruePosition().y, (*it)->m_size.x, (*it)->m_size.y);
+								glViewport((*it).lock()->getTruePosition().x, (*it).lock()->getTruePosition().y, (*it).lock()->m_size.x, (*it).lock()->m_size.y);
 								glDisable(GL_DEPTH_TEST);
-								m_sqShader->draw((*it)->m_screenQuad); //draw a quad with any render textures on it (1 by default)	
+								m_sqShader->draw((*it).lock()->m_screenQuad); //draw a quad with any render textures on it (1 by default)	
 								glEnable(GL_DEPTH_TEST);
 							}
 							else
@@ -707,30 +698,31 @@ namespace Engine
 					}
 					else 
 					{						
-						std::shared_ptr<UISurface> ui = std::static_pointer_cast<UISurface>((*it));						
+						std::shared_ptr<ImageUI> ui = std::static_pointer_cast<ImageUI>((*it).lock());
 						glClearColor(0.0, 0.0, 0.0, 1.0);
 						glClear(GL_DEPTH_BUFFER_BIT);						
 						glViewport(ui->getTruePosition().x, ui->getTruePosition().y, ui->m_size.x, ui->m_size.y);						
-						updateSurfaceShader(ui->m_tex, ui->m_alpha);
+						updateSurfaceShader(ui->m_tex, ui->m_alpha, ui->m_col);
 						glDisable(GL_DEPTH_TEST);
 						m_sqShader->draw(ui->m_screenQuad); //draw a quad with any render textures on it (1 by default)
 						glEnable(GL_DEPTH_TEST);
-					}					
+					}
+					it++;
 				}				
-				it++;				
+								
 			}
 		}
 
 		if (m_engineContext)
 		{
 			//second, update the Engine Context (for UI and stuff)
-			for (std::vector<std::shared_ptr<Surface>>::iterator it = m_engineContext->m_surfaces.begin(); it != m_engineContext->m_surfaces.end(); it++)
+			for (std::vector<std::shared_ptr<Surface>>::iterator it = m_engineContext->m_engineSurfaces.begin(); it != m_engineContext->m_engineSurfaces.end(); it++)
 			{
-				std::shared_ptr<UISurface> ui = std::static_pointer_cast<UISurface>((*it));
+				std::shared_ptr<ImageUI> ui = std::static_pointer_cast<ImageUI>((*it));
 				glClearColor(0.0, 0.0, 0.0, 1.0);
 				glClear(GL_DEPTH_BUFFER_BIT);
 				glViewport(ui->getTruePosition().x, ui->getTruePosition().y, ui->m_size.x, ui->m_size.y);
-				updateSurfaceShader(ui->m_tex, ui->m_alpha);
+				updateSurfaceShader(ui->m_tex, ui->m_alpha, ui->m_col);
 				glDisable(GL_DEPTH_TEST);
 				m_sqShader->draw(ui->m_screenQuad); //draw a quad with any render textures on it (1 by default)
 				glEnable(GL_DEPTH_TEST);

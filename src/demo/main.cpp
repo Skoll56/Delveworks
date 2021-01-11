@@ -71,7 +71,7 @@ class Demo : public Component
 			}
 
 			camera.lock()->rotate(glm::vec3(0.0f, 1.0f, 0.0f), mouse.lock()->getDeltaPos().x * rotSpeed * dTime);
-			camera.lock()->rotate(glm::vec3(1.0f, 0.0f, 0.0f), mouse.lock()->getDeltaPos().y * rotSpeed * dTime);
+			camera.lock()->rotate(glm::vec3(1.0f, 0.0f, 0.0f), -mouse.lock()->getDeltaPos().y * rotSpeed * dTime);
 		}
 		else
 		{
@@ -83,15 +83,14 @@ class Demo : public Component
 
 			if (con.lock()->getButtonIsDown(Controller::LeftStick))
 			{
-				Console::message("Yes, Controller works, too!");
+				Console::output("Yes, Controller works, too!");
 			}
 		}
 
 		if (camera.lock()->m_eulerAngles.x > 89.0f) { camera.lock()->m_eulerAngles.x = 89.0f; }
 		else if (camera.lock()->m_eulerAngles.x < -89.0f) { camera.lock()->m_eulerAngles.x = -89.0f; }
 		if (camera.lock()->m_eulerAngles.y > 360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
-		else if (camera.lock()->m_eulerAngles.y < -360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
-		Console::message(std::to_string(mouse.lock()->getPosition().x));
+		else if (camera.lock()->m_eulerAngles.y < -360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }		
 
 		bool iWantToTest = false;
 		if (iWantToTest)
@@ -118,6 +117,7 @@ class UI : public Component
 	bool test = true;
 	int i;
 	std::weak_ptr<Transform> camera;
+	std::weak_ptr<ButtonUI> button;
 	
 	void onInitialise()
 	{
@@ -131,19 +131,26 @@ class UI : public Component
 		{
 			if (i == 120)
 			{
-				std::shared_ptr<Texture> t = getCore()->m_rManager->load<Texture>("Image1.bmp");
-				t->m_col = glm::vec3(0.7f, 0.7f, 0.7f);
-				std::shared_ptr<UISurface> surf = getCore()->createUISurface(t, 1);
-				surf->setSize(400, 400);
-				surf->setAlpha(0.5f);
-				surf->setPosition(-200, 100);
-
+				std::shared_ptr<Texture> t = getCore()->m_rManager->load<Texture>("Image1.bmp");				
+				//std::shared_ptr<ImageUI> surf = getEntity()->addComponent<ImageUI>(t, 1);
+				button = getEntity()->addComponent<ButtonUI>(t, 1);
+				button.lock()->setSize(400, 400);
+				button.lock()->setAlpha(1.0f);
+				button.lock()->setPosition(0, 200);
+				
 
 				//std::shared_ptr<RenderSurface> surf2 = getCore()->createRenderSurface(camera.lock()->getEntity()->getComponent<Camera>(), 2);
 				////std::shared_ptr<UISurface> surf2 = getCore()->createUISurface(t, 2);
 				//surf2->setSize(400, 400);
 				//surf2->setAlpha(0.5f);
 				//surf2->setPosition(300, 300);				
+			}
+			if (button.lock())
+			{
+				if (button.lock()->isButtonDown())
+				{
+					Console::output("Congratulations! You can click buttons!");
+				}
 			}
 		}
 	}

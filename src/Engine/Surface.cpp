@@ -6,23 +6,26 @@
 
 namespace Engine
 {
-	void Display::initialize(std::shared_ptr<Camera> _cam, int _layer)
-	{
+	void DisplayUI::onInitialise(std::shared_ptr<Camera> _cam, int _layer)
+	{		
+		isRender = true;
 		m_RT = createRenderTexture();
 		createScreenQuad();
 		m_camera = _cam;
 		m_layer = _layer;
 		_cam->setSurface(m_self.lock());
+		getCore()->addDisplay(m_self.lock());
 	}
 
-	void UISurface::initialize(std::shared_ptr<Texture> _tex, int _layer)
+	void ImageUI::onInitialise(std::shared_ptr<Texture> _tex, int _layer)
 	{
 		m_tex = _tex;		
 		createScreenQuad();
 		m_layer = _layer;
+		getCore()->addUISurface(m_self.lock());
 	}
 
-	void Display::update()
+	void DisplayUI::update()
 	{		
 		if (m_RT)
 		{
@@ -30,13 +33,13 @@ namespace Engine
 		}		
 	}
 
-	std::shared_ptr<RenderTexture> Display::createRenderTexture()
+	std::shared_ptr<RenderTexture> DisplayUI::createRenderTexture()
 	{
 		std::shared_ptr<RenderTexture> RT = std::make_shared<RenderTexture>();
 		RT->Initialise(m_size.x, m_size.y);		
 		return RT;
 	}
-	void Display::setCamera(std::shared_ptr<Camera> _cam)
+	void DisplayUI::setCamera(std::shared_ptr<Camera> _cam)
 	{
 		m_camera = _cam;
 	}
@@ -60,7 +63,7 @@ namespace Engine
 	void Surface::setLayer(int _layer)
 	{
 		m_layer = _layer;
-		m_core.lock()->orderSurfaces();
+		getCore()->orderSurfaces();
 	}
 
 	/* !This has been CREATED as part of the GRAPHICS UNIT! */
@@ -86,8 +89,58 @@ namespace Engine
 		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 0.0f));
 	}
 
-	void Surface::onDestroy()
+	void ButtonUI::onTick()
 	{
-		
+		m_mouseOver = false;
+		m_buttonUp = false;
+		m_buttonDown = false;
+
+		if (!m_mouse.lock())		
+		{
+			m_mouse = getInputDevice<Mouse>();
+		}
+		else
+		{
+			glm::vec2 mousePos = m_mouse.lock()->getTruePosition();
+			glm::vec2 myPos = getTruePosition();
+			if (mousePos.x >= myPos.x && mousePos.y >= myPos.y)
+			{
+				if (mousePos.x <= myPos.x + m_size.x && mousePos.y <= myPos.y + m_size.y)
+				{
+					m_mouseOver = true;
+					if (m_mouse.lock()->getButtonDown(m_mouseButton))
+					{
+						m_buttonDown = true;
+						m_buttonHeld = true;
+					}
+					else if (m_mouse.lock()->getButtonUp(m_mouseButton))
+					{
+						m_buttonHeld = false;
+						m_buttonUp = true;
+					}
+				}
+				else
+				{
+					m_buttonHeld = false;
+				}
+			}
+			else
+			{
+				m_buttonHeld = false;
+			}
+
+			if (m_mouseOver && !m_buttonHeld)
+			{
+				m_col = m_mouseOverColor;
+			}
+			else if (m_buttonHeld)
+			{
+				m_col = m_clickedColor;
+			}
+			else
+			{
+				m_col = m_normalColor;
+			}
+		}
 	}
 }

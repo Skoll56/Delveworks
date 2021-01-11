@@ -62,7 +62,7 @@ namespace Engine
 		glm::vec3 roundNormals(glm::vec3 _n);
 		glm::vec3 getPermCP() { return m_permCP; }
 		void setPermCP(glm::vec3 _pos) { m_permCP = _pos; }
-
+		std::weak_ptr<PhysicsEventUser> m_self;
 
 	protected:
 		bool m_collided = false;
@@ -97,6 +97,7 @@ namespace Engine
 		void setMass(float _mass) { m_mass = _mass; }
 
 		const glm::vec3 getForce() const { return m_force; }
+		std::weak_ptr<PhysicsObject> m_self;
 
 	protected:
 		std::vector<std::shared_ptr<Collision>> m_lastCol;		
@@ -128,6 +129,7 @@ namespace Engine
 		void addTorque(glm::vec3 _torque) { m_torque += _torque; }
 		void clearTorque() { m_torque = glm::vec3(0.0f, 0.0f, 0.0f); }
 		glm::quat getRotQuat() { return m_rotQuat; }
+		std::weak_ptr<AdvPhysicsObject> m_self;
 
 	private:
 		//Angular Motion
@@ -150,6 +152,7 @@ namespace Engine
 		//T = distance to the triangle
 		//U and V are two points inside the triangle
 		std::shared_ptr<RayCollision> rayToTri(std::vector<std::shared_ptr<Entity>> _obj, glm::vec3 _rayDir, glm::vec3 _origin, std::string _rayTag);
+		std::weak_ptr<RayCaster> m_self;
 	};
 }
 #endif

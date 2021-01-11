@@ -25,14 +25,18 @@ namespace Engine
 	class SpotLight;
 	class PointLight;
 	class Surface;
-	class Display;
-	class UISurface;
+	class DisplayUI;
+	class ImageUI;
 	class AudioReceiver;
 	class Context;
 
 	struct Core
 	{
 		friend class Entity;		
+		friend class Surface;
+		friend class DisplayUI;
+		friend class ImageUI;
+
 		enum RunMode
 		{
 			Debug, Release
@@ -51,8 +55,7 @@ namespace Engine
 		void onWindowResized(int _x, int _y);
 		std::shared_ptr<Camera> getDefaultCamera();
 		void setDefaultCamera(std::shared_ptr<Camera> _cam);
-		std::shared_ptr<Display> createDisplay(std::shared_ptr<Camera> _cam, int _layer);
-		std::shared_ptr<UISurface> createUISurface(std::shared_ptr<Texture> _tex, int _layer);
+		std::shared_ptr<Context> getContext() { return m_gameContext; }
 		std::shared_ptr<Surface> getSurface(int _layer);
 		void orderSurfaces();
 		std::shared_ptr<AudioReceiver> getAudioReceiver() { return m_listener.lock(); }
@@ -81,7 +84,6 @@ namespace Engine
 		bool restart;
 		int width;
 		int height;
-
 		glm::vec2 defaultGameSize = glm::vec2(1024, 1024);
 		glm::vec2 defaultWindowSize = glm::vec2(1424, 1052);
 
@@ -107,23 +109,24 @@ namespace Engine
 		std::vector<std::weak_ptr<PointLight>> m_pointLights; 
 		std::weak_ptr<AudioReceiver> m_listener;
 
-
 		//Utility functions that just make the code easier for my eyes
 		void drawScene();
 		void drawShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
 		void drawPointShadowScene();/* !This has been CREATED as part of the GRAPHICS UNIT! */
 		void updateLightingShader(std::shared_ptr<Camera> _cam, glm::vec2 _viewport);
-		void updateSurfaceShader(std::shared_ptr<Texture> _tex, float _alpha);
+		void updateSurfaceShader(std::shared_ptr<Texture> _tex, float _alpha, glm::vec3 _color);
 		void initialiseAL();
 		void initialiseShaders();
 		void initialiseSDL();
 		void updateLighting();
 		void updateEntities();		
 		void drawShadowmaps();
-		void buildEngineUI();
-		
+		void buildEngineUI();		
 		void renderScreen();
-		//bool layerCompare(std::shared_ptr<Surface> _a, std::shared_ptr<Surface> _b);
+		
+		//Private functions called from other classes
+		void addDisplay(std::shared_ptr<DisplayUI> _display);
+		void addUISurface(std::shared_ptr<Surface> _display);
 		
 	};
 }

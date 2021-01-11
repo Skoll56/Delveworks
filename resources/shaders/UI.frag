@@ -6,6 +6,7 @@ uniform sampler2D in_Texture;
 uniform float in_alpha;
 uniform float in_nearPlane;
 uniform float in_farPlane;
+uniform vec3 in_col;
 varying vec2 ex_TexCoord;
 
 void main()
@@ -16,6 +17,7 @@ void main()
    //depthValue = (2.0 * in_nearPlane * in_farPlane) / (in_farPlane + in_nearPlane - z * (in_farPlane - in_nearPlane));  
    //gl_FragColor = vec4(vec3(depthValue), 1.0);
    vec4 col = texture2D(in_Texture, ex_TexCoord);
+   col *= vec4(in_col, 1.0);
    col.a *= in_alpha;
    gl_FragColor = col;
    

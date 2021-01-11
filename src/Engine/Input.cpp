@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Exception.h"
 #include "Core.h"
+#include "Surface.h"
+
 //#include "Console.h"
 
 namespace Engine
@@ -49,9 +51,9 @@ namespace Engine
 		int mouseX, mouseY;
 		SDL_GetMouseState(&mouseX, &mouseY);
 		m_pos.x = mouseX;
-		m_pos.y = mouseY;
+		m_pos.y = m_IM.lock()->m_windowSize.y - mouseY; //For some reason Y = 0 is TOP left instead of BOTTOM left
 		
-		m_deltaPos = m_pos - m_lastPos;
+		m_deltaPos = getPosition() - m_lastPos;
 		if (m_cursorLocked)
 		{
 			int winX, winY;
@@ -62,7 +64,7 @@ namespace Engine
 			m_pos.y = winY;
 		}
 
-		m_lastPos = m_pos;
+		m_lastPos = getPosition();
 
 
 		m_buttonDown.clear();
@@ -111,11 +113,28 @@ namespace Engine
 				
 			}
 			else if (_eventList[i].type == SDL_MOUSEWHEEL)
-	{
-		m_scroll = _eventList[i].wheel.y;
-	}
+			{
+				m_scroll = _eventList[i].wheel.y;
+			}
 		}
 	}
+
+	glm::vec2 Mouse::getPosition()
+	{
+		std::shared_ptr<Core> c = m_IM.lock()->m_core.lock();
+		std::shared_ptr<Context> con = c->getContext();
+		int posX = m_pos.x - con->getPosition().x;
+		int posY = m_pos.y - con->getPosition().y;
+		if (posX < 0 || posX > con->getSize().x || posY < 0 || posY > con->getSize().y) //offscreen
+		{
+			posX = m_lastPos.x;
+			posY = m_lastPos.y;
+		}
+
+		
+		return glm::vec2(posX, posY);
+	}
+	
 
 	bool InputManager::update()
 	{
@@ -137,7 +156,6 @@ namespace Engine
 					m_core.lock()->onWindowResized(event.window.data1, event.window.data2);
 				}
 			}
-
 		}
 		int x, y;
 		SDL_GetWindowSize(m_window, &x, &y);
