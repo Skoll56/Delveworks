@@ -81,7 +81,7 @@ namespace Engine
 
 			// The maxLength includes the NULL character
 			std::vector<GLchar> errorLog(maxLength);
-			glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);			
+			glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);			//////
 			std::string error = &errorLog.at(0);
 			throw Exception("Failed to compile vertex shader: " + error);
 		}
@@ -119,7 +119,7 @@ namespace Engine
 		if (!success)
 		{			
 			GLint maxLength = 0;
-			glGetProgramiv(m_id, GL_INFO_LOG_LENGTH, &maxLength);
+			glGetProgramiv(m_id, GL_INFO_LOG_LENGTH, &maxLength); ////////////////////////////
 
 			// The maxLength includes the NULL character
 			std::vector<GLchar> infoLog(maxLength);
@@ -129,13 +129,13 @@ namespace Engine
 			glDeleteProgram(m_id);
 
 			// Provide the infolog in whatever manner you deem best.
-			std::string error = "Sam: ";
+			std::string error = "";
 			for (int i = 0; i < infoLog.size(); i++)
 			{
 				error += infoLog[i];
 			}
 			// Exit with failure.			
-			throw Exception("Failed to link shader program: " + error);
+			throw Exception("Failed to link shader program: " + error);////
 		}
 
 		//glDetachShader(m_id, vertexShaderId);

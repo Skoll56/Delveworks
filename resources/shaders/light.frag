@@ -14,9 +14,7 @@ struct PointLight
 	vec3 m_diffuse;
 	float m_specIntens;
 	float m_radius;
-	float m_quadratic;
-	//vec2 m_textureSize;
-	samplerCube m_shadowMap;	
+	float m_quadratic;		
 };
 
 struct DirLight
@@ -24,8 +22,7 @@ struct DirLight
 	vec3 m_diffuse;
 	float m_specIntens;
 	vec3 m_direction;
-	vec3 m_ambient;
-	sampler2D m_shadowMap;
+	vec3 m_ambient;	
 	vec2 m_textureSize;
 	mat4 m_lightMatrix;
 };
@@ -40,15 +37,19 @@ struct SpotLight
 	float m_radius;
 	float m_quadratic;
 	vec3 m_direction;
-	int m_antiLight;
-	sampler2D m_shadowMap;
+	int m_antiLight;	
 	vec2 m_textureSize;
 	mat4 m_lightMatrix;
 };
 
 uniform PointLight in_pLight[NUMPOINT];
+uniform samplerCube in_pointShadowMap[NUMDIR];
+
 uniform DirLight in_dLight[NUMDIR]; 
+uniform sampler2D in_dirShadowMap[NUMDIR];
+
 uniform SpotLight in_sLight[NUMSPOT];
+uniform sampler2D in_spotShadowMap[NUMPOINT];
 
 uniform sampler2D in_Texture;
 uniform float in_alpha;
@@ -146,9 +147,6 @@ float ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap, vec2 _tex
 		}
 	}		
 	return shadow / (samples * samples); //Average out the surrounding samples to create a 'blur' like effect (PCF)
-
-	//float closestDepth = texture2D(_shadowMap, projCoords.xy).r;
-	//return currentDepth - (0.002 / _fragPosLightSpace.w) > closestDepth ? 1.0 : 0.0;	
 }  
 
 /* This function is to calculate shadows with 3D Depth Cubes and is part of the GRAPHICS UNIT */
@@ -197,7 +195,7 @@ void main()
 	if (in_rShadows == 1)
 	{
 		FragPosLightSpace = (in_dLight[i].m_lightMatrix) * vec4(ex_FragPos, 1.0);
-		inShadow = ShadowCalculation(FragPosLightSpace, in_dLight[i].m_shadowMap, in_dLight[i].m_textureSize); //Calculate how much in-shadow the fragment is	(GRAPHICS UNIT)   
+		inShadow = ShadowCalculation(FragPosLightSpace, in_dirShadowMap[i], in_dLight[i].m_textureSize); //Calculate how much in-shadow the fragment is	(GRAPHICS UNIT)   
 	}
 	lDir = -in_dLight[i].m_direction;
 	light += (1.0 - inShadow) * max(calcDifSpec(norm, tex, in_dLight[i].m_diffuse, in_dLight[i].m_specIntens, attenuation/2.0, lDir), 0.0); //Add to the light value
@@ -207,7 +205,7 @@ void main()
   {
 	if (in_rShadows == 1)
 	{
-		inShadow =  ShadowCubeCalculation(ex_FragPos, in_pLight[i].m_pos, in_pLight[i].m_shadowMap, in_pLight[i].m_radius); //Calculate how much in-shadow the fragment is
+		inShadow =  ShadowCubeCalculation(ex_FragPos, in_pLight[i].m_pos, in_pointShadowMap[i], in_pLight[i].m_radius); //Calculate how much in-shadow the fragment is
 	}
 		lDir = normalize(in_pLight[i].m_pos - ex_FragPos);
 		float d = length(in_pLight[i].m_pos - ex_FragPos);	
@@ -222,7 +220,7 @@ void main()
 		 if (in_rShadows == 1)
 		{
 			FragPosLightSpace = (in_sLight[i].m_lightMatrix) * vec4(ex_FragPos, 1.0);
-			float inShadow = ShadowCalculation(FragPosLightSpace, in_sLight[i].m_shadowMap, in_sLight[i].m_textureSize); //Calculate how much in-shadow the fragment is	 
+			inShadow = ShadowCalculation(FragPosLightSpace, in_spotShadowMap[i], in_sLight[i].m_textureSize); //Calculate how much in-shadow the fragment is	 
 		}
 		lDir = normalize(in_sLight[i].m_pos - ex_FragPos);
 		float theta = dot(normalize(in_sLight[i].m_direction), -lDir);   		

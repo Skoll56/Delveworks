@@ -50,7 +50,7 @@ namespace Engine
 		uniform = "in_dLight[" + itr + "].m_direction";
 		_lSh->setUniform(uniform, transform()->getFwd());
 
-		uniform = "in_dLight[" + itr + "].m_shadowMap";
+		uniform = "in_dirShadowMap[" + itr + "]";
 		_lSh->setUniform(uniform, sm);
 
 		uniform = "in_dLight[" + itr + "].m_textureSize";
@@ -110,7 +110,7 @@ namespace Engine
 		uniform = "in_sLight[" + itr + "].m_direction";
 		_lSh->setUniform(uniform, transform()->getFwd());
 
-		uniform = "in_sLight[" + itr + "].m_shadowMap"; 
+		uniform = "in_spotShadowMap[" + itr + "]"; 
 		_lSh->setUniform(uniform, sm);
 
 		uniform = "in_sLight[" + itr + "].m_angle";
@@ -174,13 +174,13 @@ namespace Engine
 		uniform = "in_pLight[" + itr + "].m_diffuse";
 		_lSh->setUniform(uniform, getDif());		
 		
-		uniform = "in_pLight[" + itr + "].m_shadowMap";
+		uniform = "in_pointShadowMap[" + itr + "]"; //
 		_lSh->setUniform(uniform, SC);
 
 		uniform = "in_pLight[" + itr + "].m_pos";
 		_lSh->setUniform(uniform, transform()->getPosition());
 
-		uniform = "in_pLight[" + itr + "].m_radius";
+		uniform = "in_pLight[" + itr + "].m_radius";//
 		_lSh->setUniform(uniform, getRadius());
 
 		//uniform = "in_pLight[" + itr + "].m_textureSize";

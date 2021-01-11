@@ -377,7 +377,7 @@ namespace Engine
 		}
 	}
 
-	void Core::buildEngineUI()
+	void Core::buildEngineUI() //
 	{		
 		m_engineContext = std::make_shared<Context>();
 		m_engineContext->m_size = defaultWindowSize;

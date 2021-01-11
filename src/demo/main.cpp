@@ -174,7 +174,7 @@ class CustomInput : public InputDevice
 #undef main
 int main()
 {
-	std::shared_ptr<Core> core = Core::initialise(Core::Debug, glm::vec2(1024, 824));
+	std::shared_ptr<Core> core = Core::initialise(Core::Debug, glm::vec2(1024, 1024));
 
 	//Create the statue entity
 	std::shared_ptr<Entity> test = core->createEntity();
