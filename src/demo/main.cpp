@@ -174,7 +174,7 @@ class CustomInput : public InputDevice
 #ifdef _WIN32
 INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nCmdShow)
 #else
-#undef main;
+#undef main
 int main()
 #endif
 {

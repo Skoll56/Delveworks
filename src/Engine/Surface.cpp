@@ -131,7 +131,7 @@ namespace Engine
 
 			if (m_mouseOver && !m_buttonHeld)
 			{
-				m_col = m_mouseOverColor;
+				m_col = m_mouseOverColor;//
 			}
 			else if (m_buttonHeld)
 			{

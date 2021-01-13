@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
 
 
 namespace Engine
@@ -24,8 +25,15 @@ namespace Engine
 		/** \brief Output something to the console.*/
 		static void output(type _t, std::string _sender, std::string _text);
 
+		/** \brief Output something to the console, use this to allow duplicate messages to be printed. */
+		static void output(type _t, std::string _sender, std::string _text, bool _duplicates);
+
 		/** \brief Output a message to the console.*/
 		static void output(std::string _text);		
+
+		/** \brief Prints the whole log to a file*/
+		static void printToFile();
+		
 
 	private:		
 		Console() {};

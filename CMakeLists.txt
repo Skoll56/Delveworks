@@ -15,7 +15,7 @@ if(MSVC)
 		${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86/lib
 	)
 else()
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources") 
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html") 
 	set(CMAKE_EXECUTABLE_SUFFIX ".html") 
 endif()
 

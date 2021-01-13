@@ -117,6 +117,8 @@ namespace Engine
 		
 		if (m_quit) 
 		{
+
+			Console::printToFile();
 			m_inputManager->closeInputDevices();
 			SDL_DestroyWindow(m_window); // DESTROY THAT WINDOW. STRIKE IT DOWN. DEWIT.
 			SDL_Quit();

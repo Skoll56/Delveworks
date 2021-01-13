@@ -41,7 +41,7 @@ build cmake_object_order_depends_target_Engine: phony || CMakeFiles/Engine.dir
 build CMakeFiles/Engine.dir/src/Engine/Core.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Core.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Core.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -49,7 +49,7 @@ build CMakeFiles/Engine.dir/src/Engine/Core.cpp.o: CXX_COMPILER__Engine_ ../src/
 build CMakeFiles/Engine.dir/src/Engine/Entity.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Entity.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Entity.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -57,7 +57,7 @@ build CMakeFiles/Engine.dir/src/Engine/Entity.cpp.o: CXX_COMPILER__Engine_ ../sr
 build CMakeFiles/Engine.dir/src/Engine/Camera.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Camera.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Camera.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -65,7 +65,7 @@ build CMakeFiles/Engine.dir/src/Engine/Camera.cpp.o: CXX_COMPILER__Engine_ ../sr
 build CMakeFiles/Engine.dir/src/Engine/Collision.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Collision.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Collision.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -73,7 +73,7 @@ build CMakeFiles/Engine.dir/src/Engine/Collision.cpp.o: CXX_COMPILER__Engine_ ..
 build CMakeFiles/Engine.dir/src/Engine/Input.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Input.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Input.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -81,7 +81,7 @@ build CMakeFiles/Engine.dir/src/Engine/Input.cpp.o: CXX_COMPILER__Engine_ ../src
 build CMakeFiles/Engine.dir/src/Engine/Shader.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Shader.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Shader.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -89,7 +89,7 @@ build CMakeFiles/Engine.dir/src/Engine/Shader.cpp.o: CXX_COMPILER__Engine_ ../sr
 build CMakeFiles/Engine.dir/src/Engine/stb_image.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/stb_image.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\stb_image.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -97,7 +97,7 @@ build CMakeFiles/Engine.dir/src/Engine/stb_image.cpp.o: CXX_COMPILER__Engine_ ..
 build CMakeFiles/Engine.dir/src/Engine/Texture.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Texture.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Texture.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -105,7 +105,7 @@ build CMakeFiles/Engine.dir/src/Engine/Texture.cpp.o: CXX_COMPILER__Engine_ ../s
 build CMakeFiles/Engine.dir/src/Engine/VertexArray.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/VertexArray.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\VertexArray.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -113,7 +113,7 @@ build CMakeFiles/Engine.dir/src/Engine/VertexArray.cpp.o: CXX_COMPILER__Engine_ 
 build CMakeFiles/Engine.dir/src/Engine/VertexBuffer.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/VertexBuffer.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\VertexBuffer.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -121,7 +121,7 @@ build CMakeFiles/Engine.dir/src/Engine/VertexBuffer.cpp.o: CXX_COMPILER__Engine_
 build CMakeFiles/Engine.dir/src/Engine/Component.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Component.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Component.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -129,7 +129,7 @@ build CMakeFiles/Engine.dir/src/Engine/Component.cpp.o: CXX_COMPILER__Engine_ ..
 build CMakeFiles/Engine.dir/src/Engine/Resource.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Resource.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Resource.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -137,7 +137,7 @@ build CMakeFiles/Engine.dir/src/Engine/Resource.cpp.o: CXX_COMPILER__Engine_ ../
 build CMakeFiles/Engine.dir/src/Engine/PhysicsNew.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/PhysicsNew.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\PhysicsNew.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -145,7 +145,7 @@ build CMakeFiles/Engine.dir/src/Engine/PhysicsNew.cpp.o: CXX_COMPILER__Engine_ .
 build CMakeFiles/Engine.dir/src/Engine/MeshRenderer.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/MeshRenderer.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\MeshRenderer.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -153,7 +153,7 @@ build CMakeFiles/Engine.dir/src/Engine/MeshRenderer.cpp.o: CXX_COMPILER__Engine_
 build CMakeFiles/Engine.dir/src/Engine/Collider.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Collider.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Collider.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -161,7 +161,7 @@ build CMakeFiles/Engine.dir/src/Engine/Collider.cpp.o: CXX_COMPILER__Engine_ ../
 build CMakeFiles/Engine.dir/src/Engine/Light.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Light.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Light.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -169,7 +169,7 @@ build CMakeFiles/Engine.dir/src/Engine/Light.cpp.o: CXX_COMPILER__Engine_ ../src
 build CMakeFiles/Engine.dir/src/Engine/RenderTexture.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/RenderTexture.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\RenderTexture.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -177,7 +177,7 @@ build CMakeFiles/Engine.dir/src/Engine/RenderTexture.cpp.o: CXX_COMPILER__Engine
 build CMakeFiles/Engine.dir/src/Engine/Exception.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Exception.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Exception.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -185,7 +185,7 @@ build CMakeFiles/Engine.dir/src/Engine/Exception.cpp.o: CXX_COMPILER__Engine_ ..
 build CMakeFiles/Engine.dir/src/Engine/Console.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Console.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Console.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -193,7 +193,7 @@ build CMakeFiles/Engine.dir/src/Engine/Console.cpp.o: CXX_COMPILER__Engine_ ../s
 build CMakeFiles/Engine.dir/src/Engine/Surface.cpp.o: CXX_COMPILER__Engine_ ../src/Engine/Surface.cpp || cmake_object_order_depends_target_Engine
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\Engine.dir\src\Engine\Surface.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\Engine.dir
   OBJECT_FILE_DIR = CMakeFiles\Engine.dir\src\Engine
@@ -207,7 +207,7 @@ build CMakeFiles/Engine.dir/src/Engine/Surface.cpp.o: CXX_COMPILER__Engine_ ../s
 # Link the static library libEngine.a
 
 build libEngine.a: CXX_STATIC_LIBRARY_LINKER__Engine_ CMakeFiles/Engine.dir/src/Engine/Core.cpp.o CMakeFiles/Engine.dir/src/Engine/Entity.cpp.o CMakeFiles/Engine.dir/src/Engine/Camera.cpp.o CMakeFiles/Engine.dir/src/Engine/Collision.cpp.o CMakeFiles/Engine.dir/src/Engine/Input.cpp.o CMakeFiles/Engine.dir/src/Engine/Shader.cpp.o CMakeFiles/Engine.dir/src/Engine/stb_image.cpp.o CMakeFiles/Engine.dir/src/Engine/Texture.cpp.o CMakeFiles/Engine.dir/src/Engine/VertexArray.cpp.o CMakeFiles/Engine.dir/src/Engine/VertexBuffer.cpp.o CMakeFiles/Engine.dir/src/Engine/Component.cpp.o CMakeFiles/Engine.dir/src/Engine/Resource.cpp.o CMakeFiles/Engine.dir/src/Engine/PhysicsNew.cpp.o CMakeFiles/Engine.dir/src/Engine/MeshRenderer.cpp.o CMakeFiles/Engine.dir/src/Engine/Collider.cpp.o CMakeFiles/Engine.dir/src/Engine/Light.cpp.o CMakeFiles/Engine.dir/src/Engine/RenderTexture.cpp.o CMakeFiles/Engine.dir/src/Engine/Exception.cpp.o CMakeFiles/Engine.dir/src/Engine/Console.cpp.o CMakeFiles/Engine.dir/src/Engine/Surface.cpp.o
-  LANGUAGE_COMPILE_FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  LANGUAGE_COMPILE_FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   OBJECT_DIR = CMakeFiles\Engine.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -226,7 +226,7 @@ build cmake_object_order_depends_target_demo: phony || cmake_object_order_depend
 build CMakeFiles/demo.dir/src/demo/main.cpp.o: CXX_COMPILER__demo_ ../src/demo/main.cpp || cmake_object_order_depends_target_demo
   DEFINES = -DSDL_MAIN_HANDLED
   DEP_FILE = CMakeFiles\demo.dir\src\demo\main.cpp.o.d
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   INCLUDES = -I../src -I../contrib
   OBJECT_DIR = CMakeFiles\demo.dir
   OBJECT_FILE_DIR = CMakeFiles\demo.dir\src\demo
@@ -240,7 +240,7 @@ build CMakeFiles/demo.dir/src/demo/main.cpp.o: CXX_COMPILER__demo_ ../src/demo/m
 # Link the executable demo.html
 
 build demo.html: CXX_EXECUTABLE_LINKER__demo_ CMakeFiles/demo.dir/src/demo/main.cpp.o | libEngine.a || libEngine.a
-  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources
+  FLAGS = -O3 -s USE_SDL=2 -s DISABLE_EXCEPTION_CATCHING=0 -s ALLOW_MEMORY_GROWTH=1 --preload-file ../resources -o out.html --shell-file shell.html
   LINK_LIBRARIES = libEngine.a  -lGLEW  -lGL
   OBJECT_DIR = CMakeFiles\demo.dir
   POST_BUILD = cd .

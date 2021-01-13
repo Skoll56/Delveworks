@@ -36,7 +36,7 @@ namespace Engine
 
 		private:
 		/** \brief The Camera's View Matrix*/
-		glm::mat4 m_viewMat;
+		glm::mat4 m_viewMat;//
 
 		/** \brief The Field of View in degrees*/
 		float m_FoV = 45.0f;
