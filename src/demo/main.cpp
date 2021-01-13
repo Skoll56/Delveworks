@@ -1,5 +1,8 @@
 #include <iostream>
 #include <Engine/Engine.h>
+#ifdef _WIN32
+#include <Windows.h>
+#endif
 
 class Ball : public Component
 {
@@ -168,8 +171,12 @@ class CustomInput : public InputDevice
 };
 
 
-#undef main
+#ifdef _WIN32
+INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nCmdShow)
+#else
+#undef main;
 int main()
+#endif
 {
 	std::shared_ptr<Core> core = Core::initialise(Core::Debug, glm::vec2(1024, 1024));
 
@@ -259,7 +266,7 @@ int main()
 		wall5->transform()->m_position = glm::vec3(0.0f + l, 20.0f, 0.0f);
 		std::shared_ptr<BoxCollider> b5 = wall5->addComponent<BoxCollider>(); 
 
-		//Create bouncy balls (with WiP physics) to see
+		//Create bouncy balls to see
 		for (int i = 0; i < 1; i++)
 		{
 			std::shared_ptr<Entity> ball = core->createEntity();
@@ -269,7 +276,7 @@ int main()
 			ball->transform()->setPosition(glm::vec3(5.0f + (i * 0.2f) + l, 33.0f + (i * 1.5f), 5.0f));
 			std::shared_ptr<SphereCollider> sc = ball->addComponent<SphereCollider>();
 			//std::shared_ptr<PhysicsObject> phys = ball->addComponent<PhysicsObject>(1.0f, 0.5f);
-			std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>(1.0f, 0.9f);
+			std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>(1.0f, 0.7f);
 			ball->addComponent<Ball>();
 		}
 		core->start();

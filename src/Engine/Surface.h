@@ -184,7 +184,7 @@ namespace Engine
 		std::vector<std::weak_ptr<Surface>> m_surfaces;
 
 		/** \brief The list of surfaces in the Engine Context*/
-		std::vector<std::shared_ptr<Surface>> m_engineSurfaces; //TODO: Fix this, it doesn't need both.
+		std::vector<std::shared_ptr<Surface>> m_engineSurfaces;
 		glm::vec2 m_position;
 		glm::vec2 m_size = glm::vec2(1024, 1024);
 	};

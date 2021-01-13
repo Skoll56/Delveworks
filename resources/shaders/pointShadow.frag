@@ -8,7 +8,9 @@ uniform float in_farPlane;
 
 void main()
 {             
+	#ifndef GL_ES
     float d = length(ex_FragPos.xyz - in_lightPos);
 	d = d / in_farPlane;
 	gl_FragDepth = d;	
+	#endif
 }  

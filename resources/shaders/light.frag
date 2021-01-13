@@ -118,6 +118,7 @@ void fillDirList()
 //This code has been based on the tutorial from LearnOpenGL
 float ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap, vec2 _textureSize)
 {
+	#ifndef GL_ES
     //Linearises the depth in perspective matrixes
     vec3 projCoords = _fragPosLightSpace.xyz / _fragPosLightSpace.w;
 
@@ -147,15 +148,17 @@ float ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap, vec2 _tex
 		}
 	}		
 	return shadow / (samples * samples); //Average out the surrounding samples to create a 'blur' like effect (PCF)
+	#else
+	return 0.0;
+	#endif
 }  
 
 /* This function is to calculate shadows with 3D Depth Cubes and is part of the GRAPHICS UNIT */
 //This code has been based on the tutorial from LearnOpenGL
 float ShadowCubeCalculation(vec3 _fragPos, vec3 _lightPos, samplerCube _shadowMap, float _farPlane)
 {
-	vec3 fragToLight = _fragPos - _lightPos;    
-	
-	
+	#ifndef GL_ES
+	vec3 fragToLight = _fragPos - _lightPos;  
 	const int samples = 20;
 	float shadow = 0.0;
 	for (int i = 0; i < samples; i++)
@@ -167,6 +170,9 @@ float ShadowCubeCalculation(vec3 _fragPos, vec3 _lightPos, samplerCube _shadowMa
 		shadow += currentDepth - 0.4 > closestDepth ? 1.0 : 0.0;
 	}
 	return shadow / float(samples); //Average out the surrounding texels (for PCF)
+	#else
+	return 0.0;
+	#endif
 }  
 
 /* !This function has been ADAPTED slightly to support the graphics unit (Adding the shadows into the final light value)! */

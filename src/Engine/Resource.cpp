@@ -32,14 +32,14 @@ namespace Engine
 		int bps = 0;		
 		char* t = WavFile::loadWAV(fileName.c_str(), channels, freq, bps, size);
 
-		if (!t);
+		if (!t)
 		{
 			throw Exception("loadWav failed: " + fileName);
 		}
 
 		if (channels == 1)
 		{
-			format = AL_FORMAT_MONO16;
+			format = AL_FORMAT_MONO16;//
 		}
 		else
 		{

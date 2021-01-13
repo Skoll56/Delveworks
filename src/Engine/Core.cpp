@@ -79,8 +79,7 @@ namespace Engine
 		}
 		rtn->setTag(tag);
 
-		m_entities.push_back(rtn);
-		Console::output("I made an entity");
+		m_entities.push_back(rtn);		
 		return rtn;
 	}
 
@@ -103,8 +102,10 @@ namespace Engine
 		
 		
 		updateEntities();
-		updateLighting();				
+		updateLighting();		
+		#ifndef EMSCRIPTEN////
 		drawShadowmaps(); /* <-- !GRAPHICS UNIT! */
+		#endif
 		renderScreen();
 
 		float targetTime = 1.0f / 60.f;

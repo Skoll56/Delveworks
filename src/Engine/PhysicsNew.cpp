@@ -202,7 +202,10 @@ namespace Engine
 			d2p -= r * n;
 			ci = c0 - d2p;
 			m_collisions.push_back(std::make_shared<Collision>(ci, n, _other->getEntity(), _my->getEntity()));
-			
+			if (n == glm::vec3(0.0f, 1.0f, 0.0f)) // We're currently on and colliding with a floor
+			{
+				_my->getEntity()->getComponent<PhysicsEventUser>()->setFloored(true); //Saves so much effort
+			}
 			return true;
 		}
 
@@ -349,7 +352,10 @@ namespace Engine
 			glm::vec3 expected = (otherP + (oLength * n) + (length * n));//Expected position in the normal
 			glm::vec3 dif = ((pos * n) - (expected * n)) * n;//Difference between ^ and actual position
 			glm::vec3 cp = pos - dif;//Aforementioned difference saved and ready to be applied
-
+			if (n == glm::vec3(0.0f, 1.0f, 0.0f)) // We're currently on and colliding with a floor
+			{
+				_my->getEntity()->getComponent<PhysicsEventUser>()->setFloored(true); //Saves so much effort
+			}
 			m_collisions.push_back(std::make_shared<Collision>(cp, n, _other->getEntity(), _my->getEntity())); //Create a collision
 			return true;
 		}

@@ -77,7 +77,7 @@ endif()
 
 
 
-add_executable(demo
+add_executable(demo WIN32
 src/demo/main.cpp
 )
 
