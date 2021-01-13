@@ -103,7 +103,7 @@ namespace Engine
 		
 		updateEntities();
 		updateLighting();		
-		#ifndef EMSCRIPTEN////
+		#ifndef EMSCRIPTEN
 		drawShadowmaps(); /* <-- !GRAPHICS UNIT! */
 		#endif
 		renderScreen();
@@ -142,17 +142,20 @@ namespace Engine
 		{
 			try
 			{
-				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
-				if (MR)
-				{			
-					if (MR->getAlpha() < 1.0f)
+				if (m_entities[ei]->isActive())
+				{
+					std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
+					if (MR)
 					{
-						drawLater.push_back(MR); //Transparent objects need to be drawn last, because of reasons and things.
+						if (MR->getAlpha() < 1.0f)
+						{
+							drawLater.push_back(MR); //Transparent objects need to be drawn last, because of reasons and things.
+						}
+						else
+						{
+							MR->draw();
+						}
 					}
-					else
-					{
-						MR->draw();
-					}					
 				}
 			}
 			catch (Exception &e)
@@ -184,13 +187,16 @@ namespace Engine
 		{
 			try
 			{
-				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
-				if (MR)
+				if (m_entities[ei]->isActive())
 				{
-					if (MR->getCastShadows())
+					std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
+					if (MR)
 					{
-						m_shadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
-						m_shadowSh->draw(MR->getMesh());
+						if (MR->getCastShadows())
+						{
+							m_shadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
+							m_shadowSh->draw(MR->getMesh());
+						}
 					}
 				}
 			}
@@ -208,13 +214,16 @@ namespace Engine
 		{ 
 			try
 			{
-				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
-				if (MR)
+				if (m_entities[ei]->isActive())
 				{
-					if (MR->getCastShadows())
+					std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
+					if (MR)
 					{
-						m_pointShadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
-						m_pointShadowSh->draw(MR->getMesh());
+						if (MR->getCastShadows())
+						{
+							m_pointShadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
+							m_pointShadowSh->draw(MR->getMesh());
+						}
 					}
 				}
 			}
@@ -278,8 +287,7 @@ namespace Engine
 		{
 			//Lighting Shaders
 			m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(_cam->getFOV()), (float)_viewport.x / (float)_viewport.y, 0.1f, 100.0f)); //Set the projection uniform
-			m_lightingSh->setUniform("in_View", _cam->getView()); // Establish the view matrix		
-			m_lightingSh->setUniform("in_Emissive", glm::vec3(0.0f, 0.0f, 0.0f)); //TODO
+			m_lightingSh->setUniform("in_View", _cam->getView()); // Establish the view matrix					
 			m_lightingSh->setUniform("in_CamPos", _cam->transform()->m_position);
 		}
 		catch (Exception &e)
@@ -582,7 +590,10 @@ namespace Engine
 		{
 			try
 			{
-				(*it)->tick(); //"Update"
+				if ((*it)->isActive())
+				{
+					(*it)->tick(); //"Update"
+				}
 			}
 			catch (Exception &e)
 			{
@@ -658,7 +669,7 @@ namespace Engine
 		//First update the game context
 		if (m_gameContext->m_surfaces.size() == 0)
 		{
-			Console::output(Console::Error, "Core", "There must be at least one surface for rendering to.");
+			Console::output(Console::Error, "Core", "No surfaces detected in the scene");
 		}
 		else
 		{			

@@ -45,16 +45,15 @@ namespace Engine
 	{
 	public:		
 		PlaneCollider() {};
-		glm::vec3 getNorm() { return m_normal; } //TODO: This is dumb, just use the 'Up' vector.
-		void setNorm(glm::vec3 _norm) { m_normal = _norm; }
+
+		/** \brief Returns the way the plane is facing */
+		glm::vec3 getNorm() { return transform()->getUp(); } 
+		
 
 		/** \brief A "This" pointer*/
 		std::weak_ptr<PlaneCollider> m_self;
 
 	private:
-		/** \brief This is the "Normal" of the plane.*/
-		/** A plane that is lying flat will have a normal of either 0,1,0 or 0,-1,0 (Up or down) */
-		glm::vec3 m_normal;
 	};
 
 	/** \brief Boxes*/

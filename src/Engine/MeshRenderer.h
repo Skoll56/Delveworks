@@ -73,6 +73,15 @@ namespace Engine
 		/** \brief Returns the color adjustment to the mesh*/
 		glm::vec3 getColor() { return m_color; }
 
+		/** \brief Returns the mesh's emissive light property */
+		glm::vec3 getEmissive() { return m_lightEmission; }
+
+		/** \brief Sets the mesh's emissive light property */
+		void setEmissive(glm::vec3 _emissive) { m_lightEmission = _emissive; }
+
+
+
+
 		private:
 		/** \brief  The size of the obj in generic units (ie: box objs are 1/1/1 units)*/
 		glm::vec3 m_size; 
@@ -103,6 +112,9 @@ namespace Engine
 
 		/** \brief Mark if the object casts shadows or not*/
 		bool m_castShadows = true;
+
+		/** \brief Mark if the object emits light or not */
+		glm::vec3 m_lightEmission = glm::vec3(0.0f);
 
 		/** \brief Mark is shadows can be cast unto this object or not*/
 		bool m_receiveShadows = true;

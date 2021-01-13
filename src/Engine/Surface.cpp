@@ -13,7 +13,7 @@ namespace Engine
 		createScreenQuad();
 		m_camera = _cam;
 		m_layer = _layer;
-		_cam->setSurface(m_self.lock());
+		_cam->addSurface(m_self.lock());
 		getCore()->addDisplay(m_self.lock());
 	}
 

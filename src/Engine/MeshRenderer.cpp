@@ -13,6 +13,7 @@ namespace Engine
 		m_shader->setUniform("in_Shininess", (int)pow(2, getShine()));
 		m_shader->setUniform("in_Model", transform()->getModel()); // Translate the model matrix by camera position and stuff
 		m_shader->setUniform("in_TransverseModel", glm::transpose(glm::inverse(transform()->getModel())));
+		m_shader->setUniform("in_Emissive", m_lightEmission); 
 		m_shader->setUniform("in_Texture", m_tex);
 		m_shader->setUniform("in_color", m_color);
 		m_shader->setUniform("in_alpha", m_alpha);

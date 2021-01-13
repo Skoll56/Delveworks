@@ -14,10 +14,10 @@ namespace Engine
 		void onInitialise();
 
 		/** \brief Gives the camera a reference to a Surface that it is rendering to (A DisplayUI)*/
-		void setSurface(std::shared_ptr<Surface> _surface);
+		void addSurface(std::shared_ptr<Surface> _surface);
 
 		/** \brief Gets a reference to a Surface that it is rendering to (A DisplayUI)*/
-		std::shared_ptr<Surface> getSurface();
+		std::shared_ptr<Surface> getSurface(int _i);
 
 		/** \brief Returns the Camera's view matrix*/
 		glm::mat4 getView() { return m_viewMat; }
@@ -42,7 +42,7 @@ namespace Engine
 		float m_FoV = 45.0f;
 
 		/** \brief A reference to any surface this camera is displaying to*/
-		std::weak_ptr<Surface> m_surface; //TODO: This should be an array
+		std::vector<std::weak_ptr<Surface>> m_surface; 
 	};
 }
 

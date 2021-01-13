@@ -18,7 +18,11 @@ class Ball : public Component
 	{
 		if (!m_sound.lock()) throw Exception();
 		m_sound.lock()->Play(0.8f);		
+
+		getEntity()->setActive(false);
 	}
+
+
 };
 
 class Demo : public Component
@@ -93,20 +97,25 @@ class Demo : public Component
 		if (camera.lock()->m_eulerAngles.y > 360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
 		else if (camera.lock()->m_eulerAngles.y < -360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }		
 
-		bool iWantToTest = false;
+		bool iWantToTest = true;
 		if (iWantToTest)
 		{
-			if (i == 500)
+			if (i == 200)
 			{
-				std::shared_ptr<Camera> s = camera.lock()->getEntity()->getComponent<Camera>(); // ->getSurface();
+				std::shared_ptr<Camera> s = camera.lock()->getEntity()->getComponent<Camera>(); 
 				s->destroy();
+				std::shared_ptr<Surface> surf = s->getSurface(0);
+				surf->destroy();
 				//s->setSize(glm::vec2(600, 600));
 			}
-			else if (i == 1000)
+			else if (i == 400)
 			{
 				std::shared_ptr<Entity> e = getCore()->createEntity();
 				std::shared_ptr<Camera> c = e->addComponent<Camera>();
+				camera = c->transform();				
 				getCore()->setDefaultCamera(c);
+				std::shared_ptr<DisplayUI> d = e->addComponent<DisplayUI>(c, 0);
+				d->setSize(getCore()->getContext()->getSize());
 			}
 		}
 	}
@@ -171,19 +180,19 @@ class CustomInput : public InputDevice
 };
 
 
-#ifdef _WIN32
-INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nCmdShow)
-#else
-#undef main
+//#ifdef _WIN32
+//INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nCmdShow)
+//#else
+//#undef main
 int main()
-#endif
+//#endif
 {
 	std::shared_ptr<Core> core = Core::initialise(Core::Debug, glm::vec2(1024, 1024));
 
 	//Create the statue entity
 	std::shared_ptr<Entity> test = core->createEntity();
 	std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
-	MR->setAlpha(0.5f);
+	//MR->setEmissive(glm::vec3(0.5f, 0.5f, 0.5f));
 	MR->setCastShadows(true);
 	//test->addComponent<MeshCollider>();
 	test->transform()->m_position = glm::vec3(0.0f, 1.0f, 5.0f);
@@ -227,7 +236,7 @@ int main()
 		floor->transform()->m_position = glm::vec3(0.0f + l, 0.0f, 0.0f);
 		floor->transform()->setScale(glm::vec3(30.0f, 0.1f, 30.0f));
 		std::shared_ptr<PlaneCollider> b = floor->addComponent<PlaneCollider>();
-		b->setNorm(glm::vec3(0.0f, 1.0f, 0.0f));
+		
 
 
 		std::shared_ptr<Entity> wall1 = core->createEntity();
@@ -273,7 +282,7 @@ int main()
 			std::shared_ptr<MeshRenderer> MR3 = ball->addComponent<MeshRenderer>("Image1.bmp", "1b1sphere.obj", glm::vec3(1.0f, 1.0f, 1.0f));
 			//MR3->Initialise();
 			ball->transform()->setScale(glm::vec3(1.0f, 1.0f, 1.0f));
-			ball->transform()->setPosition(glm::vec3(5.0f + (i * 0.2f) + l, 33.0f + (i * 1.5f), 5.0f));
+			ball->transform()->setPosition(glm::vec3(5.0f + (i * 0.2f) + l, 13.0f + (i * 1.5f), 5.0f));
 			std::shared_ptr<SphereCollider> sc = ball->addComponent<SphereCollider>();
 			//std::shared_ptr<PhysicsObject> phys = ball->addComponent<PhysicsObject>(1.0f, 0.5f);
 			std::shared_ptr<AdvPhysicsObject> phys = ball->addComponent<AdvPhysicsObject>(1.0f, 0.7f);
