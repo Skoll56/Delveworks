@@ -74,20 +74,29 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>The <a class="el" href="class_engine_1_1_resource.html" title="A Base class for all Resource objects.">Resource</a> Manager handled the loading in of Resources and saving them in memory <br  />
+  
+ <a href="class_engine_1_1_resource_manager.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_resource_8h_source.html">Resource.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab9e4daa6c7ac9572e18ceeaf453efd4b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ab9e4daa6c7ac9572e18ceeaf453efd4b"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#ab9e4daa6c7ac9572e18ceeaf453efd4b">load</a> (std::string _path)</td></tr>
+<tr class="memdesc:ab9e4daa6c7ac9572e18ceeaf453efd4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads in a resource, of type T, from a path and returns it.  <a href="class_engine_1_1_resource_manager.html#ab9e4daa6c7ac9572e18ceeaf453efd4b">More...</a><br /></td></tr>
 <tr class="separator:ab9e4daa6c7ac9572e18ceeaf453efd4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ab20eae98367e681270b2a755ac067f7e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_resource.html">Resource</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a></td></tr>
+<tr class="memdesc:ab20eae98367e681270b2a755ac067f7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of already loaded in Resources.  <a href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">More...</a><br /></td></tr>
 <tr class="separator:ab20eae98367e681270b2a755ac067f7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_engine_1_1_resource.html" title="A Base class for all Resource objects.">Resource</a> Manager handled the loading in of Resources and saving them in memory <br  />
+ </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab9e4daa6c7ac9572e18ceeaf453efd4b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab9e4daa6c7ac9572e18ceeaf453efd4b">&#9670;&nbsp;</a></span>load()</h2>
 
@@ -114,6 +123,8 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Loads in a resource, of type T, from a path and returns it. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -136,6 +147,8 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>The list of already loaded in Resources. </p>
 
 </div>
 </div>

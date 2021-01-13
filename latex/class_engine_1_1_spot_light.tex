@@ -2,6 +2,11 @@
 \label{class_engine_1_1_spot_light}\index{Engine::SpotLight@{Engine::SpotLight}}
 
 
+A spotlight is a light in a cone shape, like a Flashlight.  
+
+
+
+
 {\ttfamily \#include $<$Light.\+h$>$}
 
 Inheritance diagram for Engine\+::Spot\+Light\+:\begin{figure}[H]
@@ -13,27 +18,37 @@ Inheritance diagram for Engine\+::Spot\+Light\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_engine_1_1_spot_light_a71015e235094f2972b1732b6191f4596}{set\+Values}} (glm\+::vec3 \+\_\+color, float \+\_\+specular, float \+\_\+angle, float \+\_\+fade\+Angle, float \+\_\+radius, float \+\_\+brightness)
-\item 
+void \mbox{\hyperlink{class_engine_1_1_spot_light_aaca79d9f3894c97a44a2bb3e0a3af53a}{on\+Initialise}} (glm\+::vec3 \+\_\+color, float \+\_\+specular, float \+\_\+angle, float \+\_\+fade\+Angle, float \+\_\+radius, float \+\_\+brightness)
+\begin{DoxyCompactList}\small\item\em Initialise with a diffuse color, specular intensity, angle of the cone, an outer faded angle, radius of the light cone and brightness. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_spot_light_aa55ba629045948184255c8aab72effdb}{update}} (int \+\_\+i)
-\item 
+\begin{DoxyCompactList}\small\item\em Update. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_spot_light_a991488fa5a3507524d64dc7f86f579e4}{get\+Angle}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Get the angle of the cone. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_spot_light_a0510cb51fda3c17da82207ebc81dab6e}{get\+Fangle}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Get the outer fade angle. \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}} $>$ \mbox{\hyperlink{class_engine_1_1_spot_light_a9aab80d4b6c61ca5558f952e1611b5d0}{get\+Shadow\+Map}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the Shadowmap of this object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_spot_light}{Spot\+Light}} $>$ \mbox{\hyperlink{class_engine_1_1_spot_light_ab68b78ae60e499a25466682c5ee9a744}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}this\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{class_engine_1_1_spot_light_a74444525b9ffeba8b027211bc889177d}{m\+\_\+angle}}
-\item 
+\begin{DoxyCompactList}\small\item\em The angle of the cone. \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}} $>$ \mbox{\hyperlink{class_engine_1_1_spot_light_ac30b7b103701531be5872d11cf6ab8bb}{m\+\_\+\+SM}}
-\item 
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}} attached to this \mbox{\hyperlink{class_engine_1_1_light}{Light}}. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_spot_light_accb213e6d55cab16cb5f0a92d8df7687}{m\+\_\+fade\+Angle}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The outer faded angle of the light. The light source will fade linearly between the \textquotesingle{}Angle\textquotesingle{} and \textquotesingle{}Fade\+Angle\textquotesingle{} values. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+A spotlight is a light in a cone shape, like a Flashlight. 
+
+It has an inner angle at full brightness, and an outer angle which gets less bright gradually 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_engine_1_1_spot_light_a991488fa5a3507524d64dc7f86f579e4}\label{class_engine_1_1_spot_light_a991488fa5a3507524d64dc7f86f579e4}} 
@@ -42,11 +57,19 @@ float \mbox{\hyperlink{class_engine_1_1_spot_light_accb213e6d55cab16cb5f0a92d8df
 \doxysubsubsection{\texorpdfstring{getAngle()}{getAngle()}}
 {\footnotesize\ttfamily float Engine\+::\+Spot\+Light\+::get\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Get the angle of the cone. 
+
 \mbox{\Hypertarget{class_engine_1_1_spot_light_a0510cb51fda3c17da82207ebc81dab6e}\label{class_engine_1_1_spot_light_a0510cb51fda3c17da82207ebc81dab6e}} 
 \index{Engine::SpotLight@{Engine::SpotLight}!getFangle@{getFangle}}
 \index{getFangle@{getFangle}!Engine::SpotLight@{Engine::SpotLight}}
 \doxysubsubsection{\texorpdfstring{getFangle()}{getFangle()}}
 {\footnotesize\ttfamily float Engine\+::\+Spot\+Light\+::get\+Fangle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the outer fade angle. 
 
 \mbox{\Hypertarget{class_engine_1_1_spot_light_a9aab80d4b6c61ca5558f952e1611b5d0}\label{class_engine_1_1_spot_light_a9aab80d4b6c61ca5558f952e1611b5d0}} 
 \index{Engine::SpotLight@{Engine::SpotLight}!getShadowMap@{getShadowMap}}
@@ -54,17 +77,29 @@ float \mbox{\hyperlink{class_engine_1_1_spot_light_accb213e6d55cab16cb5f0a92d8df
 \doxysubsubsection{\texorpdfstring{getShadowMap()}{getShadowMap()}}
 {\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}}$>$ Engine\+::\+Spot\+Light\+::get\+Shadow\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{class_engine_1_1_spot_light_a71015e235094f2972b1732b6191f4596}\label{class_engine_1_1_spot_light_a71015e235094f2972b1732b6191f4596}} 
-\index{Engine::SpotLight@{Engine::SpotLight}!setValues@{setValues}}
-\index{setValues@{setValues}!Engine::SpotLight@{Engine::SpotLight}}
-\doxysubsubsection{\texorpdfstring{setValues()}{setValues()}}
-{\footnotesize\ttfamily void Engine\+::\+Spot\+Light\+::set\+Values (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+color,  }\item[{float}]{\+\_\+specular,  }\item[{float}]{\+\_\+angle,  }\item[{float}]{\+\_\+fade\+Angle,  }\item[{float}]{\+\_\+radius,  }\item[{float}]{\+\_\+brightness }\end{DoxyParamCaption})}
+
+
+Returns the Shadowmap of this object. 
+
+\mbox{\Hypertarget{class_engine_1_1_spot_light_aaca79d9f3894c97a44a2bb3e0a3af53a}\label{class_engine_1_1_spot_light_aaca79d9f3894c97a44a2bb3e0a3af53a}} 
+\index{Engine::SpotLight@{Engine::SpotLight}!onInitialise@{onInitialise}}
+\index{onInitialise@{onInitialise}!Engine::SpotLight@{Engine::SpotLight}}
+\doxysubsubsection{\texorpdfstring{onInitialise()}{onInitialise()}}
+{\footnotesize\ttfamily void Engine\+::\+Spot\+Light\+::on\+Initialise (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+color,  }\item[{float}]{\+\_\+specular,  }\item[{float}]{\+\_\+angle,  }\item[{float}]{\+\_\+fade\+Angle,  }\item[{float}]{\+\_\+radius,  }\item[{float}]{\+\_\+brightness }\end{DoxyParamCaption})}
+
+
+
+Initialise with a diffuse color, specular intensity, angle of the cone, an outer faded angle, radius of the light cone and brightness. 
 
 \mbox{\Hypertarget{class_engine_1_1_spot_light_aa55ba629045948184255c8aab72effdb}\label{class_engine_1_1_spot_light_aa55ba629045948184255c8aab72effdb}} 
 \index{Engine::SpotLight@{Engine::SpotLight}!update@{update}}
 \index{update@{update}!Engine::SpotLight@{Engine::SpotLight}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
 {\footnotesize\ttfamily void Engine\+::\+Spot\+Light\+::update (\begin{DoxyParamCaption}\item[{int}]{\+\_\+i }\end{DoxyParamCaption})}
+
+
+
+Update. 
 
 
 
@@ -75,17 +110,39 @@ float \mbox{\hyperlink{class_engine_1_1_spot_light_accb213e6d55cab16cb5f0a92d8df
 \doxysubsubsection{\texorpdfstring{m\_angle}{m\_angle}}
 {\footnotesize\ttfamily float Engine\+::\+Spot\+Light\+::m\+\_\+angle\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+The angle of the cone. 
+
 \mbox{\Hypertarget{class_engine_1_1_spot_light_accb213e6d55cab16cb5f0a92d8df7687}\label{class_engine_1_1_spot_light_accb213e6d55cab16cb5f0a92d8df7687}} 
 \index{Engine::SpotLight@{Engine::SpotLight}!m\_fadeAngle@{m\_fadeAngle}}
 \index{m\_fadeAngle@{m\_fadeAngle}!Engine::SpotLight@{Engine::SpotLight}}
 \doxysubsubsection{\texorpdfstring{m\_fadeAngle}{m\_fadeAngle}}
 {\footnotesize\ttfamily float Engine\+::\+Spot\+Light\+::m\+\_\+fade\+Angle\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+The outer faded angle of the light. The light source will fade linearly between the \textquotesingle{}Angle\textquotesingle{} and \textquotesingle{}Fade\+Angle\textquotesingle{} values. 
+
+\mbox{\Hypertarget{class_engine_1_1_spot_light_ab68b78ae60e499a25466682c5ee9a744}\label{class_engine_1_1_spot_light_ab68b78ae60e499a25466682c5ee9a744}} 
+\index{Engine::SpotLight@{Engine::SpotLight}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::SpotLight@{Engine::SpotLight}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_spot_light}{Spot\+Light}}$>$ Engine\+::\+Spot\+Light\+::m\+\_\+self}
+
+
+
+A \char`\"{}this\char`\"{} pointer. 
+
 \mbox{\Hypertarget{class_engine_1_1_spot_light_ac30b7b103701531be5872d11cf6ab8bb}\label{class_engine_1_1_spot_light_ac30b7b103701531be5872d11cf6ab8bb}} 
 \index{Engine::SpotLight@{Engine::SpotLight}!m\_SM@{m\_SM}}
 \index{m\_SM@{m\_SM}!Engine::SpotLight@{Engine::SpotLight}}
 \doxysubsubsection{\texorpdfstring{m\_SM}{m\_SM}}
 {\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}}$>$ Engine\+::\+Spot\+Light\+::m\+\_\+\+SM\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The \mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}} attached to this \mbox{\hyperlink{class_engine_1_1_light}{Light}}. 
 
 
 

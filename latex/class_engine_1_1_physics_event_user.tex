@@ -2,6 +2,12 @@
 \label{class_engine_1_1_physics_event_user}\index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 
 
+A base class for all Physics Objects. ~\newline
+  
+
+
+
+
 {\ttfamily \#include $<$Physics\+New.\+h$>$}
 
 Inheritance diagram for Engine\+::Physics\+Event\+User\+:\begin{figure}[H]
@@ -14,66 +20,75 @@ Inheritance diagram for Engine\+::Physics\+Event\+User\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_engine_1_1_physics_event_user_ae55c6ef5972f980bdee44de8fc81ad22}{on\+Tick}} ()
-\item 
-bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a4c731c532cb55eea5c9ec81dcfc0cd71}{check\+For\+Collisions}} (float \+\_\+dT, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$$>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
-\item 
+\begin{DoxyCompactList}\small\item\em Update. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a4c731c532cb55eea5c9ec81dcfc0cd71}{check\+For\+Collisions}} (float \+\_\+dT, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} $>$$>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
+\begin{DoxyCompactList}\small\item\em Checks for any collisions. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_physics_event_user_aa5dc5e3f336574f2635ec7b1f2bced5f}{reset\+Collisions}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Resets the collision list (empties it) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_physics_event_user_ac19e19f66ae829b52eee5d77d46d0a0c}{set\+Collided}} (bool \+\_\+val)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the collided value. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a2e90e0014b21222a1c9fcfef44b1e5e7}{collided}} ()
-\item 
-void \mbox{\hyperlink{class_engine_1_1_physics_event_user_af8820ee6d223201074b2b47b781c71ea}{on\+Collision}} (\mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$\+\_\+col)
-\item 
+\begin{DoxyCompactList}\small\item\em Gets if this object has collided or not. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_physics_event_user_a78e2efef9accc6332fc7d0e0aa2707fb}{set\+Floored}} (bool \+\_\+val)
-\item 
+\begin{DoxyCompactList}\small\item\em Set whether this object is floored or not. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a92216f84a0f8981570b9d6f82a4d8437}{is\+Floored}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns if this object is floored. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_ac024ad1224deac8caecdff4ccfdcb521}{box\+To\+Plane}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$ \+\_\+my, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_plane_collider}{Plane\+Collider}} $>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks box versus plane collision. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_engine_1_1_physics_event_user_ae8a2318eba904496c3825489f5aa2e20}{coplanar\+\_\+tri\+\_\+tri}} (float N\mbox{[}3\mbox{]}, float V0\mbox{[}3\mbox{]}, float V1\mbox{[}3\mbox{]}, float V2\mbox{[}3\mbox{]}, float U0\mbox{[}3\mbox{]}, float U1\mbox{[}3\mbox{]}, float U2\mbox{[}3\mbox{]})
-\item 
+\begin{DoxyCompactList}\small\item\em Checks tri versus tri collisions. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_engine_1_1_physics_event_user_ad3aed41c707b7e78e6b990846dae57ef}{No\+Div\+Tri\+Tri\+Isect}} (float V0\mbox{[}3\mbox{]}, float V1\mbox{[}3\mbox{]}, float V2\mbox{[}3\mbox{]}, float U0\mbox{[}3\mbox{]}, float U1\mbox{[}3\mbox{]}, float U2\mbox{[}3\mbox{]})
-\item 
+\begin{DoxyCompactList}\small\item\em Checks tri versus tri collisions. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_engine_1_1_physics_event_user_ae8ccc8b6ec428ebb0d568837ad01a06d}{tri\+Box\+Overlap}} (float boxcenter\mbox{[}3\mbox{]}, float boxhalfsize\mbox{[}3\mbox{]}, float triverts\mbox{[}3\mbox{]}\mbox{[}3\mbox{]})
-\item 
+\begin{DoxyCompactList}\small\item\em Checks tri versus box collisions. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_engine_1_1_physics_event_user_a3ca9262984fd8d48828f7fcf91f8239c}{plane\+Box\+Overlap}} (float normal\mbox{[}3\mbox{]}, float d, float maxbox\mbox{[}3\mbox{]})
-\item 
+\begin{DoxyCompactList}\small\item\em Checks box versus plane collisions. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_physics_event_user_a0a5f5a3c8477f6d7f59da88ec2e973b0}{distance\+To\+Plane}} (glm\+::vec3 \&n, glm\+::vec3 \&p, glm\+::vec3 \&q)
-\item 
+\begin{DoxyCompactList}\small\item\em Determines the distance from a point to a plane (along the normal) \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a450b2c8db3ef812fabe7198a3a76d923}{box\+To\+Box}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$ \+\_\+my, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
-\item 
+\begin{DoxyCompactList}\small\item\em Check for box versus box collisions. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a0290f99fdd2f2524a8e981e234d6cd75}{mesh\+To\+Mesh}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_mesh_collider}{Mesh\+Collider}} $>$ \+\_\+my, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collider}{Collider}} $>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
-\item 
+\begin{DoxyCompactList}\small\item\em Check for mesh versus mech collisions (very expensive) \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a5e00c19dc6179f6b3a25b0cadcc39303}{sphere\+To\+Plane}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sphere_collider}{Sphere\+Collider}} $>$ \+\_\+my, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_plane_collider}{Plane\+Collider}} $>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
-\begin{DoxyCompactList}\small\item\em Shape Intersection functions. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Check for sphere versus plane collisions. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a6df9de0fb41af161c7576f1baa83dfd0}{sphere\+To\+Box}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sphere_collider}{Sphere\+Collider}} $>$ \+\_\+my, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
-\item 
+\begin{DoxyCompactList}\small\item\em Check for sphere versus box collisions. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a41814ff529847341e1bb04212ca64cc6}{sphere\+To\+Sphere}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sphere_collider}{Sphere\+Collider}} $>$ \+\_\+my, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sphere_collider}{Sphere\+Collider}} $>$ \+\_\+other)
-\item 
+\begin{DoxyCompactList}\small\item\em Check for sphere versus sphere collisions. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a1e03f1aa84ea72d0971ced1d0dc8122c}{box\+To\+Sphere}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$ \+\_\+my, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sphere_collider}{Sphere\+Collider}} $>$ \+\_\+other, glm\+::vec3 \+\_\+c1)
-\item 
+\begin{DoxyCompactList}\small\item\em Check for box versus sphere collisions. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a91364b35b03a3e2bc2d2aa9743804418}{sphere\+Box\+Overlap}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sphere_collider}{Sphere\+Collider}} $>$ \+\_\+sphere, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$ \+\_\+box)
-\item 
+\begin{DoxyCompactList}\small\item\em Check for an overlap between a sphere and box collider. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_event_user_a7305c5cb9a133533487645a783fc4a1a}{round\+Normals}} (glm\+::vec3 \+\_\+n)
-\item 
+\begin{DoxyCompactList}\small\item\em Rounds a normals so if it\textquotesingle{}s close to 1, -\/1 or 0 it rounds it. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_event_user_a599461362b826505890566eb7c3f5743}{get\+Perm\+CP}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the permanent contact point. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_physics_event_user_a96a1a23471aff12c418a3b6a931f49d0}{set\+Perm\+CP}} (glm\+::vec3 \+\_\+pos)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sets the permanent contact point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_physics_event_user}{Physics\+Event\+User}} $>$ \mbox{\hyperlink{class_engine_1_1_physics_event_user_a7587474f41d028b4e5044c25daba54ed}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}this\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a95b2d2e649e65d203f41efc78bf5a5a4}{m\+\_\+collided}} = false
-\item 
+\begin{DoxyCompactList}\small\item\em Marks whether this has collided or not. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_aee00308a4099e909076914c45a9eed9e}{m\+\_\+floored}} = false
-\item 
+\begin{DoxyCompactList}\small\item\em Floored is an optimisation. If an object is \char`\"{}floored\char`\"{} it is sitting on a flat surface and no further gravity or collision checks need to happen. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_event_user_a8b69f5b00960b32542f602b8c52c5391}{m\+\_\+perm\+CP}}
-\item 
-std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$ $>$ \mbox{\hyperlink{class_engine_1_1_physics_event_user_a898462bb60e3241f4150277ce728b109}{m\+\_\+collisions}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}permanent\char`\"{} contact-\/point that stores where an object should remain once stationary (ie\+: stacked on top of another object) \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$ $>$ \mbox{\hyperlink{class_engine_1_1_physics_event_user_a2da2be6c9f68c9f555e7c3db82f5f082}{m\+\_\+collisions}}
+\begin{DoxyCompactList}\small\item\em A list of all collisions that this object has accumulated. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+A base class for all Physics Objects. ~\newline
+ 
+
+This can be instantiated should the user want to manually do collision checks on an object without making it fully respond to Physics 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a450b2c8db3ef812fabe7198a3a76d923}\label{class_engine_1_1_physics_event_user_a450b2c8db3ef812fabe7198a3a76d923}} 
@@ -82,11 +97,19 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$
 \doxysubsubsection{\texorpdfstring{boxToBox()}{boxToBox()}}
 {\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::box\+To\+Box (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$}]{\+\_\+my,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$}]{\+\_\+other,  }\item[{glm\+::vec3}]{\+\_\+c1 }\end{DoxyParamCaption})}
 
+
+
+Check for box versus box collisions. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_ac024ad1224deac8caecdff4ccfdcb521}\label{class_engine_1_1_physics_event_user_ac024ad1224deac8caecdff4ccfdcb521}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!boxToPlane@{boxToPlane}}
 \index{boxToPlane@{boxToPlane}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{boxToPlane()}{boxToPlane()}}
 {\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::box\+To\+Plane (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$}]{\+\_\+my,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_plane_collider}{Plane\+Collider}} $>$}]{\+\_\+other,  }\item[{glm\+::vec3}]{\+\_\+c1 }\end{DoxyParamCaption})}
+
+
+
+Checks box versus plane collision. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a1e03f1aa84ea72d0971ced1d0dc8122c}\label{class_engine_1_1_physics_event_user_a1e03f1aa84ea72d0971ced1d0dc8122c}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!boxToSphere@{boxToSphere}}
@@ -94,11 +117,19 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$
 \doxysubsubsection{\texorpdfstring{boxToSphere()}{boxToSphere()}}
 {\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::box\+To\+Sphere (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$}]{\+\_\+my,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sphere_collider}{Sphere\+Collider}} $>$}]{\+\_\+other,  }\item[{glm\+::vec3}]{\+\_\+c1 }\end{DoxyParamCaption})}
 
+
+
+Check for box versus sphere collisions. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a4c731c532cb55eea5c9ec81dcfc0cd71}\label{class_engine_1_1_physics_event_user_a4c731c532cb55eea5c9ec81dcfc0cd71}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!checkForCollisions@{checkForCollisions}}
 \index{checkForCollisions@{checkForCollisions}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{checkForCollisions()}{checkForCollisions()}}
-{\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::check\+For\+Collisions (\begin{DoxyParamCaption}\item[{float}]{\+\_\+dT,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$$>$}]{\+\_\+other,  }\item[{glm\+::vec3}]{\+\_\+c1 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::check\+For\+Collisions (\begin{DoxyParamCaption}\item[{float}]{\+\_\+dT,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} $>$$>$}]{\+\_\+other,  }\item[{glm\+::vec3}]{\+\_\+c1 }\end{DoxyParamCaption})}
+
+
+
+Checks for any collisions. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a2e90e0014b21222a1c9fcfef44b1e5e7}\label{class_engine_1_1_physics_event_user_a2e90e0014b21222a1c9fcfef44b1e5e7}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!collided@{collided}}
@@ -106,11 +137,19 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$
 \doxysubsubsection{\texorpdfstring{collided()}{collided()}}
 {\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::collided (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Gets if this object has collided or not. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_ae8a2318eba904496c3825489f5aa2e20}\label{class_engine_1_1_physics_event_user_ae8a2318eba904496c3825489f5aa2e20}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!coplanar\_tri\_tri@{coplanar\_tri\_tri}}
 \index{coplanar\_tri\_tri@{coplanar\_tri\_tri}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{coplanar\_tri\_tri()}{coplanar\_tri\_tri()}}
 {\footnotesize\ttfamily int Engine\+::\+Physics\+Event\+User\+::coplanar\+\_\+tri\+\_\+tri (\begin{DoxyParamCaption}\item[{float}]{N\mbox{[}3\mbox{]},  }\item[{float}]{V0\mbox{[}3\mbox{]},  }\item[{float}]{V1\mbox{[}3\mbox{]},  }\item[{float}]{V2\mbox{[}3\mbox{]},  }\item[{float}]{U0\mbox{[}3\mbox{]},  }\item[{float}]{U1\mbox{[}3\mbox{]},  }\item[{float}]{U2\mbox{[}3\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Checks tri versus tri collisions. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a0a5f5a3c8477f6d7f59da88ec2e973b0}\label{class_engine_1_1_physics_event_user_a0a5f5a3c8477f6d7f59da88ec2e973b0}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!distanceToPlane@{distanceToPlane}}
@@ -118,11 +157,19 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$
 \doxysubsubsection{\texorpdfstring{distanceToPlane()}{distanceToPlane()}}
 {\footnotesize\ttfamily float Engine\+::\+Physics\+Event\+User\+::distance\+To\+Plane (\begin{DoxyParamCaption}\item[{glm\+::vec3 \&}]{n,  }\item[{glm\+::vec3 \&}]{p,  }\item[{glm\+::vec3 \&}]{q }\end{DoxyParamCaption})}
 
+
+
+Determines the distance from a point to a plane (along the normal) 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a599461362b826505890566eb7c3f5743}\label{class_engine_1_1_physics_event_user_a599461362b826505890566eb7c3f5743}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!getPermCP@{getPermCP}}
 \index{getPermCP@{getPermCP}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{getPermCP()}{getPermCP()}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Physics\+Event\+User\+::get\+Perm\+CP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the permanent contact point. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a92216f84a0f8981570b9d6f82a4d8437}\label{class_engine_1_1_physics_event_user_a92216f84a0f8981570b9d6f82a4d8437}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!isFloored@{isFloored}}
@@ -130,11 +177,19 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$
 \doxysubsubsection{\texorpdfstring{isFloored()}{isFloored()}}
 {\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::is\+Floored (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns if this object is floored. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a0290f99fdd2f2524a8e981e234d6cd75}\label{class_engine_1_1_physics_event_user_a0290f99fdd2f2524a8e981e234d6cd75}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!meshToMesh@{meshToMesh}}
 \index{meshToMesh@{meshToMesh}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{meshToMesh()}{meshToMesh()}}
 {\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::mesh\+To\+Mesh (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_mesh_collider}{Mesh\+Collider}} $>$}]{\+\_\+my,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collider}{Collider}} $>$}]{\+\_\+other,  }\item[{glm\+::vec3}]{\+\_\+c1 }\end{DoxyParamCaption})}
+
+
+
+Check for mesh versus mech collisions (very expensive) 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_ad3aed41c707b7e78e6b990846dae57ef}\label{class_engine_1_1_physics_event_user_ad3aed41c707b7e78e6b990846dae57ef}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!NoDivTriTriIsect@{NoDivTriTriIsect}}
@@ -142,17 +197,19 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$
 \doxysubsubsection{\texorpdfstring{NoDivTriTriIsect()}{NoDivTriTriIsect()}}
 {\footnotesize\ttfamily int Engine\+::\+Physics\+Event\+User\+::\+No\+Div\+Tri\+Tri\+Isect (\begin{DoxyParamCaption}\item[{float}]{V0\mbox{[}3\mbox{]},  }\item[{float}]{V1\mbox{[}3\mbox{]},  }\item[{float}]{V2\mbox{[}3\mbox{]},  }\item[{float}]{U0\mbox{[}3\mbox{]},  }\item[{float}]{U1\mbox{[}3\mbox{]},  }\item[{float}]{U2\mbox{[}3\mbox{]} }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_engine_1_1_physics_event_user_af8820ee6d223201074b2b47b781c71ea}\label{class_engine_1_1_physics_event_user_af8820ee6d223201074b2b47b781c71ea}} 
-\index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!onCollision@{onCollision}}
-\index{onCollision@{onCollision}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
-\doxysubsubsection{\texorpdfstring{onCollision()}{onCollision()}}
-{\footnotesize\ttfamily void Engine\+::\+Physics\+Event\+User\+::on\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $\ast$}]{\+\_\+col }\end{DoxyParamCaption})}
+
+
+Checks tri versus tri collisions. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_ae55c6ef5972f980bdee44de8fc81ad22}\label{class_engine_1_1_physics_event_user_ae55c6ef5972f980bdee44de8fc81ad22}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!onTick@{onTick}}
 \index{onTick@{onTick}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{onTick()}{onTick()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Event\+User\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Update. 
 
 
 
@@ -168,11 +225,19 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205
 \doxysubsubsection{\texorpdfstring{planeBoxOverlap()}{planeBoxOverlap()}}
 {\footnotesize\ttfamily int Engine\+::\+Physics\+Event\+User\+::plane\+Box\+Overlap (\begin{DoxyParamCaption}\item[{float}]{normal\mbox{[}3\mbox{]},  }\item[{float}]{d,  }\item[{float}]{maxbox\mbox{[}3\mbox{]} }\end{DoxyParamCaption})}
 
+
+
+Checks box versus plane collisions. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_aa5dc5e3f336574f2635ec7b1f2bced5f}\label{class_engine_1_1_physics_event_user_aa5dc5e3f336574f2635ec7b1f2bced5f}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!resetCollisions@{resetCollisions}}
 \index{resetCollisions@{resetCollisions}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{resetCollisions()}{resetCollisions()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Event\+User\+::reset\+Collisions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the collision list (empties it) 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a7305c5cb9a133533487645a783fc4a1a}\label{class_engine_1_1_physics_event_user_a7305c5cb9a133533487645a783fc4a1a}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!roundNormals@{roundNormals}}
@@ -180,11 +245,19 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205
 \doxysubsubsection{\texorpdfstring{roundNormals()}{roundNormals()}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Physics\+Event\+User\+::round\+Normals (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+n }\end{DoxyParamCaption})}
 
+
+
+Rounds a normals so if it\textquotesingle{}s close to 1, -\/1 or 0 it rounds it. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_ac19e19f66ae829b52eee5d77d46d0a0c}\label{class_engine_1_1_physics_event_user_ac19e19f66ae829b52eee5d77d46d0a0c}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!setCollided@{setCollided}}
 \index{setCollided@{setCollided}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{setCollided()}{setCollided()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Event\+User\+::set\+Collided (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the collided value. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a78e2efef9accc6332fc7d0e0aa2707fb}\label{class_engine_1_1_physics_event_user_a78e2efef9accc6332fc7d0e0aa2707fb}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!setFloored@{setFloored}}
@@ -192,11 +265,19 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205
 \doxysubsubsection{\texorpdfstring{setFloored()}{setFloored()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Event\+User\+::set\+Floored (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Set whether this object is floored or not. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a96a1a23471aff12c418a3b6a931f49d0}\label{class_engine_1_1_physics_event_user_a96a1a23471aff12c418a3b6a931f49d0}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!setPermCP@{setPermCP}}
 \index{setPermCP@{setPermCP}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{setPermCP()}{setPermCP()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Event\+User\+::set\+Perm\+CP (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the permanent contact point. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a91364b35b03a3e2bc2d2aa9743804418}\label{class_engine_1_1_physics_event_user_a91364b35b03a3e2bc2d2aa9743804418}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!sphereBoxOverlap@{sphereBoxOverlap}}
@@ -204,11 +285,19 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205
 \doxysubsubsection{\texorpdfstring{sphereBoxOverlap()}{sphereBoxOverlap()}}
 {\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::sphere\+Box\+Overlap (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sphere_collider}{Sphere\+Collider}} $>$}]{\+\_\+sphere,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$}]{\+\_\+box }\end{DoxyParamCaption})}
 
+
+
+Check for an overlap between a sphere and box collider. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a6df9de0fb41af161c7576f1baa83dfd0}\label{class_engine_1_1_physics_event_user_a6df9de0fb41af161c7576f1baa83dfd0}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!sphereToBox@{sphereToBox}}
 \index{sphereToBox@{sphereToBox}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{sphereToBox()}{sphereToBox()}}
 {\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::sphere\+To\+Box (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sphere_collider}{Sphere\+Collider}} $>$}]{\+\_\+my,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_box_collider}{Box\+Collider}} $>$}]{\+\_\+other,  }\item[{glm\+::vec3}]{\+\_\+c1 }\end{DoxyParamCaption})}
+
+
+
+Check for sphere versus box collisions. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a5e00c19dc6179f6b3a25b0cadcc39303}\label{class_engine_1_1_physics_event_user_a5e00c19dc6179f6b3a25b0cadcc39303}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!sphereToPlane@{sphereToPlane}}
@@ -218,19 +307,27 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205
 
 
 
-Shape Intersection functions. 
+Check for sphere versus plane collisions. 
 
-\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a41814ff529847341e1bb04212ca64cc6}\label{class_engine_1_1_physics_event_user_a41814ff529847341e1bb04212ca64cc6}} 
+Shape Intersection functions. \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a41814ff529847341e1bb04212ca64cc6}\label{class_engine_1_1_physics_event_user_a41814ff529847341e1bb04212ca64cc6}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!sphereToSphere@{sphereToSphere}}
 \index{sphereToSphere@{sphereToSphere}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{sphereToSphere()}{sphereToSphere()}}
 {\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::sphere\+To\+Sphere (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sphere_collider}{Sphere\+Collider}} $>$}]{\+\_\+my,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sphere_collider}{Sphere\+Collider}} $>$}]{\+\_\+other }\end{DoxyParamCaption})}
+
+
+
+Check for sphere versus sphere collisions. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_ae8ccc8b6ec428ebb0d568837ad01a06d}\label{class_engine_1_1_physics_event_user_ae8ccc8b6ec428ebb0d568837ad01a06d}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!triBoxOverlap@{triBoxOverlap}}
 \index{triBoxOverlap@{triBoxOverlap}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{triBoxOverlap()}{triBoxOverlap()}}
 {\footnotesize\ttfamily int Engine\+::\+Physics\+Event\+User\+::tri\+Box\+Overlap (\begin{DoxyParamCaption}\item[{float}]{boxcenter\mbox{[}3\mbox{]},  }\item[{float}]{boxhalfsize\mbox{[}3\mbox{]},  }\item[{float}]{triverts\mbox{[}3\mbox{]}\mbox{[}3\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Checks tri versus box collisions. 
 
 
 
@@ -241,11 +338,19 @@ Shape Intersection functions.
 \doxysubsubsection{\texorpdfstring{m\_collided}{m\_collided}}
 {\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::m\+\_\+collided = false\hspace{0.3cm}{\ttfamily [protected]}}
 
-\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a898462bb60e3241f4150277ce728b109}\label{class_engine_1_1_physics_event_user_a898462bb60e3241f4150277ce728b109}} 
+
+
+Marks whether this has collided or not. 
+
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a2da2be6c9f68c9f555e7c3db82f5f082}\label{class_engine_1_1_physics_event_user_a2da2be6c9f68c9f555e7c3db82f5f082}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!m\_collisions@{m\_collisions}}
 \index{m\_collisions@{m\_collisions}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{m\_collisions}{m\_collisions}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_engine_1_1_collision}{Collision}}$\ast$$>$ Engine\+::\+Physics\+Event\+User\+::m\+\_\+collisions\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_collision}{Collision}}$>$ $>$ Engine\+::\+Physics\+Event\+User\+::m\+\_\+collisions\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A list of all collisions that this object has accumulated. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_aee00308a4099e909076914c45a9eed9e}\label{class_engine_1_1_physics_event_user_aee00308a4099e909076914c45a9eed9e}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!m\_floored@{m\_floored}}
@@ -253,11 +358,29 @@ Shape Intersection functions.
 \doxysubsubsection{\texorpdfstring{m\_floored}{m\_floored}}
 {\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::m\+\_\+floored = false\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Floored is an optimisation. If an object is \char`\"{}floored\char`\"{} it is sitting on a flat surface and no further gravity or collision checks need to happen. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a8b69f5b00960b32542f602b8c52c5391}\label{class_engine_1_1_physics_event_user_a8b69f5b00960b32542f602b8c52c5391}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!m\_permCP@{m\_permCP}}
 \index{m\_permCP@{m\_permCP}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{m\_permCP}{m\_permCP}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Physics\+Event\+User\+::m\+\_\+perm\+CP\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A \char`\"{}permanent\char`\"{} contact-\/point that stores where an object should remain once stationary (ie\+: stacked on top of another object) 
+
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a7587474f41d028b4e5044c25daba54ed}\label{class_engine_1_1_physics_event_user_a7587474f41d028b4e5044c25daba54ed}} 
+\index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_physics_event_user}{Physics\+Event\+User}}$>$ Engine\+::\+Physics\+Event\+User\+::m\+\_\+self}
+
+
+
+A \char`\"{}this\char`\"{} pointer. 
 
 
 

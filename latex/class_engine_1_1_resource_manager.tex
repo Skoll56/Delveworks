@@ -2,19 +2,29 @@
 \label{class_engine_1_1_resource_manager}\index{Engine::ResourceManager@{Engine::ResourceManager}}
 
 
+The \mbox{\hyperlink{class_engine_1_1_resource}{Resource}} Manager handled the loading in of Resources and saving them in memory ~\newline
+  
+
+
+
+
 {\ttfamily \#include $<$Resource.\+h$>$}
 
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename T $>$ }\\std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{class_engine_1_1_resource_manager_ab9e4daa6c7ac9572e18ceeaf453efd4b}{load}} (std\+::string \+\_\+path)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Loads in a resource, of type T, from a path and returns it. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_resource}{Resource}} $>$ $>$ \mbox{\hyperlink{class_engine_1_1_resource_manager_ab20eae98367e681270b2a755ac067f7e}{m\+\_\+resource\+List}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The list of already loaded in Resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_engine_1_1_resource}{Resource}} Manager handled the loading in of Resources and saving them in memory ~\newline
+ 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_engine_1_1_resource_manager_ab9e4daa6c7ac9572e18ceeaf453efd4b}\label{class_engine_1_1_resource_manager_ab9e4daa6c7ac9572e18ceeaf453efd4b}} 
@@ -26,12 +36,20 @@ std\+::shared\+\_\+ptr$<$T$>$ Engine\+::\+Resource\+Manager\+::load (\begin{Doxy
 
 
 
+Loads in a resource, of type T, from a path and returns it. 
+
+
+
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{class_engine_1_1_resource_manager_ab20eae98367e681270b2a755ac067f7e}\label{class_engine_1_1_resource_manager_ab20eae98367e681270b2a755ac067f7e}} 
 \index{Engine::ResourceManager@{Engine::ResourceManager}!m\_resourceList@{m\_resourceList}}
 \index{m\_resourceList@{m\_resourceList}!Engine::ResourceManager@{Engine::ResourceManager}}
 \doxysubsubsection{\texorpdfstring{m\_resourceList}{m\_resourceList}}
 {\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_resource}{Resource}}$>$ $>$ Engine\+::\+Resource\+Manager\+::m\+\_\+resource\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of already loaded in Resources. 
 
 
 

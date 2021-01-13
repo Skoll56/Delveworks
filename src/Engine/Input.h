@@ -5,21 +5,30 @@
 #include <glm/glm.hpp>
 #include "Console.h"
 #include "Exception.h"
-//#include "Core.h"
+
 
 namespace Engine
 {
 	class InputManager;
 	class Core;
 
+	/** \brief InputDevice is the base class for all Input Devices*/
+	/** An InputDevice is anything that generates SDL Input events, such as a Controller and Keyboard */
 	class InputDevice
 	{
 		friend class InputManager;
-	protected:
+		protected:
+
+		/** \brief Update*/
 		virtual void update(std::vector<SDL_Event> _eventList) {};
+
+		/** \brief Close the InputDevice properly.*/
 		virtual void close() {};
+
+		/** \brief A reference to the InputManager*/
 		std::weak_ptr<InputManager> m_IM;
 
+		/** \brief A Utility function for checking if a variable T is in a Vector*/
 		template <typename T>
 		bool isContainedIn(T _obj, std::vector<T> _vector)
 		{
@@ -37,6 +46,7 @@ namespace Engine
 			return false;
 		}
 
+		/** \brief Removes a variable T from a vector*/
 		template <typename T>
 		void removeFromList(T _obj, std::vector<T>* _vector)
 		{
@@ -55,15 +65,21 @@ namespace Engine
 		}
 	};
 
+	/** \brief Manages all InputDevice objects*/
+	/** This is where everything to do with Input happens */
 	class InputManager
 	{		
 		friend class Mouse;
 		friend class Core;
 		public:
+
+		/** \brief Update*/
 		bool update();
+
+		/** \brief Close all input devices properly (this will prevent the device from working)*/
 		void closeInputDevices();
 
-
+		/** \brief Returns an InputDevice of type T*/
 		template <typename T>
 		std::shared_ptr<T> getDevice()
 		{
@@ -78,6 +94,7 @@ namespace Engine
 			return nullptr;
 		}
 
+		/** \brief Adds an InputDevice of Type T to the manager. To get input from a device, this must be done first.*/
 		template <typename T>
 		std::shared_ptr<T> addDevice()
 		{
@@ -102,77 +119,148 @@ namespace Engine
 			}
 		}
 
+		/** \brief Gets the current window size*/
 		glm::vec2 getWindowSize() { return m_windowSize; }
 		
 
-		private:		
+		private:	
+		/** \brief A reference to the Window*/
 		SDL_Window* m_window;
+
+		/** \brief The Window size*/
 		glm::vec2 m_windowSize;
+
+		/** \brief A "this" pointer*/
 		std::weak_ptr<InputManager> m_self;
+
+		/** \brief A reference to Core*/
 		std::weak_ptr<Core> m_core;
+
+		/** \brief A list of all Input events that happened this frame*/
 		std::vector<SDL_Event> m_eventList;
+
+		/** \brief A list of all the InputDevice objects*/
 		std::vector<std::shared_ptr<InputDevice>> m_devices;
 	};
 
 	
-
+	/** \brief The Keyboard InputDevice*/
 	class Keyboard : public InputDevice
 	{
 		friend class InputManager;
-	private:
-		std::vector<SDL_Keycode> m_keyDown;
-		std::vector<SDL_Keycode> m_keyUp;
-		std::vector<SDL_Keycode> m_keyIsDown;
-		void update(std::vector<SDL_Event> _eventList);
 
-	public:						
+		public:	
+		/** \brief Returns true if the Key is currently down*/
 		bool GetKeyIsDown(SDL_Keycode _event) { return isContainedIn(_event, m_keyIsDown); }
+
+		/** \brief Returns true if the key was pressed this frame*/
 		bool GetKeyDown(SDL_Keycode _event) { return isContainedIn(_event, m_keyDown); }
+
+		/** \brief Returns true if the key was released this frame*/
 		bool GetKeyUp(SDL_Keycode _event) { return isContainedIn(_event, m_keyUp); }
+
+		private:
+		/** \brief The list of keys pressed this frame*/
+		std::vector<SDL_Keycode> m_keyDown;
+
+		/** \brief The list of keys released this frame*/
+		std::vector<SDL_Keycode> m_keyUp;
+
+		/** \brief The list of keys that are currently down*/
+		std::vector<SDL_Keycode> m_keyIsDown;
+
+		/** \brief Update*/
+		void update(std::vector<SDL_Event> _eventList);
 	};
 
-
+	/** \brief The Mouse Input Device*/
 	class Mouse : public InputDevice
 	{	
 		friend class InputManager;
 		public:
+		/** \brief  An enum that defines the Mouse buttons Left, Middle and Right.*/
 		enum MouseButton { Left = 0, Middle = 1, Right = 2 };
+
+		/** \brief Returns true if the button was pressed this frame*/
 		bool getButtonDown(MouseButton _button) { return isContainedIn(_button, m_buttonDown); }
+
+		/** \brief Returns true if the button was released this frame*/
 		bool getButtonUp(MouseButton _button) { return isContainedIn(_button, m_buttonUp); }
+
+		/** \brief Returns true if the button is currently down*/
 		bool getButtonIsDown(MouseButton _button) { return isContainedIn(_button, m_buttonIsDown); }
+
+		/** \brief Returns the value of the scroll wheel where 0 = no movement and positive and negative values represent scrolling up and down.*/
 		int getScrollWheel() { return m_scroll; }
+
+		/** \brief Sets whether the cursor is visible or not*/
 		void hideCursor(bool _tf);
+
+		/** \brief Locks the Cursor to the centre of the Context*/
 		void lockCursor(bool _tf) { m_cursorLocked = _tf; }
 		
+		/** \brief Returns the position of the Cursor in the Context*/
 		glm::vec2 getPosition();
+
+		/** \brief Returns the true position of the Cursor in the Window*/
 		glm::vec2 getTruePosition() { return m_pos; };
+
+		/** \brief Returns the amount the Mouse moved this frame*/
 		glm::vec2 getDeltaPos() { return m_deltaPos; }
 
 		private:
-		void update(std::vector<SDL_Event> _eventList);
+		/** \brief Update*/
+		void update(std::vector<SDL_Event> _eventList);		
 		bool m_cursorHidden;
 		bool m_cursorLocked;
+
+		/** \brief The difference in position since last frame of the Cursor*/
 		glm::vec2 m_deltaPos;
+
+		/** \brief The cursor position*/
 		glm::vec2 m_pos;
+
+		/** \brief The last known cursor position as of the last update*/
 		glm::vec2 m_lastPos;
+
+		/** \brief The value of the scroll wheel this frame. (Positive, negative or 0)*/
 		int m_scroll;
+
+		/** \brief The list of Buttons pressed this frame*/
 		std::vector<MouseButton> m_buttonDown;
+
+		/** \brief The list of Buttons released this frame*/
 		std::vector<MouseButton> m_buttonUp;
+
+		/** \brief The list of buttons currently down*/
 		std::vector<MouseButton> m_buttonIsDown;
 	};
 
+	/** \brief The Controller Input Device*/
+	/** The Controller type is generic. It can be PlayStation, Xbox, Nintendo Switch Pro (Although the XY buttons are swapped around) and Steam Controller. */
 	class Controller : public InputDevice
 	{
 		friend class InputManager;
-	public:
+		public:
+		/** \brief Returns the Left Joystick's XY position*/
 		glm::vec2 getLeftStickPosition() { return m_leftStick; }
+
+		/** \brief Returns the Right Joystick's XY position*/
 		glm::vec2 getRightStickPosition() { return m_rightStick; }
+
+		/** \brief Returns how "down" the Right trigger is from 0-1*/
 		float getRightTrigger() { return m_rightTrigger; }
+
+		/** \brief Returns how "down" the Left trigger is from 0-1*/
 		float getLeftTrigger() { return m_leftTrigger; }
 
+		/** \brief Returns the Movement Threshold for Joysticks*/
 		int getThreshold() { return m_moveThreshold; }
+
+		/** \brief Sets the Movement Threshold for Joysticks*/
 		void setThreshold(int _val) { m_moveThreshold = _val; }
 
+		/** \brief This enum defines all of the Controller Buttons on a generic Controller*/
 		enum ControllerButton
 		{
 			ArrowUp, ArrowRight, ArrowDown, ArrowLeft, //D-Pad
@@ -181,27 +269,58 @@ namespace Engine
 			PrimaryOne, PrimaryTwo, PrimaryThree, PrimaryFour, //A-B-X-Y
 			LeftStick, RightStick
 		};
-
+		
+		/** \brief Returns true if the button was pressed this frame		*/
 		bool getButtonDown(ControllerButton _button) { return isContainedIn(_button, m_buttonDown); }
+
+		/** \brief Returns true if the button was released this frame*/
 		bool getButtonUp(ControllerButton _button) { return isContainedIn(_button, m_buttonUp); }
+
+		/** \brief Returns true if the button is currently down*/
 		bool getButtonIsDown(ControllerButton _button) { return isContainedIn(_button, m_buttonIsDown); }
 
-	private:
+		private:
+		/** \brief Update*/
 		void update(std::vector<SDL_Event> _eventList);
-		void close();
-		int m_moveThreshold = 6400;
-		bool m_init = false;
-		SDL_Joystick* m_joystick;
-		SDL_GameController* m_controller;
-		std::vector<ControllerButton> m_buttonDown;
-		std::vector<ControllerButton> m_buttonIsDown;
-		std::vector<ControllerButton> m_buttonUp;
-		void initialise();
-		glm::vec2 m_leftStick;
-		glm::vec2 m_rightStick;
-		float m_leftTrigger;
-		float m_rightTrigger;
 
+		/** \brief Closes the device*/
+		void close();
+
+		/** \brief Initialises the device*/
+		void initialise();
+
+		/** \brief The MoveThreshold is the amount a Joystick needs to move before it registers as movement. Joysticks are sometimes overly sensitive.*/
+		int m_moveThreshold = 6400;
+
+		/** \brief Tracks whether the device has initialised or not*/
+		bool m_init = false;
+
+		/** \brief The Joystick object (Represents both left and right)*/
+		SDL_Joystick* m_joystick;
+
+		/** \brief A pointer to the Game Controller object*/
+		SDL_GameController* m_controller;
+
+		/** \brief The list of Buttons pressed this frame*/
+		std::vector<ControllerButton> m_buttonDown;
+
+		/** \brief The list of buttons currently down*/
+		std::vector<ControllerButton> m_buttonIsDown;
+
+		/** \brief The list of Buttons released this frame*/
+		std::vector<ControllerButton> m_buttonUp;
+
+		/** \brief The left stick's position XY -1 to 1*/
+		glm::vec2 m_leftStick;
+
+		/** \brief The right stick's position XY -1 to 1*/
+		glm::vec2 m_rightStick;
+
+		/** \brief The left trigger's position 0-1*/
+		float m_leftTrigger;
+
+		/** \brief The right trigger's position 0-1*/
+		float m_rightTrigger;
 	};
 }
 

@@ -2,6 +2,11 @@
 \label{class_engine_1_1_sound}\index{Engine::Sound@{Engine::Sound}}
 
 
+A sound. This can be Ogg or W\+AV format.  
+
+
+
+
 {\ttfamily \#include $<$Resource.\+h$>$}
 
 Inheritance diagram for Engine\+::Sound\+:\begin{figure}[H]
@@ -10,18 +15,23 @@ Inheritance diagram for Engine\+::Sound\+:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{class_engine_1_1_sound}
 \end{center}
 \end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_engine_1_1_sound_a1a463e117269a99ab12d1edefac36679}{load}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Loads in a sound. This gets called by the \mbox{\hyperlink{class_engine_1_1_resource_manager}{Resource\+Manager}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_engine_1_1_sound_a1e4bb287f587e2e18e914ca491809661}{load}} (const std\+::string \&path)
-\item 
 void \mbox{\hyperlink{class_engine_1_1_sound_a87a0412c08250823a666364db113d75e}{load\+Ogg}} (const std\+::string \&file\+Name, std\+::vector$<$ char $>$ \&buffer, A\+Lenum \&format, A\+Lsizei \&freq)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A function for loading O\+GG format. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{class_engine_1_1_sound_a93bade1cbd893fc87a3377d56b304ffa}{load\+Wav}} (const std\+::string \&file\+Name, int \&size, A\+Lenum \&format, A\+Lsizei \&freq)
+\begin{DoxyCompactList}\small\item\em A function for loading W\+AV format. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 A\+Luint \mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} = 0
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The ID of the sound. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
@@ -30,18 +40,42 @@ class \mbox{\hyperlink{class_engine_1_1_sound_ac3c1855ffb28082902708af2a25f934d}
 \doxysubsection*{Additional Inherited Members}
 
 
+\doxysubsection{Detailed Description}
+A sound. This can be Ogg or W\+AV format. 
+
+Sounds get played and are usually held by a \mbox{\hyperlink{class_engine_1_1_sound_source}{Sound\+Source}} ~\newline
+ 
+
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_engine_1_1_sound_a1e4bb287f587e2e18e914ca491809661}\label{class_engine_1_1_sound_a1e4bb287f587e2e18e914ca491809661}} 
+\mbox{\Hypertarget{class_engine_1_1_sound_a1a463e117269a99ab12d1edefac36679}\label{class_engine_1_1_sound_a1a463e117269a99ab12d1edefac36679}} 
 \index{Engine::Sound@{Engine::Sound}!load@{load}}
 \index{load@{load}!Engine::Sound@{Engine::Sound}}
 \doxysubsubsection{\texorpdfstring{load()}{load()}}
-{\footnotesize\ttfamily void Engine\+::\+Sound\+::load (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Engine\+::\+Sound\+::load (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+Loads in a sound. This gets called by the \mbox{\hyperlink{class_engine_1_1_resource_manager}{Resource\+Manager}}. 
 
 \mbox{\Hypertarget{class_engine_1_1_sound_a87a0412c08250823a666364db113d75e}\label{class_engine_1_1_sound_a87a0412c08250823a666364db113d75e}} 
 \index{Engine::Sound@{Engine::Sound}!loadOgg@{loadOgg}}
 \index{loadOgg@{loadOgg}!Engine::Sound@{Engine::Sound}}
 \doxysubsubsection{\texorpdfstring{loadOgg()}{loadOgg()}}
 {\footnotesize\ttfamily void Engine\+::\+Sound\+::load\+Ogg (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{std\+::vector$<$ char $>$ \&}]{buffer,  }\item[{A\+Lenum \&}]{format,  }\item[{A\+Lsizei \&}]{freq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A function for loading O\+GG format. 
+
+\mbox{\Hypertarget{class_engine_1_1_sound_a93bade1cbd893fc87a3377d56b304ffa}\label{class_engine_1_1_sound_a93bade1cbd893fc87a3377d56b304ffa}} 
+\index{Engine::Sound@{Engine::Sound}!loadWav@{loadWav}}
+\index{loadWav@{loadWav}!Engine::Sound@{Engine::Sound}}
+\doxysubsubsection{\texorpdfstring{loadWav()}{loadWav()}}
+{\footnotesize\ttfamily char $\ast$ Engine\+::\+Sound\+::load\+Wav (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{int \&}]{size,  }\item[{A\+Lenum \&}]{format,  }\item[{A\+Lsizei \&}]{freq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A function for loading W\+AV format. 
 
 
 
@@ -60,6 +94,10 @@ class \mbox{\hyperlink{class_engine_1_1_sound_ac3c1855ffb28082902708af2a25f934d}
 \index{m\_id@{m\_id}!Engine::Sound@{Engine::Sound}}
 \doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
 {\footnotesize\ttfamily A\+Luint Engine\+::\+Sound\+::m\+\_\+id = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The ID of the sound. 
 
 
 

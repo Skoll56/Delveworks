@@ -163,7 +163,7 @@ namespace Engine
 		return glm::dot((_p - _q), _n); //This function has been provided by Professor Tang.
 	}
 
-	///Shape Intersection functions
+	
 
 	//Works with physics
 	bool PhysicsEventUser::sphereToPlane(std::shared_ptr<SphereCollider> _my, std::shared_ptr<PlaneCollider> _other, glm::vec3 _c1)
@@ -555,10 +555,9 @@ namespace Engine
 						}
 					}
 
-
 					// Their hitboxes overlap, now test the actual triangle affected
-					VertexBuffer *otherTriPos = _other->getEntity()->getComponent<MeshRenderer>()->m_vAO->getTriPos();
-					VertexBuffer *myTriPos = _my->getEntity()->getComponent<MeshRenderer>()->m_vAO->getTriPos();
+					VertexBuffer *otherTriPos = _other->getEntity()->getComponent<MeshRenderer>()->getMesh()->getTriPos();
+					VertexBuffer *myTriPos = _my->getEntity()->getComponent<MeshRenderer>()->getMesh()->getTriPos();
 					glm::mat4 myModel = _my->transform()->getModel();
 					glm::mat4 oModel = _other->transform()->getModel();
 					glm::vec3 cN;
@@ -1100,7 +1099,7 @@ namespace Engine
 				else
 				{
 					//The friction co-efficient of two objects
-					float fricCoEf = collision[i]->m_my->getCollider()->getFriction() + collision[i]->m_other->getCollider()->getFriction() / 10.0f;
+					float fricCoEf = collision[i]->m_my->getComponent<Collider>()->getFriction() + collision[i]->m_other->getComponent<Collider>()->getFriction() / 10.0f;
 
 					//Also adjust angular velocity by an impulse value if it has advanced physics
 					std::shared_ptr<AdvPhysicsObject> aRB = getEntity()->getComponent<AdvPhysicsObject>();
@@ -1171,10 +1170,7 @@ namespace Engine
 		m_force = glm::vec3(0.0f, 0.0f, 0.0f);		
 		m_floored = false;
 
-		m_orient = glm::vec3(0.0f, 0.0f, 0.0f);
-
 		//A sphere has a body inertia tensor of 2/5 * mass * r^2
-
 		if (getEntity()->getComponent<SphereCollider>())
 		{
 			m_invBodyInertiaTensor = glm::mat3((2.0f / 5.0f) * _mass * pow(transform()->getScale().y, 2));
@@ -1227,7 +1223,7 @@ namespace Engine
 
 	}	
 
-	std::shared_ptr<RayCollision> RayCaster::rayToTri(std::vector<std::shared_ptr<Entity>> _obj, glm::vec3 _rayDir, glm::vec3 _origin, std::string _rayTag)
+	std::shared_ptr<RayCollision> RayCaster::raycastAgainst(std::vector<std::shared_ptr<Entity>> _obj, glm::vec3 _rayDir, glm::vec3 _origin, std::string _rayTag)
 	{
 		std::shared_ptr<Entity> winObject = nullptr;
 		glm::vec3 triLoc = glm::vec3(1000.0f, 1000.0f, 1000.0f); //Random big starting number
@@ -1239,7 +1235,7 @@ namespace Engine
 
 		for (int i = 0; i < _obj.size(); i++)
 		{
-			otherTriPos = _obj[i]->getComponent<MeshRenderer>()->m_vAO->getTriPos();
+			otherTriPos = _obj[i]->getComponent<MeshRenderer>()->getMesh()->getTriPos();
 			oModel = _obj[i]->transform()->getModel();
 			glm::vec3 tN;
 

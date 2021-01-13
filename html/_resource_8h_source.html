@@ -76,66 +76,89 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;AL/al.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;AL/alc.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_engine.html">Engine</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">class </span>Shader;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_engine_1_1_resource.html">   13</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_resource.html">Resource</a></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">   16</a></span>&#160;        std::string <a class="code" href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">m_path</a>;     </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    };</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_engine_1_1_resource_manager.html">   19</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_resource_manager.html">ResourceManager</a></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">   21</a></span>&#160;        std::vector&lt;std::shared_ptr&lt;Resource&gt;&gt; <a class="code" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_engine_1_1_resource_manager.html#ab9e4daa6c7ac9572e18ceeaf453efd4b">   25</a></span>&#160;        std::shared_ptr&lt;T&gt; <a class="code" href="class_engine_1_1_resource_manager.html#ab9e4daa6c7ac9572e18ceeaf453efd4b">load</a>(std::string _path)</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {   </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a>.size(); i++)</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a>[i]-&gt;m_path == _path)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                    <span class="keywordflow">return</span> std::static_pointer_cast&lt;T&gt;(<a class="code" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a>[i]);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            std::shared_ptr&lt;T&gt; rtn = std::make_shared&lt;T&gt;();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            rtn-&gt;m_path = _path;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            rtn-&gt;load(_path);           </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <a class="code" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a>.push_back(rtn);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">return</span> rtn;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    };</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_engine_1_1_sound.html">   44</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_sound.html">Sound</a> : <span class="keyword">public</span> <a class="code" href="class_engine_1_1_resource.html">Resource</a></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_engine_1_1_sound.html#ac3c1855ffb28082902708af2a25f934d">   46</a></span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_engine_1_1_sound_source.html">SoundSource</a>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_engine_1_1_sound.html#a7cfddf8329dce7d3336c5f42de436685">   49</a></span>&#160;        ALuint <a class="code" href="class_engine_1_1_sound.html#a7cfddf8329dce7d3336c5f42de436685">m_id</a>  = 0;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_sound.html#a1e4bb287f587e2e18e914ca491809661">load</a>(<span class="keyword">const</span> std::string&amp; path);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_sound.html#a87a0412c08250823a666364db113d75e">loadOgg</a>(<span class="keyword">const</span> std::string&amp; fileName, std::vector&lt;char&gt; &amp;buffer, ALenum &amp;format, ALsizei &amp;freq);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    };</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_exception_8h.html">Exception.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_console_8h.html">Console.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_engine.html">Engine</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">class </span>Shader;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_engine_1_1_resource.html">   18</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_resource.html">Resource</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">   22</a></span>&#160;        std::string <a class="code" href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">m_path</a>;     </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_engine_1_1_resource_manager.html">   26</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_resource_manager.html">ResourceManager</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">   29</a></span>&#160;        std::vector&lt;std::shared_ptr&lt;Resource&gt;&gt; <a class="code" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_engine_1_1_resource_manager.html#ab9e4daa6c7ac9572e18ceeaf453efd4b">   34</a></span>&#160;        std::shared_ptr&lt;T&gt; <a class="code" href="class_engine_1_1_resource_manager.html#ab9e4daa6c7ac9572e18ceeaf453efd4b">load</a>(std::string _path)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {   </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            std::shared_ptr&lt;T&gt; rtn = std::make_shared&lt;T&gt;();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a>.size(); i++)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a>[i]-&gt;m_path == _path)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                        <span class="keywordflow">return</span> std::static_pointer_cast&lt;T&gt;(<a class="code" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a>[i]);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                rtn-&gt;m_path = _path;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                rtn-&gt;load(_path);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <a class="code" href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">m_resourceList</a>.push_back(rtn);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">catch</span>(<a class="code" href="class_engine_1_1_exception.html">Exception</a>&amp; e)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <a class="code" href="class_engine_1_1_console.html#ae5ffcccbf78d1b00f2bf3aaa20e39e10">Console::output</a>(<a class="code" href="class_engine_1_1_console.html#ad82dbd2c912b20050a710901b0132b58a02d6a9889669c44851da67642897bd80">Console::Error</a>, <span class="stringliteral">&quot;Resource Load&quot;</span>, e.<a class="code" href="class_engine_1_1_exception.html#a0cb5505ac4a4b94e0c4f4826e0c6babd">message</a>());</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">return</span> rtn;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    };</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_engine_1_1_sound.html">   62</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_sound.html">Sound</a> : <span class="keyword">public</span> <a class="code" href="class_engine_1_1_resource.html">Resource</a></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    {</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_engine_1_1_sound.html#ac3c1855ffb28082902708af2a25f934d">   64</a></span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_engine_1_1_sound_source.html">SoundSource</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_sound.html#a1a463e117269a99ab12d1edefac36679">load</a>(std::string path);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_engine_1_1_sound.html#a7cfddf8329dce7d3336c5f42de436685">   71</a></span>&#160;        ALuint <a class="code" href="class_engine_1_1_sound.html#a7cfddf8329dce7d3336c5f42de436685">m_id</a>  = 0;   </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_sound.html#a87a0412c08250823a666364db113d75e">loadOgg</a>(<span class="keyword">const</span> std::string&amp; fileName, std::vector&lt;char&gt; &amp;buffer, ALenum &amp;format, ALsizei &amp;freq);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">char</span>* <a class="code" href="class_engine_1_1_sound.html#a93bade1cbd893fc87a3377d56b304ffa">loadWav</a>(<span class="keyword">const</span> std::string &amp; fileName, <span class="keywordtype">int</span> &amp;size, ALenum &amp; format, ALsizei &amp; freq);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    };</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_engine_1_1_resource_manager_html_ab9e4daa6c7ac9572e18ceeaf453efd4b"><div class="ttname"><a href="class_engine_1_1_resource_manager.html#ab9e4daa6c7ac9572e18ceeaf453efd4b">Engine::ResourceManager::load</a></div><div class="ttdeci">std::shared_ptr&lt; T &gt; load(std::string _path)</div><div class="ttdef"><b>Definition:</b> Resource.h:25</div></div>
-<div class="ttc" id="anamespace_engine_html"><div class="ttname"><a href="namespace_engine.html">Engine</a></div><div class="ttdef"><b>Definition:</b> Camera.cpp:11</div></div>
-<div class="ttc" id="aclass_engine_1_1_sound_html"><div class="ttname"><a href="class_engine_1_1_sound.html">Engine::Sound</a></div><div class="ttdef"><b>Definition:</b> Resource.h:45</div></div>
-<div class="ttc" id="aclass_engine_1_1_sound_html_a1e4bb287f587e2e18e914ca491809661"><div class="ttname"><a href="class_engine_1_1_sound.html#a1e4bb287f587e2e18e914ca491809661">Engine::Sound::load</a></div><div class="ttdeci">void load(const std::string &amp;path)</div><div class="ttdef"><b>Definition:</b> Resource.cpp:7</div></div>
-<div class="ttc" id="aclass_engine_1_1_sound_html_a87a0412c08250823a666364db113d75e"><div class="ttname"><a href="class_engine_1_1_sound.html#a87a0412c08250823a666364db113d75e">Engine::Sound::loadOgg</a></div><div class="ttdeci">void loadOgg(const std::string &amp;fileName, std::vector&lt; char &gt; &amp;buffer, ALenum &amp;format, ALsizei &amp;freq)</div><div class="ttdef"><b>Definition:</b> Resource.cpp:16</div></div>
-<div class="ttc" id="aclass_engine_1_1_sound_html_a7cfddf8329dce7d3336c5f42de436685"><div class="ttname"><a href="class_engine_1_1_sound.html#a7cfddf8329dce7d3336c5f42de436685">Engine::Sound::m_id</a></div><div class="ttdeci">ALuint m_id</div><div class="ttdef"><b>Definition:</b> Resource.h:49</div></div>
-<div class="ttc" id="aclass_engine_1_1_resource_html_a0b6159004b4fc901f8df833f97f02670"><div class="ttname"><a href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">Engine::Resource::m_path</a></div><div class="ttdeci">std::string m_path</div><div class="ttdef"><b>Definition:</b> Resource.h:16</div></div>
-<div class="ttc" id="aclass_engine_1_1_resource_html"><div class="ttname"><a href="class_engine_1_1_resource.html">Engine::Resource</a></div><div class="ttdef"><b>Definition:</b> Resource.h:14</div></div>
-<div class="ttc" id="aclass_engine_1_1_sound_source_html"><div class="ttname"><a href="class_engine_1_1_sound_source.html">Engine::SoundSource</a></div><div class="ttdef"><b>Definition:</b> Component.h:65</div></div>
-<div class="ttc" id="aclass_engine_1_1_resource_manager_html_ab20eae98367e681270b2a755ac067f7e"><div class="ttname"><a href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">Engine::ResourceManager::m_resourceList</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Resource &gt; &gt; m_resourceList</div><div class="ttdef"><b>Definition:</b> Resource.h:21</div></div>
-<div class="ttc" id="aclass_engine_1_1_resource_manager_html"><div class="ttname"><a href="class_engine_1_1_resource_manager.html">Engine::ResourceManager</a></div><div class="ttdef"><b>Definition:</b> Resource.h:20</div></div>
+<div class="ttc" id="aclass_engine_1_1_resource_manager_html_ab9e4daa6c7ac9572e18ceeaf453efd4b"><div class="ttname"><a href="class_engine_1_1_resource_manager.html#ab9e4daa6c7ac9572e18ceeaf453efd4b">Engine::ResourceManager::load</a></div><div class="ttdeci">std::shared_ptr&lt; T &gt; load(std::string _path)</div><div class="ttdoc">Loads in a resource, of type T, from a path and returns it.</div><div class="ttdef"><b>Definition:</b> Resource.h:34</div></div>
+<div class="ttc" id="anamespace_engine_html"><div class="ttname"><a href="namespace_engine.html">Engine</a></div><div class="ttdef"><b>Definition:</b> Camera.cpp:12</div></div>
+<div class="ttc" id="aclass_engine_1_1_sound_html"><div class="ttname"><a href="class_engine_1_1_sound.html">Engine::Sound</a></div><div class="ttdoc">A sound. This can be Ogg or WAV format.</div><div class="ttdef"><b>Definition:</b> Resource.h:63</div></div>
+<div class="ttc" id="a_console_8h_html"><div class="ttname"><a href="_console_8h.html">Console.h</a></div></div>
+<div class="ttc" id="aclass_engine_1_1_sound_html_a87a0412c08250823a666364db113d75e"><div class="ttname"><a href="class_engine_1_1_sound.html#a87a0412c08250823a666364db113d75e">Engine::Sound::loadOgg</a></div><div class="ttdeci">void loadOgg(const std::string &amp;fileName, std::vector&lt; char &gt; &amp;buffer, ALenum &amp;format, ALsizei &amp;freq)</div><div class="ttdoc">A function for loading OGG format.</div><div class="ttdef"><b>Definition:</b> Resource.cpp:55</div></div>
+<div class="ttc" id="aclass_engine_1_1_sound_html_a93bade1cbd893fc87a3377d56b304ffa"><div class="ttname"><a href="class_engine_1_1_sound.html#a93bade1cbd893fc87a3377d56b304ffa">Engine::Sound::loadWav</a></div><div class="ttdeci">char * loadWav(const std::string &amp;fileName, int &amp;size, ALenum &amp;format, ALsizei &amp;freq)</div><div class="ttdoc">A function for loading WAV format.</div><div class="ttdef"><b>Definition:</b> Resource.cpp:29</div></div>
+<div class="ttc" id="aclass_engine_1_1_sound_html_a7cfddf8329dce7d3336c5f42de436685"><div class="ttname"><a href="class_engine_1_1_sound.html#a7cfddf8329dce7d3336c5f42de436685">Engine::Sound::m_id</a></div><div class="ttdeci">ALuint m_id</div><div class="ttdoc">The ID of the sound.</div><div class="ttdef"><b>Definition:</b> Resource.h:71</div></div>
+<div class="ttc" id="aclass_engine_1_1_resource_html_a0b6159004b4fc901f8df833f97f02670"><div class="ttname"><a href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">Engine::Resource::m_path</a></div><div class="ttdeci">std::string m_path</div><div class="ttdoc">The path to the resource.</div><div class="ttdef"><b>Definition:</b> Resource.h:22</div></div>
+<div class="ttc" id="aclass_engine_1_1_resource_html"><div class="ttname"><a href="class_engine_1_1_resource.html">Engine::Resource</a></div><div class="ttdoc">A Base class for all Resource objects.</div><div class="ttdef"><b>Definition:</b> Resource.h:19</div></div>
+<div class="ttc" id="aclass_engine_1_1_sound_html_a1a463e117269a99ab12d1edefac36679"><div class="ttname"><a href="class_engine_1_1_sound.html#a1a463e117269a99ab12d1edefac36679">Engine::Sound::load</a></div><div class="ttdeci">void load(std::string path)</div><div class="ttdoc">Loads in a sound. This gets called by the ResourceManager.</div><div class="ttdef"><b>Definition:</b> Resource.cpp:9</div></div>
+<div class="ttc" id="aclass_engine_1_1_exception_html_a0cb5505ac4a4b94e0c4f4826e0c6babd"><div class="ttname"><a href="class_engine_1_1_exception.html#a0cb5505ac4a4b94e0c4f4826e0c6babd">Engine::Exception::message</a></div><div class="ttdeci">std::string message() const</div><div class="ttdef"><b>Definition:</b> Exception.cpp:24</div></div>
+<div class="ttc" id="aclass_engine_1_1_sound_source_html"><div class="ttname"><a href="class_engine_1_1_sound_source.html">Engine::SoundSource</a></div><div class="ttdoc">A Sound Source holds and plays sounds.</div><div class="ttdef"><b>Definition:</b> Component.h:141</div></div>
+<div class="ttc" id="aclass_engine_1_1_resource_manager_html_ab20eae98367e681270b2a755ac067f7e"><div class="ttname"><a href="class_engine_1_1_resource_manager.html#ab20eae98367e681270b2a755ac067f7e">Engine::ResourceManager::m_resourceList</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Resource &gt; &gt; m_resourceList</div><div class="ttdoc">The list of already loaded in Resources.</div><div class="ttdef"><b>Definition:</b> Resource.h:29</div></div>
+<div class="ttc" id="aclass_engine_1_1_console_html_ad82dbd2c912b20050a710901b0132b58a02d6a9889669c44851da67642897bd80"><div class="ttname"><a href="class_engine_1_1_console.html#ad82dbd2c912b20050a710901b0132b58a02d6a9889669c44851da67642897bd80">Engine::Console::Error</a></div><div class="ttdeci">@ Error</div><div class="ttdef"><b>Definition:</b> Console.h:20</div></div>
+<div class="ttc" id="aclass_engine_1_1_exception_html"><div class="ttname"><a href="class_engine_1_1_exception.html">Engine::Exception</a></div><div class="ttdef"><b>Definition:</b> Exception.h:10</div></div>
+<div class="ttc" id="aclass_engine_1_1_resource_manager_html"><div class="ttname"><a href="class_engine_1_1_resource_manager.html">Engine::ResourceManager</a></div><div class="ttdoc">The Resource Manager handled the loading in of Resources and saving them in memory</div><div class="ttdef"><b>Definition:</b> Resource.h:27</div></div>
+<div class="ttc" id="a_exception_8h_html"><div class="ttname"><a href="_exception_8h.html">Exception.h</a></div></div>
+<div class="ttc" id="aclass_engine_1_1_console_html_ae5ffcccbf78d1b00f2bf3aaa20e39e10"><div class="ttname"><a href="class_engine_1_1_console.html#ae5ffcccbf78d1b00f2bf3aaa20e39e10">Engine::Console::output</a></div><div class="ttdeci">static void output(type _t, std::string _sender, std::string _text)</div><div class="ttdoc">Output something to the console.</div><div class="ttdef"><b>Definition:</b> Console.cpp:8</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

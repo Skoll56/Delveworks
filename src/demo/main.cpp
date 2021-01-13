@@ -8,15 +8,13 @@ class Ball : public Component
 	public:
 	void onInitialise()
 	{		
-		m_sound = getEntity()->addComponent<SoundSource>(getCore()->m_rManager->load<Sound>("test2.ogg"));
-		//m_sound = getEntity()->addComponent<SoundSource>(getCore()->m_rManager->load<Sound>("pewTest.wav"));
+		m_sound = getEntity()->addComponent<SoundSource>(getCore()->load<Sound>("test2.ogg"));
 	}
 
 	void onCollisionExit(std::shared_ptr<Entity> _other)
 	{
 		if (!m_sound.lock()) throw Exception();
-		m_sound.lock()->Play(0.8f);
-		//Console::message("Collision happened");
+		m_sound.lock()->Play(0.8f);		
 	}
 };
 
@@ -131,8 +129,7 @@ class UI : public Component
 		{
 			if (i == 120)
 			{
-				std::shared_ptr<Texture> t = getCore()->m_rManager->load<Texture>("Image1.bmp");				
-				//std::shared_ptr<ImageUI> surf = getEntity()->addComponent<ImageUI>(t, 1);
+				std::shared_ptr<Texture> t = getCore()->load<Texture>("Image1.bmp");
 				button = getEntity()->addComponent<ButtonUI>(t, 1);
 				button.lock()->setSize(400, 400);
 				button.lock()->setAlpha(1.0f);
@@ -140,7 +137,7 @@ class UI : public Component
 				
 
 				//std::shared_ptr<RenderSurface> surf2 = getCore()->createRenderSurface(camera.lock()->getEntity()->getComponent<Camera>(), 2);
-				////std::shared_ptr<UISurface> surf2 = getCore()->createUISurface(t, 2);
+				//std::shared_ptr<UISurface> surf2 = getCore()->createUISurface(t, 2);
 				//surf2->setSize(400, 400);
 				//surf2->setAlpha(0.5f);
 				//surf2->setPosition(300, 300);				
@@ -179,8 +176,8 @@ int main()
 	//Create the statue entity
 	std::shared_ptr<Entity> test = core->createEntity();
 	std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
-	MR->m_alpha = 0.5f;
-	MR->castShadows = true;
+	MR->setAlpha(0.5f);
+	MR->setCastShadows(true);
 	//test->addComponent<MeshCollider>();
 	test->transform()->m_position = glm::vec3(0.0f, 1.0f, 5.0f);
 
@@ -212,6 +209,7 @@ int main()
 	s2->transform()->m_position = glm::vec3(60.0f, 16.0f, 8.0f);
 	s2->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 8.0f);//
 	*/
+
 	//This creates three rooms all 50 units away from eachother.
 	for (float l = 0.0f; l < 50.0f; l += 50.0f)
 	{
@@ -255,8 +253,8 @@ int main()
 
 		std::shared_ptr<Entity> wall5 = core->createEntity();
 		std::shared_ptr<MeshRenderer> MR5 = wall5->addComponent<MeshRenderer>("diffuse.bmp", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
-		MR5->m_alpha = 0.25f;
-		MR5->receiveShadows = true;
+		MR5->setAlpha(0.25f);
+		MR5->setReceiveShadows(true);
 		wall5->transform()->setScale(glm::vec3(30.0f, 1.0f, 30.0f)); //Roof
 		wall5->transform()->m_position = glm::vec3(0.0f + l, 20.0f, 0.0f);
 		std::shared_ptr<BoxCollider> b5 = wall5->addComponent<BoxCollider>(); 

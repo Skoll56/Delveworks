@@ -2,6 +2,11 @@
 \label{class_engine_1_1_shader}\index{Engine::Shader@{Engine::Shader}}
 
 
+A \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} is used to make Graphics.  
+
+
+
+
 {\ttfamily \#include $<$Shader.\+h$>$}
 
 Inheritance diagram for Engine\+::Shader\+:\begin{figure}[H]
@@ -18,38 +23,47 @@ Inheritance diagram for Engine\+::Shader\+:\begin{figure}[H]
 \mbox{\hyperlink{class_engine_1_1_shader_a38bfa7d8d496af017bf13a9d7f2879b5}{Shader}} (std\+::string \+\_\+name)
 \item 
 void \mbox{\hyperlink{class_engine_1_1_shader_afa7f74079302c4bc924cc357208d9195}{load}} (std\+::string \+\_\+name)
-\item 
-void \mbox{\hyperlink{class_engine_1_1_shader_a2c966b191c0f1ef9a24b519505151bab}{override\+Draw}} (\mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $\ast$\+\_\+vertex\+Array)
-\item 
-void \mbox{\hyperlink{class_engine_1_1_shader_a7d31d2aa442d04ed3d94b9730fa68676}{draw}} (\mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $\ast$vertex\+Array)
+\begin{DoxyCompactList}\small\item\em Loads a shader from file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_shader_a7f4892fa35c98b3632c7ef6675be9c65}{draw}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $>$ vertex\+Array)
+\begin{DoxyCompactList}\small\item\em draws an object\textquotesingle{}s mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_shader_a15b69127b3efa9632e05e6e420dad2dc}{set\+Uniform}} (std\+::string \+\_\+uniform, glm\+::vec4 \+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets a Uniform of type Vec4. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_shader_a60818975397428df3f5e165d69b7acc3}{set\+Uniform}} (std\+::string \+\_\+uniform, float \+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets a Uniform of type float. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_shader_a560427b1361d748d0a821fe79fbe3958}{set\+Uniform}} (std\+::string \+\_\+uniform, int \+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets a Uniform of type int. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_shader_adf1d1252cb4e1e35a5d714186226aa97}{set\+Uniform}} (std\+::string \+\_\+uniform, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_texture}{Texture}} $>$ \+\_\+tex)
+\begin{DoxyCompactList}\small\item\em Sets a Uniform of type \mbox{\hyperlink{class_engine_1_1_texture}{Texture}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_shader_aeec3308ce8795cb8cba3acf6ebf69524}{set\+Uniform}} (std\+::string \+\_\+uniform, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} $>$ \+\_\+sc)
+\begin{DoxyCompactList}\small\item\em Sets a Uniform of type \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_shader_a8cfebd2af1acf33b654a7a34b27df427}{set\+Uniform}} (std\+::string \+\_\+uniform, glm\+::mat4 \+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets a Uniform of type Mat4. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_shader_a9790f7997e43ded03f8e006a412affee}{set\+Uniform}} (std\+::string \+\_\+uniform, glm\+::vec3 \+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets a Uniform of type Vec3. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_shader_a4db59eb08f1aa2fb6c677d2bd217f6f8}{set\+Uniform}} (std\+::string \+\_\+uniform, glm\+::vec2 \+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets a Uniform of type Vec2. \end{DoxyCompactList}\item 
+G\+Luint \mbox{\hyperlink{class_engine_1_1_shader_ac62aebec5c7fd75b0c7b7fc03f8d5225}{get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Returns the ID of the shader program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_engine_1_1_shader_a363cf4695bbeacc4366d9aed0c68e9a4}{print\+Shader\+Info\+Log}} (G\+Luint obj)
-\item 
-void \mbox{\hyperlink{class_engine_1_1_shader_a15b69127b3efa9632e05e6e420dad2dc}{set\+Uniform}} (std\+::string \+\_\+uniform, glm\+::vec4 \+\_\+value)
-\item 
-void \mbox{\hyperlink{class_engine_1_1_shader_a60818975397428df3f5e165d69b7acc3}{set\+Uniform}} (std\+::string \+\_\+uniform, float \+\_\+value)
-\item 
-void \mbox{\hyperlink{class_engine_1_1_shader_a560427b1361d748d0a821fe79fbe3958}{set\+Uniform}} (std\+::string \+\_\+uniform, int \+\_\+value)
-\item 
-void \mbox{\hyperlink{class_engine_1_1_shader_adf1d1252cb4e1e35a5d714186226aa97}{set\+Uniform}} (std\+::string \+\_\+uniform, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_texture}{Texture}} $>$ \+\_\+tex)
-\item 
-void \mbox{\hyperlink{class_engine_1_1_shader_aeec3308ce8795cb8cba3acf6ebf69524}{set\+Uniform}} (std\+::string \+\_\+uniform, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} $>$ \+\_\+sc)
-\item 
-void \mbox{\hyperlink{class_engine_1_1_shader_a8cfebd2af1acf33b654a7a34b27df427}{set\+Uniform}} (std\+::string \+\_\+uniform, glm\+::mat4 \+\_\+value)
-\item 
-void \mbox{\hyperlink{class_engine_1_1_shader_a9790f7997e43ded03f8e006a412affee}{set\+Uniform}} (std\+::string \+\_\+uniform, glm\+::vec3 \+\_\+value)
-\item 
-G\+Luint \mbox{\hyperlink{class_engine_1_1_shader_ac62aebec5c7fd75b0c7b7fc03f8d5225}{get\+Id}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A function for debugging shaders at compilation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 G\+Luint \mbox{\hyperlink{class_engine_1_1_shader_a1858127dc1b2467313a4030f1c8a7b4f}{m\+\_\+id}}
-\item 
+\begin{DoxyCompactList}\small\item\em The ID of the shader program. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{struct_engine_1_1_sampler}{Sampler}} $>$ \mbox{\hyperlink{class_engine_1_1_shader_a4973ca557bedfe194fdb99f673157009}{m\+\_\+sampler}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The list of Samplers to draw. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+A \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} is used to make Graphics. 
+
+Unless you have edited the shaders, you shouldn\textquotesingle{}t need to use these functions ~\newline
+ 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_engine_1_1_shader_a7e599fca532f8f9bb912c9843276533f}\label{class_engine_1_1_shader_a7e599fca532f8f9bb912c9843276533f}} 
@@ -67,11 +81,15 @@ std\+::vector$<$ \mbox{\hyperlink{struct_engine_1_1_sampler}{Sampler}} $>$ \mbox
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_engine_1_1_shader_a7d31d2aa442d04ed3d94b9730fa68676}\label{class_engine_1_1_shader_a7d31d2aa442d04ed3d94b9730fa68676}} 
+\mbox{\Hypertarget{class_engine_1_1_shader_a7f4892fa35c98b3632c7ef6675be9c65}\label{class_engine_1_1_shader_a7f4892fa35c98b3632c7ef6675be9c65}} 
 \index{Engine::Shader@{Engine::Shader}!draw@{draw}}
 \index{draw@{draw}!Engine::Shader@{Engine::Shader}}
 \doxysubsubsection{\texorpdfstring{draw()}{draw()}}
-{\footnotesize\ttfamily void Engine\+::\+Shader\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $\ast$}]{vertex\+Array }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::draw (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $>$}]{vertex\+Array }\end{DoxyParamCaption})}
+
+
+
+draws an object\textquotesingle{}s mesh 
 
 \mbox{\Hypertarget{class_engine_1_1_shader_ac62aebec5c7fd75b0c7b7fc03f8d5225}\label{class_engine_1_1_shader_ac62aebec5c7fd75b0c7b7fc03f8d5225}} 
 \index{Engine::Shader@{Engine::Shader}!getId@{getId}}
@@ -79,65 +97,109 @@ std\+::vector$<$ \mbox{\hyperlink{struct_engine_1_1_sampler}{Sampler}} $>$ \mbox
 \doxysubsubsection{\texorpdfstring{getId()}{getId()}}
 {\footnotesize\ttfamily G\+Luint Engine\+::\+Shader\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Returns the ID of the shader program. 
+
 \mbox{\Hypertarget{class_engine_1_1_shader_afa7f74079302c4bc924cc357208d9195}\label{class_engine_1_1_shader_afa7f74079302c4bc924cc357208d9195}} 
 \index{Engine::Shader@{Engine::Shader}!load@{load}}
 \index{load@{load}!Engine::Shader@{Engine::Shader}}
 \doxysubsubsection{\texorpdfstring{load()}{load()}}
 {\footnotesize\ttfamily void Engine\+::\+Shader\+::load (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+name }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_engine_1_1_shader_a2c966b191c0f1ef9a24b519505151bab}\label{class_engine_1_1_shader_a2c966b191c0f1ef9a24b519505151bab}} 
-\index{Engine::Shader@{Engine::Shader}!overrideDraw@{overrideDraw}}
-\index{overrideDraw@{overrideDraw}!Engine::Shader@{Engine::Shader}}
-\doxysubsubsection{\texorpdfstring{overrideDraw()}{overrideDraw()}}
-{\footnotesize\ttfamily void Engine\+::\+Shader\+::override\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $\ast$}]{\+\_\+vertex\+Array }\end{DoxyParamCaption})}
+
+
+Loads a shader from file. 
 
 \mbox{\Hypertarget{class_engine_1_1_shader_a363cf4695bbeacc4366d9aed0c68e9a4}\label{class_engine_1_1_shader_a363cf4695bbeacc4366d9aed0c68e9a4}} 
 \index{Engine::Shader@{Engine::Shader}!printShaderInfoLog@{printShaderInfoLog}}
 \index{printShaderInfoLog@{printShaderInfoLog}!Engine::Shader@{Engine::Shader}}
 \doxysubsubsection{\texorpdfstring{printShaderInfoLog()}{printShaderInfoLog()}}
-{\footnotesize\ttfamily void Engine\+::\+Shader\+::print\+Shader\+Info\+Log (\begin{DoxyParamCaption}\item[{G\+Luint}]{obj }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::print\+Shader\+Info\+Log (\begin{DoxyParamCaption}\item[{G\+Luint}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A function for debugging shaders at compilation. 
 
 \mbox{\Hypertarget{class_engine_1_1_shader_a60818975397428df3f5e165d69b7acc3}\label{class_engine_1_1_shader_a60818975397428df3f5e165d69b7acc3}} 
 \index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
 \index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
-\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
 {\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{float}]{\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Sets a Uniform of type float. 
 
 \mbox{\Hypertarget{class_engine_1_1_shader_a8cfebd2af1acf33b654a7a34b27df427}\label{class_engine_1_1_shader_a8cfebd2af1acf33b654a7a34b27df427}} 
 \index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
 \index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
-\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
 {\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{glm\+::mat4}]{\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Sets a Uniform of type Mat4. 
+
+\mbox{\Hypertarget{class_engine_1_1_shader_a4db59eb08f1aa2fb6c677d2bd217f6f8}\label{class_engine_1_1_shader_a4db59eb08f1aa2fb6c677d2bd217f6f8}} 
+\index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
+\index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+{\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{glm\+::vec2}]{\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Sets a Uniform of type Vec2. 
 
 \mbox{\Hypertarget{class_engine_1_1_shader_a9790f7997e43ded03f8e006a412affee}\label{class_engine_1_1_shader_a9790f7997e43ded03f8e006a412affee}} 
 \index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
 \index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
-\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
 {\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{glm\+::vec3}]{\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Sets a Uniform of type Vec3. 
 
 \mbox{\Hypertarget{class_engine_1_1_shader_a15b69127b3efa9632e05e6e420dad2dc}\label{class_engine_1_1_shader_a15b69127b3efa9632e05e6e420dad2dc}} 
 \index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
 \index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
-\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
 {\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{glm\+::vec4}]{\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Sets a Uniform of type Vec4. 
 
 \mbox{\Hypertarget{class_engine_1_1_shader_a560427b1361d748d0a821fe79fbe3958}\label{class_engine_1_1_shader_a560427b1361d748d0a821fe79fbe3958}} 
 \index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
 \index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
-\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
 {\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{int}]{\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Sets a Uniform of type int. 
 
 \mbox{\Hypertarget{class_engine_1_1_shader_aeec3308ce8795cb8cba3acf6ebf69524}\label{class_engine_1_1_shader_aeec3308ce8795cb8cba3acf6ebf69524}} 
 \index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
 \index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
-\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
 {\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} $>$}]{\+\_\+sc }\end{DoxyParamCaption})}
+
+
+
+Sets a Uniform of type \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}}. 
 
 \mbox{\Hypertarget{class_engine_1_1_shader_adf1d1252cb4e1e35a5d714186226aa97}\label{class_engine_1_1_shader_adf1d1252cb4e1e35a5d714186226aa97}} 
 \index{Engine::Shader@{Engine::Shader}!setUniform@{setUniform}}
 \index{setUniform@{setUniform}!Engine::Shader@{Engine::Shader}}
-\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+\doxysubsubsection{\texorpdfstring{setUniform()}{setUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
 {\footnotesize\ttfamily void Engine\+::\+Shader\+::set\+Uniform (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+uniform,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_texture}{Texture}} $>$}]{\+\_\+tex }\end{DoxyParamCaption})}
+
+
+
+Sets a Uniform of type \mbox{\hyperlink{class_engine_1_1_texture}{Texture}}. 
 
 
 
@@ -148,11 +210,19 @@ std\+::vector$<$ \mbox{\hyperlink{struct_engine_1_1_sampler}{Sampler}} $>$ \mbox
 \doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
 {\footnotesize\ttfamily G\+Luint Engine\+::\+Shader\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+The ID of the shader program. 
+
 \mbox{\Hypertarget{class_engine_1_1_shader_a4973ca557bedfe194fdb99f673157009}\label{class_engine_1_1_shader_a4973ca557bedfe194fdb99f673157009}} 
 \index{Engine::Shader@{Engine::Shader}!m\_sampler@{m\_sampler}}
 \index{m\_sampler@{m\_sampler}!Engine::Shader@{Engine::Shader}}
 \doxysubsubsection{\texorpdfstring{m\_sampler}{m\_sampler}}
 {\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_engine_1_1_sampler}{Sampler}}$>$ Engine\+::\+Shader\+::m\+\_\+sampler\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of Samplers to draw. 
 
 
 

@@ -2,6 +2,11 @@
 \label{class_engine_1_1_sound_source}\index{Engine::SoundSource@{Engine::SoundSource}}
 
 
+A \mbox{\hyperlink{class_engine_1_1_sound}{Sound}} Source holds and plays sounds.  
+
+
+
+
 {\ttfamily \#include $<$Component.\+h$>$}
 
 Inheritance diagram for Engine\+::Sound\+Source\+:\begin{figure}[H]
@@ -10,28 +15,48 @@ Inheritance diagram for Engine\+::Sound\+Source\+:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{class_engine_1_1_sound_source}
 \end{center}
 \end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_engine_1_1_sound_source_a1fec1228d1a8c467a6febbdac1a4f219}{on\+Tick}} ()
+\begin{DoxyCompactList}\small\item\em Update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_sound_source_ad658a6d361dda95371ec9d02a3df6811}{Play}} (float \+\_\+vol)
+\begin{DoxyCompactList}\small\item\em Call this to play the stored sound. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_sound_source_a98270c8b7219afcfb916fb6f04107bc9}{set\+Loop}} (bool \+\_\+loop)
+\begin{DoxyCompactList}\small\item\em Set if the sound should loop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_sound_source_a9362947629ea258d1ad700f79c24b015}{set\+Destroy\+On\+Play}} (bool \+\_\+destroy)
+\begin{DoxyCompactList}\small\item\em Set if the component should destroy itself after it plays. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sound_source}{Sound\+Source}} $>$ \mbox{\hyperlink{class_engine_1_1_sound_source_a0e2a0843dbc1f87d02f1ab038f6b7446}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}this\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_engine_1_1_sound_source_a69306a04bda61b5470c93b5992297491}{on\+Initialise}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sound}{Sound}} $>$ \+\_\+sound)
-\item 
-void \mbox{\hyperlink{class_engine_1_1_sound_source_a1fec1228d1a8c467a6febbdac1a4f219}{on\+Tick}} ()
-\item 
-void \mbox{\hyperlink{class_engine_1_1_sound_source_a1690e3bd1c45b9192d003a0daf49a040}{Play}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Initialise. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 A\+Luint \mbox{\hyperlink{class_engine_1_1_sound_source_a268c23b6886316e971eb328e14032344}{m\+\_\+id}} = 0
-\item 
+\begin{DoxyCompactList}\small\item\em An ID for Open\+AL. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_sound_source_a7e033f0ef0b9dfdc4a4014716fefb4a1}{m\+\_\+played}} = false
-\item 
+\begin{DoxyCompactList}\small\item\em Tracks if it has played yet or not. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_sound_source_afa3c586b59cce8b7cb587f426c5bdd2a}{m\+\_\+loop}} = false
-\item 
+\begin{DoxyCompactList}\small\item\em The sound will play after it finishes if \textquotesingle{}Loop\textquotesingle{} is true. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_sound_source_af4e032421938c60c8dfb8d5d6664ae3c}{m\+\_\+destroy\+On\+Play}} = false
+\begin{DoxyCompactList}\small\item\em The component destroys itself after playing if this is true. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_engine_1_1_sound_source_a614439ccac0344926adc4c0165d64060}{Entity}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+A \mbox{\hyperlink{class_engine_1_1_sound}{Sound}} Source holds and plays sounds. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_engine_1_1_sound_source_a69306a04bda61b5470c93b5992297491}\label{class_engine_1_1_sound_source_a69306a04bda61b5470c93b5992297491}} 
@@ -40,21 +65,62 @@ bool \mbox{\hyperlink{class_engine_1_1_sound_source_af4e032421938c60c8dfb8d5d666
 \doxysubsubsection{\texorpdfstring{onInitialise()}{onInitialise()}}
 {\footnotesize\ttfamily void Engine\+::\+Sound\+Source\+::on\+Initialise (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_sound}{Sound}} $>$}]{\+\_\+sound }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Initialise. 
+
 \mbox{\Hypertarget{class_engine_1_1_sound_source_a1fec1228d1a8c467a6febbdac1a4f219}\label{class_engine_1_1_sound_source_a1fec1228d1a8c467a6febbdac1a4f219}} 
 \index{Engine::SoundSource@{Engine::SoundSource}!onTick@{onTick}}
 \index{onTick@{onTick}!Engine::SoundSource@{Engine::SoundSource}}
 \doxysubsubsection{\texorpdfstring{onTick()}{onTick()}}
-{\footnotesize\ttfamily void Engine\+::\+Sound\+Source\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Engine\+::\+Sound\+Source\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Update. 
 
 
 
 Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10bbef2b74a8a22f24c}{Engine\+::\+Component}}.
 
-\mbox{\Hypertarget{class_engine_1_1_sound_source_a1690e3bd1c45b9192d003a0daf49a040}\label{class_engine_1_1_sound_source_a1690e3bd1c45b9192d003a0daf49a040}} 
+\mbox{\Hypertarget{class_engine_1_1_sound_source_ad658a6d361dda95371ec9d02a3df6811}\label{class_engine_1_1_sound_source_ad658a6d361dda95371ec9d02a3df6811}} 
 \index{Engine::SoundSource@{Engine::SoundSource}!Play@{Play}}
 \index{Play@{Play}!Engine::SoundSource@{Engine::SoundSource}}
 \doxysubsubsection{\texorpdfstring{Play()}{Play()}}
-{\footnotesize\ttfamily void Engine\+::\+Sound\+Source\+::\+Play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Engine\+::\+Sound\+Source\+::\+Play (\begin{DoxyParamCaption}\item[{float}]{\+\_\+vol }\end{DoxyParamCaption})}
+
+
+
+Call this to play the stored sound. 
+
+\mbox{\Hypertarget{class_engine_1_1_sound_source_a9362947629ea258d1ad700f79c24b015}\label{class_engine_1_1_sound_source_a9362947629ea258d1ad700f79c24b015}} 
+\index{Engine::SoundSource@{Engine::SoundSource}!setDestroyOnPlay@{setDestroyOnPlay}}
+\index{setDestroyOnPlay@{setDestroyOnPlay}!Engine::SoundSource@{Engine::SoundSource}}
+\doxysubsubsection{\texorpdfstring{setDestroyOnPlay()}{setDestroyOnPlay()}}
+{\footnotesize\ttfamily void Engine\+::\+Sound\+Source\+::set\+Destroy\+On\+Play (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+destroy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set if the component should destroy itself after it plays. 
+
+\mbox{\Hypertarget{class_engine_1_1_sound_source_a98270c8b7219afcfb916fb6f04107bc9}\label{class_engine_1_1_sound_source_a98270c8b7219afcfb916fb6f04107bc9}} 
+\index{Engine::SoundSource@{Engine::SoundSource}!setLoop@{setLoop}}
+\index{setLoop@{setLoop}!Engine::SoundSource@{Engine::SoundSource}}
+\doxysubsubsection{\texorpdfstring{setLoop()}{setLoop()}}
+{\footnotesize\ttfamily void Engine\+::\+Sound\+Source\+::set\+Loop (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+loop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set if the sound should loop. 
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_sound_source_a614439ccac0344926adc4c0165d64060}\label{class_engine_1_1_sound_source_a614439ccac0344926adc4c0165d64060}} 
+\index{Engine::SoundSource@{Engine::SoundSource}!Entity@{Entity}}
+\index{Entity@{Entity}!Engine::SoundSource@{Engine::SoundSource}}
+\doxysubsubsection{\texorpdfstring{Entity}{Entity}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 
@@ -65,11 +131,19 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10b
 \doxysubsubsection{\texorpdfstring{m\_destroyOnPlay}{m\_destroyOnPlay}}
 {\footnotesize\ttfamily bool Engine\+::\+Sound\+Source\+::m\+\_\+destroy\+On\+Play = false\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+The component destroys itself after playing if this is true. 
+
 \mbox{\Hypertarget{class_engine_1_1_sound_source_a268c23b6886316e971eb328e14032344}\label{class_engine_1_1_sound_source_a268c23b6886316e971eb328e14032344}} 
 \index{Engine::SoundSource@{Engine::SoundSource}!m\_id@{m\_id}}
 \index{m\_id@{m\_id}!Engine::SoundSource@{Engine::SoundSource}}
 \doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
 {\footnotesize\ttfamily A\+Luint Engine\+::\+Sound\+Source\+::m\+\_\+id = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+An ID for Open\+AL. 
 
 \mbox{\Hypertarget{class_engine_1_1_sound_source_afa3c586b59cce8b7cb587f426c5bdd2a}\label{class_engine_1_1_sound_source_afa3c586b59cce8b7cb587f426c5bdd2a}} 
 \index{Engine::SoundSource@{Engine::SoundSource}!m\_loop@{m\_loop}}
@@ -77,11 +151,29 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10b
 \doxysubsubsection{\texorpdfstring{m\_loop}{m\_loop}}
 {\footnotesize\ttfamily bool Engine\+::\+Sound\+Source\+::m\+\_\+loop = false\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+The sound will play after it finishes if \textquotesingle{}Loop\textquotesingle{} is true. 
+
 \mbox{\Hypertarget{class_engine_1_1_sound_source_a7e033f0ef0b9dfdc4a4014716fefb4a1}\label{class_engine_1_1_sound_source_a7e033f0ef0b9dfdc4a4014716fefb4a1}} 
 \index{Engine::SoundSource@{Engine::SoundSource}!m\_played@{m\_played}}
 \index{m\_played@{m\_played}!Engine::SoundSource@{Engine::SoundSource}}
 \doxysubsubsection{\texorpdfstring{m\_played}{m\_played}}
 {\footnotesize\ttfamily bool Engine\+::\+Sound\+Source\+::m\+\_\+played = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tracks if it has played yet or not. 
+
+\mbox{\Hypertarget{class_engine_1_1_sound_source_a0e2a0843dbc1f87d02f1ab038f6b7446}\label{class_engine_1_1_sound_source_a0e2a0843dbc1f87d02f1ab038f6b7446}} 
+\index{Engine::SoundSource@{Engine::SoundSource}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::SoundSource@{Engine::SoundSource}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_sound_source}{Sound\+Source}}$>$ Engine\+::\+Sound\+Source\+::m\+\_\+self}
+
+
+
+A \char`\"{}this\char`\"{} pointer. 
 
 
 

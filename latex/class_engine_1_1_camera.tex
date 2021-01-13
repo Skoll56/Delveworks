@@ -2,6 +2,11 @@
 \label{class_engine_1_1_camera}\index{Engine::Camera@{Engine::Camera}}
 
 
+A generic \mbox{\hyperlink{class_engine_1_1_camera}{Camera}} component.  
+
+
+
+
 {\ttfamily \#include $<$Camera.\+h$>$}
 
 Inheritance diagram for Engine\+::Camera\+:\begin{figure}[H]
@@ -14,18 +19,72 @@ Inheritance diagram for Engine\+::Camera\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_engine_1_1_camera_a16df865e6139a822c0e7ab7548bca24e}{on\+Initialise}} ()
+\begin{DoxyCompactList}\small\item\em Initialise a component. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_camera_a8e69b4f788684e36a281137c21d73998}{set\+Surface}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_surface}{Surface}} $>$ \+\_\+surface)
+\begin{DoxyCompactList}\small\item\em Gives the camera a reference to a \mbox{\hyperlink{class_engine_1_1_surface}{Surface}} that it is rendering to (A \mbox{\hyperlink{class_engine_1_1_display_u_i}{Display\+UI}}) \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_surface}{Surface}} $>$ \mbox{\hyperlink{class_engine_1_1_camera_ae7bccf9b019bbc51abbb64bcc1c03f19}{get\+Surface}} ()
+\begin{DoxyCompactList}\small\item\em Gets a reference to a \mbox{\hyperlink{class_engine_1_1_surface}{Surface}} that it is rendering to (A \mbox{\hyperlink{class_engine_1_1_display_u_i}{Display\+UI}}) \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{class_engine_1_1_camera_a8e9f51a6d7e7d668d6b8972fa3bd5269}{get\+View}} ()
+\begin{DoxyCompactList}\small\item\em Returns the \mbox{\hyperlink{class_engine_1_1_camera}{Camera}}\textquotesingle{}s view matrix. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_engine_1_1_camera_a9b9add3ccad55cc5e82e58a69b08c0f4}{get\+F\+OV}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Field of View. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_camera_a6b2858af6162af92045cee196348cc53}{set\+F\+OV}} (float \+\_\+angle)
+\begin{DoxyCompactList}\small\item\em Sets the Field of View. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_camera_a3950b7fce1554b77d4089d65fec89ac1}{on\+Tick}} ()
+\begin{DoxyCompactList}\small\item\em Update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_engine_1_1_camera_aad2e51138d91c5ffafe46d1db0cebecf}{update}} (float \+\_\+d\+Time, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_input}{Input}} $>$ \+\_\+input)
-\end{DoxyCompactItemize}
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_camera}{Camera}} $>$ \mbox{\hyperlink{class_engine_1_1_camera_aa75ef3655b295a04fc8776c5edbd4245}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}\+This\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-float \mbox{\hyperlink{class_engine_1_1_camera_ac03b8514f4b2923612cad298f99c58c1}{m\+\_\+rot\+Speed}}
-\end{DoxyCompactItemize}
+glm\+::mat4 \mbox{\hyperlink{class_engine_1_1_camera_a9c67a6fd890ba7e4f7732ac416173545}{m\+\_\+view\+Mat}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_engine_1_1_camera}{Camera}}\textquotesingle{}s View Matrix. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_engine_1_1_camera_a5e26491559bea20c4ef648207142a6af}{m\+\_\+\+FoV}} = 45.\+0f
+\begin{DoxyCompactList}\small\item\em The Field of View in degrees. \end{DoxyCompactList}\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_surface}{Surface}} $>$ \mbox{\hyperlink{class_engine_1_1_camera_a36283a02e4e9ffa0e7ad4d718d4a2a32}{m\+\_\+surface}}
+\begin{DoxyCompactList}\small\item\em A reference to any surface this camera is displaying to. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
+\doxysubsection{Detailed Description}
+A generic \mbox{\hyperlink{class_engine_1_1_camera}{Camera}} component. 
+
+Use this to see things! 
+
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_camera_a9b9add3ccad55cc5e82e58a69b08c0f4}\label{class_engine_1_1_camera_a9b9add3ccad55cc5e82e58a69b08c0f4}} 
+\index{Engine::Camera@{Engine::Camera}!getFOV@{getFOV}}
+\index{getFOV@{getFOV}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{getFOV()}{getFOV()}}
+{\footnotesize\ttfamily float Engine\+::\+Camera\+::get\+F\+OV (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the Field of View. 
+
+\mbox{\Hypertarget{class_engine_1_1_camera_ae7bccf9b019bbc51abbb64bcc1c03f19}\label{class_engine_1_1_camera_ae7bccf9b019bbc51abbb64bcc1c03f19}} 
+\index{Engine::Camera@{Engine::Camera}!getSurface@{getSurface}}
+\index{getSurface@{getSurface}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{getSurface()}{getSurface()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_surface}{Surface}} $>$ Engine\+::\+Camera\+::get\+Surface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets a reference to a \mbox{\hyperlink{class_engine_1_1_surface}{Surface}} that it is rendering to (A \mbox{\hyperlink{class_engine_1_1_display_u_i}{Display\+UI}}) 
+
+\mbox{\Hypertarget{class_engine_1_1_camera_a8e9f51a6d7e7d668d6b8972fa3bd5269}\label{class_engine_1_1_camera_a8e9f51a6d7e7d668d6b8972fa3bd5269}} 
+\index{Engine::Camera@{Engine::Camera}!getView@{getView}}
+\index{getView@{getView}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{getView()}{getView()}}
+{\footnotesize\ttfamily glm\+::mat4 Engine\+::\+Camera\+::get\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the \mbox{\hyperlink{class_engine_1_1_camera}{Camera}}\textquotesingle{}s view matrix. 
+
 \mbox{\Hypertarget{class_engine_1_1_camera_a16df865e6139a822c0e7ab7548bca24e}\label{class_engine_1_1_camera_a16df865e6139a822c0e7ab7548bca24e}} 
 \index{Engine::Camera@{Engine::Camera}!onInitialise@{onInitialise}}
 \index{onInitialise@{onInitialise}!Engine::Camera@{Engine::Camera}}
@@ -34,22 +93,88 @@ float \mbox{\hyperlink{class_engine_1_1_camera_ac03b8514f4b2923612cad298f99c58c1
 
 
 
+Initialise a component. 
+
+Components can also specify arguments to go into this function. You pass them in when you Add\+Component. 
+
 Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a698b7e82b695c3e056dc0f929e631b6d}{Engine\+::\+Component}}.
 
-\mbox{\Hypertarget{class_engine_1_1_camera_aad2e51138d91c5ffafe46d1db0cebecf}\label{class_engine_1_1_camera_aad2e51138d91c5ffafe46d1db0cebecf}} 
-\index{Engine::Camera@{Engine::Camera}!update@{update}}
-\index{update@{update}!Engine::Camera@{Engine::Camera}}
-\doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void Engine\+::\+Camera\+::update (\begin{DoxyParamCaption}\item[{float}]{\+\_\+d\+Time,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_input}{Input}} $>$}]{\+\_\+input }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_engine_1_1_camera_a3950b7fce1554b77d4089d65fec89ac1}\label{class_engine_1_1_camera_a3950b7fce1554b77d4089d65fec89ac1}} 
+\index{Engine::Camera@{Engine::Camera}!onTick@{onTick}}
+\index{onTick@{onTick}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{onTick()}{onTick()}}
+{\footnotesize\ttfamily void Engine\+::\+Camera\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Update. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10bbef2b74a8a22f24c}{Engine\+::\+Component}}.
+
+\mbox{\Hypertarget{class_engine_1_1_camera_a6b2858af6162af92045cee196348cc53}\label{class_engine_1_1_camera_a6b2858af6162af92045cee196348cc53}} 
+\index{Engine::Camera@{Engine::Camera}!setFOV@{setFOV}}
+\index{setFOV@{setFOV}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{setFOV()}{setFOV()}}
+{\footnotesize\ttfamily void Engine\+::\+Camera\+::set\+F\+OV (\begin{DoxyParamCaption}\item[{float}]{\+\_\+angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the Field of View. 
+
+\mbox{\Hypertarget{class_engine_1_1_camera_a8e69b4f788684e36a281137c21d73998}\label{class_engine_1_1_camera_a8e69b4f788684e36a281137c21d73998}} 
+\index{Engine::Camera@{Engine::Camera}!setSurface@{setSurface}}
+\index{setSurface@{setSurface}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{setSurface()}{setSurface()}}
+{\footnotesize\ttfamily void Engine\+::\+Camera\+::set\+Surface (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_surface}{Surface}} $>$}]{\+\_\+surface }\end{DoxyParamCaption})}
+
+
+
+Gives the camera a reference to a \mbox{\hyperlink{class_engine_1_1_surface}{Surface}} that it is rendering to (A \mbox{\hyperlink{class_engine_1_1_display_u_i}{Display\+UI}}) 
 
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_engine_1_1_camera_ac03b8514f4b2923612cad298f99c58c1}\label{class_engine_1_1_camera_ac03b8514f4b2923612cad298f99c58c1}} 
-\index{Engine::Camera@{Engine::Camera}!m\_rotSpeed@{m\_rotSpeed}}
-\index{m\_rotSpeed@{m\_rotSpeed}!Engine::Camera@{Engine::Camera}}
-\doxysubsubsection{\texorpdfstring{m\_rotSpeed}{m\_rotSpeed}}
-{\footnotesize\ttfamily float Engine\+::\+Camera\+::m\+\_\+rot\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_engine_1_1_camera_a5e26491559bea20c4ef648207142a6af}\label{class_engine_1_1_camera_a5e26491559bea20c4ef648207142a6af}} 
+\index{Engine::Camera@{Engine::Camera}!m\_FoV@{m\_FoV}}
+\index{m\_FoV@{m\_FoV}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{m\_FoV}{m\_FoV}}
+{\footnotesize\ttfamily float Engine\+::\+Camera\+::m\+\_\+\+FoV = 45.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Field of View in degrees. 
+
+\mbox{\Hypertarget{class_engine_1_1_camera_aa75ef3655b295a04fc8776c5edbd4245}\label{class_engine_1_1_camera_aa75ef3655b295a04fc8776c5edbd4245}} 
+\index{Engine::Camera@{Engine::Camera}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_camera}{Camera}}$>$ Engine\+::\+Camera\+::m\+\_\+self}
+
+
+
+A \char`\"{}\+This\char`\"{} pointer. 
+
+\mbox{\Hypertarget{class_engine_1_1_camera_a36283a02e4e9ffa0e7ad4d718d4a2a32}\label{class_engine_1_1_camera_a36283a02e4e9ffa0e7ad4d718d4a2a32}} 
+\index{Engine::Camera@{Engine::Camera}!m\_surface@{m\_surface}}
+\index{m\_surface@{m\_surface}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{m\_surface}{m\_surface}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_surface}{Surface}}$>$ Engine\+::\+Camera\+::m\+\_\+surface\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A reference to any surface this camera is displaying to. 
+
+\mbox{\Hypertarget{class_engine_1_1_camera_a9c67a6fd890ba7e4f7732ac416173545}\label{class_engine_1_1_camera_a9c67a6fd890ba7e4f7732ac416173545}} 
+\index{Engine::Camera@{Engine::Camera}!m\_viewMat@{m\_viewMat}}
+\index{m\_viewMat@{m\_viewMat}!Engine::Camera@{Engine::Camera}}
+\doxysubsubsection{\texorpdfstring{m\_viewMat}{m\_viewMat}}
+{\footnotesize\ttfamily glm\+::mat4 Engine\+::\+Camera\+::m\+\_\+view\+Mat\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The \mbox{\hyperlink{class_engine_1_1_camera}{Camera}}\textquotesingle{}s View Matrix. 
 
 
 

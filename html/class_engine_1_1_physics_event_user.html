@@ -67,12 +67,17 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_engine_1_1_physics_event_user-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Engine::PhysicsEventUser Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A base class for all Physics Objects. <br  />
+  
+ <a href="class_engine_1_1_physics_event_user.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_physics_new_8h_source.html">PhysicsNew.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -81,102 +86,160 @@ Inheritance diagram for Engine::PhysicsEventUser:</div>
  <div class="center">
   <img src="class_engine_1_1_physics_event_user.png" usemap="#Engine::PhysicsEventUser_map" alt=""/>
   <map id="Engine::PhysicsEventUser_map" name="Engine::PhysicsEventUser_map">
-<area href="class_engine_1_1_component.html" alt="Engine::Component" shape="rect" coords="0,0,161,24"/>
-<area href="class_engine_1_1_physics_object.html" alt="Engine::PhysicsObject" shape="rect" coords="0,112,161,136"/>
-<area href="class_engine_1_1_adv_physics_object.html" alt="Engine::AdvPhysicsObject" shape="rect" coords="0,168,161,192"/>
+<area href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine." alt="Engine::Component" shape="rect" coords="0,0,161,24"/>
+<area href="class_engine_1_1_physics_object.html" title="A Physics Object checks for collisions each frame automatically, obeys gravity and carries a velocity..." alt="Engine::PhysicsObject" shape="rect" coords="0,112,161,136"/>
+<area href="class_engine_1_1_adv_physics_object.html" title="An Advanced Physics object which can rotate, have torque and an angular velocity." alt="Engine::AdvPhysicsObject" shape="rect" coords="0,168,161,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae55c6ef5972f980bdee44de8fc81ad22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#ae55c6ef5972f980bdee44de8fc81ad22">onTick</a> ()</td></tr>
+<tr class="memdesc:ae55c6ef5972f980bdee44de8fc81ad22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update.  <a href="class_engine_1_1_physics_event_user.html#ae55c6ef5972f980bdee44de8fc81ad22">More...</a><br /></td></tr>
 <tr class="separator:ae55c6ef5972f980bdee44de8fc81ad22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c731c532cb55eea5c9ec81dcfc0cd71"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a4c731c532cb55eea5c9ec81dcfc0cd71">checkForCollisions</a> (float _dT, std::vector&lt; std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&gt; _other, glm::vec3 _c1)</td></tr>
+<tr class="memitem:a4c731c532cb55eea5c9ec81dcfc0cd71"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a4c731c532cb55eea5c9ec81dcfc0cd71">checkForCollisions</a> (float _dT, std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&gt; _other, glm::vec3 _c1)</td></tr>
+<tr class="memdesc:a4c731c532cb55eea5c9ec81dcfc0cd71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for any collisions.  <a href="class_engine_1_1_physics_event_user.html#a4c731c532cb55eea5c9ec81dcfc0cd71">More...</a><br /></td></tr>
 <tr class="separator:a4c731c532cb55eea5c9ec81dcfc0cd71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5dc5e3f336574f2635ec7b1f2bced5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#aa5dc5e3f336574f2635ec7b1f2bced5f">resetCollisions</a> ()</td></tr>
+<tr class="memdesc:aa5dc5e3f336574f2635ec7b1f2bced5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the collision list (empties it)  <a href="class_engine_1_1_physics_event_user.html#aa5dc5e3f336574f2635ec7b1f2bced5f">More...</a><br /></td></tr>
 <tr class="separator:aa5dc5e3f336574f2635ec7b1f2bced5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac19e19f66ae829b52eee5d77d46d0a0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#ac19e19f66ae829b52eee5d77d46d0a0c">setCollided</a> (bool _val)</td></tr>
+<tr class="memdesc:ac19e19f66ae829b52eee5d77d46d0a0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the collided value.  <a href="class_engine_1_1_physics_event_user.html#ac19e19f66ae829b52eee5d77d46d0a0c">More...</a><br /></td></tr>
 <tr class="separator:ac19e19f66ae829b52eee5d77d46d0a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e90e0014b21222a1c9fcfef44b1e5e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a2e90e0014b21222a1c9fcfef44b1e5e7">collided</a> ()</td></tr>
+<tr class="memdesc:a2e90e0014b21222a1c9fcfef44b1e5e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets if this object has collided or not.  <a href="class_engine_1_1_physics_event_user.html#a2e90e0014b21222a1c9fcfef44b1e5e7">More...</a><br /></td></tr>
 <tr class="separator:a2e90e0014b21222a1c9fcfef44b1e5e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8820ee6d223201074b2b47b781c71ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#af8820ee6d223201074b2b47b781c71ea">onCollision</a> (<a class="el" href="class_engine_1_1_collision.html">Collision</a> *_col)</td></tr>
-<tr class="separator:af8820ee6d223201074b2b47b781c71ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78e2efef9accc6332fc7d0e0aa2707fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a78e2efef9accc6332fc7d0e0aa2707fb">setFloored</a> (bool _val)</td></tr>
+<tr class="memdesc:a78e2efef9accc6332fc7d0e0aa2707fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set whether this object is floored or not.  <a href="class_engine_1_1_physics_event_user.html#a78e2efef9accc6332fc7d0e0aa2707fb">More...</a><br /></td></tr>
 <tr class="separator:a78e2efef9accc6332fc7d0e0aa2707fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92216f84a0f8981570b9d6f82a4d8437"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a92216f84a0f8981570b9d6f82a4d8437">isFloored</a> ()</td></tr>
+<tr class="memdesc:a92216f84a0f8981570b9d6f82a4d8437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns if this object is floored.  <a href="class_engine_1_1_physics_event_user.html#a92216f84a0f8981570b9d6f82a4d8437">More...</a><br /></td></tr>
 <tr class="separator:a92216f84a0f8981570b9d6f82a4d8437"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac024ad1224deac8caecdff4ccfdcb521"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#ac024ad1224deac8caecdff4ccfdcb521">boxToPlane</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_box_collider.html">BoxCollider</a> &gt; _my, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_plane_collider.html">PlaneCollider</a> &gt; _other, glm::vec3 _c1)</td></tr>
+<tr class="memdesc:ac024ad1224deac8caecdff4ccfdcb521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks box versus plane collision.  <a href="class_engine_1_1_physics_event_user.html#ac024ad1224deac8caecdff4ccfdcb521">More...</a><br /></td></tr>
 <tr class="separator:ac024ad1224deac8caecdff4ccfdcb521"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8a2318eba904496c3825489f5aa2e20"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#ae8a2318eba904496c3825489f5aa2e20">coplanar_tri_tri</a> (float N[3], float V0[3], float V1[3], float V2[3], float U0[3], float U1[3], float U2[3])</td></tr>
+<tr class="memdesc:ae8a2318eba904496c3825489f5aa2e20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks tri versus tri collisions.  <a href="class_engine_1_1_physics_event_user.html#ae8a2318eba904496c3825489f5aa2e20">More...</a><br /></td></tr>
 <tr class="separator:ae8a2318eba904496c3825489f5aa2e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3aed41c707b7e78e6b990846dae57ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#ad3aed41c707b7e78e6b990846dae57ef">NoDivTriTriIsect</a> (float V0[3], float V1[3], float V2[3], float U0[3], float U1[3], float U2[3])</td></tr>
+<tr class="memdesc:ad3aed41c707b7e78e6b990846dae57ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks tri versus tri collisions.  <a href="class_engine_1_1_physics_event_user.html#ad3aed41c707b7e78e6b990846dae57ef">More...</a><br /></td></tr>
 <tr class="separator:ad3aed41c707b7e78e6b990846dae57ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8ccc8b6ec428ebb0d568837ad01a06d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#ae8ccc8b6ec428ebb0d568837ad01a06d">triBoxOverlap</a> (float boxcenter[3], float boxhalfsize[3], float triverts[3][3])</td></tr>
+<tr class="memdesc:ae8ccc8b6ec428ebb0d568837ad01a06d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks tri versus box collisions.  <a href="class_engine_1_1_physics_event_user.html#ae8ccc8b6ec428ebb0d568837ad01a06d">More...</a><br /></td></tr>
 <tr class="separator:ae8ccc8b6ec428ebb0d568837ad01a06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ca9262984fd8d48828f7fcf91f8239c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a3ca9262984fd8d48828f7fcf91f8239c">planeBoxOverlap</a> (float normal[3], float d, float maxbox[3])</td></tr>
+<tr class="memdesc:a3ca9262984fd8d48828f7fcf91f8239c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks box versus plane collisions.  <a href="class_engine_1_1_physics_event_user.html#a3ca9262984fd8d48828f7fcf91f8239c">More...</a><br /></td></tr>
 <tr class="separator:a3ca9262984fd8d48828f7fcf91f8239c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a5f5a3c8477f6d7f59da88ec2e973b0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a0a5f5a3c8477f6d7f59da88ec2e973b0">distanceToPlane</a> (glm::vec3 &amp;n, glm::vec3 &amp;p, glm::vec3 &amp;q)</td></tr>
+<tr class="memdesc:a0a5f5a3c8477f6d7f59da88ec2e973b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the distance from a point to a plane (along the normal)  <a href="class_engine_1_1_physics_event_user.html#a0a5f5a3c8477f6d7f59da88ec2e973b0">More...</a><br /></td></tr>
 <tr class="separator:a0a5f5a3c8477f6d7f59da88ec2e973b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a450b2c8db3ef812fabe7198a3a76d923"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a450b2c8db3ef812fabe7198a3a76d923">boxToBox</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_box_collider.html">BoxCollider</a> &gt; _my, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_box_collider.html">BoxCollider</a> &gt; _other, glm::vec3 _c1)</td></tr>
+<tr class="memdesc:a450b2c8db3ef812fabe7198a3a76d923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for box versus box collisions.  <a href="class_engine_1_1_physics_event_user.html#a450b2c8db3ef812fabe7198a3a76d923">More...</a><br /></td></tr>
 <tr class="separator:a450b2c8db3ef812fabe7198a3a76d923"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0290f99fdd2f2524a8e981e234d6cd75"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a0290f99fdd2f2524a8e981e234d6cd75">meshToMesh</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_mesh_collider.html">MeshCollider</a> &gt; _my, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collider.html">Collider</a> &gt; _other, glm::vec3 _c1)</td></tr>
+<tr class="memdesc:a0290f99fdd2f2524a8e981e234d6cd75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for mesh versus mech collisions (very expensive)  <a href="class_engine_1_1_physics_event_user.html#a0290f99fdd2f2524a8e981e234d6cd75">More...</a><br /></td></tr>
 <tr class="separator:a0290f99fdd2f2524a8e981e234d6cd75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e00c19dc6179f6b3a25b0cadcc39303"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a5e00c19dc6179f6b3a25b0cadcc39303">sphereToPlane</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_sphere_collider.html">SphereCollider</a> &gt; _my, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_plane_collider.html">PlaneCollider</a> &gt; _other, glm::vec3 _c1)</td></tr>
-<tr class="memdesc:a5e00c19dc6179f6b3a25b0cadcc39303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shape Intersection functions.  <a href="class_engine_1_1_physics_event_user.html#a5e00c19dc6179f6b3a25b0cadcc39303">More...</a><br /></td></tr>
+<tr class="memdesc:a5e00c19dc6179f6b3a25b0cadcc39303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for sphere versus plane collisions.  <a href="class_engine_1_1_physics_event_user.html#a5e00c19dc6179f6b3a25b0cadcc39303">More...</a><br /></td></tr>
 <tr class="separator:a5e00c19dc6179f6b3a25b0cadcc39303"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6df9de0fb41af161c7576f1baa83dfd0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a6df9de0fb41af161c7576f1baa83dfd0">sphereToBox</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_sphere_collider.html">SphereCollider</a> &gt; _my, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_box_collider.html">BoxCollider</a> &gt; _other, glm::vec3 _c1)</td></tr>
+<tr class="memdesc:a6df9de0fb41af161c7576f1baa83dfd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for sphere versus box collisions.  <a href="class_engine_1_1_physics_event_user.html#a6df9de0fb41af161c7576f1baa83dfd0">More...</a><br /></td></tr>
 <tr class="separator:a6df9de0fb41af161c7576f1baa83dfd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41814ff529847341e1bb04212ca64cc6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a41814ff529847341e1bb04212ca64cc6">sphereToSphere</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_sphere_collider.html">SphereCollider</a> &gt; _my, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_sphere_collider.html">SphereCollider</a> &gt; _other)</td></tr>
+<tr class="memdesc:a41814ff529847341e1bb04212ca64cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for sphere versus sphere collisions.  <a href="class_engine_1_1_physics_event_user.html#a41814ff529847341e1bb04212ca64cc6">More...</a><br /></td></tr>
 <tr class="separator:a41814ff529847341e1bb04212ca64cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e03f1aa84ea72d0971ced1d0dc8122c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a1e03f1aa84ea72d0971ced1d0dc8122c">boxToSphere</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_box_collider.html">BoxCollider</a> &gt; _my, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_sphere_collider.html">SphereCollider</a> &gt; _other, glm::vec3 _c1)</td></tr>
+<tr class="memdesc:a1e03f1aa84ea72d0971ced1d0dc8122c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for box versus sphere collisions.  <a href="class_engine_1_1_physics_event_user.html#a1e03f1aa84ea72d0971ced1d0dc8122c">More...</a><br /></td></tr>
 <tr class="separator:a1e03f1aa84ea72d0971ced1d0dc8122c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91364b35b03a3e2bc2d2aa9743804418"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a91364b35b03a3e2bc2d2aa9743804418">sphereBoxOverlap</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_sphere_collider.html">SphereCollider</a> &gt; _sphere, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_box_collider.html">BoxCollider</a> &gt; _box)</td></tr>
+<tr class="memdesc:a91364b35b03a3e2bc2d2aa9743804418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for an overlap between a sphere and box collider.  <a href="class_engine_1_1_physics_event_user.html#a91364b35b03a3e2bc2d2aa9743804418">More...</a><br /></td></tr>
 <tr class="separator:a91364b35b03a3e2bc2d2aa9743804418"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7305c5cb9a133533487645a783fc4a1a"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a7305c5cb9a133533487645a783fc4a1a">roundNormals</a> (glm::vec3 _n)</td></tr>
+<tr class="memdesc:a7305c5cb9a133533487645a783fc4a1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rounds a normals so if it's close to 1, -1 or 0 it rounds it.  <a href="class_engine_1_1_physics_event_user.html#a7305c5cb9a133533487645a783fc4a1a">More...</a><br /></td></tr>
 <tr class="separator:a7305c5cb9a133533487645a783fc4a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a599461362b826505890566eb7c3f5743"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a599461362b826505890566eb7c3f5743">getPermCP</a> ()</td></tr>
+<tr class="memdesc:a599461362b826505890566eb7c3f5743"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the permanent contact point.  <a href="class_engine_1_1_physics_event_user.html#a599461362b826505890566eb7c3f5743">More...</a><br /></td></tr>
 <tr class="separator:a599461362b826505890566eb7c3f5743"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96a1a23471aff12c418a3b6a931f49d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a96a1a23471aff12c418a3b6a931f49d0">setPermCP</a> (glm::vec3 _pos)</td></tr>
+<tr class="memdesc:a96a1a23471aff12c418a3b6a931f49d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the permanent contact point.  <a href="class_engine_1_1_physics_event_user.html#a96a1a23471aff12c418a3b6a931f49d0">More...</a><br /></td></tr>
 <tr class="separator:a96a1a23471aff12c418a3b6a931f49d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
 <tr class="memitem:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">destroy</a> ()</td></tr>
+<tr class="memdesc:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to destroy a component at the end of the frame.  <a href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">More...</a><br /></td></tr>
 <tr class="separator:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">getEntity</a> ()</td></tr>
+<tr class="memitem:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">getEntity</a> ()</td></tr>
+<tr class="memdesc:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a> which contains this <a class="el" href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine.">Component</a>.  <a href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">More...</a><br /></td></tr>
 <tr class="separator:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">transform</a> ()</td></tr>
+<tr class="memdesc:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_engine_1_1_transform.html" title="The Transform Component contains Translation, Rotation and Scale data.">Transform</a> component attached to the same object as this.  <a href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">More...</a><br /></td></tr>
 <tr class="separator:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bbd31f8047e7d026977f90362fe42d8 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_input.html">Input</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a7bbd31f8047e7d026977f90362fe42d8">input</a> ()</td></tr>
-<tr class="separator:a7bbd31f8047e7d026977f90362fe42d8 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ae6b8b9031f70d95bad118684d95e8ba0">getInputDevice</a> ()</td></tr>
+<tr class="memdesc:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an <a class="el" href="class_engine_1_1_input_device.html" title="InputDevice is the base class for all Input Devices.">InputDevice</a> of type T from the <a class="el" href="class_engine_1_1_input_manager.html" title="Manages all InputDevice objects.">InputManager</a>.  <a href="class_engine_1_1_component.html#ae6b8b9031f70d95bad118684d95e8ba0">More...</a><br /></td></tr>
+<tr class="separator:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30e45e1c0ef286fc8447c68f6d520745 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_core.html">Core</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a30e45e1c0ef286fc8447c68f6d520745">getCore</a> ()</td></tr>
+<tr class="memdesc:a30e45e1c0ef286fc8447c68f6d520745 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the <a class="el" href="class_engine_1_1_core.html" title="The Core of the engine. The &quot;world&quot; per se.">Core</a>.  <a href="class_engine_1_1_component.html#a30e45e1c0ef286fc8447c68f6d520745">More...</a><br /></td></tr>
+<tr class="separator:a30e45e1c0ef286fc8447c68f6d520745 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a7587474f41d028b4e5044c25daba54ed"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_physics_event_user.html">PhysicsEventUser</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a7587474f41d028b4e5044c25daba54ed">m_self</a></td></tr>
+<tr class="memdesc:a7587474f41d028b4e5044c25daba54ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">A "this" pointer.  <a href="class_engine_1_1_physics_event_user.html#a7587474f41d028b4e5044c25daba54ed">More...</a><br /></td></tr>
+<tr class="separator:a7587474f41d028b4e5044c25daba54ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
+<tr class="memitem:a00c874614f49a1248394daa626056ac8 inherit pub_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00c874614f49a1248394daa626056ac8">m_self</a></td></tr>
+<tr class="memdesc:a00c874614f49a1248394daa626056ac8 inherit pub_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">A "This" pointer.  <a href="class_engine_1_1_component.html#a00c874614f49a1248394daa626056ac8">More...</a><br /></td></tr>
+<tr class="separator:a00c874614f49a1248394daa626056ac8 inherit pub_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a95b2d2e649e65d203f41efc78bf5a5a4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a95b2d2e649e65d203f41efc78bf5a5a4">m_collided</a> = false</td></tr>
+<tr class="memdesc:a95b2d2e649e65d203f41efc78bf5a5a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks whether this has collided or not.  <a href="class_engine_1_1_physics_event_user.html#a95b2d2e649e65d203f41efc78bf5a5a4">More...</a><br /></td></tr>
 <tr class="separator:a95b2d2e649e65d203f41efc78bf5a5a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee00308a4099e909076914c45a9eed9e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#aee00308a4099e909076914c45a9eed9e">m_floored</a> = false</td></tr>
+<tr class="memdesc:aee00308a4099e909076914c45a9eed9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Floored is an optimisation. If an object is "floored" it is sitting on a flat surface and no further gravity or collision checks need to happen.  <a href="class_engine_1_1_physics_event_user.html#aee00308a4099e909076914c45a9eed9e">More...</a><br /></td></tr>
 <tr class="separator:aee00308a4099e909076914c45a9eed9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b69f5b00960b32542f602b8c52c5391"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a8b69f5b00960b32542f602b8c52c5391">m_permCP</a></td></tr>
+<tr class="memdesc:a8b69f5b00960b32542f602b8c52c5391"><td class="mdescLeft">&#160;</td><td class="mdescRight">A "permanent" contact-point that stores where an object should remain once stationary (ie: stacked on top of another object)  <a href="class_engine_1_1_physics_event_user.html#a8b69f5b00960b32542f602b8c52c5391">More...</a><br /></td></tr>
 <tr class="separator:a8b69f5b00960b32542f602b8c52c5391"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a898462bb60e3241f4150277ce728b109"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a898462bb60e3241f4150277ce728b109">m_collisions</a></td></tr>
-<tr class="separator:a898462bb60e3241f4150277ce728b109"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2da2be6c9f68c9f555e7c3db82f5f082"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_physics_event_user.html#a2da2be6c9f68c9f555e7c3db82f5f082">m_collisions</a></td></tr>
+<tr class="memdesc:a2da2be6c9f68c9f555e7c3db82f5f082"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of all collisions that this object has accumulated.  <a href="class_engine_1_1_physics_event_user.html#a2da2be6c9f68c9f555e7c3db82f5f082">More...</a><br /></td></tr>
+<tr class="separator:a2da2be6c9f68c9f555e7c3db82f5f082"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
-<tr class="memitem:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">m_entity</a></td></tr>
+<tr class="memitem:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">m_entity</a></td></tr>
+<tr class="memdesc:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the entity this is attached to.  <a href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">More...</a><br /></td></tr>
 <tr class="separator:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">m_transform</a></td></tr>
+<tr class="memdesc:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the <a class="el" href="class_engine_1_1_transform.html" title="The Transform Component contains Translation, Rotation and Scale data.">Transform</a> attached to the <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a>.  <a href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">More...</a><br /></td></tr>
 <tr class="separator:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">m_delete</a> = false</td></tr>
+<tr class="memdesc:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is set to true when the object is due to be deleted.  <a href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">More...</a><br /></td></tr>
 <tr class="separator:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
 <tr class="memitem:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a698b7e82b695c3e056dc0f929e631b6d">onInitialise</a> ()</td></tr>
+<tr class="memdesc:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise a component.  <a href="class_engine_1_1_component.html#a698b7e82b695c3e056dc0f929e631b6d">More...</a><br /></td></tr>
 <tr class="separator:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bf4b58e99c0ad73db8ff257728ba830 inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a6bf4b58e99c0ad73db8ff257728ba830">onRender</a> ()</td></tr>
-<tr class="separator:a6bf4b58e99c0ad73db8ff257728ba830 inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68cf41016007993f00ca2ee172b290e5 inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a68cf41016007993f00ca2ee172b290e5">onCollision</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> &gt; _col)</td></tr>
+<tr class="memdesc:a68cf41016007993f00ca2ee172b290e5 inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called every frame the parent object in Colliding for. Contains the collision info.  <a href="class_engine_1_1_component.html#a68cf41016007993f00ca2ee172b290e5">More...</a><br /></td></tr>
+<tr class="separator:a68cf41016007993f00ca2ee172b290e5 inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c96847915c640fa8e5634419fba8ce7 inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a9c96847915c640fa8e5634419fba8ce7">onCollisionEnter</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> &gt; _col)</td></tr>
+<tr class="memdesc:a9c96847915c640fa8e5634419fba8ce7 inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called on the first frame of collision. Contains the collision info.  <a href="class_engine_1_1_component.html#a9c96847915c640fa8e5634419fba8ce7">More...</a><br /></td></tr>
+<tr class="separator:a9c96847915c640fa8e5634419fba8ce7 inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afecb465fbad010451f18196147cf2b5c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#afecb465fbad010451f18196147cf2b5c">onCollisionExit</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt; _other)</td></tr>
+<tr class="memdesc:afecb465fbad010451f18196147cf2b5c inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called on the last frame of a collision. Contains a pointer to the other <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a>.  <a href="class_engine_1_1_component.html#afecb465fbad010451f18196147cf2b5c">More...</a><br /></td></tr>
+<tr class="separator:afecb465fbad010451f18196147cf2b5c inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ac103051527cfb9b716379fd115c99f5c">onDestroy</a> ()</td></tr>
+<tr class="memdesc:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is called just before a <a class="el" href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine.">Component</a> gets destroyed.  <a href="class_engine_1_1_component.html#ac103051527cfb9b716379fd115c99f5c">More...</a><br /></td></tr>
 <tr class="separator:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A base class for all Physics Objects. <br  />
+ </p>
+<p>This can be instantiated should the user want to manually do collision checks on an object without making it fully respond to Physics </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a450b2c8db3ef812fabe7198a3a76d923"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a450b2c8db3ef812fabe7198a3a76d923">&#9670;&nbsp;</a></span>boxToBox()</h2>
 
@@ -208,6 +271,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check for box versus box collisions. </p>
 
 </div>
 </div>
@@ -243,6 +308,8 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks box versus plane collision. </p>
+
 </div>
 </div>
 <a id="a1e03f1aa84ea72d0971ced1d0dc8122c"></a>
@@ -277,6 +344,8 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Check for box versus sphere collisions. </p>
+
 </div>
 </div>
 <a id="a4c731c532cb55eea5c9ec81dcfc0cd71"></a>
@@ -294,7 +363,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&gt;&#160;</td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&gt;&#160;</td>
           <td class="paramname"><em>_other</em>, </td>
         </tr>
         <tr>
@@ -310,6 +379,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks for any collisions. </p>
 
 </div>
 </div>
@@ -335,6 +406,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Gets if this object has collided or not. </p>
 
 </div>
 </div>
@@ -394,6 +467,8 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks tri versus tri collisions. </p>
+
 </div>
 </div>
 <a id="a0a5f5a3c8477f6d7f59da88ec2e973b0"></a>
@@ -428,6 +503,8 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Determines the distance from a point to a plane (along the normal) </p>
+
 </div>
 </div>
 <a id="a599461362b826505890566eb7c3f5743"></a>
@@ -453,6 +530,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the permanent contact point. </p>
+
 </div>
 </div>
 <a id="a92216f84a0f8981570b9d6f82a4d8437"></a>
@@ -477,6 +556,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns if this object is floored. </p>
 
 </div>
 </div>
@@ -511,6 +592,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check for mesh versus mech collisions (very expensive) </p>
 
 </div>
 </div>
@@ -564,23 +647,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="af8820ee6d223201074b2b47b781c71ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8820ee6d223201074b2b47b781c71ea">&#9670;&nbsp;</a></span>onCollision()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Engine::PhysicsEventUser::onCollision </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_engine_1_1_collision.html">Collision</a> *&#160;</td>
-          <td class="paramname"><em>_col</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Checks tri versus tri collisions. </p>
 
 </div>
 </div>
@@ -606,6 +673,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Update. </p>
 
 <p>Reimplemented from <a class="el" href="class_engine_1_1_component.html#a8763aeb9a9bcd10bbef2b74a8a22f24c">Engine::Component</a>.</p>
 
@@ -645,6 +714,8 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks box versus plane collisions. </p>
+
 </div>
 </div>
 <a id="aa5dc5e3f336574f2635ec7b1f2bced5f"></a>
@@ -661,6 +732,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Resets the collision list (empties it) </p>
 
 </div>
 </div>
@@ -679,6 +752,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Rounds a normals so if it's close to 1, -1 or 0 it rounds it. </p>
 
 </div>
 </div>
@@ -706,6 +781,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Sets the collided value. </p>
+
 </div>
 </div>
 <a id="a78e2efef9accc6332fc7d0e0aa2707fb"></a>
@@ -732,6 +809,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set whether this object is floored or not. </p>
+
 </div>
 </div>
 <a id="a96a1a23471aff12c418a3b6a931f49d0"></a>
@@ -757,6 +836,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Sets the permanent contact point. </p>
 
 </div>
 </div>
@@ -785,6 +866,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check for an overlap between a sphere and box collider. </p>
 
 </div>
 </div>
@@ -820,6 +903,8 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Check for sphere versus box collisions. </p>
+
 </div>
 </div>
 <a id="a5e00c19dc6179f6b3a25b0cadcc39303"></a>
@@ -854,6 +939,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Check for sphere versus plane collisions. </p>
 <p>Shape Intersection functions. </p>
 
 </div>
@@ -883,6 +969,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check for sphere versus sphere collisions. </p>
 
 </div>
 </div>
@@ -918,6 +1006,8 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks tri versus box collisions. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -941,10 +1031,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Marks whether this has collided or not. </p>
+
 </div>
 </div>
-<a id="a898462bb60e3241f4150277ce728b109"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a898462bb60e3241f4150277ce728b109">&#9670;&nbsp;</a></span>m_collisions</h2>
+<a id="a2da2be6c9f68c9f555e7c3db82f5f082"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da2be6c9f68c9f555e7c3db82f5f082">&#9670;&nbsp;</a></span>m_collisions</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -953,7 +1045,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="class_engine_1_1_collision.html">Collision</a>*&gt; Engine::PhysicsEventUser::m_collisions</td>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="class_engine_1_1_collision.html">Collision</a>&gt; &gt; Engine::PhysicsEventUser::m_collisions</td>
         </tr>
       </table>
   </td>
@@ -962,6 +1054,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>A list of all collisions that this object has accumulated. </p>
 
 </div>
 </div>
@@ -985,6 +1079,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Floored is an optimisation. If an object is "floored" it is sitting on a flat surface and no further gravity or collision checks need to happen. </p>
+
 </div>
 </div>
 <a id="a8b69f5b00960b32542f602b8c52c5391"></a>
@@ -1006,6 +1102,24 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>A "permanent" contact-point that stores where an object should remain once stationary (ie: stacked on top of another object) </p>
+
+</div>
+</div>
+<a id="a7587474f41d028b4e5044c25daba54ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7587474f41d028b4e5044c25daba54ed">&#9670;&nbsp;</a></span>m_self</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::weak_ptr&lt;<a class="el" href="class_engine_1_1_physics_event_user.html">PhysicsEventUser</a>&gt; Engine::PhysicsEventUser::m_self</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A "this" pointer. </p>
 
 </div>
 </div>

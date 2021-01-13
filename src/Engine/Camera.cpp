@@ -12,7 +12,7 @@ namespace Engine
 {	
 	void Camera::onInitialise()
 	{
-		m_rotSpeed = 12.0f;
+		
 	}
 
 	void Camera::setSurface(std::shared_ptr<Surface> _surface)

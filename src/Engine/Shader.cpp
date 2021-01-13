@@ -28,7 +28,7 @@ namespace Engine
 		std::string _vert, _frag;
 		_vert = "../resources/shaders/" + _name + ".vert";
 		_frag = "../resources/shaders/" + _name + ".frag";
-		Console::output("Started Shader load: " + _name ); ////
+		Console::output("Started Shader load: " + _name ); 
 		std::string vertShader;
 		std::string fragShader;
 
@@ -81,7 +81,7 @@ namespace Engine
 
 			// The maxLength includes the NULL character
 			std::vector<GLchar> errorLog(maxLength);
-			glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);			//////
+			glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);			
 			std::string error = &errorLog.at(0);
 			throw Exception("Failed to compile vertex shader: " + error);
 		}
@@ -119,7 +119,7 @@ namespace Engine
 		if (!success)
 		{			
 			GLint maxLength = 0;
-			glGetProgramiv(m_id, GL_INFO_LOG_LENGTH, &maxLength); ////////////////////////////
+			glGetProgramiv(m_id, GL_INFO_LOG_LENGTH, &maxLength);
 
 			// The maxLength includes the NULL character
 			std::vector<GLchar> infoLog(maxLength);
@@ -135,7 +135,7 @@ namespace Engine
 				error += infoLog[i];
 			}
 			// Exit with failure.			
-			throw Exception("Failed to link shader program: " + error);////
+			throw Exception("Failed to link shader program: " + error);
 		}
 
 		//glDetachShader(m_id, vertexShaderId);
@@ -159,37 +159,6 @@ namespace Engine
 			Console::output(Console::Warning, "Shader", std::string(infoLog));
 			free(infoLog);
 		}
-	}
-
-	void Shader::overrideDraw(std::shared_ptr<VertexArray> _vertexArray)
-	{
-		//glUseProgram(m_id);
-		glBindVertexArray(_vertexArray->getId());
-		//glUniform4f(colorUniformId, 0, 1, 0, 1);
-
-		for (size_t i = 0; i < m_sampler.size(); i++)
-		{
-			glActiveTexture(GL_TEXTURE0 + i);
-			if (m_sampler.at(i).m_tex)
-			{
-				glBindTexture(GL_TEXTURE_2D, m_sampler.at(i).m_tex->get());
-			}
-			else
-			{
-				glBindTexture(GL_TEXTURE_2D, 0);
-			}
-
-		}
-		glDrawArrays(GL_TRIANGLES, 0, _vertexArray->getVertexCount());
-
-		for (size_t i = 0; i < m_sampler.size(); i++)
-		{
-			glActiveTexture(GL_TEXTURE0 + i);
-			glBindTexture(GL_TEXTURE_2D, 0);
-		}
-
-		glBindVertexArray(0);
-		//glUseProgram(0);
 	}
 
 	void Shader::draw(std::shared_ptr<VertexArray> _vertexArray)
@@ -338,7 +307,7 @@ namespace Engine
 		glUseProgram(m_id);
 		glUniform1i(uniformId, m_sampler.size() - 1);
 		glActiveTexture(GL_TEXTURE0 + m_sampler.size() - 1);
-		glBindTexture(GL_TEXTURE_2D, _tex->m_textureId);
+		glBindTexture(GL_TEXTURE_2D, _tex->get());
 		glActiveTexture(GL_TEXTURE0);
 		glUseProgram(0);
 	}
@@ -372,7 +341,7 @@ namespace Engine
 		glUseProgram(m_id);
 		glUniform1i(uniformId, m_sampler.size() - 1);
 		glActiveTexture(GL_TEXTURE0 + m_sampler.size() - 1);
-		glBindTexture(GL_TEXTURE_CUBE_MAP, _sc->m_textureId);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, _sc->get());
 		glActiveTexture(GL_TEXTURE0);
 		glUseProgram(0);
 	}

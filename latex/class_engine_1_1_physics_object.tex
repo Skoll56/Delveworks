@@ -2,6 +2,11 @@
 \label{class_engine_1_1_physics_object}\index{Engine::PhysicsObject@{Engine::PhysicsObject}}
 
 
+A Physics Object checks for collisions each frame automatically, obeys gravity and carries a velocity.  
+
+
+
+
 {\ttfamily \#include $<$Physics\+New.\+h$>$}
 
 Inheritance diagram for Engine\+::Physics\+Object\+:\begin{figure}[H]
@@ -14,50 +19,71 @@ Inheritance diagram for Engine\+::Physics\+Object\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c01676f6d79bec3423ff8a0}{on\+Tick}} ()
-\item 
-void \mbox{\hyperlink{class_engine_1_1_physics_object_aef8446ad2619cc2518851d079816295e}{Initialise}} (float \+\_\+mass, float \+\_\+bounciness)
-\item 
+\begin{DoxyCompactList}\small\item\em Update, checks for collisions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_physics_object_aa83207173cf4332c650f71517fdf20f3}{on\+Initialise}} (float \+\_\+mass, float \+\_\+bounciness)
+\begin{DoxyCompactList}\small\item\em Initialise the object with a mass value and a bounciness value. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_engine_1_1_physics_object_a71f7ecd6a15c5d288395442986cdd78f}{Physics\+Object}} ()
 \item 
-void \mbox{\hyperlink{class_engine_1_1_physics_object_a5d2f6d95dd1e05a9e1f0b16ff20f773c}{handle\+Collisions}} ()
-\item 
 void \mbox{\hyperlink{class_engine_1_1_physics_object_af9df8afc5ff651535135093241d93250}{add\+Force}} (glm\+::vec3 \+\_\+force)
-\item 
+\begin{DoxyCompactList}\small\item\em Add force to an object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_physics_object_a1aa0907aaf40d3f9286848da692abd01}{clear\+Forces}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Clear all forces on an object. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_object_aeb74be0f6a582a61ae10837b220eedd3}{runge\+Kutta2}} (float \+\_\+delta\+Ts, float \+\_\+mass)
-\item 
+\begin{DoxyCompactList}\small\item\em Performs updates velocity based on deltatime and force on the object and returns a delta position. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_physics_object_a47e17f6e3eb5df0f3af8c86a2bbb9197}{set\+Force}} (const glm\+::vec3 \+\_\+force)
-\item 
+\begin{DoxyCompactList}\small\item\em Set the force on the object to a value. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_object_aad21a08f76723d5daf6421e040a3e8e9}{get\+Velocity}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Get the velocity of the object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_physics_object_a48470fa6e5e924b645facc77088c128b}{set\+Velocity}} (glm\+::vec3 \+\_\+vel)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the velocity to a value. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_physics_object_af98e2180475dae87698255abf79a08a9}{add\+Velocity}} (glm\+::vec3 \+\_\+vel)
-\item 
+\begin{DoxyCompactList}\small\item\em Add to the velocity of the object. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_physics_object_a9b744d3a72b6a2de161d9c4b6c79a211}{get\+Bounciness}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Get the bounciness value of the object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_physics_object_a8fb6c6fd3ca7a8660ad9be6780eaee0d}{set\+Bounciness}} (float \+\_\+amt)
-\item 
+\begin{DoxyCompactList}\small\item\em Set the bounciness of the object. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_physics_object_a349c11f65639b168b3780495df1a0174}{get\+Mass}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Gets the mass of the object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_physics_object_ad6d95ea41d848c903528aa7e68348039}{set\+Mass}} (float \+\_\+mass)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the mass of the object. \end{DoxyCompactList}\item 
 const glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_object_ae4722e5118da68b46910d3fbfa4d2583}{get\+Force}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets the current force of the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_physics_object}{Physics\+Object}} $>$ \mbox{\hyperlink{class_engine_1_1_physics_object_a2033f525488400a2e279780c6515ace8}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}this\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_engine_1_1_physics_object_a0f655c9254c5e7dd45f3c8eeed8e7c21}{is\+In\+Col\+List}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$$>$ \+\_\+list, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$ \+\_\+col)
+\begin{DoxyCompactList}\small\item\em Checks to see if a collision is inside the list of collisions this object holds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_physics_object_a5d2f6d95dd1e05a9e1f0b16ff20f773c}{handle\+Collisions}} ()
+\begin{DoxyCompactList}\small\item\em This is called when the object should resolve the collisions it has stored. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$ $>$ \mbox{\hyperlink{class_engine_1_1_physics_object_aae80dd4114008e58532635df2c40afa3}{m\+\_\+last\+Col}}
+\begin{DoxyCompactList}\small\item\em The last collision the object encountered. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_physics_object_a9bd950b3025eb17a7729988b6e0d2ccf}{m\+\_\+mass}} = 1.\+0f
-\item 
+\begin{DoxyCompactList}\small\item\em The mass of the object. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_physics_object_a79df90e78eacfd10b44bcd8a8ceb000c}{m\+\_\+bounciness}} = 0.\+0f
-\item 
+\begin{DoxyCompactList}\small\item\em The bounciness value of the object. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_object_a7bc0230585d8bf05721f70212b4ec670}{m\+\_\+velocity}} = glm\+::vec3(0.\+0f)
-\item 
+\begin{DoxyCompactList}\small\item\em The velocity of the object. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_object_af936ba37ce4290bd9b8aa1c96c9fc32d}{m\+\_\+force}} = glm\+::vec3(0.\+0f)
+\begin{DoxyCompactList}\small\item\em The force of the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_engine_1_1_physics_object_a614439ccac0344926adc4c0165d64060}{Entity}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+A Physics Object checks for collisions each frame automatically, obeys gravity and carries a velocity. 
+
+It currently does not support rotated colliders or torque, but is the standard Physics object which most physical objects should use 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_engine_1_1_physics_object_a71f7ecd6a15c5d288395442986cdd78f}\label{class_engine_1_1_physics_object_a71f7ecd6a15c5d288395442986cdd78f}} 
@@ -75,11 +101,19 @@ glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_object_af936ba37ce4290bd9b
 \doxysubsubsection{\texorpdfstring{addForce()}{addForce()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::add\+Force (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+force }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Add force to an object. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_object_af98e2180475dae87698255abf79a08a9}\label{class_engine_1_1_physics_object_af98e2180475dae87698255abf79a08a9}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!addVelocity@{addVelocity}}
 \index{addVelocity@{addVelocity}!Engine::PhysicsObject@{Engine::PhysicsObject}}
 \doxysubsubsection{\texorpdfstring{addVelocity()}{addVelocity()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::add\+Velocity (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+vel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add to the velocity of the object. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_object_a1aa0907aaf40d3f9286848da692abd01}\label{class_engine_1_1_physics_object_a1aa0907aaf40d3f9286848da692abd01}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!clearForces@{clearForces}}
@@ -87,11 +121,19 @@ glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_object_af936ba37ce4290bd9b
 \doxysubsubsection{\texorpdfstring{clearForces()}{clearForces()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::clear\+Forces (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Clear all forces on an object. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_object_a9b744d3a72b6a2de161d9c4b6c79a211}\label{class_engine_1_1_physics_object_a9b744d3a72b6a2de161d9c4b6c79a211}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!getBounciness@{getBounciness}}
 \index{getBounciness@{getBounciness}!Engine::PhysicsObject@{Engine::PhysicsObject}}
 \doxysubsubsection{\texorpdfstring{getBounciness()}{getBounciness()}}
 {\footnotesize\ttfamily float Engine\+::\+Physics\+Object\+::get\+Bounciness (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the bounciness value of the object. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_object_ae4722e5118da68b46910d3fbfa4d2583}\label{class_engine_1_1_physics_object_ae4722e5118da68b46910d3fbfa4d2583}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!getForce@{getForce}}
@@ -99,11 +141,19 @@ glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_object_af936ba37ce4290bd9b
 \doxysubsubsection{\texorpdfstring{getForce()}{getForce()}}
 {\footnotesize\ttfamily const glm\+::vec3 Engine\+::\+Physics\+Object\+::get\+Force (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Gets the current force of the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_object_a349c11f65639b168b3780495df1a0174}\label{class_engine_1_1_physics_object_a349c11f65639b168b3780495df1a0174}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!getMass@{getMass}}
 \index{getMass@{getMass}!Engine::PhysicsObject@{Engine::PhysicsObject}}
 \doxysubsubsection{\texorpdfstring{getMass()}{getMass()}}
 {\footnotesize\ttfamily float Engine\+::\+Physics\+Object\+::get\+Mass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the mass of the object. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_object_aad21a08f76723d5daf6421e040a3e8e9}\label{class_engine_1_1_physics_object_aad21a08f76723d5daf6421e040a3e8e9}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!getVelocity@{getVelocity}}
@@ -111,23 +161,49 @@ glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_object_af936ba37ce4290bd9b
 \doxysubsubsection{\texorpdfstring{getVelocity()}{getVelocity()}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Physics\+Object\+::get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Get the velocity of the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_object_a5d2f6d95dd1e05a9e1f0b16ff20f773c}\label{class_engine_1_1_physics_object_a5d2f6d95dd1e05a9e1f0b16ff20f773c}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!handleCollisions@{handleCollisions}}
 \index{handleCollisions@{handleCollisions}!Engine::PhysicsObject@{Engine::PhysicsObject}}
 \doxysubsubsection{\texorpdfstring{handleCollisions()}{handleCollisions()}}
-{\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::handle\+Collisions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::handle\+Collisions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
-\mbox{\Hypertarget{class_engine_1_1_physics_object_aef8446ad2619cc2518851d079816295e}\label{class_engine_1_1_physics_object_aef8446ad2619cc2518851d079816295e}} 
-\index{Engine::PhysicsObject@{Engine::PhysicsObject}!Initialise@{Initialise}}
-\index{Initialise@{Initialise}!Engine::PhysicsObject@{Engine::PhysicsObject}}
-\doxysubsubsection{\texorpdfstring{Initialise()}{Initialise()}}
-{\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::\+Initialise (\begin{DoxyParamCaption}\item[{float}]{\+\_\+mass,  }\item[{float}]{\+\_\+bounciness }\end{DoxyParamCaption})}
+
+
+This is called when the object should resolve the collisions it has stored. 
+
+\mbox{\Hypertarget{class_engine_1_1_physics_object_a0f655c9254c5e7dd45f3c8eeed8e7c21}\label{class_engine_1_1_physics_object_a0f655c9254c5e7dd45f3c8eeed8e7c21}} 
+\index{Engine::PhysicsObject@{Engine::PhysicsObject}!isInColList@{isInColList}}
+\index{isInColList@{isInColList}!Engine::PhysicsObject@{Engine::PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{isInColList()}{isInColList()}}
+{\footnotesize\ttfamily bool Engine\+::\+Physics\+Object\+::is\+In\+Col\+List (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$$>$}]{\+\_\+list,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$}]{\+\_\+col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Checks to see if a collision is inside the list of collisions this object holds. 
+
+\mbox{\Hypertarget{class_engine_1_1_physics_object_aa83207173cf4332c650f71517fdf20f3}\label{class_engine_1_1_physics_object_aa83207173cf4332c650f71517fdf20f3}} 
+\index{Engine::PhysicsObject@{Engine::PhysicsObject}!onInitialise@{onInitialise}}
+\index{onInitialise@{onInitialise}!Engine::PhysicsObject@{Engine::PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{onInitialise()}{onInitialise()}}
+{\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::on\+Initialise (\begin{DoxyParamCaption}\item[{float}]{\+\_\+mass,  }\item[{float}]{\+\_\+bounciness }\end{DoxyParamCaption})}
+
+
+
+Initialise the object with a mass value and a bounciness value. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_object_a61e0c0862c01676f6d79bec3423ff8a0}\label{class_engine_1_1_physics_object_a61e0c0862c01676f6d79bec3423ff8a0}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!onTick@{onTick}}
 \index{onTick@{onTick}!Engine::PhysicsObject@{Engine::PhysicsObject}}
 \doxysubsubsection{\texorpdfstring{onTick()}{onTick()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Update, checks for collisions. 
 
 
 
@@ -143,11 +219,19 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205
 \doxysubsubsection{\texorpdfstring{rungeKutta2()}{rungeKutta2()}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Physics\+Object\+::runge\+Kutta2 (\begin{DoxyParamCaption}\item[{float}]{\+\_\+delta\+Ts,  }\item[{float}]{\+\_\+mass }\end{DoxyParamCaption})}
 
+
+
+Performs updates velocity based on deltatime and force on the object and returns a delta position. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_object_a8fb6c6fd3ca7a8660ad9be6780eaee0d}\label{class_engine_1_1_physics_object_a8fb6c6fd3ca7a8660ad9be6780eaee0d}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!setBounciness@{setBounciness}}
 \index{setBounciness@{setBounciness}!Engine::PhysicsObject@{Engine::PhysicsObject}}
 \doxysubsubsection{\texorpdfstring{setBounciness()}{setBounciness()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::set\+Bounciness (\begin{DoxyParamCaption}\item[{float}]{\+\_\+amt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the bounciness of the object. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_object_a47e17f6e3eb5df0f3af8c86a2bbb9197}\label{class_engine_1_1_physics_object_a47e17f6e3eb5df0f3af8c86a2bbb9197}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!setForce@{setForce}}
@@ -155,17 +239,38 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205
 \doxysubsubsection{\texorpdfstring{setForce()}{setForce()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::set\+Force (\begin{DoxyParamCaption}\item[{const glm\+::vec3}]{\+\_\+force }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Set the force on the object to a value. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_object_ad6d95ea41d848c903528aa7e68348039}\label{class_engine_1_1_physics_object_ad6d95ea41d848c903528aa7e68348039}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!setMass@{setMass}}
 \index{setMass@{setMass}!Engine::PhysicsObject@{Engine::PhysicsObject}}
 \doxysubsubsection{\texorpdfstring{setMass()}{setMass()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::set\+Mass (\begin{DoxyParamCaption}\item[{float}]{\+\_\+mass }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Sets the mass of the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_object_a48470fa6e5e924b645facc77088c128b}\label{class_engine_1_1_physics_object_a48470fa6e5e924b645facc77088c128b}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!setVelocity@{setVelocity}}
 \index{setVelocity@{setVelocity}!Engine::PhysicsObject@{Engine::PhysicsObject}}
 \doxysubsubsection{\texorpdfstring{setVelocity()}{setVelocity()}}
 {\footnotesize\ttfamily void Engine\+::\+Physics\+Object\+::set\+Velocity (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+vel }\end{DoxyParamCaption})}
+
+
+
+Sets the velocity to a value. 
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_physics_object_a614439ccac0344926adc4c0165d64060}\label{class_engine_1_1_physics_object_a614439ccac0344926adc4c0165d64060}} 
+\index{Engine::PhysicsObject@{Engine::PhysicsObject}!Entity@{Entity}}
+\index{Entity@{Entity}!Engine::PhysicsObject@{Engine::PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{Entity}{Entity}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 
@@ -176,11 +281,29 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205
 \doxysubsubsection{\texorpdfstring{m\_bounciness}{m\_bounciness}}
 {\footnotesize\ttfamily float Engine\+::\+Physics\+Object\+::m\+\_\+bounciness = 0.\+0f\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+The bounciness value of the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_object_af936ba37ce4290bd9b8aa1c96c9fc32d}\label{class_engine_1_1_physics_object_af936ba37ce4290bd9b8aa1c96c9fc32d}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!m\_force@{m\_force}}
 \index{m\_force@{m\_force}!Engine::PhysicsObject@{Engine::PhysicsObject}}
 \doxysubsubsection{\texorpdfstring{m\_force}{m\_force}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Physics\+Object\+::m\+\_\+force = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The force of the object. 
+
+\mbox{\Hypertarget{class_engine_1_1_physics_object_aae80dd4114008e58532635df2c40afa3}\label{class_engine_1_1_physics_object_aae80dd4114008e58532635df2c40afa3}} 
+\index{Engine::PhysicsObject@{Engine::PhysicsObject}!m\_lastCol@{m\_lastCol}}
+\index{m\_lastCol@{m\_lastCol}!Engine::PhysicsObject@{Engine::PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_lastCol}{m\_lastCol}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_collision}{Collision}}$>$ $>$ Engine\+::\+Physics\+Object\+::m\+\_\+last\+Col\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The last collision the object encountered. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_object_a9bd950b3025eb17a7729988b6e0d2ccf}\label{class_engine_1_1_physics_object_a9bd950b3025eb17a7729988b6e0d2ccf}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!m\_mass@{m\_mass}}
@@ -188,11 +311,29 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205
 \doxysubsubsection{\texorpdfstring{m\_mass}{m\_mass}}
 {\footnotesize\ttfamily float Engine\+::\+Physics\+Object\+::m\+\_\+mass = 1.\+0f\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+The mass of the object. 
+
+\mbox{\Hypertarget{class_engine_1_1_physics_object_a2033f525488400a2e279780c6515ace8}\label{class_engine_1_1_physics_object_a2033f525488400a2e279780c6515ace8}} 
+\index{Engine::PhysicsObject@{Engine::PhysicsObject}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::PhysicsObject@{Engine::PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_physics_object}{Physics\+Object}}$>$ Engine\+::\+Physics\+Object\+::m\+\_\+self}
+
+
+
+A \char`\"{}this\char`\"{} pointer. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_object_a7bc0230585d8bf05721f70212b4ec670}\label{class_engine_1_1_physics_object_a7bc0230585d8bf05721f70212b4ec670}} 
 \index{Engine::PhysicsObject@{Engine::PhysicsObject}!m\_velocity@{m\_velocity}}
 \index{m\_velocity@{m\_velocity}!Engine::PhysicsObject@{Engine::PhysicsObject}}
 \doxysubsubsection{\texorpdfstring{m\_velocity}{m\_velocity}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Physics\+Object\+::m\+\_\+velocity = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The velocity of the object. 
 
 
 

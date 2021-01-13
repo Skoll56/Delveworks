@@ -7,7 +7,6 @@
 {\ttfamily \#include \char`\"{}Physics\+New.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$math.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
-{\ttfamily \#include $<$typeinfo.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}Mesh\+Renderer.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Vertex\+Buffer.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Vertex\+Array.\+h\char`\"{}}\newline
@@ -21,8 +20,6 @@
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{_physics_new_8cpp_a2e25521af11f96d9029e762395365891}{W\+I\+T\+H\+IN}}(n1,  n2,  var)~n1 $>$ n2 -\/ var \&\& n1 $<$ n2 + var
-\item 
-\#define \mbox{\hyperlink{_physics_new_8cpp_adac4e8e1f58344548f1513bceef9ab7b}{O\+U\+T\+P\+UT}}(vec)~std\+::cout $<$$<$ vec.\+x $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+y $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+z $<$$<$std\+::endl;
 \item 
 \#define \mbox{\hyperlink{_physics_new_8cpp_a1965eaca47dbf3f87acdafc2208f04eb}{UP}}~glm\+::vec3(0.\+0f, 1.\+0f, 0.\+0f)
 \item 
@@ -321,12 +318,6 @@
 \index{NEWCOMPUTE\_INTERVALS@{NEWCOMPUTE\_INTERVALS}!PhysicsNew.cpp@{PhysicsNew.cpp}}
 \doxysubsubsection{\texorpdfstring{NEWCOMPUTE\_INTERVALS}{NEWCOMPUTE\_INTERVALS}}
 {\footnotesize\ttfamily \#define N\+E\+W\+C\+O\+M\+P\+U\+T\+E\+\_\+\+I\+N\+T\+E\+R\+V\+A\+LS(\begin{DoxyParamCaption}\item[{}]{V\+V0,  }\item[{}]{V\+V1,  }\item[{}]{V\+V2,  }\item[{}]{D0,  }\item[{}]{D1,  }\item[{}]{D2,  }\item[{}]{D0\+D1,  }\item[{}]{D0\+D2,  }\item[{}]{A,  }\item[{}]{B,  }\item[{}]{\mbox{\hyperlink{stb__vorbis_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}},  }\item[{}]{X0,  }\item[{}]{X1 }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{_physics_new_8cpp_adac4e8e1f58344548f1513bceef9ab7b}\label{_physics_new_8cpp_adac4e8e1f58344548f1513bceef9ab7b}} 
-\index{PhysicsNew.cpp@{PhysicsNew.cpp}!OUTPUT@{OUTPUT}}
-\index{OUTPUT@{OUTPUT}!PhysicsNew.cpp@{PhysicsNew.cpp}}
-\doxysubsubsection{\texorpdfstring{OUTPUT}{OUTPUT}}
-{\footnotesize\ttfamily \#define O\+U\+T\+P\+UT(\begin{DoxyParamCaption}\item[{}]{vec }\end{DoxyParamCaption})~std\+::cout $<$$<$ vec.\+x $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+y $<$$<$ \char`\"{} \char`\"{} $<$$<$ vec.\+z $<$$<$std\+::endl;}
 
 \mbox{\Hypertarget{_physics_new_8cpp_add43cd9d9b223e41583e509300913a33}\label{_physics_new_8cpp_add43cd9d9b223e41583e509300913a33}} 
 \index{PhysicsNew.cpp@{PhysicsNew.cpp}!POINT\_IN\_TRI@{POINT\_IN\_TRI}}

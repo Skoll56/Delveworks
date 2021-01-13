@@ -2,6 +2,11 @@
 \label{class_engine_1_1_collider}\index{Engine::Collider@{Engine::Collider}}
 
 
+The \mbox{\hyperlink{class_engine_1_1_collider}{Collider}} Base Class.  
+
+
+
+
 {\ttfamily \#include $<$Collider.\+h$>$}
 
 Inheritance diagram for Engine\+::Collider\+:\begin{figure}[H]
@@ -17,14 +22,37 @@ void \mbox{\hyperlink{class_engine_1_1_collider_a22625f5a3088603e839600a9cf87bb6
 \item 
 float \mbox{\hyperlink{class_engine_1_1_collider_a4f28993ceab63b82dbf249f290492a88}{get\+Friction}} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{class_engine_1_1_collider_a7fe82dd894e883f92bb1dcedf9f5bbad}{m\+\_\+trigger}}
+bool \mbox{\hyperlink{class_engine_1_1_collider_a7fe82dd894e883f92bb1dcedf9f5bbad}{m\+\_\+trigger}} = false
+\begin{DoxyCompactList}\small\item\em A Trigger isn\textquotesingle{}t a solid object, \mbox{\hyperlink{class_engine_1_1_physics_object}{Physics\+Object}} will phase through it but a collision event still gets generated. \end{DoxyCompactList}\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collider}{Collider}} $>$ \mbox{\hyperlink{class_engine_1_1_collider_a566a147d3db1ce6d0b53a664a41ca4c3}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}this\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_engine_1_1_collider_a0329f930cc15d269ba186750f6bdfbea}{Collider}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{class_engine_1_1_collider_aa3da74fbe36fa5e79f572b6ea8804589}{m\+\_\+friction}} = 0.\+25f
-\end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\begin{DoxyCompactList}\small\item\em Any friction this object has. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_engine_1_1_collider}{Collider}} Base Class. 
+
+This is the base class for any \mbox{\hyperlink{class_engine_1_1_collider}{Collider}}. Colliders work with \mbox{\hyperlink{class_engine_1_1_physics_event_user}{Physics\+Event\+User}} objects to generate Physics events 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_engine_1_1_collider_a0329f930cc15d269ba186750f6bdfbea}\label{class_engine_1_1_collider_a0329f930cc15d269ba186750f6bdfbea}} 
+\index{Engine::Collider@{Engine::Collider}!Collider@{Collider}}
+\index{Collider@{Collider}!Engine::Collider@{Engine::Collider}}
+\doxysubsubsection{\texorpdfstring{Collider()}{Collider()}}
+{\footnotesize\ttfamily Engine\+::\+Collider\+::\+Collider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
 
 
 \doxysubsection{Member Function Documentation}
@@ -47,13 +75,31 @@ float \mbox{\hyperlink{class_engine_1_1_collider_aa3da74fbe36fa5e79f572b6ea88045
 \index{Engine::Collider@{Engine::Collider}!m\_friction@{m\_friction}}
 \index{m\_friction@{m\_friction}!Engine::Collider@{Engine::Collider}}
 \doxysubsubsection{\texorpdfstring{m\_friction}{m\_friction}}
-{\footnotesize\ttfamily float Engine\+::\+Collider\+::m\+\_\+friction = 0.\+25f\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily float Engine\+::\+Collider\+::m\+\_\+friction = 0.\+25f\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Any friction this object has. 
+
+\mbox{\Hypertarget{class_engine_1_1_collider_a566a147d3db1ce6d0b53a664a41ca4c3}\label{class_engine_1_1_collider_a566a147d3db1ce6d0b53a664a41ca4c3}} 
+\index{Engine::Collider@{Engine::Collider}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::Collider@{Engine::Collider}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_collider}{Collider}}$>$ Engine\+::\+Collider\+::m\+\_\+self}
+
+
+
+A \char`\"{}this\char`\"{} pointer. 
 
 \mbox{\Hypertarget{class_engine_1_1_collider_a7fe82dd894e883f92bb1dcedf9f5bbad}\label{class_engine_1_1_collider_a7fe82dd894e883f92bb1dcedf9f5bbad}} 
 \index{Engine::Collider@{Engine::Collider}!m\_trigger@{m\_trigger}}
 \index{m\_trigger@{m\_trigger}!Engine::Collider@{Engine::Collider}}
 \doxysubsubsection{\texorpdfstring{m\_trigger}{m\_trigger}}
-{\footnotesize\ttfamily bool Engine\+::\+Collider\+::m\+\_\+trigger\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily bool Engine\+::\+Collider\+::m\+\_\+trigger = false}
+
+
+
+A Trigger isn\textquotesingle{}t a solid object, \mbox{\hyperlink{class_engine_1_1_physics_object}{Physics\+Object}} will phase through it but a collision event still gets generated. 
 
 
 

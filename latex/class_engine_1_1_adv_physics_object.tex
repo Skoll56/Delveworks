@@ -2,6 +2,11 @@
 \label{class_engine_1_1_adv_physics_object}\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 
 
+An Advanced Physics object which can rotate, have torque and an angular velocity.  
+
+
+
+
 {\ttfamily \#include $<$Physics\+New.\+h$>$}
 
 Inheritance diagram for Engine\+::Adv\+Physics\+Object\+:\begin{figure}[H]
@@ -14,58 +19,67 @@ Inheritance diagram for Engine\+::Adv\+Physics\+Object\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205063c01f652b02c0b44afe1a}{on\+Tick}} ()
-\item 
-void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a458a52398534dad8aac4492961b95846}{Initialise}} (float \+\_\+mass, float \+\_\+bounciness)
-\item 
+\begin{DoxyCompactList}\small\item\em Update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a825d8536a9135e3d11ca3f249f60e301}{on\+Initialise}} (float \+\_\+mass, float \+\_\+bounciness)
+\begin{DoxyCompactList}\small\item\em Initialise with a mass and bounciness value. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ae346adabb15053c851f845f9bfc318ad}{Adv\+Physics\+Object}} ()
 \item 
 glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ae32e6829036cd669f41745136fc5c1be}{get\+Rot\+Mat}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the rotation matrix of the object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ad6ef2daa6e84da213e320bbbc901864e}{update\+Rotations}} (float \+\_\+d\+Ts, bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a2e90e0014b21222a1c9fcfef44b1e5e7}{collided}})
-\item 
+\begin{DoxyCompactList}\small\item\em Updates the rotation of the object using its angular velocities. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ae35f99bf986d7112f4ee11c093c4cf4d}{set\+Avel}} (glm\+::vec3 \+\_\+a\+Vel)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the angular velocity of the object. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a7f8bed1e8f7112f101a71dca01459d04}{get\+Avel}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Gets the angular velocity of the object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a72567a5e2cb7355e0dece4aa13ee1b8b}{set\+Rot\+Mat}} (glm\+::mat3 \+\_\+r\+Mat)
-\item 
+\begin{DoxyCompactList}\small\item\em Assigns the rotation matrix of the object. \end{DoxyCompactList}\item 
 glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_aafadf8f25c145b8ead0d54b080bc9b7f}{calc\+Inv\+Tensor}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Calculates the inverse tensor of the object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a77a290f36486e07da822c7d7182b8e12}{set\+Inv\+Tensor}} (glm\+::mat3 \+\_\+matrix)
-\item 
+\begin{DoxyCompactList}\small\item\em Assigns the inverse tensor of the object. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_af92702df9047f9dc538fd1bae5bfefa2}{get\+Amom}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Gets the Angular Momentum of the object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a61d37668bd9c178ebc178fee3361c414}{set\+Amom}} (glm\+::vec3 \+\_\+mom)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the angular momentum of the object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_aaea8baf2f49ba52c5cab1b3dc2363ede}{add\+Torque}} (glm\+::vec3 \+\_\+torque)
-\item 
+\begin{DoxyCompactList}\small\item\em Adds torque to the object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ab9b9d32dd267691ebe929e29dcd90cdd}{clear\+Torque}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Removes any torque from the object. \end{DoxyCompactList}\item 
 glm\+::quat \mbox{\hyperlink{class_engine_1_1_adv_physics_object_af752bbfeee36c63afaf1c240f3dcd611}{get\+Rot\+Quat}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Return the rotation quaternion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_adv_physics_object}{Adv\+Physics\+Object}} $>$ \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a9472cb9b8db9afbd75df15257093d3ee}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}this\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a2a803fa99168b227d0cf88b6a9f30a9c}{m\+\_\+torque}} = glm\+::vec3(0.\+0f)
-\item 
+\begin{DoxyCompactList}\small\item\em The torque force acting on the object this frame. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ac04326740ff444414bee55999e279d58}{m\+\_\+a\+Vel}} = glm\+::vec3(0.\+0f)
-\item 
+\begin{DoxyCompactList}\small\item\em Angular Velocity. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a6105b3696e7eee1fe34290a94d18b6a0}{m\+\_\+a\+Mom}} = glm\+::vec3(0.\+0f)
-\item 
+\begin{DoxyCompactList}\small\item\em Angular momentum. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a49825833d7c58bfd91f72794e11245cc}{m\+\_\+a\+Acc}} = glm\+::vec3(0.\+0f)
-\item 
+\begin{DoxyCompactList}\small\item\em Angular acceleration ~\newline
+ \end{DoxyCompactList}\item 
 glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a6ccd95b7d8a1d34fe1cc2066985a672e}{m\+\_\+inv\+Inertia\+Tensor}}
-\item 
+\begin{DoxyCompactList}\small\item\em Inverse of the inertia tensor. \end{DoxyCompactList}\item 
 glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a48bf98f9c8d24588d881cfbc5f46b7f5}{m\+\_\+inv\+Body\+Inertia\+Tensor}}
-\item 
+\begin{DoxyCompactList}\small\item\em The inverse of the Body inertia tensor. \end{DoxyCompactList}\item 
 glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a8ea2eda823e872b9df92f2caec84c927}{m\+\_\+rot\+Mat}}
-\item 
+\begin{DoxyCompactList}\small\item\em The matrix that represents the rotation of the object. \end{DoxyCompactList}\item 
 glm\+::quat \mbox{\hyperlink{class_engine_1_1_adv_physics_object_aaaea939e86c45d0f27a7809209c1cd5c}{m\+\_\+rot\+Quat}}
-\item 
-glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ad5a232ff7e20f233976824feecd87787}{m\+\_\+orient}} = glm\+::vec3(0.\+0f)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The quaternion which represents the rotation of the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+An Advanced Physics object which can rotate, have torque and an angular velocity. 
+
+Currently only compatible for spheres 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ae346adabb15053c851f845f9bfc318ad}\label{class_engine_1_1_adv_physics_object_ae346adabb15053c851f845f9bfc318ad}} 
@@ -83,11 +97,19 @@ glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ad5a232ff7e20f2
 \doxysubsubsection{\texorpdfstring{addTorque()}{addTorque()}}
 {\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::add\+Torque (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+torque }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Adds torque to the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_aafadf8f25c145b8ead0d54b080bc9b7f}\label{class_engine_1_1_adv_physics_object_aafadf8f25c145b8ead0d54b080bc9b7f}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!calcInvTensor@{calcInvTensor}}
 \index{calcInvTensor@{calcInvTensor}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{calcInvTensor()}{calcInvTensor()}}
 {\footnotesize\ttfamily glm\+::mat3 Engine\+::\+Adv\+Physics\+Object\+::calc\+Inv\+Tensor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the inverse tensor of the object. 
 
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ab9b9d32dd267691ebe929e29dcd90cdd}\label{class_engine_1_1_adv_physics_object_ab9b9d32dd267691ebe929e29dcd90cdd}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!clearTorque@{clearTorque}}
@@ -95,11 +117,19 @@ glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ad5a232ff7e20f2
 \doxysubsubsection{\texorpdfstring{clearTorque()}{clearTorque()}}
 {\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::clear\+Torque (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Removes any torque from the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_af92702df9047f9dc538fd1bae5bfefa2}\label{class_engine_1_1_adv_physics_object_af92702df9047f9dc538fd1bae5bfefa2}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!getAmom@{getAmom}}
 \index{getAmom@{getAmom}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{getAmom()}{getAmom()}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::get\+Amom (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the Angular Momentum of the object. 
 
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a7f8bed1e8f7112f101a71dca01459d04}\label{class_engine_1_1_adv_physics_object_a7f8bed1e8f7112f101a71dca01459d04}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!getAvel@{getAvel}}
@@ -107,11 +137,19 @@ glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ad5a232ff7e20f2
 \doxysubsubsection{\texorpdfstring{getAvel()}{getAvel()}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::get\+Avel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Gets the angular velocity of the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ae32e6829036cd669f41745136fc5c1be}\label{class_engine_1_1_adv_physics_object_ae32e6829036cd669f41745136fc5c1be}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!getRotMat@{getRotMat}}
 \index{getRotMat@{getRotMat}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{getRotMat()}{getRotMat()}}
 {\footnotesize\ttfamily glm\+::mat3 Engine\+::\+Adv\+Physics\+Object\+::get\+Rot\+Mat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the rotation matrix of the object. 
 
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_af752bbfeee36c63afaf1c240f3dcd611}\label{class_engine_1_1_adv_physics_object_af752bbfeee36c63afaf1c240f3dcd611}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!getRotQuat@{getRotQuat}}
@@ -119,17 +157,29 @@ glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ad5a232ff7e20f2
 \doxysubsubsection{\texorpdfstring{getRotQuat()}{getRotQuat()}}
 {\footnotesize\ttfamily glm\+::quat Engine\+::\+Adv\+Physics\+Object\+::get\+Rot\+Quat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a458a52398534dad8aac4492961b95846}\label{class_engine_1_1_adv_physics_object_a458a52398534dad8aac4492961b95846}} 
-\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!Initialise@{Initialise}}
-\index{Initialise@{Initialise}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
-\doxysubsubsection{\texorpdfstring{Initialise()}{Initialise()}}
-{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::\+Initialise (\begin{DoxyParamCaption}\item[{float}]{\+\_\+mass,  }\item[{float}]{\+\_\+bounciness }\end{DoxyParamCaption})}
+
+
+Return the rotation quaternion. 
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a825d8536a9135e3d11ca3f249f60e301}\label{class_engine_1_1_adv_physics_object_a825d8536a9135e3d11ca3f249f60e301}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!onInitialise@{onInitialise}}
+\index{onInitialise@{onInitialise}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{onInitialise()}{onInitialise()}}
+{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::on\+Initialise (\begin{DoxyParamCaption}\item[{float}]{\+\_\+mass,  }\item[{float}]{\+\_\+bounciness }\end{DoxyParamCaption})}
+
+
+
+Initialise with a mass and bounciness value. 
 
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ace6d62205063c01f652b02c0b44afe1a}\label{class_engine_1_1_adv_physics_object_ace6d62205063c01f652b02c0b44afe1a}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!onTick@{onTick}}
 \index{onTick@{onTick}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{onTick()}{onTick()}}
 {\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Update. 
 
 
 
@@ -141,11 +191,19 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c0
 \doxysubsubsection{\texorpdfstring{setAmom()}{setAmom()}}
 {\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::set\+Amom (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+mom }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Sets the angular momentum of the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ae35f99bf986d7112f4ee11c093c4cf4d}\label{class_engine_1_1_adv_physics_object_ae35f99bf986d7112f4ee11c093c4cf4d}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!setAvel@{setAvel}}
 \index{setAvel@{setAvel}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{setAvel()}{setAvel()}}
 {\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::set\+Avel (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+a\+Vel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the angular velocity of the object. 
 
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a77a290f36486e07da822c7d7182b8e12}\label{class_engine_1_1_adv_physics_object_a77a290f36486e07da822c7d7182b8e12}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!setInvTensor@{setInvTensor}}
@@ -153,17 +211,29 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c0
 \doxysubsubsection{\texorpdfstring{setInvTensor()}{setInvTensor()}}
 {\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::set\+Inv\+Tensor (\begin{DoxyParamCaption}\item[{glm\+::mat3}]{\+\_\+matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Assigns the inverse tensor of the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a72567a5e2cb7355e0dece4aa13ee1b8b}\label{class_engine_1_1_adv_physics_object_a72567a5e2cb7355e0dece4aa13ee1b8b}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!setRotMat@{setRotMat}}
 \index{setRotMat@{setRotMat}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{setRotMat()}{setRotMat()}}
 {\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::set\+Rot\+Mat (\begin{DoxyParamCaption}\item[{glm\+::mat3}]{\+\_\+r\+Mat }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Assigns the rotation matrix of the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ad6ef2daa6e84da213e320bbbc901864e}\label{class_engine_1_1_adv_physics_object_ad6ef2daa6e84da213e320bbbc901864e}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!updateRotations@{updateRotations}}
 \index{updateRotations@{updateRotations}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{updateRotations()}{updateRotations()}}
 {\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::update\+Rotations (\begin{DoxyParamCaption}\item[{float}]{\+\_\+d\+Ts,  }\item[{bool}]{collided }\end{DoxyParamCaption})}
+
+
+
+Updates the rotation of the object using its angular velocities. 
 
 
 
@@ -174,11 +244,20 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c0
 \doxysubsubsection{\texorpdfstring{m\_aAcc}{m\_aAcc}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+a\+Acc = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Angular acceleration ~\newline
+ 
+
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a6105b3696e7eee1fe34290a94d18b6a0}\label{class_engine_1_1_adv_physics_object_a6105b3696e7eee1fe34290a94d18b6a0}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_aMom@{m\_aMom}}
 \index{m\_aMom@{m\_aMom}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{m\_aMom}{m\_aMom}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+a\+Mom = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Angular momentum. 
 
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ac04326740ff444414bee55999e279d58}\label{class_engine_1_1_adv_physics_object_ac04326740ff444414bee55999e279d58}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_aVel@{m\_aVel}}
@@ -186,11 +265,19 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c0
 \doxysubsubsection{\texorpdfstring{m\_aVel}{m\_aVel}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+a\+Vel = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Angular Velocity. 
+
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a48bf98f9c8d24588d881cfbc5f46b7f5}\label{class_engine_1_1_adv_physics_object_a48bf98f9c8d24588d881cfbc5f46b7f5}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_invBodyInertiaTensor@{m\_invBodyInertiaTensor}}
 \index{m\_invBodyInertiaTensor@{m\_invBodyInertiaTensor}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{m\_invBodyInertiaTensor}{m\_invBodyInertiaTensor}}
 {\footnotesize\ttfamily glm\+::mat3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+inv\+Body\+Inertia\+Tensor\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The inverse of the Body inertia tensor. 
 
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a6ccd95b7d8a1d34fe1cc2066985a672e}\label{class_engine_1_1_adv_physics_object_a6ccd95b7d8a1d34fe1cc2066985a672e}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_invInertiaTensor@{m\_invInertiaTensor}}
@@ -198,11 +285,9 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c0
 \doxysubsubsection{\texorpdfstring{m\_invInertiaTensor}{m\_invInertiaTensor}}
 {\footnotesize\ttfamily glm\+::mat3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+inv\+Inertia\+Tensor\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_ad5a232ff7e20f233976824feecd87787}\label{class_engine_1_1_adv_physics_object_ad5a232ff7e20f233976824feecd87787}} 
-\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_orient@{m\_orient}}
-\index{m\_orient@{m\_orient}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
-\doxysubsubsection{\texorpdfstring{m\_orient}{m\_orient}}
-{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+orient = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+Inverse of the inertia tensor. 
 
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a8ea2eda823e872b9df92f2caec84c927}\label{class_engine_1_1_adv_physics_object_a8ea2eda823e872b9df92f2caec84c927}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_rotMat@{m\_rotMat}}
@@ -210,17 +295,39 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c0
 \doxysubsubsection{\texorpdfstring{m\_rotMat}{m\_rotMat}}
 {\footnotesize\ttfamily glm\+::mat3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+rot\+Mat\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+The matrix that represents the rotation of the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_aaaea939e86c45d0f27a7809209c1cd5c}\label{class_engine_1_1_adv_physics_object_aaaea939e86c45d0f27a7809209c1cd5c}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_rotQuat@{m\_rotQuat}}
 \index{m\_rotQuat@{m\_rotQuat}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{m\_rotQuat}{m\_rotQuat}}
 {\footnotesize\ttfamily glm\+::quat Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+rot\+Quat\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+The quaternion which represents the rotation of the object. 
+
+\mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a9472cb9b8db9afbd75df15257093d3ee}\label{class_engine_1_1_adv_physics_object_a9472cb9b8db9afbd75df15257093d3ee}} 
+\index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_adv_physics_object}{Adv\+Physics\+Object}}$>$ Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+self}
+
+
+
+A \char`\"{}this\char`\"{} pointer. 
+
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a2a803fa99168b227d0cf88b6a9f30a9c}\label{class_engine_1_1_adv_physics_object_a2a803fa99168b227d0cf88b6a9f30a9c}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!m\_torque@{m\_torque}}
 \index{m\_torque@{m\_torque}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{m\_torque}{m\_torque}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Adv\+Physics\+Object\+::m\+\_\+torque = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The torque force acting on the object this frame. 
 
 
 

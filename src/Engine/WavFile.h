@@ -8,9 +8,10 @@ namespace Engine
 	//REFERENCE: https://stackoverflow.com/questions/36949957/loading-a-wav-file-for-openal
 	//WAV file loader by "A cool programmer"
 
+	/** \brief Loads in WAV files*/
 	class WavFile
 	{
-	public:
+		public:
 		static bool isBigEndian()
 		{
 			int a = 1;

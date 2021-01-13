@@ -6,11 +6,11 @@ namespace Engine
 {
 	void Entity::tick()
 	{
-		for (int i = 0; i < components.size(); i++)
+		for (int i = 0; i < m_components.size(); i++)
 		{
 			try
 			{
-				components[i]->onTick();
+				m_components[i]->onTick();
 			}
 			catch(Exception &e)
 			{
@@ -22,7 +22,7 @@ namespace Engine
 	void Entity::afterTick()
 	{
 		m_inAftertick = true;
-		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end();)
+		for (std::vector<std::shared_ptr<Component>>::iterator it = m_components.begin(); it != m_components.end();)
 		{
 			try
 			{
@@ -30,7 +30,7 @@ namespace Engine
 				{					
 					{
 						(*it)->onDestroy();
-						it = components.erase(it);
+						it = m_components.erase(it);
 					}
 				}
 				else
@@ -51,38 +51,11 @@ namespace Engine
 		}
 		m_inAftertick = false;
 	}
-
-	std::shared_ptr<Collider> Entity::getCollider() 
-	{
-		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
-		{
-			std::shared_ptr<SphereCollider> rtn1 = std::dynamic_pointer_cast<SphereCollider>((*it));
-			if (rtn1)
-			{
-				return rtn1;
-			}
-			std::shared_ptr<MeshCollider> rtn2 = std::dynamic_pointer_cast<MeshCollider>((*it));
-			if (rtn2)
-			{
-				return rtn2;
-			}
-			std::shared_ptr<PlaneCollider> rtn3 = std::dynamic_pointer_cast<PlaneCollider>((*it));
-			if (rtn3)
-			{
-				return rtn3;
-			}
-			std::shared_ptr<BoxCollider> rtn4 = std::dynamic_pointer_cast<BoxCollider>((*it));
-			if (rtn4)
-			{
-				return rtn4;
-			}
-		}		
-		return nullptr;
-	}
+	
 
 	void Entity::onCollisionEnter(std::shared_ptr<Collision> _c)
 	{
-		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
+		for (std::vector<std::shared_ptr<Component>>::iterator it = m_components.begin(); it != m_components.end(); it++)
 		{
 			try
 			{
@@ -97,7 +70,7 @@ namespace Engine
 
 	void Entity::onCollisionExit(std::shared_ptr<Entity> _c)
 	{
-		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
+		for (std::vector<std::shared_ptr<Component>>::iterator it = m_components.begin(); it != m_components.end(); it++)
 		{
 			try
 			{
@@ -112,7 +85,7 @@ namespace Engine
 
 	void Entity::onCollision(std::shared_ptr<Collision> _c)
 	{
-		for (std::vector<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
+		for (std::vector<std::shared_ptr<Component>>::iterator it = m_components.begin(); it != m_components.end(); it++)
 		{
 			try
 			{

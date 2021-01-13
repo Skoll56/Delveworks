@@ -67,6 +67,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
@@ -76,6 +77,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>The Base class for all Components in the <a class="el" href="namespace_engine.html">Engine</a>.  
+ <a href="class_engine_1_1_component.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_component_8h_source.html">Component.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::Component:</div>
@@ -83,46 +87,75 @@ Inheritance diagram for Engine::Component:</div>
  <div class="center">
   <img src="class_engine_1_1_component.png" usemap="#Engine::Component_map" alt=""/>
   <map id="Engine::Component_map" name="Engine::Component_map">
-<area href="class_engine_1_1_camera.html" alt="Engine::Camera" shape="rect" coords="169,56,328,80"/>
-<area href="class_engine_1_1_collider.html" alt="Engine::Collider" shape="rect" coords="169,112,328,136"/>
-<area href="class_engine_1_1_light.html" alt="Engine::Light" shape="rect" coords="169,168,328,192"/>
-<area href="class_engine_1_1_mesh_renderer.html" alt="Engine::MeshRenderer" shape="rect" coords="169,224,328,248"/>
-<area href="class_engine_1_1_physics_event_user.html" alt="Engine::PhysicsEventUser" shape="rect" coords="169,280,328,304"/>
-<area href="class_engine_1_1_ray_caster.html" alt="Engine::RayCaster" shape="rect" coords="169,336,328,360"/>
-<area href="class_engine_1_1_sound_source.html" alt="Engine::SoundSource" shape="rect" coords="169,392,328,416"/>
-<area href="class_engine_1_1_transform.html" alt="Engine::Transform" shape="rect" coords="169,448,328,472"/>
+<area href="class_engine_1_1_audio_receiver.html" title="A set of &quot;ears&quot;. This is used to hear sounds." alt="Engine::AudioReceiver" shape="rect" coords="169,56,328,80"/>
+<area href="class_engine_1_1_camera.html" title="A generic Camera component." alt="Engine::Camera" shape="rect" coords="169,112,328,136"/>
+<area href="class_engine_1_1_collider.html" title="The Collider Base Class." alt="Engine::Collider" shape="rect" coords="169,168,328,192"/>
+<area href="class_engine_1_1_light.html" title="The Light Object Base Class." alt="Engine::Light" shape="rect" coords="169,224,328,248"/>
+<area href="class_engine_1_1_mesh_renderer.html" title="A Mesh Renderer displays an object&#39;s visuals to the screen." alt="Engine::MeshRenderer" shape="rect" coords="169,280,328,304"/>
+<area href="class_engine_1_1_physics_event_user.html" title="A base class for all Physics Objects." alt="Engine::PhysicsEventUser" shape="rect" coords="169,336,328,360"/>
+<area href="class_engine_1_1_ray_caster.html" title="A component for firing rays against geometry" alt="Engine::RayCaster" shape="rect" coords="169,392,328,416"/>
+<area href="class_engine_1_1_sound_source.html" title="A Sound Source holds and plays sounds." alt="Engine::SoundSource" shape="rect" coords="169,448,328,472"/>
+<area href="class_engine_1_1_surface.html" title="The UI Object Base Class." alt="Engine::Surface" shape="rect" coords="169,504,328,528"/>
+<area href="class_engine_1_1_transform.html" title="The Transform Component contains Translation, Rotation and Scale data." alt="Engine::Transform" shape="rect" coords="169,560,328,584"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a00efa93260fc3d08aa096aa1025869e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">destroy</a> ()</td></tr>
+<tr class="memdesc:a00efa93260fc3d08aa096aa1025869e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to destroy a component at the end of the frame.  <a href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">More...</a><br /></td></tr>
 <tr class="separator:a00efa93260fc3d08aa096aa1025869e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a914f7c81c44b707e39d2898bdd141281"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">getEntity</a> ()</td></tr>
+<tr class="memitem:a914f7c81c44b707e39d2898bdd141281"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">getEntity</a> ()</td></tr>
+<tr class="memdesc:a914f7c81c44b707e39d2898bdd141281"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a> which contains this <a class="el" href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine.">Component</a>.  <a href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">More...</a><br /></td></tr>
 <tr class="separator:a914f7c81c44b707e39d2898bdd141281"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37740b395821ce65269c317db6b4102b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">transform</a> ()</td></tr>
+<tr class="memdesc:a37740b395821ce65269c317db6b4102b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_engine_1_1_transform.html" title="The Transform Component contains Translation, Rotation and Scale data.">Transform</a> component attached to the same object as this.  <a href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">More...</a><br /></td></tr>
 <tr class="separator:a37740b395821ce65269c317db6b4102b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bbd31f8047e7d026977f90362fe42d8"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_input.html">Input</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a7bbd31f8047e7d026977f90362fe42d8">input</a> ()</td></tr>
-<tr class="separator:a7bbd31f8047e7d026977f90362fe42d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6b8b9031f70d95bad118684d95e8ba0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ae6b8b9031f70d95bad118684d95e8ba0"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ae6b8b9031f70d95bad118684d95e8ba0">getInputDevice</a> ()</td></tr>
+<tr class="memdesc:ae6b8b9031f70d95bad118684d95e8ba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an <a class="el" href="class_engine_1_1_input_device.html" title="InputDevice is the base class for all Input Devices.">InputDevice</a> of type T from the <a class="el" href="class_engine_1_1_input_manager.html" title="Manages all InputDevice objects.">InputManager</a>.  <a href="class_engine_1_1_component.html#ae6b8b9031f70d95bad118684d95e8ba0">More...</a><br /></td></tr>
+<tr class="separator:ae6b8b9031f70d95bad118684d95e8ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30e45e1c0ef286fc8447c68f6d520745"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_core.html">Core</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a30e45e1c0ef286fc8447c68f6d520745">getCore</a> ()</td></tr>
+<tr class="memdesc:a30e45e1c0ef286fc8447c68f6d520745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the <a class="el" href="class_engine_1_1_core.html" title="The Core of the engine. The &quot;world&quot; per se.">Core</a>.  <a href="class_engine_1_1_component.html#a30e45e1c0ef286fc8447c68f6d520745">More...</a><br /></td></tr>
+<tr class="separator:a30e45e1c0ef286fc8447c68f6d520745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a00c874614f49a1248394daa626056ac8"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00c874614f49a1248394daa626056ac8">m_self</a></td></tr>
+<tr class="memdesc:a00c874614f49a1248394daa626056ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A "This" pointer.  <a href="class_engine_1_1_component.html#a00c874614f49a1248394daa626056ac8">More...</a><br /></td></tr>
+<tr class="separator:a00c874614f49a1248394daa626056ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a698b7e82b695c3e056dc0f929e631b6d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a698b7e82b695c3e056dc0f929e631b6d">onInitialise</a> ()</td></tr>
+<tr class="memdesc:a698b7e82b695c3e056dc0f929e631b6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise a component.  <a href="class_engine_1_1_component.html#a698b7e82b695c3e056dc0f929e631b6d">More...</a><br /></td></tr>
 <tr class="separator:a698b7e82b695c3e056dc0f929e631b6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68cf41016007993f00ca2ee172b290e5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a68cf41016007993f00ca2ee172b290e5">onCollision</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> &gt; _col)</td></tr>
+<tr class="memdesc:a68cf41016007993f00ca2ee172b290e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called every frame the parent object in Colliding for. Contains the collision info.  <a href="class_engine_1_1_component.html#a68cf41016007993f00ca2ee172b290e5">More...</a><br /></td></tr>
+<tr class="separator:a68cf41016007993f00ca2ee172b290e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c96847915c640fa8e5634419fba8ce7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a9c96847915c640fa8e5634419fba8ce7">onCollisionEnter</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> &gt; _col)</td></tr>
+<tr class="memdesc:a9c96847915c640fa8e5634419fba8ce7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called on the first frame of collision. Contains the collision info.  <a href="class_engine_1_1_component.html#a9c96847915c640fa8e5634419fba8ce7">More...</a><br /></td></tr>
+<tr class="separator:a9c96847915c640fa8e5634419fba8ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afecb465fbad010451f18196147cf2b5c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#afecb465fbad010451f18196147cf2b5c">onCollisionExit</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt; _other)</td></tr>
+<tr class="memdesc:afecb465fbad010451f18196147cf2b5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called on the last frame of a collision. Contains a pointer to the other <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a>.  <a href="class_engine_1_1_component.html#afecb465fbad010451f18196147cf2b5c">More...</a><br /></td></tr>
+<tr class="separator:afecb465fbad010451f18196147cf2b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8763aeb9a9bcd10bbef2b74a8a22f24c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a8763aeb9a9bcd10bbef2b74a8a22f24c">onTick</a> ()</td></tr>
+<tr class="memdesc:a8763aeb9a9bcd10bbef2b74a8a22f24c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is called once per frame.  <a href="class_engine_1_1_component.html#a8763aeb9a9bcd10bbef2b74a8a22f24c">More...</a><br /></td></tr>
 <tr class="separator:a8763aeb9a9bcd10bbef2b74a8a22f24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bf4b58e99c0ad73db8ff257728ba830"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a6bf4b58e99c0ad73db8ff257728ba830">onRender</a> ()</td></tr>
-<tr class="separator:a6bf4b58e99c0ad73db8ff257728ba830"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac103051527cfb9b716379fd115c99f5c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ac103051527cfb9b716379fd115c99f5c">onDestroy</a> ()</td></tr>
+<tr class="memdesc:ac103051527cfb9b716379fd115c99f5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is called just before a <a class="el" href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine.">Component</a> gets destroyed.  <a href="class_engine_1_1_component.html#ac103051527cfb9b716379fd115c99f5c">More...</a><br /></td></tr>
 <tr class="separator:ac103051527cfb9b716379fd115c99f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aef5560490656209dac0858c9f405a5fc"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">m_entity</a></td></tr>
+<tr class="memitem:aef5560490656209dac0858c9f405a5fc"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">m_entity</a></td></tr>
+<tr class="memdesc:aef5560490656209dac0858c9f405a5fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the entity this is attached to.  <a href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">More...</a><br /></td></tr>
 <tr class="separator:aef5560490656209dac0858c9f405a5fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f0787fce807ad80c8a55d1b02dfc3b5"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">m_transform</a></td></tr>
+<tr class="memdesc:a0f0787fce807ad80c8a55d1b02dfc3b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the <a class="el" href="class_engine_1_1_transform.html" title="The Transform Component contains Translation, Rotation and Scale data.">Transform</a> attached to the <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a>.  <a href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">More...</a><br /></td></tr>
 <tr class="separator:a0f0787fce807ad80c8a55d1b02dfc3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a374bb0eb27722760feba88aa779b33a4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">m_delete</a> = false</td></tr>
+<tr class="memdesc:a374bb0eb27722760feba88aa779b33a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is set to true when the object is due to be deleted.  <a href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">More...</a><br /></td></tr>
 <tr class="separator:a374bb0eb27722760feba88aa779b33a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -130,7 +163,10 @@ Friends</h2></td></tr>
 <tr class="memitem:a614439ccac0344926adc4c0165d64060"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a614439ccac0344926adc4c0165d64060">Entity</a></td></tr>
 <tr class="separator:a614439ccac0344926adc4c0165d64060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The Base class for all Components in the <a class="el" href="namespace_engine.html">Engine</a>. </p>
+<p>Most things, including user defined-modules, typically inherit from this </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a00efa93260fc3d08aa096aa1025869e2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a00efa93260fc3d08aa096aa1025869e2">&#9670;&nbsp;</a></span>destroy()</h2>
 
@@ -146,6 +182,27 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Call this to destroy a component at the end of the frame. </p>
+
+</div>
+</div>
+<a id="a30e45e1c0ef286fc8447c68f6d520745"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30e45e1c0ef286fc8447c68f6d520745">&#9670;&nbsp;</a></span>getCore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_core.html">Core</a> &gt; Engine::Component::getCore </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a reference to the <a class="el" href="class_engine_1_1_core.html" title="The Core of the engine. The &quot;world&quot; per se.">Core</a>. </p>
+
 </div>
 </div>
 <a id="a914f7c81c44b707e39d2898bdd141281"></a>
@@ -158,7 +215,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="struct_engine_1_1_entity.html">Entity</a>&gt; Engine::Component::getEntity </td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_entity.html">Entity</a>&gt; Engine::Component::getEntity </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -171,22 +228,120 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a> which contains this <a class="el" href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine.">Component</a>. </p>
+
 </div>
 </div>
-<a id="a7bbd31f8047e7d026977f90362fe42d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7bbd31f8047e7d026977f90362fe42d8">&#9670;&nbsp;</a></span>input()</h2>
+<a id="ae6b8b9031f70d95bad118684d95e8ba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6b8b9031f70d95bad118684d95e8ba0">&#9670;&nbsp;</a></span>getInputDevice()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_input.html">Input</a> &gt; Engine::Component::input </td>
+          <td class="memname">std::shared_ptr&lt;T&gt; Engine::Component::getInputDevice </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Returns an <a class="el" href="class_engine_1_1_input_device.html" title="InputDevice is the base class for all Input Devices.">InputDevice</a> of type T from the <a class="el" href="class_engine_1_1_input_manager.html" title="Manages all InputDevice objects.">InputManager</a>. </p>
+
+</div>
+</div>
+<a id="a68cf41016007993f00ca2ee172b290e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68cf41016007993f00ca2ee172b290e5">&#9670;&nbsp;</a></span>onCollision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Component::onCollision </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> &gt;&#160;</td>
+          <td class="paramname"><em>_col</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Is called every frame the parent object in Colliding for. Contains the collision info. </p>
+
+</div>
+</div>
+<a id="a9c96847915c640fa8e5634419fba8ce7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c96847915c640fa8e5634419fba8ce7">&#9670;&nbsp;</a></span>onCollisionEnter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Component::onCollisionEnter </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> &gt;&#160;</td>
+          <td class="paramname"><em>_col</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Is called on the first frame of collision. Contains the collision info. </p>
+
+</div>
+</div>
+<a id="afecb465fbad010451f18196147cf2b5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afecb465fbad010451f18196147cf2b5c">&#9670;&nbsp;</a></span>onCollisionExit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::Component::onCollisionExit </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td>
+          <td class="paramname"><em>_other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Is called on the last frame of a collision. Contains a pointer to the other <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a>. </p>
 
 </div>
 </div>
@@ -213,6 +368,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>This is called just before a <a class="el" href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine.">Component</a> gets destroyed. </p>
+
 </div>
 </div>
 <a id="a698b7e82b695c3e056dc0f929e631b6d"></a>
@@ -238,32 +395,10 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="class_engine_1_1_mesh_renderer.html#ab02daa4ecddb453337ce53d135d71ab9">Engine::MeshRenderer</a>, <a class="el" href="class_engine_1_1_transform.html#a2e1159a746481dcc6e31f3fce87b7270">Engine::Transform</a>, and <a class="el" href="class_engine_1_1_camera.html#a16df865e6139a822c0e7ab7548bca24e">Engine::Camera</a>.</p>
+<p>Initialise a component. </p>
+<p>Components can also specify arguments to go into this function. You pass them in when you AddComponent. </p>
 
-</div>
-</div>
-<a id="a6bf4b58e99c0ad73db8ff257728ba830"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6bf4b58e99c0ad73db8ff257728ba830">&#9670;&nbsp;</a></span>onRender()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Engine::Component::onRender </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Reimplemented in <a class="el" href="class_engine_1_1_transform.html#a2e1159a746481dcc6e31f3fce87b7270">Engine::Transform</a>, and <a class="el" href="class_engine_1_1_camera.html#a16df865e6139a822c0e7ab7548bca24e">Engine::Camera</a>.</p>
 
 </div>
 </div>
@@ -290,7 +425,9 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="class_engine_1_1_adv_physics_object.html#ace6d62205063c01f652b02c0b44afe1a">Engine::AdvPhysicsObject</a>, <a class="el" href="class_engine_1_1_physics_object.html#a61e0c0862c01676f6d79bec3423ff8a0">Engine::PhysicsObject</a>, <a class="el" href="class_engine_1_1_physics_event_user.html#ae55c6ef5972f980bdee44de8fc81ad22">Engine::PhysicsEventUser</a>, <a class="el" href="class_engine_1_1_sound_source.html#a1fec1228d1a8c467a6febbdac1a4f219">Engine::SoundSource</a>, and <a class="el" href="class_engine_1_1_transform.html#a73bf4bd9c49e0d40275eda859756c2f6">Engine::Transform</a>.</p>
+<p>This is called once per frame. </p>
+
+<p>Reimplemented in <a class="el" href="class_engine_1_1_button_u_i.html#ac933da6e6ddc3157aa8f3cbfad0cfaee">Engine::ButtonUI</a>, <a class="el" href="class_engine_1_1_adv_physics_object.html#ace6d62205063c01f652b02c0b44afe1a">Engine::AdvPhysicsObject</a>, <a class="el" href="class_engine_1_1_physics_object.html#a61e0c0862c01676f6d79bec3423ff8a0">Engine::PhysicsObject</a>, <a class="el" href="class_engine_1_1_physics_event_user.html#ae55c6ef5972f980bdee44de8fc81ad22">Engine::PhysicsEventUser</a>, <a class="el" href="class_engine_1_1_sound_source.html#a1fec1228d1a8c467a6febbdac1a4f219">Engine::SoundSource</a>, <a class="el" href="class_engine_1_1_transform.html#a73bf4bd9c49e0d40275eda859756c2f6">Engine::Transform</a>, and <a class="el" href="class_engine_1_1_camera.html#a3950b7fce1554b77d4089d65fec89ac1">Engine::Camera</a>.</p>
 
 </div>
 </div>
@@ -317,6 +454,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the <a class="el" href="class_engine_1_1_transform.html" title="The Transform Component contains Translation, Rotation and Scale data.">Transform</a> component attached to the same object as this. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
@@ -330,7 +469,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">friend class <a class="el" href="struct_engine_1_1_entity.html">Entity</a></td>
+          <td class="memname">friend class <a class="el" href="class_engine_1_1_entity.html">Entity</a></td>
         </tr>
       </table>
   </td>
@@ -363,6 +502,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Is set to true when the object is due to be deleted. </p>
+
 </div>
 </div>
 <a id="aef5560490656209dac0858c9f405a5fc"></a>
@@ -375,7 +516,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::weak_ptr&lt;<a class="el" href="struct_engine_1_1_entity.html">Entity</a>&gt; Engine::Component::m_entity</td>
+          <td class="memname">std::weak_ptr&lt;<a class="el" href="class_engine_1_1_entity.html">Entity</a>&gt; Engine::Component::m_entity</td>
         </tr>
       </table>
   </td>
@@ -384,6 +525,24 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>A reference to the entity this is attached to. </p>
+
+</div>
+</div>
+<a id="a00c874614f49a1248394daa626056ac8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00c874614f49a1248394daa626056ac8">&#9670;&nbsp;</a></span>m_self</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::weak_ptr&lt;<a class="el" href="class_engine_1_1_component.html">Component</a>&gt; Engine::Component::m_self</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A "This" pointer. </p>
 
 </div>
 </div>
@@ -406,6 +565,8 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>A reference to the <a class="el" href="class_engine_1_1_transform.html" title="The Transform Component contains Translation, Rotation and Scale data.">Transform</a> attached to the <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a>. </p>
 
 </div>
 </div>

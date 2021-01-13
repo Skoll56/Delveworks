@@ -66,13 +66,19 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_engine_1_1_sound_source-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Engine::SoundSource Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A <a class="el" href="class_engine_1_1_sound.html" title="A sound. This can be Ogg or WAV format.">Sound</a> Source holds and plays sounds.  
+ <a href="class_engine_1_1_sound_source.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_component_8h_source.html">Component.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -81,57 +87,110 @@ Inheritance diagram for Engine::SoundSource:</div>
  <div class="center">
   <img src="class_engine_1_1_sound_source.png" usemap="#Engine::SoundSource_map" alt=""/>
   <map id="Engine::SoundSource_map" name="Engine::SoundSource_map">
-<area href="class_engine_1_1_component.html" alt="Engine::Component" shape="rect" coords="0,0,134,24"/>
+<area href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine." alt="Engine::Component" shape="rect" coords="0,0,134,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a1fec1228d1a8c467a6febbdac1a4f219"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#a1fec1228d1a8c467a6febbdac1a4f219">onTick</a> ()</td></tr>
+<tr class="memdesc:a1fec1228d1a8c467a6febbdac1a4f219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update.  <a href="class_engine_1_1_sound_source.html#a1fec1228d1a8c467a6febbdac1a4f219">More...</a><br /></td></tr>
+<tr class="separator:a1fec1228d1a8c467a6febbdac1a4f219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad658a6d361dda95371ec9d02a3df6811"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#ad658a6d361dda95371ec9d02a3df6811">Play</a> (float _vol)</td></tr>
+<tr class="memdesc:ad658a6d361dda95371ec9d02a3df6811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to play the stored sound.  <a href="class_engine_1_1_sound_source.html#ad658a6d361dda95371ec9d02a3df6811">More...</a><br /></td></tr>
+<tr class="separator:ad658a6d361dda95371ec9d02a3df6811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98270c8b7219afcfb916fb6f04107bc9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#a98270c8b7219afcfb916fb6f04107bc9">setLoop</a> (bool _loop)</td></tr>
+<tr class="memdesc:a98270c8b7219afcfb916fb6f04107bc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set if the sound should loop.  <a href="class_engine_1_1_sound_source.html#a98270c8b7219afcfb916fb6f04107bc9">More...</a><br /></td></tr>
+<tr class="separator:a98270c8b7219afcfb916fb6f04107bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9362947629ea258d1ad700f79c24b015"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#a9362947629ea258d1ad700f79c24b015">setDestroyOnPlay</a> (bool _destroy)</td></tr>
+<tr class="memdesc:a9362947629ea258d1ad700f79c24b015"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set if the component should destroy itself after it plays.  <a href="class_engine_1_1_sound_source.html#a9362947629ea258d1ad700f79c24b015">More...</a><br /></td></tr>
+<tr class="separator:a9362947629ea258d1ad700f79c24b015"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
+<tr class="memitem:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">destroy</a> ()</td></tr>
+<tr class="memdesc:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to destroy a component at the end of the frame.  <a href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">More...</a><br /></td></tr>
+<tr class="separator:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">getEntity</a> ()</td></tr>
+<tr class="memdesc:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a> which contains this <a class="el" href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine.">Component</a>.  <a href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">More...</a><br /></td></tr>
+<tr class="separator:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">transform</a> ()</td></tr>
+<tr class="memdesc:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_engine_1_1_transform.html" title="The Transform Component contains Translation, Rotation and Scale data.">Transform</a> component attached to the same object as this.  <a href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">More...</a><br /></td></tr>
+<tr class="separator:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ae6b8b9031f70d95bad118684d95e8ba0">getInputDevice</a> ()</td></tr>
+<tr class="memdesc:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an <a class="el" href="class_engine_1_1_input_device.html" title="InputDevice is the base class for all Input Devices.">InputDevice</a> of type T from the <a class="el" href="class_engine_1_1_input_manager.html" title="Manages all InputDevice objects.">InputManager</a>.  <a href="class_engine_1_1_component.html#ae6b8b9031f70d95bad118684d95e8ba0">More...</a><br /></td></tr>
+<tr class="separator:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30e45e1c0ef286fc8447c68f6d520745 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_core.html">Core</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a30e45e1c0ef286fc8447c68f6d520745">getCore</a> ()</td></tr>
+<tr class="memdesc:a30e45e1c0ef286fc8447c68f6d520745 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the <a class="el" href="class_engine_1_1_core.html" title="The Core of the engine. The &quot;world&quot; per se.">Core</a>.  <a href="class_engine_1_1_component.html#a30e45e1c0ef286fc8447c68f6d520745">More...</a><br /></td></tr>
+<tr class="separator:a30e45e1c0ef286fc8447c68f6d520745 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a0e2a0843dbc1f87d02f1ab038f6b7446"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_sound_source.html">SoundSource</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#a0e2a0843dbc1f87d02f1ab038f6b7446">m_self</a></td></tr>
+<tr class="memdesc:a0e2a0843dbc1f87d02f1ab038f6b7446"><td class="mdescLeft">&#160;</td><td class="mdescRight">A "this" pointer.  <a href="class_engine_1_1_sound_source.html#a0e2a0843dbc1f87d02f1ab038f6b7446">More...</a><br /></td></tr>
+<tr class="separator:a0e2a0843dbc1f87d02f1ab038f6b7446"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
+<tr class="memitem:a00c874614f49a1248394daa626056ac8 inherit pub_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00c874614f49a1248394daa626056ac8">m_self</a></td></tr>
+<tr class="memdesc:a00c874614f49a1248394daa626056ac8 inherit pub_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">A "This" pointer.  <a href="class_engine_1_1_component.html#a00c874614f49a1248394daa626056ac8">More...</a><br /></td></tr>
+<tr class="separator:a00c874614f49a1248394daa626056ac8 inherit pub_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a69306a04bda61b5470c93b5992297491"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#a69306a04bda61b5470c93b5992297491">onInitialise</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_sound.html">Sound</a> &gt; _sound)</td></tr>
+<tr class="memdesc:a69306a04bda61b5470c93b5992297491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise.  <a href="class_engine_1_1_sound_source.html#a69306a04bda61b5470c93b5992297491">More...</a><br /></td></tr>
 <tr class="separator:a69306a04bda61b5470c93b5992297491"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fec1228d1a8c467a6febbdac1a4f219"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#a1fec1228d1a8c467a6febbdac1a4f219">onTick</a> ()</td></tr>
-<tr class="separator:a1fec1228d1a8c467a6febbdac1a4f219"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1690e3bd1c45b9192d003a0daf49a040"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#a1690e3bd1c45b9192d003a0daf49a040">Play</a> ()</td></tr>
-<tr class="separator:a1690e3bd1c45b9192d003a0daf49a040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a268c23b6886316e971eb328e14032344"><td class="memItemLeft" align="right" valign="top">ALuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#a268c23b6886316e971eb328e14032344">m_id</a> = 0</td></tr>
+<tr class="memdesc:a268c23b6886316e971eb328e14032344"><td class="mdescLeft">&#160;</td><td class="mdescRight">An ID for OpenAL.  <a href="class_engine_1_1_sound_source.html#a268c23b6886316e971eb328e14032344">More...</a><br /></td></tr>
 <tr class="separator:a268c23b6886316e971eb328e14032344"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e033f0ef0b9dfdc4a4014716fefb4a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#a7e033f0ef0b9dfdc4a4014716fefb4a1">m_played</a> = false</td></tr>
+<tr class="memdesc:a7e033f0ef0b9dfdc4a4014716fefb4a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tracks if it has played yet or not.  <a href="class_engine_1_1_sound_source.html#a7e033f0ef0b9dfdc4a4014716fefb4a1">More...</a><br /></td></tr>
 <tr class="separator:a7e033f0ef0b9dfdc4a4014716fefb4a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa3c586b59cce8b7cb587f426c5bdd2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#afa3c586b59cce8b7cb587f426c5bdd2a">m_loop</a> = false</td></tr>
+<tr class="memdesc:afa3c586b59cce8b7cb587f426c5bdd2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sound will play after it finishes if 'Loop' is true.  <a href="class_engine_1_1_sound_source.html#afa3c586b59cce8b7cb587f426c5bdd2a">More...</a><br /></td></tr>
 <tr class="separator:afa3c586b59cce8b7cb587f426c5bdd2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4e032421938c60c8dfb8d5d6664ae3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#af4e032421938c60c8dfb8d5d6664ae3c">m_destroyOnPlay</a> = false</td></tr>
+<tr class="memdesc:af4e032421938c60c8dfb8d5d6664ae3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The component destroys itself after playing if this is true.  <a href="class_engine_1_1_sound_source.html#af4e032421938c60c8dfb8d5d6664ae3c">More...</a><br /></td></tr>
 <tr class="separator:af4e032421938c60c8dfb8d5d6664ae3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a614439ccac0344926adc4c0165d64060"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_sound_source.html#a614439ccac0344926adc4c0165d64060">Entity</a></td></tr>
+<tr class="separator:a614439ccac0344926adc4c0165d64060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
-<tr class="memitem:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">destroy</a> ()</td></tr>
-<tr class="separator:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">getEntity</a> ()</td></tr>
-<tr class="separator:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">transform</a> ()</td></tr>
-<tr class="separator:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bbd31f8047e7d026977f90362fe42d8 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_input.html">Input</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a7bbd31f8047e7d026977f90362fe42d8">input</a> ()</td></tr>
-<tr class="separator:a7bbd31f8047e7d026977f90362fe42d8 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
 <tr class="memitem:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a698b7e82b695c3e056dc0f929e631b6d">onInitialise</a> ()</td></tr>
+<tr class="memdesc:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise a component.  <a href="class_engine_1_1_component.html#a698b7e82b695c3e056dc0f929e631b6d">More...</a><br /></td></tr>
 <tr class="separator:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bf4b58e99c0ad73db8ff257728ba830 inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a6bf4b58e99c0ad73db8ff257728ba830">onRender</a> ()</td></tr>
-<tr class="separator:a6bf4b58e99c0ad73db8ff257728ba830 inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68cf41016007993f00ca2ee172b290e5 inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a68cf41016007993f00ca2ee172b290e5">onCollision</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> &gt; _col)</td></tr>
+<tr class="memdesc:a68cf41016007993f00ca2ee172b290e5 inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called every frame the parent object in Colliding for. Contains the collision info.  <a href="class_engine_1_1_component.html#a68cf41016007993f00ca2ee172b290e5">More...</a><br /></td></tr>
+<tr class="separator:a68cf41016007993f00ca2ee172b290e5 inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c96847915c640fa8e5634419fba8ce7 inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a9c96847915c640fa8e5634419fba8ce7">onCollisionEnter</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> &gt; _col)</td></tr>
+<tr class="memdesc:a9c96847915c640fa8e5634419fba8ce7 inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called on the first frame of collision. Contains the collision info.  <a href="class_engine_1_1_component.html#a9c96847915c640fa8e5634419fba8ce7">More...</a><br /></td></tr>
+<tr class="separator:a9c96847915c640fa8e5634419fba8ce7 inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afecb465fbad010451f18196147cf2b5c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#afecb465fbad010451f18196147cf2b5c">onCollisionExit</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt; _other)</td></tr>
+<tr class="memdesc:afecb465fbad010451f18196147cf2b5c inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called on the last frame of a collision. Contains a pointer to the other <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a>.  <a href="class_engine_1_1_component.html#afecb465fbad010451f18196147cf2b5c">More...</a><br /></td></tr>
+<tr class="separator:afecb465fbad010451f18196147cf2b5c inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ac103051527cfb9b716379fd115c99f5c">onDestroy</a> ()</td></tr>
+<tr class="memdesc:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is called just before a <a class="el" href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine.">Component</a> gets destroyed.  <a href="class_engine_1_1_component.html#ac103051527cfb9b716379fd115c99f5c">More...</a><br /></td></tr>
 <tr class="separator:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
-<tr class="memitem:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">m_entity</a></td></tr>
+<tr class="memitem:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">m_entity</a></td></tr>
+<tr class="memdesc:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the entity this is attached to.  <a href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">More...</a><br /></td></tr>
 <tr class="separator:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">m_transform</a></td></tr>
+<tr class="memdesc:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the <a class="el" href="class_engine_1_1_transform.html" title="The Transform Component contains Translation, Rotation and Scale data.">Transform</a> attached to the <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a>.  <a href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">More...</a><br /></td></tr>
 <tr class="separator:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">m_delete</a> = false</td></tr>
+<tr class="memdesc:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is set to true when the object is due to be deleted.  <a href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">More...</a><br /></td></tr>
 <tr class="separator:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A <a class="el" href="class_engine_1_1_sound.html" title="A sound. This can be Ogg or WAV format.">Sound</a> Source holds and plays sounds. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a69306a04bda61b5470c93b5992297491"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69306a04bda61b5470c93b5992297491">&#9670;&nbsp;</a></span>onInitialise()</h2>
 
@@ -156,6 +215,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Initialise. </p>
+
 </div>
 </div>
 <a id="a1fec1228d1a8c467a6febbdac1a4f219"></a>
@@ -176,17 +237,39 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Update. </p>
 
 <p>Reimplemented from <a class="el" href="class_engine_1_1_component.html#a8763aeb9a9bcd10bbef2b74a8a22f24c">Engine::Component</a>.</p>
 
 </div>
 </div>
-<a id="a1690e3bd1c45b9192d003a0daf49a040"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1690e3bd1c45b9192d003a0daf49a040">&#9670;&nbsp;</a></span>Play()</h2>
+<a id="ad658a6d361dda95371ec9d02a3df6811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad658a6d361dda95371ec9d02a3df6811">&#9670;&nbsp;</a></span>Play()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::SoundSource::Play </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>_vol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Call this to play the stored sound. </p>
+
+</div>
+</div>
+<a id="a9362947629ea258d1ad700f79c24b015"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9362947629ea258d1ad700f79c24b015">&#9670;&nbsp;</a></span>setDestroyOnPlay()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -195,15 +278,69 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Engine::SoundSource::Play </td>
+          <td class="memname">void Engine::SoundSource::setDestroyOnPlay </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>_destroy</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set if the component should destroy itself after it plays. </p>
+
+</div>
+</div>
+<a id="a98270c8b7219afcfb916fb6f04107bc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98270c8b7219afcfb916fb6f04107bc9">&#9670;&nbsp;</a></span>setLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::SoundSource::setLoop </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>_loop</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set if the sound should loop. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a614439ccac0344926adc4c0165d64060"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a614439ccac0344926adc4c0165d64060">&#9670;&nbsp;</a></span>Entity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_engine_1_1_entity.html">Entity</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -231,6 +368,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>The component destroys itself after playing if this is true. </p>
+
 </div>
 </div>
 <a id="a268c23b6886316e971eb328e14032344"></a>
@@ -252,6 +391,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>An ID for OpenAL. </p>
 
 </div>
 </div>
@@ -275,6 +416,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>The sound will play after it finishes if 'Loop' is true. </p>
+
 </div>
 </div>
 <a id="a7e033f0ef0b9dfdc4a4014716fefb4a1"></a>
@@ -296,6 +439,24 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Tracks if it has played yet or not. </p>
+
+</div>
+</div>
+<a id="a0e2a0843dbc1f87d02f1ab038f6b7446"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e2a0843dbc1f87d02f1ab038f6b7446">&#9670;&nbsp;</a></span>m_self</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::weak_ptr&lt;<a class="el" href="class_engine_1_1_sound_source.html">SoundSource</a>&gt; Engine::SoundSource::m_self</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A "this" pointer. </p>
 
 </div>
 </div>

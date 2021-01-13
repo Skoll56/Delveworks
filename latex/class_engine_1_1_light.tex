@@ -2,6 +2,11 @@
 \label{class_engine_1_1_light}\index{Engine::Light@{Engine::Light}}
 
 
+The \mbox{\hyperlink{class_engine_1_1_light}{Light}} Object Base Class.  
+
+
+
+
 {\ttfamily \#include $<$Light.\+h$>$}
 
 Inheritance diagram for Engine\+::Light\+:\begin{figure}[H]
@@ -14,16 +19,13 @@ Inheritance diagram for Engine\+::Light\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_light_ae6a067b05d2841995296bfca4e3f00dd}{get\+Dif}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the diffuse (Color) property of the light. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_light_ab2a8de4f8547ec1d36531c92717d4679}{get\+Spec}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Specular Intensity of the light. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{class_engine_1_1_light_a5136c26d6fb52e2df4b124cda8dd98f4}{is\+Anti}} ()
-\item 
-void \mbox{\hyperlink{class_engine_1_1_light_a55523df0f4741ce4b33aa1c63da14e0f}{set\+Anti}} (bool \+\_\+val)
-\item 
-std\+::string \mbox{\hyperlink{class_engine_1_1_light_ae0de32f04e093b7e1fe396597578f32a}{get\+Tag}} ()
-\item 
-void \mbox{\hyperlink{class_engine_1_1_light_a2e241062da641354629d9d8a8605e130}{set\+Tag}} (std\+::string \+\_\+tag)
+\mbox{\hyperlink{class_engine_1_1_light_af231859a7eab184cefb36b0a6362a05e}{Light}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -31,12 +33,22 @@ void \mbox{\hyperlink{class_engine_1_1_light_a2e241062da641354629d9d8a8605e130}{
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_light_aa9ea69e274393cb91f6ac1cc33234aab}{m\+\_\+diffuse}}
 \item 
 float \mbox{\hyperlink{class_engine_1_1_light_a58250254e49d65ecad8dc139547f019a}{m\+\_\+spec\+Intens}}
-\item 
-int \mbox{\hyperlink{class_engine_1_1_light_a95ca0c121eec3c861a768ca9a3dd401a}{m\+\_\+anti\+Light}}
-\item 
-std\+::string \mbox{\hyperlink{class_engine_1_1_light_a2ac7212521e1d4d9ee5b528a6388dbbb}{m\+\_\+tag}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_engine_1_1_light}{Light}} Object Base Class. 
+
+This is the base class for any \mbox{\hyperlink{class_engine_1_1_light}{Light}} source. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_engine_1_1_light_af231859a7eab184cefb36b0a6362a05e}\label{class_engine_1_1_light_af231859a7eab184cefb36b0a6362a05e}} 
+\index{Engine::Light@{Engine::Light}!Light@{Light}}
+\index{Light@{Light}!Engine::Light@{Engine::Light}}
+\doxysubsubsection{\texorpdfstring{Light()}{Light()}}
+{\footnotesize\ttfamily Engine\+::\+Light\+::\+Light (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
 
 
 \doxysubsection{Member Function Documentation}
@@ -46,45 +58,23 @@ std\+::string \mbox{\hyperlink{class_engine_1_1_light_a2ac7212521e1d4d9ee5b528a6
 \doxysubsubsection{\texorpdfstring{getDif()}{getDif()}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Light\+::get\+Dif (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns the diffuse (Color) property of the light. 
+
 \mbox{\Hypertarget{class_engine_1_1_light_ab2a8de4f8547ec1d36531c92717d4679}\label{class_engine_1_1_light_ab2a8de4f8547ec1d36531c92717d4679}} 
 \index{Engine::Light@{Engine::Light}!getSpec@{getSpec}}
 \index{getSpec@{getSpec}!Engine::Light@{Engine::Light}}
 \doxysubsubsection{\texorpdfstring{getSpec()}{getSpec()}}
 {\footnotesize\ttfamily float Engine\+::\+Light\+::get\+Spec (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{class_engine_1_1_light_ae0de32f04e093b7e1fe396597578f32a}\label{class_engine_1_1_light_ae0de32f04e093b7e1fe396597578f32a}} 
-\index{Engine::Light@{Engine::Light}!getTag@{getTag}}
-\index{getTag@{getTag}!Engine::Light@{Engine::Light}}
-\doxysubsubsection{\texorpdfstring{getTag()}{getTag()}}
-{\footnotesize\ttfamily std\+::string Engine\+::\+Light\+::get\+Tag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{class_engine_1_1_light_a5136c26d6fb52e2df4b124cda8dd98f4}\label{class_engine_1_1_light_a5136c26d6fb52e2df4b124cda8dd98f4}} 
-\index{Engine::Light@{Engine::Light}!isAnti@{isAnti}}
-\index{isAnti@{isAnti}!Engine::Light@{Engine::Light}}
-\doxysubsubsection{\texorpdfstring{isAnti()}{isAnti()}}
-{\footnotesize\ttfamily bool Engine\+::\+Light\+::is\+Anti (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{class_engine_1_1_light_a55523df0f4741ce4b33aa1c63da14e0f}\label{class_engine_1_1_light_a55523df0f4741ce4b33aa1c63da14e0f}} 
-\index{Engine::Light@{Engine::Light}!setAnti@{setAnti}}
-\index{setAnti@{setAnti}!Engine::Light@{Engine::Light}}
-\doxysubsubsection{\texorpdfstring{setAnti()}{setAnti()}}
-{\footnotesize\ttfamily void Engine\+::\+Light\+::set\+Anti (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-\mbox{\Hypertarget{class_engine_1_1_light_a2e241062da641354629d9d8a8605e130}\label{class_engine_1_1_light_a2e241062da641354629d9d8a8605e130}} 
-\index{Engine::Light@{Engine::Light}!setTag@{setTag}}
-\index{setTag@{setTag}!Engine::Light@{Engine::Light}}
-\doxysubsubsection{\texorpdfstring{setTag()}{setTag()}}
-{\footnotesize\ttfamily void Engine\+::\+Light\+::set\+Tag (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+Returns the Specular Intensity of the light. 
 
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_engine_1_1_light_a95ca0c121eec3c861a768ca9a3dd401a}\label{class_engine_1_1_light_a95ca0c121eec3c861a768ca9a3dd401a}} 
-\index{Engine::Light@{Engine::Light}!m\_antiLight@{m\_antiLight}}
-\index{m\_antiLight@{m\_antiLight}!Engine::Light@{Engine::Light}}
-\doxysubsubsection{\texorpdfstring{m\_antiLight}{m\_antiLight}}
-{\footnotesize\ttfamily int Engine\+::\+Light\+::m\+\_\+anti\+Light\hspace{0.3cm}{\ttfamily [protected]}}
-
 \mbox{\Hypertarget{class_engine_1_1_light_aa9ea69e274393cb91f6ac1cc33234aab}\label{class_engine_1_1_light_aa9ea69e274393cb91f6ac1cc33234aab}} 
 \index{Engine::Light@{Engine::Light}!m\_diffuse@{m\_diffuse}}
 \index{m\_diffuse@{m\_diffuse}!Engine::Light@{Engine::Light}}
@@ -96,12 +86,6 @@ std\+::string \mbox{\hyperlink{class_engine_1_1_light_a2ac7212521e1d4d9ee5b528a6
 \index{m\_specIntens@{m\_specIntens}!Engine::Light@{Engine::Light}}
 \doxysubsubsection{\texorpdfstring{m\_specIntens}{m\_specIntens}}
 {\footnotesize\ttfamily float Engine\+::\+Light\+::m\+\_\+spec\+Intens\hspace{0.3cm}{\ttfamily [protected]}}
-
-\mbox{\Hypertarget{class_engine_1_1_light_a2ac7212521e1d4d9ee5b528a6388dbbb}\label{class_engine_1_1_light_a2ac7212521e1d4d9ee5b528a6388dbbb}} 
-\index{Engine::Light@{Engine::Light}!m\_tag@{m\_tag}}
-\index{m\_tag@{m\_tag}!Engine::Light@{Engine::Light}}
-\doxysubsubsection{\texorpdfstring{m\_tag}{m\_tag}}
-{\footnotesize\ttfamily std\+::string Engine\+::\+Light\+::m\+\_\+tag\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

@@ -67,12 +67,15 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_engine_1_1_texture-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Engine::Texture Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A texture is usually a loaded image.  
+ <a href="class_engine_1_1_texture.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_texture_8h_source.html">Texture.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -81,10 +84,10 @@ Inheritance diagram for Engine::Texture:</div>
  <div class="center">
   <img src="class_engine_1_1_texture.png" usemap="#Engine::Texture_map" alt=""/>
   <map id="Engine::Texture_map" name="Engine::Texture_map">
-<area href="class_engine_1_1_resource.html" alt="Engine::Resource" shape="rect" coords="75,0,215,24"/>
-<area href="class_engine_1_1_render_texture.html" alt="Engine::RenderTexture" shape="rect" coords="75,112,215,136"/>
-<area href="class_engine_1_1_shadow_cube.html" alt="Engine::ShadowCube" shape="rect" coords="0,168,140,192"/>
-<area href="class_engine_1_1_shadow_map.html" alt="Engine::ShadowMap" shape="rect" coords="150,168,290,192"/>
+<area href="class_engine_1_1_resource.html" title="A Base class for all Resource objects." alt="Engine::Resource" shape="rect" coords="75,0,215,24"/>
+<area href="class_engine_1_1_render_texture.html" title="A texture which can display from the view of a Camera." alt="Engine::RenderTexture" shape="rect" coords="75,112,215,136"/>
+<area href="class_engine_1_1_shadow_cube.html" title="A ShadowCube is very similar to six ShadowMap objects arranged into a 3D cube." alt="Engine::ShadowCube" shape="rect" coords="0,168,140,192"/>
+<area href="class_engine_1_1_shadow_map.html" title="A ShadowMap is a Render Texture which draws depth values instead of colour." alt="Engine::ShadowMap" shape="rect" coords="150,168,290,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -95,27 +98,41 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad35168b0b6784c4c8528787aa3c248f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#ad35168b0b6784c4c8528787aa3c248f0">~Texture</a> ()</td></tr>
 <tr class="separator:ad35168b0b6784c4c8528787aa3c248f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adab4b3f2d21b0479a7bb95f6279bd9ed"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#adab4b3f2d21b0479a7bb95f6279bd9ed">get</a> ()</td></tr>
+<tr class="memdesc:adab4b3f2d21b0479a7bb95f6279bd9ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ID of the texture.  <a href="class_engine_1_1_texture.html#adab4b3f2d21b0479a7bb95f6279bd9ed">More...</a><br /></td></tr>
 <tr class="separator:adab4b3f2d21b0479a7bb95f6279bd9ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76f4399b76be2a958054a8ffd0c5e83a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a76f4399b76be2a958054a8ffd0c5e83a">load</a> (std::string _image)</td></tr>
+<tr class="memdesc:a76f4399b76be2a958054a8ffd0c5e83a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a texture.  <a href="class_engine_1_1_texture.html#a76f4399b76be2a958054a8ffd0c5e83a">More...</a><br /></td></tr>
 <tr class="separator:a76f4399b76be2a958054a8ffd0c5e83a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e03f62fe4c8db6efe2baea73d7a3116"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a1e03f62fe4c8db6efe2baea73d7a3116">getResolution</a> ()</td></tr>
+<tr class="memdesc:a1e03f62fe4c8db6efe2baea73d7a3116"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the resolution of the <a class="el" href="class_engine_1_1_texture.html" title="A texture is usually a loaded image.">Texture</a>.  <a href="class_engine_1_1_texture.html#a1e03f62fe4c8db6efe2baea73d7a3116">More...</a><br /></td></tr>
+<tr class="separator:a1e03f62fe4c8db6efe2baea73d7a3116"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:aa44e18642f35d4d90d49e2a79e012663"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#aa44e18642f35d4d90d49e2a79e012663">resolutionX</a></td></tr>
-<tr class="separator:aa44e18642f35d4d90d49e2a79e012663"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68922b2a8fd65d5b826a3bf25164d5ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a68922b2a8fd65d5b826a3bf25164d5ff">resolutionY</a></td></tr>
-<tr class="separator:a68922b2a8fd65d5b826a3bf25164d5ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a1ebcf31b4d22919b1716e4b97c6570b0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a1ebcf31b4d22919b1716e4b97c6570b0">m_resX</a></td></tr>
+<tr class="memdesc:a1ebcf31b4d22919b1716e4b97c6570b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Width of the texture.  <a href="class_engine_1_1_texture.html#a1ebcf31b4d22919b1716e4b97c6570b0">More...</a><br /></td></tr>
+<tr class="separator:a1ebcf31b4d22919b1716e4b97c6570b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6914800ac46131ac038e7420c807982d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a6914800ac46131ac038e7420c807982d">m_resY</a></td></tr>
+<tr class="memdesc:a6914800ac46131ac038e7420c807982d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of the texture.  <a href="class_engine_1_1_texture.html#a6914800ac46131ac038e7420c807982d">More...</a><br /></td></tr>
+<tr class="separator:a6914800ac46131ac038e7420c807982d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3f2793aac2a2abab322e9505b29ce1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#aa3f2793aac2a2abab322e9505b29ce1f">m_channels</a></td></tr>
+<tr class="memdesc:aa3f2793aac2a2abab322e9505b29ce1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">How many channels it has.  <a href="class_engine_1_1_texture.html#aa3f2793aac2a2abab322e9505b29ce1f">More...</a><br /></td></tr>
 <tr class="separator:aa3f2793aac2a2abab322e9505b29ce1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83f5a1582362ea63ea9bf04f4ef7c085"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a83f5a1582362ea63ea9bf04f4ef7c085">m_textureId</a></td></tr>
+<tr class="memdesc:a83f5a1582362ea63ea9bf04f4ef7c085"><td class="mdescLeft">&#160;</td><td class="mdescRight">The texture ID.  <a href="class_engine_1_1_texture.html#a83f5a1582362ea63ea9bf04f4ef7c085">More...</a><br /></td></tr>
 <tr class="separator:a83f5a1582362ea63ea9bf04f4ef7c085"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99d170430eed4f50585ee76cdf6cd94b"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a99d170430eed4f50585ee76cdf6cd94b">m_faceTextureID</a> [6]</td></tr>
-<tr class="separator:a99d170430eed4f50585ee76cdf6cd94b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_attribs_class_engine_1_1_resource"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_engine_1_1_resource')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_engine_1_1_resource.html">Engine::Resource</a></td></tr>
 <tr class="memitem:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">m_path</a></td></tr>
+<tr class="memdesc:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="mdescLeft">&#160;</td><td class="mdescRight">The path to the resource.  <a href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">More...</a><br /></td></tr>
 <tr class="separator:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A texture is usually a loaded image. </p>
+<p>Textures can be applied to <a class="el" href="class_engine_1_1_image_u_i.html">ImageUI</a> as well as <a class="el" href="class_engine_1_1_mesh_renderer.html" title="A Mesh Renderer displays an object&#39;s visuals to the screen.">MeshRenderer</a> objects </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8f18f686fbb5bb6c90e3ed8c978f1a80"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8f18f686fbb5bb6c90e3ed8c978f1a80">&#9670;&nbsp;</a></span>Texture()</h2>
 
@@ -182,6 +199,35 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the ID of the texture. </p>
+
+</div>
+</div>
+<a id="a1e03f62fe4c8db6efe2baea73d7a3116"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e03f62fe4c8db6efe2baea73d7a3116">&#9670;&nbsp;</a></span>getResolution()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 Engine::Texture::getResolution </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the resolution of the <a class="el" href="class_engine_1_1_texture.html" title="A texture is usually a loaded image.">Texture</a>. </p>
+
 </div>
 </div>
 <a id="a76f4399b76be2a958054a8ffd0c5e83a"></a>
@@ -200,6 +246,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Loads a texture. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -208,26 +256,70 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int Engine::Texture::m_channels</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>How many channels it has. </p>
 
 </div>
 </div>
-<a id="a99d170430eed4f50585ee76cdf6cd94b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99d170430eed4f50585ee76cdf6cd94b">&#9670;&nbsp;</a></span>m_faceTextureID</h2>
+<a id="a1ebcf31b4d22919b1716e4b97c6570b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ebcf31b4d22919b1716e4b97c6570b0">&#9670;&nbsp;</a></span>m_resX</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">GLuint Engine::Texture::m_faceTextureID[6]</td>
+          <td class="memname">int Engine::Texture::m_resX</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Width of the texture. </p>
+
+</div>
+</div>
+<a id="a6914800ac46131ac038e7420c807982d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6914800ac46131ac038e7420c807982d">&#9670;&nbsp;</a></span>m_resY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::Texture::m_resY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Height of the texture. </p>
 
 </div>
 </div>
@@ -236,40 +328,22 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">GLuint Engine::Texture::m_textureId</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="aa44e18642f35d4d90d49e2a79e012663"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa44e18642f35d4d90d49e2a79e012663">&#9670;&nbsp;</a></span>resolutionX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Engine::Texture::resolutionX</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a68922b2a8fd65d5b826a3bf25164d5ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68922b2a8fd65d5b826a3bf25164d5ff">&#9670;&nbsp;</a></span>resolutionY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Engine::Texture::resolutionY</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>The texture ID. </p>
 
 </div>
 </div>

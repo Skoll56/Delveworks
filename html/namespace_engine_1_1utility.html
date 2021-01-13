@@ -76,9 +76,9 @@ $(function() {
 Functions</h2></td></tr>
 <tr class="memitem:af3d23f5b87e00fcd4c91ac7e9dde42e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_engine_1_1utility.html#af3d23f5b87e00fcd4c91ac7e9dde42e5">onEveryFrame</a> (Scene *_scene, float _dT)</td></tr>
 <tr class="separator:af3d23f5b87e00fcd4c91ac7e9dde42e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2eb3df2b5e0669005d2cca0443608d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_engine_1_1utility.html#af2eb3df2b5e0669005d2cca0443608d7">moveEntity</a> (std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt; _obj, glm::vec3 _dir, std::vector&lt; std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&gt; _other, float _dTs)</td></tr>
+<tr class="memitem:af2eb3df2b5e0669005d2cca0443608d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_engine_1_1utility.html#af2eb3df2b5e0669005d2cca0443608d7">moveEntity</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt; _obj, glm::vec3 _dir, std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&gt; _other, float _dTs)</td></tr>
 <tr class="separator:af2eb3df2b5e0669005d2cca0443608d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74e815f4ad18ce31274190bcf817fd83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_engine_1_1utility.html#a74e815f4ad18ce31274190bcf817fd83">update</a> (std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt; _obj, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt; _shader, std::vector&lt; std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&gt; _allObj, float _dT)</td></tr>
+<tr class="memitem:a74e815f4ad18ce31274190bcf817fd83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_engine_1_1utility.html#a74e815f4ad18ce31274190bcf817fd83">update</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt; _obj, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt; _shader, std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&gt; _allObj, float _dT)</td></tr>
 <tr class="separator:a74e815f4ad18ce31274190bcf817fd83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af09ae4b14df272c50b9a68f5616110f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_engine_1_1utility.html#af09ae4b14df272c50b9a68f5616110f0">updateLighting</a> (std::vector&lt; <a class="el" href="class_engine_1_1_spot_light.html">SpotLight</a> * &gt; _sLight, std::vector&lt; <a class="el" href="class_engine_1_1_dir_light.html">DirLight</a> * &gt; _dLight, std::vector&lt; <a class="el" href="class_engine_1_1_point_light.html">PointLight</a> * &gt; _pLight, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt; _lSh, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt; _iSh)</td></tr>
 <tr class="separator:af09ae4b14df272c50b9a68f5616110f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,7 +149,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void Engine::utility::moveEntity </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td>
           <td class="paramname"><em>_obj</em>, </td>
         </tr>
         <tr>
@@ -161,7 +161,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&gt;&#160;</td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&gt;&#160;</td>
           <td class="paramname"><em>_other</em>, </td>
         </tr>
         <tr>
@@ -217,7 +217,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void Engine::utility::update </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td>
           <td class="paramname"><em>_obj</em>, </td>
         </tr>
         <tr>
@@ -229,7 +229,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&gt;&#160;</td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&gt;&#160;</td>
           <td class="paramname"><em>_allObj</em>, </td>
         </tr>
         <tr>

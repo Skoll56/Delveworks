@@ -19,11 +19,11 @@ namespace Engine
 
 	void Texture::load(std::string _image)
 	{		
-		resolutionX = 0;
-		resolutionY = 0;
+		m_resX = 0;
+		m_resY = 0;
 		m_channels = 0;
 		_image = "../resources/Textures/" + _image;		
-		unsigned char *data = stbi_load(_image.c_str(), &resolutionX, &resolutionY, &m_channels, 4);		
+		unsigned char *data = stbi_load(_image.c_str(), &m_resX, &m_resY, &m_channels, 4);		
 		if (!data) 
 		{ 
 			throw Exception("Texture Load Failed (No data)");
@@ -35,7 +35,7 @@ namespace Engine
 			throw Exception("Texture Load Failed (ID)"); 
 		}	
 		glBindTexture(GL_TEXTURE_2D, m_textureId);		
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, resolutionX, resolutionY, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);		
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_resX, m_resY, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);		
 		free(data);		
 		glGenerateMipmap(GL_TEXTURE_2D);		
 		glBindTexture(GL_TEXTURE_2D, 0);		

@@ -39,10 +39,7 @@ namespace Engine
 	void Component::onTick()
 	{
 	}
-
-	void Component::onRender()
-	{
-	}
+	
 	void Component::onDestroy()
 	{
 	}

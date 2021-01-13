@@ -2,51 +2,72 @@
 \label{class_engine_1_1_component}\index{Engine::Component@{Engine::Component}}
 
 
+The Base class for all Components in the \mbox{\hyperlink{namespace_engine}{Engine}}.  
+
+
+
+
 {\ttfamily \#include $<$Component.\+h$>$}
 
 Inheritance diagram for Engine\+::Component\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=9.000000cm]{class_engine_1_1_component}
+\includegraphics[height=11.000000cm]{class_engine_1_1_component}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_engine_1_1_component_a00efa93260fc3d08aa096aa1025869e2}{destroy}} ()
-\item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{class_engine_1_1_component_a914f7c81c44b707e39d2898bdd141281}{get\+Entity}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Call this to destroy a component at the end of the frame. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{class_engine_1_1_component_a914f7c81c44b707e39d2898bdd141281}{get\+Entity}} ()
+\begin{DoxyCompactList}\small\item\em Returns the \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} which contains this \mbox{\hyperlink{class_engine_1_1_component}{Component}}. \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} $>$ \mbox{\hyperlink{class_engine_1_1_component_a37740b395821ce65269c317db6b4102b}{transform}} ()
+\begin{DoxyCompactList}\small\item\em Returns the \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} component attached to the same object as this. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{class_engine_1_1_component_ae6b8b9031f70d95bad118684d95e8ba0}{get\+Input\+Device}} ()
+\begin{DoxyCompactList}\small\item\em Returns an \mbox{\hyperlink{class_engine_1_1_input_device}{Input\+Device}} of type T from the \mbox{\hyperlink{class_engine_1_1_input_manager}{Input\+Manager}}. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_core}{Core}} $>$ \mbox{\hyperlink{class_engine_1_1_component_a30e45e1c0ef286fc8447c68f6d520745}{get\+Core}} ()
+\begin{DoxyCompactList}\small\item\em Returns a reference to the \mbox{\hyperlink{class_engine_1_1_core}{Core}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
 \item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_input}{Input}} $>$ \mbox{\hyperlink{class_engine_1_1_component_a7bbd31f8047e7d026977f90362fe42d8}{input}} ()
-\end{DoxyCompactItemize}
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_component}{Component}} $>$ \mbox{\hyperlink{class_engine_1_1_component_a00c874614f49a1248394daa626056ac8}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}\+This\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{class_engine_1_1_component_a698b7e82b695c3e056dc0f929e631b6d}{on\+Initialise}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Initialise a component. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_engine_1_1_component_a68cf41016007993f00ca2ee172b290e5}{on\+Collision}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$ \+\_\+col)
+\begin{DoxyCompactList}\small\item\em Is called every frame the parent object in Colliding for. Contains the collision info. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_engine_1_1_component_a9c96847915c640fa8e5634419fba8ce7}{on\+Collision\+Enter}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$ \+\_\+col)
+\begin{DoxyCompactList}\small\item\em Is called on the first frame of collision. Contains the collision info. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_engine_1_1_component_afecb465fbad010451f18196147cf2b5c}{on\+Collision\+Exit}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} $>$ \+\_\+other)
+\begin{DoxyCompactList}\small\item\em Is called on the last frame of a collision. Contains a pointer to the other \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10bbef2b74a8a22f24c}{on\+Tick}} ()
-\item 
-virtual void \mbox{\hyperlink{class_engine_1_1_component_a6bf4b58e99c0ad73db8ff257728ba830}{on\+Render}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em This is called once per frame. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_engine_1_1_component_ac103051527cfb9b716379fd115c99f5c}{on\+Destroy}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em This is called just before a \mbox{\hyperlink{class_engine_1_1_component}{Component}} gets destroyed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{class_engine_1_1_component_aef5560490656209dac0858c9f405a5fc}{m\+\_\+entity}}
-\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{class_engine_1_1_component_aef5560490656209dac0858c9f405a5fc}{m\+\_\+entity}}
+\begin{DoxyCompactList}\small\item\em A reference to the entity this is attached to. \end{DoxyCompactList}\item 
 std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} $>$ \mbox{\hyperlink{class_engine_1_1_component_a0f0787fce807ad80c8a55d1b02dfc3b5}{m\+\_\+transform}}
-\item 
+\begin{DoxyCompactList}\small\item\em A reference to the \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} attached to the \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_component_a374bb0eb27722760feba88aa779b33a4}{m\+\_\+delete}} = false
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Is set to true when the object is due to be deleted. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_engine_1_1_component_a614439ccac0344926adc4c0165d64060}{Entity}}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+The Base class for all Components in the \mbox{\hyperlink{namespace_engine}{Engine}}. 
+
+Most things, including user defined-\/modules, typically inherit from this 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_engine_1_1_component_a00efa93260fc3d08aa096aa1025869e2}\label{class_engine_1_1_component_a00efa93260fc3d08aa096aa1025869e2}} 
@@ -55,23 +76,80 @@ class \mbox{\hyperlink{class_engine_1_1_component_a614439ccac0344926adc4c0165d64
 \doxysubsubsection{\texorpdfstring{destroy()}{destroy()}}
 {\footnotesize\ttfamily void Engine\+::\+Component\+::destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Call this to destroy a component at the end of the frame. 
+
+\mbox{\Hypertarget{class_engine_1_1_component_a30e45e1c0ef286fc8447c68f6d520745}\label{class_engine_1_1_component_a30e45e1c0ef286fc8447c68f6d520745}} 
+\index{Engine::Component@{Engine::Component}!getCore@{getCore}}
+\index{getCore@{getCore}!Engine::Component@{Engine::Component}}
+\doxysubsubsection{\texorpdfstring{getCore()}{getCore()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_core}{Core}} $>$ Engine\+::\+Component\+::get\+Core (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a reference to the \mbox{\hyperlink{class_engine_1_1_core}{Core}}. 
+
 \mbox{\Hypertarget{class_engine_1_1_component_a914f7c81c44b707e39d2898bdd141281}\label{class_engine_1_1_component_a914f7c81c44b707e39d2898bdd141281}} 
 \index{Engine::Component@{Engine::Component}!getEntity@{getEntity}}
 \index{getEntity@{getEntity}!Engine::Component@{Engine::Component}}
 \doxysubsubsection{\texorpdfstring{getEntity()}{getEntity()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{struct_engine_1_1_entity}{Entity}}$>$ Engine\+::\+Component\+::get\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_entity}{Entity}}$>$ Engine\+::\+Component\+::get\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{class_engine_1_1_component_a7bbd31f8047e7d026977f90362fe42d8}\label{class_engine_1_1_component_a7bbd31f8047e7d026977f90362fe42d8}} 
-\index{Engine::Component@{Engine::Component}!input@{input}}
-\index{input@{input}!Engine::Component@{Engine::Component}}
-\doxysubsubsection{\texorpdfstring{input()}{input()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_input}{Input}} $>$ Engine\+::\+Component\+::input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+Returns the \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} which contains this \mbox{\hyperlink{class_engine_1_1_component}{Component}}. 
+
+\mbox{\Hypertarget{class_engine_1_1_component_ae6b8b9031f70d95bad118684d95e8ba0}\label{class_engine_1_1_component_ae6b8b9031f70d95bad118684d95e8ba0}} 
+\index{Engine::Component@{Engine::Component}!getInputDevice@{getInputDevice}}
+\index{getInputDevice@{getInputDevice}!Engine::Component@{Engine::Component}}
+\doxysubsubsection{\texorpdfstring{getInputDevice()}{getInputDevice()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::shared\+\_\+ptr$<$T$>$ Engine\+::\+Component\+::get\+Input\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns an \mbox{\hyperlink{class_engine_1_1_input_device}{Input\+Device}} of type T from the \mbox{\hyperlink{class_engine_1_1_input_manager}{Input\+Manager}}. 
+
+\mbox{\Hypertarget{class_engine_1_1_component_a68cf41016007993f00ca2ee172b290e5}\label{class_engine_1_1_component_a68cf41016007993f00ca2ee172b290e5}} 
+\index{Engine::Component@{Engine::Component}!onCollision@{onCollision}}
+\index{onCollision@{onCollision}!Engine::Component@{Engine::Component}}
+\doxysubsubsection{\texorpdfstring{onCollision()}{onCollision()}}
+{\footnotesize\ttfamily void Engine\+::\+Component\+::on\+Collision (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$}]{\+\_\+col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Is called every frame the parent object in Colliding for. Contains the collision info. 
+
+\mbox{\Hypertarget{class_engine_1_1_component_a9c96847915c640fa8e5634419fba8ce7}\label{class_engine_1_1_component_a9c96847915c640fa8e5634419fba8ce7}} 
+\index{Engine::Component@{Engine::Component}!onCollisionEnter@{onCollisionEnter}}
+\index{onCollisionEnter@{onCollisionEnter}!Engine::Component@{Engine::Component}}
+\doxysubsubsection{\texorpdfstring{onCollisionEnter()}{onCollisionEnter()}}
+{\footnotesize\ttfamily void Engine\+::\+Component\+::on\+Collision\+Enter (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$}]{\+\_\+col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Is called on the first frame of collision. Contains the collision info. 
+
+\mbox{\Hypertarget{class_engine_1_1_component_afecb465fbad010451f18196147cf2b5c}\label{class_engine_1_1_component_afecb465fbad010451f18196147cf2b5c}} 
+\index{Engine::Component@{Engine::Component}!onCollisionExit@{onCollisionExit}}
+\index{onCollisionExit@{onCollisionExit}!Engine::Component@{Engine::Component}}
+\doxysubsubsection{\texorpdfstring{onCollisionExit()}{onCollisionExit()}}
+{\footnotesize\ttfamily void Engine\+::\+Component\+::on\+Collision\+Exit (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} $>$}]{\+\_\+other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Is called on the last frame of a collision. Contains a pointer to the other \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}. 
 
 \mbox{\Hypertarget{class_engine_1_1_component_ac103051527cfb9b716379fd115c99f5c}\label{class_engine_1_1_component_ac103051527cfb9b716379fd115c99f5c}} 
 \index{Engine::Component@{Engine::Component}!onDestroy@{onDestroy}}
 \index{onDestroy@{onDestroy}!Engine::Component@{Engine::Component}}
 \doxysubsubsection{\texorpdfstring{onDestroy()}{onDestroy()}}
 {\footnotesize\ttfamily void Engine\+::\+Component\+::on\+Destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+This is called just before a \mbox{\hyperlink{class_engine_1_1_component}{Component}} gets destroyed. 
 
 \mbox{\Hypertarget{class_engine_1_1_component_a698b7e82b695c3e056dc0f929e631b6d}\label{class_engine_1_1_component_a698b7e82b695c3e056dc0f929e631b6d}} 
 \index{Engine::Component@{Engine::Component}!onInitialise@{onInitialise}}
@@ -81,13 +159,11 @@ class \mbox{\hyperlink{class_engine_1_1_component_a614439ccac0344926adc4c0165d64
 
 
 
-Reimplemented in \mbox{\hyperlink{class_engine_1_1_mesh_renderer_ab02daa4ecddb453337ce53d135d71ab9}{Engine\+::\+Mesh\+Renderer}}, \mbox{\hyperlink{class_engine_1_1_transform_a2e1159a746481dcc6e31f3fce87b7270}{Engine\+::\+Transform}}, and \mbox{\hyperlink{class_engine_1_1_camera_a16df865e6139a822c0e7ab7548bca24e}{Engine\+::\+Camera}}.
+Initialise a component. 
 
-\mbox{\Hypertarget{class_engine_1_1_component_a6bf4b58e99c0ad73db8ff257728ba830}\label{class_engine_1_1_component_a6bf4b58e99c0ad73db8ff257728ba830}} 
-\index{Engine::Component@{Engine::Component}!onRender@{onRender}}
-\index{onRender@{onRender}!Engine::Component@{Engine::Component}}
-\doxysubsubsection{\texorpdfstring{onRender()}{onRender()}}
-{\footnotesize\ttfamily void Engine\+::\+Component\+::on\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+Components can also specify arguments to go into this function. You pass them in when you Add\+Component. 
+
+Reimplemented in \mbox{\hyperlink{class_engine_1_1_transform_a2e1159a746481dcc6e31f3fce87b7270}{Engine\+::\+Transform}}, and \mbox{\hyperlink{class_engine_1_1_camera_a16df865e6139a822c0e7ab7548bca24e}{Engine\+::\+Camera}}.
 
 \mbox{\Hypertarget{class_engine_1_1_component_a8763aeb9a9bcd10bbef2b74a8a22f24c}\label{class_engine_1_1_component_a8763aeb9a9bcd10bbef2b74a8a22f24c}} 
 \index{Engine::Component@{Engine::Component}!onTick@{onTick}}
@@ -97,7 +173,11 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_mesh_renderer_ab02daa4ecddb45
 
 
 
-Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205063c01f652b02c0b44afe1a}{Engine\+::\+Adv\+Physics\+Object}}, \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c01676f6d79bec3423ff8a0}{Engine\+::\+Physics\+Object}}, \mbox{\hyperlink{class_engine_1_1_physics_event_user_ae55c6ef5972f980bdee44de8fc81ad22}{Engine\+::\+Physics\+Event\+User}}, \mbox{\hyperlink{class_engine_1_1_sound_source_a1fec1228d1a8c467a6febbdac1a4f219}{Engine\+::\+Sound\+Source}}, and \mbox{\hyperlink{class_engine_1_1_transform_a73bf4bd9c49e0d40275eda859756c2f6}{Engine\+::\+Transform}}.
+This is called once per frame. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_engine_1_1_button_u_i_ac933da6e6ddc3157aa8f3cbfad0cfaee}{Engine\+::\+Button\+UI}}, \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205063c01f652b02c0b44afe1a}{Engine\+::\+Adv\+Physics\+Object}}, \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c01676f6d79bec3423ff8a0}{Engine\+::\+Physics\+Object}}, \mbox{\hyperlink{class_engine_1_1_physics_event_user_ae55c6ef5972f980bdee44de8fc81ad22}{Engine\+::\+Physics\+Event\+User}}, \mbox{\hyperlink{class_engine_1_1_sound_source_a1fec1228d1a8c467a6febbdac1a4f219}{Engine\+::\+Sound\+Source}}, \mbox{\hyperlink{class_engine_1_1_transform_a73bf4bd9c49e0d40275eda859756c2f6}{Engine\+::\+Transform}}, and \mbox{\hyperlink{class_engine_1_1_camera_a3950b7fce1554b77d4089d65fec89ac1}{Engine\+::\+Camera}}.
 
 \mbox{\Hypertarget{class_engine_1_1_component_a37740b395821ce65269c317db6b4102b}\label{class_engine_1_1_component_a37740b395821ce65269c317db6b4102b}} 
 \index{Engine::Component@{Engine::Component}!transform@{transform}}
@@ -107,12 +187,16 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205
 
 
 
+Returns the \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} component attached to the same object as this. 
+
+
+
 \doxysubsection{Friends And Related Function Documentation}
 \mbox{\Hypertarget{class_engine_1_1_component_a614439ccac0344926adc4c0165d64060}\label{class_engine_1_1_component_a614439ccac0344926adc4c0165d64060}} 
 \index{Engine::Component@{Engine::Component}!Entity@{Entity}}
 \index{Entity@{Entity}!Engine::Component@{Engine::Component}}
 \doxysubsubsection{\texorpdfstring{Entity}{Entity}}
-{\footnotesize\ttfamily friend class \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}}\hspace{0.3cm}{\ttfamily [friend]}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 
@@ -123,17 +207,39 @@ Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205
 \doxysubsubsection{\texorpdfstring{m\_delete}{m\_delete}}
 {\footnotesize\ttfamily bool Engine\+::\+Component\+::m\+\_\+delete = false\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Is set to true when the object is due to be deleted. 
+
 \mbox{\Hypertarget{class_engine_1_1_component_aef5560490656209dac0858c9f405a5fc}\label{class_engine_1_1_component_aef5560490656209dac0858c9f405a5fc}} 
 \index{Engine::Component@{Engine::Component}!m\_entity@{m\_entity}}
 \index{m\_entity@{m\_entity}!Engine::Component@{Engine::Component}}
 \doxysubsubsection{\texorpdfstring{m\_entity}{m\_entity}}
-{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{struct_engine_1_1_entity}{Entity}}$>$ Engine\+::\+Component\+::m\+\_\+entity\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_entity}{Entity}}$>$ Engine\+::\+Component\+::m\+\_\+entity\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A reference to the entity this is attached to. 
+
+\mbox{\Hypertarget{class_engine_1_1_component_a00c874614f49a1248394daa626056ac8}\label{class_engine_1_1_component_a00c874614f49a1248394daa626056ac8}} 
+\index{Engine::Component@{Engine::Component}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::Component@{Engine::Component}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_component}{Component}}$>$ Engine\+::\+Component\+::m\+\_\+self}
+
+
+
+A \char`\"{}\+This\char`\"{} pointer. 
 
 \mbox{\Hypertarget{class_engine_1_1_component_a0f0787fce807ad80c8a55d1b02dfc3b5}\label{class_engine_1_1_component_a0f0787fce807ad80c8a55d1b02dfc3b5}} 
 \index{Engine::Component@{Engine::Component}!m\_transform@{m\_transform}}
 \index{m\_transform@{m\_transform}!Engine::Component@{Engine::Component}}
 \doxysubsubsection{\texorpdfstring{m\_transform}{m\_transform}}
 {\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_transform}{Transform}}$>$ Engine\+::\+Component\+::m\+\_\+transform\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A reference to the \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} attached to the \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}. 
 
 
 

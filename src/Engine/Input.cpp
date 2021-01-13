@@ -59,7 +59,7 @@ namespace Engine
 			int winX, winY;
 			winX = m_IM.lock()->m_windowSize.x / 2;
 			winY = m_IM.lock()->m_windowSize.y / 2;
-			SDL_WarpMouseInWindow(m_IM.lock()->m_window, winX, winY);			
+			SDL_WarpMouseInWindow(m_IM.lock()->m_window, winX, winY); //TODO: Fix that, should be Context not Window			
 			m_pos.x = winX;
 			m_pos.y = winY;
 		}

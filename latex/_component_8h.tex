@@ -4,15 +4,19 @@
 {\ttfamily \#include $<$glm/glm.\+hpp$>$}\newline
 {\ttfamily \#include $<$A\+L/al.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}Resource.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Input.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Core.\+h\char`\"{}}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_engine_1_1_component}{Engine\+::\+Component}}
-\item 
+\begin{DoxyCompactList}\small\item\em The Base class for all Components in the \mbox{\hyperlink{namespace_engine}{Engine}}. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_engine_1_1_transform}{Engine\+::\+Transform}}
-\item 
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} \mbox{\hyperlink{class_engine_1_1_component}{Component}} contains Translation, Rotation and Scale data. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_engine_1_1_sound_source}{Engine\+::\+Sound\+Source}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{class_engine_1_1_sound}{Sound}} Source holds and plays sounds. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_engine_1_1_audio_receiver}{Engine\+::\+Audio\+Receiver}}
+\begin{DoxyCompactList}\small\item\em A set of \char`\"{}ears\char`\"{}. This is used to hear sounds. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 

@@ -177,6 +177,7 @@ boxfont setfont
 (Engine::Shader) cw
 (Engine::Sound) cw
 (Engine::Texture) cw
+(Engine::VertexArray) cw
 (Engine::RenderTexture) cw
 (Engine::ShadowCube) cw
 (Engine::ShadowMap) cw
@@ -191,10 +192,11 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- classes -----
 
- (Engine::Resource) 1.000000 3.000000 box
+ (Engine::Resource) 1.500000 3.000000 box
  (Engine::Shader) 0.000000 2.000000 box
  (Engine::Sound) 1.000000 2.000000 box
  (Engine::Texture) 2.000000 2.000000 box
+ (Engine::VertexArray) 3.000000 2.000000 box
  (Engine::RenderTexture) 2.000000 1.000000 box
  (Engine::ShadowCube) 1.500000 0.000000 box
  (Engine::ShadowMap) 2.500000 0.000000 box
@@ -202,9 +204,9 @@ boundx scalefactor div boundy scalefactor div scale
 % ----- relations -----
 
 solid
-1 1.000000 2.250000 out
+1 1.500000 2.250000 out
 solid
-0.000000 2.000000 3.000000 conn
+0.000000 3.000000 3.000000 conn
 solid
 0 0.000000 2.750000 in
 solid
@@ -213,6 +215,8 @@ solid
 0 2.000000 2.750000 in
 solid
 1 2.000000 1.250000 out
+solid
+0 3.000000 2.750000 in
 solid
 0 2.000000 1.750000 in
 solid

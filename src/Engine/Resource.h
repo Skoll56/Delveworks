@@ -13,17 +13,23 @@ namespace Engine
 {
 	class Shader;
 
+	/** \brief A Base class for all Resource objects. */
+	/** A resource is anything that gets loaded in, such as Texture, VertexArray, Sound.  */
 	class Resource
 	{
-	public:
+		public:
+		/** \brief The path to the resource*/
 		std::string m_path;		
 	};
 
+	/** \brief The Resource Manager handled the loading in of Resources and saving them in memory	*/
 	class ResourceManager
 	{
+		/** \brief The list of already loaded in Resources*/
 		std::vector<std::shared_ptr<Resource>> m_resourceList;
 
-	public:
+		public:
+		/** \brief Loads in a resource, of type T, from a path and returns it*/
 		template <typename T>
 		std::shared_ptr<T> load(std::string _path)
 		{	
@@ -51,15 +57,23 @@ namespace Engine
 		}
 	};
 
+	/** \brief A sound. This can be Ogg or WAV format.	*/
+	/** Sounds get played and are usually held by a SoundSource  */
 	class Sound : public Resource
 	{
 		friend class SoundSource;
-	public:
+		public:
+		/** \brief Loads in a sound. This gets called by the ResourceManager*/
 		void load(std::string path);
 
-	private:
-		ALuint m_id  = 0;		
+		private:
+		/** \brief The ID of the sound*/
+		ALuint m_id  = 0;	
+
+		/** \brief A function for loading OGG format*/
 		void loadOgg(const std::string& fileName, std::vector<char> &buffer, ALenum &format, ALsizei &freq);
+
+		/** \brief A function for loading WAV format*/
 		char* loadWav(const std::string & fileName, int &size, ALenum & format, ALsizei & freq);
 	};
 }

@@ -76,6 +76,15 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_vertex_array_8h_source.html">VertexArray.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Engine::VertexArray:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_engine_1_1_vertex_array.png" usemap="#Engine::VertexArray_map" alt=""/>
+  <map id="Engine::VertexArray_map" name="Engine::VertexArray_map">
+<area href="class_engine_1_1_resource.html" title="A Base class for all Resource objects." alt="Engine::Resource" shape="rect" coords="0,0,127,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -84,35 +93,53 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6b8a87026ebe08ecae270e89d7084753"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a6b8a87026ebe08ecae270e89d7084753">VertexArray</a> (std::string _path)</td></tr>
 <tr class="separator:a6b8a87026ebe08ecae270e89d7084753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2794f06ce1354e73400f485577209055"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a2794f06ce1354e73400f485577209055">getTriPos</a> ()</td></tr>
+<tr class="memdesc:a2794f06ce1354e73400f485577209055"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the array of Triangle Vertex positions.  <a href="class_engine_1_1_vertex_array.html#a2794f06ce1354e73400f485577209055">More...</a><br /></td></tr>
 <tr class="separator:a2794f06ce1354e73400f485577209055"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7758b4825962f3f46ad8d168c51bd5f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a7758b4825962f3f46ad8d168c51bd5f3">getTriTex</a> ()</td></tr>
+<tr class="memdesc:a7758b4825962f3f46ad8d168c51bd5f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the array of texture coordinates.  <a href="class_engine_1_1_vertex_array.html#a7758b4825962f3f46ad8d168c51bd5f3">More...</a><br /></td></tr>
 <tr class="separator:a7758b4825962f3f46ad8d168c51bd5f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cd52103bccd9bc1e39e1dfac7b8ef89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a8cd52103bccd9bc1e39e1dfac7b8ef89">getTriNorm</a> ()</td></tr>
+<tr class="memdesc:a8cd52103bccd9bc1e39e1dfac7b8ef89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the array of surface normals.  <a href="class_engine_1_1_vertex_array.html#a8cd52103bccd9bc1e39e1dfac7b8ef89">More...</a><br /></td></tr>
 <tr class="separator:a8cd52103bccd9bc1e39e1dfac7b8ef89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0e347dbdfff1a3dab62573ebdf133c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#af0e347dbdfff1a3dab62573ebdf133c6">loadObj</a> (std::string _path)</td></tr>
-<tr class="separator:af0e347dbdfff1a3dab62573ebdf133c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68bdb742368b40d60c787dd851380609"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a68bdb742368b40d60c787dd851380609">load</a> (std::string _path)</td></tr>
+<tr class="memdesc:a68bdb742368b40d60c787dd851380609"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads an OBJ from file.  <a href="class_engine_1_1_vertex_array.html#a68bdb742368b40d60c787dd851380609">More...</a><br /></td></tr>
+<tr class="separator:a68bdb742368b40d60c787dd851380609"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa73ae885f338a9a48b38b531953d75a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#afa73ae885f338a9a48b38b531953d75a">setBuffer</a> (std::string _attribute, <a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> *_buffer)</td></tr>
+<tr class="memdesc:afa73ae885f338a9a48b38b531953d75a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to add a buffer to the object.  <a href="class_engine_1_1_vertex_array.html#afa73ae885f338a9a48b38b531953d75a">More...</a><br /></td></tr>
 <tr class="separator:afa73ae885f338a9a48b38b531953d75a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09d938ae03419d057fbd2be5a1f7d140"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a09d938ae03419d057fbd2be5a1f7d140">getVertexCount</a> ()</td></tr>
+<tr class="memdesc:a09d938ae03419d057fbd2be5a1f7d140"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns how many vertexes an object has.  <a href="class_engine_1_1_vertex_array.html#a09d938ae03419d057fbd2be5a1f7d140">More...</a><br /></td></tr>
 <tr class="separator:a09d938ae03419d057fbd2be5a1f7d140"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af573a812ed3c4422b146928cdb1dd05f"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#af573a812ed3c4422b146928cdb1dd05f">getId</a> ()</td></tr>
+<tr class="memdesc:af573a812ed3c4422b146928cdb1dd05f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ID of the Mesh.  <a href="class_engine_1_1_vertex_array.html#af573a812ed3c4422b146928cdb1dd05f">More...</a><br /></td></tr>
 <tr class="separator:af573a812ed3c4422b146928cdb1dd05f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a7a797044fdd9a7fc5683ee2a12070c18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a7a797044fdd9a7fc5683ee2a12070c18">splitStringWhitespace</a> (std::string &amp;_input, std::vector&lt; std::string &gt; &amp;_output)</td></tr>
+<tr class="memdesc:a7a797044fdd9a7fc5683ee2a12070c18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for loading in OBJ files.  <a href="class_engine_1_1_vertex_array.html#a7a797044fdd9a7fc5683ee2a12070c18">More...</a><br /></td></tr>
 <tr class="separator:a7a797044fdd9a7fc5683ee2a12070c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add47db646f3d05827ed627575d883eb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#add47db646f3d05827ed627575d883eb6">splitString</a> (std::string &amp;_input, char _splitter, std::vector&lt; std::string &gt; &amp;_output)</td></tr>
+<tr class="memdesc:add47db646f3d05827ed627575d883eb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for loading in OBJ files.  <a href="class_engine_1_1_vertex_array.html#add47db646f3d05827ed627575d883eb6">More...</a><br /></td></tr>
 <tr class="separator:add47db646f3d05827ed627575d883eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:afbd52f73b426855683bf19e06eca91f9"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#afbd52f73b426855683bf19e06eca91f9">m_id</a></td></tr>
+<tr class="memdesc:afbd52f73b426855683bf19e06eca91f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Vertex Array ID.  <a href="class_engine_1_1_vertex_array.html#afbd52f73b426855683bf19e06eca91f9">More...</a><br /></td></tr>
 <tr class="separator:afbd52f73b426855683bf19e06eca91f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc84dc5d31b9dd91956facc18d41a9ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#adc84dc5d31b9dd91956facc18d41a9ab">m_dirty</a></td></tr>
 <tr class="separator:adc84dc5d31b9dd91956facc18d41a9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54a23a973d1449a72c546670eb11f173"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a54a23a973d1449a72c546670eb11f173">m_buffers</a></td></tr>
-<tr class="separator:a54a23a973d1449a72c546670eb11f173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a550f0317091502884b1db06ca43f42d1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a550f0317091502884b1db06ca43f42d1">m_buffers</a></td></tr>
+<tr class="memdesc:a550f0317091502884b1db06ca43f42d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vector of Buffers that the Vertex Array holds (Such as texture co-ordinates, normal buffer and vertex position buffer)  <a href="class_engine_1_1_vertex_array.html#a550f0317091502884b1db06ca43f42d1">More...</a><br /></td></tr>
+<tr class="separator:a550f0317091502884b1db06ca43f42d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_attribs_class_engine_1_1_resource"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_engine_1_1_resource')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_engine_1_1_resource.html">Engine::Resource</a></td></tr>
+<tr class="memitem:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">m_path</a></td></tr>
+<tr class="memdesc:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="mdescLeft">&#160;</td><td class="mdescRight">The path to the resource.  <a href="class_engine_1_1_resource.html#a0b6159004b4fc901f8df833f97f02670">More...</a><br /></td></tr>
+<tr class="separator:a0b6159004b4fc901f8df833f97f02670 inherit pub_attribs_class_engine_1_1_resource"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4ee0f87fccc476f7eb89abe55fc31d76"></a>
@@ -166,6 +193,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns the ID of the Mesh. </p>
+
 </div>
 </div>
 <a id="a8cd52103bccd9bc1e39e1dfac7b8ef89"></a>
@@ -190,6 +219,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns the array of surface normals. </p>
 
 </div>
 </div>
@@ -216,6 +247,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the array of Triangle Vertex positions. </p>
+
 </div>
 </div>
 <a id="a7758b4825962f3f46ad8d168c51bd5f3"></a>
@@ -241,6 +274,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the array of texture coordinates. </p>
+
 </div>
 </div>
 <a id="a09d938ae03419d057fbd2be5a1f7d140"></a>
@@ -258,16 +293,18 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Returns how many vertexes an object has. </p>
+
 </div>
 </div>
-<a id="af0e347dbdfff1a3dab62573ebdf133c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0e347dbdfff1a3dab62573ebdf133c6">&#9670;&nbsp;</a></span>loadObj()</h2>
+<a id="a68bdb742368b40d60c787dd851380609"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68bdb742368b40d60c787dd851380609">&#9670;&nbsp;</a></span>load()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Engine::VertexArray::loadObj </td>
+          <td class="memname">void Engine::VertexArray::load </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>_path</em></td><td>)</td>
@@ -275,6 +312,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Loads an OBJ from file. </p>
 
 </div>
 </div>
@@ -303,6 +342,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Used to add a buffer to the object. </p>
 
 </div>
 </div>
@@ -346,6 +387,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Used for loading in OBJ files. </p>
+
 </div>
 </div>
 <a id="a7a797044fdd9a7fc5683ee2a12070c18"></a>
@@ -382,11 +425,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Used for loading in OBJ files. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a54a23a973d1449a72c546670eb11f173"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54a23a973d1449a72c546670eb11f173">&#9670;&nbsp;</a></span>m_buffers</h2>
+<a id="a550f0317091502884b1db06ca43f42d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a550f0317091502884b1db06ca43f42d1">&#9670;&nbsp;</a></span>m_buffers</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -395,7 +440,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> *&gt; Engine::VertexArray::m_buffers</td>
+          <td class="memname">std::vector&lt;<a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a>*&gt; Engine::VertexArray::m_buffers</td>
         </tr>
       </table>
   </td>
@@ -404,6 +449,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>A vector of Buffers that the Vertex Array holds (Such as texture co-ordinates, normal buffer and vertex position buffer) </p>
 
 </div>
 </div>
@@ -448,6 +495,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>The Vertex Array ID. </p>
 
 </div>
 </div>

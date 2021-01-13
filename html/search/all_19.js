@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['z_730',['Z',['../_physics_new_8cpp.html#a51591cf51bdd6c1f6015532422e7770e',1,'PhysicsNew.cpp']]]
+  ['_7eexception_864',['~Exception',['../class_engine_1_1_exception.html#a3367b99e73125069391d6b35d8628552',1,'Engine::Exception']]],
+  ['_7etexture_865',['~Texture',['../class_engine_1_1_texture.html#ad35168b0b6784c4c8528787aa3c248f0',1,'Engine::Texture']]]
 ];

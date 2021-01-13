@@ -52,7 +52,6 @@ src/Engine/Light.h
 src/Engine/Camera.h
 src/Engine/Collision.h
 src/Engine/Input.h
-src/Engine/Room.h
 src/Engine/Shader.h
 src/Engine/stb_image.h
 src/Engine/stb_vorbis.h

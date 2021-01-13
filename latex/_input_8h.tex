@@ -2,11 +2,22 @@
 \label{_input_8h}\index{src/Engine/Input.h@{src/Engine/Input.h}}
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include $<$glm/glm.\+hpp$>$}\newline
+{\ttfamily \#include \char`\"{}Console.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Exception.\+h\char`\"{}}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{class_engine_1_1_input}{Engine\+::\+Input}}
-\end{DoxyCompactItemize}
+class \mbox{\hyperlink{class_engine_1_1_input_device}{Engine\+::\+Input\+Device}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_engine_1_1_input_device}{Input\+Device}} is the base class for all Input Devices. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_engine_1_1_input_manager}{Engine\+::\+Input\+Manager}}
+\begin{DoxyCompactList}\small\item\em Manages all \mbox{\hyperlink{class_engine_1_1_input_device}{Input\+Device}} objects. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_engine_1_1_keyboard}{Engine\+::\+Keyboard}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_engine_1_1_keyboard}{Keyboard}} \mbox{\hyperlink{class_engine_1_1_input_device}{Input\+Device}}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_engine_1_1_mouse}{Engine\+::\+Mouse}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_engine_1_1_mouse}{Mouse}} Input Device. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_engine_1_1_controller}{Engine\+::\+Controller}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_engine_1_1_controller}{Controller}} Input Device. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 

@@ -2,6 +2,11 @@
 \label{class_engine_1_1_render_texture}\index{Engine::RenderTexture@{Engine::RenderTexture}}
 
 
+A texture which can display from the view of a \mbox{\hyperlink{class_engine_1_1_camera}{Camera}}.  
+
+
+
+
 {\ttfamily \#include $<$Render\+Texture.\+h$>$}
 
 Inheritance diagram for Engine\+::Render\+Texture\+:\begin{figure}[H]
@@ -14,41 +19,95 @@ Inheritance diagram for Engine\+::Render\+Texture\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{class_engine_1_1_render_texture_a2ed818cd53d6779558ad0f985e4561ad}{Initialise}} ()
-\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\begin{DoxyCompactList}\small\item\em Initialise (Default resolution 1024x1024) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_engine_1_1_render_texture_a8d28f51cd1d5654a44ab47b7663de61c}{Initialise}} (int \+\_\+resX, int \+\_\+resY)
+\begin{DoxyCompactList}\small\item\em Initialise (specify resolution) \end{DoxyCompactList}\item 
+G\+Luint \mbox{\hyperlink{class_engine_1_1_render_texture_accd6ac21d5bdeb0dca7adcf57a777471}{get\+Frame\+Buf\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Get the Framebuffer ID. \end{DoxyCompactList}\item 
+G\+Luint \mbox{\hyperlink{class_engine_1_1_render_texture_a097714d6d10fcb3c82825d29990747e6}{get\+Render\+Buf\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Get the Render\+Buffer ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-G\+Luint \mbox{\hyperlink{class_engine_1_1_render_texture_a9c302b3884a54786faa93b4fe1f330c4}{f\+Buf\+ID}} = 0
-\item 
-G\+Luint \mbox{\hyperlink{class_engine_1_1_render_texture_ab562d507b71ecbd5d9d692bb354173c8}{r\+Buf\+Obj\+ID}} = 0
-\end{DoxyCompactItemize}
+G\+Luint \mbox{\hyperlink{class_engine_1_1_render_texture_a0f0e83316e07dcc0711cfd2f33fccc70}{m\+\_\+f\+Buf\+ID}} = 0
+\begin{DoxyCompactList}\small\item\em ID of the frame buffer. \end{DoxyCompactList}\item 
+G\+Luint \mbox{\hyperlink{class_engine_1_1_render_texture_a0353ee7ffb68aa75a8eaf09c8cd2bbc0}{m\+\_\+r\+Buf\+Obj\+ID}} = 0
+\begin{DoxyCompactList}\small\item\em ID of the Render Buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+A texture which can display from the view of a \mbox{\hyperlink{class_engine_1_1_camera}{Camera}}. 
+
+Used either as a \mbox{\hyperlink{class_engine_1_1_display_u_i}{Display\+UI}} or as an object\textquotesingle{}s \mbox{\hyperlink{class_engine_1_1_texture}{Texture}} 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_render_texture_accd6ac21d5bdeb0dca7adcf57a777471}\label{class_engine_1_1_render_texture_accd6ac21d5bdeb0dca7adcf57a777471}} 
+\index{Engine::RenderTexture@{Engine::RenderTexture}!getFrameBufID@{getFrameBufID}}
+\index{getFrameBufID@{getFrameBufID}!Engine::RenderTexture@{Engine::RenderTexture}}
+\doxysubsubsection{\texorpdfstring{getFrameBufID()}{getFrameBufID()}}
+{\footnotesize\ttfamily G\+Luint Engine\+::\+Render\+Texture\+::get\+Frame\+Buf\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Framebuffer ID. 
+
+\mbox{\Hypertarget{class_engine_1_1_render_texture_a097714d6d10fcb3c82825d29990747e6}\label{class_engine_1_1_render_texture_a097714d6d10fcb3c82825d29990747e6}} 
+\index{Engine::RenderTexture@{Engine::RenderTexture}!getRenderBufID@{getRenderBufID}}
+\index{getRenderBufID@{getRenderBufID}!Engine::RenderTexture@{Engine::RenderTexture}}
+\doxysubsubsection{\texorpdfstring{getRenderBufID()}{getRenderBufID()}}
+{\footnotesize\ttfamily G\+Luint Engine\+::\+Render\+Texture\+::get\+Render\+Buf\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Render\+Buffer ID. 
+
 \mbox{\Hypertarget{class_engine_1_1_render_texture_a2ed818cd53d6779558ad0f985e4561ad}\label{class_engine_1_1_render_texture_a2ed818cd53d6779558ad0f985e4561ad}} 
 \index{Engine::RenderTexture@{Engine::RenderTexture}!Initialise@{Initialise}}
 \index{Initialise@{Initialise}!Engine::RenderTexture@{Engine::RenderTexture}}
-\doxysubsubsection{\texorpdfstring{Initialise()}{Initialise()}}
+\doxysubsubsection{\texorpdfstring{Initialise()}{Initialise()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void Engine\+::\+Render\+Texture\+::\+Initialise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Initialise (Default resolution 1024x1024) 
 
 
 
 Reimplemented in \mbox{\hyperlink{class_engine_1_1_shadow_cube_ad32010d6fb6834f9e1b8d38b33927603}{Engine\+::\+Shadow\+Cube}}.
 
+\mbox{\Hypertarget{class_engine_1_1_render_texture_a8d28f51cd1d5654a44ab47b7663de61c}\label{class_engine_1_1_render_texture_a8d28f51cd1d5654a44ab47b7663de61c}} 
+\index{Engine::RenderTexture@{Engine::RenderTexture}!Initialise@{Initialise}}
+\index{Initialise@{Initialise}!Engine::RenderTexture@{Engine::RenderTexture}}
+\doxysubsubsection{\texorpdfstring{Initialise()}{Initialise()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Engine\+::\+Render\+Texture\+::\+Initialise (\begin{DoxyParamCaption}\item[{int}]{\+\_\+resX,  }\item[{int}]{\+\_\+resY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Initialise (specify resolution) 
+
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_engine_1_1_render_texture_a9c302b3884a54786faa93b4fe1f330c4}\label{class_engine_1_1_render_texture_a9c302b3884a54786faa93b4fe1f330c4}} 
-\index{Engine::RenderTexture@{Engine::RenderTexture}!fBufID@{fBufID}}
-\index{fBufID@{fBufID}!Engine::RenderTexture@{Engine::RenderTexture}}
-\doxysubsubsection{\texorpdfstring{fBufID}{fBufID}}
-{\footnotesize\ttfamily G\+Luint Engine\+::\+Render\+Texture\+::f\+Buf\+ID = 0}
+\mbox{\Hypertarget{class_engine_1_1_render_texture_a0f0e83316e07dcc0711cfd2f33fccc70}\label{class_engine_1_1_render_texture_a0f0e83316e07dcc0711cfd2f33fccc70}} 
+\index{Engine::RenderTexture@{Engine::RenderTexture}!m\_fBufID@{m\_fBufID}}
+\index{m\_fBufID@{m\_fBufID}!Engine::RenderTexture@{Engine::RenderTexture}}
+\doxysubsubsection{\texorpdfstring{m\_fBufID}{m\_fBufID}}
+{\footnotesize\ttfamily G\+Luint Engine\+::\+Render\+Texture\+::m\+\_\+f\+Buf\+ID = 0\hspace{0.3cm}{\ttfamily [protected]}}
 
-\mbox{\Hypertarget{class_engine_1_1_render_texture_ab562d507b71ecbd5d9d692bb354173c8}\label{class_engine_1_1_render_texture_ab562d507b71ecbd5d9d692bb354173c8}} 
-\index{Engine::RenderTexture@{Engine::RenderTexture}!rBufObjID@{rBufObjID}}
-\index{rBufObjID@{rBufObjID}!Engine::RenderTexture@{Engine::RenderTexture}}
-\doxysubsubsection{\texorpdfstring{rBufObjID}{rBufObjID}}
-{\footnotesize\ttfamily G\+Luint Engine\+::\+Render\+Texture\+::r\+Buf\+Obj\+ID = 0}
+
+
+ID of the frame buffer. 
+
+\mbox{\Hypertarget{class_engine_1_1_render_texture_a0353ee7ffb68aa75a8eaf09c8cd2bbc0}\label{class_engine_1_1_render_texture_a0353ee7ffb68aa75a8eaf09c8cd2bbc0}} 
+\index{Engine::RenderTexture@{Engine::RenderTexture}!m\_rBufObjID@{m\_rBufObjID}}
+\index{m\_rBufObjID@{m\_rBufObjID}!Engine::RenderTexture@{Engine::RenderTexture}}
+\doxysubsubsection{\texorpdfstring{m\_rBufObjID}{m\_rBufObjID}}
+{\footnotesize\ttfamily G\+Luint Engine\+::\+Render\+Texture\+::m\+\_\+r\+Buf\+Obj\+ID = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+ID of the Render Buffer. 
 
 
 

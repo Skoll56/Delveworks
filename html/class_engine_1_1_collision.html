@@ -68,47 +68,62 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_engine_1_1_collision-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Engine::Collision Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>A class that contains all the information about a <a class="el" href="class_engine_1_1_collision.html" title="A class that contains all the information about a Collision.">Collision</a>.  
+ <a href="class_engine_1_1_collision.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_collision_8h_source.html">Collision.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a140de284be0a32d89687b9f7a9351982"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#a140de284be0a32d89687b9f7a9351982">Collision</a> (glm::vec3 _cP, glm::vec3 _norm, std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt; _other, std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt; _my)</td></tr>
+<tr class="memitem:a140de284be0a32d89687b9f7a9351982"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#a140de284be0a32d89687b9f7a9351982">Collision</a> (glm::vec3 _cP, glm::vec3 _norm, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt; _other, std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt; _my)</td></tr>
 <tr class="separator:a140de284be0a32d89687b9f7a9351982"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae38a204ed31c3947a74627eb3238fa1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#ae38a204ed31c3947a74627eb3238fa1c">ignoreCollision</a> ()</td></tr>
+<tr class="memdesc:ae38a204ed31c3947a74627eb3238fa1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function can be called BEFORE the collision is 'Resolved' to negate the Physics reaction.  <a href="class_engine_1_1_collision.html#ae38a204ed31c3947a74627eb3238fa1c">More...</a><br /></td></tr>
 <tr class="separator:ae38a204ed31c3947a74627eb3238fa1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a4e20e4bf242abde95993c328043a47ff"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#a4e20e4bf242abde95993c328043a47ff">m_other</a></td></tr>
+<tr class="memitem:a4e20e4bf242abde95993c328043a47ff"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#a4e20e4bf242abde95993c328043a47ff">m_other</a></td></tr>
+<tr class="memdesc:a4e20e4bf242abde95993c328043a47ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'Other' object is a reference to the <a class="el" href="class_engine_1_1_collider.html" title="The Collider Base Class.">Collider</a> which the PhysicsObj hit.  <a href="class_engine_1_1_collision.html#a4e20e4bf242abde95993c328043a47ff">More...</a><br /></td></tr>
 <tr class="separator:a4e20e4bf242abde95993c328043a47ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01abf2557eaef96685cfd77d3180d01f"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#a01abf2557eaef96685cfd77d3180d01f">m_my</a></td></tr>
+<tr class="memitem:a01abf2557eaef96685cfd77d3180d01f"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#a01abf2557eaef96685cfd77d3180d01f">m_my</a></td></tr>
+<tr class="memdesc:a01abf2557eaef96685cfd77d3180d01f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'My' object is a reference to the PhysicsObj which created this <a class="el" href="class_engine_1_1_collision.html" title="A class that contains all the information about a Collision.">Collision</a>.  <a href="class_engine_1_1_collision.html#a01abf2557eaef96685cfd77d3180d01f">More...</a><br /></td></tr>
 <tr class="separator:a01abf2557eaef96685cfd77d3180d01f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a186225d35d8f55c294a6ddf5576c4a73"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#a186225d35d8f55c294a6ddf5576c4a73">m_poC</a></td></tr>
+<tr class="memdesc:a186225d35d8f55c294a6ddf5576c4a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Point of contact between the two Colliders.  <a href="class_engine_1_1_collision.html#a186225d35d8f55c294a6ddf5576c4a73">More...</a><br /></td></tr>
 <tr class="separator:a186225d35d8f55c294a6ddf5576c4a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6c1de18980241f0e7273a447870895e"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#ac6c1de18980241f0e7273a447870895e">m_cP</a></td></tr>
+<tr class="memdesc:ac6c1de18980241f0e7273a447870895e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of the 'My' when it collided.  <a href="class_engine_1_1_collision.html#ac6c1de18980241f0e7273a447870895e">More...</a><br /></td></tr>
 <tr class="separator:ac6c1de18980241f0e7273a447870895e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab35b0d710e77cb3210edc3ff172bb90e"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#ab35b0d710e77cb3210edc3ff172bb90e">m_normal</a></td></tr>
+<tr class="memdesc:ab35b0d710e77cb3210edc3ff172bb90e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The normal of the collision.  <a href="class_engine_1_1_collision.html#ab35b0d710e77cb3210edc3ff172bb90e">More...</a><br /></td></tr>
 <tr class="separator:ab35b0d710e77cb3210edc3ff172bb90e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9835dd5d051cd359c71899ca4ca15ccf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#a9835dd5d051cd359c71899ca4ca15ccf">m_resultForce</a></td></tr>
+<tr class="memdesc:a9835dd5d051cd359c71899ca4ca15ccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result force (In newtons) of the collision.  <a href="class_engine_1_1_collision.html#a9835dd5d051cd359c71899ca4ca15ccf">More...</a><br /></td></tr>
 <tr class="separator:a9835dd5d051cd359c71899ca4ca15ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cbbe1e5d160942df54573b39392b839"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#a6cbbe1e5d160942df54573b39392b839">m_velDif</a></td></tr>
+<tr class="memdesc:a6cbbe1e5d160942df54573b39392b839"><td class="mdescLeft">&#160;</td><td class="mdescRight">The difference in Velocity between the two collided objects.  <a href="class_engine_1_1_collision.html#a6cbbe1e5d160942df54573b39392b839">More...</a><br /></td></tr>
 <tr class="separator:a6cbbe1e5d160942df54573b39392b839"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a770725e6bcb1d1648711498b4ceb353b"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#a770725e6bcb1d1648711498b4ceb353b">m_fric</a></td></tr>
-<tr class="separator:a770725e6bcb1d1648711498b4ceb353b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d474dcc70dfb678ca5a79eeab51fa3"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#ae5d474dcc70dfb678ca5a79eeab51fa3">m_deltaVel</a></td></tr>
+<tr class="memdesc:ae5d474dcc70dfb678ca5a79eeab51fa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The delta in velocity that the 'My' object that will happen before and after the collision.  <a href="class_engine_1_1_collision.html#ae5d474dcc70dfb678ca5a79eeab51fa3">More...</a><br /></td></tr>
+<tr class="separator:ae5d474dcc70dfb678ca5a79eeab51fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
 <tr class="memitem:a46526683e8e579e18362aebc87b6a3f5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#a46526683e8e579e18362aebc87b6a3f5">m_massCalc</a></td></tr>
 <tr class="separator:a46526683e8e579e18362aebc87b6a3f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5d474dcc70dfb678ca5a79eeab51fa3"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#ae5d474dcc70dfb678ca5a79eeab51fa3">m_deltaVel</a></td></tr>
-<tr class="separator:ae5d474dcc70dfb678ca5a79eeab51fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb94ffd89a987a2401302f28e359086f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_collision.html#afb94ffd89a987a2401302f28e359086f">m_constCol</a></td></tr>
-<tr class="separator:afb94ffd89a987a2401302f28e359086f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A class that contains all the information about a <a class="el" href="class_engine_1_1_collision.html" title="A class that contains all the information about a Collision.">Collision</a>. </p>
+<p>One of these gets generated every time there is a collision </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a140de284be0a32d89687b9f7a9351982"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a140de284be0a32d89687b9f7a9351982">&#9670;&nbsp;</a></span>Collision()</h2>
 
@@ -130,13 +145,13 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td>
           <td class="paramname"><em>_other</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="struct_engine_1_1_entity.html">Entity</a> &gt;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td>
           <td class="paramname"><em>_my</em>&#160;</td>
         </tr>
         <tr>
@@ -165,23 +180,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This function can be called BEFORE the collision is 'Resolved' to negate the Physics reaction. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="afb94ffd89a987a2401302f28e359086f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb94ffd89a987a2401302f28e359086f">&#9670;&nbsp;</a></span>m_constCol</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Engine::Collision::m_constCol</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ac6c1de18980241f0e7273a447870895e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac6c1de18980241f0e7273a447870895e">&#9670;&nbsp;</a></span>m_cP</h2>
 
@@ -193,6 +196,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Position of the 'My' when it collided. </p>
 
 </div>
 </div>
@@ -208,19 +213,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a770725e6bcb1d1648711498b4ceb353b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a770725e6bcb1d1648711498b4ceb353b">&#9670;&nbsp;</a></span>m_fric</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">glm::vec3 Engine::Collision::m_fric</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>The delta in velocity that the 'My' object that will happen before and after the collision. </p>
 
 </div>
 </div>
@@ -229,11 +222,19 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">float Engine::Collision::m_massCalc</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -245,10 +246,12 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="struct_engine_1_1_entity.html">Entity</a>&gt; Engine::Collision::m_my</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_entity.html">Entity</a>&gt; Engine::Collision::m_my</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The 'My' object is a reference to the PhysicsObj which created this <a class="el" href="class_engine_1_1_collision.html" title="A class that contains all the information about a Collision.">Collision</a>. </p>
 
 </div>
 </div>
@@ -264,6 +267,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The normal of the collision. </p>
+
 </div>
 </div>
 <a id="a4e20e4bf242abde95993c328043a47ff"></a>
@@ -273,10 +278,12 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="struct_engine_1_1_entity.html">Entity</a>&gt; Engine::Collision::m_other</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_engine_1_1_entity.html">Entity</a>&gt; Engine::Collision::m_other</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The 'Other' object is a reference to the <a class="el" href="class_engine_1_1_collider.html" title="The Collider Base Class.">Collider</a> which the PhysicsObj hit. </p>
 
 </div>
 </div>
@@ -292,6 +299,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Point of contact between the two Colliders. </p>
+
 </div>
 </div>
 <a id="a9835dd5d051cd359c71899ca4ca15ccf"></a>
@@ -306,6 +315,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The result force (In newtons) of the collision. </p>
+
 </div>
 </div>
 <a id="a6cbbe1e5d160942df54573b39392b839"></a>
@@ -319,6 +330,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The difference in Velocity between the two collided objects. </p>
 
 </div>
 </div>

@@ -24,13 +24,13 @@ namespace Engine
 		rtn->m_rManager = std::make_shared<ResourceManager>();
 		if (_mode == Core::Debug)
 		{
-			rtn->width = _gameWindowSize.x + 400;
-			rtn->height = _gameWindowSize.y + 56;
+			rtn->m_width = _gameWindowSize.x + 400;
+			rtn->m_height = _gameWindowSize.y + 56;
 		}
 		else
 		{
-			rtn->width = _gameWindowSize.x;
-			rtn->height = _gameWindowSize.y;
+			rtn->m_width = _gameWindowSize.x;
+			rtn->m_height = _gameWindowSize.y;
 		}
 
 		rtn->initialiseSDL();
@@ -61,14 +61,15 @@ namespace Engine
 		
 
 		Console::output("Initialised successfully");
+		//rtn->start();
 		return rtn;
 	}
 
 	std::shared_ptr<Entity> Core::createEntity()
 	{
 		std::shared_ptr<Entity> rtn = std::make_shared<Entity>();
-		rtn->self = rtn;
-		rtn->core = m_self;
+		rtn->m_self = rtn;
+		rtn->m_core = m_self;
 		rtn->addComponent<Transform>();
 
 		std::string tag = "";
@@ -87,17 +88,18 @@ namespace Engine
 	{
 		// Re-initialise per-frame variables
 		float time = SDL_GetTicks();
-		dTime = (time - t1) / 1000.0f;
-		t1 = time;		
+		m_dTime = (time - m_t1) / 1000.0f;
+		if (m_dTime > 0.1f) { m_dTime = 0.1f; } //Minimum dTime added to prevent falling through the floor and physics objects breaking while the Window is held
+		m_t1 = time;		
 		
 		//Set the clear-colour for the screen and clear it
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		quit = m_inputManager->update(); //Handles the input, and returns a 'quit' value to see if the program should end		
+		m_quit = m_inputManager->update(); //Handles the input, and returns a 'quit' value to see if the program should end		
 		//Re-establish window-size to allow stretching and re-sizing
-		SDL_GetWindowSize(m_window, &width, &height);		
+		SDL_GetWindowSize(m_window, &m_width, &m_height);		
 		
 		
 		updateEntities();
@@ -106,13 +108,13 @@ namespace Engine
 		renderScreen();
 
 		float targetTime = 1.0f / 60.f;
-		if (targetTime > dTime) //The FPS cap
+		if (targetTime > m_dTime) //The FPS cap
 		{
-			SDL_Delay((targetTime - dTime) * 1000.0f);
+			SDL_Delay((targetTime - m_dTime) * 1000.0f);
 		}
 		
 		
-		if (quit) 
+		if (m_quit) 
 		{
 			m_inputManager->closeInputDevices();
 			SDL_DestroyWindow(m_window); // DESTROY THAT WINDOW. STRIKE IT DOWN. DEWIT.
@@ -140,7 +142,7 @@ namespace Engine
 				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
 				if (MR)
 				{			
-					if (MR->m_alpha < 1.0f)
+					if (MR->getAlpha() < 1.0f)
 					{
 						drawLater.push_back(MR); //Transparent objects need to be drawn last, because of reasons and things.
 					}
@@ -182,10 +184,10 @@ namespace Engine
 				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
 				if (MR)
 				{
-					if (MR->castShadows)
+					if (MR->getCastShadows())
 					{
 						m_shadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
-						m_shadowSh->draw(MR->m_vAO);
+						m_shadowSh->draw(MR->getMesh());
 					}
 				}
 			}
@@ -206,10 +208,10 @@ namespace Engine
 				std::shared_ptr<MeshRenderer> MR = m_entities.at(ei)->getComponent<MeshRenderer>();
 				if (MR)
 				{
-					if (MR->castShadows)
+					if (MR->getCastShadows())
 					{
 						m_pointShadowSh->setUniform("in_Model", MR->transform()->getModel()); // Translate the model matrix by camera position and stuff
-						m_pointShadowSh->draw(MR->m_vAO);
+						m_pointShadowSh->draw(MR->getMesh());
 					}
 				}
 			}
@@ -223,9 +225,8 @@ namespace Engine
 	void Core::start()
 	{
 		Console::output("I started to start");
-		quit = false;
-		restart = false;
-		t1 = SDL_GetTicks(); 
+		m_quit = false;		
+		m_t1 = SDL_GetTicks(); 
 
 		glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
@@ -233,7 +234,7 @@ namespace Engine
 		#ifdef EMSCRIPTEN
 		emscripten_set_main_loop_arg([](void* _core) { ((Core*)_core)->loop(); }, this, 0, 1);
 		#else
-		while (!quit)
+		while (!m_quit)
 		{
 			Core::loop();
 		}
@@ -253,7 +254,7 @@ namespace Engine
 
 		m_window = SDL_CreateWindow("Delveworks",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-			width, height, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+			m_width, m_height, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 
 
 		if (!SDL_GL_CreateContext(m_window))
@@ -313,10 +314,10 @@ namespace Engine
 			{
 				std::shared_ptr<ShadowMap> shadowmap = m_dirLights[i].lock()->getShadowMap();
 				glUseProgram(m_shadowSh->getId());
-				m_shadowSh->setUniform("in_LightSpaceMatrix", m_dirLights[i].lock()->getShadowMap()->getLightSpaceMatrix());
-				glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
+				m_shadowSh->setUniform("in_LightSpaceMatrix", m_dirLights[i].lock()->getShadowMap()->getMatrix());
+				glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->getFrameBufID());
 				glClear(GL_DEPTH_BUFFER_BIT);
-				glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
+				glViewport(0, 0, shadowmap->getResolution().x, shadowmap->getResolution().y);
 				drawShadowScene();
 				glBindFramebuffer(GL_FRAMEBUFFER, 0);
 				glUseProgram(0);
@@ -333,7 +334,7 @@ namespace Engine
 			{
 				std::shared_ptr<ShadowCube> SC = m_pointLights[i].lock()->getShadowCube();
 				glUseProgram(m_shadowSh->getId());
-				glBindFramebuffer(GL_FRAMEBUFFER, SC->fBufID);
+				glBindFramebuffer(GL_FRAMEBUFFER, SC->getFrameBufID());
 
 
 				m_pointShadowSh->setUniform("in_lightPos", m_pointLights[i].lock()->transform()->getPosition());
@@ -341,10 +342,10 @@ namespace Engine
 
 				for (int l = 0; l < 6; l++)
 				{
-					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_CUBE_MAP_POSITIVE_X + l, SC->m_textureId, 0);
+					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_CUBE_MAP_POSITIVE_X + l, SC->get(), 0);
 					glClear(GL_DEPTH_BUFFER_BIT);
 					m_pointShadowSh->setUniform("in_LightSpaceMatrix", SC->getMatrix(l));
-					glViewport(0, 0, SC->resolutionX, SC->resolutionY);
+					glViewport(0, 0, SC->getResolution().x, SC->getResolution().y);
 					drawPointShadowScene();
 				}
 				glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -362,10 +363,10 @@ namespace Engine
 			{
 				std::shared_ptr<ShadowMap> shadowmap = m_spotLights[i].lock()->getShadowMap();
 				glUseProgram(m_shadowSh->getId());
-				m_shadowSh->setUniform("in_LightSpaceMatrix", m_spotLights[i].lock()->getShadowMap()->getLightSpaceMatrix());
-				glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->fBufID);
+				m_shadowSh->setUniform("in_LightSpaceMatrix", m_spotLights[i].lock()->getShadowMap()->getMatrix());
+				glBindFramebuffer(GL_FRAMEBUFFER, shadowmap->getFrameBufID());
 				glClear(GL_DEPTH_BUFFER_BIT);
-				glViewport(0, 0, shadowmap->resolutionX, shadowmap->resolutionY);
+				glViewport(0, 0, shadowmap->getResolution().x, shadowmap->getResolution().y);
 				drawShadowScene();
 				glBindFramebuffer(GL_FRAMEBUFFER, 0);
 				glUseProgram(0);
@@ -380,7 +381,7 @@ namespace Engine
 	void Core::buildEngineUI() //
 	{		
 		m_engineContext = std::make_shared<Context>();
-		m_engineContext->m_size = defaultWindowSize;
+		m_engineContext->m_size = m_defaultWindowSize;
 		for (int i = 0; i < 4; i++)
 		{			
 			std::shared_ptr<ImageUI> s = std::make_shared<ImageUI>();
@@ -393,23 +394,23 @@ namespace Engine
 
 			if (i == 0)
 			{
-				s->setSize(400, height);
+				s->setSize(400, m_height);
 				s->setPosition(0, 0);
 			}
 			else if (i == 1)
 			{
-				s->setSize(width, 28);
+				s->setSize(m_width, 28);
 				s->setPosition(0, 0);
 			}
 			else if (i == 2)
 			{
-				s->setSize(width, 28);
-				s->setPosition(0, height - 28);
+				s->setSize(m_width, 28);
+				s->setPosition(0, m_height - 28);
 			}
 			else if (i == 3)
 			{
-				s->setSize(28, height);
-				s->setPosition(width - 28, 0);
+				s->setSize(28, m_height);
+				s->setPosition(m_width - 28, 0);
 			}
 
 			m_engineContext->m_engineSurfaces.push_back(s);
@@ -443,9 +444,9 @@ namespace Engine
 	{
 		//m_RT->Initialise(_x, _y);
 
-		glm::vec2 delta = glm::vec2(_x - width, _y - height);
-		width = _x;
-		height = _y;
+		glm::vec2 delta = glm::vec2(_x - m_width, _y - m_height);
+		m_width = _x;
+		m_height = _y;
 
 		float xRatio = delta.x / m_gameContext->m_size.x;
 		float yRatio = delta.y / m_gameContext->m_size.y;
@@ -673,7 +674,7 @@ namespace Engine
 						{
 							if (r->m_camera.lock())
 							{								
-								glBindFramebuffer(GL_FRAMEBUFFER, r->m_RT->fBufID);								
+								glBindFramebuffer(GL_FRAMEBUFFER, r->m_RT->getFrameBufID());								
 								glClearColor(0.0, 0.0, 0.0, 1.0);
 								glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 								glViewport(0, 0, r->m_size.x, r->m_size.y);

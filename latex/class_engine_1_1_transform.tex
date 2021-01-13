@@ -2,6 +2,11 @@
 \label{class_engine_1_1_transform}\index{Engine::Transform@{Engine::Transform}}
 
 
+The \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} \mbox{\hyperlink{class_engine_1_1_component}{Component}} contains Translation, Rotation and Scale data.  
+
+
+
+
 {\ttfamily \#include $<$Component.\+h$>$}
 
 Inheritance diagram for Engine\+::Transform\+:\begin{figure}[H]
@@ -26,45 +31,60 @@ void \mbox{\hyperlink{class_engine_1_1_transform_a134edb829808d7a23699c422f3d40d
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_a6e02d8aaeec21518759293b5bbb4b4bb}{get\+Size}} ()
 \item 
 glm\+::mat4 \mbox{\hyperlink{class_engine_1_1_transform_a19676497fc37fa3bbdaedc2322bf30ed}{get\+Model}} ()
-\item 
-void \mbox{\hyperlink{class_engine_1_1_transform_a73bf4bd9c49e0d40275eda859756c2f6}{on\+Tick}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the Model Matrix of the \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}, which contains its translation, rotation and scale data in Matrix format. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_transform_afe38cdeb247f5c00632650a9e73643ff}{set\+Model}} (glm\+::mat4 \+\_\+model)
-\item 
-void \mbox{\hyperlink{class_engine_1_1_transform_a2e1159a746481dcc6e31f3fce87b7270}{on\+Initialise}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the Model Matrix of the \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}. Only set this if you know what you are doing, or you may see unexpected results. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_transform_a73bf4bd9c49e0d40275eda859756c2f6}{on\+Tick}} ()
+\begin{DoxyCompactList}\small\item\em Update. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_transform_a1ebaf12815eb3e73ee99a3705f24b3d7}{rotate}} (glm\+::vec3 \+\_\+axis, float \+\_\+amt)
-\item 
-glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_ac5f52a57e213131f691964a69dc58b50}{get\+Up}} ()
-\item 
-glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_a08986bb2fd3b6204ef288431c33daa28}{get\+Right}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Rotates an object around an axis, by an amount in degrees. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_a70574384f15cb2474a95b1b339b37e08}{get\+Fwd}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets an \textquotesingle{}Forward\textquotesingle{} vector (A Vector in the direction the object is facing) \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_ac5f52a57e213131f691964a69dc58b50}{get\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Gets an \textquotesingle{}Up\textquotesingle{} vector (A vector perpendicular to the forward vector, pointing in the local vertical exis. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_a08986bb2fd3b6204ef288431c33daa28}{get\+Right}} ()
+\begin{DoxyCompactList}\small\item\em Gets an \textquotesingle{}Up\textquotesingle{} vector (A vector perpendicular to the up vector, pointing in the local horizontal exis. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_a2c1444ba8b5c5a0889256671df9f3636}{m\+\_\+position}} = glm\+::vec3(0.\+0f)
 \item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_a5c422c2ff5c61a1557c716b562df57ad}{m\+\_\+euler\+Angles}} = glm\+::vec3(0.\+0f)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The object\textquotesingle{}s rotation in Euler Angles, degrees, X\+YZ format. \end{DoxyCompactList}\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} $>$ \mbox{\hyperlink{class_engine_1_1_transform_a2b967dc92fb04a51f5519dc1f5e12d97}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}\+This\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_engine_1_1_transform_a2e1159a746481dcc6e31f3fce87b7270}{on\+Initialise}} ()
+\begin{DoxyCompactList}\small\item\em Initialise. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_aeeac9af2e7b676b901c4d3c133261f93}{m\+\_\+scale}} = glm\+::vec3(1.\+0f)
-\item 
+\begin{DoxyCompactList}\small\item\em Scale. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_a0769a73874f868eee4710123bda78e60}{m\+\_\+size}} = glm\+::vec3(1.\+0f)
-\item 
+\begin{DoxyCompactList}\small\item\em Size refers to the size of the M\+E\+S\+H/\+O\+BJ in generic units. \end{DoxyCompactList}\item 
 glm\+::mat4 \mbox{\hyperlink{class_engine_1_1_transform_a160b32509c929dc511ef9a70edc838b5}{m\+\_\+model}} = glm\+::mat4(1.\+0f)
-\item 
+\begin{DoxyCompactList}\small\item\em The Model Matrix. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_a0078a26d03cb0ca410a8101113d628f2}{m\+\_\+fwd}}
-\item 
+\begin{DoxyCompactList}\small\item\em Forward Vector. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_a55c55ce601df7c83259660b7af345a36}{m\+\_\+up\+Vec}}
-\item 
+\begin{DoxyCompactList}\small\item\em Up Vector. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_ad1e3b9832d87444000d97a02bb828abf}{m\+\_\+right}}
+\begin{DoxyCompactList}\small\item\em Right vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_engine_1_1_transform_a614439ccac0344926adc4c0165d64060}{Entity}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_engine_1_1_transform}{Transform}} \mbox{\hyperlink{class_engine_1_1_component}{Component}} contains Translation, Rotation and Scale data. 
+
+This is A\+U\+T\+O\+M\+A\+T\+I\+C\+A\+L\+LY added to any \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} when it is created. All Entities are required to have Transforms. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_engine_1_1_transform_a70574384f15cb2474a95b1b339b37e08}\label{class_engine_1_1_transform_a70574384f15cb2474a95b1b339b37e08}} 
@@ -73,11 +93,19 @@ glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_ad1e3b9832d87444000d97a0
 \doxysubsubsection{\texorpdfstring{getFwd()}{getFwd()}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Transform\+::get\+Fwd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Gets an \textquotesingle{}Forward\textquotesingle{} vector (A Vector in the direction the object is facing) 
+
 \mbox{\Hypertarget{class_engine_1_1_transform_a19676497fc37fa3bbdaedc2322bf30ed}\label{class_engine_1_1_transform_a19676497fc37fa3bbdaedc2322bf30ed}} 
 \index{Engine::Transform@{Engine::Transform}!getModel@{getModel}}
 \index{getModel@{getModel}!Engine::Transform@{Engine::Transform}}
 \doxysubsubsection{\texorpdfstring{getModel()}{getModel()}}
 {\footnotesize\ttfamily glm\+::mat4 Engine\+::\+Transform\+::get\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the Model Matrix of the \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}, which contains its translation, rotation and scale data in Matrix format. 
 
 \mbox{\Hypertarget{class_engine_1_1_transform_a87c959f908484ab7a832ce389774eaaa}\label{class_engine_1_1_transform_a87c959f908484ab7a832ce389774eaaa}} 
 \index{Engine::Transform@{Engine::Transform}!getPosition@{getPosition}}
@@ -90,6 +118,10 @@ glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_ad1e3b9832d87444000d97a0
 \index{getRight@{getRight}!Engine::Transform@{Engine::Transform}}
 \doxysubsubsection{\texorpdfstring{getRight()}{getRight()}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Transform\+::get\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets an \textquotesingle{}Up\textquotesingle{} vector (A vector perpendicular to the up vector, pointing in the local horizontal exis. 
 
 \mbox{\Hypertarget{class_engine_1_1_transform_a876d0e8fdaad08d2a7c1e1f0916815e1}\label{class_engine_1_1_transform_a876d0e8fdaad08d2a7c1e1f0916815e1}} 
 \index{Engine::Transform@{Engine::Transform}!getScale@{getScale}}
@@ -109,11 +141,19 @@ glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_transform_ad1e3b9832d87444000d97a0
 \doxysubsubsection{\texorpdfstring{getUp()}{getUp()}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Transform\+::get\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Gets an \textquotesingle{}Up\textquotesingle{} vector (A vector perpendicular to the forward vector, pointing in the local vertical exis. 
+
 \mbox{\Hypertarget{class_engine_1_1_transform_a2e1159a746481dcc6e31f3fce87b7270}\label{class_engine_1_1_transform_a2e1159a746481dcc6e31f3fce87b7270}} 
 \index{Engine::Transform@{Engine::Transform}!onInitialise@{onInitialise}}
 \index{onInitialise@{onInitialise}!Engine::Transform@{Engine::Transform}}
 \doxysubsubsection{\texorpdfstring{onInitialise()}{onInitialise()}}
-{\footnotesize\ttfamily void Engine\+::\+Transform\+::on\+Initialise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Engine\+::\+Transform\+::on\+Initialise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Initialise. 
 
 
 
@@ -127,6 +167,10 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a698b7e82b695c3e0
 
 
 
+Update. 
+
+
+
 Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10bbef2b74a8a22f24c}{Engine\+::\+Component}}.
 
 \mbox{\Hypertarget{class_engine_1_1_transform_a1ebaf12815eb3e73ee99a3705f24b3d7}\label{class_engine_1_1_transform_a1ebaf12815eb3e73ee99a3705f24b3d7}} 
@@ -135,11 +179,19 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10b
 \doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
 {\footnotesize\ttfamily void Engine\+::\+Transform\+::rotate (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+axis,  }\item[{float}]{\+\_\+amt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Rotates an object around an axis, by an amount in degrees. 
+
 \mbox{\Hypertarget{class_engine_1_1_transform_afe38cdeb247f5c00632650a9e73643ff}\label{class_engine_1_1_transform_afe38cdeb247f5c00632650a9e73643ff}} 
 \index{Engine::Transform@{Engine::Transform}!setModel@{setModel}}
 \index{setModel@{setModel}!Engine::Transform@{Engine::Transform}}
 \doxysubsubsection{\texorpdfstring{setModel()}{setModel()}}
 {\footnotesize\ttfamily void Engine\+::\+Transform\+::set\+Model (\begin{DoxyParamCaption}\item[{glm\+::mat4}]{\+\_\+model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the Model Matrix of the \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}. Only set this if you know what you are doing, or you may see unexpected results. 
 
 \mbox{\Hypertarget{class_engine_1_1_transform_adf9947218fe269457a814476944ebb77}\label{class_engine_1_1_transform_adf9947218fe269457a814476944ebb77}} 
 \index{Engine::Transform@{Engine::Transform}!setPosition@{setPosition}}
@@ -161,6 +213,15 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10b
 
 
 
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_transform_a614439ccac0344926adc4c0165d64060}\label{class_engine_1_1_transform_a614439ccac0344926adc4c0165d64060}} 
+\index{Engine::Transform@{Engine::Transform}!Entity@{Entity}}
+\index{Entity@{Entity}!Engine::Transform@{Engine::Transform}}
+\doxysubsubsection{\texorpdfstring{Entity}{Entity}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{class_engine_1_1_transform_a5c422c2ff5c61a1557c716b562df57ad}\label{class_engine_1_1_transform_a5c422c2ff5c61a1557c716b562df57ad}} 
 \index{Engine::Transform@{Engine::Transform}!m\_eulerAngles@{m\_eulerAngles}}
@@ -168,17 +229,29 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10b
 \doxysubsubsection{\texorpdfstring{m\_eulerAngles}{m\_eulerAngles}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Transform\+::m\+\_\+euler\+Angles = glm\+::vec3(0.\+0f)}
 
+
+
+The object\textquotesingle{}s rotation in Euler Angles, degrees, X\+YZ format. 
+
 \mbox{\Hypertarget{class_engine_1_1_transform_a0078a26d03cb0ca410a8101113d628f2}\label{class_engine_1_1_transform_a0078a26d03cb0ca410a8101113d628f2}} 
 \index{Engine::Transform@{Engine::Transform}!m\_fwd@{m\_fwd}}
 \index{m\_fwd@{m\_fwd}!Engine::Transform@{Engine::Transform}}
 \doxysubsubsection{\texorpdfstring{m\_fwd}{m\_fwd}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Transform\+::m\+\_\+fwd\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Forward Vector. 
+
 \mbox{\Hypertarget{class_engine_1_1_transform_a160b32509c929dc511ef9a70edc838b5}\label{class_engine_1_1_transform_a160b32509c929dc511ef9a70edc838b5}} 
 \index{Engine::Transform@{Engine::Transform}!m\_model@{m\_model}}
 \index{m\_model@{m\_model}!Engine::Transform@{Engine::Transform}}
 \doxysubsubsection{\texorpdfstring{m\_model}{m\_model}}
 {\footnotesize\ttfamily glm\+::mat4 Engine\+::\+Transform\+::m\+\_\+model = glm\+::mat4(1.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Model Matrix. 
 
 \mbox{\Hypertarget{class_engine_1_1_transform_a2c1444ba8b5c5a0889256671df9f3636}\label{class_engine_1_1_transform_a2c1444ba8b5c5a0889256671df9f3636}} 
 \index{Engine::Transform@{Engine::Transform}!m\_position@{m\_position}}
@@ -192,11 +265,29 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10b
 \doxysubsubsection{\texorpdfstring{m\_right}{m\_right}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Transform\+::m\+\_\+right\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Right vector. 
+
 \mbox{\Hypertarget{class_engine_1_1_transform_aeeac9af2e7b676b901c4d3c133261f93}\label{class_engine_1_1_transform_aeeac9af2e7b676b901c4d3c133261f93}} 
 \index{Engine::Transform@{Engine::Transform}!m\_scale@{m\_scale}}
 \index{m\_scale@{m\_scale}!Engine::Transform@{Engine::Transform}}
 \doxysubsubsection{\texorpdfstring{m\_scale}{m\_scale}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Transform\+::m\+\_\+scale = glm\+::vec3(1.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Scale. 
+
+\mbox{\Hypertarget{class_engine_1_1_transform_a2b967dc92fb04a51f5519dc1f5e12d97}\label{class_engine_1_1_transform_a2b967dc92fb04a51f5519dc1f5e12d97}} 
+\index{Engine::Transform@{Engine::Transform}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::Transform@{Engine::Transform}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_transform}{Transform}}$>$ Engine\+::\+Transform\+::m\+\_\+self}
+
+
+
+A \char`\"{}\+This\char`\"{} pointer. 
 
 \mbox{\Hypertarget{class_engine_1_1_transform_a0769a73874f868eee4710123bda78e60}\label{class_engine_1_1_transform_a0769a73874f868eee4710123bda78e60}} 
 \index{Engine::Transform@{Engine::Transform}!m\_size@{m\_size}}
@@ -204,11 +295,19 @@ Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10b
 \doxysubsubsection{\texorpdfstring{m\_size}{m\_size}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Transform\+::m\+\_\+size = glm\+::vec3(1.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Size refers to the size of the M\+E\+S\+H/\+O\+BJ in generic units. 
+
 \mbox{\Hypertarget{class_engine_1_1_transform_a55c55ce601df7c83259660b7af345a36}\label{class_engine_1_1_transform_a55c55ce601df7c83259660b7af345a36}} 
 \index{Engine::Transform@{Engine::Transform}!m\_upVec@{m\_upVec}}
 \index{m\_upVec@{m\_upVec}!Engine::Transform@{Engine::Transform}}
 \doxysubsubsection{\texorpdfstring{m\_upVec}{m\_upVec}}
 {\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Transform\+::m\+\_\+up\+Vec\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Up Vector. 
 
 
 

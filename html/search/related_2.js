@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['soundsource_1399',['SoundSource',['../class_engine_1_1_sound.html#ac3c1855ffb28082902708af2a25f934d',1,'Engine::Sound']]]
+  ['dirlight_1674',['DirLight',['../class_engine_1_1_core.html#a67164c61aba53b7231b36bda47b6ee0b',1,'Engine::Core']]],
+  ['displayui_1675',['DisplayUI',['../class_engine_1_1_core.html#a1d69d980aa967e164e74f9a098fe8847',1,'Engine::Core']]]
 ];

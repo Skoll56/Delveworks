@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['entity_1398',['Entity',['../class_engine_1_1_component.html#a614439ccac0344926adc4c0165d64060',1,'Engine::Component::Entity()'],['../struct_engine_1_1_core.html#a614439ccac0344926adc4c0165d64060',1,'Engine::Core::Entity()']]]
+  ['core_1673',['Core',['../class_engine_1_1_entity.html#a4107254ac74f90d4f91e810d755b98c2',1,'Engine::Entity::Core()'],['../class_engine_1_1_input_manager.html#a4107254ac74f90d4f91e810d755b98c2',1,'Engine::InputManager::Core()'],['../class_engine_1_1_surface.html#a4107254ac74f90d4f91e810d755b98c2',1,'Engine::Surface::Core()'],['../class_engine_1_1_display_u_i.html#a4107254ac74f90d4f91e810d755b98c2',1,'Engine::DisplayUI::Core()'],['../class_engine_1_1_image_u_i.html#a4107254ac74f90d4f91e810d755b98c2',1,'Engine::ImageUI::Core()'],['../class_engine_1_1_context.html#a4107254ac74f90d4f91e810d755b98c2',1,'Engine::Context::Core()']]]
 ];

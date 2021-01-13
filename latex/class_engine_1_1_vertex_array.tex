@@ -4,6 +4,12 @@
 
 {\ttfamily \#include $<$Vertex\+Array.\+h$>$}
 
+Inheritance diagram for Engine\+::Vertex\+Array\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_engine_1_1_vertex_array}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,35 +18,36 @@
 \mbox{\hyperlink{class_engine_1_1_vertex_array_a6b8a87026ebe08ecae270e89d7084753}{Vertex\+Array}} (std\+::string \+\_\+path)
 \item 
 \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}} $\ast$ \mbox{\hyperlink{class_engine_1_1_vertex_array_a2794f06ce1354e73400f485577209055}{get\+Tri\+Pos}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the array of Triangle Vertex positions. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}} $\ast$ \mbox{\hyperlink{class_engine_1_1_vertex_array_a7758b4825962f3f46ad8d168c51bd5f3}{get\+Tri\+Tex}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the array of texture coordinates. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}} $\ast$ \mbox{\hyperlink{class_engine_1_1_vertex_array_a8cd52103bccd9bc1e39e1dfac7b8ef89}{get\+Tri\+Norm}} ()
-\item 
-void \mbox{\hyperlink{class_engine_1_1_vertex_array_af0e347dbdfff1a3dab62573ebdf133c6}{load\+Obj}} (std\+::string \+\_\+path)
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the array of surface normals. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_vertex_array_a68bdb742368b40d60c787dd851380609}{load}} (std\+::string \+\_\+path)
+\begin{DoxyCompactList}\small\item\em Loads an O\+BJ from file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_vertex_array_afa73ae885f338a9a48b38b531953d75a}{set\+Buffer}} (std\+::string \+\_\+attribute, \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}} $\ast$\+\_\+buffer)
-\item 
+\begin{DoxyCompactList}\small\item\em Used to add a buffer to the object. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_engine_1_1_vertex_array_a09d938ae03419d057fbd2be5a1f7d140}{get\+Vertex\+Count}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns how many vertexes an object has. \end{DoxyCompactList}\item 
 G\+Luint \mbox{\hyperlink{class_engine_1_1_vertex_array_af573a812ed3c4422b146928cdb1dd05f}{get\+Id}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the ID of the Mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_engine_1_1_vertex_array_a7a797044fdd9a7fc5683ee2a12070c18}{split\+String\+Whitespace}} (std\+::string \&\+\_\+input, std\+::vector$<$ std\+::string $>$ \&\+\_\+output)
-\item 
+\begin{DoxyCompactList}\small\item\em Used for loading in O\+BJ files. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_vertex_array_add47db646f3d05827ed627575d883eb6}{split\+String}} (std\+::string \&\+\_\+input, char \+\_\+splitter, std\+::vector$<$ std\+::string $>$ \&\+\_\+output)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Used for loading in O\+BJ files. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 G\+Luint \mbox{\hyperlink{class_engine_1_1_vertex_array_afbd52f73b426855683bf19e06eca91f9}{m\+\_\+id}}
-\item 
+\begin{DoxyCompactList}\small\item\em The Vertex Array ID. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_vertex_array_adc84dc5d31b9dd91956facc18d41a9ab}{m\+\_\+dirty}}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}} $\ast$ $>$ \mbox{\hyperlink{class_engine_1_1_vertex_array_a54a23a973d1449a72c546670eb11f173}{m\+\_\+buffers}}
-\end{DoxyCompactItemize}
+std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}} $\ast$ $>$ \mbox{\hyperlink{class_engine_1_1_vertex_array_a550f0317091502884b1db06ca43f42d1}{m\+\_\+buffers}}
+\begin{DoxyCompactList}\small\item\em A vector of Buffers that the Vertex Array holds (Such as texture co-\/ordinates, normal buffer and vertex position buffer) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -65,11 +72,19 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer
 \doxysubsubsection{\texorpdfstring{getId()}{getId()}}
 {\footnotesize\ttfamily G\+Luint Engine\+::\+Vertex\+Array\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Returns the ID of the Mesh. 
+
 \mbox{\Hypertarget{class_engine_1_1_vertex_array_a8cd52103bccd9bc1e39e1dfac7b8ef89}\label{class_engine_1_1_vertex_array_a8cd52103bccd9bc1e39e1dfac7b8ef89}} 
 \index{Engine::VertexArray@{Engine::VertexArray}!getTriNorm@{getTriNorm}}
 \index{getTriNorm@{getTriNorm}!Engine::VertexArray@{Engine::VertexArray}}
 \doxysubsubsection{\texorpdfstring{getTriNorm()}{getTriNorm()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}}$\ast$ Engine\+::\+Vertex\+Array\+::get\+Tri\+Norm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the array of surface normals. 
 
 \mbox{\Hypertarget{class_engine_1_1_vertex_array_a2794f06ce1354e73400f485577209055}\label{class_engine_1_1_vertex_array_a2794f06ce1354e73400f485577209055}} 
 \index{Engine::VertexArray@{Engine::VertexArray}!getTriPos@{getTriPos}}
@@ -77,11 +92,19 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer
 \doxysubsubsection{\texorpdfstring{getTriPos()}{getTriPos()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}}$\ast$ Engine\+::\+Vertex\+Array\+::get\+Tri\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns the array of Triangle Vertex positions. 
+
 \mbox{\Hypertarget{class_engine_1_1_vertex_array_a7758b4825962f3f46ad8d168c51bd5f3}\label{class_engine_1_1_vertex_array_a7758b4825962f3f46ad8d168c51bd5f3}} 
 \index{Engine::VertexArray@{Engine::VertexArray}!getTriTex@{getTriTex}}
 \index{getTriTex@{getTriTex}!Engine::VertexArray@{Engine::VertexArray}}
 \doxysubsubsection{\texorpdfstring{getTriTex()}{getTriTex()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}}$\ast$ Engine\+::\+Vertex\+Array\+::get\+Tri\+Tex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the array of texture coordinates. 
 
 \mbox{\Hypertarget{class_engine_1_1_vertex_array_a09d938ae03419d057fbd2be5a1f7d140}\label{class_engine_1_1_vertex_array_a09d938ae03419d057fbd2be5a1f7d140}} 
 \index{Engine::VertexArray@{Engine::VertexArray}!getVertexCount@{getVertexCount}}
@@ -89,11 +112,19 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer
 \doxysubsubsection{\texorpdfstring{getVertexCount()}{getVertexCount()}}
 {\footnotesize\ttfamily int Engine\+::\+Vertex\+Array\+::get\+Vertex\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_engine_1_1_vertex_array_af0e347dbdfff1a3dab62573ebdf133c6}\label{class_engine_1_1_vertex_array_af0e347dbdfff1a3dab62573ebdf133c6}} 
-\index{Engine::VertexArray@{Engine::VertexArray}!loadObj@{loadObj}}
-\index{loadObj@{loadObj}!Engine::VertexArray@{Engine::VertexArray}}
-\doxysubsubsection{\texorpdfstring{loadObj()}{loadObj()}}
-{\footnotesize\ttfamily void Engine\+::\+Vertex\+Array\+::load\+Obj (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+path }\end{DoxyParamCaption})}
+
+
+Returns how many vertexes an object has. 
+
+\mbox{\Hypertarget{class_engine_1_1_vertex_array_a68bdb742368b40d60c787dd851380609}\label{class_engine_1_1_vertex_array_a68bdb742368b40d60c787dd851380609}} 
+\index{Engine::VertexArray@{Engine::VertexArray}!load@{load}}
+\index{load@{load}!Engine::VertexArray@{Engine::VertexArray}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Engine\+::\+Vertex\+Array\+::load (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Loads an O\+BJ from file. 
 
 \mbox{\Hypertarget{class_engine_1_1_vertex_array_afa73ae885f338a9a48b38b531953d75a}\label{class_engine_1_1_vertex_array_afa73ae885f338a9a48b38b531953d75a}} 
 \index{Engine::VertexArray@{Engine::VertexArray}!setBuffer@{setBuffer}}
@@ -101,11 +132,19 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer
 \doxysubsubsection{\texorpdfstring{setBuffer()}{setBuffer()}}
 {\footnotesize\ttfamily void Engine\+::\+Vertex\+Array\+::set\+Buffer (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+attribute,  }\item[{\mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}} $\ast$}]{\+\_\+buffer }\end{DoxyParamCaption})}
 
+
+
+Used to add a buffer to the object. 
+
 \mbox{\Hypertarget{class_engine_1_1_vertex_array_add47db646f3d05827ed627575d883eb6}\label{class_engine_1_1_vertex_array_add47db646f3d05827ed627575d883eb6}} 
 \index{Engine::VertexArray@{Engine::VertexArray}!splitString@{splitString}}
 \index{splitString@{splitString}!Engine::VertexArray@{Engine::VertexArray}}
 \doxysubsubsection{\texorpdfstring{splitString()}{splitString()}}
 {\footnotesize\ttfamily void Engine\+::\+Vertex\+Array\+::split\+String (\begin{DoxyParamCaption}\item[{std\+::string \&}]{\+\_\+input,  }\item[{char}]{\+\_\+splitter,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{\+\_\+output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Used for loading in O\+BJ files. 
 
 \mbox{\Hypertarget{class_engine_1_1_vertex_array_a7a797044fdd9a7fc5683ee2a12070c18}\label{class_engine_1_1_vertex_array_a7a797044fdd9a7fc5683ee2a12070c18}} 
 \index{Engine::VertexArray@{Engine::VertexArray}!splitStringWhitespace@{splitStringWhitespace}}
@@ -115,12 +154,20 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer
 
 
 
+Used for loading in O\+BJ files. 
+
+
+
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_engine_1_1_vertex_array_a54a23a973d1449a72c546670eb11f173}\label{class_engine_1_1_vertex_array_a54a23a973d1449a72c546670eb11f173}} 
+\mbox{\Hypertarget{class_engine_1_1_vertex_array_a550f0317091502884b1db06ca43f42d1}\label{class_engine_1_1_vertex_array_a550f0317091502884b1db06ca43f42d1}} 
 \index{Engine::VertexArray@{Engine::VertexArray}!m\_buffers@{m\_buffers}}
 \index{m\_buffers@{m\_buffers}!Engine::VertexArray@{Engine::VertexArray}}
 \doxysubsubsection{\texorpdfstring{m\_buffers}{m\_buffers}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}} $\ast$$>$ Engine\+::\+Vertex\+Array\+::m\+\_\+buffers\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer}}$\ast$$>$ Engine\+::\+Vertex\+Array\+::m\+\_\+buffers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A vector of Buffers that the Vertex Array holds (Such as texture co-\/ordinates, normal buffer and vertex position buffer) 
 
 \mbox{\Hypertarget{class_engine_1_1_vertex_array_adc84dc5d31b9dd91956facc18d41a9ab}\label{class_engine_1_1_vertex_array_adc84dc5d31b9dd91956facc18d41a9ab}} 
 \index{Engine::VertexArray@{Engine::VertexArray}!m\_dirty@{m\_dirty}}
@@ -133,6 +180,10 @@ std\+::vector$<$ \mbox{\hyperlink{class_engine_1_1_vertex_buffer}{Vertex\+Buffer
 \index{m\_id@{m\_id}!Engine::VertexArray@{Engine::VertexArray}}
 \doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
 {\footnotesize\ttfamily G\+Luint Engine\+::\+Vertex\+Array\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Vertex Array ID. 
 
 
 

@@ -2,6 +2,12 @@
 \label{class_engine_1_1_ray_caster}\index{Engine::RayCaster@{Engine::RayCaster}}
 
 
+A component for firing rays against geometry ~\newline
+  
+
+
+
+
 {\ttfamily \#include $<$Physics\+New.\+h$>$}
 
 Inheritance diagram for Engine\+::Ray\+Caster\+:\begin{figure}[H]
@@ -13,25 +19,60 @@ Inheritance diagram for Engine\+::Ray\+Caster\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{class_engine_1_1_ray_caster_a3e43ae59c737eb35e2e32cfb2273ac19}{intersect\+\_\+triangle3}} (double orig\mbox{[}3\mbox{]}, double dir\mbox{[}3\mbox{]}, double vert0\mbox{[}3\mbox{]}, double vert1\mbox{[}3\mbox{]}, double vert2\mbox{[}3\mbox{]}, double $\ast$t, double $\ast$u, double $\ast$v)
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_ray_collision}{Ray\+Collision}} $>$ \mbox{\hyperlink{class_engine_1_1_ray_caster_ae4427c4776b0c7172dcfb7fa7dba90cd}{raycast\+Against}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} $>$$>$ \+\_\+obj, glm\+::vec3 \+\_\+ray\+Dir, glm\+::vec3 \+\_\+origin, std\+::string \+\_\+ray\+Tag)
+\begin{DoxyCompactList}\small\item\em Call this to Raycast against a vector of Entities ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{struct_engine_1_1_ray_collision}{Ray\+Collision}} $\ast$ \mbox{\hyperlink{class_engine_1_1_ray_caster_af7cb87436a2365ea165caac77d83e1e5}{ray\+To\+Tri}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$$>$ \+\_\+obj, glm\+::vec3 \+\_\+ray\+Dir, glm\+::vec3 \+\_\+origin, std\+::string \+\_\+ray\+Tag)
-\end{DoxyCompactItemize}
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_ray_caster}{Ray\+Caster}} $>$ \mbox{\hyperlink{class_engine_1_1_ray_caster_a82267ef201f15a3e294e42033016e8a8}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}\+This\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_engine_1_1_ray_caster_a3e43ae59c737eb35e2e32cfb2273ac19}{intersect\+\_\+triangle3}} (double orig\mbox{[}3\mbox{]}, double dir\mbox{[}3\mbox{]}, double vert0\mbox{[}3\mbox{]}, double vert1\mbox{[}3\mbox{]}, double vert2\mbox{[}3\mbox{]}, double $\ast$t, double $\ast$u, double $\ast$v)
+\begin{DoxyCompactList}\small\item\em Checks a ray against a single triangle. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+A component for firing rays against geometry ~\newline
+ 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_engine_1_1_ray_caster_a3e43ae59c737eb35e2e32cfb2273ac19}\label{class_engine_1_1_ray_caster_a3e43ae59c737eb35e2e32cfb2273ac19}} 
 \index{Engine::RayCaster@{Engine::RayCaster}!intersect\_triangle3@{intersect\_triangle3}}
 \index{intersect\_triangle3@{intersect\_triangle3}!Engine::RayCaster@{Engine::RayCaster}}
 \doxysubsubsection{\texorpdfstring{intersect\_triangle3()}{intersect\_triangle3()}}
-{\footnotesize\ttfamily int Engine\+::\+Ray\+Caster\+::intersect\+\_\+triangle3 (\begin{DoxyParamCaption}\item[{double}]{orig\mbox{[}3\mbox{]},  }\item[{double}]{dir\mbox{[}3\mbox{]},  }\item[{double}]{vert0\mbox{[}3\mbox{]},  }\item[{double}]{vert1\mbox{[}3\mbox{]},  }\item[{double}]{vert2\mbox{[}3\mbox{]},  }\item[{double $\ast$}]{t,  }\item[{double $\ast$}]{u,  }\item[{double $\ast$}]{v }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Engine\+::\+Ray\+Caster\+::intersect\+\_\+triangle3 (\begin{DoxyParamCaption}\item[{double}]{orig\mbox{[}3\mbox{]},  }\item[{double}]{dir\mbox{[}3\mbox{]},  }\item[{double}]{vert0\mbox{[}3\mbox{]},  }\item[{double}]{vert1\mbox{[}3\mbox{]},  }\item[{double}]{vert2\mbox{[}3\mbox{]},  }\item[{double $\ast$}]{t,  }\item[{double $\ast$}]{u,  }\item[{double $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_engine_1_1_ray_caster_af7cb87436a2365ea165caac77d83e1e5}\label{class_engine_1_1_ray_caster_af7cb87436a2365ea165caac77d83e1e5}} 
-\index{Engine::RayCaster@{Engine::RayCaster}!rayToTri@{rayToTri}}
-\index{rayToTri@{rayToTri}!Engine::RayCaster@{Engine::RayCaster}}
-\doxysubsubsection{\texorpdfstring{rayToTri()}{rayToTri()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_engine_1_1_ray_collision}{Ray\+Collision}} $\ast$ Engine\+::\+Ray\+Caster\+::ray\+To\+Tri (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_engine_1_1_entity}{Entity}} $>$$>$}]{\+\_\+obj,  }\item[{glm\+::vec3}]{\+\_\+ray\+Dir,  }\item[{glm\+::vec3}]{\+\_\+origin,  }\item[{std\+::string}]{\+\_\+ray\+Tag }\end{DoxyParamCaption})}
+
+
+Checks a ray against a single triangle. 
+
+\mbox{\Hypertarget{class_engine_1_1_ray_caster_ae4427c4776b0c7172dcfb7fa7dba90cd}\label{class_engine_1_1_ray_caster_ae4427c4776b0c7172dcfb7fa7dba90cd}} 
+\index{Engine::RayCaster@{Engine::RayCaster}!raycastAgainst@{raycastAgainst}}
+\index{raycastAgainst@{raycastAgainst}!Engine::RayCaster@{Engine::RayCaster}}
+\doxysubsubsection{\texorpdfstring{raycastAgainst()}{raycastAgainst()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_ray_collision}{Ray\+Collision}} $>$ Engine\+::\+Ray\+Caster\+::raycast\+Against (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} $>$$>$}]{\+\_\+obj,  }\item[{glm\+::vec3}]{\+\_\+ray\+Dir,  }\item[{glm\+::vec3}]{\+\_\+origin,  }\item[{std\+::string}]{\+\_\+ray\+Tag }\end{DoxyParamCaption})}
+
+
+
+Call this to Raycast against a vector of Entities ~\newline
+ 
+
+You may want to make use of the \mbox{\hyperlink{class_engine_1_1_core}{Core}} get\+All\+Entitites function as the argument for the vector of Entities. The other arguments are raydirection, ray origin and a tag for the ray 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_ray_caster_a82267ef201f15a3e294e42033016e8a8}\label{class_engine_1_1_ray_caster_a82267ef201f15a3e294e42033016e8a8}} 
+\index{Engine::RayCaster@{Engine::RayCaster}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::RayCaster@{Engine::RayCaster}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_ray_caster}{Ray\+Caster}}$>$ Engine\+::\+Ray\+Caster\+::m\+\_\+self}
+
+
+
+A \char`\"{}\+This\char`\"{} pointer. 
 
 
 

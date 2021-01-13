@@ -2,6 +2,11 @@
 \label{class_engine_1_1_mesh_collider}\index{Engine::MeshCollider@{Engine::MeshCollider}}
 
 
+Meshes.  
+
+
+
+
 {\ttfamily \#include $<$Collider.\+h$>$}
 
 Inheritance diagram for Engine\+::Mesh\+Collider\+:\begin{figure}[H]
@@ -13,73 +18,77 @@ Inheritance diagram for Engine\+::Mesh\+Collider\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_engine_1_1_mesh_collider_a24e9fbdfc20012e91fecc033dcaef0d1}{Mesh\+Collider}} (std\+::string \+\_\+obj, glm\+::vec3 \+\_\+scale, glm\+::vec3 \+\_\+size)
-\item 
-\mbox{\hyperlink{class_engine_1_1_mesh_collider_aa571c148a43ef7e8a99a003b771136b8}{Mesh\+Collider}} (glm\+::vec3 \+\_\+scale)
-\item 
 \mbox{\hyperlink{class_engine_1_1_mesh_collider_a290def732a42a4e96a4d7418229f1240}{Mesh\+Collider}} ()
 \item 
 void \mbox{\hyperlink{class_engine_1_1_mesh_collider_a8edac8d81dc10cfc412a23fa3bbe5a9a}{set\+Easy}} (bool \+\_\+val)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets whether to easy collide or not. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_mesh_collider_a645ba5a123b2e901f90502d6ee7a15ff}{is\+Easy}} ()
+\begin{DoxyCompactList}\small\item\em Returns whether the mesh will easy collide or not. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_engine_1_1_mesh_collider_a1bcc6733b6a5dea15c7078c7c534c2d8}{get\+Last\+Col}} ()
+\begin{DoxyCompactList}\small\item\em Returns the \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} tag of the mesh we most recently collided with. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_engine_1_1_mesh_collider_a3f176d5271edcf6db959bfa035fd2dde}{get\+Precision}} ()
+\begin{DoxyCompactList}\small\item\em Returns how \textquotesingle{}precise\textquotesingle{} the collision reaction is. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_mesh_collider_a7da4953e434eabd77df846fbed9d4e71}{set\+Precision}} (float \+\_\+prec)
+\begin{DoxyCompactList}\small\item\em Sets how \textquotesingle{}precise\textquotesingle{} the collision reaction is. It is unlikely you will need to edit the default value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_mesh_collider}{Mesh\+Collider}} $>$ \mbox{\hyperlink{class_engine_1_1_mesh_collider_a19014c77b44aaefca920165d433f015a}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}\+This\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_engine_1_1_mesh_collider_afb39ac9926a31e93483356365d05c84c}{set\+Col\+Before}} (bool \+\_\+val)
 \item 
 bool \mbox{\hyperlink{class_engine_1_1_mesh_collider_a326eef59ce4dd13b388deb83b658dddc}{col\+Before}} ()
 \item 
-std\+::string \mbox{\hyperlink{class_engine_1_1_mesh_collider_a1bcc6733b6a5dea15c7078c7c534c2d8}{get\+Last\+Col}} ()
-\item 
 void \mbox{\hyperlink{class_engine_1_1_mesh_collider_a0479840a0db3852de32ed31100af10f6}{set\+Last\+Col}} (std\+::string \+\_\+tag)
-\item 
-float \mbox{\hyperlink{class_engine_1_1_mesh_collider_a3f176d5271edcf6db959bfa035fd2dde}{get\+Precision}} ()
-\item 
-void \mbox{\hyperlink{class_engine_1_1_mesh_collider_a7da4953e434eabd77df846fbed9d4e71}{set\+Precision}} (float \+\_\+prec)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the tag of the object most recently collided with. \end{DoxyCompactList}\item 
 std\+::vector$<$ int $>$ \mbox{\hyperlink{class_engine_1_1_mesh_collider_aaf1e09866d91aea4aa053cb75bcdfcd4}{get\+Col\+Tri}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Gets the col\+Tri. \end{DoxyCompactList}\item 
 std\+::vector$<$ int $>$ \mbox{\hyperlink{class_engine_1_1_mesh_collider_a6f24bfe77eac4fda9a4b353e842b27d6}{get\+My\+Tri}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Gets this object\textquotesingle{}s col\+Tri. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_mesh_collider_a54ee19e95c21dc4fc16697f2b38c087d}{set\+My\+Tri}} (std\+::vector$<$ int $>$ \+\_\+my\+Tri)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets this object\textquotesingle{}s coltri. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_mesh_collider_a06c72898057cf02fa70a5d5e1e56a3eb}{set\+Col\+Tri}} (std\+::vector$<$ int $>$ \+\_\+col\+Tri)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sets the col\+Tri. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{class_engine_1_1_mesh_collider_a7b88c46c1f0089985407db5ea9959cff}{m\+\_\+semi\+Mesh}}
-\item 
-bool \mbox{\hyperlink{class_engine_1_1_mesh_collider_a7c6c345635f2c214961c8023c776ab79}{m\+\_\+easy\+Collide}}
-\item 
+bool \mbox{\hyperlink{class_engine_1_1_mesh_collider_a7c6c345635f2c214961c8023c776ab79}{m\+\_\+easy\+Collide}} = false
+\begin{DoxyCompactList}\small\item\em An \char`\"{}\+Easy Collide\char`\"{} mesh loses much accuracy in return for performance. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_engine_1_1_mesh_collider_ae627549d3a872f48882f89d554aa9adc}{m\+\_\+last\+Mesh}} = \char`\"{}NA\char`\"{}
-\item 
+\begin{DoxyCompactList}\small\item\em The tag of the last mesh that we collided with. \end{DoxyCompactList}\item 
 std\+::vector$<$ int $>$ \mbox{\hyperlink{class_engine_1_1_mesh_collider_a700f8f198d41eee89349ec49929a87e4}{m\+\_\+col\+Tri}}
-\item 
+\begin{DoxyCompactList}\small\item\em A reference to the last triangle I collided with. \end{DoxyCompactList}\item 
 std\+::vector$<$ int $>$ \mbox{\hyperlink{class_engine_1_1_mesh_collider_aa84adb0119436d604035648552b1b05e}{m\+\_\+my\+Tri}}
-\item 
-bool \mbox{\hyperlink{class_engine_1_1_mesh_collider_a49215ff7e20dde35f6c8adbdaf113e9b}{m\+\_\+collided\+Before}}
-\item 
+\begin{DoxyCompactList}\small\item\em A reference to my last triangle I used to collide with something. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_engine_1_1_mesh_collider_a49215ff7e20dde35f6c8adbdaf113e9b}{m\+\_\+collided\+Before}} = false
+\begin{DoxyCompactList}\small\item\em Marks if this Mesh has ever collided. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_mesh_collider_a2267afa8198e93c72456c797e68dc443}{m\+\_\+precision}} = 0.\+01f
+\begin{DoxyCompactList}\small\item\em How precise the \char`\"{}\+Nudge\char`\"{} step is when moving an object out of this mesh. Lower values are more precise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_engine_1_1_mesh_collider_ac822efd4273baedb15ecfe045338ae09}{Physics\+Object}}
+\item 
+class \mbox{\hyperlink{class_engine_1_1_mesh_collider_ab77e2ce07e24736d3334d5e6c8e7374f}{Adv\+Physics\+Object}}
+\item 
+class \mbox{\hyperlink{class_engine_1_1_mesh_collider_ac201339e9fb6bfdbbb174757f7367891}{Physics\+Event\+User}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
+\doxysubsection{Detailed Description}
+Meshes. 
+
+This is the most expensive and least reliable collider class. Use only when necessary. 
+
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_engine_1_1_mesh_collider_a24e9fbdfc20012e91fecc033dcaef0d1}\label{class_engine_1_1_mesh_collider_a24e9fbdfc20012e91fecc033dcaef0d1}} 
-\index{Engine::MeshCollider@{Engine::MeshCollider}!MeshCollider@{MeshCollider}}
-\index{MeshCollider@{MeshCollider}!Engine::MeshCollider@{Engine::MeshCollider}}
-\doxysubsubsection{\texorpdfstring{MeshCollider()}{MeshCollider()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily Engine\+::\+Mesh\+Collider\+::\+Mesh\+Collider (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+obj,  }\item[{glm\+::vec3}]{\+\_\+scale,  }\item[{glm\+::vec3}]{\+\_\+size }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_engine_1_1_mesh_collider_aa571c148a43ef7e8a99a003b771136b8}\label{class_engine_1_1_mesh_collider_aa571c148a43ef7e8a99a003b771136b8}} 
-\index{Engine::MeshCollider@{Engine::MeshCollider}!MeshCollider@{MeshCollider}}
-\index{MeshCollider@{MeshCollider}!Engine::MeshCollider@{Engine::MeshCollider}}
-\doxysubsubsection{\texorpdfstring{MeshCollider()}{MeshCollider()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily Engine\+::\+Mesh\+Collider\+::\+Mesh\+Collider (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+scale }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a290def732a42a4e96a4d7418229f1240}\label{class_engine_1_1_mesh_collider_a290def732a42a4e96a4d7418229f1240}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!MeshCollider@{MeshCollider}}
 \index{MeshCollider@{MeshCollider}!Engine::MeshCollider@{Engine::MeshCollider}}
-\doxysubsubsection{\texorpdfstring{MeshCollider()}{MeshCollider()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\doxysubsubsection{\texorpdfstring{MeshCollider()}{MeshCollider()}}
 {\footnotesize\ttfamily Engine\+::\+Mesh\+Collider\+::\+Mesh\+Collider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -89,13 +98,17 @@ float \mbox{\hyperlink{class_engine_1_1_mesh_collider_a2267afa8198e93c72456c797e
 \index{Engine::MeshCollider@{Engine::MeshCollider}!colBefore@{colBefore}}
 \index{colBefore@{colBefore}!Engine::MeshCollider@{Engine::MeshCollider}}
 \doxysubsubsection{\texorpdfstring{colBefore()}{colBefore()}}
-{\footnotesize\ttfamily bool Engine\+::\+Mesh\+Collider\+::col\+Before (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily bool Engine\+::\+Mesh\+Collider\+::col\+Before (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_aaf1e09866d91aea4aa053cb75bcdfcd4}\label{class_engine_1_1_mesh_collider_aaf1e09866d91aea4aa053cb75bcdfcd4}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!getColTri@{getColTri}}
 \index{getColTri@{getColTri}!Engine::MeshCollider@{Engine::MeshCollider}}
 \doxysubsubsection{\texorpdfstring{getColTri()}{getColTri()}}
-{\footnotesize\ttfamily std\+::vector$<$int$>$ Engine\+::\+Mesh\+Collider\+::get\+Col\+Tri (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Engine\+::\+Mesh\+Collider\+::get\+Col\+Tri (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Gets the col\+Tri. 
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a1bcc6733b6a5dea15c7078c7c534c2d8}\label{class_engine_1_1_mesh_collider_a1bcc6733b6a5dea15c7078c7c534c2d8}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!getLastCol@{getLastCol}}
@@ -103,11 +116,19 @@ float \mbox{\hyperlink{class_engine_1_1_mesh_collider_a2267afa8198e93c72456c797e
 \doxysubsubsection{\texorpdfstring{getLastCol()}{getLastCol()}}
 {\footnotesize\ttfamily std\+::string Engine\+::\+Mesh\+Collider\+::get\+Last\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns the \mbox{\hyperlink{class_engine_1_1_entity}{Entity}} tag of the mesh we most recently collided with. 
+
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a6f24bfe77eac4fda9a4b353e842b27d6}\label{class_engine_1_1_mesh_collider_a6f24bfe77eac4fda9a4b353e842b27d6}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!getMyTri@{getMyTri}}
 \index{getMyTri@{getMyTri}!Engine::MeshCollider@{Engine::MeshCollider}}
 \doxysubsubsection{\texorpdfstring{getMyTri()}{getMyTri()}}
-{\footnotesize\ttfamily std\+::vector$<$int$>$ Engine\+::\+Mesh\+Collider\+::get\+My\+Tri (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Engine\+::\+Mesh\+Collider\+::get\+My\+Tri (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Gets this object\textquotesingle{}s col\+Tri. 
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a3f176d5271edcf6db959bfa035fd2dde}\label{class_engine_1_1_mesh_collider_a3f176d5271edcf6db959bfa035fd2dde}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!getPrecision@{getPrecision}}
@@ -115,23 +136,35 @@ float \mbox{\hyperlink{class_engine_1_1_mesh_collider_a2267afa8198e93c72456c797e
 \doxysubsubsection{\texorpdfstring{getPrecision()}{getPrecision()}}
 {\footnotesize\ttfamily float Engine\+::\+Mesh\+Collider\+::get\+Precision (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns how \textquotesingle{}precise\textquotesingle{} the collision reaction is. 
+
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a645ba5a123b2e901f90502d6ee7a15ff}\label{class_engine_1_1_mesh_collider_a645ba5a123b2e901f90502d6ee7a15ff}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!isEasy@{isEasy}}
 \index{isEasy@{isEasy}!Engine::MeshCollider@{Engine::MeshCollider}}
 \doxysubsubsection{\texorpdfstring{isEasy()}{isEasy()}}
 {\footnotesize\ttfamily bool Engine\+::\+Mesh\+Collider\+::is\+Easy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns whether the mesh will easy collide or not. 
+
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_afb39ac9926a31e93483356365d05c84c}\label{class_engine_1_1_mesh_collider_afb39ac9926a31e93483356365d05c84c}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!setColBefore@{setColBefore}}
 \index{setColBefore@{setColBefore}!Engine::MeshCollider@{Engine::MeshCollider}}
 \doxysubsubsection{\texorpdfstring{setColBefore()}{setColBefore()}}
-{\footnotesize\ttfamily void Engine\+::\+Mesh\+Collider\+::set\+Col\+Before (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Engine\+::\+Mesh\+Collider\+::set\+Col\+Before (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a06c72898057cf02fa70a5d5e1e56a3eb}\label{class_engine_1_1_mesh_collider_a06c72898057cf02fa70a5d5e1e56a3eb}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!setColTri@{setColTri}}
 \index{setColTri@{setColTri}!Engine::MeshCollider@{Engine::MeshCollider}}
 \doxysubsubsection{\texorpdfstring{setColTri()}{setColTri()}}
-{\footnotesize\ttfamily void Engine\+::\+Mesh\+Collider\+::set\+Col\+Tri (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{\+\_\+col\+Tri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Engine\+::\+Mesh\+Collider\+::set\+Col\+Tri (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{\+\_\+col\+Tri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sets the col\+Tri. 
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a8edac8d81dc10cfc412a23fa3bbe5a9a}\label{class_engine_1_1_mesh_collider_a8edac8d81dc10cfc412a23fa3bbe5a9a}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!setEasy@{setEasy}}
@@ -139,17 +172,29 @@ float \mbox{\hyperlink{class_engine_1_1_mesh_collider_a2267afa8198e93c72456c797e
 \doxysubsubsection{\texorpdfstring{setEasy()}{setEasy()}}
 {\footnotesize\ttfamily void Engine\+::\+Mesh\+Collider\+::set\+Easy (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Sets whether to easy collide or not. 
+
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a0479840a0db3852de32ed31100af10f6}\label{class_engine_1_1_mesh_collider_a0479840a0db3852de32ed31100af10f6}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!setLastCol@{setLastCol}}
 \index{setLastCol@{setLastCol}!Engine::MeshCollider@{Engine::MeshCollider}}
 \doxysubsubsection{\texorpdfstring{setLastCol()}{setLastCol()}}
-{\footnotesize\ttfamily void Engine\+::\+Mesh\+Collider\+::set\+Last\+Col (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Engine\+::\+Mesh\+Collider\+::set\+Last\+Col (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sets the tag of the object most recently collided with. 
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a54ee19e95c21dc4fc16697f2b38c087d}\label{class_engine_1_1_mesh_collider_a54ee19e95c21dc4fc16697f2b38c087d}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!setMyTri@{setMyTri}}
 \index{setMyTri@{setMyTri}!Engine::MeshCollider@{Engine::MeshCollider}}
 \doxysubsubsection{\texorpdfstring{setMyTri()}{setMyTri()}}
-{\footnotesize\ttfamily void Engine\+::\+Mesh\+Collider\+::set\+My\+Tri (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{\+\_\+my\+Tri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Engine\+::\+Mesh\+Collider\+::set\+My\+Tri (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{\+\_\+my\+Tri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Sets this object\textquotesingle{}s coltri. 
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a7da4953e434eabd77df846fbed9d4e71}\label{class_engine_1_1_mesh_collider_a7da4953e434eabd77df846fbed9d4e71}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!setPrecision@{setPrecision}}
@@ -159,12 +204,41 @@ float \mbox{\hyperlink{class_engine_1_1_mesh_collider_a2267afa8198e93c72456c797e
 
 
 
+Sets how \textquotesingle{}precise\textquotesingle{} the collision reaction is. It is unlikely you will need to edit the default value. 
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_mesh_collider_ab77e2ce07e24736d3334d5e6c8e7374f}\label{class_engine_1_1_mesh_collider_ab77e2ce07e24736d3334d5e6c8e7374f}} 
+\index{Engine::MeshCollider@{Engine::MeshCollider}!AdvPhysicsObject@{AdvPhysicsObject}}
+\index{AdvPhysicsObject@{AdvPhysicsObject}!Engine::MeshCollider@{Engine::MeshCollider}}
+\doxysubsubsection{\texorpdfstring{AdvPhysicsObject}{AdvPhysicsObject}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_engine_1_1_adv_physics_object}{Adv\+Physics\+Object}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_collider_ac201339e9fb6bfdbbb174757f7367891}\label{class_engine_1_1_mesh_collider_ac201339e9fb6bfdbbb174757f7367891}} 
+\index{Engine::MeshCollider@{Engine::MeshCollider}!PhysicsEventUser@{PhysicsEventUser}}
+\index{PhysicsEventUser@{PhysicsEventUser}!Engine::MeshCollider@{Engine::MeshCollider}}
+\doxysubsubsection{\texorpdfstring{PhysicsEventUser}{PhysicsEventUser}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_engine_1_1_physics_event_user}{Physics\+Event\+User}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_collider_ac822efd4273baedb15ecfe045338ae09}\label{class_engine_1_1_mesh_collider_ac822efd4273baedb15ecfe045338ae09}} 
+\index{Engine::MeshCollider@{Engine::MeshCollider}!PhysicsObject@{PhysicsObject}}
+\index{PhysicsObject@{PhysicsObject}!Engine::MeshCollider@{Engine::MeshCollider}}
+\doxysubsubsection{\texorpdfstring{PhysicsObject}{PhysicsObject}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_engine_1_1_physics_object}{Physics\+Object}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a49215ff7e20dde35f6c8adbdaf113e9b}\label{class_engine_1_1_mesh_collider_a49215ff7e20dde35f6c8adbdaf113e9b}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!m\_collidedBefore@{m\_collidedBefore}}
 \index{m\_collidedBefore@{m\_collidedBefore}!Engine::MeshCollider@{Engine::MeshCollider}}
 \doxysubsubsection{\texorpdfstring{m\_collidedBefore}{m\_collidedBefore}}
-{\footnotesize\ttfamily bool Engine\+::\+Mesh\+Collider\+::m\+\_\+collided\+Before\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily bool Engine\+::\+Mesh\+Collider\+::m\+\_\+collided\+Before = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Marks if this Mesh has ever collided. 
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a700f8f198d41eee89349ec49929a87e4}\label{class_engine_1_1_mesh_collider_a700f8f198d41eee89349ec49929a87e4}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!m\_colTri@{m\_colTri}}
@@ -172,11 +246,19 @@ float \mbox{\hyperlink{class_engine_1_1_mesh_collider_a2267afa8198e93c72456c797e
 \doxysubsubsection{\texorpdfstring{m\_colTri}{m\_colTri}}
 {\footnotesize\ttfamily std\+::vector$<$int$>$ Engine\+::\+Mesh\+Collider\+::m\+\_\+col\+Tri\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+A reference to the last triangle I collided with. 
+
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a7c6c345635f2c214961c8023c776ab79}\label{class_engine_1_1_mesh_collider_a7c6c345635f2c214961c8023c776ab79}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!m\_easyCollide@{m\_easyCollide}}
 \index{m\_easyCollide@{m\_easyCollide}!Engine::MeshCollider@{Engine::MeshCollider}}
 \doxysubsubsection{\texorpdfstring{m\_easyCollide}{m\_easyCollide}}
-{\footnotesize\ttfamily bool Engine\+::\+Mesh\+Collider\+::m\+\_\+easy\+Collide\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily bool Engine\+::\+Mesh\+Collider\+::m\+\_\+easy\+Collide = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+An \char`\"{}\+Easy Collide\char`\"{} mesh loses much accuracy in return for performance. 
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_ae627549d3a872f48882f89d554aa9adc}\label{class_engine_1_1_mesh_collider_ae627549d3a872f48882f89d554aa9adc}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!m\_lastMesh@{m\_lastMesh}}
@@ -184,11 +266,19 @@ float \mbox{\hyperlink{class_engine_1_1_mesh_collider_a2267afa8198e93c72456c797e
 \doxysubsubsection{\texorpdfstring{m\_lastMesh}{m\_lastMesh}}
 {\footnotesize\ttfamily std\+::string Engine\+::\+Mesh\+Collider\+::m\+\_\+last\+Mesh = \char`\"{}NA\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+The tag of the last mesh that we collided with. 
+
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_aa84adb0119436d604035648552b1b05e}\label{class_engine_1_1_mesh_collider_aa84adb0119436d604035648552b1b05e}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!m\_myTri@{m\_myTri}}
 \index{m\_myTri@{m\_myTri}!Engine::MeshCollider@{Engine::MeshCollider}}
 \doxysubsubsection{\texorpdfstring{m\_myTri}{m\_myTri}}
 {\footnotesize\ttfamily std\+::vector$<$int$>$ Engine\+::\+Mesh\+Collider\+::m\+\_\+my\+Tri\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A reference to my last triangle I used to collide with something. 
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_collider_a2267afa8198e93c72456c797e68dc443}\label{class_engine_1_1_mesh_collider_a2267afa8198e93c72456c797e68dc443}} 
 \index{Engine::MeshCollider@{Engine::MeshCollider}!m\_precision@{m\_precision}}
@@ -196,11 +286,19 @@ float \mbox{\hyperlink{class_engine_1_1_mesh_collider_a2267afa8198e93c72456c797e
 \doxysubsubsection{\texorpdfstring{m\_precision}{m\_precision}}
 {\footnotesize\ttfamily float Engine\+::\+Mesh\+Collider\+::m\+\_\+precision = 0.\+01f\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_engine_1_1_mesh_collider_a7b88c46c1f0089985407db5ea9959cff}\label{class_engine_1_1_mesh_collider_a7b88c46c1f0089985407db5ea9959cff}} 
-\index{Engine::MeshCollider@{Engine::MeshCollider}!m\_semiMesh@{m\_semiMesh}}
-\index{m\_semiMesh@{m\_semiMesh}!Engine::MeshCollider@{Engine::MeshCollider}}
-\doxysubsubsection{\texorpdfstring{m\_semiMesh}{m\_semiMesh}}
-{\footnotesize\ttfamily bool Engine\+::\+Mesh\+Collider\+::m\+\_\+semi\+Mesh\hspace{0.3cm}{\ttfamily [private]}}
+
+
+How precise the \char`\"{}\+Nudge\char`\"{} step is when moving an object out of this mesh. Lower values are more precise. 
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_collider_a19014c77b44aaefca920165d433f015a}\label{class_engine_1_1_mesh_collider_a19014c77b44aaefca920165d433f015a}} 
+\index{Engine::MeshCollider@{Engine::MeshCollider}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::MeshCollider@{Engine::MeshCollider}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_mesh_collider}{Mesh\+Collider}}$>$ Engine\+::\+Mesh\+Collider\+::m\+\_\+self}
+
+
+
+A \char`\"{}\+This\char`\"{} pointer. 
 
 
 

@@ -2,6 +2,11 @@
 \label{class_engine_1_1_texture}\index{Engine::Texture@{Engine::Texture}}
 
 
+A texture is usually a loaded image.  
+
+
+
+
 {\ttfamily \#include $<$Texture.\+h$>$}
 
 Inheritance diagram for Engine\+::Texture\+:\begin{figure}[H]
@@ -18,23 +23,29 @@ Inheritance diagram for Engine\+::Texture\+:\begin{figure}[H]
 \mbox{\hyperlink{class_engine_1_1_texture_ad35168b0b6784c4c8528787aa3c248f0}{$\sim$\+Texture}} ()
 \item 
 G\+Luint \mbox{\hyperlink{class_engine_1_1_texture_adab4b3f2d21b0479a7bb95f6279bd9ed}{get}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the ID of the texture. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_texture_a76f4399b76be2a958054a8ffd0c5e83a}{load}} (std\+::string \+\_\+image)
-\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\begin{DoxyCompactList}\small\item\em Loads a texture. \end{DoxyCompactList}\item 
+glm\+::vec2 \mbox{\hyperlink{class_engine_1_1_texture_a1e03f62fe4c8db6efe2baea73d7a3116}{get\+Resolution}} ()
+\begin{DoxyCompactList}\small\item\em Returns the resolution of the \mbox{\hyperlink{class_engine_1_1_texture}{Texture}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{class_engine_1_1_texture_aa44e18642f35d4d90d49e2a79e012663}{resolutionX}}
-\item 
-int \mbox{\hyperlink{class_engine_1_1_texture_a68922b2a8fd65d5b826a3bf25164d5ff}{resolutionY}}
-\item 
+int \mbox{\hyperlink{class_engine_1_1_texture_a1ebcf31b4d22919b1716e4b97c6570b0}{m\+\_\+resX}}
+\begin{DoxyCompactList}\small\item\em Width of the texture. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_engine_1_1_texture_a6914800ac46131ac038e7420c807982d}{m\+\_\+resY}}
+\begin{DoxyCompactList}\small\item\em Height of the texture. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_engine_1_1_texture_aa3f2793aac2a2abab322e9505b29ce1f}{m\+\_\+channels}}
-\item 
+\begin{DoxyCompactList}\small\item\em How many channels it has. \end{DoxyCompactList}\item 
 G\+Luint \mbox{\hyperlink{class_engine_1_1_texture_a83f5a1582362ea63ea9bf04f4ef7c085}{m\+\_\+texture\+Id}}
-\item 
-G\+Luint \mbox{\hyperlink{class_engine_1_1_texture_a99d170430eed4f50585ee76cdf6cd94b}{m\+\_\+face\+Texture\+ID}} \mbox{[}6\mbox{]}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The texture ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+A texture is usually a loaded image. 
+
+Textures can be applied to \mbox{\hyperlink{class_engine_1_1_image_u_i}{Image\+UI}} as well as \mbox{\hyperlink{class_engine_1_1_mesh_renderer}{Mesh\+Renderer}} objects 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_engine_1_1_texture_a8f18f686fbb5bb6c90e3ed8c978f1a80}\label{class_engine_1_1_texture_a8f18f686fbb5bb6c90e3ed8c978f1a80}} 
@@ -58,6 +69,20 @@ G\+Luint \mbox{\hyperlink{class_engine_1_1_texture_a99d170430eed4f50585ee76cdf6c
 \doxysubsubsection{\texorpdfstring{get()}{get()}}
 {\footnotesize\ttfamily G\+Luint Engine\+::\+Texture\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns the ID of the texture. 
+
+\mbox{\Hypertarget{class_engine_1_1_texture_a1e03f62fe4c8db6efe2baea73d7a3116}\label{class_engine_1_1_texture_a1e03f62fe4c8db6efe2baea73d7a3116}} 
+\index{Engine::Texture@{Engine::Texture}!getResolution@{getResolution}}
+\index{getResolution@{getResolution}!Engine::Texture@{Engine::Texture}}
+\doxysubsubsection{\texorpdfstring{getResolution()}{getResolution()}}
+{\footnotesize\ttfamily glm\+::vec2 Engine\+::\+Texture\+::get\+Resolution (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the resolution of the \mbox{\hyperlink{class_engine_1_1_texture}{Texture}}. 
+
 \mbox{\Hypertarget{class_engine_1_1_texture_a76f4399b76be2a958054a8ffd0c5e83a}\label{class_engine_1_1_texture_a76f4399b76be2a958054a8ffd0c5e83a}} 
 \index{Engine::Texture@{Engine::Texture}!load@{load}}
 \index{load@{load}!Engine::Texture@{Engine::Texture}}
@@ -66,36 +91,50 @@ G\+Luint \mbox{\hyperlink{class_engine_1_1_texture_a99d170430eed4f50585ee76cdf6c
 
 
 
+Loads a texture. 
+
+
+
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{class_engine_1_1_texture_aa3f2793aac2a2abab322e9505b29ce1f}\label{class_engine_1_1_texture_aa3f2793aac2a2abab322e9505b29ce1f}} 
 \index{Engine::Texture@{Engine::Texture}!m\_channels@{m\_channels}}
 \index{m\_channels@{m\_channels}!Engine::Texture@{Engine::Texture}}
 \doxysubsubsection{\texorpdfstring{m\_channels}{m\_channels}}
-{\footnotesize\ttfamily int Engine\+::\+Texture\+::m\+\_\+channels}
+{\footnotesize\ttfamily int Engine\+::\+Texture\+::m\+\_\+channels\hspace{0.3cm}{\ttfamily [protected]}}
 
-\mbox{\Hypertarget{class_engine_1_1_texture_a99d170430eed4f50585ee76cdf6cd94b}\label{class_engine_1_1_texture_a99d170430eed4f50585ee76cdf6cd94b}} 
-\index{Engine::Texture@{Engine::Texture}!m\_faceTextureID@{m\_faceTextureID}}
-\index{m\_faceTextureID@{m\_faceTextureID}!Engine::Texture@{Engine::Texture}}
-\doxysubsubsection{\texorpdfstring{m\_faceTextureID}{m\_faceTextureID}}
-{\footnotesize\ttfamily G\+Luint Engine\+::\+Texture\+::m\+\_\+face\+Texture\+ID\mbox{[}6\mbox{]}}
+
+
+How many channels it has. 
+
+\mbox{\Hypertarget{class_engine_1_1_texture_a1ebcf31b4d22919b1716e4b97c6570b0}\label{class_engine_1_1_texture_a1ebcf31b4d22919b1716e4b97c6570b0}} 
+\index{Engine::Texture@{Engine::Texture}!m\_resX@{m\_resX}}
+\index{m\_resX@{m\_resX}!Engine::Texture@{Engine::Texture}}
+\doxysubsubsection{\texorpdfstring{m\_resX}{m\_resX}}
+{\footnotesize\ttfamily int Engine\+::\+Texture\+::m\+\_\+resX\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Width of the texture. 
+
+\mbox{\Hypertarget{class_engine_1_1_texture_a6914800ac46131ac038e7420c807982d}\label{class_engine_1_1_texture_a6914800ac46131ac038e7420c807982d}} 
+\index{Engine::Texture@{Engine::Texture}!m\_resY@{m\_resY}}
+\index{m\_resY@{m\_resY}!Engine::Texture@{Engine::Texture}}
+\doxysubsubsection{\texorpdfstring{m\_resY}{m\_resY}}
+{\footnotesize\ttfamily int Engine\+::\+Texture\+::m\+\_\+resY\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Height of the texture. 
 
 \mbox{\Hypertarget{class_engine_1_1_texture_a83f5a1582362ea63ea9bf04f4ef7c085}\label{class_engine_1_1_texture_a83f5a1582362ea63ea9bf04f4ef7c085}} 
 \index{Engine::Texture@{Engine::Texture}!m\_textureId@{m\_textureId}}
 \index{m\_textureId@{m\_textureId}!Engine::Texture@{Engine::Texture}}
 \doxysubsubsection{\texorpdfstring{m\_textureId}{m\_textureId}}
-{\footnotesize\ttfamily G\+Luint Engine\+::\+Texture\+::m\+\_\+texture\+Id}
+{\footnotesize\ttfamily G\+Luint Engine\+::\+Texture\+::m\+\_\+texture\+Id\hspace{0.3cm}{\ttfamily [protected]}}
 
-\mbox{\Hypertarget{class_engine_1_1_texture_aa44e18642f35d4d90d49e2a79e012663}\label{class_engine_1_1_texture_aa44e18642f35d4d90d49e2a79e012663}} 
-\index{Engine::Texture@{Engine::Texture}!resolutionX@{resolutionX}}
-\index{resolutionX@{resolutionX}!Engine::Texture@{Engine::Texture}}
-\doxysubsubsection{\texorpdfstring{resolutionX}{resolutionX}}
-{\footnotesize\ttfamily int Engine\+::\+Texture\+::resolutionX}
 
-\mbox{\Hypertarget{class_engine_1_1_texture_a68922b2a8fd65d5b826a3bf25164d5ff}\label{class_engine_1_1_texture_a68922b2a8fd65d5b826a3bf25164d5ff}} 
-\index{Engine::Texture@{Engine::Texture}!resolutionY@{resolutionY}}
-\index{resolutionY@{resolutionY}!Engine::Texture@{Engine::Texture}}
-\doxysubsubsection{\texorpdfstring{resolutionY}{resolutionY}}
-{\footnotesize\ttfamily int Engine\+::\+Texture\+::resolutionY}
+
+The texture ID. 
 
 
 

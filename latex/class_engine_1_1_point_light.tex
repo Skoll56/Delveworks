@@ -2,6 +2,11 @@
 \label{class_engine_1_1_point_light}\index{Engine::PointLight@{Engine::PointLight}}
 
 
+Point Lights.  
+
+
+
+
 {\ttfamily \#include $<$Light.\+h$>$}
 
 Inheritance diagram for Engine\+::Point\+Light\+:\begin{figure}[H]
@@ -15,29 +20,41 @@ Inheritance diagram for Engine\+::Point\+Light\+:\begin{figure}[H]
 \item 
 \mbox{\hyperlink{class_engine_1_1_point_light_a445a69eb177e8149024f6b17f45c9895}{Point\+Light}} ()
 \item 
-void \mbox{\hyperlink{class_engine_1_1_point_light_a85fa71ff4d69af56925b6acd872009b5}{set\+Values}} (glm\+::vec3 \+\_\+diffuse, float \+\_\+specular, float \+\_\+radius, float \+\_\+brightness)
-\item 
+void \mbox{\hyperlink{class_engine_1_1_point_light_a624922597150942f4ea41e2b94ab93bb}{on\+Initialise}} (glm\+::vec3 \+\_\+diffuse, float \+\_\+specular, float \+\_\+radius, float \+\_\+brightness)
+\begin{DoxyCompactList}\small\item\em Iniitialise the light with a Diffuse Color, Specular Intensity, Radius of the light and Brightness. \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} $>$ \mbox{\hyperlink{class_engine_1_1_point_light_afa6d57042f15da68c06bcbc05e84c0f3}{get\+Shadow\+Cube}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} texture which the \mbox{\hyperlink{class_engine_1_1_point_light}{Point\+Light}} uses for its \mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}}. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_point_light_a18b6da4dc3573098880bcb52c3070e0b}{get\+Radius}} ()
-\item 
-float \mbox{\hyperlink{class_engine_1_1_point_light_a6c4c0c47be86a7c35531d2772f6ee402}{get\+Quad}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the radius of the light. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_point_light_a5510e30fb9625a66b7e1b134579f407f}{set\+Brightness}} (float \+\_\+brightness)
+\begin{DoxyCompactList}\small\item\em Sets the brightness of the light. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_engine_1_1_point_light_adef4ae2b3d3e8327e0d947fe7b9981df}{get\+Brightness}} ()
+\begin{DoxyCompactList}\small\item\em Gets the brightness of the. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_point_light_a84245fed6392920796112b5acbd2ee7b}{update}} (int \+\_\+i)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_point_light}{Point\+Light}} $>$ \mbox{\hyperlink{class_engine_1_1_point_light_ae288c378a5c2fb70979d7063ee0dafcc}{m\+\_\+self}}
+\begin{DoxyCompactList}\small\item\em A \char`\"{}this\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} $>$ \mbox{\hyperlink{class_engine_1_1_point_light_a4df218e00502a6982a06a02b97dae538}{m\+\_\+\+SC}}
-\item 
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} that this light uses. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_point_light_acd8c7149df6ce845a02505452d943528}{m\+\_\+radius}}
-\item 
+\begin{DoxyCompactList}\small\item\em The radius of the light. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_point_light_a17a079c5ecfea42ef60c7b4d9fba61e6}{m\+\_\+brightness}}
-\item 
+\begin{DoxyCompactList}\small\item\em The brightness of the light. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_engine_1_1_point_light_aa09f42522a2b257d1f092b4084334310}{m\+\_\+quadratic}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A math variable used in the lighting calculation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+Point Lights. 
+
+These are lights which shine in all directions from a single point 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_engine_1_1_point_light_a445a69eb177e8149024f6b17f45c9895}\label{class_engine_1_1_point_light_a445a69eb177e8149024f6b17f45c9895}} 
@@ -49,11 +66,15 @@ float \mbox{\hyperlink{class_engine_1_1_point_light_aa09f42522a2b257d1f092b40843
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_engine_1_1_point_light_a6c4c0c47be86a7c35531d2772f6ee402}\label{class_engine_1_1_point_light_a6c4c0c47be86a7c35531d2772f6ee402}} 
-\index{Engine::PointLight@{Engine::PointLight}!getQuad@{getQuad}}
-\index{getQuad@{getQuad}!Engine::PointLight@{Engine::PointLight}}
-\doxysubsubsection{\texorpdfstring{getQuad()}{getQuad()}}
-{\footnotesize\ttfamily float Engine\+::\+Point\+Light\+::get\+Quad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{class_engine_1_1_point_light_adef4ae2b3d3e8327e0d947fe7b9981df}\label{class_engine_1_1_point_light_adef4ae2b3d3e8327e0d947fe7b9981df}} 
+\index{Engine::PointLight@{Engine::PointLight}!getBrightness@{getBrightness}}
+\index{getBrightness@{getBrightness}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{getBrightness()}{getBrightness()}}
+{\footnotesize\ttfamily float Engine\+::\+Point\+Light\+::get\+Brightness (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the brightness of the. 
 
 \mbox{\Hypertarget{class_engine_1_1_point_light_a18b6da4dc3573098880bcb52c3070e0b}\label{class_engine_1_1_point_light_a18b6da4dc3573098880bcb52c3070e0b}} 
 \index{Engine::PointLight@{Engine::PointLight}!getRadius@{getRadius}}
@@ -61,23 +82,49 @@ float \mbox{\hyperlink{class_engine_1_1_point_light_aa09f42522a2b257d1f092b40843
 \doxysubsubsection{\texorpdfstring{getRadius()}{getRadius()}}
 {\footnotesize\ttfamily float Engine\+::\+Point\+Light\+::get\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns the radius of the light. 
+
 \mbox{\Hypertarget{class_engine_1_1_point_light_afa6d57042f15da68c06bcbc05e84c0f3}\label{class_engine_1_1_point_light_afa6d57042f15da68c06bcbc05e84c0f3}} 
 \index{Engine::PointLight@{Engine::PointLight}!getShadowCube@{getShadowCube}}
 \index{getShadowCube@{getShadowCube}!Engine::PointLight@{Engine::PointLight}}
 \doxysubsubsection{\texorpdfstring{getShadowCube()}{getShadowCube()}}
 {\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}}$>$ Engine\+::\+Point\+Light\+::get\+Shadow\+Cube (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{class_engine_1_1_point_light_a85fa71ff4d69af56925b6acd872009b5}\label{class_engine_1_1_point_light_a85fa71ff4d69af56925b6acd872009b5}} 
-\index{Engine::PointLight@{Engine::PointLight}!setValues@{setValues}}
-\index{setValues@{setValues}!Engine::PointLight@{Engine::PointLight}}
-\doxysubsubsection{\texorpdfstring{setValues()}{setValues()}}
-{\footnotesize\ttfamily void Engine\+::\+Point\+Light\+::set\+Values (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+diffuse,  }\item[{float}]{\+\_\+specular,  }\item[{float}]{\+\_\+radius,  }\item[{float}]{\+\_\+brightness }\end{DoxyParamCaption})}
+
+
+Returns the \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} texture which the \mbox{\hyperlink{class_engine_1_1_point_light}{Point\+Light}} uses for its \mbox{\hyperlink{class_engine_1_1_shadow_map}{Shadow\+Map}}. 
+
+\mbox{\Hypertarget{class_engine_1_1_point_light_a624922597150942f4ea41e2b94ab93bb}\label{class_engine_1_1_point_light_a624922597150942f4ea41e2b94ab93bb}} 
+\index{Engine::PointLight@{Engine::PointLight}!onInitialise@{onInitialise}}
+\index{onInitialise@{onInitialise}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{onInitialise()}{onInitialise()}}
+{\footnotesize\ttfamily void Engine\+::\+Point\+Light\+::on\+Initialise (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+diffuse,  }\item[{float}]{\+\_\+specular,  }\item[{float}]{\+\_\+radius,  }\item[{float}]{\+\_\+brightness }\end{DoxyParamCaption})}
+
+
+
+Iniitialise the light with a Diffuse Color, Specular Intensity, Radius of the light and Brightness. 
+
+\mbox{\Hypertarget{class_engine_1_1_point_light_a5510e30fb9625a66b7e1b134579f407f}\label{class_engine_1_1_point_light_a5510e30fb9625a66b7e1b134579f407f}} 
+\index{Engine::PointLight@{Engine::PointLight}!setBrightness@{setBrightness}}
+\index{setBrightness@{setBrightness}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{setBrightness()}{setBrightness()}}
+{\footnotesize\ttfamily void Engine\+::\+Point\+Light\+::set\+Brightness (\begin{DoxyParamCaption}\item[{float}]{\+\_\+brightness }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the brightness of the light. 
 
 \mbox{\Hypertarget{class_engine_1_1_point_light_a84245fed6392920796112b5acbd2ee7b}\label{class_engine_1_1_point_light_a84245fed6392920796112b5acbd2ee7b}} 
 \index{Engine::PointLight@{Engine::PointLight}!update@{update}}
 \index{update@{update}!Engine::PointLight@{Engine::PointLight}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
 {\footnotesize\ttfamily void Engine\+::\+Point\+Light\+::update (\begin{DoxyParamCaption}\item[{int}]{\+\_\+i }\end{DoxyParamCaption})}
+
+
+
+Update. 
 
 
 
@@ -88,11 +135,19 @@ float \mbox{\hyperlink{class_engine_1_1_point_light_aa09f42522a2b257d1f092b40843
 \doxysubsubsection{\texorpdfstring{m\_brightness}{m\_brightness}}
 {\footnotesize\ttfamily float Engine\+::\+Point\+Light\+::m\+\_\+brightness\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+The brightness of the light. 
+
 \mbox{\Hypertarget{class_engine_1_1_point_light_aa09f42522a2b257d1f092b4084334310}\label{class_engine_1_1_point_light_aa09f42522a2b257d1f092b4084334310}} 
 \index{Engine::PointLight@{Engine::PointLight}!m\_quadratic@{m\_quadratic}}
 \index{m\_quadratic@{m\_quadratic}!Engine::PointLight@{Engine::PointLight}}
 \doxysubsubsection{\texorpdfstring{m\_quadratic}{m\_quadratic}}
 {\footnotesize\ttfamily float Engine\+::\+Point\+Light\+::m\+\_\+quadratic\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A math variable used in the lighting calculation. 
 
 \mbox{\Hypertarget{class_engine_1_1_point_light_acd8c7149df6ce845a02505452d943528}\label{class_engine_1_1_point_light_acd8c7149df6ce845a02505452d943528}} 
 \index{Engine::PointLight@{Engine::PointLight}!m\_radius@{m\_radius}}
@@ -100,11 +155,29 @@ float \mbox{\hyperlink{class_engine_1_1_point_light_aa09f42522a2b257d1f092b40843
 \doxysubsubsection{\texorpdfstring{m\_radius}{m\_radius}}
 {\footnotesize\ttfamily float Engine\+::\+Point\+Light\+::m\+\_\+radius\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+The radius of the light. 
+
 \mbox{\Hypertarget{class_engine_1_1_point_light_a4df218e00502a6982a06a02b97dae538}\label{class_engine_1_1_point_light_a4df218e00502a6982a06a02b97dae538}} 
 \index{Engine::PointLight@{Engine::PointLight}!m\_SC@{m\_SC}}
 \index{m\_SC@{m\_SC}!Engine::PointLight@{Engine::PointLight}}
 \doxysubsubsection{\texorpdfstring{m\_SC}{m\_SC}}
 {\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}}$>$ Engine\+::\+Point\+Light\+::m\+\_\+\+SC\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The \mbox{\hyperlink{class_engine_1_1_shadow_cube}{Shadow\+Cube}} that this light uses. 
+
+\mbox{\Hypertarget{class_engine_1_1_point_light_ae288c378a5c2fb70979d7063ee0dafcc}\label{class_engine_1_1_point_light_ae288c378a5c2fb70979d7063ee0dafcc}} 
+\index{Engine::PointLight@{Engine::PointLight}!m\_self@{m\_self}}
+\index{m\_self@{m\_self}!Engine::PointLight@{Engine::PointLight}}
+\doxysubsubsection{\texorpdfstring{m\_self}{m\_self}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_point_light}{Point\+Light}}$>$ Engine\+::\+Point\+Light\+::m\+\_\+self}
+
+
+
+A \char`\"{}this\char`\"{} pointer. 
 
 
 
