@@ -4,3 +4,6 @@ html
 latex
 
 *.mp4
+
+*.html
+*.tex

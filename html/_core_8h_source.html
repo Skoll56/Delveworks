@@ -99,7 +99,6 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">class </span>AudioReceiver;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">class </span>Context;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_engine_1_1_core.html">   33</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_core.html">Core</a></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_engine_1_1_core.html#a614439ccac0344926adc4c0165d64060">   35</a></span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_engine_1_1_entity.html">Entity</a>;        </div>
@@ -112,7 +111,6 @@ $(function() {
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_engine_1_1_core.html#a5cc3cda53f3b895263b650a23a63856c">   42</a></span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_engine_1_1_point_light.html">PointLight</a>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_engine_1_1_core.html#afcbdf601402b16c35c9b5e751f931337">   47</a></span>&#160;        <span class="keyword">enum</span> <a class="code" href="class_engine_1_1_core.html#afcbdf601402b16c35c9b5e751f931337">RunMode</a></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
 <div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_engine_1_1_core.html#afcbdf601402b16c35c9b5e751f931337afc1d0a880bac7c54998029b7d909d7af">   49</a></span>&#160;            <a class="code" href="class_engine_1_1_core.html#afcbdf601402b16c35c9b5e751f931337afc1d0a880bac7c54998029b7d909d7af">Debug</a>, <a class="code" href="class_engine_1_1_core.html#afcbdf601402b16c35c9b5e751f931337a7ce71d159b26748ce0baa079ab209ee3">Release</a></div>
@@ -131,7 +129,6 @@ $(function() {
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_engine_1_1_core.html#a57e7d233b0a1cd6224947c1a55ee7e5e">   69</a></span>&#160;        std::vector&lt;std::shared_ptr&lt;Entity&gt;&gt; <a class="code" href="class_engine_1_1_core.html#a57e7d233b0a1cd6224947c1a55ee7e5e">getAllEntities</a>() { <span class="keywordflow">return</span> <a class="code" href="class_engine_1_1_core.html#ac482274a686f14cbf880ac76f151c6e9">m_entities</a>; }</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        std::shared_ptr&lt;Camera&gt; <a class="code" href="class_engine_1_1_core.html#a7b15ae57262556aba049455c7e1f3aa2">getDefaultCamera</a>();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_engine_1_1_core.html#a519c2c592a9f47febc07e9f096b751f9">setDefaultCamera</a>(std::shared_ptr&lt;Camera&gt; _cam);</div>
@@ -195,7 +192,6 @@ $(function() {
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="comment">//Things I just hold references to</span></div>
 <div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="class_engine_1_1_core.html#aebeb9e9951cc6eab7a77a849641920b7">  157</a></span>&#160;<span class="comment"></span>        std::weak_ptr&lt;Core&gt; <a class="code" href="class_engine_1_1_core.html#aebeb9e9951cc6eab7a77a849641920b7">m_self</a>; </div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="class_engine_1_1_core.html#a2ba1d2342f36ff363b3ae644b1cd3b9b">  161</a></span>&#160;        std::weak_ptr&lt;Camera&gt; <a class="code" href="class_engine_1_1_core.html#a2ba1d2342f36ff363b3ae644b1cd3b9b">m_defaultCamera</a>;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
 <div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="class_engine_1_1_core.html#a79cdb853f66d9b0b46b78b42e7c91932">  164</a></span>&#160;        std::vector&lt;std::weak_ptr&lt;DirLight&gt;&gt; <a class="code" href="class_engine_1_1_core.html#a79cdb853f66d9b0b46b78b42e7c91932">m_dirLights</a>; </div>

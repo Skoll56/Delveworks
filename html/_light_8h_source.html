@@ -83,7 +83,6 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="comment">/* !This has been modified as part of the GRAPHICS UNIT to support shadows! */</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="comment">/* !The ability to cast lights (but not shadows) was already a feature that has been submitted before! */</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_engine_1_1_light.html">   17</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_light.html">Light</a> : <span class="keyword">public</span> <a class="code" href="class_engine_1_1_component.html">Component</a></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">public</span>:     </div>
@@ -97,7 +96,6 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_engine_1_1_light.html#af231859a7eab184cefb36b0a6362a05e">   29</a></span>&#160;        <a class="code" href="class_engine_1_1_light.html#af231859a7eab184cefb36b0a6362a05e">Light</a>() {};</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    };</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_engine_1_1_point_light.html">   34</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_point_light.html">PointLight</a> : <span class="keyword">public</span> <a class="code" href="class_engine_1_1_light.html">Light</a></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">public</span>:</div>
@@ -138,7 +136,6 @@ $(function() {
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
 <div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_engine_1_1_dir_light.html#a89fc98379c0989c39ff6137df0039f90">   87</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_engine_1_1_dir_light.html#a89fc98379c0989c39ff6137df0039f90">getSpec</a>() { <span class="keywordflow">return</span> <a class="code" href="class_engine_1_1_dir_light.html#a9e7fa6558a78a9d1fa8d66371974da99">m_specIntens</a>; }</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_engine_1_1_dir_light.html#ac09a96eecec92cd2afb4fee72df280e7">   91</a></span>&#160;        std::shared_ptr&lt;ShadowMap&gt; <a class="code" href="class_engine_1_1_dir_light.html#ac09a96eecec92cd2afb4fee72df280e7">getShadowMap</a>() { <span class="keywordflow">return</span> <a class="code" href="class_engine_1_1_dir_light.html#a612650d9d81e9358806a8fbe836a3f02">m_SM</a>; }</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_engine_1_1_dir_light.html#ac584070707adb53657d3d44c56b96792">   94</a></span>&#160;        glm::vec3 <a class="code" href="class_engine_1_1_dir_light.html#ac584070707adb53657d3d44c56b96792">getAmb</a>() { <span class="keywordflow">return</span> <a class="code" href="class_engine_1_1_dir_light.html#aa758ce136bbd7f41e79da21cfaf70b19">m_ambient</a>; }</div>
@@ -158,7 +155,6 @@ $(function() {
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    };</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
 <div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_engine_1_1_spot_light.html">  119</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_engine_1_1_spot_light.html">SpotLight</a> : <span class="keyword">public</span> <a class="code" href="class_engine_1_1_point_light.html">PointLight</a></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keyword">public</span>:</div>
@@ -198,7 +194,7 @@ $(function() {
 <div class="ttc" id="aclass_engine_1_1_dir_light_html_a612650d9d81e9358806a8fbe836a3f02"><div class="ttname"><a href="class_engine_1_1_dir_light.html#a612650d9d81e9358806a8fbe836a3f02">Engine::DirLight::m_SM</a></div><div class="ttdeci">std::shared_ptr&lt; ShadowMap &gt; m_SM</div><div class="ttdoc">The ShadowMap attached to the light.</div><div class="ttdef"><b>Definition:</b> Light.h:113</div></div>
 <div class="ttc" id="aclass_engine_1_1_point_light_html"><div class="ttname"><a href="class_engine_1_1_point_light.html">Engine::PointLight</a></div><div class="ttdoc">Point Lights.</div><div class="ttdef"><b>Definition:</b> Light.h:35</div></div>
 <div class="ttc" id="a_component_8h_html"><div class="ttname"><a href="_component_8h.html">Component.h</a></div></div>
-<div class="ttc" id="aclass_engine_1_1_point_light_html_adef4ae2b3d3e8327e0d947fe7b9981df"><div class="ttname"><a href="class_engine_1_1_point_light.html#adef4ae2b3d3e8327e0d947fe7b9981df">Engine::PointLight::getBrightness</a></div><div class="ttdeci">float getBrightness()</div><div class="ttdoc">Gets the brightness of the.</div><div class="ttdef"><b>Definition:</b> Light.h:52</div></div>
+<div class="ttc" id="aclass_engine_1_1_point_light_html_adef4ae2b3d3e8327e0d947fe7b9981df"><div class="ttname"><a href="class_engine_1_1_point_light.html#adef4ae2b3d3e8327e0d947fe7b9981df">Engine::PointLight::getBrightness</a></div><div class="ttdeci">float getBrightness()</div><div class="ttdoc">Gets the brightness of the light.</div><div class="ttdef"><b>Definition:</b> Light.h:52</div></div>
 <div class="ttc" id="aclass_engine_1_1_spot_light_html_ac30b7b103701531be5872d11cf6ab8bb"><div class="ttname"><a href="class_engine_1_1_spot_light.html#ac30b7b103701531be5872d11cf6ab8bb">Engine::SpotLight::m_SM</a></div><div class="ttdeci">std::shared_ptr&lt; ShadowMap &gt; m_SM</div><div class="ttdoc">The ShadowMap attached to this Light.</div><div class="ttdef"><b>Definition:</b> Light.h:145</div></div>
 <div class="ttc" id="aclass_engine_1_1_point_light_html_acd8c7149df6ce845a02505452d943528"><div class="ttname"><a href="class_engine_1_1_point_light.html#acd8c7149df6ce845a02505452d943528">Engine::PointLight::m_radius</a></div><div class="ttdeci">float m_radius</div><div class="ttdoc">The radius of the light.</div><div class="ttdef"><b>Definition:</b> Light.h:65</div></div>
 <div class="ttc" id="aclass_engine_1_1_spot_light_html_aa55ba629045948184255c8aab72effdb"><div class="ttname"><a href="class_engine_1_1_spot_light.html#aa55ba629045948184255c8aab72effdb">Engine::SpotLight::update</a></div><div class="ttdeci">void update(int _i)</div><div class="ttdoc">Update.</div><div class="ttdef"><b>Definition:</b> Light.cpp:89</div></div>
