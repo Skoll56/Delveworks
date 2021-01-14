@@ -108,9 +108,6 @@ namespace Engine
 
 		/** \brief The height of the window*/
 		int m_height;	
-
-		/** \brief The default Window size*/
-		glm::vec2 m_defaultWindowSize = glm::vec2(1424, 1052); //TODO: Figure out what this is for?
 		
 		//Time variables
 		/** \brief Time since last frame (Maximum 0.1f)*/
@@ -118,6 +115,15 @@ namespace Engine
 
 		/** \brief Time since Engine started*/
 		long m_t1;
+
+		/** \brief The maximum number of directional lights permitted */
+		int m_maxDir = 1;
+
+		/** \brief The maximum number of point lights permitted */
+		int m_maxPoint = 5;
+		
+		/** \brief The maximum number of spot lights permitted */
+		int m_maxSpot = 5;
 
 		//SDL OPENGL and OPENAL STUFF		
 		SDL_Window* m_window;

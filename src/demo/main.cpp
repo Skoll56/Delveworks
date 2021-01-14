@@ -97,7 +97,7 @@ class Demo : public Component
 		if (camera.lock()->m_eulerAngles.y > 360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }
 		else if (camera.lock()->m_eulerAngles.y < -360.0f) { camera.lock()->m_eulerAngles.y = 0.0f; }		
 
-		bool iWantToTest = true;
+		bool iWantToTest = false;
 		if (iWantToTest)
 		{
 			if (i == 200)
@@ -187,7 +187,7 @@ class CustomInput : public InputDevice
 int main()
 //#endif
 {
-	std::shared_ptr<Core> core = Core::initialise(Core::Debug, glm::vec2(1024, 1024));
+	std::shared_ptr<Core> core = Core::initialise(Core::Debug, glm::vec2(512, 512));
 
 	//Create the statue entity
 	std::shared_ptr<Entity> test = core->createEntity();
@@ -202,29 +202,32 @@ int main()
 	demo->addComponent<Demo>();
 	demo->addComponent<UI>();
 
-
-	//Create the directional (and ambient) light
-	std::shared_ptr<Entity> sun = core->createEntity();
-	std::shared_ptr<DirLight> d = sun->addComponent<DirLight>(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f));
-
-	d->transform()->m_position = glm::vec3(0.0f, 100.0f, 0.0f);
-	d->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
+	for (int i = 0; i < 1; i++)
+	{
+		//Create the directional (and ambient) light
+		std::shared_ptr<Entity> sun = core->createEntity();
+		std::shared_ptr<DirLight> d = sun->addComponent<DirLight>(glm::vec3(0.5f, 0.5f, 0.5f), 0.4f, glm::vec3(0.05f, 0.05f, 0.05f));
+		d->transform()->m_position = glm::vec3(0.0f, 100.0f, 0.0f);
+		d->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 0.0f);
+	}
 
 	//Create i pointlights
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 1; i++) 
 	{
 		std::shared_ptr<Entity> point = core->createEntity();
 		std::shared_ptr<PointLight> p = point->addComponent<PointLight>(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 30.0f, 0.8f);
 		p->transform()->m_position = glm::vec3(0.0f, 6.0f, -2.0f);
 	}
 
-	//Create a spotlight (in another room)
-	/*std::shared_ptr<Entity> spot2 = core->createEntity();
-	std::shared_ptr<SpotLight> s2 = spot2->addComponent<SpotLight>();
-	s2->setValues(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);//
-	s2->transform()->m_position = glm::vec3(60.0f, 16.0f, 8.0f);
-	s2->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 8.0f);//
-	*/
+	//for (int i = 0; i < 1; i++)
+	//{
+	//	//Create a spotlight (in another room)//
+	//	std::shared_ptr<Entity> spot2 = core->createEntity();
+	//	std::shared_ptr<SpotLight> s2 = spot2->addComponent<SpotLight>(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);
+	//	s2->transform()->m_position = glm::vec3(0.0f, 16.0f, 8.0f);
+	//	s2->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 8.0f);//
+	//}
+	
 
 	//This creates three rooms all 50 units away from eachother.
 	for (float l = 0.0f; l < 50.0f; l += 50.0f)

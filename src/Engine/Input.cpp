@@ -55,13 +55,16 @@ namespace Engine
 		
 		m_deltaPos = getPosition() - m_lastPos;
 		if (m_cursorLocked)
-		{
-			int winX, winY;
-			winX = m_IM.lock()->m_windowSize.x / 2;
-			winY = m_IM.lock()->m_windowSize.y / 2;
-			SDL_WarpMouseInWindow(m_IM.lock()->m_window, winX, winY); //TODO: Fix that, should be Context not Window			
-			m_pos.x = winX;
-			m_pos.y = winY;
+		{			
+			//winX = m_IM.lock()->m_windowSize.x / 2;
+			//winY = m_IM.lock()->m_windowSize.y / 2;
+			std::shared_ptr<Context> c = m_IM.lock()->m_core.lock()->getContext();
+			glm::vec2 xy = c->getPosition() + (c->getSize() / 2.0f);
+			
+
+			SDL_WarpMouseInWindow(m_IM.lock()->m_window, xy.x, xy.y); 		
+			m_pos.x = xy.x;
+			m_pos.y = xy.y;
 		}
 
 		m_lastPos = getPosition();

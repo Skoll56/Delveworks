@@ -21,10 +21,9 @@ namespace Engine
 		m_SM->Initialise(2048.0f * 4.0f, 2048.0f * 4.0f);
 	}
 
-	void DirLight::update(int _i) //NOTE
+	void DirLight::update(int _i) 
 	{
 		std::shared_ptr<ShadowMap> sm = getShadowMap();
-
 		glm::mat4 view(1.0f);
 		glm::vec3 camPos = getEntity()->getCore()->getDefaultCamera()->transform()->getPosition();
 		view = glm::lookAt(camPos + glm::vec3(0.0f, 100.0f, 0.0f), camPos + glm::vec3(0.0f, 100.0f, 0.0f) + transform()->getFwd(), transform()->getUp());
@@ -171,7 +170,7 @@ namespace Engine
 		uniform = "in_pLight[" + itr + "].m_diffuse";
 		_lSh->setUniform(uniform, getDif());		
 		
-		uniform = "in_pointShadowMap[" + itr + "]"; //
+		uniform = "in_pointShadowMap[" + itr + "]";
 		_lSh->setUniform(uniform, SC);
 
 		uniform = "in_pLight[" + itr + "].m_pos";

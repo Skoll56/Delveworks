@@ -24,7 +24,7 @@ namespace Engine
 		rtn->m_rManager = std::make_shared<ResourceManager>();
 		if (_mode == Core::Debug)
 		{
-			rtn->m_width = _gameWindowSize.x + 400;
+			rtn->m_width = _gameWindowSize.x + 428;
 			rtn->m_height = _gameWindowSize.y + 56;
 		}
 		else
@@ -54,6 +54,7 @@ namespace Engine
 		{
 			rtn->m_gameContext->m_position = glm::vec2(400, 28);
 			rtn->buildEngineUI();
+			
 		}
 
 		std::shared_ptr<DisplayUI> s = defaultEntity->addComponent<DisplayUI>(cam, 0);
@@ -289,6 +290,19 @@ namespace Engine
 			m_lightingSh->setUniform("in_Projection", glm::perspective(glm::radians(_cam->getFOV()), (float)_viewport.x / (float)_viewport.y, 0.1f, 100.0f)); //Set the projection uniform
 			m_lightingSh->setUniform("in_View", _cam->getView()); // Establish the view matrix					
 			m_lightingSh->setUniform("in_CamPos", _cam->transform()->m_position);
+
+			int d = m_dirLights.size();
+			if (d > m_maxDir) { d = m_maxDir; }
+
+			int s = m_spotLights.size();
+			if (s > m_maxSpot) { s = m_maxSpot; }
+
+			int p = m_pointLights.size();
+			if (p > m_maxPoint) { p = m_maxPoint; }
+
+			m_lightingSh->setUniform("in_numDir", d);
+			m_lightingSh->setUniform("in_numSpot", s);
+			m_lightingSh->setUniform("in_numPoint", p);
 		}
 		catch (Exception &e)
 		{
@@ -391,8 +405,7 @@ namespace Engine
 
 	void Core::buildEngineUI() //
 	{		
-		m_engineContext = std::make_shared<Context>();
-		m_engineContext->m_size = m_defaultWindowSize;
+		m_engineContext = std::make_shared<Context>();		
 		for (int i = 0; i < 4; i++)
 		{			
 			std::shared_ptr<ImageUI> s = std::make_shared<ImageUI>();
@@ -403,29 +416,30 @@ namespace Engine
 			s->m_context = m_engineContext;
 			s->m_self = s;
 
-			if (i == 0)
+			if (i == 0) //Left banner
 			{
 				s->setSize(400, m_height);
 				s->setPosition(0, 0);
 			}
-			else if (i == 1)
+			else if (i == 1) //Bottom banner
 			{
 				s->setSize(m_width, 28);
 				s->setPosition(0, 0);
 			}
-			else if (i == 2)
+			else if (i == 2) //Top banner
 			{
 				s->setSize(m_width, 28);
 				s->setPosition(0, m_height - 28);
 			}
-			else if (i == 3)
+			else if (i == 3) //Right banner
 			{
 				s->setSize(28, m_height);
 				s->setPosition(m_width - 28, 0);
 			}
-
 			m_engineContext->m_engineSurfaces.push_back(s);
 		}
+
+		m_engineContext->m_size = glm::vec2(m_width, m_height);
 	}
 
 	void Core::initialiseAL()
@@ -525,8 +539,17 @@ namespace Engine
 			try
 			{
 				if ((*it).lock())
-				{
-					(*it).lock()->update(std::distance(m_dirLights.begin(), it));
+				{				
+					int num = std::distance(m_dirLights.begin(), it);
+					if (num < m_maxDir)
+					{
+						(*it).lock()->update(num);
+					}
+					else
+					{
+						Console::output(Console::Error, "DirLight Update", "Number of directional lights cannot exceed Engine defined maximum");
+					}
+
 					it++;
 				}
 				else //This object got deleted
@@ -540,14 +563,23 @@ namespace Engine
 				it++;
 			}
 		}
-
+		std::shared_ptr<ShadowCube> random;
 		for (std::vector<std::weak_ptr<PointLight>>::iterator it = m_pointLights.begin(); it != m_pointLights.end();)
 		{
 			try
 			{
 				if ((*it).lock())
 				{
-					(*it).lock()->update(std::distance(m_pointLights.begin(), it));
+					int num = std::distance(m_pointLights.begin(), it);
+					if (num < m_maxPoint)
+					{
+						(*it).lock()->update(num);
+						random = (*it).lock()->getShadowCube();
+					}
+					else
+					{
+						Console::output(Console::Error, "PointLight Update", "Number of point lights cannot exceed Engine defined maximum");
+					}
 					it++;
 				}
 				else //This object got deleted
@@ -560,7 +592,17 @@ namespace Engine
 				Console::output(Console::Error, "pointLight Update", e.message());
 				it++;
 			}
+		}		
+		if (random)
+		{
+			for (int i = m_pointLights.size(); i < m_maxPoint; i++) //After updating, we need to fill the Shadowcube array with garbage because it breaks otherwise
+			{
+				std::string it = std::to_string(i);
+				std::string uniform = "in_pointShadowMap[" + it + "]";
+				m_lightingSh->setUniform(uniform, random);
+			}
 		}
+
 
 		for (std::vector<std::weak_ptr<SpotLight>>::iterator it = m_spotLights.begin(); it != m_spotLights.end();)
 		{
@@ -568,7 +610,15 @@ namespace Engine
 			{
 				if ((*it).lock())
 				{
-					(*it).lock()->update(std::distance(m_spotLights.begin(), it));
+					int num = std::distance(m_spotLights.begin(), it);
+					if (num < m_maxSpot)
+					{
+						(*it).lock()->update(num);
+					}
+					else
+					{
+						Console::output(Console::Error, "spotLight Update", "Number of spot lights cannot exceed Engine defined maximum");
+					}
 					it++;
 				}
 				else //This object got deleted
