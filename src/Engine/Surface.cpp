@@ -13,6 +13,8 @@ namespace Engine
 		createScreenQuad();
 		m_camera = _cam;
 		m_layer = _layer;
+		
+
 		_cam->addSurface(m_self.lock());
 		getCore()->addDisplay(m_self.lock());
 	}
@@ -89,6 +91,17 @@ namespace Engine
 		m_screenQuad->getTriTex()->add(glm::vec2(0.0f, 0.0f));
 	}
 
+	void ButtonUI::onInitialise(std::shared_ptr<Texture> _tex, int _layer)
+	{
+		m_tex = _tex;
+		createScreenQuad();
+		m_layer = _layer;
+		getCore()->addUISurface(m_self.lock());
+
+		m_touch = getInputDevice<Touchscreen>();
+		m_mouse = getInputDevice<Mouse>();
+	}
+
 	void ButtonUI::onTick()
 	{
 		m_mouseOver = false;
@@ -141,6 +154,51 @@ namespace Engine
 			{
 				m_col = m_normalColor;
 			}
+		}
+
+		if (!m_touch.lock())
+		{
+			m_touch = getInputDevice<Touchscreen>();
+		}
+		else
+		{			
+			glm::vec2 touchPos = m_touch.lock()->getTruePosition();
+			glm::vec2 myPos = getTruePosition();
+			if (touchPos.x >= myPos.x && touchPos.y >= myPos.y)
+			{
+				if (touchPos.x <= myPos.x + m_size.x && touchPos.y <= myPos.y + m_size.y)
+				{
+					m_mouseOver = true;
+					if (m_touch.lock()->getFingerDown())
+					{
+						m_buttonDown = true;
+						m_buttonHeld = true;
+					}
+					else if (m_touch.lock()->getFingerUp())
+					{
+						m_buttonHeld = false;
+						m_buttonUp = true;
+					}
+				}
+				else
+				{
+					m_buttonHeld = false;
+				}
+			}
+			else
+			{
+				m_buttonHeld = false;
+			}
+
+			if (m_buttonHeld)
+			{
+				m_col = m_clickedColor;
+			}
+			else
+			{
+				m_col = m_normalColor;
+			}
+			
 		}
 	}
 }

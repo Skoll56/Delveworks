@@ -71,6 +71,8 @@ namespace Engine
 	{		
 		friend class Mouse;
 		friend class Core;
+		friend class Touchscreen;
+
 		public:
 
 		/** \brief Update*/
@@ -234,6 +236,51 @@ namespace Engine
 
 		/** \brief The list of buttons currently down*/
 		std::vector<MouseButton> m_buttonIsDown;
+	};
+
+	/** \brief The Touch Screen Input Device*/
+	class Touchscreen : public InputDevice
+	{
+		friend class InputManager;
+		public:
+		
+
+		/** \brief Returns true if the finger was pressed this frame*/
+		bool getFingerDown() { return m_fingerDown; }
+
+		/** \brief Returns true if the finger was released this frame*/
+		bool getFingerUp() { return m_fingerUp; }
+
+		/** \brief Returns true if the finger is currently down*/
+		bool getFingerIsDown() { return m_fingerIsDown; }
+
+		/** \brief Returns the position of the fingerpress in the Context. Returns -1, -1 if not touching. */
+		glm::vec2 getPosition();
+
+		/** \brief Returns the true position in the Window. Returns -1, -1 if not touching. */
+		glm::vec2 getTruePosition() { return m_pos; };
+
+		/** \brief Returns the amount the finger moved this frame*/
+		glm::vec2 getDeltaPos() { return m_deltaPos; }
+
+		private:
+		/** \brief Update*/
+		void update(std::vector<SDL_Event> _eventList);		
+
+		/** \brief The difference in position since last frame of the Cursor*/
+		glm::vec2 m_deltaPos;
+
+		/** \brief The cursor position*/
+		glm::vec2 m_pos;
+
+		/** \brief Finger is pressed this frame*/
+		bool m_fingerDown;
+
+		/** \brief Finger is released this frame*/
+		bool m_fingerUp;
+
+		/** \brief Finger is currently down*/
+		bool m_fingerIsDown;
 	};
 
 	/** \brief The Controller Input Device*/

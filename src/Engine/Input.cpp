@@ -138,7 +138,6 @@ namespace Engine
 		return glm::vec2(posX, posY);
 	}
 	
-
 	bool InputManager::update()
 	{
 		SDL_Event event = { 0 };
@@ -420,6 +419,61 @@ namespace Engine
 			throw Exception("No joysticks detected on controller");
 		}
 		m_controller = SDL_GameControllerOpen(0);
+	}
+
+	glm::vec2 Touchscreen::getPosition()
+	{
+		if (m_fingerIsDown || m_fingerUp)
+		{
+			std::shared_ptr<Core> c = m_IM.lock()->m_core.lock();
+			std::shared_ptr<Context> con = c->getContext();
+			int posX = m_pos.x - con->getPosition().x;
+			int posY = m_pos.y - con->getPosition().y;			
+			return glm::vec2(posX, posY);
+		}
+		else
+		{
+			return glm::vec2(-1);
+		}
+	}
+
+	void Touchscreen::update(std::vector<SDL_Event> _eventList)
+	{				
+		m_fingerDown = false;
+		m_fingerUp = false;
+		bool noEvent = true;
+
+		for (int i = 0; i < _eventList.size(); i++)
+		{
+			if (_eventList[i].type == SDL_FINGERDOWN)
+			{
+				m_fingerDown = true;
+				m_fingerIsDown = true;
+				noEvent = false;
+				m_pos = glm::vec2(_eventList[i].tfinger.x, _eventList[i].tfinger.y) * m_IM.lock()->m_windowSize;				
+			}
+
+			else if (_eventList[i].type == SDL_FINGERMOTION)
+			{
+				noEvent = false;
+				m_fingerIsDown = true;
+				glm::vec2 tPos = glm::vec2(_eventList[i].tfinger.x, _eventList[i].tfinger.y) * m_IM.lock()->m_windowSize;
+				m_deltaPos = tPos - m_pos;				
+				m_pos = tPos;
+			}
+			else if (_eventList[i].type == SDL_FINGERUP)
+			{				
+				m_fingerIsDown = false;
+				m_fingerUp = true;
+				noEvent = false;
+			}
+		}
+
+		if (noEvent)
+		{
+			m_pos = glm::vec2(-1);
+			m_deltaPos = glm::vec2(0);
+		}
 	}
 
 }

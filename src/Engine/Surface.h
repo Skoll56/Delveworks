@@ -106,7 +106,7 @@ namespace Engine
 	class ImageUI : public Surface
 	{
 		friend class Core;
-	public:
+		public:
 
 		/** \brief Sets everything up*/
 		void onInitialise(std::shared_ptr<Texture> _tex, int _layer);
@@ -116,7 +116,7 @@ namespace Engine
 		/** \brief A "This" pointer*/
 		std::weak_ptr<ImageUI> m_self;
 
-	private:
+		protected:
 		/** \brief The Texture being displayed on the Surface*/
 		std::shared_ptr<Texture> m_tex;
 	};
@@ -128,6 +128,9 @@ namespace Engine
 	public:
 		/** \brief Update*/
 		void onTick();
+
+		/** \brief Initialise */
+		void onInitialise(std::shared_ptr<Texture> _tex, int _layer);
 
 		/** \brief Returns True for every frame the button is pressed*/
 		bool isButtonHeld() { return m_buttonHeld; }
@@ -153,6 +156,7 @@ namespace Engine
 	private:
 		/** \brief A reference to the Mouse*/
 		std::weak_ptr<Mouse> m_mouse;
+		std::weak_ptr<Touchscreen> m_touch;
 		bool m_buttonDown = false;
 		bool m_buttonUp = false;
 		bool m_buttonHeld = false;

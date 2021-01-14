@@ -36,6 +36,7 @@ namespace Engine
 		friend class Surface;
 		friend class DisplayUI;
 		friend class ImageUI;
+		friend class ButtonUI;
 		friend class InputManager;
 		friend class DirLight;
 		friend class SpotLight;
