@@ -35,7 +35,7 @@ namespace Engine
 				}
 				else
 				{
-					std::shared_ptr<PhysicsObject> p = std::dynamic_pointer_cast<PhysicsObject>((*it));
+					std::shared_ptr<PhysicsEventUser> p = std::dynamic_pointer_cast<PhysicsEventUser>((*it));
 					if (p)
 					{
 						p->handleCollisions();

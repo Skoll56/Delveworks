@@ -41,6 +41,7 @@ namespace Engine
 		m_tex = core->load<Texture>(_texName);
 		m_vAO = core->load<VertexArray>(_obj);
 		m_tex->load(_texName);
+		transform()->m_size = _size;
 		m_shininess = 1;
 	}
 }

@@ -20,6 +20,8 @@ namespace Engine
 	/** This can be instantiated should the user want to manually do collision checks on an object without making it fully respond to Physics */
 	class PhysicsEventUser : public Component
 	{
+		friend class Entity;
+
 		public:
 		/** \brief Update*/
 		void onTick();
@@ -106,6 +108,15 @@ namespace Engine
 		/** \brief  A "permanent" contact-point that stores where an object should remain once stationary (ie: stacked on top of another object)*/
 		glm::vec3 m_permCP; 
 
+		/** \brief This is called when the object should resolve the collisions it has stored*/
+		void handleCollisions();
+
+		/** \brief Checks to see if a collision is inside the list of collisions this object holds*/
+		bool isInColList(std::vector<std::shared_ptr<Collision>> _list, std::shared_ptr<Collision> _col);
+
+		/** \brief The last collision the object encountered*/
+		std::vector<std::shared_ptr<Collision>> m_lastCol;
+
 		/** \brief A list of all collisions that this object has accumulated*/
 		std::vector<std::shared_ptr<Collision>> m_collisions;
 	};
@@ -114,7 +125,7 @@ namespace Engine
 	/** It currently does not support rotated colliders or torque, but is the standard Physics object which most physical objects should use */
 	class PhysicsObject : public PhysicsEventUser
 	{
-		friend class Entity;
+		
 
 		public:
 		/** \brief Update, checks for collisions*/
@@ -164,14 +175,7 @@ namespace Engine
 		std::weak_ptr<PhysicsObject> m_self;
 
 		protected:
-		/** \brief The last collision the object encountered*/
-		std::vector<std::shared_ptr<Collision>> m_lastCol;	
-
-		/** \brief Checks to see if a collision is inside the list of collisions this object holds*/
-		bool isInColList(std::vector<std::shared_ptr<Collision>> _list, std::shared_ptr<Collision> _col);
-
-		/** \brief This is called when the object should resolve the collisions it has stored*/
-		void handleCollisions();		
+		
 		
 		/** \brief The mass of the object*/
 		float m_mass = 1.0f;	

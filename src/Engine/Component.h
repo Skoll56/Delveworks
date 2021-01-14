@@ -79,6 +79,8 @@ namespace Engine
 	class Transform : public Component
 	{
 		friend class Entity;
+		friend class MeshRenderer;
+
 		public:
 		void setPosition(float _posX, float _posY, float _posZ) { m_position.x = _posX; m_position.y = _posY; m_position.z = _posZ; }
 		void setPosition(glm::vec3 _value) { m_position = _value; }

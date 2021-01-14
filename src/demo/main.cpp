@@ -19,21 +19,29 @@ class Ball : public Component
 		if (!m_sound.lock()) throw Exception();
 		m_sound.lock()->Play(0.8f);		
 
-		getEntity()->setActive(false);
 	}
 
 
+};
+
+class collisionChecker : public Component
+{
+	void onCollision(std::shared_ptr<Collision> _other)
+	{
+		
+	}
 };
 
 class Demo : public Component
 {
 	public:
 	std::weak_ptr<Transform> camera;
+	std::weak_ptr<PhysicsEventUser> phys;
 	std::weak_ptr<Keyboard> keyboard;	
 	std::weak_ptr<Mouse> mouse;	
 	std::weak_ptr<Controller> con;	
-	float moveSpeed = 10.0f;
-	float rotSpeed = 10.0f;
+	float moveSpeed = 20.0f;
+	float rotSpeed = 20.0f;
 	bool controller = false;
 	int i = 0;
 	
@@ -42,6 +50,11 @@ class Demo : public Component
 	{
 		camera = getCore()->getDefaultCamera()->transform();
 		camera.lock()->getEntity()->addComponent<AudioReceiver>();
+		phys = camera.lock()->getEntity()->addComponent<PhysicsEventUser>();
+		camera.lock()->getEntity()->addComponent<MeshRenderer>("statue_diffuse.png", "1b1cube.obj", glm::vec3(1.0f, 1.0f, 1.0f));
+		std::shared_ptr<MeshCollider> MC = camera.lock()->getEntity()->addComponent<MeshCollider>();		
+		camera.lock()->m_position += glm::vec3(0.0f, 5.0f, 0.0f);
+		camera.lock()->getEntity()->addComponent<collisionChecker>();
 
 		std::shared_ptr<InputManager> IM = getCore()->getInput();
 		mouse = IM->addDevice<Mouse>();
@@ -58,23 +71,24 @@ class Demo : public Component
 		i++;
 		if (!controller)
 		{
+			std::shared_ptr<PhysicsObject> obj = camera.lock()->getEntity()->getComponent<PhysicsObject>();
 			if (keyboard.lock()->GetKeyIsDown(SDLK_w))
 			{
-				camera.lock()->m_position += camera.lock()->getFwd() * moveSpeed * dTime;
+				camera.lock()->m_position += (camera.lock()->getFwd() * moveSpeed * dTime);
 			}
-			if (keyboard.lock()->GetKeyIsDown(SDLK_s))
+			else if (keyboard.lock()->GetKeyIsDown(SDLK_s))
 			{
-				camera.lock()->m_position -= camera.lock()->getFwd() * moveSpeed * dTime;
+				camera.lock()->m_position += (camera.lock()->getFwd() * -moveSpeed * dTime);
 			}
-			if (keyboard.lock()->GetKeyIsDown(SDLK_d))
+			else if (keyboard.lock()->GetKeyIsDown(SDLK_d))
 			{
-				camera.lock()->m_position -= camera.lock()->getRight() * moveSpeed * dTime;
+				camera.lock()->m_position += (camera.lock()->getRight() * -moveSpeed * dTime);
 			}
-			if (keyboard.lock()->GetKeyIsDown(SDLK_a))
+			else if (keyboard.lock()->GetKeyIsDown(SDLK_a))
 			{
-				camera.lock()->m_position += camera.lock()->getRight() * moveSpeed * dTime;
+				camera.lock()->m_position += (camera.lock()->getRight() * moveSpeed * dTime);
 			}
-
+			
 			camera.lock()->rotate(glm::vec3(0.0f, 1.0f, 0.0f), mouse.lock()->getDeltaPos().x * rotSpeed * dTime);
 			camera.lock()->rotate(glm::vec3(1.0f, 0.0f, 0.0f), -mouse.lock()->getDeltaPos().y * rotSpeed * dTime);
 		}
@@ -120,6 +134,8 @@ class Demo : public Component
 		}
 	}
 };
+
+
 
 class UI : public Component
 {
@@ -187,11 +203,12 @@ class CustomInput : public InputDevice
 int main()
 //#endif
 {
-	std::shared_ptr<Core> core = Core::initialise(Core::Debug, glm::vec2(512, 512));
+	std::shared_ptr<Core> core = Core::initialise(Core::Release, glm::vec2(1024, 1024));
 
 	//Create the statue entity
 	std::shared_ptr<Entity> test = core->createEntity();
 	std::shared_ptr<MeshRenderer> MR = test->addComponent<MeshRenderer>("statue_diffuse.png", "statue.obj", glm::vec3(5.0f, 10.0f, 5.0f));
+	test->addComponent<MeshCollider>();
 	//MR->setEmissive(glm::vec3(0.5f, 0.5f, 0.5f));
 	MR->setCastShadows(true);
 	//test->addComponent<MeshCollider>();
@@ -238,7 +255,7 @@ int main()
 		//MR0->Initialise();
 		floor->transform()->m_position = glm::vec3(0.0f + l, 0.0f, 0.0f);
 		floor->transform()->setScale(glm::vec3(30.0f, 0.1f, 30.0f));
-		std::shared_ptr<PlaneCollider> b = floor->addComponent<PlaneCollider>();
+		std::shared_ptr<BoxCollider> b = floor->addComponent<BoxCollider>();
 		
 
 

@@ -539,8 +539,6 @@ namespace Engine
 		glm::vec3 length = ((_my->transform()->getScale() / 2.0f) * _my->transform()->getSize()); // We factor size into the calculations because meshes use the same collision function
 		glm::vec3 oLength = ((_other->transform()->getScale() / 2.0f) * (_other->transform()->getSize()));
 
-
-
 		if (pos.x + length.x >= otherP.x - oLength.x && pos.x - length.x <= otherP.x + oLength.x)
 		{
 			if (pos.y + length.y >= otherP.y - oLength.y && pos.y - length.y <= otherP.y + oLength.y) //Spatial partitioning using AABB
@@ -548,7 +546,7 @@ namespace Engine
 				if (pos.z + length.z >= otherP.z - oLength.z && pos.z - length.z <= otherP.z + oLength.z)
 				{
 					std::shared_ptr<PhysicsEventUser> rb = _my->getEntity()->getComponent<PhysicsEventUser>();
-					std::shared_ptr<MeshCollider> m = std::static_pointer_cast<MeshCollider>(_other);
+					std::shared_ptr<MeshCollider> m = _other->getEntity()->getComponent<MeshCollider>();
 					if (m)
 					{
 						if (m->isEasy()) //If a mesh is 'easy' 
@@ -1052,7 +1050,7 @@ namespace Engine
 		m_velocity = _vel;
 	}
 
-	bool PhysicsObject::isInColList(std::vector<std::shared_ptr<Collision>> _list, std::shared_ptr<Collision> _col)
+	bool PhysicsEventUser::isInColList(std::vector<std::shared_ptr<Collision>> _list, std::shared_ptr<Collision> _col)
 	{
 		for (int i = 0; i < _list.size(); i++)
 		{
@@ -1065,13 +1063,14 @@ namespace Engine
 		return false;
 	}
 
-	void PhysicsObject::handleCollisions() // Handles multiple collisions at once
+	void PhysicsEventUser::handleCollisions() // Handles multiple collisions at once
 	{
 		std::vector<std::shared_ptr<Collision>> collision = m_collisions;
-
+		
 		//Iterate through every collision
 		for (int i = 0; i < collision.size(); i++)
 		{
+			Console::output(Console::Message, "Me", "Yep", true);
 			//Check to see if this collision happened last frame too. If not, call CollisionEnter.
 			if (!isInColList(m_lastCol, collision[i]))
 			{
@@ -1081,7 +1080,7 @@ namespace Engine
 			//Call onCollision
 			getEntity()->onCollision(collision[i]);
 
-			if (collision[i]->m_other->getComponent<Collider>()->m_trigger)
+			if (collision[i]->m_other->getComponent<Collider>()->m_trigger || collision[i]->m_my->getComponent<Collider>()->m_trigger)
 			{
 				collision[i]->ignoreCollision();
 			}
@@ -1138,9 +1137,13 @@ namespace Engine
 										 //Torque = Sum of the angular foces acting on an object
 						aRB->addTorque(aForce);
 					}
-
-					glm::vec3 friction = getVelocity() / (fricCoEf * 100.0f);
-					setVelocity((getVelocity() + collision[i]->m_deltaVel) - friction);
+					std::shared_ptr<PhysicsObject> sRB = getEntity()->getComponent<PhysicsObject>();
+					if (sRB)
+					{
+						glm::vec3 friction = sRB->getVelocity() / (fricCoEf * 100.0f);
+						sRB->setVelocity((sRB->getVelocity() + collision[i]->m_deltaVel) - friction);
+					}
+					
 				}
 			}
 		}

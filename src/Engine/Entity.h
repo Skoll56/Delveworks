@@ -20,7 +20,7 @@ namespace Engine
 	class Entity
 	{
 		friend class Core;
-		friend class PhysicsObject;
+		friend class PhysicsEventUser;
 
 
 		public:
