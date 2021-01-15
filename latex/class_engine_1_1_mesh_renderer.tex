@@ -9,12 +9,6 @@ A Mesh Renderer displays an object\textquotesingle{}s visuals to the screen.
 
 {\ttfamily \#include $<$Mesh\+Renderer.\+h$>$}
 
-Inheritance diagram for Engine\+::Mesh\+Renderer\+:\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=2.000000cm]{class_engine_1_1_mesh_renderer}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,7 +45,11 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_shader}{Shader}} $>$
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_vertex_array}{Vertex\+Array}} $>$ \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a93c64035149ba1f0d1f56b50582f5d37}{get\+Mesh}} ()
 \begin{DoxyCompactList}\small\item\em Returns the Vertex array (obj) \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a199745f53d8894f5dacbc7e21e5d0944}{get\+Color}} ()
-\begin{DoxyCompactList}\small\item\em Returns the color adjustment to the mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the color adjustment to the mesh. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_mesh_renderer_af0e5203d5b037a5a0fb78a9be519297b}{get\+Emissive}} ()
+\begin{DoxyCompactList}\small\item\em Returns the mesh\textquotesingle{}s emissive light property. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_1_1_mesh_renderer_ab082bda902a1b913cb3704c173763098}{set\+Emissive}} (glm\+::vec3 \+\_\+emissive)
+\begin{DoxyCompactList}\small\item\em Sets the mesh\textquotesingle{}s emissive light property. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -80,9 +78,10 @@ float \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a2e854d768b7211d1a3a9cafec
 \begin{DoxyCompactList}\small\item\em The transparency value of the object. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a3d672cc4622cd0a6291ddb6e0a515a80}{m\+\_\+cast\+Shadows}} = true
 \begin{DoxyCompactList}\small\item\em Mark if the object casts shadows or not. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a6457f7ef50038714e9674633fcd69d10}{m\+\_\+light\+Emission}} = glm\+::vec3(0.\+0f)
+\begin{DoxyCompactList}\small\item\em Mark if the object emits light or not. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_engine_1_1_mesh_renderer_a8c4fc2e7bfc287a3135268eefdc3983c}{m\+\_\+receive\+Shadows}} = true
 \begin{DoxyCompactList}\small\item\em Mark is shadows can be cast unto this object or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
@@ -130,6 +129,16 @@ Get whether or not the object casts shadows.
 
 
 Returns the color adjustment to the mesh. 
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_af0e5203d5b037a5a0fb78a9be519297b}\label{class_engine_1_1_mesh_renderer_af0e5203d5b037a5a0fb78a9be519297b}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!getEmissive@{getEmissive}}
+\index{getEmissive@{getEmissive}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{getEmissive()}{getEmissive()}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Mesh\+Renderer\+::get\+Emissive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the mesh\textquotesingle{}s emissive light property. 
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a93c64035149ba1f0d1f56b50582f5d37}\label{class_engine_1_1_mesh_renderer_a93c64035149ba1f0d1f56b50582f5d37}} 
 \index{Engine::MeshRenderer@{Engine::MeshRenderer}!getMesh@{getMesh}}
@@ -241,6 +250,16 @@ Set the Alpha of the object.
 
 Set whether or not the object casts shadows. 
 
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_ab082bda902a1b913cb3704c173763098}\label{class_engine_1_1_mesh_renderer_ab082bda902a1b913cb3704c173763098}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!setEmissive@{setEmissive}}
+\index{setEmissive@{setEmissive}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{setEmissive()}{setEmissive()}}
+{\footnotesize\ttfamily void Engine\+::\+Mesh\+Renderer\+::set\+Emissive (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{\+\_\+emissive }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the mesh\textquotesingle{}s emissive light property. 
+
 \mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a09357c2f8d44b605ac71bf2b397035ed}\label{class_engine_1_1_mesh_renderer_a09357c2f8d44b605ac71bf2b397035ed}} 
 \index{Engine::MeshRenderer@{Engine::MeshRenderer}!setReceiveShadows@{setReceiveShadows}}
 \index{setReceiveShadows@{setReceiveShadows}!Engine::MeshRenderer@{Engine::MeshRenderer}}
@@ -293,6 +312,16 @@ Mark if the object casts shadows or not.
 
 
 A color adjustment to the Mesh. 
+
+\mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a6457f7ef50038714e9674633fcd69d10}\label{class_engine_1_1_mesh_renderer_a6457f7ef50038714e9674633fcd69d10}} 
+\index{Engine::MeshRenderer@{Engine::MeshRenderer}!m\_lightEmission@{m\_lightEmission}}
+\index{m\_lightEmission@{m\_lightEmission}!Engine::MeshRenderer@{Engine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_lightEmission}{m\_lightEmission}}
+{\footnotesize\ttfamily glm\+::vec3 Engine\+::\+Mesh\+Renderer\+::m\+\_\+light\+Emission = glm\+::vec3(0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mark if the object emits light or not. 
 
 \mbox{\Hypertarget{class_engine_1_1_mesh_renderer_a8c4fc2e7bfc287a3135268eefdc3983c}\label{class_engine_1_1_mesh_renderer_a8c4fc2e7bfc287a3135268eefdc3983c}} 
 \index{Engine::MeshRenderer@{Engine::MeshRenderer}!m\_receiveShadows@{m\_receiveShadows}}
@@ -388,5 +417,6 @@ The vertex buffer for texture co-\/ordinates.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
+src/\+Engine/\mbox{\hyperlink{file_8txt}{file.\+txt}}\item 
 src/\+Engine/\mbox{\hyperlink{_mesh_renderer_8h}{Mesh\+Renderer.\+h}}\item 
 src/\+Engine/\mbox{\hyperlink{_mesh_renderer_8cpp}{Mesh\+Renderer.\+cpp}}\end{DoxyCompactItemize}

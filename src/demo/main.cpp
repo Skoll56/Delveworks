@@ -45,6 +45,7 @@ class Demo : public Component
 	std::weak_ptr<Mouse> mouse;	
 	std::vector<std::weak_ptr<Entity>> balls;
 	std::weak_ptr<ButtonUI> button;
+	std::weak_ptr<Controller> controller;
 	bool lockedCursor = true;
 	
 	float moveSpeed = 20.0f;
@@ -161,7 +162,8 @@ class Demo : public Component
 
 		std::shared_ptr<InputManager> IM = getCore()->getInput();
 		mouse = IM->addDevice<Mouse>();
-		keyboard = IM->addDevice<Keyboard>();		
+		keyboard = IM->addDevice<Keyboard>();	
+		controller = IM->addDevice<Controller>();
 
 		mouse.lock()->hideCursor(true);
 		mouse.lock()->lockCursor(true);
@@ -223,6 +225,11 @@ class Demo : public Component
 		else if (keyboard.lock()->GetKeyDown(SDLK_t))
 		{
 			throw Exception("Faulty Entity! Run! There is nothing that can save us!");
+		}
+
+		if (controller.lock()->getButtonDown(Controller::LeftBumper))
+		{
+			Console::output(Console::Message, "Demo", "Good job on using a controller", true);
 		}
 
 

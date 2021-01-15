@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['valid_5fbits_1594',['valid_bits',['../structstb__vorbis.html#a4aa9d73a234428a6194cd37b8c0be4e0',1,'stb_vorbis']]],
-  ['value_5fbits_1595',['value_bits',['../struct_codebook.html#a229d0699f42bd26a99b37845aaab75eb',1,'Codebook']]],
-  ['values_1596',['values',['../struct_floor1.html#a9a426cc6574076ad9e5d969a56af41f4',1,'Floor1']]],
-  ['vendor_1597',['vendor',['../structstb__vorbis__comment.html#a2d39c24fbb2ff48034f2c7b0be2b3a0e',1,'stb_vorbis_comment::vendor()'],['../structstb__vorbis.html#a34ef41a9d003edf14762835badef21d5',1,'stb_vorbis::vendor()']]]
+  ['temp_5fmemory_5frequired_1648',['temp_memory_required',['../structstb__vorbis__info.html#a2fe235656197249fc3a6b5e27ff2da82',1,'stb_vorbis_info::temp_memory_required()'],['../structstb__vorbis.html#a8ed60a85b7e09e19b5eee4068cd983f1',1,'stb_vorbis::temp_memory_required()']]],
+  ['temp_5foffset_1649',['temp_offset',['../structstb__vorbis.html#af318950da58641c64c5f8fa85d8df1b9',1,'stb_vorbis']]],
+  ['total_5fsamples_1650',['total_samples',['../structstb__vorbis.html#ac6b09b0d2d48f1d49cbe0b482daeaead',1,'stb_vorbis']]],
+  ['transformtype_1651',['transformtype',['../struct_mode.html#a2f78100869ebed55b17f89e6a0202aac',1,'Mode']]]
 ];

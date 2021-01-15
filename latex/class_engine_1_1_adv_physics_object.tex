@@ -9,12 +9,6 @@ An Advanced Physics object which can rotate, have torque and an angular velocity
 
 {\ttfamily \#include $<$Physics\+New.\+h$>$}
 
-Inheritance diagram for Engine\+::Adv\+Physics\+Object\+:\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=4.000000cm]{class_engine_1_1_adv_physics_object}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -26,7 +20,7 @@ void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a825d8536a9135e3d11ca3
 \item 
 glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ae32e6829036cd669f41745136fc5c1be}{get\+Rot\+Mat}} ()
 \begin{DoxyCompactList}\small\item\em Returns the rotation matrix of the object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ad6ef2daa6e84da213e320bbbc901864e}{update\+Rotations}} (float \+\_\+d\+Ts, bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a2e90e0014b21222a1c9fcfef44b1e5e7}{collided}})
+void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ad6ef2daa6e84da213e320bbbc901864e}{update\+Rotations}} (float \+\_\+d\+Ts, bool collided)
 \begin{DoxyCompactList}\small\item\em Updates the rotation of the object using its angular velocities. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ae35f99bf986d7112f4ee11c093c4cf4d}{set\+Avel}} (glm\+::vec3 \+\_\+a\+Vel)
 \begin{DoxyCompactList}\small\item\em Sets the angular velocity of the object. \end{DoxyCompactList}\item 
@@ -72,7 +66,6 @@ glm\+::mat3 \mbox{\hyperlink{class_engine_1_1_adv_physics_object_a8ea2eda823e872
 \begin{DoxyCompactList}\small\item\em The matrix that represents the rotation of the object. \end{DoxyCompactList}\item 
 glm\+::quat \mbox{\hyperlink{class_engine_1_1_adv_physics_object_aaaea939e86c45d0f27a7809209c1cd5c}{m\+\_\+rot\+Quat}}
 \begin{DoxyCompactList}\small\item\em The quaternion which represents the rotation of the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
@@ -174,15 +167,11 @@ Initialise with a mass and bounciness value.
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!onTick@{onTick}}
 \index{onTick@{onTick}!Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}}
 \doxysubsubsection{\texorpdfstring{onTick()}{onTick()}}
-{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Engine\+::\+Adv\+Physics\+Object\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Update. 
-
-
-
-Reimplemented from \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c01676f6d79bec3423ff8a0}{Engine\+::\+Physics\+Object}}.
 
 \mbox{\Hypertarget{class_engine_1_1_adv_physics_object_a61d37668bd9c178ebc178fee3361c414}\label{class_engine_1_1_adv_physics_object_a61d37668bd9c178ebc178fee3361c414}} 
 \index{Engine::AdvPhysicsObject@{Engine::AdvPhysicsObject}!setAmom@{setAmom}}
@@ -331,5 +320,6 @@ The torque force acting on the object this frame.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
+src/\+Engine/\mbox{\hyperlink{file_8txt}{file.\+txt}}\item 
 src/\+Engine/\mbox{\hyperlink{_physics_new_8h}{Physics\+New.\+h}}\item 
 src/\+Engine/\mbox{\hyperlink{_physics_new_8cpp}{Physics\+New.\+cpp}}\end{DoxyCompactItemize}

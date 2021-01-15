@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['invalid_5fbits_1722',['INVALID_BITS',['../stb__vorbis_8h.html#a4aaa7b300d74e1fe252792111eb7539a',1,'stb_vorbis.h']]],
-  ['is_5fpush_5fmode_1723',['IS_PUSH_MODE',['../stb__vorbis_8h.html#a2a9cd26d6325f220d322d7e5347c802b',1,'stb_vorbis.h']]]
+  ['invalid_5fbits_1783',['INVALID_BITS',['../stb__vorbis_8h.html#a4aaa7b300d74e1fe252792111eb7539a',1,'stb_vorbis.h']]],
+  ['is_5fpush_5fmode_1784',['IS_PUSH_MODE',['../stb__vorbis_8h.html#a2a9cd26d6325f220d322d7e5347c802b',1,'stb_vorbis.h']]]
 ];

@@ -9,12 +9,6 @@ A base class for all Physics Objects.
 
 {\ttfamily \#include $<$Physics\+New.\+h$>$}
 
-Inheritance diagram for Engine\+::Physics\+Event\+User\+:\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=4.000000cm]{class_engine_1_1_physics_event_user}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -69,6 +63,13 @@ void \mbox{\hyperlink{class_engine_1_1_physics_event_user_a96a1a23471aff12c418a3
 \item 
 std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_physics_event_user}{Physics\+Event\+User}} $>$ \mbox{\hyperlink{class_engine_1_1_physics_event_user_a7587474f41d028b4e5044c25daba54ed}{m\+\_\+self}}
 \begin{DoxyCompactList}\small\item\em A \char`\"{}this\char`\"{} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_engine_1_1_physics_event_user_a397606089a3ee41f2f3e49bbc05f4abc}{handle\+Collisions}} ()
+\begin{DoxyCompactList}\small\item\em This is called when the object should resolve the collisions it has stored. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_a761bcce9a9de0ba97f679ec75ba0f5b5}{is\+In\+Col\+List}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$$>$ \+\_\+list, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$ \+\_\+col)
+\begin{DoxyCompactList}\small\item\em Checks to see if a collision is inside the list of collisions this object holds. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -78,9 +79,15 @@ bool \mbox{\hyperlink{class_engine_1_1_physics_event_user_aee00308a4099e90907691
 \begin{DoxyCompactList}\small\item\em Floored is an optimisation. If an object is \char`\"{}floored\char`\"{} it is sitting on a flat surface and no further gravity or collision checks need to happen. \end{DoxyCompactList}\item 
 glm\+::vec3 \mbox{\hyperlink{class_engine_1_1_physics_event_user_a8b69f5b00960b32542f602b8c52c5391}{m\+\_\+perm\+CP}}
 \begin{DoxyCompactList}\small\item\em A \char`\"{}permanent\char`\"{} contact-\/point that stores where an object should remain once stationary (ie\+: stacked on top of another object) \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$ $>$ \mbox{\hyperlink{class_engine_1_1_physics_event_user_a3a27c20490540b679ae60df1e0500d90}{m\+\_\+last\+Col}}
+\begin{DoxyCompactList}\small\item\em The last collision the object encountered. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$ $>$ \mbox{\hyperlink{class_engine_1_1_physics_event_user_a2da2be6c9f68c9f555e7c3db82f5f082}{m\+\_\+collisions}}
 \begin{DoxyCompactList}\small\item\em A list of all collisions that this object has accumulated. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_engine_1_1_physics_event_user_a614439ccac0344926adc4c0165d64060}{Entity}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -169,6 +176,16 @@ Determines the distance from a point to a plane (along the normal)
 
 Returns the permanent contact point. 
 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a397606089a3ee41f2f3e49bbc05f4abc}\label{class_engine_1_1_physics_event_user_a397606089a3ee41f2f3e49bbc05f4abc}} 
+\index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!handleCollisions@{handleCollisions}}
+\index{handleCollisions@{handleCollisions}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
+\doxysubsubsection{\texorpdfstring{handleCollisions()}{handleCollisions()}}
+{\footnotesize\ttfamily void Engine\+::\+Physics\+Event\+User\+::handle\+Collisions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This is called when the object should resolve the collisions it has stored. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a92216f84a0f8981570b9d6f82a4d8437}\label{class_engine_1_1_physics_event_user_a92216f84a0f8981570b9d6f82a4d8437}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!isFloored@{isFloored}}
 \index{isFloored@{isFloored}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
@@ -178,6 +195,16 @@ Returns the permanent contact point.
 
 
 Returns if this object is floored. 
+
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a761bcce9a9de0ba97f679ec75ba0f5b5}\label{class_engine_1_1_physics_event_user_a761bcce9a9de0ba97f679ec75ba0f5b5}} 
+\index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!isInColList@{isInColList}}
+\index{isInColList@{isInColList}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
+\doxysubsubsection{\texorpdfstring{isInColList()}{isInColList()}}
+{\footnotesize\ttfamily bool Engine\+::\+Physics\+Event\+User\+::is\+In\+Col\+List (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$$>$}]{\+\_\+list,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_engine_1_1_collision}{Collision}} $>$}]{\+\_\+col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Checks to see if a collision is inside the list of collisions this object holds. 
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a0290f99fdd2f2524a8e981e234d6cd75}\label{class_engine_1_1_physics_event_user_a0290f99fdd2f2524a8e981e234d6cd75}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!meshToMesh@{meshToMesh}}
@@ -203,19 +230,11 @@ Checks tri versus tri collisions.
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!onTick@{onTick}}
 \index{onTick@{onTick}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
 \doxysubsubsection{\texorpdfstring{onTick()}{onTick()}}
-{\footnotesize\ttfamily void Engine\+::\+Physics\+Event\+User\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Engine\+::\+Physics\+Event\+User\+::on\+Tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Update. 
-
-
-
-Reimplemented from \mbox{\hyperlink{class_engine_1_1_component_a8763aeb9a9bcd10bbef2b74a8a22f24c}{Engine\+::\+Component}}.
-
-
-
-Reimplemented in \mbox{\hyperlink{class_engine_1_1_adv_physics_object_ace6d62205063c01f652b02c0b44afe1a}{Engine\+::\+Adv\+Physics\+Object}}, and \mbox{\hyperlink{class_engine_1_1_physics_object_a61e0c0862c01676f6d79bec3423ff8a0}{Engine\+::\+Physics\+Object}}.
 
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a3ca9262984fd8d48828f7fcf91f8239c}\label{class_engine_1_1_physics_event_user_a3ca9262984fd8d48828f7fcf91f8239c}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!planeBoxOverlap@{planeBoxOverlap}}
@@ -329,6 +348,15 @@ Checks tri versus box collisions.
 
 
 
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a614439ccac0344926adc4c0165d64060}\label{class_engine_1_1_physics_event_user_a614439ccac0344926adc4c0165d64060}} 
+\index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!Entity@{Entity}}
+\index{Entity@{Entity}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
+\doxysubsubsection{\texorpdfstring{Entity}{Entity}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_engine_1_1_entity}{Entity}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a95b2d2e649e65d203f41efc78bf5a5a4}\label{class_engine_1_1_physics_event_user_a95b2d2e649e65d203f41efc78bf5a5a4}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!m\_collided@{m\_collided}}
@@ -360,6 +388,16 @@ A list of all collisions that this object has accumulated.
 
 Floored is an optimisation. If an object is \char`\"{}floored\char`\"{} it is sitting on a flat surface and no further gravity or collision checks need to happen. 
 
+\mbox{\Hypertarget{class_engine_1_1_physics_event_user_a3a27c20490540b679ae60df1e0500d90}\label{class_engine_1_1_physics_event_user_a3a27c20490540b679ae60df1e0500d90}} 
+\index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!m\_lastCol@{m\_lastCol}}
+\index{m\_lastCol@{m\_lastCol}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
+\doxysubsubsection{\texorpdfstring{m\_lastCol}{m\_lastCol}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_engine_1_1_collision}{Collision}}$>$ $>$ Engine\+::\+Physics\+Event\+User\+::m\+\_\+last\+Col\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The last collision the object encountered. 
+
 \mbox{\Hypertarget{class_engine_1_1_physics_event_user_a8b69f5b00960b32542f602b8c52c5391}\label{class_engine_1_1_physics_event_user_a8b69f5b00960b32542f602b8c52c5391}} 
 \index{Engine::PhysicsEventUser@{Engine::PhysicsEventUser}!m\_permCP@{m\_permCP}}
 \index{m\_permCP@{m\_permCP}!Engine::PhysicsEventUser@{Engine::PhysicsEventUser}}
@@ -384,5 +422,6 @@ A \char`\"{}this\char`\"{} pointer.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
+src/\+Engine/\mbox{\hyperlink{file_8txt}{file.\+txt}}\item 
 src/\+Engine/\mbox{\hyperlink{_physics_new_8h}{Physics\+New.\+h}}\item 
 src/\+Engine/\mbox{\hyperlink{_physics_new_8cpp}{Physics\+New.\+cpp}}\end{DoxyCompactItemize}

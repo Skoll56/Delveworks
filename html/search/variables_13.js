@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['x_1600',['x',['../structstbv____floor__ordering.html#ae924c7a53744c143820b8ca1f82eb591',1,'stbv__floor_ordering']]],
-  ['xlist_1601',['Xlist',['../struct_floor1.html#a2c09f98b7613ec990add2467ea39f240',1,'Floor1']]]
+  ['window_1656',['window',['../structstb__vorbis.html#a4437be2f348106017c23ffc1ebc57980',1,'stb_vorbis']]],
+  ['windowtype_1657',['windowtype',['../struct_mode.html#a000084125ae3760f66182ab4adae705e',1,'Mode']]]
 ];

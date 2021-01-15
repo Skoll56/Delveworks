@@ -10,12 +10,6 @@ A sound. This can be Ogg or W\+AV format. ~\newline
 
 {\ttfamily \#include $<$Resource.\+h$>$}
 
-Inheritance diagram for Engine\+::Sound\+:\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=2.000000cm]{class_engine_1_1_sound}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -24,12 +18,24 @@ void \mbox{\hyperlink{class_engine_1_1_sound_a1a463e117269a99ab12d1edefac36679}{
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_engine_1_1_sound_a87a0412c08250823a666364db113d75e}{load\+Ogg}} (const std\+::string \&file\+Name, std\+::vector$<$ char $>$ \&buffer, A\+Lenum \&format, A\+Lsizei \&freq)
+void \mbox{\hyperlink{class_engine_1_1_sound_a87a0412c08250823a666364db113d75e}{load\+Ogg}} (const std\+::string \&file\+Name, std\+::vector$<$ char $>$ \&\mbox{\hyperlink{class_engine_1_1_sound_a1dfbb6c8afc2fc1af5b96426169dbb50}{buffer}}, A\+Lenum \&\mbox{\hyperlink{class_engine_1_1_sound_ae6001127abf8caf8600f3e72c0e049bf}{format}}, A\+Lsizei \&\mbox{\hyperlink{class_engine_1_1_sound_a907d03a903304efeb5e1845ecbd92a74}{freq}})
 \begin{DoxyCompactList}\small\item\em A function for loading O\+GG format. \end{DoxyCompactList}\item 
-char $\ast$ \mbox{\hyperlink{class_engine_1_1_sound_a93bade1cbd893fc87a3377d56b304ffa}{load\+Wav}} (const std\+::string \&file\+Name, int \&size, A\+Lenum \&format, A\+Lsizei \&freq)
+char $\ast$ \mbox{\hyperlink{class_engine_1_1_sound_a93bade1cbd893fc87a3377d56b304ffa}{load\+Wav}} (const std\+::string \&file\+Name, int \&\mbox{\hyperlink{class_engine_1_1_sound_a36e2a8a05ab8a874e9d038edef88aab9}{size}}, A\+Lenum \&\mbox{\hyperlink{class_engine_1_1_sound_ae6001127abf8caf8600f3e72c0e049bf}{format}}, A\+Lsizei \&\mbox{\hyperlink{class_engine_1_1_sound_a907d03a903304efeb5e1845ecbd92a74}{freq}})
 \begin{DoxyCompactList}\small\item\em A function for loading W\+AV format. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} \mbox{\hyperlink{class_engine_1_1_sound_a220de54a69b0226d4b93308c18090257}{\+\_\+\+\_\+pad0\+\_\+\+\_\+}}\+: A\+Luint -\/\mbox{\hyperlink{class_engine_1_1_sound_a93bade1cbd893fc87a3377d56b304ffa}{load\+Wav}}(const std\+::string\& file\+Name
+\item 
+\mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} int \& \mbox{\hyperlink{class_engine_1_1_sound_a36e2a8a05ab8a874e9d038edef88aab9}{size}}
+\item 
+\mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} int A\+Lenum \& \mbox{\hyperlink{class_engine_1_1_sound_ae6001127abf8caf8600f3e72c0e049bf}{format}}
+\item 
+\mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} int A\+Lenum A\+Lsizei \& \mbox{\hyperlink{class_engine_1_1_sound_a907d03a903304efeb5e1845ecbd92a74}{freq}}\+: char$\ast$ +\mbox{\hyperlink{class_engine_1_1_sound_a1a463e117269a99ab12d1edefac36679}{load}}(std\+::string path) \+: void -\/\mbox{\hyperlink{class_engine_1_1_sound_a87a0412c08250823a666364db113d75e}{load\+Ogg}}(const std\+::string\& file\+Name
+\item 
+\mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} int A\+Lenum A\+Lsizei std\+::vector$<$ char $>$ \& \mbox{\hyperlink{class_engine_1_1_sound_a1dfbb6c8afc2fc1af5b96426169dbb50}{buffer}}
+\item 
+\mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} int A\+Lenum A\+Lsizei std\+::vector$<$ char $>$ A\+Lenum \& \mbox{\hyperlink{class_engine_1_1_sound_aa9e7d023e10d5713230eca0585e5c018}{format}}
 \item 
 A\+Luint \mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} = 0
 \begin{DoxyCompactList}\small\item\em The ID of the sound. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -38,7 +44,6 @@ A\+Luint \mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de4366
 \item 
 class \mbox{\hyperlink{class_engine_1_1_sound_ac3c1855ffb28082902708af2a25f934d}{Sound\+Source}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
@@ -91,6 +96,36 @@ A function for loading W\+AV format.
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_1_1_sound_a220de54a69b0226d4b93308c18090257}\label{class_engine_1_1_sound_a220de54a69b0226d4b93308c18090257}} 
+\index{Engine::Sound@{Engine::Sound}!\_\_pad0\_\_@{\_\_pad0\_\_}}
+\index{\_\_pad0\_\_@{\_\_pad0\_\_}!Engine::Sound@{Engine::Sound}}
+\doxysubsubsection{\texorpdfstring{\_\_pad0\_\_}{\_\_pad0\_\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} Engine\+::\+Sound\+::\+\_\+\+\_\+pad0\+\_\+\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_sound_a1dfbb6c8afc2fc1af5b96426169dbb50}\label{class_engine_1_1_sound_a1dfbb6c8afc2fc1af5b96426169dbb50}} 
+\index{Engine::Sound@{Engine::Sound}!buffer@{buffer}}
+\index{buffer@{buffer}!Engine::Sound@{Engine::Sound}}
+\doxysubsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} int A\+Lenum A\+Lsizei std\+::vector$<$char$>$\& Engine\+::\+Sound\+::buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_sound_ae6001127abf8caf8600f3e72c0e049bf}\label{class_engine_1_1_sound_ae6001127abf8caf8600f3e72c0e049bf}} 
+\index{Engine::Sound@{Engine::Sound}!format@{format}}
+\index{format@{format}!Engine::Sound@{Engine::Sound}}
+\doxysubsubsection{\texorpdfstring{format}{format}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} int A\+Lenum\& Engine\+::\+Sound\+::format\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_sound_aa9e7d023e10d5713230eca0585e5c018}\label{class_engine_1_1_sound_aa9e7d023e10d5713230eca0585e5c018}} 
+\index{Engine::Sound@{Engine::Sound}!format@{format}}
+\index{format@{format}!Engine::Sound@{Engine::Sound}}
+\doxysubsubsection{\texorpdfstring{format}{format}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} int A\+Lenum A\+Lsizei std\+::vector$<$char$>$ A\+Lenum\& Engine\+::\+Sound\+::format\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_engine_1_1_sound_a907d03a903304efeb5e1845ecbd92a74}\label{class_engine_1_1_sound_a907d03a903304efeb5e1845ecbd92a74}} 
+\index{Engine::Sound@{Engine::Sound}!freq@{freq}}
+\index{freq@{freq}!Engine::Sound@{Engine::Sound}}
+\doxysubsubsection{\texorpdfstring{freq}{freq}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} int A\+Lenum A\+Lsizei\& Engine\+::\+Sound\+::freq\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}\label{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}} 
 \index{Engine::Sound@{Engine::Sound}!m\_id@{m\_id}}
 \index{m\_id@{m\_id}!Engine::Sound@{Engine::Sound}}
@@ -101,9 +136,16 @@ A function for loading W\+AV format.
 
 The ID of the sound. 
 
+\mbox{\Hypertarget{class_engine_1_1_sound_a36e2a8a05ab8a874e9d038edef88aab9}\label{class_engine_1_1_sound_a36e2a8a05ab8a874e9d038edef88aab9}} 
+\index{Engine::Sound@{Engine::Sound}!size@{size}}
+\index{size@{size}!Engine::Sound@{Engine::Sound}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_engine_1_1_sound_a7cfddf8329dce7d3336c5f42de436685}{m\+\_\+id}} int\& Engine\+::\+Sound\+::size\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
+src/\+Engine/\mbox{\hyperlink{file_8txt}{file.\+txt}}\item 
 src/\+Engine/\mbox{\hyperlink{_resource_8h}{Resource.\+h}}\item 
 src/\+Engine/\mbox{\hyperlink{_resource_8cpp}{Resource.\+cpp}}\end{DoxyCompactItemize}

@@ -79,15 +79,6 @@ $(function() {
  <a href="class_engine_1_1_mesh_renderer.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_mesh_renderer_8h_source.html">MeshRenderer.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for Engine::MeshRenderer:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_engine_1_1_mesh_renderer.png" usemap="#Engine::MeshRenderer_map" alt=""/>
-  <map id="Engine::MeshRenderer_map" name="Engine::MeshRenderer_map">
-<area href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine." alt="Engine::Component" shape="rect" coords="0,0,141,24"/>
-  </map>
-</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -142,33 +133,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a199745f53d8894f5dacbc7e21e5d0944"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_mesh_renderer.html#a199745f53d8894f5dacbc7e21e5d0944">getColor</a> ()</td></tr>
 <tr class="memdesc:a199745f53d8894f5dacbc7e21e5d0944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the color adjustment to the mesh.  <a href="class_engine_1_1_mesh_renderer.html#a199745f53d8894f5dacbc7e21e5d0944">More...</a><br /></td></tr>
 <tr class="separator:a199745f53d8894f5dacbc7e21e5d0944"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
-<tr class="memitem:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">destroy</a> ()</td></tr>
-<tr class="memdesc:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to destroy a component at the end of the frame.  <a href="class_engine_1_1_component.html#a00efa93260fc3d08aa096aa1025869e2">More...</a><br /></td></tr>
-<tr class="separator:a00efa93260fc3d08aa096aa1025869e2 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">getEntity</a> ()</td></tr>
-<tr class="memdesc:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a> which contains this <a class="el" href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine.">Component</a>.  <a href="class_engine_1_1_component.html#a914f7c81c44b707e39d2898bdd141281">More...</a><br /></td></tr>
-<tr class="separator:a914f7c81c44b707e39d2898bdd141281 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">transform</a> ()</td></tr>
-<tr class="memdesc:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_engine_1_1_transform.html" title="The Transform Component contains Translation, Rotation and Scale data.">Transform</a> component attached to the same object as this.  <a href="class_engine_1_1_component.html#a37740b395821ce65269c317db6b4102b">More...</a><br /></td></tr>
-<tr class="separator:a37740b395821ce65269c317db6b4102b inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ae6b8b9031f70d95bad118684d95e8ba0">getInputDevice</a> ()</td></tr>
-<tr class="memdesc:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an <a class="el" href="class_engine_1_1_input_device.html" title="InputDevice is the base class for all Input Devices.">InputDevice</a> of type T from the <a class="el" href="class_engine_1_1_input_manager.html" title="Manages all InputDevice objects.">InputManager</a>.  <a href="class_engine_1_1_component.html#ae6b8b9031f70d95bad118684d95e8ba0">More...</a><br /></td></tr>
-<tr class="separator:ae6b8b9031f70d95bad118684d95e8ba0 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30e45e1c0ef286fc8447c68f6d520745 inherit pub_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_core.html">Core</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a30e45e1c0ef286fc8447c68f6d520745">getCore</a> ()</td></tr>
-<tr class="memdesc:a30e45e1c0ef286fc8447c68f6d520745 inherit pub_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the <a class="el" href="class_engine_1_1_core.html" title="The Core of the engine. The &quot;world&quot; per se.">Core</a>.  <a href="class_engine_1_1_component.html#a30e45e1c0ef286fc8447c68f6d520745">More...</a><br /></td></tr>
-<tr class="separator:a30e45e1c0ef286fc8447c68f6d520745 inherit pub_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0e5203d5b037a5a0fb78a9be519297b"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_mesh_renderer.html#af0e5203d5b037a5a0fb78a9be519297b">getEmissive</a> ()</td></tr>
+<tr class="memdesc:af0e5203d5b037a5a0fb78a9be519297b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the mesh's emissive light property.  <a href="class_engine_1_1_mesh_renderer.html#af0e5203d5b037a5a0fb78a9be519297b">More...</a><br /></td></tr>
+<tr class="separator:af0e5203d5b037a5a0fb78a9be519297b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab082bda902a1b913cb3704c173763098"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_mesh_renderer.html#ab082bda902a1b913cb3704c173763098">setEmissive</a> (glm::vec3 _emissive)</td></tr>
+<tr class="memdesc:ab082bda902a1b913cb3704c173763098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the mesh's emissive light property.  <a href="class_engine_1_1_mesh_renderer.html#ab082bda902a1b913cb3704c173763098">More...</a><br /></td></tr>
+<tr class="separator:ab082bda902a1b913cb3704c173763098"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:abf66918e4c888d3c717dbda85c730e14"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_mesh_renderer.html">MeshRenderer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_mesh_renderer.html#abf66918e4c888d3c717dbda85c730e14">m_self</a></td></tr>
 <tr class="memdesc:abf66918e4c888d3c717dbda85c730e14"><td class="mdescLeft">&#160;</td><td class="mdescRight">A "This" pointer.  <a href="class_engine_1_1_mesh_renderer.html#abf66918e4c888d3c717dbda85c730e14">More...</a><br /></td></tr>
 <tr class="separator:abf66918e4c888d3c717dbda85c730e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_attribs_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
-<tr class="memitem:a00c874614f49a1248394daa626056ac8 inherit pub_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_component.html">Component</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a00c874614f49a1248394daa626056ac8">m_self</a></td></tr>
-<tr class="memdesc:a00c874614f49a1248394daa626056ac8 inherit pub_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">A "This" pointer.  <a href="class_engine_1_1_component.html#a00c874614f49a1248394daa626056ac8">More...</a><br /></td></tr>
-<tr class="separator:a00c874614f49a1248394daa626056ac8 inherit pub_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -202,41 +178,12 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a3d672cc4622cd0a6291ddb6e0a515a80"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_mesh_renderer.html#a3d672cc4622cd0a6291ddb6e0a515a80">m_castShadows</a> = true</td></tr>
 <tr class="memdesc:a3d672cc4622cd0a6291ddb6e0a515a80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mark if the object casts shadows or not.  <a href="class_engine_1_1_mesh_renderer.html#a3d672cc4622cd0a6291ddb6e0a515a80">More...</a><br /></td></tr>
 <tr class="separator:a3d672cc4622cd0a6291ddb6e0a515a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6457f7ef50038714e9674633fcd69d10"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_mesh_renderer.html#a6457f7ef50038714e9674633fcd69d10">m_lightEmission</a> = glm::vec3(0.0f)</td></tr>
+<tr class="memdesc:a6457f7ef50038714e9674633fcd69d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mark if the object emits light or not.  <a href="class_engine_1_1_mesh_renderer.html#a6457f7ef50038714e9674633fcd69d10">More...</a><br /></td></tr>
+<tr class="separator:a6457f7ef50038714e9674633fcd69d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c4fc2e7bfc287a3135268eefdc3983c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_mesh_renderer.html#a8c4fc2e7bfc287a3135268eefdc3983c">m_receiveShadows</a> = true</td></tr>
 <tr class="memdesc:a8c4fc2e7bfc287a3135268eefdc3983c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mark is shadows can be cast unto this object or not.  <a href="class_engine_1_1_mesh_renderer.html#a8c4fc2e7bfc287a3135268eefdc3983c">More...</a><br /></td></tr>
 <tr class="separator:a8c4fc2e7bfc287a3135268eefdc3983c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_methods_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
-<tr class="memitem:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a698b7e82b695c3e056dc0f929e631b6d">onInitialise</a> ()</td></tr>
-<tr class="memdesc:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise a component.  <a href="class_engine_1_1_component.html#a698b7e82b695c3e056dc0f929e631b6d">More...</a><br /></td></tr>
-<tr class="separator:a698b7e82b695c3e056dc0f929e631b6d inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68cf41016007993f00ca2ee172b290e5 inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a68cf41016007993f00ca2ee172b290e5">onCollision</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> &gt; _col)</td></tr>
-<tr class="memdesc:a68cf41016007993f00ca2ee172b290e5 inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called every frame the parent object in Colliding for. Contains the collision info.  <a href="class_engine_1_1_component.html#a68cf41016007993f00ca2ee172b290e5">More...</a><br /></td></tr>
-<tr class="separator:a68cf41016007993f00ca2ee172b290e5 inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c96847915c640fa8e5634419fba8ce7 inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a9c96847915c640fa8e5634419fba8ce7">onCollisionEnter</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_collision.html">Collision</a> &gt; _col)</td></tr>
-<tr class="memdesc:a9c96847915c640fa8e5634419fba8ce7 inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called on the first frame of collision. Contains the collision info.  <a href="class_engine_1_1_component.html#a9c96847915c640fa8e5634419fba8ce7">More...</a><br /></td></tr>
-<tr class="separator:a9c96847915c640fa8e5634419fba8ce7 inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afecb465fbad010451f18196147cf2b5c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#afecb465fbad010451f18196147cf2b5c">onCollisionExit</a> (std::shared_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt; _other)</td></tr>
-<tr class="memdesc:afecb465fbad010451f18196147cf2b5c inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is called on the last frame of a collision. Contains a pointer to the other <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a>.  <a href="class_engine_1_1_component.html#afecb465fbad010451f18196147cf2b5c">More...</a><br /></td></tr>
-<tr class="separator:afecb465fbad010451f18196147cf2b5c inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8763aeb9a9bcd10bbef2b74a8a22f24c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a8763aeb9a9bcd10bbef2b74a8a22f24c">onTick</a> ()</td></tr>
-<tr class="memdesc:a8763aeb9a9bcd10bbef2b74a8a22f24c inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is called once per frame.  <a href="class_engine_1_1_component.html#a8763aeb9a9bcd10bbef2b74a8a22f24c">More...</a><br /></td></tr>
-<tr class="separator:a8763aeb9a9bcd10bbef2b74a8a22f24c inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#ac103051527cfb9b716379fd115c99f5c">onDestroy</a> ()</td></tr>
-<tr class="memdesc:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is called just before a <a class="el" href="class_engine_1_1_component.html" title="The Base class for all Components in the Engine.">Component</a> gets destroyed.  <a href="class_engine_1_1_component.html#ac103051527cfb9b716379fd115c99f5c">More...</a><br /></td></tr>
-<tr class="separator:ac103051527cfb9b716379fd115c99f5c inherit pro_methods_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_class_engine_1_1_component"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_engine_1_1_component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_engine_1_1_component.html">Engine::Component</a></td></tr>
-<tr class="memitem:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_entity.html">Entity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">m_entity</a></td></tr>
-<tr class="memdesc:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the entity this is attached to.  <a href="class_engine_1_1_component.html#aef5560490656209dac0858c9f405a5fc">More...</a><br /></td></tr>
-<tr class="separator:aef5560490656209dac0858c9f405a5fc inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="class_engine_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">m_transform</a></td></tr>
-<tr class="memdesc:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the <a class="el" href="class_engine_1_1_transform.html" title="The Transform Component contains Translation, Rotation and Scale data.">Transform</a> attached to the <a class="el" href="class_engine_1_1_entity.html" title="An Entity is an Object in the scene. It has a Transform and contains Components.">Entity</a>.  <a href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">More...</a><br /></td></tr>
-<tr class="separator:a0f0787fce807ad80c8a55d1b02dfc3b5 inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">m_delete</a> = false</td></tr>
-<tr class="memdesc:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is set to true when the object is due to be deleted.  <a href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">More...</a><br /></td></tr>
-<tr class="separator:a374bb0eb27722760feba88aa779b33a4 inherit pro_attribs_class_engine_1_1_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A Mesh Renderer displays an object's visuals to the screen. </p>
@@ -339,6 +286,33 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the color adjustment to the mesh. </p>
+
+</div>
+</div>
+<a id="af0e5203d5b037a5a0fb78a9be519297b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0e5203d5b037a5a0fb78a9be519297b">&#9670;&nbsp;</a></span>getEmissive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Engine::MeshRenderer::getEmissive </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the mesh's emissive light property. </p>
 
 </div>
 </div>
@@ -650,6 +624,34 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="ab082bda902a1b913cb3704c173763098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab082bda902a1b913cb3704c173763098">&#9670;&nbsp;</a></span>setEmissive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::MeshRenderer::setEmissive </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3&#160;</td>
+          <td class="paramname"><em>_emissive</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the mesh's emissive light property. </p>
+
+</div>
+</div>
 <a id="a09357c2f8d44b605ac71bf2b397035ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a09357c2f8d44b605ac71bf2b397035ed">&#9670;&nbsp;</a></span>setReceiveShadows()</h2>
 
@@ -776,6 +778,30 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>A color adjustment to the Mesh. </p>
+
+</div>
+</div>
+<a id="a6457f7ef50038714e9674633fcd69d10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6457f7ef50038714e9674633fcd69d10">&#9670;&nbsp;</a></span>m_lightEmission</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Engine::MeshRenderer::m_lightEmission = glm::vec3(0.0f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mark if the object emits light or not. </p>
 
 </div>
 </div>
@@ -988,6 +1014,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/Engine/<a class="el" href="file_8txt.html">file.txt</a></li>
 <li>src/Engine/<a class="el" href="_mesh_renderer_8h_source.html">MeshRenderer.h</a></li>
 <li>src/Engine/<a class="el" href="_mesh_renderer_8cpp.html">MeshRenderer.cpp</a></li>
 </ul>

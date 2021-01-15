@@ -1,6 +1,26 @@
 var searchData=
 [
-  ['delta_5fvalue_1337',['delta_value',['../struct_codebook.html#a5f68e4a9acd173f69425233d995c37ed',1,'Codebook']]],
-  ['dimensions_1338',['dimensions',['../struct_codebook.html#af2c97899a7fc32b58c0e05d2c357fbd4',1,'Codebook']]],
-  ['discard_5fsamples_5fdeferred_1339',['discard_samples_deferred',['../structstb__vorbis.html#adbacf2120eaa0099f886770c51d633d2',1,'stb_vorbis']]]
+  ['c_1361',['C',['../structstb__vorbis.html#a24d929ad328049cddb34951233c8ee74',1,'stb_vorbis']]],
+  ['chan_1362',['chan',['../struct_mapping.html#a79ba491724417d271e3bdfbcef30ed3a',1,'Mapping']]],
+  ['channel_5fbuffer_5fend_1363',['channel_buffer_end',['../structstb__vorbis.html#ab0c6866c39ae3cd00d5ede2dd5ff512c',1,'stb_vorbis']]],
+  ['channel_5fbuffer_5fstart_1364',['channel_buffer_start',['../structstb__vorbis.html#af0bf960e2d513d207ee6a9f38eefe770',1,'stb_vorbis']]],
+  ['channel_5fbuffers_1365',['channel_buffers',['../structstb__vorbis.html#a55c99dc6b4222ca849a884e9dcef890f',1,'stb_vorbis']]],
+  ['channels_1366',['channels',['../structstb__vorbis__info.html#a074f6af8c99f6c583696d34bf4c7744a',1,'stb_vorbis_info::channels()'],['../structstb__vorbis.html#ad7f03b7568a58e7c92f3a867a1030df3',1,'stb_vorbis::channels()']]],
+  ['class_5fdimensions_1367',['class_dimensions',['../struct_floor1.html#ab7adeb3e2d518eddd510c525e14c0421',1,'Floor1']]],
+  ['class_5fmasterbooks_1368',['class_masterbooks',['../struct_floor1.html#ad10936c904d13820156191fcc25c7b07',1,'Floor1']]],
+  ['class_5fsubclasses_1369',['class_subclasses',['../struct_floor1.html#af3004149b67bcab60a25afb51ea07f87',1,'Floor1']]],
+  ['classbook_1370',['classbook',['../struct_residue.html#a2162b2f7f3ac4358a2983f5d372741b1',1,'Residue']]],
+  ['classdata_1371',['classdata',['../struct_residue.html#a079f9b89fb84d8cec7829a640c0f0f85',1,'Residue']]],
+  ['classifications_1372',['classifications',['../struct_residue.html#a7990d602ad1221a4074bd3fb2b6396e4',1,'Residue']]],
+  ['close_5fon_5ffree_1373',['close_on_free',['../structstb__vorbis.html#af5bffde87c285ec4189ac54f12c15c95',1,'stb_vorbis']]],
+  ['codebook_5fcount_1374',['codebook_count',['../structstb__vorbis.html#a07469e02f33bb619f925ee9b5ee996fd',1,'stb_vorbis']]],
+  ['codebooks_1375',['codebooks',['../structstb__vorbis.html#a50e480817f823077fe9c75fbd829a4b6',1,'stb_vorbis']]],
+  ['codeword_5flengths_1376',['codeword_lengths',['../struct_codebook.html#a5f692a0d4af17c8ea3b085a21b8e3ef9',1,'Codebook']]],
+  ['codewords_1377',['codewords',['../struct_codebook.html#a451075bbaced9845ae13a07f4696360a',1,'Codebook']]],
+  ['comment_5flist_1378',['comment_list',['../structstb__vorbis__comment.html#ad1b41ced43bc70618a588a7a4bbca67e',1,'stb_vorbis_comment::comment_list()'],['../structstb__vorbis.html#afc7c27ee48d18699ce090368efdf45c4',1,'stb_vorbis::comment_list()']]],
+  ['comment_5flist_5flength_1379',['comment_list_length',['../structstb__vorbis__comment.html#ab31b9294952f0f0e61469d07ab4057f0',1,'stb_vorbis_comment::comment_list_length()'],['../structstb__vorbis.html#a42307fb1bb6efa514afc2d0e6d5b9a04',1,'stb_vorbis::comment_list_length()']]],
+  ['coupling_5fsteps_1380',['coupling_steps',['../struct_mapping.html#a3d85724ef6fa7567622ef3b7e32e461f',1,'Mapping']]],
+  ['crc_5fso_5ffar_1381',['crc_so_far',['../struct_c_r_cscan.html#a2604a61beb2f4718d2c0c5641264cebe',1,'CRCscan']]],
+  ['current_5floc_1382',['current_loc',['../structstb__vorbis.html#a02d0be708a62def848df1b4c20402983',1,'stb_vorbis']]],
+  ['current_5floc_5fvalid_1383',['current_loc_valid',['../structstb__vorbis.html#a22ce054c836820c3b8381d6c8fa610ed',1,'stb_vorbis']]]
 ];

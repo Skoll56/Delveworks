@@ -413,8 +413,8 @@ $(function() {
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
 <div class="line"><a name="l00344"></a><span class="lineno"><a class="line" href="structstbi__io__callbacks.html">  344</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;{</div>
-<div class="line"><a name="l00346"></a><span class="lineno"><a class="line" href="structstbi__io__callbacks.html#a623e46b3a2a019611601409926283a88">  346</a></span>&#160;   int      (*read)  (<span class="keywordtype">void</span> *user,<span class="keywordtype">char</span> *data,<span class="keywordtype">int</span> size);   <span class="comment">// fill &#39;data&#39; with &#39;size&#39; bytes.  return number of bytes actually read</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno"><a class="line" href="structstbi__io__callbacks.html#a257aac5480a90a6c4b8fbe86c1b01068">  347</a></span>&#160;   void     (*skip)  (<span class="keywordtype">void</span> *user,<span class="keywordtype">int</span> n);                 <span class="comment">// skip the next &#39;n&#39; bytes, or &#39;unget&#39; the last -n bytes if negative</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno"><a class="line" href="structstbi__io__callbacks.html#a623e46b3a2a019611601409926283a88">  346</a></span>&#160;   int      (*<a class="code" href="file_8txt.html#a716626263b797dc140e6ee71729f6abb">read</a>)  (<span class="keywordtype">void</span> *user,<span class="keywordtype">char</span> *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>,<span class="keywordtype">int</span> size);   <span class="comment">// fill &#39;data&#39; with &#39;size&#39; bytes.  return number of bytes actually read</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno"><a class="line" href="structstbi__io__callbacks.html#a257aac5480a90a6c4b8fbe86c1b01068">  347</a></span>&#160;   void     (*<a class="code" href="file_8txt.html#ad186444c82ab7bbaf0943e10f53e7461">skip</a>)  (<span class="keywordtype">void</span> *user,<span class="keywordtype">int</span> n);                 <span class="comment">// skip the next &#39;n&#39; bytes, or &#39;unget&#39; the last -n bytes if negative</span></div>
 <div class="line"><a name="l00348"></a><span class="lineno"><a class="line" href="structstbi__io__callbacks.html#a319639db2f76e715eed7a7a974136832">  348</a></span>&#160;   int      (*eof)   (<span class="keywordtype">void</span> *user);                       <span class="comment">// returns nonzero if we are at end of file/data</span></div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;} <a class="code" href="structstbi__io__callbacks.html">stbi_io_callbacks</a>;</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
@@ -795,9 +795,9 @@ $(function() {
 <div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160; </div>
 <div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;<span class="preprocessor">#ifndef STBI_NO_STDIO</span></div>
 <div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160; </div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> stbi__stdio_read(<span class="keywordtype">void</span> *user, <span class="keywordtype">char</span> *data, <span class="keywordtype">int</span> size)</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> stbi__stdio_read(<span class="keywordtype">void</span> *user, <span class="keywordtype">char</span> *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, <span class="keywordtype">int</span> size)</div>
 <div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;{</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;   <span class="keywordflow">return</span> (<span class="keywordtype">int</span>) fread(data,1,size,(FILE*) user);</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;   <span class="keywordflow">return</span> (<span class="keywordtype">int</span>) fread(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>,1,size,(FILE*) user);</div>
 <div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;}</div>
 <div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160; </div>
 <div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> stbi__stdio_skip(<span class="keywordtype">void</span> *user, <span class="keywordtype">int</span> n)</div>
@@ -1020,11 +1020,11 @@ $(function() {
 <div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;}</div>
 <div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160; </div>
 <div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;<span class="preprocessor">#ifndef STBI_NO_LINEAR</span></div>
-<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;<span class="keyword">static</span> <span class="keywordtype">float</span>   *stbi__ldr_to_hdr(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *data, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> comp);</div>
+<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;<span class="keyword">static</span> <span class="keywordtype">float</span>   *stbi__ldr_to_hdr(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> comp);</div>
 <div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160; </div>
 <div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;<span class="preprocessor">#ifndef STBI_NO_HDR</span></div>
-<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;<span class="keyword">static</span> <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *stbi__hdr_to_ldr(<span class="keywordtype">float</span>   *data, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> comp);</div>
+<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;<span class="keyword">static</span> <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *stbi__hdr_to_ldr(<span class="keywordtype">float</span>   *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> comp);</div>
 <div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160; </div>
 <div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> stbi__vertically_flip_on_load = 0;</div>
@@ -1317,7 +1317,7 @@ $(function() {
 <div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;<span class="preprocessor">#ifndef STBI_NO_LINEAR</span></div>
 <div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;<span class="keyword">static</span> <span class="keywordtype">float</span> *stbi__loadf_main(stbi__context *s, <span class="keywordtype">int</span> *x, <span class="keywordtype">int</span> *y, <span class="keywordtype">int</span> *comp, <span class="keywordtype">int</span> req_comp)</div>
 <div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;{</div>
-<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *data;</div>
+<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>;</div>
 <div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;<span class="preprocessor">   #ifndef STBI_NO_HDR</span></div>
 <div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;   <span class="keywordflow">if</span> (stbi__hdr_test(s)) {</div>
 <div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;      stbi__result_info ri;</div>
@@ -1327,9 +1327,9 @@ $(function() {
 <div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;      <span class="keywordflow">return</span> hdr_data;</div>
 <div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;   }</div>
 <div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;<span class="preprocessor">   #endif</span></div>
-<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;   data = stbi__load_and_postprocess_8bit(s, x, y, comp, req_comp);</div>
-<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;   <span class="keywordflow">if</span> (data)</div>
-<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;      <span class="keywordflow">return</span> stbi__ldr_to_hdr(data, *x, *y, req_comp ? req_comp : *comp);</div>
+<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;   <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> = stbi__load_and_postprocess_8bit(s, x, y, comp, req_comp);</div>
+<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;   <span class="keywordflow">if</span> (<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>)</div>
+<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;      <span class="keywordflow">return</span> stbi__ldr_to_hdr(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, *x, *y, req_comp ? req_comp : *comp);</div>
 <div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;   <span class="keywordflow">return</span> stbi__errpf(<span class="stringliteral">&quot;unknown image type&quot;</span>, <span class="stringliteral">&quot;Image not of any known type, or corrupt&quot;</span>);</div>
 <div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;}</div>
 <div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160; </div>
@@ -1579,22 +1579,22 @@ $(function() {
 <div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160;   <span class="keywordflow">return</span> (<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a>) (((r*77) + (g*150) +  (29*b)) &gt;&gt; 8);</div>
 <div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;}</div>
 <div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160; </div>
-<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;<span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *stbi__convert_format(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *data, <span class="keywordtype">int</span> img_n, <span class="keywordtype">int</span> req_comp, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y)</div>
+<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;<span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *stbi__convert_format(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, <span class="keywordtype">int</span> img_n, <span class="keywordtype">int</span> req_comp, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y)</div>
 <div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160;{</div>
 <div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160;   <span class="keywordtype">int</span> i,j;</div>
 <div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160;   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *good;</div>
 <div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160; </div>
-<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;   <span class="keywordflow">if</span> (req_comp == img_n) <span class="keywordflow">return</span> data;</div>
+<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;   <span class="keywordflow">if</span> (req_comp == img_n) <span class="keywordflow">return</span> <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>;</div>
 <div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;   STBI_ASSERT(req_comp &gt;= 1 &amp;&amp; req_comp &lt;= 4);</div>
 <div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160; </div>
 <div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160;   good = (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *) stbi__malloc_mad3(req_comp, x, y, 0);</div>
 <div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;   <span class="keywordflow">if</span> (good == NULL) {</div>
-<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;      STBI_FREE(data);</div>
+<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;      STBI_FREE(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>);</div>
 <div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;      <span class="keywordflow">return</span> stbi__errpuc(<span class="stringliteral">&quot;outofmem&quot;</span>, <span class="stringliteral">&quot;Out of memory&quot;</span>);</div>
 <div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;   }</div>
 <div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160; </div>
 <div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;   <span class="keywordflow">for</span> (j=0; j &lt; (int) y; ++j) {</div>
-<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *src  = data + j * x * img_n   ;</div>
+<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *src  = <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + j * x * img_n   ;</div>
 <div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *dest = good + j * x * req_comp;</div>
 <div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160; </div>
 <div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;<span class="preprocessor">      #define STBI__COMBO(a,b)  ((a)*8+(b))</span></div>
@@ -1619,7 +1619,7 @@ $(function() {
 <div class="line"><a name="l01556"></a><span class="lineno"> 1556</span>&#160;<span class="preprocessor">      #undef STBI__CASE</span></div>
 <div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;   }</div>
 <div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160; </div>
-<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;   STBI_FREE(data);</div>
+<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;   STBI_FREE(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>);</div>
 <div class="line"><a name="l01560"></a><span class="lineno"> 1560</span>&#160;   <span class="keywordflow">return</span> good;</div>
 <div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;}</div>
 <div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160; </div>
@@ -1628,22 +1628,22 @@ $(function() {
 <div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;   <span class="keywordflow">return</span> (stbi__uint16) (((r*77) + (g*150) +  (29*b)) &gt;&gt; 8);</div>
 <div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160;}</div>
 <div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160; </div>
-<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;<span class="keyword">static</span> stbi__uint16 *stbi__convert_format16(stbi__uint16 *data, <span class="keywordtype">int</span> img_n, <span class="keywordtype">int</span> req_comp, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y)</div>
+<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;<span class="keyword">static</span> stbi__uint16 *stbi__convert_format16(stbi__uint16 *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, <span class="keywordtype">int</span> img_n, <span class="keywordtype">int</span> req_comp, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> x, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y)</div>
 <div class="line"><a name="l01569"></a><span class="lineno"> 1569</span>&#160;{</div>
 <div class="line"><a name="l01570"></a><span class="lineno"> 1570</span>&#160;   <span class="keywordtype">int</span> i,j;</div>
 <div class="line"><a name="l01571"></a><span class="lineno"> 1571</span>&#160;   stbi__uint16 *good;</div>
 <div class="line"><a name="l01572"></a><span class="lineno"> 1572</span>&#160; </div>
-<div class="line"><a name="l01573"></a><span class="lineno"> 1573</span>&#160;   <span class="keywordflow">if</span> (req_comp == img_n) <span class="keywordflow">return</span> data;</div>
+<div class="line"><a name="l01573"></a><span class="lineno"> 1573</span>&#160;   <span class="keywordflow">if</span> (req_comp == img_n) <span class="keywordflow">return</span> <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>;</div>
 <div class="line"><a name="l01574"></a><span class="lineno"> 1574</span>&#160;   STBI_ASSERT(req_comp &gt;= 1 &amp;&amp; req_comp &lt;= 4);</div>
 <div class="line"><a name="l01575"></a><span class="lineno"> 1575</span>&#160; </div>
 <div class="line"><a name="l01576"></a><span class="lineno"> 1576</span>&#160;   good = (stbi__uint16 *) stbi__malloc(req_comp * x * y * 2);</div>
 <div class="line"><a name="l01577"></a><span class="lineno"> 1577</span>&#160;   <span class="keywordflow">if</span> (good == NULL) {</div>
-<div class="line"><a name="l01578"></a><span class="lineno"> 1578</span>&#160;      STBI_FREE(data);</div>
+<div class="line"><a name="l01578"></a><span class="lineno"> 1578</span>&#160;      STBI_FREE(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>);</div>
 <div class="line"><a name="l01579"></a><span class="lineno"> 1579</span>&#160;      <span class="keywordflow">return</span> (stbi__uint16 *) stbi__errpuc(<span class="stringliteral">&quot;outofmem&quot;</span>, <span class="stringliteral">&quot;Out of memory&quot;</span>);</div>
 <div class="line"><a name="l01580"></a><span class="lineno"> 1580</span>&#160;   }</div>
 <div class="line"><a name="l01581"></a><span class="lineno"> 1581</span>&#160; </div>
 <div class="line"><a name="l01582"></a><span class="lineno"> 1582</span>&#160;   <span class="keywordflow">for</span> (j=0; j &lt; (int) y; ++j) {</div>
-<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160;      stbi__uint16 *src  = data + j * x * img_n   ;</div>
+<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160;      stbi__uint16 *src  = <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + j * x * img_n   ;</div>
 <div class="line"><a name="l01584"></a><span class="lineno"> 1584</span>&#160;      stbi__uint16 *dest = good + j * x * req_comp;</div>
 <div class="line"><a name="l01585"></a><span class="lineno"> 1585</span>&#160; </div>
 <div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160;<span class="preprocessor">      #define STBI__COMBO(a,b)  ((a)*8+(b))</span></div>
@@ -1668,57 +1668,57 @@ $(function() {
 <div class="line"><a name="l01605"></a><span class="lineno"> 1605</span>&#160;<span class="preprocessor">      #undef STBI__CASE</span></div>
 <div class="line"><a name="l01606"></a><span class="lineno"> 1606</span>&#160;   }</div>
 <div class="line"><a name="l01607"></a><span class="lineno"> 1607</span>&#160; </div>
-<div class="line"><a name="l01608"></a><span class="lineno"> 1608</span>&#160;   STBI_FREE(data);</div>
+<div class="line"><a name="l01608"></a><span class="lineno"> 1608</span>&#160;   STBI_FREE(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>);</div>
 <div class="line"><a name="l01609"></a><span class="lineno"> 1609</span>&#160;   <span class="keywordflow">return</span> good;</div>
 <div class="line"><a name="l01610"></a><span class="lineno"> 1610</span>&#160;}</div>
 <div class="line"><a name="l01611"></a><span class="lineno"> 1611</span>&#160; </div>
 <div class="line"><a name="l01612"></a><span class="lineno"> 1612</span>&#160;<span class="preprocessor">#ifndef STBI_NO_LINEAR</span></div>
-<div class="line"><a name="l01613"></a><span class="lineno"> 1613</span>&#160;<span class="keyword">static</span> <span class="keywordtype">float</span>   *stbi__ldr_to_hdr(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *data, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> comp)</div>
+<div class="line"><a name="l01613"></a><span class="lineno"> 1613</span>&#160;<span class="keyword">static</span> <span class="keywordtype">float</span>   *stbi__ldr_to_hdr(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> comp)</div>
 <div class="line"><a name="l01614"></a><span class="lineno"> 1614</span>&#160;{</div>
 <div class="line"><a name="l01615"></a><span class="lineno"> 1615</span>&#160;   <span class="keywordtype">int</span> i,k,n;</div>
 <div class="line"><a name="l01616"></a><span class="lineno"> 1616</span>&#160;   <span class="keywordtype">float</span> *output;</div>
-<div class="line"><a name="l01617"></a><span class="lineno"> 1617</span>&#160;   <span class="keywordflow">if</span> (!data) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l01617"></a><span class="lineno"> 1617</span>&#160;   <span class="keywordflow">if</span> (!<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>) <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l01618"></a><span class="lineno"> 1618</span>&#160;   output = (<span class="keywordtype">float</span> *) stbi__malloc_mad4(x, y, comp, <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), 0);</div>
-<div class="line"><a name="l01619"></a><span class="lineno"> 1619</span>&#160;   <span class="keywordflow">if</span> (output == NULL) { STBI_FREE(data); <span class="keywordflow">return</span> stbi__errpf(<span class="stringliteral">&quot;outofmem&quot;</span>, <span class="stringliteral">&quot;Out of memory&quot;</span>); }</div>
+<div class="line"><a name="l01619"></a><span class="lineno"> 1619</span>&#160;   <span class="keywordflow">if</span> (output == NULL) { STBI_FREE(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>); <span class="keywordflow">return</span> stbi__errpf(<span class="stringliteral">&quot;outofmem&quot;</span>, <span class="stringliteral">&quot;Out of memory&quot;</span>); }</div>
 <div class="line"><a name="l01620"></a><span class="lineno"> 1620</span>&#160;   <span class="comment">// compute number of non-alpha components</span></div>
 <div class="line"><a name="l01621"></a><span class="lineno"> 1621</span>&#160;   <span class="keywordflow">if</span> (comp &amp; 1) n = comp; <span class="keywordflow">else</span> n = comp-1;</div>
 <div class="line"><a name="l01622"></a><span class="lineno"> 1622</span>&#160;   <span class="keywordflow">for</span> (i=0; i &lt; x*y; ++i) {</div>
 <div class="line"><a name="l01623"></a><span class="lineno"> 1623</span>&#160;      <span class="keywordflow">for</span> (k=0; k &lt; n; ++k) {</div>
-<div class="line"><a name="l01624"></a><span class="lineno"> 1624</span>&#160;         output[i*comp + k] = (float) (pow(data[i*comp+k]/255.0f, stbi__l2h_gamma) * stbi__l2h_scale);</div>
+<div class="line"><a name="l01624"></a><span class="lineno"> 1624</span>&#160;         output[i*comp + k] = (float) (pow(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[i*comp+k]/255.0f, stbi__l2h_gamma) * stbi__l2h_scale);</div>
 <div class="line"><a name="l01625"></a><span class="lineno"> 1625</span>&#160;      }</div>
-<div class="line"><a name="l01626"></a><span class="lineno"> 1626</span>&#160;      <span class="keywordflow">if</span> (k &lt; comp) output[i*comp + k] = data[i*comp+k]/255.0f;</div>
+<div class="line"><a name="l01626"></a><span class="lineno"> 1626</span>&#160;      <span class="keywordflow">if</span> (k &lt; comp) output[i*comp + k] = <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[i*comp+k]/255.0f;</div>
 <div class="line"><a name="l01627"></a><span class="lineno"> 1627</span>&#160;   }</div>
-<div class="line"><a name="l01628"></a><span class="lineno"> 1628</span>&#160;   STBI_FREE(data);</div>
+<div class="line"><a name="l01628"></a><span class="lineno"> 1628</span>&#160;   STBI_FREE(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>);</div>
 <div class="line"><a name="l01629"></a><span class="lineno"> 1629</span>&#160;   <span class="keywordflow">return</span> output;</div>
 <div class="line"><a name="l01630"></a><span class="lineno"> 1630</span>&#160;}</div>
 <div class="line"><a name="l01631"></a><span class="lineno"> 1631</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l01632"></a><span class="lineno"> 1632</span>&#160; </div>
 <div class="line"><a name="l01633"></a><span class="lineno"> 1633</span>&#160;<span class="preprocessor">#ifndef STBI_NO_HDR</span></div>
 <div class="line"><a name="l01634"></a><span class="lineno"> 1634</span>&#160;<span class="preprocessor">#define stbi__float2int(x)   ((int) (x))</span></div>
-<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;<span class="keyword">static</span> <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *stbi__hdr_to_ldr(<span class="keywordtype">float</span>   *data, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> comp)</div>
+<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;<span class="keyword">static</span> <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *stbi__hdr_to_ldr(<span class="keywordtype">float</span>   *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> comp)</div>
 <div class="line"><a name="l01636"></a><span class="lineno"> 1636</span>&#160;{</div>
 <div class="line"><a name="l01637"></a><span class="lineno"> 1637</span>&#160;   <span class="keywordtype">int</span> i,k,n;</div>
 <div class="line"><a name="l01638"></a><span class="lineno"> 1638</span>&#160;   <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *output;</div>
-<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;   <span class="keywordflow">if</span> (!data) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;   <span class="keywordflow">if</span> (!<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>) <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l01640"></a><span class="lineno"> 1640</span>&#160;   output = (<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *) stbi__malloc_mad3(x, y, comp, 0);</div>
-<div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160;   <span class="keywordflow">if</span> (output == NULL) { STBI_FREE(data); <span class="keywordflow">return</span> stbi__errpuc(<span class="stringliteral">&quot;outofmem&quot;</span>, <span class="stringliteral">&quot;Out of memory&quot;</span>); }</div>
+<div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160;   <span class="keywordflow">if</span> (output == NULL) { STBI_FREE(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>); <span class="keywordflow">return</span> stbi__errpuc(<span class="stringliteral">&quot;outofmem&quot;</span>, <span class="stringliteral">&quot;Out of memory&quot;</span>); }</div>
 <div class="line"><a name="l01642"></a><span class="lineno"> 1642</span>&#160;   <span class="comment">// compute number of non-alpha components</span></div>
 <div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;   <span class="keywordflow">if</span> (comp &amp; 1) n = comp; <span class="keywordflow">else</span> n = comp-1;</div>
 <div class="line"><a name="l01644"></a><span class="lineno"> 1644</span>&#160;   <span class="keywordflow">for</span> (i=0; i &lt; x*y; ++i) {</div>
 <div class="line"><a name="l01645"></a><span class="lineno"> 1645</span>&#160;      <span class="keywordflow">for</span> (k=0; k &lt; n; ++k) {</div>
-<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;         <span class="keywordtype">float</span> z = (float) pow(data[i*comp+k]*stbi__h2l_scale_i, stbi__h2l_gamma_i) * 255 + 0.5f;</div>
+<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;         <span class="keywordtype">float</span> z = (float) pow(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[i*comp+k]*stbi__h2l_scale_i, stbi__h2l_gamma_i) * 255 + 0.5f;</div>
 <div class="line"><a name="l01647"></a><span class="lineno"> 1647</span>&#160;         <span class="keywordflow">if</span> (z &lt; 0) z = 0;</div>
 <div class="line"><a name="l01648"></a><span class="lineno"> 1648</span>&#160;         <span class="keywordflow">if</span> (z &gt; 255) z = 255;</div>
 <div class="line"><a name="l01649"></a><span class="lineno"> 1649</span>&#160;         output[i*comp + k] = (<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a>) stbi__float2int(z);</div>
 <div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;      }</div>
 <div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160;      <span class="keywordflow">if</span> (k &lt; comp) {</div>
-<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;         <span class="keywordtype">float</span> z = data[i*comp+k] * 255 + 0.5f;</div>
+<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;         <span class="keywordtype">float</span> z = <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[i*comp+k] * 255 + 0.5f;</div>
 <div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160;         <span class="keywordflow">if</span> (z &lt; 0) z = 0;</div>
 <div class="line"><a name="l01654"></a><span class="lineno"> 1654</span>&#160;         <span class="keywordflow">if</span> (z &gt; 255) z = 255;</div>
 <div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160;         output[i*comp + k] = (<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a>) stbi__float2int(z);</div>
 <div class="line"><a name="l01656"></a><span class="lineno"> 1656</span>&#160;      }</div>
 <div class="line"><a name="l01657"></a><span class="lineno"> 1657</span>&#160;   }</div>
-<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;   STBI_FREE(data);</div>
+<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;   STBI_FREE(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>);</div>
 <div class="line"><a name="l01659"></a><span class="lineno"> 1659</span>&#160;   <span class="keywordflow">return</span> output;</div>
 <div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160;}</div>
 <div class="line"><a name="l01661"></a><span class="lineno"> 1661</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -1782,7 +1782,7 @@ $(function() {
 <div class="line"><a name="l01720"></a><span class="lineno"> 1720</span>&#160;      <span class="keywordtype">int</span> dc_pred;</div>
 <div class="line"><a name="l01721"></a><span class="lineno"> 1721</span>&#160; </div>
 <div class="line"><a name="l01722"></a><span class="lineno"> 1722</span>&#160;      <span class="keywordtype">int</span> x,y,w2,h2;</div>
-<div class="line"><a name="l01723"></a><span class="lineno"> 1723</span>&#160;      <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *data;</div>
+<div class="line"><a name="l01723"></a><span class="lineno"> 1723</span>&#160;      <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>;</div>
 <div class="line"><a name="l01724"></a><span class="lineno"> 1724</span>&#160;      <span class="keywordtype">void</span> *raw_data, *raw_coeff;</div>
 <div class="line"><a name="l01725"></a><span class="lineno"> 1725</span>&#160;      <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *linebuf;</div>
 <div class="line"><a name="l01726"></a><span class="lineno"> 1726</span>&#160;      <span class="keywordtype">short</span>   *coeff;   <span class="comment">// progressive only</span></div>
@@ -1808,7 +1808,7 @@ $(function() {
 <div class="line"><a name="l01746"></a><span class="lineno"> 1746</span>&#160;   <span class="keywordtype">int</span> restart_interval, todo;</div>
 <div class="line"><a name="l01747"></a><span class="lineno"> 1747</span>&#160; </div>
 <div class="line"><a name="l01748"></a><span class="lineno"> 1748</span>&#160;<span class="comment">// kernels</span></div>
-<div class="line"><a name="l01749"></a><span class="lineno"> 1749</span>&#160;   void (*idct_block_kernel)(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *out, <span class="keywordtype">int</span> out_stride, <span class="keywordtype">short</span> data[64]);</div>
+<div class="line"><a name="l01749"></a><span class="lineno"> 1749</span>&#160;   void (*idct_block_kernel)(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *out, <span class="keywordtype">int</span> out_stride, <span class="keywordtype">short</span> <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[64]);</div>
 <div class="line"><a name="l01750"></a><span class="lineno"> 1750</span>&#160;   void (*YCbCr_to_RGB_kernel)(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *out, <span class="keyword">const</span> <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *y, <span class="keyword">const</span> <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *pcb, <span class="keyword">const</span> <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *pcr, <span class="keywordtype">int</span> count, <span class="keywordtype">int</span> step);</div>
 <div class="line"><a name="l01751"></a><span class="lineno"> 1751</span>&#160;   <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *(*resample_row_hv_2_kernel)(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *out, <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *in_near, <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *in_far, <span class="keywordtype">int</span> w, <span class="keywordtype">int</span> hs);</div>
 <div class="line"><a name="l01752"></a><span class="lineno"> 1752</span>&#160;} stbi__jpeg;</div>
@@ -2013,7 +2013,7 @@ $(function() {
 <div class="line"><a name="l01951"></a><span class="lineno"> 1951</span>&#160;};</div>
 <div class="line"><a name="l01952"></a><span class="lineno"> 1952</span>&#160; </div>
 <div class="line"><a name="l01953"></a><span class="lineno"> 1953</span>&#160;<span class="comment">// decode one 64-entry block--</span></div>
-<div class="line"><a name="l01954"></a><span class="lineno"> 1954</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> stbi__jpeg_decode_block(stbi__jpeg *j, <span class="keywordtype">short</span> data[64], stbi__huffman *hdc, stbi__huffman *hac, stbi__int16 *fac, <span class="keywordtype">int</span> b, stbi__uint16 *dequant)</div>
+<div class="line"><a name="l01954"></a><span class="lineno"> 1954</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> stbi__jpeg_decode_block(stbi__jpeg *j, <span class="keywordtype">short</span> <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[64], stbi__huffman *hdc, stbi__huffman *hac, stbi__int16 *fac, <span class="keywordtype">int</span> b, stbi__uint16 *dequant)</div>
 <div class="line"><a name="l01955"></a><span class="lineno"> 1955</span>&#160;{</div>
 <div class="line"><a name="l01956"></a><span class="lineno"> 1956</span>&#160;   <span class="keywordtype">int</span> diff,dc,k;</div>
 <div class="line"><a name="l01957"></a><span class="lineno"> 1957</span>&#160;   <span class="keywordtype">int</span> t;</div>
@@ -2023,12 +2023,12 @@ $(function() {
 <div class="line"><a name="l01961"></a><span class="lineno"> 1961</span>&#160;   <span class="keywordflow">if</span> (t &lt; 0) <span class="keywordflow">return</span> stbi__err(<span class="stringliteral">&quot;bad huffman code&quot;</span>,<span class="stringliteral">&quot;Corrupt JPEG&quot;</span>);</div>
 <div class="line"><a name="l01962"></a><span class="lineno"> 1962</span>&#160; </div>
 <div class="line"><a name="l01963"></a><span class="lineno"> 1963</span>&#160;   <span class="comment">// 0 all the ac values now so we can do it 32-bits at a time</span></div>
-<div class="line"><a name="l01964"></a><span class="lineno"> 1964</span>&#160;   memset(data,0,64*<span class="keyword">sizeof</span>(data[0]));</div>
+<div class="line"><a name="l01964"></a><span class="lineno"> 1964</span>&#160;   memset(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>,0,64*<span class="keyword">sizeof</span>(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[0]));</div>
 <div class="line"><a name="l01965"></a><span class="lineno"> 1965</span>&#160; </div>
 <div class="line"><a name="l01966"></a><span class="lineno"> 1966</span>&#160;   diff = t ? stbi__extend_receive(j, t) : 0;</div>
 <div class="line"><a name="l01967"></a><span class="lineno"> 1967</span>&#160;   dc = j-&gt;img_comp[b].dc_pred + diff;</div>
 <div class="line"><a name="l01968"></a><span class="lineno"> 1968</span>&#160;   j-&gt;img_comp[b].dc_pred = dc;</div>
-<div class="line"><a name="l01969"></a><span class="lineno"> 1969</span>&#160;   data[0] = (short) (dc * dequant[0]);</div>
+<div class="line"><a name="l01969"></a><span class="lineno"> 1969</span>&#160;   <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[0] = (short) (dc * dequant[0]);</div>
 <div class="line"><a name="l01970"></a><span class="lineno"> 1970</span>&#160; </div>
 <div class="line"><a name="l01971"></a><span class="lineno"> 1971</span>&#160;   <span class="comment">// decode AC components, see JPEG spec</span></div>
 <div class="line"><a name="l01972"></a><span class="lineno"> 1972</span>&#160;   k = 1;</div>
@@ -2045,7 +2045,7 @@ $(function() {
 <div class="line"><a name="l01983"></a><span class="lineno"> 1983</span>&#160;         j-&gt;code_bits -= s;</div>
 <div class="line"><a name="l01984"></a><span class="lineno"> 1984</span>&#160;         <span class="comment">// decode into unzigzag&#39;d location</span></div>
 <div class="line"><a name="l01985"></a><span class="lineno"> 1985</span>&#160;         zig = stbi__jpeg_dezigzag[k++];</div>
-<div class="line"><a name="l01986"></a><span class="lineno"> 1986</span>&#160;         data[zig] = (short) ((r &gt;&gt; 8) * dequant[zig]);</div>
+<div class="line"><a name="l01986"></a><span class="lineno"> 1986</span>&#160;         <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[zig] = (short) ((r &gt;&gt; 8) * dequant[zig]);</div>
 <div class="line"><a name="l01987"></a><span class="lineno"> 1987</span>&#160;      } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l01988"></a><span class="lineno"> 1988</span>&#160;         <span class="keywordtype">int</span> rs = stbi__jpeg_huff_decode(j, hac);</div>
 <div class="line"><a name="l01989"></a><span class="lineno"> 1989</span>&#160;         <span class="keywordflow">if</span> (rs &lt; 0) <span class="keywordflow">return</span> stbi__err(<span class="stringliteral">&quot;bad huffman code&quot;</span>,<span class="stringliteral">&quot;Corrupt JPEG&quot;</span>);</div>
@@ -2058,14 +2058,14 @@ $(function() {
 <div class="line"><a name="l01996"></a><span class="lineno"> 1996</span>&#160;            k += r;</div>
 <div class="line"><a name="l01997"></a><span class="lineno"> 1997</span>&#160;            <span class="comment">// decode into unzigzag&#39;d location</span></div>
 <div class="line"><a name="l01998"></a><span class="lineno"> 1998</span>&#160;            zig = stbi__jpeg_dezigzag[k++];</div>
-<div class="line"><a name="l01999"></a><span class="lineno"> 1999</span>&#160;            data[zig] = (short) (stbi__extend_receive(j,s) * dequant[zig]);</div>
+<div class="line"><a name="l01999"></a><span class="lineno"> 1999</span>&#160;            <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[zig] = (short) (stbi__extend_receive(j,s) * dequant[zig]);</div>
 <div class="line"><a name="l02000"></a><span class="lineno"> 2000</span>&#160;         }</div>
 <div class="line"><a name="l02001"></a><span class="lineno"> 2001</span>&#160;      }</div>
 <div class="line"><a name="l02002"></a><span class="lineno"> 2002</span>&#160;   } <span class="keywordflow">while</span> (k &lt; 64);</div>
 <div class="line"><a name="l02003"></a><span class="lineno"> 2003</span>&#160;   <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l02004"></a><span class="lineno"> 2004</span>&#160;}</div>
 <div class="line"><a name="l02005"></a><span class="lineno"> 2005</span>&#160; </div>
-<div class="line"><a name="l02006"></a><span class="lineno"> 2006</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> stbi__jpeg_decode_block_prog_dc(stbi__jpeg *j, <span class="keywordtype">short</span> data[64], stbi__huffman *hdc, <span class="keywordtype">int</span> b)</div>
+<div class="line"><a name="l02006"></a><span class="lineno"> 2006</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> stbi__jpeg_decode_block_prog_dc(stbi__jpeg *j, <span class="keywordtype">short</span> <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[64], stbi__huffman *hdc, <span class="keywordtype">int</span> b)</div>
 <div class="line"><a name="l02007"></a><span class="lineno"> 2007</span>&#160;{</div>
 <div class="line"><a name="l02008"></a><span class="lineno"> 2008</span>&#160;   <span class="keywordtype">int</span> diff,dc;</div>
 <div class="line"><a name="l02009"></a><span class="lineno"> 2009</span>&#160;   <span class="keywordtype">int</span> t;</div>
@@ -2075,24 +2075,24 @@ $(function() {
 <div class="line"><a name="l02013"></a><span class="lineno"> 2013</span>&#160; </div>
 <div class="line"><a name="l02014"></a><span class="lineno"> 2014</span>&#160;   <span class="keywordflow">if</span> (j-&gt;succ_high == 0) {</div>
 <div class="line"><a name="l02015"></a><span class="lineno"> 2015</span>&#160;      <span class="comment">// first scan for DC coefficient, must be first</span></div>
-<div class="line"><a name="l02016"></a><span class="lineno"> 2016</span>&#160;      memset(data,0,64*<span class="keyword">sizeof</span>(data[0])); <span class="comment">// 0 all the ac values now</span></div>
+<div class="line"><a name="l02016"></a><span class="lineno"> 2016</span>&#160;      memset(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>,0,64*<span class="keyword">sizeof</span>(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[0])); <span class="comment">// 0 all the ac values now</span></div>
 <div class="line"><a name="l02017"></a><span class="lineno"> 2017</span>&#160;      t = stbi__jpeg_huff_decode(j, hdc);</div>
 <div class="line"><a name="l02018"></a><span class="lineno"> 2018</span>&#160;      diff = t ? stbi__extend_receive(j, t) : 0;</div>
 <div class="line"><a name="l02019"></a><span class="lineno"> 2019</span>&#160; </div>
 <div class="line"><a name="l02020"></a><span class="lineno"> 2020</span>&#160;      dc = j-&gt;img_comp[b].dc_pred + diff;</div>
 <div class="line"><a name="l02021"></a><span class="lineno"> 2021</span>&#160;      j-&gt;img_comp[b].dc_pred = dc;</div>
-<div class="line"><a name="l02022"></a><span class="lineno"> 2022</span>&#160;      data[0] = (short) (dc &lt;&lt; j-&gt;succ_low);</div>
+<div class="line"><a name="l02022"></a><span class="lineno"> 2022</span>&#160;      <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[0] = (short) (dc &lt;&lt; j-&gt;succ_low);</div>
 <div class="line"><a name="l02023"></a><span class="lineno"> 2023</span>&#160;   } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l02024"></a><span class="lineno"> 2024</span>&#160;      <span class="comment">// refinement scan for DC coefficient</span></div>
 <div class="line"><a name="l02025"></a><span class="lineno"> 2025</span>&#160;      <span class="keywordflow">if</span> (stbi__jpeg_get_bit(j))</div>
-<div class="line"><a name="l02026"></a><span class="lineno"> 2026</span>&#160;         data[0] += (<span class="keywordtype">short</span>) (1 &lt;&lt; j-&gt;succ_low);</div>
+<div class="line"><a name="l02026"></a><span class="lineno"> 2026</span>&#160;         <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[0] += (<span class="keywordtype">short</span>) (1 &lt;&lt; j-&gt;succ_low);</div>
 <div class="line"><a name="l02027"></a><span class="lineno"> 2027</span>&#160;   }</div>
 <div class="line"><a name="l02028"></a><span class="lineno"> 2028</span>&#160;   <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l02029"></a><span class="lineno"> 2029</span>&#160;}</div>
 <div class="line"><a name="l02030"></a><span class="lineno"> 2030</span>&#160; </div>
 <div class="line"><a name="l02031"></a><span class="lineno"> 2031</span>&#160;<span class="comment">// @OPTIMIZE: store non-zigzagged during the decode passes,</span></div>
 <div class="line"><a name="l02032"></a><span class="lineno"> 2032</span>&#160;<span class="comment">// and only de-zigzag when dequantizing</span></div>
-<div class="line"><a name="l02033"></a><span class="lineno"> 2033</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> stbi__jpeg_decode_block_prog_ac(stbi__jpeg *j, <span class="keywordtype">short</span> data[64], stbi__huffman *hac, stbi__int16 *fac)</div>
+<div class="line"><a name="l02033"></a><span class="lineno"> 2033</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> stbi__jpeg_decode_block_prog_ac(stbi__jpeg *j, <span class="keywordtype">short</span> <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[64], stbi__huffman *hac, stbi__int16 *fac)</div>
 <div class="line"><a name="l02034"></a><span class="lineno"> 2034</span>&#160;{</div>
 <div class="line"><a name="l02035"></a><span class="lineno"> 2035</span>&#160;   <span class="keywordtype">int</span> k;</div>
 <div class="line"><a name="l02036"></a><span class="lineno"> 2036</span>&#160;   <span class="keywordflow">if</span> (j-&gt;spec_start == 0) <span class="keywordflow">return</span> stbi__err(<span class="stringliteral">&quot;can&#39;t merge dc and ac&quot;</span>, <span class="stringliteral">&quot;Corrupt JPEG&quot;</span>);</div>
@@ -2118,7 +2118,7 @@ $(function() {
 <div class="line"><a name="l02056"></a><span class="lineno"> 2056</span>&#160;            j-&gt;code_buffer &lt;&lt;= s;</div>
 <div class="line"><a name="l02057"></a><span class="lineno"> 2057</span>&#160;            j-&gt;code_bits -= s;</div>
 <div class="line"><a name="l02058"></a><span class="lineno"> 2058</span>&#160;            zig = stbi__jpeg_dezigzag[k++];</div>
-<div class="line"><a name="l02059"></a><span class="lineno"> 2059</span>&#160;            data[zig] = (short) ((r &gt;&gt; 8) &lt;&lt; shift);</div>
+<div class="line"><a name="l02059"></a><span class="lineno"> 2059</span>&#160;            <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[zig] = (short) ((r &gt;&gt; 8) &lt;&lt; shift);</div>
 <div class="line"><a name="l02060"></a><span class="lineno"> 2060</span>&#160;         } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l02061"></a><span class="lineno"> 2061</span>&#160;            <span class="keywordtype">int</span> rs = stbi__jpeg_huff_decode(j, hac);</div>
 <div class="line"><a name="l02062"></a><span class="lineno"> 2062</span>&#160;            <span class="keywordflow">if</span> (rs &lt; 0) <span class="keywordflow">return</span> stbi__err(<span class="stringliteral">&quot;bad huffman code&quot;</span>,<span class="stringliteral">&quot;Corrupt JPEG&quot;</span>);</div>
@@ -2136,7 +2136,7 @@ $(function() {
 <div class="line"><a name="l02074"></a><span class="lineno"> 2074</span>&#160;            } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l02075"></a><span class="lineno"> 2075</span>&#160;               k += r;</div>
 <div class="line"><a name="l02076"></a><span class="lineno"> 2076</span>&#160;               zig = stbi__jpeg_dezigzag[k++];</div>
-<div class="line"><a name="l02077"></a><span class="lineno"> 2077</span>&#160;               data[zig] = (short) (stbi__extend_receive(j,s) &lt;&lt; shift);</div>
+<div class="line"><a name="l02077"></a><span class="lineno"> 2077</span>&#160;               <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[zig] = (short) (stbi__extend_receive(j,s) &lt;&lt; shift);</div>
 <div class="line"><a name="l02078"></a><span class="lineno"> 2078</span>&#160;            }</div>
 <div class="line"><a name="l02079"></a><span class="lineno"> 2079</span>&#160;         }</div>
 <div class="line"><a name="l02080"></a><span class="lineno"> 2080</span>&#160;      } <span class="keywordflow">while</span> (k &lt;= j-&gt;spec_end);</div>
@@ -2148,7 +2148,7 @@ $(function() {
 <div class="line"><a name="l02086"></a><span class="lineno"> 2086</span>&#160;      <span class="keywordflow">if</span> (j-&gt;eob_run) {</div>
 <div class="line"><a name="l02087"></a><span class="lineno"> 2087</span>&#160;         --j-&gt;eob_run;</div>
 <div class="line"><a name="l02088"></a><span class="lineno"> 2088</span>&#160;         <span class="keywordflow">for</span> (k = j-&gt;spec_start; k &lt;= j-&gt;spec_end; ++k) {</div>
-<div class="line"><a name="l02089"></a><span class="lineno"> 2089</span>&#160;            <span class="keywordtype">short</span> *p = &amp;data[stbi__jpeg_dezigzag[k]];</div>
+<div class="line"><a name="l02089"></a><span class="lineno"> 2089</span>&#160;            <span class="keywordtype">short</span> *p = &amp;<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[stbi__jpeg_dezigzag[k]];</div>
 <div class="line"><a name="l02090"></a><span class="lineno"> 2090</span>&#160;            <span class="keywordflow">if</span> (*p != 0)</div>
 <div class="line"><a name="l02091"></a><span class="lineno"> 2091</span>&#160;               <span class="keywordflow">if</span> (stbi__jpeg_get_bit(j))</div>
 <div class="line"><a name="l02092"></a><span class="lineno"> 2092</span>&#160;                  <span class="keywordflow">if</span> ((*p &amp; bit)==0) {</div>
@@ -2188,7 +2188,7 @@ $(function() {
 <div class="line"><a name="l02126"></a><span class="lineno"> 2126</span>&#160; </div>
 <div class="line"><a name="l02127"></a><span class="lineno"> 2127</span>&#160;            <span class="comment">// advance by r</span></div>
 <div class="line"><a name="l02128"></a><span class="lineno"> 2128</span>&#160;            <span class="keywordflow">while</span> (k &lt;= j-&gt;spec_end) {</div>
-<div class="line"><a name="l02129"></a><span class="lineno"> 2129</span>&#160;               <span class="keywordtype">short</span> *p = &amp;data[stbi__jpeg_dezigzag[k++]];</div>
+<div class="line"><a name="l02129"></a><span class="lineno"> 2129</span>&#160;               <span class="keywordtype">short</span> *p = &amp;<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[stbi__jpeg_dezigzag[k++]];</div>
 <div class="line"><a name="l02130"></a><span class="lineno"> 2130</span>&#160;               <span class="keywordflow">if</span> (*p != 0) {</div>
 <div class="line"><a name="l02131"></a><span class="lineno"> 2131</span>&#160;                  <span class="keywordflow">if</span> (stbi__jpeg_get_bit(j))</div>
 <div class="line"><a name="l02132"></a><span class="lineno"> 2132</span>&#160;                     <span class="keywordflow">if</span> ((*p &amp; bit)==0) {</div>
@@ -2263,11 +2263,11 @@ $(function() {
 <div class="line"><a name="l02201"></a><span class="lineno"> 2201</span>&#160;<span class="preprocessor">   t1 += p2+p4;                                \</span></div>
 <div class="line"><a name="l02202"></a><span class="lineno"> 2202</span>&#160;<span class="preprocessor">   t0 += p1+p3;</span></div>
 <div class="line"><a name="l02203"></a><span class="lineno"> 2203</span>&#160; </div>
-<div class="line"><a name="l02204"></a><span class="lineno"> 2204</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> stbi__idct_block(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *out, <span class="keywordtype">int</span> out_stride, <span class="keywordtype">short</span> data[64])</div>
+<div class="line"><a name="l02204"></a><span class="lineno"> 2204</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> stbi__idct_block(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *out, <span class="keywordtype">int</span> out_stride, <span class="keywordtype">short</span> <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[64])</div>
 <div class="line"><a name="l02205"></a><span class="lineno"> 2205</span>&#160;{</div>
 <div class="line"><a name="l02206"></a><span class="lineno"> 2206</span>&#160;   <span class="keywordtype">int</span> i,val[64],*v=val;</div>
 <div class="line"><a name="l02207"></a><span class="lineno"> 2207</span>&#160;   <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *o;</div>
-<div class="line"><a name="l02208"></a><span class="lineno"> 2208</span>&#160;   <span class="keywordtype">short</span> *d = data;</div>
+<div class="line"><a name="l02208"></a><span class="lineno"> 2208</span>&#160;   <span class="keywordtype">short</span> *d = <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>;</div>
 <div class="line"><a name="l02209"></a><span class="lineno"> 2209</span>&#160; </div>
 <div class="line"><a name="l02210"></a><span class="lineno"> 2210</span>&#160;   <span class="comment">// columns</span></div>
 <div class="line"><a name="l02211"></a><span class="lineno"> 2211</span>&#160;   <span class="keywordflow">for</span> (i=0; i &lt; 8; ++i,++d, ++v) {</div>
@@ -2326,7 +2326,7 @@ $(function() {
 <div class="line"><a name="l02264"></a><span class="lineno"> 2264</span>&#160;<span class="comment">// sse2 integer IDCT. not the fastest possible implementation but it</span></div>
 <div class="line"><a name="l02265"></a><span class="lineno"> 2265</span>&#160;<span class="comment">// produces bit-identical results to the generic C version so it&#39;s</span></div>
 <div class="line"><a name="l02266"></a><span class="lineno"> 2266</span>&#160;<span class="comment">// fully &quot;transparent&quot;.</span></div>
-<div class="line"><a name="l02267"></a><span class="lineno"> 2267</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> stbi__idct_simd(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *out, <span class="keywordtype">int</span> out_stride, <span class="keywordtype">short</span> data[64])</div>
+<div class="line"><a name="l02267"></a><span class="lineno"> 2267</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> stbi__idct_simd(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *out, <span class="keywordtype">int</span> out_stride, <span class="keywordtype">short</span> <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[64])</div>
 <div class="line"><a name="l02268"></a><span class="lineno"> 2268</span>&#160;{</div>
 <div class="line"><a name="l02269"></a><span class="lineno"> 2269</span>&#160;   <span class="comment">// This is constructed to match our regular (generic) integer IDCT exactly.</span></div>
 <div class="line"><a name="l02270"></a><span class="lineno"> 2270</span>&#160;   __m128i row0, row1, row2, row3, row4, row5, row6, row7;</div>
@@ -2425,14 +2425,14 @@ $(function() {
 <div class="line"><a name="l02363"></a><span class="lineno"> 2363</span>&#160;   __m128i bias_1 = _mm_set1_epi32(65536 + (128&lt;&lt;17));</div>
 <div class="line"><a name="l02364"></a><span class="lineno"> 2364</span>&#160; </div>
 <div class="line"><a name="l02365"></a><span class="lineno"> 2365</span>&#160;   <span class="comment">// load</span></div>
-<div class="line"><a name="l02366"></a><span class="lineno"> 2366</span>&#160;   row0 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (data + 0*8));</div>
-<div class="line"><a name="l02367"></a><span class="lineno"> 2367</span>&#160;   row1 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (data + 1*8));</div>
-<div class="line"><a name="l02368"></a><span class="lineno"> 2368</span>&#160;   row2 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (data + 2*8));</div>
-<div class="line"><a name="l02369"></a><span class="lineno"> 2369</span>&#160;   row3 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (data + 3*8));</div>
-<div class="line"><a name="l02370"></a><span class="lineno"> 2370</span>&#160;   row4 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (data + 4*8));</div>
-<div class="line"><a name="l02371"></a><span class="lineno"> 2371</span>&#160;   row5 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (data + 5*8));</div>
-<div class="line"><a name="l02372"></a><span class="lineno"> 2372</span>&#160;   row6 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (data + 6*8));</div>
-<div class="line"><a name="l02373"></a><span class="lineno"> 2373</span>&#160;   row7 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (data + 7*8));</div>
+<div class="line"><a name="l02366"></a><span class="lineno"> 2366</span>&#160;   row0 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 0*8));</div>
+<div class="line"><a name="l02367"></a><span class="lineno"> 2367</span>&#160;   row1 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 1*8));</div>
+<div class="line"><a name="l02368"></a><span class="lineno"> 2368</span>&#160;   row2 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 2*8));</div>
+<div class="line"><a name="l02369"></a><span class="lineno"> 2369</span>&#160;   row3 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 3*8));</div>
+<div class="line"><a name="l02370"></a><span class="lineno"> 2370</span>&#160;   row4 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 4*8));</div>
+<div class="line"><a name="l02371"></a><span class="lineno"> 2371</span>&#160;   row5 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 5*8));</div>
+<div class="line"><a name="l02372"></a><span class="lineno"> 2372</span>&#160;   row6 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 6*8));</div>
+<div class="line"><a name="l02373"></a><span class="lineno"> 2373</span>&#160;   row7 = _mm_load_si128((<span class="keyword">const</span> __m128i *) (<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 7*8));</div>
 <div class="line"><a name="l02374"></a><span class="lineno"> 2374</span>&#160; </div>
 <div class="line"><a name="l02375"></a><span class="lineno"> 2375</span>&#160;   <span class="comment">// column pass</span></div>
 <div class="line"><a name="l02376"></a><span class="lineno"> 2376</span>&#160;   dct_pass(bias_0, 10);</div>
@@ -2507,7 +2507,7 @@ $(function() {
 <div class="line"><a name="l02445"></a><span class="lineno"> 2445</span>&#160; </div>
 <div class="line"><a name="l02446"></a><span class="lineno"> 2446</span>&#160;<span class="comment">// NEON integer IDCT. should produce bit-identical</span></div>
 <div class="line"><a name="l02447"></a><span class="lineno"> 2447</span>&#160;<span class="comment">// results to the generic C version.</span></div>
-<div class="line"><a name="l02448"></a><span class="lineno"> 2448</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> stbi__idct_simd(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *out, <span class="keywordtype">int</span> out_stride, <span class="keywordtype">short</span> data[64])</div>
+<div class="line"><a name="l02448"></a><span class="lineno"> 2448</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> stbi__idct_simd(<a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *out, <span class="keywordtype">int</span> out_stride, <span class="keywordtype">short</span> <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[64])</div>
 <div class="line"><a name="l02449"></a><span class="lineno"> 2449</span>&#160;{</div>
 <div class="line"><a name="l02450"></a><span class="lineno"> 2450</span>&#160;   int16x8_t row0, row1, row2, row3, row4, row5, row6, row7;</div>
 <div class="line"><a name="l02451"></a><span class="lineno"> 2451</span>&#160; </div>
@@ -2596,14 +2596,14 @@ $(function() {
 <div class="line"><a name="l02534"></a><span class="lineno"> 2534</span>&#160;<span class="preprocessor">   }</span></div>
 <div class="line"><a name="l02535"></a><span class="lineno"> 2535</span>&#160; </div>
 <div class="line"><a name="l02536"></a><span class="lineno"> 2536</span>&#160;   <span class="comment">// load</span></div>
-<div class="line"><a name="l02537"></a><span class="lineno"> 2537</span>&#160;   row0 = vld1q_s16(data + 0*8);</div>
-<div class="line"><a name="l02538"></a><span class="lineno"> 2538</span>&#160;   row1 = vld1q_s16(data + 1*8);</div>
-<div class="line"><a name="l02539"></a><span class="lineno"> 2539</span>&#160;   row2 = vld1q_s16(data + 2*8);</div>
-<div class="line"><a name="l02540"></a><span class="lineno"> 2540</span>&#160;   row3 = vld1q_s16(data + 3*8);</div>
-<div class="line"><a name="l02541"></a><span class="lineno"> 2541</span>&#160;   row4 = vld1q_s16(data + 4*8);</div>
-<div class="line"><a name="l02542"></a><span class="lineno"> 2542</span>&#160;   row5 = vld1q_s16(data + 5*8);</div>
-<div class="line"><a name="l02543"></a><span class="lineno"> 2543</span>&#160;   row6 = vld1q_s16(data + 6*8);</div>
-<div class="line"><a name="l02544"></a><span class="lineno"> 2544</span>&#160;   row7 = vld1q_s16(data + 7*8);</div>
+<div class="line"><a name="l02537"></a><span class="lineno"> 2537</span>&#160;   row0 = vld1q_s16(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 0*8);</div>
+<div class="line"><a name="l02538"></a><span class="lineno"> 2538</span>&#160;   row1 = vld1q_s16(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 1*8);</div>
+<div class="line"><a name="l02539"></a><span class="lineno"> 2539</span>&#160;   row2 = vld1q_s16(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 2*8);</div>
+<div class="line"><a name="l02540"></a><span class="lineno"> 2540</span>&#160;   row3 = vld1q_s16(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 3*8);</div>
+<div class="line"><a name="l02541"></a><span class="lineno"> 2541</span>&#160;   row4 = vld1q_s16(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 4*8);</div>
+<div class="line"><a name="l02542"></a><span class="lineno"> 2542</span>&#160;   row5 = vld1q_s16(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 5*8);</div>
+<div class="line"><a name="l02543"></a><span class="lineno"> 2543</span>&#160;   row6 = vld1q_s16(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 6*8);</div>
+<div class="line"><a name="l02544"></a><span class="lineno"> 2544</span>&#160;   row7 = vld1q_s16(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> + 7*8);</div>
 <div class="line"><a name="l02545"></a><span class="lineno"> 2545</span>&#160; </div>
 <div class="line"><a name="l02546"></a><span class="lineno"> 2546</span>&#160;   <span class="comment">// add DC bias</span></div>
 <div class="line"><a name="l02547"></a><span class="lineno"> 2547</span>&#160;   row0 = vaddq_s16(row0, vsetq_lane_s16(1024, vdupq_n_s16(0), 0));</div>
@@ -2751,7 +2751,7 @@ $(function() {
 <div class="line"><a name="l02689"></a><span class="lineno"> 2689</span>&#160;   <span class="keywordflow">if</span> (!z-&gt;progressive) {</div>
 <div class="line"><a name="l02690"></a><span class="lineno"> 2690</span>&#160;      <span class="keywordflow">if</span> (z-&gt;scan_n == 1) {</div>
 <div class="line"><a name="l02691"></a><span class="lineno"> 2691</span>&#160;         <span class="keywordtype">int</span> i,j;</div>
-<div class="line"><a name="l02692"></a><span class="lineno"> 2692</span>&#160;         STBI_SIMD_ALIGN(<span class="keywordtype">short</span>, data[64]);</div>
+<div class="line"><a name="l02692"></a><span class="lineno"> 2692</span>&#160;         STBI_SIMD_ALIGN(<span class="keywordtype">short</span>, <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[64]);</div>
 <div class="line"><a name="l02693"></a><span class="lineno"> 2693</span>&#160;         <span class="keywordtype">int</span> n = z-&gt;order[0];</div>
 <div class="line"><a name="l02694"></a><span class="lineno"> 2694</span>&#160;         <span class="comment">// non-interleaved data, we just need to process one block at a time,</span></div>
 <div class="line"><a name="l02695"></a><span class="lineno"> 2695</span>&#160;         <span class="comment">// in trivial scanline order</span></div>
@@ -2762,8 +2762,8 @@ $(function() {
 <div class="line"><a name="l02700"></a><span class="lineno"> 2700</span>&#160;         <span class="keywordflow">for</span> (j=0; j &lt; h; ++j) {</div>
 <div class="line"><a name="l02701"></a><span class="lineno"> 2701</span>&#160;            <span class="keywordflow">for</span> (i=0; i &lt; w; ++i) {</div>
 <div class="line"><a name="l02702"></a><span class="lineno"> 2702</span>&#160;               <span class="keywordtype">int</span> ha = z-&gt;img_comp[n].ha;</div>
-<div class="line"><a name="l02703"></a><span class="lineno"> 2703</span>&#160;               <span class="keywordflow">if</span> (!stbi__jpeg_decode_block(z, data, z-&gt;huff_dc+z-&gt;img_comp[n].hd, z-&gt;huff_ac+ha, z-&gt;fast_ac[ha], n, z-&gt;dequant[z-&gt;img_comp[n].tq])) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l02704"></a><span class="lineno"> 2704</span>&#160;               z-&gt;idct_block_kernel(z-&gt;img_comp[n].data+z-&gt;img_comp[n].w2*j*8+i*8, z-&gt;img_comp[n].w2, data);</div>
+<div class="line"><a name="l02703"></a><span class="lineno"> 2703</span>&#160;               <span class="keywordflow">if</span> (!stbi__jpeg_decode_block(z, <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, z-&gt;huff_dc+z-&gt;img_comp[n].hd, z-&gt;huff_ac+ha, z-&gt;fast_ac[ha], n, z-&gt;dequant[z-&gt;img_comp[n].tq])) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l02704"></a><span class="lineno"> 2704</span>&#160;               z-&gt;idct_block_kernel(z-&gt;img_comp[n].data+z-&gt;img_comp[n].w2*j*8+i*8, z-&gt;img_comp[n].w2, <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>);</div>
 <div class="line"><a name="l02705"></a><span class="lineno"> 2705</span>&#160;               <span class="comment">// every data block is an MCU, so countdown the restart interval</span></div>
 <div class="line"><a name="l02706"></a><span class="lineno"> 2706</span>&#160;               <span class="keywordflow">if</span> (--z-&gt;todo &lt;= 0) {</div>
 <div class="line"><a name="l02707"></a><span class="lineno"> 2707</span>&#160;                  <span class="keywordflow">if</span> (z-&gt;code_bits &lt; 24) stbi__grow_buffer_unsafe(z);</div>
@@ -2777,7 +2777,7 @@ $(function() {
 <div class="line"><a name="l02715"></a><span class="lineno"> 2715</span>&#160;         <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l02716"></a><span class="lineno"> 2716</span>&#160;      } <span class="keywordflow">else</span> { <span class="comment">// interleaved</span></div>
 <div class="line"><a name="l02717"></a><span class="lineno"> 2717</span>&#160;         <span class="keywordtype">int</span> i,j,k,x,y;</div>
-<div class="line"><a name="l02718"></a><span class="lineno"> 2718</span>&#160;         STBI_SIMD_ALIGN(<span class="keywordtype">short</span>, data[64]);</div>
+<div class="line"><a name="l02718"></a><span class="lineno"> 2718</span>&#160;         STBI_SIMD_ALIGN(<span class="keywordtype">short</span>, <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[64]);</div>
 <div class="line"><a name="l02719"></a><span class="lineno"> 2719</span>&#160;         <span class="keywordflow">for</span> (j=0; j &lt; z-&gt;img_mcu_y; ++j) {</div>
 <div class="line"><a name="l02720"></a><span class="lineno"> 2720</span>&#160;            <span class="keywordflow">for</span> (i=0; i &lt; z-&gt;img_mcu_x; ++i) {</div>
 <div class="line"><a name="l02721"></a><span class="lineno"> 2721</span>&#160;               <span class="comment">// scan an interleaved mcu... process scan_n components in order</span></div>
@@ -2790,8 +2790,8 @@ $(function() {
 <div class="line"><a name="l02728"></a><span class="lineno"> 2728</span>&#160;                        <span class="keywordtype">int</span> x2 = (i*z-&gt;img_comp[n].h + x)*8;</div>
 <div class="line"><a name="l02729"></a><span class="lineno"> 2729</span>&#160;                        <span class="keywordtype">int</span> y2 = (j*z-&gt;img_comp[n].v + y)*8;</div>
 <div class="line"><a name="l02730"></a><span class="lineno"> 2730</span>&#160;                        <span class="keywordtype">int</span> ha = z-&gt;img_comp[n].ha;</div>
-<div class="line"><a name="l02731"></a><span class="lineno"> 2731</span>&#160;                        <span class="keywordflow">if</span> (!stbi__jpeg_decode_block(z, data, z-&gt;huff_dc+z-&gt;img_comp[n].hd, z-&gt;huff_ac+ha, z-&gt;fast_ac[ha], n, z-&gt;dequant[z-&gt;img_comp[n].tq])) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l02732"></a><span class="lineno"> 2732</span>&#160;                        z-&gt;idct_block_kernel(z-&gt;img_comp[n].data+z-&gt;img_comp[n].w2*y2+x2, z-&gt;img_comp[n].w2, data);</div>
+<div class="line"><a name="l02731"></a><span class="lineno"> 2731</span>&#160;                        <span class="keywordflow">if</span> (!stbi__jpeg_decode_block(z, <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, z-&gt;huff_dc+z-&gt;img_comp[n].hd, z-&gt;huff_ac+ha, z-&gt;fast_ac[ha], n, z-&gt;dequant[z-&gt;img_comp[n].tq])) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l02732"></a><span class="lineno"> 2732</span>&#160;                        z-&gt;idct_block_kernel(z-&gt;img_comp[n].data+z-&gt;img_comp[n].w2*y2+x2, z-&gt;img_comp[n].w2, <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>);</div>
 <div class="line"><a name="l02733"></a><span class="lineno"> 2733</span>&#160;                     }</div>
 <div class="line"><a name="l02734"></a><span class="lineno"> 2734</span>&#160;                  }</div>
 <div class="line"><a name="l02735"></a><span class="lineno"> 2735</span>&#160;               }</div>
@@ -2818,13 +2818,13 @@ $(function() {
 <div class="line"><a name="l02756"></a><span class="lineno"> 2756</span>&#160;         <span class="keywordtype">int</span> h = (z-&gt;img_comp[n].y+7) &gt;&gt; 3;</div>
 <div class="line"><a name="l02757"></a><span class="lineno"> 2757</span>&#160;         <span class="keywordflow">for</span> (j=0; j &lt; h; ++j) {</div>
 <div class="line"><a name="l02758"></a><span class="lineno"> 2758</span>&#160;            <span class="keywordflow">for</span> (i=0; i &lt; w; ++i) {</div>
-<div class="line"><a name="l02759"></a><span class="lineno"> 2759</span>&#160;               <span class="keywordtype">short</span> *data = z-&gt;img_comp[n].coeff + 64 * (i + j * z-&gt;img_comp[n].coeff_w);</div>
+<div class="line"><a name="l02759"></a><span class="lineno"> 2759</span>&#160;               <span class="keywordtype">short</span> *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> = z-&gt;img_comp[n].coeff + 64 * (i + j * z-&gt;img_comp[n].coeff_w);</div>
 <div class="line"><a name="l02760"></a><span class="lineno"> 2760</span>&#160;               <span class="keywordflow">if</span> (z-&gt;spec_start == 0) {</div>
-<div class="line"><a name="l02761"></a><span class="lineno"> 2761</span>&#160;                  <span class="keywordflow">if</span> (!stbi__jpeg_decode_block_prog_dc(z, data, &amp;z-&gt;huff_dc[z-&gt;img_comp[n].hd], n))</div>
+<div class="line"><a name="l02761"></a><span class="lineno"> 2761</span>&#160;                  <span class="keywordflow">if</span> (!stbi__jpeg_decode_block_prog_dc(z, <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, &amp;z-&gt;huff_dc[z-&gt;img_comp[n].hd], n))</div>
 <div class="line"><a name="l02762"></a><span class="lineno"> 2762</span>&#160;                     <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l02763"></a><span class="lineno"> 2763</span>&#160;               } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l02764"></a><span class="lineno"> 2764</span>&#160;                  <span class="keywordtype">int</span> ha = z-&gt;img_comp[n].ha;</div>
-<div class="line"><a name="l02765"></a><span class="lineno"> 2765</span>&#160;                  <span class="keywordflow">if</span> (!stbi__jpeg_decode_block_prog_ac(z, data, &amp;z-&gt;huff_ac[ha], z-&gt;fast_ac[ha]))</div>
+<div class="line"><a name="l02765"></a><span class="lineno"> 2765</span>&#160;                  <span class="keywordflow">if</span> (!stbi__jpeg_decode_block_prog_ac(z, <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, &amp;z-&gt;huff_ac[ha], z-&gt;fast_ac[ha]))</div>
 <div class="line"><a name="l02766"></a><span class="lineno"> 2766</span>&#160;                     <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l02767"></a><span class="lineno"> 2767</span>&#160;               }</div>
 <div class="line"><a name="l02768"></a><span class="lineno"> 2768</span>&#160;               <span class="comment">// every data block is an MCU, so countdown the restart interval</span></div>
@@ -2849,8 +2849,8 @@ $(function() {
 <div class="line"><a name="l02787"></a><span class="lineno"> 2787</span>&#160;                     <span class="keywordflow">for</span> (x=0; x &lt; z-&gt;img_comp[n].h; ++x) {</div>
 <div class="line"><a name="l02788"></a><span class="lineno"> 2788</span>&#160;                        <span class="keywordtype">int</span> x2 = (i*z-&gt;img_comp[n].h + x);</div>
 <div class="line"><a name="l02789"></a><span class="lineno"> 2789</span>&#160;                        <span class="keywordtype">int</span> y2 = (j*z-&gt;img_comp[n].v + y);</div>
-<div class="line"><a name="l02790"></a><span class="lineno"> 2790</span>&#160;                        <span class="keywordtype">short</span> *data = z-&gt;img_comp[n].coeff + 64 * (x2 + y2 * z-&gt;img_comp[n].coeff_w);</div>
-<div class="line"><a name="l02791"></a><span class="lineno"> 2791</span>&#160;                        <span class="keywordflow">if</span> (!stbi__jpeg_decode_block_prog_dc(z, data, &amp;z-&gt;huff_dc[z-&gt;img_comp[n].hd], n))</div>
+<div class="line"><a name="l02790"></a><span class="lineno"> 2790</span>&#160;                        <span class="keywordtype">short</span> *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> = z-&gt;img_comp[n].coeff + 64 * (x2 + y2 * z-&gt;img_comp[n].coeff_w);</div>
+<div class="line"><a name="l02791"></a><span class="lineno"> 2791</span>&#160;                        <span class="keywordflow">if</span> (!stbi__jpeg_decode_block_prog_dc(z, <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, &amp;z-&gt;huff_dc[z-&gt;img_comp[n].hd], n))</div>
 <div class="line"><a name="l02792"></a><span class="lineno"> 2792</span>&#160;                           <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l02793"></a><span class="lineno"> 2793</span>&#160;                     }</div>
 <div class="line"><a name="l02794"></a><span class="lineno"> 2794</span>&#160;                  }</div>
@@ -2869,11 +2869,11 @@ $(function() {
 <div class="line"><a name="l02807"></a><span class="lineno"> 2807</span>&#160;   }</div>
 <div class="line"><a name="l02808"></a><span class="lineno"> 2808</span>&#160;}</div>
 <div class="line"><a name="l02809"></a><span class="lineno"> 2809</span>&#160; </div>
-<div class="line"><a name="l02810"></a><span class="lineno"> 2810</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> stbi__jpeg_dequantize(<span class="keywordtype">short</span> *data, stbi__uint16 *dequant)</div>
+<div class="line"><a name="l02810"></a><span class="lineno"> 2810</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> stbi__jpeg_dequantize(<span class="keywordtype">short</span> *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, stbi__uint16 *dequant)</div>
 <div class="line"><a name="l02811"></a><span class="lineno"> 2811</span>&#160;{</div>
 <div class="line"><a name="l02812"></a><span class="lineno"> 2812</span>&#160;   <span class="keywordtype">int</span> i;</div>
 <div class="line"><a name="l02813"></a><span class="lineno"> 2813</span>&#160;   <span class="keywordflow">for</span> (i=0; i &lt; 64; ++i)</div>
-<div class="line"><a name="l02814"></a><span class="lineno"> 2814</span>&#160;      data[i] *= dequant[i];</div>
+<div class="line"><a name="l02814"></a><span class="lineno"> 2814</span>&#160;      <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>[i] *= dequant[i];</div>
 <div class="line"><a name="l02815"></a><span class="lineno"> 2815</span>&#160;}</div>
 <div class="line"><a name="l02816"></a><span class="lineno"> 2816</span>&#160; </div>
 <div class="line"><a name="l02817"></a><span class="lineno"> 2817</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> stbi__jpeg_finish(stbi__jpeg *z)</div>
@@ -2886,9 +2886,9 @@ $(function() {
 <div class="line"><a name="l02824"></a><span class="lineno"> 2824</span>&#160;         <span class="keywordtype">int</span> h = (z-&gt;img_comp[n].y+7) &gt;&gt; 3;</div>
 <div class="line"><a name="l02825"></a><span class="lineno"> 2825</span>&#160;         <span class="keywordflow">for</span> (j=0; j &lt; h; ++j) {</div>
 <div class="line"><a name="l02826"></a><span class="lineno"> 2826</span>&#160;            <span class="keywordflow">for</span> (i=0; i &lt; w; ++i) {</div>
-<div class="line"><a name="l02827"></a><span class="lineno"> 2827</span>&#160;               <span class="keywordtype">short</span> *data = z-&gt;img_comp[n].coeff + 64 * (i + j * z-&gt;img_comp[n].coeff_w);</div>
-<div class="line"><a name="l02828"></a><span class="lineno"> 2828</span>&#160;               stbi__jpeg_dequantize(data, z-&gt;dequant[z-&gt;img_comp[n].tq]);</div>
-<div class="line"><a name="l02829"></a><span class="lineno"> 2829</span>&#160;               z-&gt;idct_block_kernel(z-&gt;img_comp[n].data+z-&gt;img_comp[n].w2*j*8+i*8, z-&gt;img_comp[n].w2, data);</div>
+<div class="line"><a name="l02827"></a><span class="lineno"> 2827</span>&#160;               <span class="keywordtype">short</span> *<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a> = z-&gt;img_comp[n].coeff + 64 * (i + j * z-&gt;img_comp[n].coeff_w);</div>
+<div class="line"><a name="l02828"></a><span class="lineno"> 2828</span>&#160;               stbi__jpeg_dequantize(<a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>, z-&gt;dequant[z-&gt;img_comp[n].tq]);</div>
+<div class="line"><a name="l02829"></a><span class="lineno"> 2829</span>&#160;               z-&gt;idct_block_kernel(z-&gt;img_comp[n].data+z-&gt;img_comp[n].w2*j*8+i*8, z-&gt;img_comp[n].w2, <a class="code" href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a>);</div>
 <div class="line"><a name="l02830"></a><span class="lineno"> 2830</span>&#160;            }</div>
 <div class="line"><a name="l02831"></a><span class="lineno"> 2831</span>&#160;         }</div>
 <div class="line"><a name="l02832"></a><span class="lineno"> 2832</span>&#160;      }</div>
@@ -5994,7 +5994,7 @@ $(function() {
 <div class="line"><a name="l05932"></a><span class="lineno"> 5932</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a name="l05933"></a><span class="lineno"> 5933</span>&#160;{</div>
 <div class="line"><a name="l05934"></a><span class="lineno"> 5934</span>&#160;   <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> size,type,channel;</div>
-<div class="line"><a name="l05935"></a><span class="lineno"> 5935</span>&#160;} stbi__pic_packet;</div>
+<div class="line"><a name="l05935"></a><span class="lineno"> 5935</span>&#160;} <a class="code" href="structstbi____pic__packet.html">stbi__pic_packet</a>;</div>
 <div class="line"><a name="l05936"></a><span class="lineno"> 5936</span>&#160; </div>
 <div class="line"><a name="l05937"></a><span class="lineno"> 5937</span>&#160;<span class="keyword">static</span> <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *stbi__readval(stbi__context *s, <span class="keywordtype">int</span> channel, <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *dest)</div>
 <div class="line"><a name="l05938"></a><span class="lineno"> 5938</span>&#160;{</div>
@@ -6022,12 +6022,12 @@ $(function() {
 <div class="line"><a name="l05960"></a><span class="lineno"> 5960</span>&#160;<span class="keyword">static</span> <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *stbi__pic_load_core(stbi__context *s,<span class="keywordtype">int</span> width,<span class="keywordtype">int</span> height,<span class="keywordtype">int</span> *comp, <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *result)</div>
 <div class="line"><a name="l05961"></a><span class="lineno"> 5961</span>&#160;{</div>
 <div class="line"><a name="l05962"></a><span class="lineno"> 5962</span>&#160;   <span class="keywordtype">int</span> act_comp=0,num_packets=0,y,chained;</div>
-<div class="line"><a name="l05963"></a><span class="lineno"> 5963</span>&#160;   stbi__pic_packet packets[10];</div>
+<div class="line"><a name="l05963"></a><span class="lineno"> 5963</span>&#160;   <a class="code" href="structstbi____pic__packet.html">stbi__pic_packet</a> packets[10];</div>
 <div class="line"><a name="l05964"></a><span class="lineno"> 5964</span>&#160; </div>
 <div class="line"><a name="l05965"></a><span class="lineno"> 5965</span>&#160;   <span class="comment">// this will (should...) cater for even some bizarre stuff like having data</span></div>
 <div class="line"><a name="l05966"></a><span class="lineno"> 5966</span>&#160;    <span class="comment">// for the same channel in multiple packets.</span></div>
 <div class="line"><a name="l05967"></a><span class="lineno"> 5967</span>&#160;   <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l05968"></a><span class="lineno"> 5968</span>&#160;      stbi__pic_packet *packet;</div>
+<div class="line"><a name="l05968"></a><span class="lineno"> 5968</span>&#160;      <a class="code" href="structstbi____pic__packet.html">stbi__pic_packet</a> *packet;</div>
 <div class="line"><a name="l05969"></a><span class="lineno"> 5969</span>&#160; </div>
 <div class="line"><a name="l05970"></a><span class="lineno"> 5970</span>&#160;      <span class="keywordflow">if</span> (num_packets==<span class="keyword">sizeof</span>(packets)/<span class="keyword">sizeof</span>(packets[0]))</div>
 <div class="line"><a name="l05971"></a><span class="lineno"> 5971</span>&#160;         <span class="keywordflow">return</span> stbi__errpuc(<span class="stringliteral">&quot;bad format&quot;</span>,<span class="stringliteral">&quot;too many packets&quot;</span>);</div>
@@ -6051,7 +6051,7 @@ $(function() {
 <div class="line"><a name="l05989"></a><span class="lineno"> 5989</span>&#160;      <span class="keywordtype">int</span> packet_idx;</div>
 <div class="line"><a name="l05990"></a><span class="lineno"> 5990</span>&#160; </div>
 <div class="line"><a name="l05991"></a><span class="lineno"> 5991</span>&#160;      <span class="keywordflow">for</span>(packet_idx=0; packet_idx &lt; num_packets; ++packet_idx) {</div>
-<div class="line"><a name="l05992"></a><span class="lineno"> 5992</span>&#160;         stbi__pic_packet *packet = &amp;packets[packet_idx];</div>
+<div class="line"><a name="l05992"></a><span class="lineno"> 5992</span>&#160;         <a class="code" href="structstbi____pic__packet.html">stbi__pic_packet</a> *packet = &amp;packets[packet_idx];</div>
 <div class="line"><a name="l05993"></a><span class="lineno"> 5993</span>&#160;         <a class="code" href="stb__image_8h.html#a28eb51a1512ce382ee50f20e1d04d50d">stbi_uc</a> *dest = result+y*width*4;</div>
 <div class="line"><a name="l05994"></a><span class="lineno"> 5994</span>&#160; </div>
 <div class="line"><a name="l05995"></a><span class="lineno"> 5995</span>&#160;         <span class="keywordflow">switch</span> (packet-&gt;type) {</div>
@@ -6987,7 +6987,7 @@ $(function() {
 <div class="line"><a name="l06925"></a><span class="lineno"> 6925</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> stbi__pic_info(stbi__context *s, <span class="keywordtype">int</span> *x, <span class="keywordtype">int</span> *y, <span class="keywordtype">int</span> *comp)</div>
 <div class="line"><a name="l06926"></a><span class="lineno"> 6926</span>&#160;{</div>
 <div class="line"><a name="l06927"></a><span class="lineno"> 6927</span>&#160;   <span class="keywordtype">int</span> act_comp=0,num_packets=0,chained,dummy;</div>
-<div class="line"><a name="l06928"></a><span class="lineno"> 6928</span>&#160;   stbi__pic_packet packets[10];</div>
+<div class="line"><a name="l06928"></a><span class="lineno"> 6928</span>&#160;   <a class="code" href="structstbi____pic__packet.html">stbi__pic_packet</a> packets[10];</div>
 <div class="line"><a name="l06929"></a><span class="lineno"> 6929</span>&#160; </div>
 <div class="line"><a name="l06930"></a><span class="lineno"> 6930</span>&#160;   <span class="keywordflow">if</span> (!x) x = &amp;dummy;</div>
 <div class="line"><a name="l06931"></a><span class="lineno"> 6931</span>&#160;   <span class="keywordflow">if</span> (!y) y = &amp;dummy;</div>
@@ -7014,7 +7014,7 @@ $(function() {
 <div class="line"><a name="l06952"></a><span class="lineno"> 6952</span>&#160;   stbi__skip(s, 8);</div>
 <div class="line"><a name="l06953"></a><span class="lineno"> 6953</span>&#160; </div>
 <div class="line"><a name="l06954"></a><span class="lineno"> 6954</span>&#160;   <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l06955"></a><span class="lineno"> 6955</span>&#160;      stbi__pic_packet *packet;</div>
+<div class="line"><a name="l06955"></a><span class="lineno"> 6955</span>&#160;      <a class="code" href="structstbi____pic__packet.html">stbi__pic_packet</a> *packet;</div>
 <div class="line"><a name="l06956"></a><span class="lineno"> 6956</span>&#160; </div>
 <div class="line"><a name="l06957"></a><span class="lineno"> 6957</span>&#160;      <span class="keywordflow">if</span> (num_packets==<span class="keyword">sizeof</span>(packets)/<span class="keyword">sizeof</span>(packets[0]))</div>
 <div class="line"><a name="l06958"></a><span class="lineno"> 6958</span>&#160;         <span class="keywordflow">return</span> 0;</div>
@@ -7533,7 +7533,9 @@ $(function() {
 <div class="ttc" id="astb__image_8h_html_a548d486e07e0eb95671cb200d3a9530f"><div class="ttname"><a href="stb__image_8h.html#a548d486e07e0eb95671cb200d3a9530f">stbi_is_16_bit_from_memory</a></div><div class="ttdeci">STBIDEF int stbi_is_16_bit_from_memory(stbi_uc const *buffer, int len)</div></div>
 <div class="ttc" id="astb__image_8h_html_a8a58b6bcd805afa1bdb14f988dd37fee"><div class="ttname"><a href="stb__image_8h.html#a8a58b6bcd805afa1bdb14f988dd37fee">stbi_load_16</a></div><div class="ttdeci">STBIDEF stbi_us * stbi_load_16(char const *filename, int *x, int *y, int *channels_in_file, int desired_channels)</div></div>
 <div class="ttc" id="astb__image_8h_html_ad30fd870ed2138ce8f38c9dd29b2f76a"><div class="ttname"><a href="stb__image_8h.html#ad30fd870ed2138ce8f38c9dd29b2f76a">stbi_load_16_from_memory</a></div><div class="ttdeci">STBIDEF stbi_us * stbi_load_16_from_memory(stbi_uc const *buffer, int len, int *x, int *y, int *channels_in_file, int desired_channels)</div></div>
+<div class="ttc" id="afile_8txt_html_ad186444c82ab7bbaf0943e10f53e7461"><div class="ttname"><a href="file_8txt.html#ad186444c82ab7bbaf0943e10f53e7461">skip</a></div><div class="ttdeci">enum STBVorbisError int16 residue_books stbi_uc stbi_uc int int hs const stbi_uc const stbi_uc const stbi_uc int int step int short struct stbi__pic_packet int void char int size skip</div><div class="ttdef"><b>Definition:</b> file.txt:1347</div></div>
 <div class="ttc" id="astb__image_8h_html_ae8447830c49bc17f8491e12c1f0ded48"><div class="ttname"><a href="stb__image_8h.html#ae8447830c49bc17f8491e12c1f0ded48">stbi_zlib_decode_buffer</a></div><div class="ttdeci">STBIDEF int stbi_zlib_decode_buffer(char *obuffer, int olen, const char *ibuffer, int ilen)</div></div>
+<div class="ttc" id="afile_8txt_html_a97b93248040f042957c84f38ba31c606"><div class="ttname"><a href="file_8txt.html#a97b93248040f042957c84f38ba31c606">data</a></div><div class="ttdeci">enum STBVorbisError int16 residue_books stbi_uc stbi_uc int int hs const stbi_uc const stbi_uc const stbi_uc int int step int short struct stbi__pic_packet int void char * data</div><div class="ttdef"><b>Definition:</b> file.txt:1346</div></div>
 <div class="ttc" id="astb__image_8h_html_ab89c177fc52f1bb2dc1c05e48129a0a4"><div class="ttname"><a href="stb__image_8h.html#ab89c177fc52f1bb2dc1c05e48129a0a4">stbi_set_flip_vertically_on_load</a></div><div class="ttdeci">STBIDEF void stbi_set_flip_vertically_on_load(int flag_true_if_should_flip)</div></div>
 <div class="ttc" id="astb__image_8h_html_af0e94f316fe1848f632517ca3c11d077"><div class="ttname"><a href="stb__image_8h.html#af0e94f316fe1848f632517ca3c11d077">stbi_is_hdr_from_callbacks</a></div><div class="ttdeci">STBIDEF int stbi_is_hdr_from_callbacks(stbi_io_callbacks const *clbk, void *user)</div></div>
 <div class="ttc" id="astb__image_8h_html_af946583656a362a316b40c0421c20561"><div class="ttname"><a href="stb__image_8h.html#af946583656a362a316b40c0421c20561">stbi_ldr_to_hdr_scale</a></div><div class="ttdeci">STBIDEF void stbi_ldr_to_hdr_scale(float scale)</div></div>
@@ -7556,10 +7558,12 @@ $(function() {
 <div class="ttc" id="astb__image_8h_html_a5cbc6f5cbb3b2d0d87ee959fcee9d23e"><div class="ttname"><a href="stb__image_8h.html#a5cbc6f5cbb3b2d0d87ee959fcee9d23e">stbi_is_hdr_from_memory</a></div><div class="ttdeci">STBIDEF int stbi_is_hdr_from_memory(stbi_uc const *buffer, int len)</div></div>
 <div class="ttc" id="astb__image_8h_html_a038b0e741859a482b8b9d60167e54d27"><div class="ttname"><a href="stb__image_8h.html#a038b0e741859a482b8b9d60167e54d27">stbi_zlib_decode_malloc_guesssize_headerflag</a></div><div class="ttdeci">STBIDEF char * stbi_zlib_decode_malloc_guesssize_headerflag(const char *buffer, int len, int initial_size, int *outlen, int parse_header)</div></div>
 <div class="ttc" id="astb__image_8h_html_a95ebc5c42c1a753200be8d465e933af7"><div class="ttname"><a href="stb__image_8h.html#a95ebc5c42c1a753200be8d465e933af7">stbi_load_from_callbacks</a></div><div class="ttdeci">STBIDEF stbi_uc * stbi_load_from_callbacks(stbi_io_callbacks const *clbk, void *user, int *x, int *y, int *channels_in_file, int desired_channels)</div></div>
+<div class="ttc" id="afile_8txt_html_a716626263b797dc140e6ee71729f6abb"><div class="ttname"><a href="file_8txt.html#a716626263b797dc140e6ee71729f6abb">read</a></div><div class="ttdeci">enum STBVorbisError int16 residue_books stbi_uc stbi_uc int int hs const stbi_uc const stbi_uc const stbi_uc int int step int short struct stbi__pic_packet int void read</div><div class="ttdef"><b>Definition:</b> file.txt:1345</div></div>
 <div class="ttc" id="astb__vorbis_8h_html_aa73214aa5f2f94f63d90bb4e3d99fe53"><div class="ttname"><a href="stb__vorbis_8h.html#aa73214aa5f2f94f63d90bb4e3d99fe53">L</a></div><div class="ttdeci">#define L</div><div class="ttdef"><b>Definition:</b> stb_vorbis.h:5161</div></div>
 <div class="ttc" id="astb__image_8h_html_a06fc87d81c62e9abb8790b6e5713c55bad1eb95ca1fa7706bf732bf35a0ed40aa"><div class="ttname"><a href="stb__image_8h.html#a06fc87d81c62e9abb8790b6e5713c55bad1eb95ca1fa7706bf732bf35a0ed40aa">STBI_grey</a></div><div class="ttdeci">@ STBI_grey</div><div class="ttdef"><b>Definition:</b> stb_image.h:316</div></div>
 <div class="ttc" id="astb__image_8h_html_aa9994764695597161e8f3776e97caa99"><div class="ttname"><a href="stb__image_8h.html#aa9994764695597161e8f3776e97caa99">stbi_load_from_file</a></div><div class="ttdeci">STBIDEF stbi_uc * stbi_load_from_file(FILE *f, int *x, int *y, int *channels_in_file, int desired_channels)</div></div>
 <div class="ttc" id="astb__image_8h_html_a23525ef2b882f3de426b47ecf8d9151b"><div class="ttname"><a href="stb__image_8h.html#a23525ef2b882f3de426b47ecf8d9151b">stbi_convert_iphone_png_to_rgb</a></div><div class="ttdeci">STBIDEF void stbi_convert_iphone_png_to_rgb(int flag_true_if_should_convert)</div></div>
+<div class="ttc" id="astructstbi____pic__packet_html"><div class="ttname"><a href="structstbi____pic__packet.html">stbi__pic_packet</a></div><div class="ttdef"><b>Definition:</b> file.txt:1278</div></div>
 <div class="ttc" id="astb__image_8h_html_a4919b67b12e0e3acc5301f185ca77e2e"><div class="ttname"><a href="stb__image_8h.html#a4919b67b12e0e3acc5301f185ca77e2e">stbi_zlib_decode_malloc</a></div><div class="ttdeci">STBIDEF char * stbi_zlib_decode_malloc(const char *buffer, int len, int *outlen)</div></div>
 <div class="ttc" id="astb__image_8h_html_a0d12efc011adfff7521f3b924feb0b0e"><div class="ttname"><a href="stb__image_8h.html#a0d12efc011adfff7521f3b924feb0b0e">stbi_zlib_decode_noheader_buffer</a></div><div class="ttdeci">STBIDEF int stbi_zlib_decode_noheader_buffer(char *obuffer, int olen, const char *ibuffer, int ilen)</div></div>
 <div class="ttc" id="astb__image_8h_html_aaf10d41631e1e9214fde1688bdbd8524"><div class="ttname"><a href="stb__image_8h.html#aaf10d41631e1e9214fde1688bdbd8524">stbi_is_hdr_from_file</a></div><div class="ttdeci">STBIDEF int stbi_is_hdr_from_file(FILE *f)</div></div>

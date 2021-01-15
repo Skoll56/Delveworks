@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['y_861',['Y',['../_physics_new_8cpp.html#a798e4073d613ca5ba9618e1b3253df14',1,'PhysicsNew.cpp']]],
-  ['ytype_862',['YTYPE',['../stb__vorbis_8h.html#ac09448f53783c6802f40f2f56976c4c9',1,'stb_vorbis.h']]]
+  ['x_888',['x',['../structstbv____floor__ordering.html#ae924c7a53744c143820b8ca1f82eb591',1,'stbv__floor_ordering::x()'],['../_physics_new_8cpp.html#a207fd5507206d307cd63f95374fcd00d',1,'X():&#160;PhysicsNew.cpp']]],
+  ['xlist_889',['Xlist',['../struct_floor1.html#a2c09f98b7613ec990add2467ea39f240',1,'Floor1']]]
 ];

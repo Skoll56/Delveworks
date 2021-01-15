@@ -172,15 +172,13 @@ $(function() {
 <li>m_defaultCamera
 : <a class="el" href="class_engine_1_1_core.html#a2ba1d2342f36ff363b3ae644b1cd3b9b">Engine::Core</a>
 </li>
-<li>m_defaultWindowSize
-: <a class="el" href="class_engine_1_1_core.html#a6213c7881484ef05a21f32771a01c58c">Engine::Core</a>
-</li>
 <li>m_delete
 : <a class="el" href="class_engine_1_1_component.html#a374bb0eb27722760feba88aa779b33a4">Engine::Component</a>
 , <a class="el" href="class_engine_1_1_entity.html#ade1df50d331b60169cbc3bd3c5d4a7b5">Engine::Entity</a>
 </li>
 <li>m_deltaPos
 : <a class="el" href="class_engine_1_1_mouse.html#a539fe1dd7797355940761adc5b220b32">Engine::Mouse</a>
+, <a class="el" href="class_engine_1_1_touchscreen.html#a2012d092e44d3a8e8c7ed29b967ebc42">Engine::Touchscreen</a>
 </li>
 <li>m_deltaVel
 : <a class="el" href="class_engine_1_1_collision.html#ae5d474dcc70dfb678ca5a79eeab51fa3">Engine::Collision</a>
@@ -234,6 +232,15 @@ $(function() {
 </li>
 <li>m_fBufID
 : <a class="el" href="class_engine_1_1_render_texture.html#a0f0e83316e07dcc0711cfd2f33fccc70">Engine::RenderTexture</a>
+</li>
+<li>m_fingerDown
+: <a class="el" href="class_engine_1_1_touchscreen.html#a870960861ac38927af7006758db76a3d">Engine::Touchscreen</a>
+</li>
+<li>m_fingerIsDown
+: <a class="el" href="class_engine_1_1_touchscreen.html#aac7faa5faceeaaad7667ac6c9e7210fd">Engine::Touchscreen</a>
+</li>
+<li>m_fingerUp
+: <a class="el" href="class_engine_1_1_touchscreen.html#a84e39be5bb4fed5dc011dbea7cbbdb61">Engine::Touchscreen</a>
 </li>
 <li>m_floored
 : <a class="el" href="class_engine_1_1_physics_event_user.html#aee00308a4099e909076914c45a9eed9e">Engine::PhysicsEventUser</a>
@@ -303,7 +310,7 @@ $(function() {
 : <a class="el" href="class_engine_1_1_keyboard.html#a094182a50c94c6c175dafdbb94f25ff1">Engine::Keyboard</a>
 </li>
 <li>m_lastCol
-: <a class="el" href="class_engine_1_1_physics_object.html#aae80dd4114008e58532635df2c40afa3">Engine::PhysicsObject</a>
+: <a class="el" href="class_engine_1_1_physics_event_user.html#a3a27c20490540b679ae60df1e0500d90">Engine::PhysicsEventUser</a>
 </li>
 <li>m_lastMesh
 : <a class="el" href="class_engine_1_1_mesh_collider.html#ae627549d3a872f48882f89d554aa9adc">Engine::MeshCollider</a>
@@ -319,6 +326,9 @@ $(function() {
 </li>
 <li>m_leftTrigger
 : <a class="el" href="class_engine_1_1_controller.html#a44abd914e818fe66f4b8dc538c978ba1">Engine::Controller</a>
+</li>
+<li>m_lightEmission
+: <a class="el" href="class_engine_1_1_mesh_renderer.html#a6457f7ef50038714e9674633fcd69d10">Engine::MeshRenderer</a>
 </li>
 <li>m_lightingSh
 : <a class="el" href="class_engine_1_1_core.html#a1bd19a837301d3b4c2e45849111cdfed">Engine::Core</a>
@@ -338,6 +348,15 @@ $(function() {
 </li>
 <li>m_massCalc
 : <a class="el" href="class_engine_1_1_collision.html#a46526683e8e579e18362aebc87b6a3f5">Engine::Collision</a>
+</li>
+<li>m_maxDir
+: <a class="el" href="class_engine_1_1_core.html#aac1396fc3d4eb2279a7b6dea6c9045e1">Engine::Core</a>
+</li>
+<li>m_maxPoint
+: <a class="el" href="class_engine_1_1_core.html#aa5e5328ec00e1e0083fc863edcf3f70d">Engine::Core</a>
+</li>
+<li>m_maxSpot
+: <a class="el" href="class_engine_1_1_core.html#af49b179c8ba971aaf3a0ecbb1d316a3d">Engine::Core</a>
 </li>
 <li>m_message
 : <a class="el" href="class_engine_1_1_exception.html#a515910a41fdbe03cf885f41d8d91c28b">Engine::Exception</a>
@@ -371,7 +390,6 @@ $(function() {
 </li>
 <li>m_normal
 : <a class="el" href="class_engine_1_1_collision.html#ab35b0d710e77cb3210edc3ff172bb90e">Engine::Collision</a>
-, <a class="el" href="class_engine_1_1_plane_collider.html#a8f6bec6d990bc32c2877dcffe0bc3026">Engine::PlaneCollider</a>
 </li>
 <li>m_normalColor
 : <a class="el" href="class_engine_1_1_button_u_i.html#a99ec60d9833d536113875550539ae317">Engine::ButtonUI</a>
@@ -402,6 +420,7 @@ $(function() {
 </li>
 <li>m_pos
 : <a class="el" href="class_engine_1_1_mouse.html#a61d531ab1dfa374e9955a25dff2fc752">Engine::Mouse</a>
+, <a class="el" href="class_engine_1_1_touchscreen.html#a4cede9f1bfb8b1668fa440e7ed432547">Engine::Touchscreen</a>
 </li>
 <li>m_position
 : <a class="el" href="class_engine_1_1_context.html#a2a66bfbb79bed2a690a4f9361905d85e">Engine::Context</a>
@@ -536,7 +555,7 @@ $(function() {
 : <a class="el" href="class_engine_1_1_core.html#a802cbccb00c087383e047995b58d9b0c">Engine::Core</a>
 </li>
 <li>m_surface
-: <a class="el" href="class_engine_1_1_camera.html#a36283a02e4e9ffa0e7ad4d718d4a2a32">Engine::Camera</a>
+: <a class="el" href="class_engine_1_1_camera.html#a0b7921855903bd1ea0ff1975a294ee35">Engine::Camera</a>
 </li>
 <li>m_surfaces
 : <a class="el" href="class_engine_1_1_context.html#ab2dd7db157a28f0f04b2df1ecd45ce30">Engine::Context</a>
@@ -557,6 +576,9 @@ $(function() {
 </li>
 <li>m_torque
 : <a class="el" href="class_engine_1_1_adv_physics_object.html#a2a803fa99168b227d0cf88b6a9f30a9c">Engine::AdvPhysicsObject</a>
+</li>
+<li>m_touch
+: <a class="el" href="class_engine_1_1_button_u_i.html#a72d263cb5411a1abeaa501c0bd4c22ed">Engine::ButtonUI</a>
 </li>
 <li>m_transform
 : <a class="el" href="class_engine_1_1_component.html#a0f0787fce807ad80c8a55d1b02dfc3b5">Engine::Component</a>

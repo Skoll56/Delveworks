@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['end_1340',['end',['../struct_residue.html#a79e5b0b56d8d18fbf350e8f9d7841f8e',1,'Residue']]],
-  ['end_5fseg_5fwith_5fknown_5floc_1341',['end_seg_with_known_loc',['../structstb__vorbis.html#abf4405ff473eed0c4a8bf23cb064f1aa',1,'stb_vorbis']]],
-  ['entries_1342',['entries',['../struct_codebook.html#a3b75d1bd874ad98d552c15c547d5fc6a',1,'Codebook']]],
-  ['eof_1343',['eof',['../structstbi__io__callbacks.html#a319639db2f76e715eed7a7a974136832',1,'stbi_io_callbacks::eof()'],['../structstb__vorbis.html#ad1527c6b0af4f69978444bb4ca326c40',1,'stb_vorbis::eof()']]],
-  ['error_1344',['error',['../structstb__vorbis.html#af7f9c10235b589b2856025951af48590',1,'stb_vorbis']]]
+  ['data_1384',['data',['../file_8txt.html#a97b93248040f042957c84f38ba31c606',1,'file.txt']]],
+  ['delta_5fvalue_1385',['delta_value',['../struct_codebook.html#a5f68e4a9acd173f69425233d995c37ed',1,'Codebook']]],
+  ['dimensions_1386',['dimensions',['../struct_codebook.html#af2c97899a7fc32b58c0e05d2c357fbd4',1,'Codebook']]],
+  ['discard_5fsamples_5fdeferred_1387',['discard_samples_deferred',['../structstb__vorbis.html#adbacf2120eaa0099f886770c51d633d2',1,'stb_vorbis']]]
 ];

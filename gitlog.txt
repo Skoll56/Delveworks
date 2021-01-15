@@ -1,0 +1,434 @@
+commit f07694164ee2f64cfe3d886938ae5213d8f6ac15
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Fri Jan 15 05:30:01 2021 +0000
+
+    Fixed a couple things for emscripten
+
+commit 7abd0658257cd0100819ef8d4bead6584dc56d99
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Fri Jan 15 04:58:37 2021 +0000
+
+    Demo made, bug fixes
+
+commit 728e1ae0d734a7922146b5392626ccf6d7485747
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Fri Jan 15 03:18:59 2021 +0000
+
+    Last minute bug fixing
+
+commit 1690fc6a7a49d76de48f19561daf1b171c3f005b
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Thu Jan 14 05:34:28 2021 +0000
+
+    Touch input added
+
+commit b127f6270595b100d8b25cd0d66e5a4bcf67fa02
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Thu Jan 14 04:18:54 2021 +0000
+
+    Fixed some collision stuff
+
+commit 10ae5b6968953482a95d71d2c2d89a59eeaecd5d
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Thu Jan 14 02:14:35 2021 +0000
+
+    Bug fixes, finishing touches, attempted multiple lights optimisations
+
+commit ea8b1543b851b89a256e4606a31c4abc1d79dc4c
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Wed Jan 13 23:33:20 2021 +0000
+
+    Last minute TODO's and tidying
+
+commit 1dfab75d14a7c619bfa47df3f6b907f17cafdb02
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Wed Jan 13 08:48:56 2021 +0000
+
+    Console now prints to file
+
+commit 2c028242b0256aa0f643c9fd6d740470cc9e28a9
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Wed Jan 13 07:36:14 2021 +0000
+
+    Disabled console in Windows, made emscripten compile shaders
+
+commit 09eadb4074571058e6388d415f73e9d71d0483c6
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Wed Jan 13 06:22:53 2021 +0000
+
+    Gitignore updated, doxygen refreshed
+
+commit f1409efc1ad37fea01b674d5406fa24fb345c4d5
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Wed Jan 13 06:20:26 2021 +0000
+
+    Doxygen comments added to every file, code tidying, gitignore updated
+
+commit d92ec4c0797072360f623440aec2ebd73ba3b396
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Mon Jan 11 23:14:16 2021 +0000
+
+    Changed stuff for Emscripten (Still not working)
+
+commit 95294f9b7f28f518607a92d10ece7d5042c95791
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Mon Jan 11 01:52:48 2021 +0000
+
+    Added self ptr to everything and made UI buttons
+
+commit 8b7546ce0fd87bc78a625754bc48066fba8fa68b
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Jan 10 04:36:32 2021 +0000
+
+    Added contexts ready for GUI
+
+commit 0d4e01a817a54884630e99bc2b89ab6e3e432c78
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Jan 10 01:28:22 2021 +0000
+
+    Alpha and order now working everywhere
+
+commit c2736b35b539b4ad3c2164e432dc4c7efd693a70
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sat Jan 9 21:29:45 2021 +0000
+
+    Fixed viewport but with Render Textures
+
+commit ffe08096a1591f0caa5d19837c5756f90dd7ef46
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sat Jan 9 20:23:31 2021 +0000
+
+    Shader link error log added
+
+commit 1d77b07dd6579fd5c0b83aa8145b89c39235ba56
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sat Jan 9 20:06:32 2021 +0000
+
+    Emscripten/cmake rebuild
+
+commit eecb38c94511cdb27608a31dcab0a8a1ee58f812
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sat Jan 9 19:59:53 2021 +0000
+
+    Split screen surfaces and sprite surfaces added
+
+commit 51933a60056980c9d8ef8ae26aa7a762abd9dc17
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sat Jan 9 05:19:27 2021 +0000
+
+    Added surfaces
+    
+    Seems to be working, yet to try scaling it or having two however
+
+commit dfeecf399c79f81a9706806a6d26679e2b318b80
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sat Jan 9 03:24:11 2021 +0000
+
+    More tidying
+
+commit 31d073b5bd7470ac02859d9fddf28d8ec2c1b75d
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sat Jan 9 01:13:41 2021 +0000
+
+    Just some tidying
+
+commit adb5b8ef7a3dee1eb7f968e6399cd64fe64a75b1
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sat Jan 9 00:31:38 2021 +0000
+
+    Fixed screen stretching bug (Resize now works)
+
+commit 1716f17f934477e5e4a3aec9d8c490479af7aaf9
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Fri Jan 8 22:57:46 2021 +0000
+
+    Changes as required by Emscripten (Not working still)
+
+commit 41ce85c592816beef5d7c35735f349006b20b9c1
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Fri Jan 8 19:40:18 2021 +0000
+
+    More cmake build fixes
+
+commit 53947ddda77c1b572e7ad158abecc061f38727a1
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Fri Jan 8 17:52:12 2021 +0000
+
+    Wav files implemented and stereo sound fixed
+
+commit a74640329918561512875dfbf8784f325a389179
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Fri Jan 8 03:32:37 2021 +0000
+
+    Wav (still doesn't work)
+
+commit 59c97a22c997f7966de96a933683b3c885661039
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Fri Jan 8 02:45:48 2021 +0000
+
+    Fixed 3D spatial sound (mono only) and attempted Wav loading (failed)
+
+commit c5ec1d9bd47e323126b9d513ead5d264c25c3629
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Thu Jan 7 23:08:23 2021 +0000
+
+    Input improvements, controller input added
+
+commit 7b796accec102e1f071830e56c30ef80701305db
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Thu Jan 7 08:10:16 2021 +0000
+
+    Input system overhaul with new input devices
+
+commit b8418e349c0a291e8662ad2ef531f01d75b7f7d5
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Wed Jan 6 03:39:56 2021 +0000
+
+    Started revamping input system
+
+commit 8a047d8f2fa0b172821581ef0a04c16dd16df2d2
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Wed Jan 6 02:05:14 2021 +0000
+
+    Tweaks made for attempted Emscripten build
+
+commit 7b2955c81e1a07cd5fdcb5ad375024c2f11c81c8
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Tue Jan 5 19:28:27 2021 +0000
+
+    OnCollision Enter, Exit and Triggers set
+
+commit 8459f22cd5ccda7f2ca9bca74e43188f7c700a30
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Mon Jan 4 02:35:51 2021 +0000
+
+    Error and logging system improved
+
+commit feeb04b563d2b6c3ef738bdb03fa008c079e8576
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Jan 3 19:05:12 2021 +0000
+
+    Exception and console overhaul (intertwined) WIP
+
+commit 2234af8cff79cb80a9c37cd507750095e6ec11a5
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sat Jan 2 23:14:43 2021 +0000
+
+    Exception system, onCollision events, basic sound
+
+commit 6b9a1abd4866d4b26a0e6b44a98203dec8ba2a9f
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Tue Dec 29 16:39:30 2020 +0000
+
+    Update main.cpp
+
+commit 43aae3b3491910e1e70465b05b73b5602a0fa021
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Tue Dec 29 15:45:25 2020 +0000
+
+    Revert "Butchered shaders to work on Laptop (REVERT THIS LATER)"
+    
+    This reverts commit 2cd71012d3bcf38c3ae5fe3c94a71d98cf53feb1.
+
+commit 94499212ab65a2b7023977e7925cb3181f8b1719
+Author: Sam Turner <samturner571@googlemail.com>
+Date:   Wed Dec 23 21:35:46 2020 +0000
+
+    Mouse warping
+
+commit 2cd71012d3bcf38c3ae5fe3c94a71d98cf53feb1
+Author: Sam Turner <samturner571@googlemail.com>
+Date:   Mon Dec 21 16:44:23 2020 +0000
+
+    Butchered shaders to work on Laptop (REVERT THIS LATER)
+
+commit 6bcc1d2e0cf56094353695e1900cfecfccdedf21
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sat Dec 19 15:14:42 2020 +0000
+
+    Changes for assignment
+
+commit 90330f230d5cd189fa9f27831542a0e443676950
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Mon Dec 14 22:44:01 2020 +0000
+
+    Tidying, comments added, clarified Graphics Unit pieces
+
+commit 380cc726609e15afa388e1170ce349fe41fb9400
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Mon Dec 14 21:48:08 2020 +0000
+
+    Minor Shader + light tweaks
+    
+    Might be a bug where balls can fall through boxes when colliding with the corners? Leave that for physics though
+
+commit 4d0d4cd1c9ad0b806a02976c7e8aac3559fe8fab
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Dec 13 23:32:56 2020 +0000
+
+    Making the PCF look prettier and optimising
+
+commit 1add5f7a90b463c263d90295ba70cf26ede6bf9c
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Dec 13 21:54:07 2020 +0000
+
+    Fixed PCF bug on Spotlights
+    
+    Apparently 4*4 = 16, not 12. Who'd have thunk it?
+
+commit 683cf5ae0d5fa5816788a7efc2e6a88ebb2733c8
+Merge: d540e52 7c0cf66
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Dec 13 21:20:22 2020 +0000
+
+    Merge branch 'pcf'
+
+commit d540e529edb2153733eb18f81d224442e4e29fc2
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Dec 13 21:19:57 2020 +0000
+
+    Fixed multiple light bug
+
+commit 7c0cf6663696c03f3f57c18156bef9e31021b041
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Dec 13 15:34:30 2020 +0000
+
+    PCF attempt (buggy?)
+
+commit f000803c49136840691ddf8d310a5c8cc2ce1442
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Fri Dec 11 23:23:28 2020 +0000
+
+    Point light shadows (Now with extra functionalness)
+
+commit ed7ad2a1285c665b56f22757557bb7aa8118017b
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Wed Dec 9 23:32:20 2020 +0000
+
+    Attempted shadowcubes (Fail, reskin tomorrow)
+
+commit 3bff0e6ac7bb0cf612e3f0159946f8cd4661e632
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Wed Dec 9 00:15:39 2020 +0000
+
+    Reverted FWD change (Broke camera rotation), supports multiple lights with shadows now
+
+commit 41a6f4b49eb29101c34c0bdb6f63ef530ce6326d
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Tue Dec 8 23:37:22 2020 +0000
+
+    Revert "Recalculated FWD (Attempted fix for direct light bug)"
+    
+    This reverts commit bf1a0f43238b673600f2706dfceecd5ee5e13233.
+
+commit bf1a0f43238b673600f2706dfceecd5ee5e13233
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Tue Dec 8 22:33:54 2020 +0000
+
+    Recalculated FWD (Attempted fix for direct light bug)
+
+commit bc814b7b1869cbbf968b91b6a95ff6a65a1dc19b
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Thu Dec 3 21:23:47 2020 +0000
+
+    Point light shadows working
+
+commit 25e2b525d49a288f98f681b9b6c79862b68bcff6
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Tue Dec 1 18:55:37 2020 +0000
+
+    Started wrapping the Shadowmaps, optimising shaders, preparing for multiple lights
+
+commit c26a798d6caaa369519c298420b7b881b79a91b8
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Mon Nov 30 03:24:33 2020 +0000
+
+    Shadows (directional) working, bug with textures fixed
+    
+    Reference Karl for assistance
+
+commit eb4cff11c34b6518af94f813ffdf9ae6359a3e55
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Mon Nov 30 01:54:41 2020 +0000
+
+    Got depth buffers able to render, trying to render shadows
+    
+    Albeit unsuccessfully
+
+commit 05148ae796ce69fa46add21393b116f821b8b5d5
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Nov 29 02:13:20 2020 +0000
+
+    Started adding shadows (created camera component, changing shader update)
+    
+    Camera component may be currently inverted, but that's an easy fix. Also don't forget to delete C'thulhu.
+
+commit 9b86e25b2928da38358bbb985736dca6cc185931
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Thu Nov 26 21:53:00 2020 +0000
+
+    Added clarifying comment
+
+commit 7f6478053c83cffc27a54a6354778e1db4640153
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Thu Nov 26 21:51:39 2020 +0000
+
+    Render textures added
+    
+    Reference openGL and Karl for assistance
+
+commit 159d9be998df0e74be8da8f7986cdd4597df223a
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Tue Nov 24 16:23:42 2020 +0000
+
+    Getting Physics Objects working again
+    
+    Known bug: Planes extend infinitely in some directions
+
+commit b8c9fbed43581d9010eb75c3984adbd9396bef6a
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Nov 22 22:39:00 2020 +0000
+
+    Got an object showing again (Merged lighting, renderers, update functions)
+
+commit b22c934959a0481fed87cc12b8913cb1547f261a
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Nov 22 18:37:57 2020 +0000
+
+    Merged old components into CES, imported Doxygen
+
+commit 104f23e7aa858e8db1ff1bca533758b0c53d52c9
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Sun Nov 15 15:06:14 2020 +0000
+
+    Input Manager complete
+
+commit a0c2dd6b3ecf0dcf6c349ec779e7c91d852fdda5
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Tue Nov 10 17:53:13 2020 +0000
+
+    Moved resources, resource manager created
+
+commit 32f92e14ddc5fb98dee3f792a87079212558dee0
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Mon Nov 9 22:11:10 2020 +0000
+
+    Cmake added, sound added, CES added
+
+commit dbcfb1bc8b38555eb10f6e36e10756522b2dc6bb
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Thu Oct 1 16:04:56 2020 +0100
+
+    Added gitignore
+
+commit ca621ad917eb16c092dbb3b24a1921ea0b70b322
+Author: Sam <s5060082@bournemouth.ac.uk>
+Date:   Thu Oct 1 15:48:07 2020 +0100
+
+    Init Commit
+
+commit b9089e8357291c372f05e8a5916486cd8b4789a7
+Author: Skoll <37215561+Skoll56@users.noreply.github.com>
+Date:   Thu Oct 1 15:29:32 2020 +0100
+
+    Initial commit

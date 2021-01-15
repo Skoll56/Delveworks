@@ -1,3 +1,11 @@
+The .exe is in build2
+The .html (emscripten build) is in webBuild
+
+It is set up to look for a controller input. It's okay if you don't supply one, it will only throw one error in the console if you are lacking a controller.
+
+If you do have a controller, left bumper will send a message.
+
+
 'WSAD' moves the camera around.
 
 'Spacebar' unlocks the cursor
