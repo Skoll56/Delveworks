@@ -140,7 +140,7 @@ class Demo : public Component
 class UI : public Component
 {
 	public:
-	bool test = true;
+	bool test = false;
 	int i;
 	std::weak_ptr<Transform> camera;
 	std::weak_ptr<ButtonUI> button;
@@ -203,7 +203,7 @@ class CustomInput : public InputDevice
 int main()
 //#endif
 {
-	std::shared_ptr<Core> core = Core::initialise(Core::Release, glm::vec2(1024, 1024));
+	std::shared_ptr<Core> core = Core::initialise(Core::Debug, glm::vec2(900, 900));
 
 	//Create the statue entity
 	std::shared_ptr<Entity> test = core->createEntity();
@@ -235,15 +235,15 @@ int main()
 		std::shared_ptr<PointLight> p = point->addComponent<PointLight>(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 30.0f, 0.8f);
 		p->transform()->m_position = glm::vec3(0.0f, 6.0f, -2.0f);
 	}
-
-	//for (int i = 0; i < 1; i++)
-	//{
-	//	//Create a spotlight (in another room)//
-	//	std::shared_ptr<Entity> spot2 = core->createEntity();
-	//	std::shared_ptr<SpotLight> s2 = spot2->addComponent<SpotLight>(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);
-	//	s2->transform()->m_position = glm::vec3(0.0f, 16.0f, 8.0f);
-	//	s2->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 8.0f);//
-	//}
+	
+	for (int i = 0; i < 1; i++)
+	{
+		//Create a spotlight (in another room)//
+		std::shared_ptr<Entity> spot2 = core->createEntity();
+		std::shared_ptr<SpotLight> s2 = spot2->addComponent<SpotLight>(glm::vec3(1.0f, 1.0f, 1.0f), 0.8f, 20.0f, 35.0f, 30.0f, 3.0f);
+		s2->transform()->m_position = glm::vec3(0.0f, 16.0f, 8.0f);
+		s2->transform()->m_eulerAngles = glm::vec3(90.0f, 0.0f, 8.0f);//
+	}
 	
 
 	//This creates three rooms all 50 units away from eachother.

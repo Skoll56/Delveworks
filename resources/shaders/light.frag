@@ -1,11 +1,13 @@
+#ifdef GL_ES
 precision mediump float;
+#endif
 /* !DISCLAIMER! */
 /* The specular/diffuse lighting code has been re-used from a previously submitted assignment. Only the addition of shadows is new. */
 
 
 //Fragment shader for light-affected objects
 #define MAXPOINT 5
-#define MAXDIR 1
+#define MAXDIR 2
 #define MAXSPOT 5
 
 struct PointLight
@@ -133,11 +135,7 @@ float ShadowCalculation(vec4 _fragPosLightSpace, sampler2D _shadowMap, vec2 _tex
     //Depth of the current fragment
     float currentDepth = projCoords.z;
 
-	//The resolution of each texel
-    //ivec2 ts = textureSize(_shadowMap, 0);
-	//float x = float(ts.x);
-	//float y = float(ts.y);
-	//vec2 fTextureSize = vec2(ts.x, ts.y);
+	//The resolution of each texel   
 	vec2 texelRes = (1.0 / _textureSize); 
 	
 	const float samples = 5.0;

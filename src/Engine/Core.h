@@ -118,7 +118,7 @@ namespace Engine
 		long m_t1;
 
 		/** \brief The maximum number of directional lights permitted */
-		int m_maxDir = 1;
+		int m_maxDir = 2;
 
 		/** \brief The maximum number of point lights permitted */
 		int m_maxPoint = 5;

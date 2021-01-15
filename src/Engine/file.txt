@@ -1,0 +1,1923 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+namespace Engine {
+	class AdvPhysicsObject {
+		+AdvPhysicsObject()
+		+calcInvTensor() : glm::mat3
+		+getRotMat() : glm::mat3
+		-m_invBodyInertiaTensor : glm::mat3
+		-m_invInertiaTensor : glm::mat3
+		-m_rotMat : glm::mat3
+		+getRotQuat() : glm::quat
+		-m_rotQuat : glm::quat
+		+getAmom() : glm::vec3
+		+getAvel() : glm::vec3
+		-m_aAcc : glm::vec3
+		-m_aMom : glm::vec3
+		-m_aVel : glm::vec3
+		-m_torque : glm::vec3
+		+m_self : std::weak_ptr<AdvPhysicsObject>
+		+addTorque(glm::vec3 _torque) : void
+		+clearTorque() : void
+		+onInitialise(float _mass, float _bounciness) : void
+		+onTick() : void
+		+setAmom(glm::vec3 _mom) : void
+		+setAvel(glm::vec3 _aVel) : void
+		+setInvTensor(glm::mat3 _matrix) : void
+		+setRotMat(glm::mat3 _rMat) : void
+		+updateRotations(float _dTs, bool collided) : void
+	}
+}
+
+
+namespace Engine {
+	class AudioReceiver {
+		+m_self : std::weak_ptr<AudioReceiver>
+	}
+}
+
+
+namespace Engine {
+	class BoxCollider {
+		+BoxCollider()
+		+m_self : std::weak_ptr<BoxCollider>
+	}
+}
+
+
+namespace Engine {
+	class ButtonUI {
+		-m_mouseButton : Mouse::MouseButton
+		+buttonUp() : bool
+		+isButtonDown() : bool
+		+isButtonHeld() : bool
+		+isMouseOver() : bool
+		-m_buttonDown : bool
+		-m_buttonHeld : bool
+		-m_buttonUp : bool
+		-m_mouseOver : bool
+		-m_clickedColor : glm::vec3
+		-m_mouseOverColor : glm::vec3
+		-m_normalColor : glm::vec3
+		-m_mouse : std::weak_ptr<Mouse>
+		-m_touch : std::weak_ptr<Touchscreen>
+		+onInitialise(std::shared_ptr<Texture> _tex, int _layer) : void
+		+onTick() : void
+		+setClickColor(glm::vec3 _rgb) : void
+		+setInteractButton(Mouse::MouseButton _button) : void
+		+setMouseOverColor(glm::vec3 _rgb) : void
+	}
+}
+
+
+namespace Engine {
+	class Camera {
+		+getFOV() : float
+		-m_FoV : float
+		+getView() : glm::mat4
+		-m_viewMat : glm::mat4
+		+getSurface(int _i) : std::shared_ptr<Surface>
+		-m_surface : std::vector<std::weak_ptr<Surface>>
+		+m_self : std::weak_ptr<Camera>
+		+addSurface(std::shared_ptr<Surface> _surface) : void
+		+onInitialise() : void
+		+onTick() : void
+		+setFOV(float _angle) : void
+	}
+}
+
+
+namespace Engine {
+	class Collider {
+		#Collider()
+		+m_trigger : bool
+		+getFriction() : float
+		#m_friction : float
+		+m_self : std::weak_ptr<Collider>
+		+setFriction(float _friction) : void
+	}
+}
+
+
+namespace Engine {
+	class Collision {
+		+Collision(glm::vec3 _cP, glm::vec3 _norm, std::shared_ptr<Entity> _other, std::shared_ptr<Entity> _my)
+		-m_massCalc : float
+		+m_resultForce : float
+		+m_cP : glm::vec3
+		+m_deltaVel : glm::vec3
+		+m_normal : glm::vec3
+		+m_poC : glm::vec3
+		+m_velDif : glm::vec3
+		+m_my : std::shared_ptr<Entity>
+		+m_other : std::shared_ptr<Entity>
+		+ignoreCollision() : void
+	}
+}
+
+
+namespace Engine {
+	class Component {
+		#m_delete : bool
+		+getCore() : std::shared_ptr<Core>
+		+getEntity() : std::shared_ptr<Entity>
+		+getInputDevice() : std::shared_ptr<T>
+		+transform() : std::shared_ptr<Transform>
+		+m_self : std::weak_ptr<Component>
+		#m_entity : std::weak_ptr<Entity>
+		#m_transform : std::weak_ptr<Transform>
+		+destroy() : void
+		#onCollision(std::shared_ptr<Collision> _col) : void
+		#onCollisionEnter(std::shared_ptr<Collision> _col) : void
+		#onCollisionExit(std::shared_ptr<Entity> _other) : void
+		#onDestroy() : void
+		#onInitialise() : void
+		#onTick() : void
+	}
+}
+
+
+namespace Engine {
+	class Console {
+		-Console()
+		-{static} m_messageLog : static std::vector<std::string>
+		+{static} output(type _t, std::string _sender, std::string _text) : void
+		+{static} output(type _t, std::string _sender, std::string _text, bool _duplicates) : void
+		+{static} output(std::string _text) : void
+		+{static} printToFile() : void
+	}
+}
+
+
+namespace Engine {
+	class Context {
+		+getPosition() : glm::vec2
+		+getSize() : glm::vec2
+		-m_position : glm::vec2
+		-m_size : glm::vec2
+		-m_engineSurfaces : std::vector<std::shared_ptr<Surface>>
+		-m_surfaces : std::vector<std::weak_ptr<Surface>>
+		-setPosition(glm::vec2 _pos) : void
+		-setPosition(float _x, float _y) : void
+	}
+}
+
+
+namespace Engine {
+	class Controller {
+		-m_controller : SDL_GameController*
+		-m_joystick : SDL_Joystick*
+		+getButtonDown(ControllerButton _button) : bool
+		+getButtonIsDown(ControllerButton _button) : bool
+		+getButtonUp(ControllerButton _button) : bool
+		-m_init : bool
+		+getLeftTrigger() : float
+		+getRightTrigger() : float
+		-m_leftTrigger : float
+		-m_rightTrigger : float
+		+getLeftStickPosition() : glm::vec2
+		+getRightStickPosition() : glm::vec2
+		-m_leftStick : glm::vec2
+		-m_rightStick : glm::vec2
+		+getThreshold() : int
+		-m_moveThreshold : int
+		-m_buttonDown : std::vector<ControllerButton>
+		-m_buttonIsDown : std::vector<ControllerButton>
+		-m_buttonUp : std::vector<ControllerButton>
+		-close() : void
+		-initialise() : void
+		+setThreshold(int _val) : void
+		-update(std::vector<SDL_Event> _eventList) : void
+	}
+}
+
+
+namespace Engine {
+	class Core {
+		-m_context : ALCcontext*
+		-m_device : ALCdevice*
+		-m_window : SDL_Window*
+		-m_quit : bool
+		+getDeltaTime() : float
+		+getTime() : float
+		-m_dTime : float
+		-m_height : int
+		-m_maxDir : int
+		-m_maxPoint : int
+		-m_maxSpot : int
+		-m_width : int
+		-m_t1 : long
+		+getAudioReceiver() : std::shared_ptr<AudioReceiver>
+		+getDefaultCamera() : std::shared_ptr<Camera>
+		+getContext() : std::shared_ptr<Context>
+		-m_engineContext : std::shared_ptr<Context>
+		-m_gameContext : std::shared_ptr<Context>
+		+{static} initialise(RunMode _mode, glm::vec2 _gameWindowize) : std::shared_ptr<Core>
+		+createEntity() : std::shared_ptr<Entity>
+		+getInput() : std::shared_ptr<InputManager>
+		-m_inputManager : std::shared_ptr<InputManager>
+		-m_rManager : std::shared_ptr<ResourceManager>
+		-m_lightingSh : std::shared_ptr<Shader>
+		-m_pointShadowSh : std::shared_ptr<Shader>
+		-m_shadowSh : std::shared_ptr<Shader>
+		-m_sqShader : std::shared_ptr<Shader>
+		+getSurface(int _layer) : std::shared_ptr<Surface>
+		+load(std::string _path) : std::shared_ptr<T>
+		+getAllEntities() : std::vector<std::shared_ptr<Entity>>
+		-m_entities : std::vector<std::shared_ptr<Entity>>
+		-m_dirLights : std::vector<std::weak_ptr<DirLight>>
+		-m_pointLights : std::vector<std::weak_ptr<PointLight>>
+		-m_spotLights : std::vector<std::weak_ptr<SpotLight>>
+		-m_listener : std::weak_ptr<AudioReceiver>
+		-m_defaultCamera : std::weak_ptr<Camera>
+		-m_self : std::weak_ptr<Core>
+		-addDisplay(std::shared_ptr<DisplayUI> _display) : void
+		-addUISurface(std::shared_ptr<Surface> _display) : void
+		-buildEngineUI() : void
+		-drawPointShadowScene() : void
+		-drawScene() : void
+		-drawShadowScene() : void
+		-drawShadowmaps() : void
+		-initialiseAL() : void
+		-initialiseSDL() : void
+		-initialiseShaders() : void
+		-loop() : void
+		-onWindowResized(int _x, int _y) : void
+		+orderSurfaces() : void
+		-renderScreen() : void
+		+setDefaultCamera(std::shared_ptr<Camera> _cam) : void
+		+start() : void
+		-updateEntities() : void
+		-updateLighting() : void
+		-updateLightingShader(std::shared_ptr<Camera> _cam, glm::vec2 _viewport) : void
+		-updateSurfaceShader(std::shared_ptr<Texture> _tex, float _alpha, glm::vec3 _color) : void
+	}
+}
+
+
+namespace Engine {
+	class DirLight {
+		+getSpec() : float
+		-m_specIntens : float
+		+getAmb() : glm::vec3
+		+getDif() : glm::vec3
+		-m_ambient : glm::vec3
+		-m_diffuse : glm::vec3
+		+getShadowMap() : std::shared_ptr<ShadowMap>
+		-m_SM : std::shared_ptr<ShadowMap>
+		+m_self : std::weak_ptr<DirLight>
+		+onInitialise(glm::vec3 _diffuse, float _specular, glm::vec3 _ambient) : void
+		+update(int _i) : void
+	}
+}
+
+
+namespace Engine {
+	class DisplayUI {
+		-createRenderTexture() : std::shared_ptr<RenderTexture>
+		-m_RT : std::shared_ptr<RenderTexture>
+		-m_camera : std::weak_ptr<Camera>
+		+m_self : std::weak_ptr<DisplayUI>
+		+onInitialise(std::shared_ptr<Camera> _cam, int _layer) : void
+		+setCamera(std::shared_ptr<Camera> _cam) : void
+		+setSize(glm::vec2 _XY) : void
+		+setSize(int _X, int _Y) : void
+		+update() : void
+	}
+}
+
+
+namespace Engine {
+	class Entity {
+		+isActive() : bool
+		-m_active : bool
+		-m_delete : bool
+		-m_inAftertick : bool
+		+getCore() : std::shared_ptr<Core>
+		+addComponent(Args&& ... args) : std::shared_ptr<T>
+		+getComponent() : std::shared_ptr<T>
+		-m_transform : std::shared_ptr<Transform>
+		+transform() : std::shared_ptr<Transform>
+		+getTag() : std::string
+		-m_tag : std::string
+		-m_components : std::vector<std::shared_ptr<Component>>
+		-m_core : std::weak_ptr<Core>
+		-m_self : std::weak_ptr<Entity>
+		-afterTick() : void
+		-checkType(std::shared_ptr<T> _rtn) : void
+		+destroy() : void
+		-onCollision(std::shared_ptr<Collision> _c) : void
+		-onCollisionEnter(std::shared_ptr<Collision> _c) : void
+		-onCollisionExit(std::shared_ptr<Entity> _c) : void
+		+setActive(bool _status) : void
+		+setTag(std::string _tag) : void
+		-tick() : void
+	}
+}
+
+
+namespace Engine {
+	class Exception {
+		+Exception(const std::string& _text)
+		+Exception()
+		+~Exception()
+		-m_message : std::string
+		+message() : std::string
+	}
+}
+
+
+namespace Engine {
+	class ImageUI {
+		#m_tex : std::shared_ptr<Texture>
+		+m_self : std::weak_ptr<ImageUI>
+		+onInitialise(std::shared_ptr<Texture> _tex, int _layer) : void
+		+setSize(glm::vec2 _XY) : void
+		+setSize(int _X, int _Y) : void
+	}
+}
+
+
+namespace Engine {
+	class InputDevice {
+		#isContainedIn(T _obj, std::vector<T> _vector) : bool
+		#m_IM : std::weak_ptr<InputManager>
+		#close() : void
+		#removeFromList(T _obj, std::vector<T>* _vector) : void
+		#update(std::vector<SDL_Event> _eventList) : void
+	}
+}
+
+
+namespace Engine {
+	class InputManager {
+		-m_window : SDL_Window*
+		+update() : bool
+		+getWindowSize() : glm::vec2
+		-m_windowSize : glm::vec2
+		+addDevice() : std::shared_ptr<T>
+		+getDevice() : std::shared_ptr<T>
+		-m_eventList : std::vector<SDL_Event>
+		-m_devices : std::vector<std::shared_ptr<InputDevice>>
+		-m_core : std::weak_ptr<Core>
+		-m_self : std::weak_ptr<InputManager>
+		+closeInputDevices() : void
+	}
+}
+
+
+namespace Engine {
+	class Keyboard {
+		+GetKeyDown(SDL_Keycode _event) : bool
+		+GetKeyIsDown(SDL_Keycode _event) : bool
+		+GetKeyUp(SDL_Keycode _event) : bool
+		-m_keyDown : std::vector<SDL_Keycode>
+		-m_keyIsDown : std::vector<SDL_Keycode>
+		-m_keyUp : std::vector<SDL_Keycode>
+		-update(std::vector<SDL_Event> _eventList) : void
+	}
+}
+
+
+namespace Engine {
+	class Light {
+		#Light()
+		+getSpec() : float
+		#m_specIntens : float
+		+getDif() : glm::vec3
+		#m_diffuse : glm::vec3
+	}
+}
+
+
+namespace Engine {
+	class MeshCollider {
+		+MeshCollider()
+		-colBefore() : bool
+		+isEasy() : bool
+		-m_collidedBefore : bool
+		-m_easyCollide : bool
+		+getPrecision() : float
+		-m_precision : float
+		+getLastCol() : std::string
+		-m_lastMesh : std::string
+		-getColTri() : std::vector<int>
+		-getMyTri() : std::vector<int>
+		-m_colTri : std::vector<int>
+		-m_myTri : std::vector<int>
+		+m_self : std::weak_ptr<MeshCollider>
+		-setColBefore(bool _val) : void
+		-setColTri(std::vector<int> _colTri) : void
+		+setEasy(bool _val) : void
+		-setLastCol(std::string _tag) : void
+		-setMyTri(std::vector<int> _myTri) : void
+		+setPrecision(float _prec) : void
+	}
+}
+
+
+namespace Engine {
+	class MeshRenderer {
+		+getObjectCoords() : VertexBuffer*
+		+getTextureCoords() : VertexBuffer*
+		-m_vBOp : VertexBuffer*
+		-m_vBOt : VertexBuffer*
+		+getCastShadows() : bool
+		+getReceiveShadows() : bool
+		-m_castShadows : bool
+		-m_receiveShadows : bool
+		+getAlpha() : float
+		-m_alpha : float
+		+getColor() : glm::vec3
+		+getEmissive() : glm::vec3
+		+getSize() : glm::vec3
+		-m_color : glm::vec3
+		-m_lightEmission : glm::vec3
+		-m_size : glm::vec3
+		+getShine() : int
+		-m_shininess : int
+		+getShader() : std::shared_ptr<Shader>
+		-m_shader : std::shared_ptr<Shader>
+		+getTexture() : std::shared_ptr<Texture>
+		-m_tex : std::shared_ptr<Texture>
+		+getMesh() : std::shared_ptr<VertexArray>
+		-m_vAO : std::shared_ptr<VertexArray>
+		+m_self : std::weak_ptr<MeshRenderer>
+		+draw() : void
+		+onInitialise(std::string _texName, std::string _obj, glm::vec3 _size) : void
+		+setAlpha(float _a) : void
+		+setCastShadows(bool _tf) : void
+		+setEmissive(glm::vec3 _emissive) : void
+		+setReceiveShadows(bool _tf) : void
+		+setShine(int _shininess) : void
+	}
+}
+
+
+namespace Engine {
+	class Mouse {
+		+getButtonDown(MouseButton _button) : bool
+		+getButtonIsDown(MouseButton _button) : bool
+		+getButtonUp(MouseButton _button) : bool
+		-m_cursorHidden : bool
+		-m_cursorLocked : bool
+		+getDeltaPos() : glm::vec2
+		+getPosition() : glm::vec2
+		+getTruePosition() : glm::vec2
+		-m_deltaPos : glm::vec2
+		-m_lastPos : glm::vec2
+		-m_pos : glm::vec2
+		+getScrollWheel() : int
+		-m_scroll : int
+		-m_buttonDown : std::vector<MouseButton>
+		-m_buttonIsDown : std::vector<MouseButton>
+		-m_buttonUp : std::vector<MouseButton>
+		+hideCursor(bool _tf) : void
+		+lockCursor(bool _tf) : void
+		-update(std::vector<SDL_Event> _eventList) : void
+	}
+}
+
+
+namespace Engine {
+	class PhysicsEventUser {
+		+boxToBox(std::shared_ptr<BoxCollider> _my, std::shared_ptr<BoxCollider> _other, glm::vec3 _c1) : bool
+		+boxToPlane(std::shared_ptr<BoxCollider> _my, std::shared_ptr<PlaneCollider> _other, glm::vec3 _c1) : bool
+		+boxToSphere(std::shared_ptr<BoxCollider> _my, std::shared_ptr<SphereCollider> _other, glm::vec3 _c1) : bool
+		+checkForCollisions(float _dT, std::vector<std::shared_ptr<Entity>> _other, glm::vec3 _c1) : bool
+		+collided() : bool
+		+isFloored() : bool
+		#isInColList(std::vector<std::shared_ptr<Collision>> _list, std::shared_ptr<Collision> _col) : bool
+		#m_collided : bool
+		#m_floored : bool
+		+meshToMesh(std::shared_ptr<MeshCollider> _my, std::shared_ptr<Collider> _other, glm::vec3 _c1) : bool
+		+sphereBoxOverlap(std::shared_ptr<SphereCollider> _sphere, std::shared_ptr<BoxCollider> _box) : bool
+		+sphereToBox(std::shared_ptr<SphereCollider> _my, std::shared_ptr<BoxCollider> _other, glm::vec3 _c1) : bool
+		+sphereToPlane(std::shared_ptr<SphereCollider> _my, std::shared_ptr<PlaneCollider> _other, glm::vec3 _c1) : bool
+		+sphereToSphere(std::shared_ptr<SphereCollider> _my, std::shared_ptr<SphereCollider> _other) : bool
+		+distanceToPlane(glm::vec3& n, glm::vec3& p, glm::vec3& q) : float
+		+getPermCP() : glm::vec3
+		#m_permCP : glm::vec3
+		+roundNormals(glm::vec3 _n) : glm::vec3
+		+NoDivTriTriIsect(float V0, float V1, float V2, float U0, float U1, float U2) : int
+		+coplanar_tri_tri(float N, float V0, float V1, float V2, float U0, float U1, float U2) : int
+		+planeBoxOverlap(float normal, float d, float maxbox) : int
+		+triBoxOverlap(float boxcenter, float boxhalfsize, float triverts) : int
+		#m_collisions : std::vector<std::shared_ptr<Collision>>
+		#m_lastCol : std::vector<std::shared_ptr<Collision>>
+		+m_self : std::weak_ptr<PhysicsEventUser>
+		#handleCollisions() : void
+		+onTick() : void
+		+resetCollisions() : void
+		+setCollided(bool _val) : void
+		+setFloored(bool _val) : void
+		+setPermCP(glm::vec3 _pos) : void
+	}
+}
+
+
+namespace Engine {
+	class PhysicsObject {
+		+PhysicsObject()
+		+getBounciness() : float
+		+getMass() : float
+		#m_bounciness : float
+		#m_mass : float
+		+getForce() : glm::vec3 {query}
+		+getVelocity() : glm::vec3
+		#m_force : glm::vec3
+		#m_velocity : glm::vec3
+		+rungeKutta2(float _deltaTs, float _mass) : glm::vec3
+		+m_self : std::weak_ptr<PhysicsObject>
+		+addForce(glm::vec3 _force) : void
+		+addVelocity(glm::vec3 _vel) : void
+		+clearForces() : void
+		+onInitialise(float _mass, float _bounciness) : void
+		+onTick() : void
+		+setBounciness(float _amt) : void
+		+setForce(const glm::vec3 _force) : void
+		+setMass(float _mass) : void
+		+setVelocity(glm::vec3 _vel) : void
+	}
+}
+
+
+namespace Engine {
+	class PlaneCollider {
+		+PlaneCollider()
+		+getNorm() : glm::vec3
+		+m_self : std::weak_ptr<PlaneCollider>
+	}
+}
+
+
+namespace Engine {
+	class PointLight {
+		+PointLight()
+		+getBrightness() : float
+		+getRadius() : float
+		#m_brightness : float
+		#m_quadratic : float
+		#m_radius : float
+		+getShadowCube() : std::shared_ptr<ShadowCube>
+		#m_SC : std::shared_ptr<ShadowCube>
+		+m_self : std::weak_ptr<PointLight>
+		+onInitialise(glm::vec3 _diffuse, float _specular, float _radius, float _brightness) : void
+		+setBrightness(float _brightness) : void
+		+update(int _i) : void
+	}
+}
+
+
+namespace Engine {
+	class RayCaster {
+		-intersect_triangle3(double orig, double dir, double vert0, double vert1, double vert2, double* t, double* u, double* v) : int
+		+raycastAgainst(std::vector<std::shared_ptr<Entity>> _obj, glm::vec3 _rayDir, glm::vec3 _origin, std::string _rayTag) : std::shared_ptr<RayCollision>
+		+m_self : std::weak_ptr<RayCaster>
+	}
+}
+
+
+namespace Engine {
+	class RayCollision {
+		+m_hit : bool
+		+m_hitPoint : glm::vec3
+		+m_origin : glm::vec3
+		+m_rayDir : glm::vec3
+		+m_hitObj : std::shared_ptr<Entity>
+		+m_rayTag : std::string
+	}
+}
+
+
+namespace Engine {
+	class RenderTexture {
+		+getFrameBufID() : GLuint
+		+getRenderBufID() : GLuint
+		#m_fBufID : GLuint
+		#m_rBufObjID : GLuint
+		+Initialise() : void
+		+Initialise(int _resX, int _resY) : void
+	}
+}
+
+
+namespace Engine {
+	class Resource {
+		+m_path : std::string
+	}
+}
+
+
+namespace Engine {
+	class ResourceManager {
+		+load(std::string _path) : std::shared_ptr<T>
+		-m_resourceList : std::vector<std::shared_ptr<Resource>>
+	}
+}
+
+
+namespace Engine {
+	class Shader {
+		+Shader()
+		+Shader(std::string _name)
+		+getId() : GLuint
+		-m_id : GLuint
+		-m_sampler : std::vector<Sampler>
+		+draw(std::shared_ptr<VertexArray> vertexArray) : void
+		+load(std::string _name) : void
+		-printShaderInfoLog(GLuint obj) : void
+		+setUniform(std::string _uniform, glm::vec4 _value) : void
+		+setUniform(std::string _uniform, float _value) : void
+		+setUniform(std::string _uniform, int _value) : void
+		+setUniform(std::string _uniform, std::shared_ptr<Texture> _tex) : void
+		+setUniform(std::string _uniform, std::shared_ptr<ShadowCube> _sc) : void
+		+setUniform(std::string _uniform, glm::mat4 _value) : void
+		+setUniform(std::string _uniform, glm::vec3 _value) : void
+		+setUniform(std::string _uniform, glm::vec2 _value) : void
+	}
+}
+
+
+namespace Engine {
+	class ShadowCube {
+		+getMatrix(int _i) : glm::mat4
+		-m_lSpaceMatrix : std::vector<glm::mat4>
+		+Initialise() : void
+		+setMatrix(int _i, glm::mat4 _mat) : void
+	}
+}
+
+
+namespace Engine {
+	class ShadowMap {
+		+getMatrix() : glm::mat4
+		-m_lSpaceMatrix : glm::mat4
+		+Initialise(float _xres, float _yres) : void
+		+setMatrix(glm::mat4 _lSpaceMatrix) : void
+	}
+}
+
+
+namespace Engine {
+	class Sound {
+		-m_id : ALuint
+		-loadWav(const std::string& fileName, int& size, ALenum& format, ALsizei& freq) : char*
+		+load(std::string path) : void
+		-loadOgg(const std::string& fileName, std::vector<char>& buffer, ALenum& format, ALsizei& freq) : void
+	}
+}
+
+
+namespace Engine {
+	class SoundSource {
+		-m_id : ALuint
+		-m_destroyOnPlay : bool
+		-m_loop : bool
+		-m_played : bool
+		+m_self : std::weak_ptr<SoundSource>
+		+Play(float _vol) : void
+		-onInitialise(std::shared_ptr<Sound> _sound) : void
+		+onTick() : void
+		+setDestroyOnPlay(bool _destroy) : void
+		+setLoop(bool _loop) : void
+	}
+}
+
+
+namespace Engine {
+	class SphereCollider {
+		+SphereCollider()
+		+getRadius() : float
+		+m_self : std::weak_ptr<SphereCollider>
+	}
+}
+
+
+namespace Engine {
+	class SpotLight {
+		+getAngle() : float
+		+getFangle() : float
+		-m_angle : float
+		-m_fadeAngle : float
+		+getShadowMap() : std::shared_ptr<ShadowMap>
+		-m_SM : std::shared_ptr<ShadowMap>
+		+m_self : std::weak_ptr<SpotLight>
+		+onInitialise(glm::vec3 _color, float _specular, float _angle, float _fadeAngle, float _radius, float _brightness) : void
+		+update(int _i) : void
+	}
+}
+
+
+namespace Engine {
+	class Surface {
+		#isRender : bool
+		#scaleWithContext : bool
+		+getAlpha() : float
+		#m_alpha : float
+		+getPosition() : glm::vec2
+		+getSize() : glm::vec2
+		+getTruePosition() : glm::vec2
+		#m_position : glm::vec2
+		#m_size : glm::vec2
+		+getColor() : glm::vec3
+		#m_col : glm::vec3
+		+getLayer() : int
+		#m_layer : int
+		#m_screenQuad : std::shared_ptr<VertexArray>
+		#m_context : std::weak_ptr<Context>
+		+m_self : std::weak_ptr<Surface>
+		#createScreenQuad() : void
+		+setAlpha(float _a) : void
+		+setColor(glm::vec3 _RGB) : void
+		+setLayer(int _layer) : void
+		+setPosition(glm::vec2 _pos) : void
+		+setPosition(float _x, float _y) : void
+		+setScaleWithContext(bool _tf) : void
+	}
+}
+
+
+namespace Engine {
+	class Texture {
+		+Texture()
+		+~Texture()
+		+get() : GLuint
+		#m_textureId : GLuint
+		+getResolution() : glm::vec2
+		#m_channels : int
+		#m_resX : int
+		#m_resY : int
+		+load(std::string _image) : void
+	}
+}
+
+
+namespace Engine {
+	class Touchscreen {
+		+getFingerDown() : bool
+		+getFingerIsDown() : bool
+		+getFingerUp() : bool
+		-m_fingerDown : bool
+		-m_fingerIsDown : bool
+		-m_fingerUp : bool
+		+getDeltaPos() : glm::vec2
+		+getPosition() : glm::vec2
+		+getTruePosition() : glm::vec2
+		-m_deltaPos : glm::vec2
+		-m_pos : glm::vec2
+		-update(std::vector<SDL_Event> _eventList) : void
+	}
+}
+
+
+namespace Engine {
+	class Transform {
+		+getModel() : glm::mat4
+		-m_model : glm::mat4
+		+getFwd() : glm::vec3
+		+getPosition() : glm::vec3
+		+getRight() : glm::vec3
+		+getScale() : glm::vec3
+		+getSize() : glm::vec3
+		+getUp() : glm::vec3
+		+m_eulerAngles : glm::vec3
+		-m_fwd : glm::vec3
+		+m_position : glm::vec3
+		-m_right : glm::vec3
+		-m_scale : glm::vec3
+		-m_size : glm::vec3
+		-m_upVec : glm::vec3
+		+m_self : std::weak_ptr<Transform>
+		-onInitialise() : void
+		+onTick() : void
+		+rotate(glm::vec3 _axis, float _amt) : void
+		+setModel(glm::mat4 _model) : void
+		+setPosition(float _posX, float _posY, float _posZ) : void
+		+setPosition(glm::vec3 _value) : void
+		+setScale(glm::vec3 _scale) : void
+	}
+}
+
+
+namespace Engine {
+	class VertexArray {
+		+VertexArray()
+		+VertexArray(std::string _path)
+		+getId() : GLuint
+		-m_id : GLuint
+		+getTriNorm() : VertexBuffer*
+		+getTriPos() : VertexBuffer*
+		+getTriTex() : VertexBuffer*
+		-m_dirty : bool
+		+getVertexCount() : int
+		-m_buffers : std::vector<VertexBuffer*>
+		+load(std::string _path) : void
+		+setBuffer(std::string _attribute, VertexBuffer* _buffer) : void
+		-splitString(std::string& _input, char _splitter, std::vector<std::string>& _output) : void
+		-splitStringWhitespace(std::string& _input, std::vector<std::string>& _output) : void
+	}
+}
+
+
+namespace Engine {
+	class VertexBuffer {
+		+VertexBuffer()
+		+getId() : GLuint
+		-m_id : GLuint
+		-m_dirty : bool
+		+getData(int i) : float
+		+getComponents() : int
+		+getDataSize() : int
+		-m_components : int
+		-m_data : std::vector<GLfloat>
+		+add(glm::vec2 _value) : void
+		+add(glm::vec3 _value) : void
+		+add(glm::vec4 _value) : void
+	}
+}
+
+
+namespace Engine {
+	class WavFile {
+		+{static} isBigEndian() : bool
+		+{static} loadWAV(const char* fn, int& chan, int& samplerate, int& bps, int& size) : char*
+		+{static} convertToInt(char* buffer, int len) : int
+	}
+}
+
+
+enum STBVorbisError {
+	VORBIS__no_error
+	VORBIS_bad_packet_type
+	VORBIS_cant_find_last_page
+	VORBIS_continued_packet_flag_invalid
+	VORBIS_feature_not_supported
+	VORBIS_file_open_failure
+	VORBIS_incorrect_stream_serial_number
+	VORBIS_invalid_api_mixing
+	VORBIS_invalid_first_page
+	VORBIS_invalid_setup
+	VORBIS_invalid_stream
+	VORBIS_invalid_stream_structure_version
+	VORBIS_missing_capture_pattern
+	VORBIS_need_more_data
+	VORBIS_ogg_skeleton_not_supported
+	VORBIS_outofmem
+	VORBIS_seek_failed
+	VORBIS_seek_invalid
+	VORBIS_seek_without_length
+	VORBIS_too_many_channels
+	VORBIS_unexpected_eof
+}
+
+
+enum empty {
+	VORBIS_packet_comment
+	VORBIS_packet_id
+	VORBIS_packet_setup
+}
+
+
+enum empty {
+	STBI_default
+	STBI_grey
+	STBI_grey_alpha
+	STBI_rgb
+	STBI_rgb_alpha
+}
+
+
+enum empty {
+	STBI_ORDER_BGR
+	STBI_ORDER_RGB
+}
+
+
+enum empty {
+	STBI__SCAN_header
+	STBI__SCAN_load
+	STBI__SCAN_type
+}
+
+
+enum empty {
+	STBI__F_avg
+	STBI__F_avg_first
+	STBI__F_none
+	STBI__F_paeth
+	STBI__F_paeth_first
+	STBI__F_sub
+	STBI__F_up
+}
+
+
+namespace ::<anon-struct-5> {
+	struct <anon-struct-5>::<anon-struct-6> {
+		+coeff_h : int
+		+coeff_w : int
+		+dc_pred : int
+		+h : int
+		+h2 : int
+		+ha : int
+		+hd : int
+		+id : int
+		+tq : int
+		+v : int
+		+w2 : int
+		+x : int
+		+y : int
+		+coeff : short*
+		+data : stbi_uc*
+		+linebuf : stbi_uc*
+		+raw_data : void*
+		+ : void**
+	}
+}
+
+
+struct CRCscan {
+	+bytes_done : int
+	+bytes_left : int
+	+crc_so_far : unsigned int
+	+goal_crc : unsigned int
+	+sample_loc : unsigned int
+}
+
+
+struct Codebook {
+	+multiplicands : codetype*
+	+delta_value : float
+	+minimum_value : float
+	+dimensions : int
+	+entries : int
+	+fast_huffman : int
+	+sorted_entries : int
+	+sorted_values : int*
+	+fast_huffman : short int
+	+codeword_lengths : unsigned char
+	+lookup_type : unsigned char
+	+sequence_p : unsigned char
+	+sparse : unsigned char
+	+value_bits : unsigned char
+	+codewords : unsigned int
+	+lookup_values : unsigned int
+	+sorted_codewords : unsigned int
+}
+
+
+struct Floor0 {
+	+amplitude_bits : unsigned char
+	+amplitude_offset : unsigned char
+	+book_list : unsigned char
+	+number_of_books : unsigned char
+	+order : unsigned char
+	+bark_map_size : unsigned short int
+	+rate : unsigned short int
+}
+
+
+struct Floor1 {
+	+values : int
+	+subclass_books : short int
+	+class_dimensions : unsigned char
+	+class_masterbooks : unsigned char
+	+class_subclasses : unsigned char
+	+floor1_multiplier : unsigned char
+	+neighbors : unsigned char
+	+partition_class_list : unsigned char
+	+partitions : unsigned char
+	+rangebits : unsigned char
+	+sorted_order : unsigned char
+	+Xlist : unsigned short int
+}
+
+
+struct Mapping {
+	+chan : MappingChannel*
+	+submap_floor : unsigned char
+	+submap_residue : unsigned char
+	+submaps : unsigned char
+	+coupling_steps : unsigned short int
+}
+
+
+struct MappingChannel {
+	+angle : unsigned char
+	+magnitude : unsigned char
+	+mux : unsigned char
+}
+
+
+struct Mode {
+	+blockflag : unsigned char
+	+mapping : unsigned char
+	+transformtype : unsigned short int
+	+windowtype : unsigned short int
+}
+
+
+struct ProbedPage {
+	+last_decoded_sample : unsigned int
+	+page_end : unsigned int
+	+page_start : unsigned int
+}
+
+
+struct Residue {
+	+int16(* residue_books)
+	+classbook : unsigned char
+	+classdata : unsigned char
+	+classifications : unsigned char
+	+begin : unsigned int
+	+end : unsigned int
+	+part_size : unsigned int
+}
+
+
+namespace Engine {
+	struct Sampler {
+		+m_uniform_location : GLint
+		+m_tex : std::shared_ptr<Texture>
+	}
+}
+
+
+struct mdct_lookup {
+	+scale : float
+	+trig : float*
+	+log2n : int
+	+n : int
+	+bitrev : int*
+}
+
+
+struct stb_vorbis {
+	+scan : CRCscan
+	+codebooks : Codebook*
+	+f : FILE*
+	+floor_config : Floor*
+	+mapping : Mapping*
+	+mode_config : Mode
+	+p_first : ProbedPage
+	+p_last : ProbedPage
+	+residue_config : Residue*
+	+error : STBVorbisError
+	+vendor : char*
+	+comment_list : char**
+	+A : float*
+	+A : float*
+	+A : float*
+	+A : float*
+	+A : float*
+	+A : float*
+	+A : float*
+	+channel_buffers : float*
+	+floor_buffers : float*
+	+outputs : float*
+	+previous_window : float*
+	+window : float*
+	+blocksize : int
+	+blocksize_0 : int
+	+blocksize_1 : int
+	+channel_buffer_end : int
+	+channel_buffer_start : int
+	+channels : int
+	+close_on_free : int
+	+codebook_count : int
+	+comment_list_length : int
+	+current_loc_valid : int
+	+discard_samples_deferred : int
+	+end_seg_with_known_loc : int
+	+eof : int
+	+floor_count : int
+	+last_page : int
+	+last_seg : int
+	+last_seg_which : int
+	+mapping_count : int
+	+mode_count : int
+	+next_seg : int
+	+packet_bytes : int
+	+page_crc_tests : int
+	+previous_length : int
+	+residue_count : int
+	+segment_count : int
+	+setup_offset : int
+	+temp_offset : int
+	+valid_bits : int
+	+finalY : short int
+	+alloc : stb_vorbis_alloc
+	+bytes_in_seg : unsigned char
+	+first_decode : unsigned char
+	+page_flag : unsigned char
+	+push_mode : unsigned char
+	+segments : unsigned char
+	+stream : unsigned char
+	+stream_end : unsigned char
+	+stream_start : unsigned char
+	+acc : unsigned int
+	+current_loc : unsigned int
+	+f_start : unsigned int
+	+first_audio_page_offset : unsigned int
+	+known_loc_for_packet : unsigned int
+	+sample_rate : unsigned int
+	+samples_output : unsigned int
+	+serial : unsigned int
+	+setup_memory_required : unsigned int
+	+setup_temp_memory_required : unsigned int
+	+stream_len : unsigned int
+	+temp_memory_required : unsigned int
+	+total_samples : unsigned int
+	+bit_reverse : unsigned short int
+	+floor_types : unsigned short int
+	+residue_types : unsigned short int
+}
+
+
+struct stb_vorbis_alloc {
+	+alloc_buffer : char*
+	+alloc_buffer_length_in_bytes : int
+}
+
+
+struct stb_vorbis_comment {
+	+vendor : char*
+	+comment_list : char**
+	+comment_list_length : int
+}
+
+
+struct stb_vorbis_info {
+	+channels : int
+	+max_frame_size : int
+	+sample_rate : unsigned int
+	+setup_memory_required : unsigned int
+	+setup_temp_memory_required : unsigned int
+	+temp_memory_required : unsigned int
+}
+
+
+struct stbi__bmp_data {
+	+bpp : int
+	+hsz : int
+	+offset : int
+	+all_a : unsigned int
+	+ma : unsigned int
+	+mb : unsigned int
+	+mg : unsigned int
+	+mr : unsigned int
+}
+
+
+struct stbi__context {
+	+buflen : int
+	+img_n : int
+	+img_out_n : int
+	+read_from_callbacks : int
+	+img_x : stbi__uint32
+	+img_y : stbi__uint32
+	+io : stbi_io_callbacks
+	+buffer_start : stbi_uc
+	+img_buffer : stbi_uc*
+	+img_buffer_original : stbi_uc*
+	+ : stbi_uc**
+	+ : stbi_uc**
+	+io_user_data : void*
+}
+
+
+struct stbi__gif {
+	+bgindex : int
+	+cur_x : int
+	+cur_y : int
+	+delay : int
+	+eflags : int
+	+flags : int
+	+h : int
+	+lflags : int
+	+line_size : int
+	+max_x : int
+	+max_y : int
+	+parse : int
+	+ratio : int
+	+start_x : int
+	+start_y : int
+	+step : int
+	+transparent : int
+	+w : int
+	+codes : stbi__gif_lzw
+	+lpal : stbi_uc
+	+pal : stbi_uc
+	+background : stbi_uc*
+	+color_table : stbi_uc*
+	+history : stbi_uc*
+	+out : stbi_uc*
+}
+
+
+struct stbi__gif_lzw {
+	+prefix : stbi__int16
+	+first : stbi_uc
+	+suffix : stbi_uc
+}
+
+
+struct stbi__huffman {
+	+delta : int
+	+code : stbi__uint16
+	+fast : stbi_uc
+	+size : stbi_uc
+	+values : stbi_uc
+	+maxcode : unsigned int
+}
+
+
+struct stbi__jpeg {
+	+ : img_comp
+	+ : int
+	+app14_color_transform : int
+	+code_bits : int
+	+eob_run : int
+	+img_h_max : int
+	+img_mcu_h : int
+	+img_mcu_w : int
+	+img_mcu_x : int
+	+img_mcu_y : int
+	+img_v_max : int
+	+jfif : int
+	+nomore : int
+	+order : int
+	+progressive : int
+	+restart_interval : int
+	+rgb : int
+	+scan_n : int
+	+spec_end : int
+	+spec_start : int
+	+succ_high : int
+	+succ_low : int
+	+todo : int
+	+s : stbi__context*
+	+huff_ac : stbi__huffman
+	+huff_dc : stbi__huffman
+	+fast_ac : stbi__int16
+	+dequant : stbi__uint16
+	+code_buffer : stbi__uint32
+	+resample_row_hv_2_kernel : stbi_uc* (* ) ( stbi_uc* out, stbi_uc* in_near, stbi_uc* in_far, int w, int hs )
+	+marker : unsigned char
+	+YCbCr_to_RGB_kernel : void (* ) ( stbi_uc* out, const stbi_uc* y, const stbi_uc* pcb, const stbi_uc* pcr, int count, int step )
+	+data : void (* idct_block_kernel ) ( stbi_uc* out, int out_stride, short
+}
+
+
+struct stbi__pic_packet {
+	+channel : stbi_uc
+	+size : stbi_uc
+	+type : stbi_uc
+}
+
+
+struct stbi__png {
+	+depth : int
+	+s : stbi__context*
+	+ : stbi_uc*
+	+idata : stbi_uc*
+	+out : stbi_uc*
+	+ : stbi_uc**
+}
+
+
+struct stbi__pngchunk {
+	+length : stbi__uint32
+	+type : stbi__uint32
+}
+
+
+struct stbi__resample {
+	+hs : int
+	+vs : int
+	+w_lores : int
+	+ypos : int
+	+ystep : int
+	+resample : resample_row_func
+	+line0 : stbi_uc*
+	+ : stbi_uc**
+}
+
+
+struct stbi__result_info {
+	+bits_per_channel : int
+	+channel_order : int
+	+num_channels : int
+}
+
+
+struct stbi__zbuf {
+	+zout : char*
+	+zout_end : char*
+	+zout_start : char*
+	+num_bits : int
+	+z_expandable : int
+	+code_buffer : stbi__uint32
+	+z_distance : stbi__zhuffman
+	+z_length : stbi__zhuffman
+	+zbuffer : stbi_uc*
+	+ : stbi_uc**
+}
+
+
+struct stbi__zhuffman {
+	+maxcode : int
+	+fast : stbi__uint16
+	+firstcode : stbi__uint16
+	+firstsymbol : stbi__uint16
+	+value : stbi__uint16
+	+size : stbi_uc
+}
+
+
+struct stbi_io_callbacks {
+	+eof : int (* ) ( void* user )
+	+read : int (* ) ( void* user, char* data, int size )
+	+skip : void (* ) ( void* user, int n )
+}
+
+
+struct stbv__floor_ordering {
+	+id : unsigned short int
+	+x : unsigned short int
+}
+
+
+union Floor {
+	+floor0 : Floor0
+	+floor1 : Floor1
+}
+
+
+union float_conv {
+	+f : float
+	+i : int
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+namespace Engine {
+	Collider <|-- BoxCollider
+}
+
+
+namespace Engine {
+	Collider <|-- MeshCollider
+}
+
+
+namespace Engine {
+	Collider <|-- PlaneCollider
+}
+
+
+namespace Engine {
+	Collider <|-- SphereCollider
+}
+
+
+namespace Engine {
+	Component <|-- AudioReceiver
+}
+
+
+namespace Engine {
+	Component <|-- Camera
+}
+
+
+namespace Engine {
+	Component <|-- Collider
+}
+
+
+namespace Engine {
+	Component <|-- Light
+}
+
+
+namespace Engine {
+	Component <|-- MeshRenderer
+}
+
+
+namespace Engine {
+	Component <|-- PhysicsEventUser
+}
+
+
+namespace Engine {
+	Component <|-- RayCaster
+}
+
+
+namespace Engine {
+	Component <|-- SoundSource
+}
+
+
+namespace Engine {
+	Component <|-- Surface
+}
+
+
+namespace Engine {
+	Component <|-- Transform
+}
+
+
+namespace Engine {
+	ImageUI <|-- ButtonUI
+}
+
+
+namespace Engine {
+	InputDevice <|-- Controller
+}
+
+
+namespace Engine {
+	InputDevice <|-- Keyboard
+}
+
+
+namespace Engine {
+	InputDevice <|-- Mouse
+}
+
+
+namespace Engine {
+	InputDevice <|-- Touchscreen
+}
+
+
+namespace Engine {
+	Light <|-- DirLight
+}
+
+
+namespace Engine {
+	Light <|-- PointLight
+}
+
+
+namespace Engine {
+	PhysicsEventUser <|-- PhysicsObject
+}
+
+
+namespace Engine {
+	PhysicsObject <|-- AdvPhysicsObject
+}
+
+
+namespace Engine {
+	PointLight <|-- SpotLight
+}
+
+
+namespace Engine {
+	RenderTexture <|-- ShadowCube
+}
+
+
+namespace Engine {
+	RenderTexture <|-- ShadowMap
+}
+
+
+namespace Engine {
+	Resource <|-- Shader
+}
+
+
+namespace Engine {
+	Resource <|-- Sound
+}
+
+
+namespace Engine {
+	Resource <|-- Texture
+}
+
+
+namespace Engine {
+	Resource <|-- VertexArray
+}
+
+
+namespace Engine {
+	Surface <|-- DisplayUI
+}
+
+
+namespace Engine {
+	Surface <|-- ImageUI
+}
+
+
+namespace Engine {
+	Texture <|-- RenderTexture
+}
+
+
+
+
+
+/' Aggregation relationships '/
+
+namespace Engine {
+	AdvPhysicsObject *-- AdvPhysicsObject
+}
+
+
+namespace Engine {
+	AudioReceiver *-- AudioReceiver
+}
+
+
+namespace Engine {
+	BoxCollider *-- BoxCollider
+}
+
+
+namespace Engine {
+	ButtonUI "2" *-- Mouse
+}
+
+
+namespace Engine {
+	ButtonUI *-- Touchscreen
+}
+
+
+namespace Engine {
+	Camera *-- Camera
+}
+
+
+namespace Engine {
+	Camera *-- Surface
+}
+
+
+namespace Engine {
+	Collider *-- Collider
+}
+
+
+namespace Engine {
+	Collision "2" *-- Entity
+}
+
+
+namespace Engine {
+	Component *-- Component
+}
+
+
+namespace Engine {
+	Component *-- Entity
+}
+
+
+namespace Engine {
+	Component *-- Transform
+}
+
+
+namespace Engine {
+	Context "2" *-- Surface
+}
+
+
+namespace Engine {
+	Core *-- AudioReceiver
+}
+
+
+namespace Engine {
+	Core *-- Camera
+}
+
+
+namespace Engine {
+	Core "2" *-- Context
+}
+
+
+namespace Engine {
+	Core *-- Core
+}
+
+
+namespace Engine {
+	Core *-- DirLight
+}
+
+
+namespace Engine {
+	Core *-- Entity
+}
+
+
+namespace Engine {
+	Core *-- InputManager
+}
+
+
+namespace Engine {
+	Core *-- PointLight
+}
+
+
+namespace Engine {
+	Core *-- ResourceManager
+}
+
+
+namespace Engine {
+	Core "4" *-- Shader
+}
+
+
+namespace Engine {
+	Core *-- SpotLight
+}
+
+
+namespace Engine {
+	DirLight *-- DirLight
+}
+
+
+namespace Engine {
+	DirLight *-- ShadowMap
+}
+
+
+namespace Engine {
+	DisplayUI *-- Camera
+}
+
+
+namespace Engine {
+	DisplayUI *-- DisplayUI
+}
+
+
+namespace Engine {
+	DisplayUI *-- RenderTexture
+}
+
+
+namespace Engine {
+	Entity *-- Component
+}
+
+
+namespace Engine {
+	Entity *-- Core
+}
+
+
+namespace Engine {
+	Entity *-- Entity
+}
+
+
+namespace Engine {
+	Entity *-- Transform
+}
+
+
+.Floor *-- .Floor0
+
+
+.Floor *-- .Floor1
+
+
+namespace Engine {
+	ImageUI *-- ImageUI
+}
+
+
+namespace Engine {
+	ImageUI *-- Texture
+}
+
+
+namespace Engine {
+	InputDevice *-- InputManager
+}
+
+
+namespace Engine {
+	InputManager *-- Core
+}
+
+
+namespace Engine {
+	InputManager *-- InputDevice
+}
+
+
+namespace Engine {
+	InputManager *-- InputManager
+}
+
+
+.Mapping o-- .MappingChannel
+
+
+namespace Engine {
+	MeshCollider *-- MeshCollider
+}
+
+
+namespace Engine {
+	MeshRenderer *-- MeshRenderer
+}
+
+
+namespace Engine {
+	MeshRenderer *-- Shader
+}
+
+
+namespace Engine {
+	MeshRenderer *-- Texture
+}
+
+
+namespace Engine {
+	MeshRenderer *-- VertexArray
+}
+
+
+namespace Engine {
+	MeshRenderer "2" o-- VertexBuffer
+}
+
+
+namespace Engine {
+	PhysicsEventUser "2" *-- Collision
+}
+
+
+namespace Engine {
+	PhysicsEventUser *-- PhysicsEventUser
+}
+
+
+namespace Engine {
+	PhysicsObject *-- PhysicsObject
+}
+
+
+namespace Engine {
+	PlaneCollider *-- PlaneCollider
+}
+
+
+namespace Engine {
+	PointLight *-- PointLight
+}
+
+
+namespace Engine {
+	PointLight *-- ShadowCube
+}
+
+
+namespace Engine {
+	RayCaster *-- RayCaster
+}
+
+
+namespace Engine {
+	RayCollision *-- Entity
+}
+
+
+namespace Engine {
+	ResourceManager *-- Resource
+}
+
+
+namespace Engine {
+	Sampler *-- Texture
+}
+
+
+namespace Engine {
+	Shader *-- Sampler
+}
+
+
+namespace Engine {
+	SoundSource *-- SoundSource
+}
+
+
+namespace Engine {
+	SphereCollider *-- SphereCollider
+}
+
+
+namespace Engine {
+	SpotLight *-- ShadowMap
+}
+
+
+namespace Engine {
+	SpotLight *-- SpotLight
+}
+
+
+namespace Engine {
+	Surface *-- Context
+}
+
+
+namespace Engine {
+	Surface *-- Surface
+}
+
+
+namespace Engine {
+	Surface *-- VertexArray
+}
+
+
+namespace Engine {
+	Transform *-- Transform
+}
+
+
+namespace Engine {
+	VertexArray o-- VertexBuffer
+}
+
+
+.stb_vorbis *-- .CRCscan
+
+
+.stb_vorbis o-- .Codebook
+
+
+.stb_vorbis o-- .Floor
+
+
+.stb_vorbis o-- .Mapping
+
+
+.stb_vorbis *-- .Mode
+
+
+.stb_vorbis "2" *-- .ProbedPage
+
+
+.stb_vorbis o-- .Residue
+
+
+.stb_vorbis *-- .stb_vorbis_alloc
+
+
+.stbi__context *-- .stbi_io_callbacks
+
+
+.stbi__gif *-- .stbi__gif_lzw
+
+
+.stbi__jpeg o-- .stbi__context
+
+
+.stbi__jpeg "2" *-- .stbi__huffman
+
+
+.stbi__png o-- .stbi__context
+
+
+.stbi__zbuf "2" *-- .stbi__zhuffman
+
+
+
+
+
+@enduml

@@ -236,13 +236,11 @@ namespace Engine
 	}
 
 	void Core::start()
-	{
-		Console::output("I started to start");
+	{		
 		m_quit = false;		
 		m_t1 = SDL_GetTicks(); 
-
 		glEnable(GL_CULL_FACE);
-		glEnable(GL_DEPTH_TEST);
+		glEnable(GL_DEPTH_TEST);		
 		
 		#ifdef EMSCRIPTEN
 		emscripten_set_main_loop_arg([](void* _core) { ((Core*)_core)->loop(); }, this, 0, 1);
@@ -597,9 +595,16 @@ namespace Engine
 		{
 			for (int i = m_pointLights.size(); i < m_maxPoint; i++) //After updating, we need to fill the Shadowcube array with garbage because it breaks otherwise
 			{
-				std::string it = std::to_string(i);
-				std::string uniform = "in_pointShadowMap[" + it + "]";
-				m_lightingSh->setUniform(uniform, random);
+				try
+				{
+					std::string it = std::to_string(i);
+					std::string uniform = "in_pointShadowMap[" + it + "]";
+					m_lightingSh->setUniform(uniform, random);
+				}
+				catch (Exception &e)
+				{
+					Console::output(Console::Error, "pointLight Update", e.message());					
+				}
 			}
 		}
 
@@ -729,7 +734,7 @@ namespace Engine
 				{					
 					it = m_gameContext->m_surfaces.erase(it);
 				}
-				else
+				else if ((*it).lock()->getEntity()->isActive())
 				{
 					if ((*it).lock()->isRender)
 					{ 
