@@ -1069,8 +1069,7 @@ namespace Engine
 		
 		//Iterate through every collision
 		for (int i = 0; i < collision.size(); i++)
-		{
-			Console::output(Console::Message, "Me", "Yep", true);
+		{			
 			//Check to see if this collision happened last frame too. If not, call CollisionEnter.
 			if (!isInColList(m_lastCol, collision[i]))
 			{
@@ -1216,9 +1215,15 @@ namespace Engine
 		m_aMom += m_torque * _dTs;
 		if (_collided)
 		{
-			m_aMom.x *= 0.98f;//Reference Alex
-			m_aMom.y *= 0.98f;
-			m_aMom.z *= 0.98f;
+			m_aMom.x *= 0.90f;
+			m_aMom.y *= 0.90f;
+			m_aMom.z *= 0.90f;
+		}
+		else
+		{
+			m_aMom.x *= 0.999f;
+			m_aMom.y *= 0.999f;
+			m_aMom.z *= 0.999f;
 		}
 		setInvTensor(calcInvTensor());
 		m_aVel = m_invInertiaTensor * m_aMom;

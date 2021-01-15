@@ -97,6 +97,9 @@ namespace Engine
 
 		/** \brief Starts the Core loop. This should be called at the end of the user's Main function.*/
 		void start();
+
+		/** \brief Tells the engine to quit*/
+		void quit() { m_quit = true; }
 		
 
 	private:		
@@ -221,6 +224,8 @@ namespace Engine
 		
 		/** \brief This is the main loop of the engine*/
 		void loop();
+
+		
 		
 		//Private functions called from other classes
 		/** \brief Adds a DisplayUI to the Core list*/

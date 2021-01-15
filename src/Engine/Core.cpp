@@ -413,6 +413,7 @@ namespace Engine
 			s->m_layer = i;			
 			s->m_context = m_engineContext;
 			s->m_self = s;
+			s->m_col = glm::vec3(0.35f, 0.0f, 0.35f);
 
 			if (i == 0) //Left banner
 			{
@@ -641,19 +642,18 @@ namespace Engine
 
 	void Core::updateEntities()
 	{
-		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end(); it++)
+		for (int i = 0; i < m_entities.size(); i++) //I have to use int i instead of an iterator because otherwise you can't dynamically create entities here
 		{
 			try
 			{
-				if ((*it)->isActive())
+				if (m_entities[i]->isActive())
 				{
-					(*it)->tick(); //"Update"
+					m_entities[i]->tick(); //"Update"
 				}
 			}
 			catch (Exception &e)
 			{
-				Console::output(Console::Error, (*it)->getTag(), e.message());
-				it++;
+				Console::output(Console::Error, m_entities[i]->getTag(), e.message());				
 			}
 		}
 		for (std::vector<std::shared_ptr<Entity>>::iterator it = m_entities.begin(); it != m_entities.end();)
