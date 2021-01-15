@@ -166,7 +166,7 @@ class Demo : public Component
 		mouse.lock()->hideCursor(true);
 		mouse.lock()->lockCursor(true);
 		buildScene();
-		buildUI();
+		buildUI();//
 	}
 
 	void spawnSomeBalls()
@@ -277,7 +277,7 @@ class Demo : public Component
 
 int main()
 {
-	std::shared_ptr<Core> core = Core::initialise(Core::Debug, glm::vec2(900, 900));
+	std::shared_ptr<Core> core = Core::initialise(Core::Release, glm::vec2(1024, 1024));
 
 	//Create a demo object
 	std::shared_ptr<Entity> demo = core->createEntity();

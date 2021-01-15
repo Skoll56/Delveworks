@@ -54,6 +54,7 @@ namespace Engine
 		m_pos.y = m_IM.lock()->m_windowSize.y - mouseY; //For some reason Y = 0 is TOP left instead of BOTTOM left
 		
 		m_deltaPos = getPosition() - m_lastPos;
+		#ifdef _WIN32
 		if (m_cursorLocked)
 		{			
 			//winX = m_IM.lock()->m_windowSize.x / 2;
@@ -61,11 +62,12 @@ namespace Engine
 			std::shared_ptr<Context> c = m_IM.lock()->m_core.lock()->getContext();
 			glm::vec2 xy = c->getPosition() + (c->getSize() / 2.0f);
 			
-
+			
 			SDL_WarpMouseInWindow(m_IM.lock()->m_window, xy.x, xy.y); 		
 			m_pos.x = xy.x;
 			m_pos.y = xy.y;
 		}
+		#endif	
 
 		m_lastPos = getPosition();
 
